@@ -120,7 +120,8 @@ function initMap() {
             fillColor: '#76BE43',
             fillOpacity: 0.5,
             strokeOpacity: 1.0,
-            indexID: i
+            indexID: i,
+            zIndex: 1000
         });
         stationPolygon.setMap(map);
 
