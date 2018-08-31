@@ -587,7 +587,7 @@ const trilliumStations = [
     },
     {
         name: "Bayview",
-        link: "interchange-stations/carling",
+        link: "interchange-stations/bayview",
         platformGeometry: [
             {lng: -75.7213394, lat: 45.4088961},
             {lng: -75.7216452, lat: 45.409107},
