@@ -86,7 +86,7 @@ function loadLine(line, map) {
     let geoInput = latLng2Jsts(line.outline);
     let geometryFactory = new jsts.geom.GeometryFactory();
     let shell = geometryFactory.createLineString(geoInput);
-    let polygonPoints = shell.buffer(0.0001);
+    let polygonPoints = shell.buffer(0.0001 * line.weightBias);
 
     let polygonOptions = {
         paths: jsts2LatLng(polygonPoints),
@@ -105,7 +105,7 @@ function loadLine(line, map) {
         path: line.outline,
         geodesic: true,
         strokeColor: line.colour,
-        strokeWeight: 5,
+        strokeWeight: 5 * line.weightBias,
         zIndex: 999
     });
 
@@ -133,13 +133,28 @@ function loadLine(line, map) {
                 fillOpacity: 0.5,
                 strokeOpacity: 1.0,
                 indexID: i,
+            });
+            stationPolygon.setMap(map);
+        }
+
+        for (let j = 0; j < station.stationOutline.length; j++) {
+            const stationPolygon = new google.maps.Polygon({
+                paths: station.stationOutline[j],
+                strokeWeight: 1,
+                strokeColor: line.colour,
+                fillColor: line.colour,
+                fillOpacity: 0.5,
+                strokeOpacity: 1.0,
+                indexID: i,
                 zIndex: 1000
             });
             stationPolygon.setMap(map);
 
-            google.maps.event.addListener(stationPolygon, 'click', function (e) {
-                window.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
-            });
+            if (station.link != null) {
+                google.maps.event.addListener(stationPolygon, 'click', function (e) {
+                    window.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
+                });
+            }
         }
     }
 
@@ -253,6 +268,8 @@ function initMap() {
             }
         ]
     });
+
+    loadLine(trilliumYard, map);
 
     loadLine(trilliumLine, map);
     loadLine(confederationLine, map);
