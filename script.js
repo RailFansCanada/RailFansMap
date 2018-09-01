@@ -21,156 +21,239 @@ function convertLineToPolygon(path, width) {
 
         polygonLeftPoints.push(leftPoint);
         polygonRightPoints.push(rightPoint);
+
+        if (i === path.length - 1) {
+            const leftSecondPoint = google.maps.geometry.spherical.computeOffset(secondCenter, width, segmentHeading + 90);
+            const rightSecondPoint = google.maps.geometry.spherical.computeOffset(secondCenter, width, segmentHeading - 90);
+
+            polygonLeftPoints.push(leftSecondPoint);
+            polygonRightPoints.push(rightSecondPoint);
+
+            new google.maps.Marker({
+                position: leftSecondPoint,
+                map: map,
+                title: i.toString()
+            });
+
+            new google.maps.Marker({
+                position: rightSecondPoint,
+                map: map,
+                title: i.toString()
+            });
+        }
+
+        /*new google.maps.Marker({
+            position: leftPoint,
+            map: map,
+            title: i.toString()
+        });
+
+        new google.maps.Marker({
+            position: rightPoint,
+            map: map,
+            title: i.toString()
+        });*/
     }
 
     return polygonLeftPoints.concat(polygonRightPoints.reverse());
 }
 
-function initMap() {
-    let trilliumPolygonOptions = {
-        paths: convertLineToPolygon(trilliumLineOutline, 10),
+function latLng2Jsts(boundaries) {
+    var coordinates = [];
+    var length = 0;
+    if (boundaries && boundaries.getLength) length = boundaries.getLength();
+    else if (boundaries && boundaries.length) length = boundaries.length;
+    for (var i = 0; i < length; i++) {
+        if (boundaries.getLength) coordinates.push(new jsts.geom.Coordinate(
+            boundaries.getAt(i).lat(), boundaries.getAt(i).lng()));
+        else if (boundaries.length) coordinates.push(new jsts.geom.Coordinate(
+            boundaries[i].lat, boundaries[i].lng));
+    }
+    return coordinates;
+}
+
+var jsts2LatLng = function (geometry) {
+    var coordArray = geometry.getCoordinates();
+    GMcoords = [];
+    for (var i = 0; i < coordArray.length; i++) {
+        GMcoords.push(new google.maps.LatLng(coordArray[i].x, coordArray[i].y));
+    }
+    return GMcoords;
+};
+
+function loadLine(line, map) {
+    // Convert outline to jsts data to build an outline.
+    let geoInput = latLng2Jsts(line.outline);
+    let geometryFactory = new jsts.geom.GeometryFactory();
+    let shell = geometryFactory.createLineString(geoInput);
+    let polygonPoints = shell.buffer(0.0001);
+
+    let polygonOptions = {
+        paths: jsts2LatLng(polygonPoints),
         geodesic: true,
-        strokeColor: '#76BE43',
-        fillColor: '#76BE43',
-        strokeOpacity: 1.0,
+        strokeColor: line.colour,
+        fillColor: line.colour,
         fillOpacity: 1.0,
         strokeWeight: 0,
         zIndex: 999
     };
 
-    let confederationPolygonOptions = {
-        paths: convertLineToPolygon(confederationLineOutline, 10),
+    let outlinePolygon = new google.maps.Polygon(polygonOptions);
+    outlinePolygon.setMap(map);
+
+    let outlinePolyline = new google.maps.Polyline({
+        path: line.outline,
         geodesic: true,
-        strokeColor: '#D62937',
-        fillColor: '#D62937',
-        strokeOpacity: 1.0,
-        fillOpacity: 1.0,
-        strokeWeight: 0,
-        zIndex: 999
-    };
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 45.416667, lng: -75.683333},
-        zoom: 15
-    });
-
-    const trilliumLinePolygon = new google.maps.Polygon(trilliumPolygonOptions);
-    trilliumLinePolygon.setMap(map);
-
-    const confederationLinePolygon = new google.maps.Polygon(confederationPolygonOptions);
-    confederationLinePolygon.setMap(map);
-
-    const trilliumLinePolyline = new google.maps.Polyline({
-        path: trilliumLineOutline,
-        geodesic: true,
-        strokeColor: '#76BE43',
+        strokeColor: line.colour,
         strokeWeight: 5,
         zIndex: 999
     });
-    trilliumLinePolyline.setMap(map);
 
-    const confederationLinePolyline = new google.maps.Polyline({
-        path: confederationLineOutline,
-        geodesic: true,
-        strokeColor: '#D62937',
-        strokeWeight: 5,
-        zIndex: 999
-    });
-    confederationLinePolyline.setMap(map);
-
-    const tTrackM = new google.maps.Polyline({
-        path: trilliumLineMain,
-        geodesic: true,
-        strokeColor: '#76BE43',
-        strokeWeight: 3
-    });
-    tTrackM.setMap(map);
-
-    const tBrookfieldP = new google.maps.Polyline({
-        path: trilliumBrookfieldPassing,
-        geodesic: true,
-        strokeColor: '#76BE43',
-        strokeWeight: 3
-    });
-    tBrookfieldP.setMap(map);
-
-    const tGladstoneP = new google.maps.Polyline({
-        path: trilliumGladstonePassing,
-        geodesic: true,
-        strokeColor: '#76BE43',
-        strokeWeight: 3
-    });
-    tGladstoneP.setMap(map);
-
-    const tCarletonP = new google.maps.Polyline({
-        path: trilliumCarletonPassing,
-        geodesic: true,
-        strokeColor: '#76BE43',
-        strokeWeight: 3
-    });
-    tCarletonP.setMap(map);
-
-    for (let i = 0; i < trilliumStations.length; i++) {
-        const station = trilliumStations[i];
-
-        const stationPolygon = new google.maps.Polygon({
-            paths: station.platformGeometry,
-            strokeWeight: 1,
-            strokeColor: '#76BE43',
-            fillColor: '#76BE43',
-            fillOpacity: 0.5,
-            strokeOpacity: 1.0,
-            indexID: i,
-            zIndex: 1000
+    // Add the actual track lines
+    for (let i = 0; i < line.tracks.length; i++) {
+        let track = new google.maps.Polyline({
+            path: line.tracks[i].path,
+            geodesic: true,
+            strokeColor: line.colour,
+            strokeWeight: 3,
         });
-        stationPolygon.setMap(map);
+        track.setMap(map);
+    }
 
-        google.maps.event.addListener(stationPolygon, 'click', function (e) {
-            window.location.href = "https://www.otrainfans.ca/" + trilliumStations[this.indexID].link;
-        });
+    // Add station and platform outlines
+    for (let i = 0; i < line.stations.length; i++) {
+        const station = line.stations[i];
+
+        for (let j = 0; j < station.platformGeometry.length; j++) {
+            const stationPolygon = new google.maps.Polygon({
+                paths: station.platformGeometry[j],
+                strokeWeight: 1,
+                strokeColor: line.colour,
+                fillColor: line.colour,
+                fillOpacity: 0.5,
+                strokeOpacity: 1.0,
+                indexID: i,
+                zIndex: 1000
+            });
+            stationPolygon.setMap(map);
+
+            google.maps.event.addListener(stationPolygon, 'click', function (e) {
+                window.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
+            });
+        }
     }
 
     map.addListener('zoom_changed', function () {
-        console.log("Zoom: " + map.getZoom());
-
         if (map.getZoom() > 15) {
-            trilliumLinePolyline.setMap(null);
-            trilliumLinePolygon.setMap(map);
-
-            confederationLinePolyline.setMap(null);
-            confederationLinePolygon.setMap(map);
+            outlinePolyline.setMap(null);
+            outlinePolygon.setMap(map);
         } else {
-            trilliumLinePolyline.setMap(map);
-            trilliumLinePolygon.setMap(null);
-
-            confederationLinePolyline.setMap(map);
-            confederationLinePolygon.setMap(null);
+            outlinePolyline.setMap(map);
+            outlinePolygon.setMap(null);
         }
 
         if (map.getZoom() === 16) {
-            trilliumPolygonOptions.fillOpacity = 0.8;
-            trilliumLinePolygon.setOptions(trilliumPolygonOptions);
-
-            confederationPolygonOptions.fillOpacity = 0.8;
-            confederationLinePolygon.setOptions(confederationPolygonOptions);
+            polygonOptions.fillOpacity = 0.8;
+            outlinePolygon.setOptions(polygonOptions);
         } else if (map.getZoom() === 17) {
-            trilliumPolygonOptions.fillOpacity = 0.5;
-            trilliumLinePolygon.setOptions(trilliumPolygonOptions);
-
-            confederationPolygonOptions.fillOpacity = 0.5;
-            confederationLinePolygon.setOptions(confederationPolygonOptions);
+            polygonOptions.fillOpacity = 0.5;
+            outlinePolygon.setOptions(polygonOptions);
         } else if (map.getZoom() >= 18) {
-            trilliumPolygonOptions.fillOpacity = 0.1;
-            trilliumLinePolygon.setOptions(trilliumPolygonOptions);
-
-            confederationPolygonOptions.fillOpacity = 0.1;
-            confederationLinePolygon.setOptions(confederationPolygonOptions);
+            polygonOptions.fillOpacity = 0.1;
+            outlinePolygon.setOptions(polygonOptions);
         } else {
-            trilliumPolygonOptions.fillOpacity = 1;
-            trilliumLinePolygon.setOptions(trilliumPolygonOptions);
-
-            confederationPolygonOptions.fillOpacity = 1;
-            confederationLinePolygon.setOptions(confederationPolygonOptions);
+            polygonOptions.fillOpacity = 1.0;
+            outlinePolygon.setOptions(polygonOptions);
         }
     });
+}
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 45.416667, lng: -75.683333},
+        zoom: 13,
+        styles: [
+            {
+                "featureType": "administrative",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#444444"
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "color": "#f2f2f2"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "road",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": -100
+                    },
+                    {
+                        "lightness": 45
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "simplified"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "labels.icon",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "color": "#cfdcdd"
+                    },
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            }
+        ]
+    });
+
+    loadLine(trilliumLine, map);
+    loadLine(confederationLine, map);
 }
