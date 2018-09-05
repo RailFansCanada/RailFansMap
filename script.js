@@ -1,5 +1,7 @@
 let map;
 
+let embedded = getParameterByName('embed') === "iframe";
+
 /**
  * Converts a polyline path to a polygon
  * @param path
@@ -152,10 +154,30 @@ function loadLine(line, map) {
 
             if (station.link != null) {
                 google.maps.event.addListener(stationPolygon, 'click', function (e) {
-                    window.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
+                    if (embedded) {
+                        window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
+                    } else {
+                        window.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
+                    }
                 });
             }
         }
+
+        new google.maps.Marker({
+            label: station.name.toUpperCase(),
+            position: station.point,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 0
+            },
+            map: map
+        })
+
+        /*new MapLabel({
+            text: station.name,
+            position: station.point,
+            map: map
+        })*/
     }
 
     map.addListener('zoom_changed', function () {
@@ -187,6 +209,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 45.416667, lng: -75.683333},
         zoom: 13,
+        gestureHandling: 'greedy',
         styles: [
             {
                 "featureType": "administrative",
@@ -269,7 +292,8 @@ function initMap() {
         ]
     });
 
-    loadLine(trilliumYard, map);
+    loadLine(walkleyYard, map);
+    loadLine(belfastYard, map);
 
     loadLine(trilliumLine, map);
     loadLine(confederationLine, map);
