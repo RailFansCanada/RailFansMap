@@ -4,64 +4,6 @@ let excludeYards = getParameterByName('yards') === "false";
 let showLine = getParameterByName('line');
 let greedyGestures = getParameterByName('greedyGestures') === "false";
 
-/**
- * Converts a polyline path to a polygon
- * @param path
- * @param width
- * @returns {*[]}
- */
-function convertLineToPolygon(path, width) {
-    const polygonRightPoints = [];
-    const polygonLeftPoints = [];
-
-    for (let i = 0; i < path.length; i++) {
-        const firstCenter = new google.maps.LatLng(path[i]);
-        const secondCenter = new google.maps.LatLng(path[i + 1]);
-
-        const segmentHeading = google.maps.geometry.spherical.computeHeading(firstCenter, secondCenter);
-
-        const leftPoint = google.maps.geometry.spherical.computeOffset(firstCenter, width, segmentHeading + 90);
-        const rightPoint = google.maps.geometry.spherical.computeOffset(firstCenter, width, segmentHeading - 90);
-
-        polygonLeftPoints.push(leftPoint);
-        polygonRightPoints.push(rightPoint);
-
-        if (i === path.length - 1) {
-            const leftSecondPoint = google.maps.geometry.spherical.computeOffset(secondCenter, width, segmentHeading + 90);
-            const rightSecondPoint = google.maps.geometry.spherical.computeOffset(secondCenter, width, segmentHeading - 90);
-
-            polygonLeftPoints.push(leftSecondPoint);
-            polygonRightPoints.push(rightSecondPoint);
-
-            new google.maps.Marker({
-                position: leftSecondPoint,
-                map: map,
-                title: i.toString()
-            });
-
-            new google.maps.Marker({
-                position: rightSecondPoint,
-                map: map,
-                title: i.toString()
-            });
-        }
-
-        /*new google.maps.Marker({
-            position: leftPoint,
-            map: map,
-            title: i.toString()
-        });
-
-        new google.maps.Marker({
-            position: rightPoint,
-            map: map,
-            title: i.toString()
-        });*/
-    }
-
-    return polygonLeftPoints.concat(polygonRightPoints.reverse());
-}
-
 function latLng2Jsts(boundaries) {
     var coordinates = [];
     var length = 0;
@@ -166,7 +108,7 @@ function loadLine(line, map) {
         }
 
         if (station.displayLabel == null || station.displayLabel) {
-            new MarkerWithLabel({
+            let markerLabel = new MarkerWithLabel({
                 labelContent: station.name.toUpperCase(),
                 position: station.point,
                 icon: {
@@ -175,8 +117,15 @@ function loadLine(line, map) {
                 },
                 map: map,
                 labelClass: 'stationLabel',
-                labelAnchor: new google.maps.Point(30, 0)
+                labelAnchor: new google.maps.Point(30, 0),
+                indexID: i
             });
+
+            if (station.link != null) {
+                google.maps.event.addListener(markerLabel, 'click', function (e) {
+                    window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
+                });
+            }
         }
     }
 
