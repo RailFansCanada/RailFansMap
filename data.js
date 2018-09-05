@@ -233,6 +233,7 @@ const trilliumLine = {
         {
             name: "Bayview",
             link: "interchange-stations/bayview",
+            displayLabel: false,
             point: {lng: -75.721623, lat: 45.409008},
             platformGeometry: [[
                 {lng: -75.7213394, lat: 45.4088961},
@@ -980,7 +981,99 @@ const confederationLine = {
         {lng: -75.732941, lat: 45.404692},
         {lng: -75.734188, lat: 45.404172},
         {lng: -75.736207, lat: 45.403315}],
-    stations: [],
+    stations: [
+        {
+            name: "Blair",
+            link: "confederation-stations/blair",
+            point: {lng: -75.608266, lat: 45.431154},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Cyrville",
+            link: "confederation-stations/cyrville",
+            point: {lng: -75.626346, lat: 45.422741},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "St. Laurent",
+            link: "confederation-stations/st-laurent",
+            point: {lng: -75.637365, lat: 45.420664},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Tremblay",
+            link: "confederation-stations/tremblay",
+            point: {lng: -75.653271, lat: 45.416974},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Hurdman",
+            link: "confederation-stations/hurdman",
+            point: {lng: -75.664617, lat: 45.412343},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Lees",
+            link: "confederation-stations/lees",
+            point: {lng: -75.670474, lat: 45.416343},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "uOttawa",
+            link: "confederation-stations/uottawa",
+            point: {lng: -75.682605, lat: 45.420701},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Rideau",
+            link: "confederation-stations/rideau",
+            point: {lng: -75.691512, lat: 45.426297},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Parliament",
+            link: "confederation-stations/parliament",
+            point: {lng: -75.699052, lat: 45.421308},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Lyon",
+            link: "confederation-stations/lyon",
+            point: {lng: -75.704741, lat: 45.418851},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Pimisi",
+            link: "confederation-stations/pimisi",
+            point: {lng: -75.713561, lat: 45.413633},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Bayview",
+            link: "interchange-stations/bayview",
+            point: {lng: -75.722087, lat: 45.409364},
+            platformGeometry: [],
+            stationOutline: []
+        },
+        {
+            name: "Tunney's Pasture",
+            link: "confederation-stations/tunneys-pasture",
+            point: {lng: -75.735263, lat: 45.403714},
+            platformGeometry: [],
+            stationOutline: []
+        },
+    ],
     tracks: [
         {
             name: "Westbound Track",

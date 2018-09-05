@@ -1,6 +1,8 @@
 let map;
 
-let embedded = getParameterByName('embed') === "iframe";
+let excludeYards = getParameterByName('yards') === "false";
+let showLine = getParameterByName('line');
+let greedyGestures = getParameterByName('greedyGestures') === "false";
 
 /**
  * Converts a polyline path to a polygon
@@ -84,6 +86,10 @@ var jsts2LatLng = function (geometry) {
 };
 
 function loadLine(line, map) {
+    if (showLine != null && line.lineNumber.toString() !== showLine) {
+        return;
+    }
+
     // Convert outline to jsts data to build an outline.
     let geoInput = latLng2Jsts(line.outline);
     let geometryFactory = new jsts.geom.GeometryFactory();
@@ -154,30 +160,24 @@ function loadLine(line, map) {
 
             if (station.link != null) {
                 google.maps.event.addListener(stationPolygon, 'click', function (e) {
-                    if (embedded) {
-                        window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
-                    } else {
-                        window.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
-                    }
+                    window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
                 });
             }
         }
 
-        new google.maps.Marker({
-            label: station.name.toUpperCase(),
-            position: station.point,
-            icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 0
-            },
-            map: map
-        })
-
-        /*new MapLabel({
-            text: station.name,
-            position: station.point,
-            map: map
-        })*/
+        if (station.displayLabel == null || station.displayLabel) {
+            new MarkerWithLabel({
+                labelContent: station.name.toUpperCase(),
+                position: station.point,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 0
+                },
+                map: map,
+                labelClass: 'stationLabel',
+                labelAnchor: new google.maps.Point(30, 0)
+            });
+        }
     }
 
     map.addListener('zoom_changed', function () {
@@ -209,7 +209,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 45.416667, lng: -75.683333},
         zoom: 13,
-        gestureHandling: 'greedy',
+        gestureHandling: !greedyGestures ? 'greedy' : 'cooperative',
         styles: [
             {
                 "featureType": "administrative",
@@ -292,9 +292,13 @@ function initMap() {
         ]
     });
 
-    loadLine(walkleyYard, map);
-    loadLine(belfastYard, map);
+    if (!excludeYards) {
+        loadLine(walkleyYard, map);
+        loadLine(belfastYard, map);
+    }
 
     loadLine(trilliumLine, map);
     loadLine(confederationLine, map);
 }
+
+initMap();

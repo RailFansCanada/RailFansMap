@@ -7,3 +7,12 @@ html, body {
 #map {
     height: 100%;
 }
+
+.stationLabel {
+    font-weight: bold;
+    color: #444444;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 14px;
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+}
