@@ -246,8 +246,24 @@ function initMap() {
         loadLine(belfastYard, map);
     }
 
-    loadLine(trilliumLine, map);
-    loadLine(confederationLine, map);
+    let viewBounds = new google.maps.LatLngBounds();
+
+    if (showLine === "2" || showLine == null) {
+        loadLine(trilliumLine, map);
+
+        trilliumLine.outline.forEach(function(e) {
+           viewBounds.extend(e);
+        });
+    }
+    if (showLine === "1" || showLine == null) {
+        loadLine(confederationLine, map);
+
+        confederationLine.outline.forEach(function(e) {
+            viewBounds.extend(e);
+        });
+    }
+
+    map.fitBounds(viewBounds, 64);
 }
 
 initMap();

@@ -1,0 +1,6 @@
+# Editor files
+.idea/*
+
+# Development-only files
+converter/
+dev.html
