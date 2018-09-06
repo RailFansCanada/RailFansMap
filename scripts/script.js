@@ -1,15 +1,44 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2018 O-Train Fans
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 let map;
 
 let excludeYards = getParameterByName('yards') === "false";
 let showLine = getParameterByName('line');
 let greedyGestures = getParameterByName('greedyGestures') === "false";
 
+/**
+ * Converts a Polyline made of {lat, lng} objects to jsts points for use with the jsts library.
+ * @param boundaries The Polyline array of {lat, lng} points.
+ * @returns {Array} An array of jsts points.
+ */
 function latLng2Jsts(boundaries) {
-    var coordinates = [];
-    var length = 0;
+    let coordinates = [];
+    let length = 0;
     if (boundaries && boundaries.getLength) length = boundaries.getLength();
     else if (boundaries && boundaries.length) length = boundaries.length;
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         if (boundaries.getLength) coordinates.push(new jsts.geom.Coordinate(
             boundaries.getAt(i).lat(), boundaries.getAt(i).lng()));
         else if (boundaries.length) coordinates.push(new jsts.geom.Coordinate(
@@ -18,15 +47,25 @@ function latLng2Jsts(boundaries) {
     return coordinates;
 }
 
-var jsts2LatLng = function (geometry) {
-    var coordArray = geometry.getCoordinates();
-    GMcoords = [];
-    for (var i = 0; i < coordArray.length; i++) {
-        GMcoords.push(new google.maps.LatLng(coordArray[i].x, coordArray[i].y));
+/**
+ * Converts an array of jsts points back to {lat, lng} objects.
+ * @param geometry The jsts points array.
+ * @returns {Array} An array of {lat, lng} points.
+ */
+function jsts2LatLng(geometry) {
+    let coordinateArray = geometry.getCoordinates();
+    latLngCoordinates = [];
+    for (let i = 0; i < coordinateArray.length; i++) {
+        latLngCoordinates.push(new google.maps.LatLng(coordinateArray[i].x, coordinateArray[i].y));
     }
-    return GMcoords;
-};
+    return latLngCoordinates;
+}
 
+/**
+ * Loads a rail line and its stations onto the map.
+ * @param line The rail line to load. See data.js for examples.
+ * @param map The GoogleMap to load the line on to.
+ */
 function loadLine(line, map) {
     if (showLine != null && line.lineNumber.toString() !== showLine) {
         return;
@@ -107,6 +146,7 @@ function loadLine(line, map) {
             }
         }
 
+        // Displays a text label with the name of the station.
         if (station.displayLabel == null || station.displayLabel) {
             let markerLabel = new MarkerWithLabel({
                 labelContent: station.name.toUpperCase(),
@@ -165,7 +205,7 @@ function initMap() {
                 "elementType": "labels.text.fill",
                 "stylers": [
                     {
-                        "color": "#444444"
+                        "color": "#949494"
                     }
                 ]
             },

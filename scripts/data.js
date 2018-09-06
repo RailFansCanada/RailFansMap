@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2018 O-Train Fans
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 const trilliumLine = {
     colour: '#76BE43',
     name: "Trillium Line",
@@ -986,21 +1010,82 @@ const confederationLine = {
             name: "Blair",
             link: "confederation-stations/blair",
             point: {lng: -75.608266, lat: 45.431154},
-            platformGeometry: [],
-            stationOutline: []
+            platformGeometry: [
+                [{lng: -75.608041, lat: 45.431366},
+                    {lng: -75.607948, lat: 45.431299},
+                    {lng: -75.608780, lat: 45.430741},
+                    {lng: -75.608873, lat: 45.430808}]
+            ],
+            stationOutline: [
+                [{lng: -75.608040, lat: 45.431365},
+                    {lng: -75.607948, lat: 45.431299},
+                    {lng: -75.608146, lat: 45.431165},
+                    {lng: -75.608075, lat: 45.431114},
+                    {lng: -75.608118, lat: 45.431079},
+                    {lng: -75.608070, lat: 45.431045},
+                    {lng: -75.608170, lat: 45.430976},
+                    {lng: -75.608197, lat: 45.430995},
+                    {lng: -75.608184, lat: 45.431007},
+                    {lng: -75.608209, lat: 45.431025},
+                    {lng: -75.608638, lat: 45.430752},
+                    {lng: -75.608699, lat: 45.430793},
+                    {lng: -75.608782, lat: 45.430740},
+                    {lng: -75.608873, lat: 45.430808},
+                    {lng: -75.608721, lat: 45.430909},
+                    {lng: -75.608746, lat: 45.430927},
+                    {lng: -75.608397, lat: 45.431158},
+                    {lng: -75.608448, lat: 45.431194},
+                    {lng: -75.608385, lat: 45.431239},
+                    {lng: -75.608353, lat: 45.431222},
+                    {lng: -75.608339, lat: 45.431228},
+                    {lng: -75.608319, lat: 45.431221},
+                    {lng: -75.608208, lat: 45.431305},
+                    {lng: -75.608163, lat: 45.431283}]
+            ]
         },
         {
             name: "Cyrville",
             link: "confederation-stations/cyrville",
             point: {lng: -75.626346, lat: 45.422741},
-            platformGeometry: [],
-            stationOutline: []
+            platformGeometry: [
+                [{lng: -75.626010, lat: 45.423162},
+                    {lng: -75.625902, lat: 45.423115},
+                    {lng: -75.626511, lat: 45.422428},
+                    {lng: -75.626620, lat: 45.422476}]
+            ],
+            stationOutline: [
+                [{lng: -75.626599, lat: 45.422323},
+                    {lng: -75.626517, lat: 45.422429},
+                    {lng: -75.626513, lat: 45.422429},
+                    {lng: -75.625902, lat: 45.423114},
+                    {lng: -75.626012, lat: 45.423162},
+                    {lng: -75.626238, lat: 45.422905},
+                    {lng: -75.626255, lat: 45.422909},
+                    {lng: -75.626338, lat: 45.422825},
+                    {lng: -75.626416, lat: 45.422857},
+                    {lng: -75.626553, lat: 45.422719},
+                    {lng: -75.626577, lat: 45.422730},
+                    {lng: -75.626633, lat: 45.422663},
+                    {lng: -75.626489, lat: 45.422623},
+                    {lng: -75.626615, lat: 45.422483},
+                    {lng: -75.626649, lat: 45.422490},
+                    {lng: -75.626744, lat: 45.422383}]
+            ]
         },
         {
             name: "St. Laurent",
             link: "confederation-stations/st-laurent",
             point: {lng: -75.637365, lat: 45.420664},
-            platformGeometry: [],
+            platformGeometry: [
+                [{lng: -75.636852, lat: 45.420757},
+                    {lng: -75.637996, lat: 45.420675},
+                    {lng: -75.637992, lat: 45.420648},
+                    {lng: -75.636846, lat: 45.420730}],
+                [{lng: -75.637982, lat: 45.420586},
+                    {lng: -75.636840, lat: 45.420667},
+                    {lng: -75.636837, lat: 45.420639},
+                    {lng: -75.637979, lat: 45.420557}]
+            ],
             stationOutline: []
         },
         {
