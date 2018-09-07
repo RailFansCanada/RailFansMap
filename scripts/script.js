@@ -140,7 +140,7 @@ function loadLine(line, map) {
             stationPolygon.setMap(map);
 
             if (station.link != null) {
-                google.maps.event.addListener(stationPolygon, 'click', function (e) {
+                google.maps.event.addListener(stationPolygon, 'click', function () {
                     window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
                 });
             }
@@ -157,15 +157,66 @@ function loadLine(line, map) {
                 },
                 map: map,
                 labelClass: 'stationLabel',
-                labelAnchor: new google.maps.Point(30, 0),
+                labelAnchor: new google.maps.Point(30, -10),
                 indexID: i
             });
 
+            let iconMarker = new google.maps.Marker({
+                position: station.point,
+                map: map,
+                icon: {
+                    path: "M 7.7498477,4.2333336 A 3.5165141,3.5165141 0 0 1 4.2333336,7.7498477 3.5165141,3.5165141 0 0 1 0.71681952,4.2333336 3.5165141,3.5165141 0 0 1 4.2333336,0.71681952 3.5165141,3.5165141 0 0 1 7.7498477,4.2333336 Z",
+                    fillColor: "#FFFFFF",
+                    strokeColor: "#000000",
+                    fillOpacity: 1.0,
+                    anchor: new google.maps.Point(4, 4),
+                    size: new google.maps.Size(32, 32)
+                }
+            });
+
+            let largeIconMarker = new google.maps.Marker({
+                position: station.point,
+                map: map,
+                icon: {
+                    path: "M 7.7498477,4.2333336 A 3.5165141,3.5165141 0 0 1 4.2333336,7.7498477 3.5165141,3.5165141 0 0 1 0.71681952,4.2333336 3.5165141,3.5165141 0 0 1 4.2333336,0.71681952 3.5165141,3.5165141 0 0 1 7.7498477,4.2333336 Z",
+                    fillColor: "#FFFFFF",
+                    strokeColor: "#000000",
+                    fillOpacity: 1.0,
+                    anchor: new google.maps.Point(4, 4),
+                    size: new google.maps.Size(32, 32),
+                    scale: 1.5
+                }
+            });
+
+            // Pan the map when the iconMarker is clicked (only appears at a distance).
+            google.maps.event.addListener(iconMarker, 'click', function() {
+               map.panTo(this.position);
+               map.setZoom(17);
+            });
+
+            google.maps.event.addListener(largeIconMarker, 'click', function(e) {
+                map.panTo(this.position);
+                map.setZoom(17);
+            });
+
             if (station.link != null) {
-                google.maps.event.addListener(markerLabel, 'click', function (e) {
+                google.maps.event.addListener(markerLabel, 'click', function () {
                     window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
                 });
             }
+
+            // Hides labels when zoomed out to avoid label clutter.
+            map.addListener('zoom_changed', function() {
+                if (map.zoom < 13) {
+                    markerLabel.setMap(null);
+                    iconMarker.setMap(map);
+                    largeIconMarker.setMap(null);
+                } else {
+                    markerLabel.setMap(map);
+                    iconMarker.setMap(null);
+                    largeIconMarker.setMap(map);
+                }
+            })
         }
     }
 
