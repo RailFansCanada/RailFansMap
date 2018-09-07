@@ -197,8 +197,10 @@ function loadLine(line, map) {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 45.416667, lng: -75.683333},
-        zoom: 13,
+        zoom: 15,
         gestureHandling: !greedyGestures ? 'greedy' : 'cooperative',
+        streetViewControl: false,
+        fullscreenControl: false,
         styles: [
             {
                 "featureType": "administrative",
@@ -303,7 +305,7 @@ function initMap() {
         });
     }
 
-    map.fitBounds(viewBounds, 64);
+    map.fitBounds(viewBounds, -128);
 }
 
 initMap();
