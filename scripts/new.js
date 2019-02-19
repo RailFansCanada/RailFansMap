@@ -27,18 +27,22 @@ let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
     center: [-75.699, 45.420],
-    zoom: 15
+    zoom: 10
 });
 
 map.on('load', () => {
 
     map.on('zoom', () => {
-
-    })
+    });
 
     map.addSource('stage2east', {
        type: 'geojson',
        data: 'data/stage2east.json'
+    });
+
+    map.addSource('stage2south', {
+        type: 'geojson',
+        data: 'data/stage2south.json'
     });
 
    map.addLayer({
@@ -46,17 +50,34 @@ map.on('load', () => {
        type: "line",
        source: 'stage2east',
        filter: ['!=', 'name', 'Outline'],
+       threshold: 10,
        layout: {
            "line-join": "round",
            "line-cap": "round"
        },
        paint: {
-           "line-color": "#ff0800",
+           "line-color": ['get', 'color'],
            "line-width": 2
        }
    });
 
-    let baseWidth = 20; // 20px
+    map.addLayer({
+        id: "stage2s",
+        type: "line",
+        source: 'stage2south',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    });
+
+    /*let baseWidth = 20; // 20px
     let baseZoom = 15; // zoom 15
     map.addLayer({
         id: "stage2eo",
@@ -79,5 +100,23 @@ map.on('load', () => {
                 ]
             }
         }
-    });
+    });*/
+
+    /*map.addLayer({
+        id: "stage2estations",
+        type: "circle",
+        source: "stage2east",
+        filter: ['==',  'type', 'Station'],
+        paint: {
+            'circle-radius': {
+                "type": "exponential",
+                "base": 2,
+                "stops": [
+                    [0, baseWidth * Math.pow(2, (0 - baseZoom))],
+                    [24, baseWidth * Math.pow(2, (24 - baseZoom))]
+                ]
+            },
+            'circle-color': '#fff',
+        }
+    })*/
 });
