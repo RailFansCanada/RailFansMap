@@ -55,7 +55,70 @@ map.on('load', () => {
         data: 'data/stage1.json'
     });
 
-   map.addLayer({
+    map.addSource('belfast', {
+        type: 'geojson',
+        data: 'data/belfastYard.json'
+    });
+
+    map.addSource('moodie', {
+        type: 'geojson',
+        data: 'data/moodieYard.json'
+    });
+
+    map.addSource('walkley', {
+        type: 'geojson',
+        data: 'data/walkleyYard.json'
+    });
+
+    map.addLayer({
+        id: "belfast",
+        type: "line",
+        source: 'belfast',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    });
+
+    map.addLayer({
+        id: "moodie",
+        type: "line",
+        source: 'moodie',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    });
+
+    map.addLayer({
+        id: "walkley",
+        type: "line",
+        source: 'walkley',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    });
+
+    map.addLayer({
        id: "stage2e",
        type: "line",
        source: 'stage2east',
@@ -67,7 +130,7 @@ map.on('load', () => {
        },
        paint: {
            "line-color": ['get', 'color'],
-           "line-width": 2
+           "line-width": 3
        }
    });
 
@@ -83,7 +146,7 @@ map.on('load', () => {
         },
         paint: {
             "line-color": ['get', 'color'],
-            "line-width": 2
+            "line-width": 3
         }
     });
 
@@ -100,7 +163,7 @@ map.on('load', () => {
         },
         paint: {
             "line-color": ['get', 'color'],
-            "line-width": 2
+            "line-width": 3
         }
     });
 
@@ -116,7 +179,7 @@ map.on('load', () => {
         },
         paint: {
             "line-color": ['get', 'color'],
-            "line-width": 2
+            "line-width": 3
         }
     });
 
