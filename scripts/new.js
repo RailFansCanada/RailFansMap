@@ -45,6 +45,16 @@ map.on('load', () => {
         data: 'data/stage2south.json'
     });
 
+    map.addSource('stage2west', {
+        type: 'geojson',
+        data: 'data/stage2west.json'
+    });
+
+    map.addSource('stage1', {
+        type: 'geojson',
+        data: 'data/stage1.json'
+    });
+
    map.addLayer({
        id: "stage2e",
        type: "line",
@@ -62,9 +72,42 @@ map.on('load', () => {
    });
 
     map.addLayer({
+        id: "stage2w",
+        type: "line",
+        source: 'stage2west',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    });
+
+
+    map.addLayer({
         id: "stage2s",
         type: "line",
         source: 'stage2south',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    });
+
+    map.addLayer({
+        id: "stage1",
+        type: "line",
+        source: 'stage1',
         filter: ['!=', 'name', 'Outline'],
         threshold: 10,
         layout: {
