@@ -9,7 +9,302 @@
       },
       "properties": {
         "name": "Tracks",
-        "color": "#76BE43"
+        "color": "#76BE43",
+        "type": "tracks"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.71525780110102,45.40461779047519],[-75.71530454134357,45.40458481162248],[-75.71460849342377,45.40409528004571],[-75.7145617522829,45.40412825792277],[-75.71525780110102,45.40461779047519]]],[[[-75.71449272932973,45.404176958707225],[-75.71444598729056,45.40420993779804],[-75.71514203161709,45.40469946711987],[-75.71518877724952,45.40466649209902],[-75.71449272932973,45.404176958707225]]]]
+      },
+      "properties": {
+        "name": "Gladstone",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.72157148251469,45.40888742400478],[-75.72152648230885,45.40891935471929],[-75.72222458826896,45.409407473459396],[-75.72226958757649,45.409375543651485],[-75.72157148251469,45.40888742400478]]],[[[-75.72145792647962,45.40896838625096],[-75.72141297298616,45.40900034782172],[-75.7221110322339,45.409488436221416],[-75.7221560306431,45.409456505198015],[-75.72145792647962,45.40896838625096]]]]
+      },
+      "properties": {
+        "name": "Bayview",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.7094080231748,45.397247684648356],[-75.70934513212177,45.39726653062492],[-75.70973004315302,45.39790407879631],[-75.70979293330774,45.397885232401585],[-75.7094080231748,45.397247684648356]]]]
+      },
+      "properties": {
+        "name": "Carling",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.65926186943102,45.359858159398925],[-75.65889225131916,45.3592161291013],[-75.65883103023423,45.359233645805965],[-75.65920060702358,45.35987566391196],[-75.65926186943102,45.359858159398925]]]]
+      },
+      "properties": {
+        "name": "Greenboro",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.68514310980923,45.37689046436234],[-75.68428838527426,45.37654814900434],[-75.68425571803897,45.376588665301895],[-75.68511045425201,45.376930970949466],[-75.68514310980923,45.37689046436234]]]]
+      },
+      "properties": {
+        "name": "Mooney's Bay",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.69580523188274,45.385416366187535],[-75.6957458972599,45.38610797383416],[-75.69581191624677,45.38611078643035],[-75.69587124547971,45.385419178818125],[-75.69580523188274,45.385416366187535]]],[[[-75.69592332890157,45.38612173965528],[-75.69598934249854,45.3861245408944],[-75.69604867262979,45.38543294417606],[-75.69598264286316,45.38543014227172],[-75.69592332890157,45.38612173965528]]]]
+      },
+      "properties": {
+        "name": "Carleton",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.66508580192819,45.36815834879544],[-75.6650360154985,45.3681889973912],[-75.6656825042624,45.36871091083453],[-75.66573230416681,45.36868025810386],[-75.66508580192819,45.36815834879544]]]]
+      },
+      "properties": {
+        "name": "Walkley",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.65535679766954,45.35310385678385],[-75.6552592720707,45.353132767421215],[-75.65564012720844,45.353771478082194],[-75.65573765370559,45.35374256461474],[-75.65535679766954,45.35310385678385]]]]
+      },
+      "properties": {
+        "name": "South Keys",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[-75.63192936298208,45.31399720867929],[-75.63199025348698,45.313979153021045],[-75.63160979450628,45.3133404128787],[-75.63154890130643,45.313358461791495],[-75.63169867921037,45.31360992232881],[-75.63192936298208,45.31399720867929]]],[[[-75.63169383190109,45.31331548640522],[-75.63207429537337,45.31395423188226],[-75.63213519036987,45.31393617494687],[-75.63175472689758,45.31329742863462],[-75.63169383190109,45.31331548640522]]]]
+      },
+      "properties": {
+        "name": "Leitrim",
+        "color": "#76BE43",
+        "type": "station-platforms"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.65548676682315,
+          45.35343283001457
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "name": "South Keys",
+        "type": "station-label",
+        "url": "trillium-stations/south-keys"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.65909771668588,
+          45.35953497002356
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "name": "Greenboro",
+        "type": "station-label",
+        "url": "trillium-stations/greenboro"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6654299797512,
+          45.36841295132541
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "name": "Walkley",
+        "type": "station-label",
+        "url": "trillium-stations/walkley"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.68466044860033,
+          45.37676485419336
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "name": "Mooney's Bay",
+        "type": "station-label",
+        "url": "trillium-stations/mooneys-bay"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.69589619888167,
+          45.38577498555615
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "name": "Carleton",
+        "type": "station-label",
+        "url": "trillium-stations/carleton"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.70961536961374,
+          45.39755674474991
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "name": "Carling",
+        "type": "station-label",
+        "url": "trillium-stations/carling"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.71487786673644,
+          45.40440076821793
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "name": "Gladstone",
+        "type": "station-label",
+        "url": "trillium-stations/gladstone"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.72187278105424,
+          45.40920988801199
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "name": "Bayview",
+        "type": "station-label",
+        "url": "interchange-stations/bayview"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.63184207727917,
+          45.313643345914194
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "name": "Leitrim",
+        "type": "station-label",
+        "url": "trillium-stations/leitrim"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.6337242526153,
+          45.29289606013045
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "name": "Bowesville",
+        "type": "station-label",
+        "url": "trillium-stations/bowesville"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.66672067555817,
+          45.27754389767929
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "name": "Limebank",
+        "type": "station-label",
+        "url": "trillium-stations/limebank"
       }
     }
   ]

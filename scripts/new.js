@@ -30,14 +30,37 @@ let map = new mapboxgl.Map({
     zoom: 10
 });
 
+let excludeYards = getParameterByName('yards') === "false";
+let showLine = getParameterByName('line');
+let greedyGestures = getParameterByName('greedyGestures') === "false";
+
 map.on('load', () => {
+
+    map.loadImage('images/station.png', (error, image) => {
+        if (error) throw error;
+        map.addImage('station', image);
+    });
+
+    loadJson('data/stage2south.json', (data) => {
+        loadLine(data, 'trillium');
+    });
 
     map.on('zoom', () => {
     });
 
+    let layers = map.getStyle().layers;
+    // Find the index of the first symbol layer in the map style
+    let firstSymbolId;
+    for (let i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol') {
+            firstSymbolId = layers[i].id;
+            break;
+        }
+    }
+
     map.addSource('stage2east', {
-       type: 'geojson',
-       data: 'data/stage2east.json'
+        type: 'geojson',
+        data: 'data/stage2east.json'
     });
 
     map.addSource('stage2south', {
@@ -119,20 +142,20 @@ map.on('load', () => {
     });
 
     map.addLayer({
-       id: "stage2e",
-       type: "line",
-       source: 'stage2east',
-       filter: ['!=', 'name', 'Outline'],
-       threshold: 10,
-       layout: {
-           "line-join": "round",
-           "line-cap": "round"
-       },
-       paint: {
-           "line-color": ['get', 'color'],
-           "line-width": 3
-       }
-   });
+        id: "stage2e",
+        type: "line",
+        source: 'stage2east',
+        filter: ['!=', 'name', 'Outline'],
+        threshold: 10,
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 3
+        }
+    });
 
     map.addLayer({
         id: "stage2w",
@@ -148,10 +171,10 @@ map.on('load', () => {
             "line-color": ['get', 'color'],
             "line-width": 3
         }
-    });
+    }, firstSymbolId);
 
 
-    map.addLayer({
+    /*map.addLayer({
         id: "stage2s",
         type: "line",
         source: 'stage2south',
@@ -159,13 +182,25 @@ map.on('load', () => {
         threshold: 10,
         layout: {
             "line-join": "round",
-            "line-cap": "round"
+            "line-cap": "round",
         },
         paint: {
             "line-color": ['get', 'color'],
             "line-width": 3
         }
-    });
+    }, firstSymbolId);
+    map.addLayer({
+        id: "stage2s-labels",
+        type: "symbol",
+        source: 'stage2south',
+        filter: ['!=', 'name', 'Tracks'],
+        layout: {
+            "text-field": "{name}"
+        },
+        paint: {
+        }
+    });*/
+
 
     map.addLayer({
         id: "stage1",
@@ -181,48 +216,73 @@ map.on('load', () => {
             "line-color": ['get', 'color'],
             "line-width": 3
         }
+    }, firstSymbolId);
+});
+
+function loadLine(line, name) {
+    map.addSource(name, {
+        'type': 'geojson',
+        data: line
     });
 
-    /*let baseWidth = 20; // 20px
-    let baseZoom = 15; // zoom 15
     map.addLayer({
-        id: "stage2eo",
-        type: "line",
-        source: 'stage2east',
-        filter: ['==', 'name', 'Outline'],
+        id: `${name}-tracks`,
+        type: 'line',
+        source: name,
+        filter: ['==', 'type', 'tracks'],
         layout: {
             "line-join": "round",
             "line-cap": "round"
         },
         paint: {
-            "line-color": "#ff0800",
-            "line-opacity": 0.5,
-            "line-width": {
-                "type": "exponential",
-                "base": 2,
-                "stops": [
-                    [0, baseWidth * Math.pow(2, (0 - baseZoom))],
-                    [24, baseWidth * Math.pow(2, (24 - baseZoom))]
-                ]
-            }
+            "line-color": ['get', 'color'],
+            "line-width": 3
         }
-    });*/
+    });
 
-    /*map.addLayer({
-        id: "stage2estations",
-        type: "circle",
-        source: "stage2east",
-        filter: ['==',  'type', 'Station'],
+    map.addLayer({
+        id: `${name}-platforms`,
+        type: 'fill',
+        source: name,
+        filter: ['==', 'type', 'station-platforms'],
         paint: {
-            'circle-radius': {
-                "type": "exponential",
-                "base": 2,
-                "stops": [
-                    [0, baseWidth * Math.pow(2, (0 - baseZoom))],
-                    [24, baseWidth * Math.pow(2, (24 - baseZoom))]
-                ]
-            },
-            'circle-color': '#fff',
+            "fill-color": ['get', 'color'],
+            'fill-opacity': 0.6
         }
-    })*/
-});
+    });
+
+    map.addLayer({
+        id: `${name}-labels`,
+        type: 'symbol',
+        source: name,
+        filter: ['==', 'type', 'station-label'],
+        minzoom: 10,
+        layout: {
+            //"text-field": "{OBJECTID}"
+            "icon-image": "station",
+            "text-field": "{name}",
+            "text-anchor": "left",
+            "text-offset": [0.75, 0],
+            "text-optional": true,
+            "icon-optional": false,
+            "icon-allow-overlap": true
+        },
+        "paint": {
+            "icon-color": "#00ff00",
+            "icon-halo-color": "#fff",
+            "icon-halo-width": 2
+        }
+    });
+
+    map.on('click', `${name}-labels`, (e) => {
+        window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`;
+    });
+
+    map.on('mouseenter', `${name}-labels`, () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    map.on('mouseleave', `${name}-labels`, () => {
+        map.getCanvas().style.cursor = '';
+    })
+}
