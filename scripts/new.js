@@ -114,7 +114,6 @@ map.on('load', () => {
         type: "line",
         source: 'belfast',
         filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
         layout: {
             "line-join": "round",
             "line-cap": "round"
@@ -130,7 +129,6 @@ map.on('load', () => {
         type: "line",
         source: 'moodie',
         filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
         layout: {
             "line-join": "round",
             "line-cap": "round"
@@ -146,7 +144,6 @@ map.on('load', () => {
         type: "line",
         source: 'walkley',
         filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
         layout: {
             "line-join": "round",
             "line-cap": "round"
@@ -162,7 +159,6 @@ map.on('load', () => {
         type: "line",
         source: 'stage2east',
         filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
         layout: {
             "line-join": "round",
             "line-cap": "round"
@@ -178,7 +174,6 @@ map.on('load', () => {
         type: "line",
         source: 'stage2west',
         filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
         layout: {
             "line-join": "round",
             "line-cap": "round"
@@ -189,41 +184,11 @@ map.on('load', () => {
         }
     }, firstSymbolId);
 
-
-    /*map.addLayer({
-        id: "stage2s",
-        type: "line",
-        source: 'stage2south',
-        filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
-        layout: {
-            "line-join": "round",
-            "line-cap": "round",
-        },
-        paint: {
-            "line-color": ['get', 'color'],
-            "line-width": 3
-        }
-    }, firstSymbolId);
-    map.addLayer({
-        id: "stage2s-labels",
-        type: "symbol",
-        source: 'stage2south',
-        filter: ['!=', 'name', 'Tracks'],
-        layout: {
-            "text-field": "{name}"
-        },
-        paint: {
-        }
-    });*/
-
-
     map.addLayer({
         id: "stage1",
         type: "line",
         source: 'stage1',
         filter: ['!=', 'name', 'Outline'],
-        threshold: 10,
         layout: {
             "line-join": "round",
             "line-cap": "round"
