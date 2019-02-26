@@ -34,6 +34,22 @@ let excludeYards = getParameterByName('yards') === "false";
 let showLine = getParameterByName('line');
 let greedyGestures = getParameterByName('greedyGestures') === "false";
 
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+        let context = this,
+            args = arguments;
+        let later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
 map.on('load', () => {
 
     map.loadImage('images/station.png', (error, image) => {
@@ -265,12 +281,24 @@ function loadLine(line, name) {
             "text-offset": [0.75, 0],
             "text-optional": true,
             "icon-optional": false,
-            "icon-allow-overlap": true
-        },
-        "paint": {
-            "icon-color": "#00ff00",
-            "icon-halo-color": "#fff",
-            "icon-halo-width": 2
+            "icon-allow-overlap": true,
+            "text-size": 14
+        }
+    });
+
+    map.addLayer({
+        id: `${name}-labels-hover`,
+        type: 'symbol',
+        source: name,
+        minzoom: 10,
+        filter: ['all', ['==', 'name', ""], ['==', 'type', 'station-label']],
+        layout: {
+            //"text-field": "{OBJECTID}"
+            "text-field": "{name}",
+            "text-anchor": "left",
+            "text-offset": [0.75, 0],
+            "text-allow-overlap": true,
+            "text-size": 14
         }
     });
 
@@ -278,11 +306,24 @@ function loadLine(line, name) {
         window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`;
     });
 
-    map.on('mouseenter', `${name}-labels`, () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
+    let lastFeatureId;
+    // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
+    map.on('mousemove', (e) => {
+        let fs = map.queryRenderedFeatures(e.point, {layers: [`${name}-labels`]});
+        if (fs.length > 0) {
+            let f = fs[0];
+            if (f.id !== lastFeatureId) {
+                lastFeatureId = f.id;
 
-    map.on('mouseleave', `${name}-labels`, () => {
-        map.getCanvas().style.cursor = '';
-    })
+                // Show this element on the "hover labels" layer
+                map.getCanvas().style.cursor = 'pointer';
+                map.setFilter(`${name}-labels-hover`, ['all', ['==', 'name', f.properties.name], ['==', 'type', 'station-label']]);
+            }
+        } else {
+            map.getCanvas().style.cursor = '';
+            // Reset the "hover labels" layer
+            map.setFilter(`${name}-labels-hover`, ['all', ['==', 'name', ""], ['==', 'type', 'station-label']]);
+            lastFeatureId = undefined;
+        }
+    });
 }
