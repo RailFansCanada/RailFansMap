@@ -248,6 +248,10 @@ function loadLine(line, name) {
             "icon-optional": false,
             "icon-allow-overlap": true,
             "text-size": 14
+        },
+        paint: {
+            "text-halo-width": 1,
+            "text-halo-color": "#FFFFFF"
         }
     });
 
@@ -264,6 +268,10 @@ function loadLine(line, name) {
             "text-offset": [0.75, 0],
             "text-allow-overlap": true,
             "text-size": 14
+        },
+        paint: {
+            "text-halo-width": 1,
+            "text-halo-color": "#FFFFFF"
         }
     });
 
