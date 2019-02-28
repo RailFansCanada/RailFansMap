@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 O-Train Fans
+ * Copyright (c) 2019 O-Train Fans
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,341 +22,258 @@
  * SOFTWARE.
  */
 
-let map;
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjam9obzZpMDQwMGQ0M2tsY280OTh2M2o5In0.XtnbkAMU7nIMkq7amsiYdw';
+let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: [-75.699, 45.420],
+    zoom: 10
+});
 
-let excludeYards = getParameterByName('yards') === "false";
+/*let excludeYards = getParameterByName('yards') === "false";
 let showLine = getParameterByName('line');
-let greedyGestures = getParameterByName('greedyGestures') === "false";
+let greedyGestures = getParameterByName('greedyGestures') === "false";*/
 
-/**
- * Converts a Polyline made of {lat, lng} objects to jsts points for use with the jsts library.
- * @param boundaries The Polyline array of {lat, lng} points.
- * @returns {Array} An array of jsts points.
- */
-function latLng2Jsts(boundaries) {
-    let coordinates = [];
-    let length = 0;
-    if (boundaries && boundaries.getLength) length = boundaries.getLength();
-    else if (boundaries && boundaries.length) length = boundaries.length;
-    for (let i = 0; i < length; i++) {
-        if (boundaries.getLength) coordinates.push(new jsts.geom.Coordinate(
-            boundaries.getAt(i).lat(), boundaries.getAt(i).lng()));
-        else if (boundaries.length) coordinates.push(new jsts.geom.Coordinate(
-            boundaries[i].lat, boundaries[i].lng));
-    }
-    return coordinates;
-}
+let firstSymbolId;
+let count = 0;
 
-/**
- * Converts an array of jsts points back to {lat, lng} objects.
- * @param geometry The jsts points array.
- * @returns {Array} An array of {lat, lng} points.
- */
-function jsts2LatLng(geometry) {
-    let coordinateArray = geometry.getCoordinates();
-    latLngCoordinates = [];
-    for (let i = 0; i < coordinateArray.length; i++) {
-        latLngCoordinates.push(new google.maps.LatLng(coordinateArray[i].x, coordinateArray[i].y));
-    }
-    return latLngCoordinates;
-}
+let trillium;
+let confederation;
+let confederationEast;
+let confederationWest;
 
-/**
- * Loads a rail line and its stations onto the map.
- * @param line The rail line to load. See data.js for examples.
- * @param map The GoogleMap to load the line on to.
- */
-function loadLine(line, map) {
-    if (showLine != null && line.lineNumber.toString() !== showLine) {
-        return;
-    }
+map.on('load', () => {
 
-    // Convert outline to jsts data to build an outline.
-    let geoInput = latLng2Jsts(line.outline);
-    let geometryFactory = new jsts.geom.GeometryFactory();
-    let shell = geometryFactory.createLineString(geoInput);
-    let polygonPoints = shell.buffer(0.0001 * line.weightBias);
-
-    let polygonOptions = {
-        paths: jsts2LatLng(polygonPoints),
-        geodesic: true,
-        strokeColor: line.colour,
-        fillColor: line.colour,
-        fillOpacity: 1.0,
-        strokeWeight: 0,
-        zIndex: 999
-    };
-
-    let outlinePolygon = new google.maps.Polygon(polygonOptions);
-    outlinePolygon.setMap(map);
-
-    let outlinePolyline = new google.maps.Polyline({
-        path: line.outline,
-        geodesic: true,
-        strokeColor: line.colour,
-        strokeWeight: 5 * line.weightBias,
-        zIndex: 999
+    map.loadImage('images/station.png', (error, image) => {
+        if (error) throw error;
+        map.addImage('station', image);
     });
 
-    // Add the actual track lines
-    for (let i = 0; i < line.tracks.length; i++) {
-        let track = new google.maps.Polyline({
-            path: line.tracks[i].path,
-            geodesic: true,
-            strokeColor: line.colour,
-            strokeWeight: 3,
-        });
-        track.setMap(map);
-    }
+    loadJson('data/stage2south.json', (data) => {
+        trillium = data;
+        count++;
+        loadLine(data, 'trillium');
+    });
 
-    // Add station and platform outlines
-    for (let i = 0; i < line.stations.length; i++) {
-        const station = line.stations[i];
+    loadJson('data/stage2east.json', (data) => {
+        confederationEast = data;
+        count++;
+        loadLine(data, "confederation-east");
+    });
 
-        for (let j = 0; j < station.platformGeometry.length; j++) {
-            const stationPolygon = new google.maps.Polygon({
-                paths: station.platformGeometry[j],
-                strokeWeight: 1,
-                strokeColor: line.colour,
-                fillColor: line.colour,
-                fillOpacity: 0.5,
-                strokeOpacity: 1.0,
-                indexID: i,
-            });
-            stationPolygon.setMap(map);
-        }
+    loadJson('data/stage2west.json', (data) => {
+        confederationWest = data;
+        count++;
+        loadLine(data, "confederation-west");
+    });
 
-        for (let j = 0; j < station.stationOutline.length; j++) {
-            const stationPolygon = new google.maps.Polygon({
-                paths: station.stationOutline[j],
-                strokeWeight: 1,
-                strokeColor: line.colour,
-                fillColor: line.colour,
-                fillOpacity: 0.5,
-                strokeOpacity: 1.0,
-                indexID: i,
-                zIndex: 1000
-            });
-            stationPolygon.setMap(map);
+    loadJson('data/stage1.json', (data) => {
+        confederation = data;
+        count++;
+        loadLine(data, "confederation");
+    });
 
-            if (station.link != null) {
-                google.maps.event.addListener(stationPolygon, 'click', function () {
-                    window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
-                });
-            }
-        }
 
-        // Displays a text label with the name of the station.
-        if (station.displayLabel == null || station.displayLabel) {
-            let markerLabel = new MarkerWithLabel({
-                labelContent: station.name.toUpperCase(),
-                position: station.point,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 0
-                },
-                map: map,
-                labelClass: 'stationLabel',
-                labelAnchor: new google.maps.Point(30, -10),
-                indexID: i
-            });
-
-            let iconMarker = new google.maps.Marker({
-                position: station.point,
-                map: map,
-                icon: {
-                    path: "M 7.7498477,4.2333336 A 3.5165141,3.5165141 0 0 1 4.2333336,7.7498477 3.5165141,3.5165141 0 0 1 0.71681952,4.2333336 3.5165141,3.5165141 0 0 1 4.2333336,0.71681952 3.5165141,3.5165141 0 0 1 7.7498477,4.2333336 Z",
-                    fillColor: "#FFFFFF",
-                    strokeColor: "#000000",
-                    fillOpacity: 1.0,
-                    anchor: new google.maps.Point(4, 4),
-                    size: new google.maps.Size(32, 32)
-                }
-            });
-
-            let largeIconMarker = new google.maps.Marker({
-                position: station.point,
-                map: map,
-                icon: {
-                    path: "M 7.7498477,4.2333336 A 3.5165141,3.5165141 0 0 1 4.2333336,7.7498477 3.5165141,3.5165141 0 0 1 0.71681952,4.2333336 3.5165141,3.5165141 0 0 1 4.2333336,0.71681952 3.5165141,3.5165141 0 0 1 7.7498477,4.2333336 Z",
-                    fillColor: "#FFFFFF",
-                    strokeColor: "#000000",
-                    fillOpacity: 1.0,
-                    anchor: new google.maps.Point(4, 4),
-                    size: new google.maps.Size(32, 32),
-                    scale: 1.5
-                }
-            });
-
-            // Pan the map when the iconMarker is clicked (only appears at a distance).
-            google.maps.event.addListener(iconMarker, 'click', function() {
-               map.panTo(this.position);
-               map.setZoom(17);
-            });
-
-            google.maps.event.addListener(largeIconMarker, 'click', function(e) {
-                map.panTo(this.position);
-                map.setZoom(17);
-            });
-
-            if (station.link != null) {
-                google.maps.event.addListener(markerLabel, 'click', function () {
-                    window.parent.location.href = "https://www.otrainfans.ca/" + line.stations[this.indexID].link;
-                });
-            }
-
-            // Hides labels when zoomed out to avoid label clutter.
-            map.addListener('zoom_changed', function() {
-                if (map.zoom < 13) {
-                    markerLabel.setMap(null);
-                    iconMarker.setMap(map);
-                    largeIconMarker.setMap(null);
-                } else {
-                    markerLabel.setMap(map);
-                    iconMarker.setMap(null);
-                    largeIconMarker.setMap(map);
-                }
-            })
+    let layers = map.getStyle().layers;
+    // Find the index of the first symbol layer in the map style
+    for (let i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol') {
+            firstSymbolId = layers[i].id;
+            break;
         }
     }
 
-    map.addListener('zoom_changed', function () {
-        if (map.getZoom() > 15) {
-            outlinePolyline.setMap(null);
-            outlinePolygon.setMap(map);
+
+    map.addSource('belfast', {
+        type: 'geojson',
+        data: 'data/belfastYard.json'
+    });
+
+    map.addSource('moodie', {
+        type: 'geojson',
+        data: 'data/moodieYard.json'
+    });
+
+    map.addSource('walkley', {
+        type: 'geojson',
+        data: 'data/walkleyYard.json'
+    });
+
+    map.addLayer({
+        id: "belfast",
+        type: "line",
+        source: 'belfast',
+        filter: ['!=', 'name', 'Outline'],
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    }, firstSymbolId);
+
+    map.addLayer({
+        id: "moodie",
+        type: "line",
+        source: 'moodie',
+        filter: ['!=', 'name', 'Outline'],
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    }, firstSymbolId);
+
+    map.addLayer({
+        id: "walkley",
+        type: "line",
+        source: 'walkley',
+        filter: ['!=', 'name', 'Outline'],
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 2
+        }
+    }, firstSymbolId);
+});
+
+function loadLine(line, name) {
+    map.addSource(name, {
+        'type': 'geojson',
+        data: line
+    });
+
+    map.addLayer({
+        id: `${name}-tracks`,
+        type: 'line',
+        source: name,
+        filter: ['==', 'type', 'tracks'],
+        layout: {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 3
+        }
+    }, firstSymbolId);
+
+    map.addLayer({
+        id: `${name}-platforms`,
+        type: 'fill',
+        source: name,
+        filter: ['==', 'type', 'station-platforms'],
+        paint: {
+            "fill-color": ['get', 'color'],
+            'fill-opacity': 0.6
+        }
+    });
+
+    map.addLayer({
+        id: `${name}-labels`,
+        type: 'symbol',
+        source: name,
+        filter: ['==', 'type', 'station-label'],
+        minzoom: 10,
+        layout: {
+            //"text-field": "{OBJECTID}"
+            "icon-image": "station",
+            "text-field": "{name}",
+            "text-anchor": "left",
+            "text-offset": [0.75, 0],
+            "text-optional": true,
+            "icon-optional": false,
+            "icon-allow-overlap": true,
+            "text-size": 14
+        },
+        paint: {
+            "text-halo-width": 1,
+            "text-halo-color": "#FFFFFF"
+        }
+    });
+
+    map.addLayer({
+        id: `${name}-labels-hover`,
+        type: 'symbol',
+        source: name,
+        minzoom: 10,
+        filter: ['all', ['==', 'name', ""], ['==', 'type', 'station-label']],
+        layout: {
+            "text-field": "{name}",
+            "text-anchor": "left",
+            "text-offset": [0.75, 0],
+            "text-allow-overlap": true,
+            "text-size": 14
+        },
+        paint: {
+            "text-halo-width": 1,
+            "text-halo-color": "#FFFFFF"
+        }
+    });
+
+    map.on('click', `${name}-labels`, (e) => {
+        window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`;
+    });
+
+    let lastFeatureId;
+    // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
+    map.on('mousemove', (e) => {
+        let fs = map.queryRenderedFeatures(e.point, {layers: [`${name}-labels`]});
+        if (fs.length > 0) {
+            map.getCanvas().style.cursor = 'pointer';
+
+            let f = fs[0];
+            if (f.properties.name !== lastFeatureId) {
+                lastFeatureId = f.properties.name;
+
+                // Show this element on the "hover labels" layer
+                map.setFilter(`${name}-labels-hover`, ['all', ['==', 'name', f.properties.name], ['==', 'type', 'station-label']]);
+            }
         } else {
-            outlinePolyline.setMap(map);
-            outlinePolygon.setMap(null);
-        }
-
-        if (map.getZoom() === 16) {
-            polygonOptions.fillOpacity = 0.8;
-            outlinePolygon.setOptions(polygonOptions);
-        } else if (map.getZoom() === 17) {
-            polygonOptions.fillOpacity = 0.5;
-            outlinePolygon.setOptions(polygonOptions);
-        } else if (map.getZoom() >= 18) {
-            polygonOptions.fillOpacity = 0.1;
-            outlinePolygon.setOptions(polygonOptions);
-        } else {
-            polygonOptions.fillOpacity = 1.0;
-            outlinePolygon.setOptions(polygonOptions);
+            map.getCanvas().style.cursor = '';
+            // Reset the "hover labels" layer
+            map.setFilter(`${name}-labels-hover`, ['all', ['==', 'name', ""], ['==', 'type', 'station-label']]);
+            lastFeatureId = undefined;
         }
     });
+
+    // If all values are loaded, zoom the map to fit all the displayed data.
+    if (count === 4) {
+        zoomMap();
+    }
 }
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 45.416667, lng: -75.683333},
-        zoom: 15,
-        gestureHandling: !greedyGestures ? 'greedy' : 'cooperative',
-        streetViewControl: false,
-        fullscreenControl: false,
-        styles: [
-            {
-                "featureType": "administrative",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#949494"
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "color": "#f2f2f2"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 45
-                    }
-                ]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "visibility": "simplified"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.arterial",
-                "elementType": "labels.icon",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "transit",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "color": "#cfdcdd"
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            }
-        ]
+function zoomMap() {
+    let allPoints = [];
+    allPoints.push(...getLngLatFromFeatures(trillium.features));
+    allPoints.push(...getLngLatFromFeatures(confederationEast.features));
+    allPoints.push(...getLngLatFromFeatures(confederationWest.features));
+    allPoints.push(...getLngLatFromFeatures(confederation.features));
+
+    let bounds = new mapboxgl.LngLatBounds(allPoints[0], allPoints[0]);
+    for (let point of allPoints) {
+        bounds.extend(point);
+    }
+
+    map.fitBounds(bounds, {
+        padding: 24
     });
 
-    if (!excludeYards) {
-        loadLine(walkleyYard, map);
-        loadLine(belfastYard, map);
-    }
-
-    let viewBounds = new google.maps.LatLngBounds();
-
-    if (showLine === "2" || showLine == null) {
-        loadLine(trilliumLine, map);
-
-        trilliumLine.outline.forEach(function(e) {
-           viewBounds.extend(e);
-        });
-    }
-    if (showLine === "1" || showLine == null) {
-        loadLine(confederationLine, map);
-
-        confederationLine.outline.forEach(function(e) {
-            viewBounds.extend(e);
-        });
-    }
-
-    map.fitBounds(viewBounds, -128);
 }
 
-initMap();
+function getLngLatFromFeatures(features) {
+    let points = [];
+    for (let feature of features.filter((e) => e.properties.type === "station-label")) {
+        points.push(feature.geometry.coordinates)
+    }
+
+    return points;
+}
