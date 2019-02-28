@@ -30,25 +30,17 @@ let map = new mapboxgl.Map({
     zoom: 10
 });
 
-let excludeYards = getParameterByName('yards') === "false";
+/*let excludeYards = getParameterByName('yards') === "false";
 let showLine = getParameterByName('line');
-let greedyGestures = getParameterByName('greedyGestures') === "false";
+let greedyGestures = getParameterByName('greedyGestures') === "false";*/
 
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function () {
-        let context = this,
-            args = arguments;
-        let later = function () {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        let callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-};
+let firstSymbolId;
+let count = 0;
+
+let trillium;
+let confederation;
+let confederationEast;
+let confederationWest;
 
 map.on('load', () => {
 
@@ -58,15 +50,32 @@ map.on('load', () => {
     });
 
     loadJson('data/stage2south.json', (data) => {
+        trillium = data;
+        count++;
         loadLine(data, 'trillium');
     });
 
-    map.on('zoom', () => {
+    loadJson('data/stage2east.json', (data) => {
+        confederationEast = data;
+        count++;
+        loadLine(data, "confederation-east");
     });
+
+    loadJson('data/stage2west.json', (data) => {
+        confederationWest = data;
+        count++;
+        loadLine(data, "confederation-west");
+    });
+
+    loadJson('data/stage1.json', (data) => {
+        confederation = data;
+        count++;
+        loadLine(data, "confederation");
+    });
+
 
     let layers = map.getStyle().layers;
     // Find the index of the first symbol layer in the map style
-    let firstSymbolId;
     for (let i = 0; i < layers.length; i++) {
         if (layers[i].type === 'symbol') {
             firstSymbolId = layers[i].id;
@@ -74,25 +83,6 @@ map.on('load', () => {
         }
     }
 
-    map.addSource('stage2east', {
-        type: 'geojson',
-        data: 'data/stage2east.json'
-    });
-
-    map.addSource('stage2south', {
-        type: 'geojson',
-        data: 'data/stage2south.json'
-    });
-
-    map.addSource('stage2west', {
-        type: 'geojson',
-        data: 'data/stage2west.json'
-    });
-
-    map.addSource('stage1', {
-        type: 'geojson',
-        data: 'data/stage1.json'
-    });
 
     map.addSource('belfast', {
         type: 'geojson',
@@ -122,7 +112,7 @@ map.on('load', () => {
             "line-color": ['get', 'color'],
             "line-width": 2
         }
-    });
+    }, firstSymbolId);
 
     map.addLayer({
         id: "moodie",
@@ -137,7 +127,7 @@ map.on('load', () => {
             "line-color": ['get', 'color'],
             "line-width": 2
         }
-    });
+    }, firstSymbolId);
 
     map.addLayer({
         id: "walkley",
@@ -151,51 +141,6 @@ map.on('load', () => {
         paint: {
             "line-color": ['get', 'color'],
             "line-width": 2
-        }
-    });
-
-    map.addLayer({
-        id: "stage2e",
-        type: "line",
-        source: 'stage2east',
-        filter: ['!=', 'name', 'Outline'],
-        layout: {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        paint: {
-            "line-color": ['get', 'color'],
-            "line-width": 3
-        }
-    });
-
-    map.addLayer({
-        id: "stage2w",
-        type: "line",
-        source: 'stage2west',
-        filter: ['!=', 'name', 'Outline'],
-        layout: {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        paint: {
-            "line-color": ['get', 'color'],
-            "line-width": 3
-        }
-    }, firstSymbolId);
-
-    map.addLayer({
-        id: "stage1",
-        type: "line",
-        source: 'stage1',
-        filter: ['!=', 'name', 'Outline'],
-        layout: {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        paint: {
-            "line-color": ['get', 'color'],
-            "line-width": 3
         }
     }, firstSymbolId);
 });
@@ -219,7 +164,7 @@ function loadLine(line, name) {
             "line-color": ['get', 'color'],
             "line-width": 3
         }
-    });
+    }, firstSymbolId);
 
     map.addLayer({
         id: `${name}-platforms`,
@@ -262,7 +207,6 @@ function loadLine(line, name) {
         minzoom: 10,
         filter: ['all', ['==', 'name', ""], ['==', 'type', 'station-label']],
         layout: {
-            //"text-field": "{OBJECTID}"
             "text-field": "{name}",
             "text-anchor": "left",
             "text-offset": [0.75, 0],
@@ -284,12 +228,13 @@ function loadLine(line, name) {
     map.on('mousemove', (e) => {
         let fs = map.queryRenderedFeatures(e.point, {layers: [`${name}-labels`]});
         if (fs.length > 0) {
+            map.getCanvas().style.cursor = 'pointer';
+
             let f = fs[0];
-            if (f.id !== lastFeatureId) {
-                lastFeatureId = f.id;
+            if (f.properties.name !== lastFeatureId) {
+                lastFeatureId = f.properties.name;
 
                 // Show this element on the "hover labels" layer
-                map.getCanvas().style.cursor = 'pointer';
                 map.setFilter(`${name}-labels-hover`, ['all', ['==', 'name', f.properties.name], ['==', 'type', 'station-label']]);
             }
         } else {
@@ -299,4 +244,36 @@ function loadLine(line, name) {
             lastFeatureId = undefined;
         }
     });
+
+    // If all values are loaded, zoom the map to fit all the displayed data.
+    if (count === 4) {
+        zoomMap();
+    }
+}
+
+function zoomMap() {
+    let allPoints = [];
+    allPoints.push(...getLngLatFromFeatures(trillium.features));
+    allPoints.push(...getLngLatFromFeatures(confederationEast.features));
+    allPoints.push(...getLngLatFromFeatures(confederationWest.features));
+    allPoints.push(...getLngLatFromFeatures(confederation.features));
+
+    let bounds = new mapboxgl.LngLatBounds(allPoints[0], allPoints[0]);
+    for (let point of allPoints) {
+        bounds.extend(point);
+    }
+
+    map.fitBounds(bounds, {
+        padding: 24
+    });
+
+}
+
+function getLngLatFromFeatures(features) {
+    let points = [];
+    for (let feature of features.filter((e) => e.properties.type === "station-label")) {
+        points.push(feature.geometry.coordinates)
+    }
+
+    return points;
 }
