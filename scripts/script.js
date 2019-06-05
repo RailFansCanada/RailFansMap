@@ -26,8 +26,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6d
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    center: [-75.699, 45.420],
-    zoom: 10
+    center: [-75.6294, 45.3745], 
+    zoom: 11, 
+    bearing: -30,
+    hash: true
 });
 
 /*let excludeYards = getParameterByName('yards') === "false";
@@ -148,6 +150,7 @@ map.on('load', () => {
 function loadLine(line, name) {
     map.addSource(name, {
         'type': 'geojson',
+        attribution: 'Data: City of Ottawa',
         data: line
     });
 
@@ -243,28 +246,6 @@ function loadLine(line, name) {
             map.setFilter(`${name}-labels-hover`, ['all', ['==', 'name', ""], ['==', 'type', 'station-label']]);
             lastFeatureId = undefined;
         }
-    });
-
-    // If all values are loaded, zoom the map to fit all the displayed data.
-    if (count === 4) {
-        zoomMap();
-    }
-}
-
-function zoomMap() {
-    let allPoints = [];
-    allPoints.push(...getLngLatFromFeatures(trillium.features));
-    allPoints.push(...getLngLatFromFeatures(confederationEast.features));
-    allPoints.push(...getLngLatFromFeatures(confederationWest.features));
-    allPoints.push(...getLngLatFromFeatures(confederation.features));
-
-    let bounds = new mapboxgl.LngLatBounds(allPoints[0], allPoints[0]);
-    for (let point of allPoints) {
-        bounds.extend(point);
-    }
-
-    map.fitBounds(bounds, {
-        padding: 24
     });
 
 }
