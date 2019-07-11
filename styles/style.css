@@ -58,3 +58,16 @@ html, body {
 .toggle.active {
     background: #AAAAAA;
 }
+
+@media (prefers-color-scheme: dark) {
+    .toggle {
+        background: #212121;
+        text-align: center;
+        color: #FFFFFF;
+        box-sizing: border-box;
+        height: 36px;
+        line-height: 36px;
+        user-select: none;
+        cursor: pointer;
+    }
+}
