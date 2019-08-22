@@ -42,6 +42,19 @@ html, body {
     cursor: pointer;
 }
 
+#toggle-container.dark .toggle { 
+    background: #212121;
+    color: #FFFFFF;
+}
+
+#toggle-container.dark .toggle:hover {
+    background: #111111;
+}
+
+.toggle:first-child {
+    border-right: 1px solid #EEEEEE;
+}
+
 .toggle:hover {
     background: #EEEEEE;
 }
@@ -59,15 +72,30 @@ html, body {
     background: #AAAAAA;
 }
 
+.logo-container {
+    position: absolute;
+    bottom: 16px;
+    left: calc(50% - 35px);
+}
+
+.logo {
+    background-image: url(https://cdn.otrainfans.ca/templates/g5_helium/custom/images/otrainfans-logo1.png);
+    background-size: contain;
+    width: calc(105px / 1.5);
+    height: calc(45px / 1.5);
+}
+
 @media (prefers-color-scheme: dark) {
     .toggle {
         background: #212121;
-        text-align: center;
         color: #FFFFFF;
-        box-sizing: border-box;
-        height: 36px;
-        line-height: 36px;
-        user-select: none;
-        cursor: pointer;
+    }
+
+    .toggle:hover {
+        background: #111111;
+    }
+
+    .toggle:first-child {
+        border-right: 1px solid #111111;
     }
 }

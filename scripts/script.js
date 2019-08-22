@@ -24,14 +24,20 @@
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjam9obzZpMDQwMGQ0M2tsY280OTh2M2o5In0.XtnbkAMU7nIMkq7amsiYdw'
 //mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
-let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [-75.6294, 45.3745], 
-    zoom: 11, 
-    bearing: -30,
-    hash: true
-});
+// let map = null = new mapboxgl.Map({
+//     container: 'map',
+//     style: 'mapbox://styles/mapbox/light-v9',
+//     center: [-75.6294, 45.3745], 
+//     zoom: 11, 
+//     bearing: -30,
+//     hash: true
+// });
+
+let map = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadMap()
+})
 
 let toggleOptions = {
     dark: false,
@@ -60,9 +66,6 @@ function syncToggleOptionsState() {
             toggleOptions.dark = media.matches
         }
     })
-
-
-
 }
 
 let firstSymbolId;
@@ -72,10 +75,6 @@ let trillium;
 let confederation;
 let confederationEast;
 let confederationWest;
-
-map.on('load', () => {
-    setupDataDisplay()
-});
 
 function setupDataDisplay() {
     map.loadImage('images/station.png', (error, image) => {
@@ -310,9 +309,48 @@ function getLngLatFromFeatures(features) {
     return points;
 }
 
+function loadMap(style = "mapbox://styles/mapbox/light-v9") {
+    if (map != null) {
+        map.remove()
+    }
+
+    map = new mapboxgl.Map({
+        container: 'map-container',
+        style: style,
+        center: [-75.6294, 45.3745], 
+        zoom: 11, 
+        bearing: -30,
+        hash: true
+    })
+
+    map.on('load', () => {
+        setupDataDisplay()
+    })
+}
+
+// Toggle the map between light and dark modes
 document.getElementById('dark-toggle').addEventListener('click', () => {
-    //clearData()
-    toggleOptions.dark = true;
-    map.setStyle('mapbox://styles/mapbox/dark-v9', {diff: false})
-    setupDataDisplay()
+    if (toggleOptions.dark && !toggleOptions.satellite) {
+        loadMap('mapbox://styles/mapbox/light-v9')
+        document.getElementById('toggle-container').classList.remove('dark')
+    } else {
+        loadMap('mapbox://styles/mapbox/dark-v9')
+        document.getElementById('toggle-container').classList.add('dark')
+    }
+    toggleOptions.satellite = false;
+    toggleOptions.dark = !toggleOptions.dark;
 }) 
+
+// Toggle the map between satellite mode and whatever light/dark mode was previously active
+document.getElementById('satellite-toggle').addEventListener('click', () => {
+    if (toggleOptions.satellite) {
+        if (toggleOptions.dark) {
+            loadMap('mapbox://styles/mapbox/light-v9')
+        } else {
+            loadMap('mapbox://styles/mapbox/dark-v9')
+        }
+    } else {
+        loadMap('mapbox://styles/mapbox/satellite-streets-v9')
+    }
+    toggleOptions.satellite = !toggleOptions.satellite;
+})
