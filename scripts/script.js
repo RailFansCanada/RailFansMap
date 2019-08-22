@@ -75,6 +75,7 @@ let trillium;
 let confederation;
 let confederationEast;
 let confederationWest;
+let kanata;
 
 function setupDataDisplay() {
     map.loadImage('images/station.png', (error, image) => {
@@ -105,6 +106,12 @@ function setupDataDisplay() {
         count++;
         loadLine(data, "confederation");
     });
+
+    loadJson('data/stage3kanata.json', (data) => {
+        kanata = data
+        count++
+        loadLine(data, "kanata")
+    })
 
 
     let layers = map.getStyle().layers;
@@ -273,8 +280,10 @@ function loadLine(line, name) {
     });
 
     map.on('click', `${name}-labels`, (e) => {
-        window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`;
-    });
+        if (e.features[0].properties.url != null) {
+            window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`
+        }
+    })
 
     let lastFeatureId;
     // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
