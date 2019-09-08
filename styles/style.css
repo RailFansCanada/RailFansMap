@@ -20,7 +20,7 @@ html, body {
 }
 
 .toggles-container {
-    width: 172px;
+    width: 212px;
     height: auto;
     position: fixed;
     top: 24px;
@@ -55,11 +55,25 @@ html, body {
     border-right: 1px solid #EEEEEE;
 }
 
+.toggle-clear {
+    border-top: 1px solid #EEEEEE;
+    text-align: right;
+    padding-right: 16px;
+}
+
+.dark .toggle:first-child {
+    border-right: 1px solid #111111;
+}
+
+.dark .toggle-clear {
+    border-top: 1px solid #111111;
+}
+
 .toggle:hover {
     background: #EEEEEE;
 }
 
-.toggle:active {
+.toggle-half:active {
     background: #AAAAAA;
 }
 
@@ -67,9 +81,56 @@ html, body {
     width: 50%;
     float: left;
 }
+.toggle-clear {
+    clear: both;
+    position: relative;
+}
 
-.toggle.active {
+.toggle-half.active {
     background: #AAAAAA;
+}
+
+.dark .toggle-half.active {
+    background: #111111 !important;
+}
+
+.toggle-clear.active:after {
+    content: "";
+    background-color: transparent;
+    position: absolute;
+    left: 16px;
+    top: 8px;
+    width: 5px;
+    border-bottom: 3px solid transparent;
+    height: 11px;
+    border-right: 3px solid transparent;
+    transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: border 0.2s;
+}
+
+.toggle-clear.active:after {
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+}
+
+.toggle-clear:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    border-radius: 4px;
+    transition: background 0.2s, border 0.2s;
+}
+
+.toggle-clear.active:before {
+    border: 2px solid #c00;
+    background: #c00;
 }
 
 .logo-container {
@@ -98,6 +159,10 @@ html, body {
 
     .toggle:first-child {
         border-right: 1px solid #111111;
+    }
+
+    .toggle-clear {
+        border-top: 1px solid #111111;
     }
 
     #logo {
