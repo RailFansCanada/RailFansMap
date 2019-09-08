@@ -2,6 +2,8 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: "Raleway","Helvetica","Tahoma","Geneva","Arial",sans-serif;
+    font-weight: 400;
 }
 
 #map {
@@ -15,4 +17,85 @@ html, body {
     white-space: nowrap;
     font-size: 14px;
     text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+}
+
+.toggles-container {
+    width: 172px;
+    height: auto;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.toggle {
+    background: #FFFFFF;
+    text-align: center;
+    color: #212121;
+    box-sizing: border-box;
+    height: 36px;
+    line-height: 36px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#toggle-container.dark .toggle { 
+    background: #212121;
+    color: #FFFFFF;
+}
+
+#toggle-container.dark .toggle:hover {
+    background: #111111;
+}
+
+.toggle:first-child {
+    border-right: 1px solid #EEEEEE;
+}
+
+.toggle:hover {
+    background: #EEEEEE;
+}
+
+.toggle:active {
+    background: #AAAAAA;
+}
+
+.toggle-half {
+    width: 50%;
+    float: left;
+}
+
+.toggle.active {
+    background: #AAAAAA;
+}
+
+.logo-container {
+    position: absolute;
+    bottom: 16px;
+    left: calc(50% - 35px);
+}
+
+.logo {
+    background-image: url(https://cdn.otrainfans.ca/templates/g5_helium/custom/images/otrainfans-logo1.png);
+    background-size: contain;
+    width: calc(105px / 1.5);
+    height: calc(45px / 1.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    .toggle {
+        background: #212121;
+        color: #FFFFFF;
+    }
+
+    .toggle:hover {
+        background: #111111;
+    }
+
+    .toggle:first-child {
+        border-right: 1px solid #111111;
+    }
 }

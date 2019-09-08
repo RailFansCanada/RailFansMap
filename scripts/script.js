@@ -21,20 +21,52 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjam9obzZpMDQwMGQ0M2tsY280OTh2M2o5In0.XtnbkAMU7nIMkq7amsiYdw'
 //mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
-let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [-75.6294, 45.3745],
-    zoom: 11,
-    bearing: -30,
-    hash: true
-});
+// let map = null = new mapboxgl.Map({
+//     container: 'map',
+//     style: 'mapbox://styles/mapbox/light-v9',
+//     center: [-75.6294, 45.3745], 
+//     zoom: 11, 
+//     bearing: -30,
+//     hash: true
+// });
 
-/*let excludeYards = getParameterByName('yards') === "false";
-let showLine = getParameterByName('line');
-let greedyGestures = getParameterByName('greedyGestures') === "false";*/
+let map = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadMap()
+})
+
+let toggleOptions = {
+    dark: false,
+    satellite: false,
+    stage3west: false,
+    stage3south: false,
+    stage3north: false
+}
+
+/**
+ * Read the current state of toggle options from the url params and/or the url bar
+ * URL params override local storage data, except for dark mode (which isn't present in url)
+ * Satellite view overrides dark mode in all cases
+ */
+function syncToggleOptionsState() {
+    // Dark mode
+    let mql = window.matchMedia('(prefers-color-scheme: dark)')
+    if (mql.matches) {
+        toggleOptions.dark = true;
+    } else if ('dark' in localStorage) {
+        toggleOptions.dark = localStorage['dark']
+    }
+
+    mql.addListener((media) => {
+        if (!toggleOptions.satellite) {
+            toggleOptions.dark = media.matches
+        }
+    })
+}
 
 let firstSymbolId;
 let count = 0;
@@ -43,9 +75,9 @@ let trillium;
 let confederation;
 let confederationEast;
 let confederationWest;
+let kanata;
 
-map.on('load', () => {
-
+function setupDataDisplay() {
     map.loadImage('images/station.png', (error, image) => {
         if (error) throw error;
         map.addImage('station', image);
@@ -75,6 +107,12 @@ map.on('load', () => {
         loadLine(data, "confederation");
     });
 
+    loadJson('data/stage3kanata.json', (data) => {
+        kanata = data
+        count++
+        loadLine(data, "kanata")
+    })
+
 
     let layers = map.getStyle().layers;
     // Find the index of the first symbol layer in the map style
@@ -84,6 +122,7 @@ map.on('load', () => {
             break;
         }
     }
+
 
     map.addLayer({
         'id': '3d-buildings',
@@ -110,7 +149,6 @@ map.on('load', () => {
             'fill-extrusion-opacity': .6
         }
     }, firstSymbolId);
-
 
     map.addSource('belfast', {
         type: 'geojson',
@@ -171,7 +209,25 @@ map.on('load', () => {
             "line-width": 2
         }
     }, firstSymbolId);
-});
+}
+
+function clearData() {
+    map.removeLayer('belfast')
+    map.removeLayer('walkley')
+    map.removeLayer('moodie')
+
+    removeLine('confederation')
+    removeLine('confederation-east')
+    removeLine('confederation-west')
+    removeLine('trillium')
+}
+
+function removeLine(name) {
+    map.remove(`${name}-tracks`)
+    map.remove(`${name}-platforms`)
+    map.remove(`${name}-labels`)
+    map.remove(`${name}-labels-hover`)
+}
 
 function loadLine(line, name) {
     map.addSource(name, {
@@ -261,7 +317,8 @@ function loadLine(line, name) {
         },
         paint: {
             "text-halo-width": 1,
-            "text-halo-color": "#FFFFFF"
+            "text-color": toggleOptions.dark ? "#FFFFFF" : "#212121",
+            "text-halo-color": toggleOptions.dark ? "#212121" : "#FFFFFF"
         }
     });
 
@@ -280,13 +337,16 @@ function loadLine(line, name) {
         },
         paint: {
             "text-halo-width": 1,
-            "text-halo-color": "#FFFFFF"
+            "text-color": toggleOptions.dark ? "#FFFFFF" : "#212121",
+            "text-halo-color": toggleOptions.dark ? "#212121" : "#FFFFFF"
         }
     });
 
     map.on('click', `${name}-labels`, (e) => {
-        window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`;
-    });
+        if (e.features[0].properties.url != null) {
+            window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`
+        }
+    })
 
     let lastFeatureId;
     // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
@@ -320,3 +380,49 @@ function getLngLatFromFeatures(features) {
 
     return points;
 }
+
+function loadMap(style = "mapbox://styles/mapbox/light-v9") {
+    if (map != null) {
+        map.remove()
+    }
+
+    map = new mapboxgl.Map({
+        container: 'map-container',
+        style: style,
+        center: [-75.6294, 45.3745], 
+        zoom: 11, 
+        bearing: -30,
+        hash: true
+    })
+
+    map.on('load', () => {
+        setupDataDisplay()
+    })
+}
+
+// Toggle the map between light and dark modes
+document.getElementById('dark-toggle').addEventListener('click', () => {
+    if (toggleOptions.dark && !toggleOptions.satellite) {
+        loadMap('mapbox://styles/mapbox/light-v9')
+        document.getElementById('toggle-container').classList.remove('dark')
+    } else {
+        loadMap('mapbox://styles/mapbox/dark-v9')
+        document.getElementById('toggle-container').classList.add('dark')
+    }
+    toggleOptions.satellite = false;
+    toggleOptions.dark = !toggleOptions.dark;
+}) 
+
+// Toggle the map between satellite mode and whatever light/dark mode was previously active
+document.getElementById('satellite-toggle').addEventListener('click', () => {
+    if (toggleOptions.satellite) {
+        if (toggleOptions.dark) {
+            loadMap('mapbox://styles/mapbox/light-v9')
+        } else {
+            loadMap('mapbox://styles/mapbox/dark-v9')
+        }
+    } else {
+        loadMap('mapbox://styles/mapbox/satellite-streets-v9')
+    }
+    toggleOptions.satellite = !toggleOptions.satellite;
+})
