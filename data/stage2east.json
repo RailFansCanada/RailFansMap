@@ -152,6 +152,8 @@
         "color": "#D62937",
         "url": "confederation-stations/jeanne-darc"
       }
-    }
+    },
+    { "type": "Feature", "properties": { "type": "overpass", "color": "#D62937" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.583872056226113, 45.450903089098134 ], [ -75.583265843986311, 45.451832754013381 ] ] } },
+    { "type": "Feature", "properties": { "type": "overpass", "color": "#D62937" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.584026366062986, 45.450944282629401 ], [ -75.583426492741822, 45.451864231488528 ] ] } }
   ]
 }

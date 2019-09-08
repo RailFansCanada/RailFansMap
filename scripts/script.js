@@ -123,6 +123,33 @@ function setupDataDisplay() {
         }
     }
 
+
+    map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+            'fill-extrusion-color': '#ddd',
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            'fill-extrusion-height': [
+                "interpolate", ["linear"], ["zoom"],
+                15, 0,
+                15.05, ["get", "height"]
+            ],
+            'fill-extrusion-base': [
+                "interpolate", ["linear"], ["zoom"],
+                15, 0,
+                15.05, ["get", "min_height"]
+            ],
+            'fill-extrusion-opacity': .6
+        }
+    }, firstSymbolId);
+
     map.addSource('belfast', {
         type: 'geojson',
         data: 'data/belfastYard.json'
@@ -210,6 +237,21 @@ function loadLine(line, name) {
     });
 
     map.addLayer({
+        id: `${name}-tunnel`,
+        type: 'fill',
+        source: name,
+        filter: ['==', 'type', 'tunnel'],
+        minzoom: 14,
+        paint: {
+            "fill-color": ['get', 'color'],
+            'fill-opacity': ['interpolate', ['linear'], ['zoom'],
+                14, 0,
+                15, 0.5
+            ]
+        }
+    }, firstSymbolId)
+
+    map.addLayer({
         id: `${name}-tracks`,
         type: 'line',
         source: name,
@@ -223,6 +265,27 @@ function loadLine(line, name) {
             "line-width": 3
         }
     }, firstSymbolId);
+
+    map.addLayer({
+        id: `${name}-overpass`,
+        type: 'line',
+        source: name,
+        filter: ['==', 'type', 'overpass'],
+        minzoom: 14,
+        layout: {
+            "line-join": "round",
+            "line-cap": "square"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 1.5,
+            "line-gap-width": [
+                "interpolate", ["exponential", 2], ["zoom"],
+                14, 0,
+                15, 5
+            ]
+        }
+    })
 
     map.addLayer({
         id: `${name}-platforms`,
@@ -288,7 +351,7 @@ function loadLine(line, name) {
     let lastFeatureId;
     // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
     map.on('mousemove', (e) => {
-        let fs = map.queryRenderedFeatures(e.point, {layers: [`${name}-labels`]});
+        let fs = map.queryRenderedFeatures(e.point, { layers: [`${name}-labels`] });
         if (fs.length > 0) {
             map.getCanvas().style.cursor = 'pointer';
 
