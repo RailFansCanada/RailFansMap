@@ -123,32 +123,34 @@ function setupDataDisplay() {
         }
     }
 
+    if (!toggleOptions.satellite) {
+        let buildingColor = toggleOptions.dark ? '#212121' : '#eeeeee'
+        map.addLayer({
+            'id': '3d-buildings',
+            'source': 'composite',
+            'source-layer': 'building',
+            'filter': ['==', 'extrude', 'true'],
+            'type': 'fill-extrusion',
+            'minzoom': 15,
+            'paint': {
+                'fill-extrusion-color': buildingColor,
 
-    map.addLayer({
-        'id': '3d-buildings',
-        'source': 'composite',
-        'source-layer': 'building',
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': 15,
-        'paint': {
-            'fill-extrusion-color': '#ddd',
-
-            // use an 'interpolate' expression to add a smooth transition effect to the
-            // buildings as the user zooms in
-            'fill-extrusion-height': [
-                "interpolate", ["linear"], ["zoom"],
-                15, 0,
-                15.05, ["get", "height"]
-            ],
-            'fill-extrusion-base': [
-                "interpolate", ["linear"], ["zoom"],
-                15, 0,
-                15.05, ["get", "min_height"]
-            ],
-            'fill-extrusion-opacity': .6
-        }
-    }, firstSymbolId);
+                // use an 'interpolate' expression to add a smooth transition effect to the
+                // buildings as the user zooms in
+                'fill-extrusion-height': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "height"]
+                ],
+                'fill-extrusion-base': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "min_height"]
+                ],
+                'fill-extrusion-opacity': .6
+            }
+        }, firstSymbolId);
+    }
 
     map.addSource('belfast', {
         type: 'geojson',
@@ -389,8 +391,8 @@ function loadMap(style = "mapbox://styles/mapbox/light-v9") {
     map = new mapboxgl.Map({
         container: 'map-container',
         style: style,
-        center: [-75.6294, 45.3745], 
-        zoom: 11, 
+        center: [-75.6294, 45.3745],
+        zoom: 11,
         bearing: -30,
         hash: true
     })
@@ -405,24 +407,29 @@ document.getElementById('dark-toggle').addEventListener('click', () => {
     if (toggleOptions.dark && !toggleOptions.satellite) {
         loadMap('mapbox://styles/mapbox/light-v9')
         document.getElementById('toggle-container').classList.remove('dark')
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_dark.png')`
     } else {
         loadMap('mapbox://styles/mapbox/dark-v9')
         document.getElementById('toggle-container').classList.add('dark')
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
     }
     toggleOptions.satellite = false;
     toggleOptions.dark = !toggleOptions.dark;
-}) 
+})
 
 // Toggle the map between satellite mode and whatever light/dark mode was previously active
 document.getElementById('satellite-toggle').addEventListener('click', () => {
     if (toggleOptions.satellite) {
         if (toggleOptions.dark) {
             loadMap('mapbox://styles/mapbox/light-v9')
+            document.getElementById('logo').style.backgroundImage = `url('../images/logo_dark.png')`
         } else {
             loadMap('mapbox://styles/mapbox/dark-v9')
+            document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
         }
     } else {
         loadMap('mapbox://styles/mapbox/satellite-streets-v9')
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
     }
     toggleOptions.satellite = !toggleOptions.satellite;
 })

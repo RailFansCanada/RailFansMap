@@ -78,11 +78,12 @@ html, body {
     left: calc(50% - 35px);
 }
 
-.logo {
-    background-image: url(https://cdn.otrainfans.ca/templates/g5_helium/custom/images/otrainfans-logo1.png);
+#logo {
+    background-image: url('../images/logo_dark.png');
     background-size: contain;
-    width: calc(105px / 1.5);
-    height: calc(45px / 1.5);
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 29px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,5 +98,9 @@ html, body {
 
     .toggle:first-child {
         border-right: 1px solid #111111;
+    }
+
+    #logo {
+        background-image: url('../images/logo_light.png');
     }
 }
