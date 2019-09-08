@@ -21,13 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjam9obzZpMDQwMGQ0M2tsY280OTh2M2o5In0.XtnbkAMU7nIMkq7amsiYdw'
+//mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    center: [-75.6294, 45.3745], 
-    zoom: 11, 
+    center: [-75.6294, 45.3745],
+    zoom: 11,
     bearing: -30,
     hash: true
 });
@@ -84,6 +84,32 @@ map.on('load', () => {
             break;
         }
     }
+
+    map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+            'fill-extrusion-color': '#ddd',
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            'fill-extrusion-height': [
+                "interpolate", ["linear"], ["zoom"],
+                15, 0,
+                15.05, ["get", "height"]
+            ],
+            'fill-extrusion-base': [
+                "interpolate", ["linear"], ["zoom"],
+                15, 0,
+                15.05, ["get", "min_height"]
+            ],
+            'fill-extrusion-opacity': .6
+        }
+    }, firstSymbolId);
 
 
     map.addSource('belfast', {
@@ -155,6 +181,21 @@ function loadLine(line, name) {
     });
 
     map.addLayer({
+        id: `${name}-tunnel`,
+        type: 'fill',
+        source: name,
+        filter: ['==', 'type', 'tunnel'],
+        minzoom: 14,
+        paint: {
+            "fill-color": ['get', 'color'],
+            'fill-opacity': ['interpolate', ['linear'], ['zoom'],
+                14, 0,
+                15, 0.5
+            ]
+        }
+    }, firstSymbolId)
+
+    map.addLayer({
         id: `${name}-tracks`,
         type: 'line',
         source: name,
@@ -168,6 +209,27 @@ function loadLine(line, name) {
             "line-width": 3
         }
     }, firstSymbolId);
+
+    map.addLayer({
+        id: `${name}-overpass`,
+        type: 'line',
+        source: name,
+        filter: ['==', 'type', 'overpass'],
+        minzoom: 14,
+        layout: {
+            "line-join": "round",
+            "line-cap": "square"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 1.5,
+            "line-gap-width": [
+                "interpolate", ["exponential", 2], ["zoom"],
+                14, 0,
+                15, 5
+            ]
+        }
+    })
 
     map.addLayer({
         id: `${name}-platforms`,
@@ -229,7 +291,7 @@ function loadLine(line, name) {
     let lastFeatureId;
     // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
     map.on('mousemove', (e) => {
-        let fs = map.queryRenderedFeatures(e.point, {layers: [`${name}-labels`]});
+        let fs = map.queryRenderedFeatures(e.point, { layers: [`${name}-labels`] });
         if (fs.length > 0) {
             map.getCanvas().style.cursor = 'pointer';
 
