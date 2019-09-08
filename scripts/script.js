@@ -312,7 +312,11 @@ function loadLine(line, name) {
             "text-optional": true,
             "icon-optional": false,
             "icon-allow-overlap": true,
-            "text-size": 14
+            "text-size": 14,
+            "icon-size": ['interpolate', ['linear'], ['zoom'],
+                10, 0.5,
+                13.5, 1
+            ]
         },
         paint: {
             "text-halo-width": 1,
