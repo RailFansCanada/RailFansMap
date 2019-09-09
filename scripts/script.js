@@ -22,19 +22,71 @@
  * SOFTWARE.
  */
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
-let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [-75.6294, 45.3745], 
-    zoom: 11, 
-    bearing: -30,
-    hash: true
-});
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjam9obzZpMDQwMGQ0M2tsY280OTh2M2o5In0.XtnbkAMU7nIMkq7amsiYdw'
+//mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
 
-/*let excludeYards = getParameterByName('yards') === "false";
-let showLine = getParameterByName('line');
-let greedyGestures = getParameterByName('greedyGestures') === "false";*/
+let map = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    syncToggleOptionsState()
+
+    loadMap(toggleOptions.dark ? 'mapbox://styles/mapbox/dark-v9' : 'mapbox://styles/mapbox/light-v9')
+    if (!toggleOptions.dark && toggleOptions.satellite) {
+        setSatelliteView(true)
+    }
+
+    let url = new URL(window.location.href)
+    if (url.searchParams.has('noUI')) {
+        document.getElementById('toggle-container').style.visibility = 'hidden'
+    }
+
+    if (url.searchParams.get('dark') === 'true') {
+        setDarkMode(true, false)
+    }
+
+    if (url.searchParams.get('satellite') === 'true') {
+        setSatelliteView(true, false)
+    }
+})
+
+let toggleOptions = {
+    dark: false,
+    satellite: false,
+    stage3west: false,
+    stage3south: false,
+    stage3north: false,
+    buildings: false
+}
+
+/**
+ * Read the current state of toggle options from the url params and/or the url bar
+ * URL params override local storage data, except for dark mode (which isn't present in url)
+ * Satellite view overrides dark mode in all cases
+ */
+function syncToggleOptionsState() {
+    let url = new URL(window.location.href)
+    toggleOptions.dark = localStorage['dark'] === 'true'
+    setDarkMode(toggleOptions.dark)
+
+    toggleOptions.buildings = localStorage['buildings'] === 'true'
+
+    toggleOptions.stage3west = localStorage['stage3'] === 'true'
+
+    // Dark mode
+    let mql = window.matchMedia('(prefers-color-scheme: dark)')
+    if (mql.matches) {
+        toggleOptions.dark = true;
+    }
+
+    mql.addListener((media) => {
+        if (!toggleOptions.satellite) {
+            toggleOptions.dark = media.matches
+            setDarkMode(media.matches)
+        }
+    })
+
+    toggleOptions.satellite = localStorage['satellite'] === 'true'
+}
 
 let firstSymbolId;
 let count = 0;
@@ -43,9 +95,10 @@ let trillium;
 let confederation;
 let confederationEast;
 let confederationWest;
+let kanata;
 
-map.on('load', () => {
-
+function setupDataDisplay() {
+    let url = new URL(window.location.href)
     map.loadImage('images/station.png', (error, image) => {
         if (error) throw error;
         map.addImage('station', image);
@@ -75,6 +128,16 @@ map.on('load', () => {
         loadLine(data, "confederation");
     });
 
+    loadJson('data/stage3kanata.json', (data) => {
+        kanata = data
+        count++
+        loadLine(data, "kanata")
+        if (url.searchParams.get('stage3') === 'true') {
+            setStage3Visible(true, false)
+        } else {
+            setStage3Visible(toggleOptions.stage3west)
+        }
+    })
 
     let layers = map.getStyle().layers;
     // Find the index of the first symbol layer in the map style
@@ -85,6 +148,11 @@ map.on('load', () => {
         }
     }
 
+    if (url.searchParams.get('buildings') === 'true' && !toggleOptions.satellite) {
+        setBuildingsVisible(true, false)
+    } else {
+        setBuildingsVisible(!toggleOptions.satellite && toggleOptions.buildings)
+    }
 
     map.addSource('belfast', {
         type: 'geojson',
@@ -145,14 +213,33 @@ map.on('load', () => {
             "line-width": 2
         }
     }, firstSymbolId);
-});
+
+
+}
 
 function loadLine(line, name) {
-    map.addSource(name, {
-        'type': 'geojson',
-        attribution: 'Data: City of Ottawa',
-        data: line
-    });
+    try {
+        map.addSource(name, {
+            'type': 'geojson',
+            attribution: 'Data: City of Ottawa',
+            data: line
+        });
+    } catch (e) { }
+
+    map.addLayer({
+        id: `${name}-tunnel`,
+        type: 'fill',
+        source: name,
+        filter: ['==', 'type', 'tunnel'],
+        minzoom: 14,
+        paint: {
+            "fill-color": ['get', 'color'],
+            'fill-opacity': ['interpolate', ['linear'], ['zoom'],
+                14, 0,
+                15, 0.5
+            ]
+        }
+    }, firstSymbolId)
 
     map.addLayer({
         id: `${name}-tracks`,
@@ -168,6 +255,27 @@ function loadLine(line, name) {
             "line-width": 3
         }
     }, firstSymbolId);
+
+    map.addLayer({
+        id: `${name}-overpass`,
+        type: 'line',
+        source: name,
+        filter: ['==', 'type', 'overpass'],
+        minzoom: 14,
+        layout: {
+            "line-join": "round",
+            "line-cap": "square"
+        },
+        paint: {
+            "line-color": ['get', 'color'],
+            "line-width": 1.5,
+            "line-gap-width": [
+                "interpolate", ["exponential", 2], ["zoom"],
+                14, 0,
+                15, 5
+            ]
+        }
+    })
 
     map.addLayer({
         id: `${name}-platforms`,
@@ -195,11 +303,16 @@ function loadLine(line, name) {
             "text-optional": true,
             "icon-optional": false,
             "icon-allow-overlap": true,
-            "text-size": 14
+            "text-size": 14,
+            "icon-size": ['interpolate', ['linear'], ['zoom'],
+                10, 0.5,
+                13.5, 1
+            ]
         },
         paint: {
             "text-halo-width": 1,
-            "text-halo-color": "#FFFFFF"
+            "text-color": toggleOptions.dark || toggleOptions.satellite ? "#FFFFFF" : "#212121",
+            "text-halo-color": toggleOptions.dark || toggleOptions.satellite ? "#212121" : "#FFFFFF"
         }
     });
 
@@ -218,18 +331,21 @@ function loadLine(line, name) {
         },
         paint: {
             "text-halo-width": 1,
-            "text-halo-color": "#FFFFFF"
+            "text-color": toggleOptions.dark ? "#FFFFFF" : "#212121",
+            "text-halo-color": toggleOptions.dark ? "#212121" : "#FFFFFF"
         }
     });
 
     map.on('click', `${name}-labels`, (e) => {
-        window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`;
-    });
+        if (e.features[0].properties.url != null) {
+            window.parent.location.href = `https://www.otrainfans.ca/${e.features[0].properties.url}`
+        }
+    })
 
     let lastFeatureId;
     // Using mousemove is more accurate than mouseenter/mouseleave for hover effects
     map.on('mousemove', (e) => {
-        let fs = map.queryRenderedFeatures(e.point, {layers: [`${name}-labels`]});
+        let fs = map.queryRenderedFeatures(e.point, { layers: [`${name}-labels`] });
         if (fs.length > 0) {
             map.getCanvas().style.cursor = 'pointer';
 
@@ -257,4 +373,145 @@ function getLngLatFromFeatures(features) {
     }
 
     return points;
+}
+
+function loadMap(style = "mapbox://styles/mapbox/light-v9") {
+    if (map != null) {
+        map.remove()
+    }
+
+    map = new mapboxgl.Map({
+        container: 'map-container',
+        style: style,
+        center: [-75.6294, 45.3745],
+        zoom: 11,
+        bearing: -30,
+        hash: true
+    })
+
+    map.on('load', () => {
+        setupDataDisplay()
+    })
+}
+
+function setDarkMode(dark, update = true) {
+    if (!dark) {
+        loadMap('mapbox://styles/mapbox/light-v9')
+        document.getElementById('toggle-container').classList.remove('dark')
+        document.getElementById('dark-toggle').classList.remove('active')
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_dark.png')`
+    } else {
+        loadMap('mapbox://styles/mapbox/dark-v9')
+        document.getElementById('toggle-container').classList.add('dark')
+        document.getElementById('dark-toggle').classList.add('active')
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
+    }
+    document.getElementById('satellite-toggle').classList.remove('active')
+    toggleOptions.satellite = false;
+    toggleOptions.dark = dark;
+    if (update) {
+        localStorage['dark'] = toggleOptions.dark
+    }
+}
+
+// Toggle the map between light and dark modes
+document.getElementById('dark-toggle').addEventListener('click', () => {
+    setDarkMode(!toggleOptions.dark)
+})
+
+// Toggle the map between satellite mode and whatever light/dark mode was previously active
+document.getElementById('satellite-toggle').addEventListener('click', () => {
+    setSatelliteView(!toggleOptions.satellite)
+})
+
+function setSatelliteView(satellite, update = true) {
+    if (!satellite) {
+        setDarkMode(false)
+    } else {
+        document.getElementById('toggle-container').classList.remove('dark')
+        document.getElementById('satellite-toggle').classList.add('active')
+        document.getElementById('dark-toggle').classList.remove('active')
+        loadMap('mapbox://styles/mapbox/satellite-streets-v9')
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
+        toggleOptions.satellite = true
+    }
+    toggleOptions.satellite = satellite
+    if (update) {
+        localStorage['satellite'] = toggleOptions.satellite
+    }
+}
+
+document.getElementById('3d-buildings-toggle').addEventListener('click', () => {
+    setBuildingsVisible(!toggleOptions.buildings)
+})
+
+function setBuildingsVisible(visible, update = true) {
+    if (!visible) {
+        if (map.getLayer('3d-buildings') != null) {
+            map.removeLayer('3d-buildings')
+        }
+        document.getElementById('3d-buildings-toggle').classList.remove('active')
+    } else {
+        let buildingColor = toggleOptions.dark ? '#212121' : '#eeeeee'
+        map.addLayer({
+            'id': '3d-buildings',
+            'source': 'composite',
+            'source-layer': 'building',
+            'filter': ['==', 'extrude', 'true'],
+            'type': 'fill-extrusion',
+            'minzoom': 15,
+            'paint': {
+                'fill-extrusion-color': buildingColor,
+
+                // use an 'interpolate' expression to add a smooth transition effect to the
+                // buildings as the user zooms in
+                'fill-extrusion-height': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "height"]
+                ],
+                'fill-extrusion-base': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "min_height"]
+                ],
+                'fill-extrusion-opacity': .6
+            }
+        }, firstSymbolId);
+        document.getElementById('3d-buildings-toggle').classList.add('active')
+    }
+
+    toggleOptions.buildings = visible
+    if (update) {
+        localStorage['buildings'] = toggleOptions.buildings
+    }
+}
+
+document.getElementById('stage3-toggle').addEventListener('click', () => {
+    setStage3Visible(!toggleOptions.stage3west)
+})
+
+function setStage3Visible(visible, update = true) {
+    if (!visible) {
+        document.getElementById('stage3-toggle').classList.remove('active')
+        map.setLayoutProperty('kanata-tunnel', 'visibility', 'none')
+        map.setLayoutProperty('kanata-tracks', 'visibility', 'none')
+        map.setLayoutProperty('kanata-overpass', 'visibility', 'none')
+        map.setLayoutProperty('kanata-platforms', 'visibility', 'none')
+        map.setLayoutProperty('kanata-labels', 'visibility', 'none')
+        map.setLayoutProperty('kanata-labels-hover', 'visibility', 'none')
+    } else {
+        map.setLayoutProperty('kanata-tunnel', 'visibility', 'visible')
+        map.setLayoutProperty('kanata-tracks', 'visibility', 'visible')
+        map.setLayoutProperty('kanata-overpass', 'visibility', 'visible')
+        map.setLayoutProperty('kanata-platforms', 'visibility', 'visible')
+        map.setLayoutProperty('kanata-labels', 'visibility', 'visible')
+        map.setLayoutProperty('kanata-labels-hover', 'visibility', 'visible')
+        document.getElementById('stage3-toggle').classList.add('active')
+    }
+
+    toggleOptions.stage3west = visible
+    if (update) {
+        localStorage['stage3'] = toggleOptions.stage3west
+    }
 }
