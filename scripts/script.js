@@ -399,12 +399,12 @@ function setDarkMode(dark, update = true) {
         loadMap('mapbox://styles/mapbox/light-v9')
         document.getElementById('toggle-container').classList.remove('dark')
         document.getElementById('dark-toggle').classList.remove('active')
-        document.getElementById('logo').style.backgroundImage = `url('../images/logo_dark.png')`
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_dark.svg')`
     } else {
         loadMap('mapbox://styles/mapbox/dark-v9')
         document.getElementById('toggle-container').classList.add('dark')
         document.getElementById('dark-toggle').classList.add('active')
-        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.svg')`
     }
     document.getElementById('satellite-toggle').classList.remove('active')
     toggleOptions.satellite = false;
@@ -432,7 +432,7 @@ function setSatelliteView(satellite, update = true) {
         document.getElementById('satellite-toggle').classList.add('active')
         document.getElementById('dark-toggle').classList.remove('active')
         loadMap('mapbox://styles/mapbox/satellite-streets-v9')
-        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
+        document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.svg')`
         toggleOptions.satellite = true
     }
     toggleOptions.satellite = satellite

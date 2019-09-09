@@ -192,7 +192,7 @@ html, body {
 }
 
 #logo {
-    background-image: url('../images/logo_dark.png');
+    background-image: url('../images/logo_dark.svg');
     background-size: contain;
     background-repeat: no-repeat;
     width: 70px;
@@ -218,7 +218,7 @@ html, body {
     }
 
     #logo {
-        background-image: url('../images/logo_light.png');
+        background-image: url('../images/logo_light.svg');
     }
 
     .toggle-bar {
