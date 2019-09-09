@@ -21,7 +21,6 @@ html, body {
 
 .toggles-container {
     width: 212px;
-    height: auto;
     position: fixed;
     top: 24px;
     right: 24px;
@@ -29,6 +28,9 @@ html, body {
     overflow: hidden;
     z-index: 5;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: height 0.2s, width 0.2s;
+
+    height: 144px;
 }
 
 .toggle {
@@ -40,6 +42,56 @@ html, body {
     line-height: 36px;
     user-select: none;
     cursor: pointer;
+}
+
+.toggle-bar {
+    height: 36px;
+    background: #ffffff;
+    padding: 8px;
+    border-bottom: 2px solid #eee;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.toggle-bar:hover {
+    background: #eee;
+}
+
+.dark .toggle-bar:hover {
+    background: #111;
+}
+
+.toggle-bar:after {
+    content: '';
+    width: 8px;
+    height:8px;
+    border-bottom: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    position: absolute;
+    right: 16px;
+    top: 15px;
+    transform: rotate(-135deg);
+    transition: transform 0.2s, top 0.2s, right 0.2s;
+}
+
+.dark .toggle-bar {
+    border-bottom: 1px solid #111111;
+    background: #212121;
+    color: #fff;
+}
+
+.dark .toggle-bar:after {
+    border-color: #fff;
+}
+
+.toggles-container.collapsed {
+    height: 36px;
+}
+
+.toggles-container.collapsed .toggle-bar:after {
+    transform: rotate(45deg);
+    top: 10px;
 }
 
 #toggle-container.dark .toggle { 
@@ -167,5 +219,33 @@ html, body {
 
     #logo {
         background-image: url('../images/logo_light.png');
+    }
+
+    .toggle-bar {
+        border-bottom: 1px solid #111111;
+        background: #212121;
+        color: #fff;
+    }
+    
+    .toggle-bar:after {
+        border-color: #fff;
+    }
+
+    .toggle-bar:hover {
+        background: #111;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .collapsed {
+        width: 36px;
+    }
+
+    .collapsed .toggle-bar span {
+        color: transparent;
+    }
+
+    .collapsed .toggle-bar:after {
+        right: 12px;
     }
 }

@@ -515,3 +515,11 @@ function setStage3Visible(visible, update = true) {
         localStorage['stage3'] = toggleOptions.stage3west
     }
 }
+
+document.getElementById('toggle-bar').addEventListener('click', () => {
+    if (document.getElementById('toggle-container').classList.contains('collapsed')) {
+        document.getElementById('toggle-container').classList.remove('collapsed')
+    } else {
+        document.getElementById('toggle-container').classList.add('collapsed')
+    }
+})
