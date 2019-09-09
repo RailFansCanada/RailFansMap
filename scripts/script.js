@@ -24,20 +24,29 @@
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjam9obzZpMDQwMGQ0M2tsY280OTh2M2o5In0.XtnbkAMU7nIMkq7amsiYdw'
 //mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
-// let map = null = new mapboxgl.Map({
-//     container: 'map',
-//     style: 'mapbox://styles/mapbox/light-v9',
-//     center: [-75.6294, 45.3745], 
-//     zoom: 11, 
-//     bearing: -30,
-//     hash: true
-// });
 
 let map = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-    let mql = window.matchMedia('(prefers-color-scheme: dark)')
-    loadMap(mql.matches ? 'mapbox://styles/mapbox/dark-v9' : 'mapbox://styles/mapbox/light-v9')
+    syncToggleOptionsState()
+
+    loadMap(toggleOptions.dark ? 'mapbox://styles/mapbox/dark-v9' : 'mapbox://styles/mapbox/light-v9')
+    if (!toggleOptions.dark && toggleOptions.satellite) {
+        setSatelliteView(true)
+    }
+
+    let url = new URL(window.location.href)
+    if (url.searchParams.has('noUI')) {
+        document.getElementById('toggle-container').style.visibility = 'hidden'
+    }
+
+    if (url.searchParams.get('dark') === 'true') {
+        setDarkMode(true, false)
+    }
+
+    if (url.searchParams.get('satellite') === 'true') {
+        setSatelliteView(true, false)
+    }
 })
 
 let toggleOptions = {
@@ -55,12 +64,18 @@ let toggleOptions = {
  * Satellite view overrides dark mode in all cases
  */
 function syncToggleOptionsState() {
+    let url = new URL(window.location.href)
+    toggleOptions.dark = localStorage['dark'] === 'true'
+    setDarkMode(toggleOptions.dark)
+
+    toggleOptions.buildings = localStorage['buildings'] === 'true'
+
+    toggleOptions.stage3west = localStorage['stage3'] === 'true'
+
     // Dark mode
     let mql = window.matchMedia('(prefers-color-scheme: dark)')
     if (mql.matches) {
         toggleOptions.dark = true;
-    } else if ('dark' in localStorage) {
-        toggleOptions.dark = localStorage['dark']
     }
 
     mql.addListener((media) => {
@@ -69,9 +84,9 @@ function syncToggleOptionsState() {
             setDarkMode(media.matches)
         }
     })
-}
 
-syncToggleOptionsState()
+    toggleOptions.satellite = localStorage['satellite'] === 'true'
+}
 
 let firstSymbolId;
 let count = 0;
@@ -83,6 +98,7 @@ let confederationWest;
 let kanata;
 
 function setupDataDisplay() {
+    let url = new URL(window.location.href)
     map.loadImage('images/station.png', (error, image) => {
         if (error) throw error;
         map.addImage('station', image);
@@ -116,16 +132,12 @@ function setupDataDisplay() {
         kanata = data
         count++
         loadLine(data, "kanata")
-        if (!toggleOptions.stage3west) {
-            map.setLayoutProperty('kanata-tunnel', 'visibility', 'none')
-            map.setLayoutProperty('kanata-tracks', 'visibility', 'none')
-            map.setLayoutProperty('kanata-overpass', 'visibility', 'none')
-            map.setLayoutProperty('kanata-platforms', 'visibility', 'none')
-            map.setLayoutProperty('kanata-labels', 'visibility', 'none')
-            map.setLayoutProperty('kanata-labels-hover', 'visibility', 'none')
+        if (url.searchParams.get('stage3') === 'true') {
+            setStage3Visible(true, false)
+        } else {
+            setStage3Visible(toggleOptions.stage3west)
         }
     })
-
 
     let layers = map.getStyle().layers;
     // Find the index of the first symbol layer in the map style
@@ -136,33 +148,10 @@ function setupDataDisplay() {
         }
     }
 
-    if (!toggleOptions.satellite && toggleOptions.buildings) {
-        let buildingColor = toggleOptions.dark ? '#212121' : '#eeeeee'
-        map.addLayer({
-            'id': '3d-buildings',
-            'source': 'composite',
-            'source-layer': 'building',
-            'filter': ['==', 'extrude', 'true'],
-            'type': 'fill-extrusion',
-            'minzoom': 15,
-            'paint': {
-                'fill-extrusion-color': buildingColor,
-
-                // use an 'interpolate' expression to add a smooth transition effect to the
-                // buildings as the user zooms in
-                'fill-extrusion-height': [
-                    "interpolate", ["linear"], ["zoom"],
-                    15, 0,
-                    15.05, ["get", "height"]
-                ],
-                'fill-extrusion-base': [
-                    "interpolate", ["linear"], ["zoom"],
-                    15, 0,
-                    15.05, ["get", "min_height"]
-                ],
-                'fill-extrusion-opacity': .6
-            }
-        }, firstSymbolId);
+    if (url.searchParams.get('buildings') === 'true' && !toggleOptions.satellite) {
+        setBuildingsVisible(true, false)
+    } else {
+        setBuildingsVisible(!toggleOptions.satellite && toggleOptions.buildings)
     }
 
     map.addSource('belfast', {
@@ -224,6 +213,8 @@ function setupDataDisplay() {
             "line-width": 2
         }
     }, firstSymbolId);
+
+
 }
 
 function loadLine(line, name) {
@@ -403,7 +394,7 @@ function loadMap(style = "mapbox://styles/mapbox/light-v9") {
     })
 }
 
-function setDarkMode(dark) {
+function setDarkMode(dark, update = true) {
     if (!dark) {
         loadMap('mapbox://styles/mapbox/light-v9')
         document.getElementById('toggle-container').classList.remove('dark')
@@ -418,6 +409,9 @@ function setDarkMode(dark) {
     document.getElementById('satellite-toggle').classList.remove('active')
     toggleOptions.satellite = false;
     toggleOptions.dark = dark;
+    if (update) {
+        localStorage['dark'] = toggleOptions.dark
+    }
 }
 
 // Toggle the map between light and dark modes
@@ -427,8 +421,12 @@ document.getElementById('dark-toggle').addEventListener('click', () => {
 
 // Toggle the map between satellite mode and whatever light/dark mode was previously active
 document.getElementById('satellite-toggle').addEventListener('click', () => {
-    if (toggleOptions.satellite) {
-        setDarkMode(toggleOptions.dark)
+    setSatelliteView(!toggleOptions.satellite)
+})
+
+function setSatelliteView(satellite, update = true) {
+    if (!satellite) {
+        setDarkMode(false)
     } else {
         document.getElementById('toggle-container').classList.remove('dark')
         document.getElementById('satellite-toggle').classList.add('active')
@@ -437,11 +435,21 @@ document.getElementById('satellite-toggle').addEventListener('click', () => {
         document.getElementById('logo').style.backgroundImage = `url('../images/logo_light.png')`
         toggleOptions.satellite = true
     }
-})
+    toggleOptions.satellite = satellite
+    if (update) {
+        localStorage['satellite'] = toggleOptions.satellite
+    }
+}
 
 document.getElementById('3d-buildings-toggle').addEventListener('click', () => {
-    if (toggleOptions.buildings) {
-        map.removeLayer('3d-buildings')
+    setBuildingsVisible(!toggleOptions.buildings)
+})
+
+function setBuildingsVisible(visible, update = true) {
+    if (!visible) {
+        if (map.getLayer('3d-buildings') != null) {
+            map.removeLayer('3d-buildings')
+        }
         document.getElementById('3d-buildings-toggle').classList.remove('active')
     } else {
         let buildingColor = toggleOptions.dark ? '#212121' : '#eeeeee'
@@ -473,11 +481,18 @@ document.getElementById('3d-buildings-toggle').addEventListener('click', () => {
         document.getElementById('3d-buildings-toggle').classList.add('active')
     }
 
-    toggleOptions.buildings = !toggleOptions.buildings
-})
+    toggleOptions.buildings = visible
+    if (update) {
+        localStorage['buildings'] = toggleOptions.buildings
+    }
+}
 
 document.getElementById('stage3-toggle').addEventListener('click', () => {
-    if (toggleOptions.stage3west) {
+    setStage3Visible(!toggleOptions.stage3west)
+})
+
+function setStage3Visible(visible, update = true) {
+    if (!visible) {
         document.getElementById('stage3-toggle').classList.remove('active')
         map.setLayoutProperty('kanata-tunnel', 'visibility', 'none')
         map.setLayoutProperty('kanata-tracks', 'visibility', 'none')
@@ -495,5 +510,8 @@ document.getElementById('stage3-toggle').addEventListener('click', () => {
         document.getElementById('stage3-toggle').classList.add('active')
     }
 
-    toggleOptions.stage3west = !toggleOptions.stage3west
-})
+    toggleOptions.stage3west = visible
+    if (update) {
+        localStorage['stage3'] = toggleOptions.stage3west
+    }
+}
