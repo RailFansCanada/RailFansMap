@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjandmbGc5MG8xZGg1M3pudXl6dTQ3NHhtIn0.6eYbb2cN8YUexz_F0ZCqUQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjazBoZm03OG8wMjR2M2lxbjNqcHgyc3BvIn0.XPgZCMrBCvS-usaM2bnjlA';
 
 let map = null;
 
