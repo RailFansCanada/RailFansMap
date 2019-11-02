@@ -1,17 +1,36 @@
 import * as React from "react";
-import ReactMapGL, { ViewState, MapboxProps } from 'react-map-gl';
+import ReactMapGL, {
+  ViewState,
+  MapboxProps,
+  ViewportProps
+} from "react-map-gl";
+import { AutoSizer } from "react-virtualized";
 
-export class Map extends React.Component<MapboxProps, { viewport: ViewState }> {
-    readonly state = {
-        viewport: {
-            width: 400,
-            height: 400,
-            latitude: 37.7577,
-            longitude: -122.4376,
-            zoom: 8
-        }
+export class Map extends React.Component<{}, { viewport: ViewState }> {
+  readonly state = {
+    viewport: {
+      latitude: 37.7577,
+      longitude: -122.4376,
+      zoom: 8
     }
-    render() {
-        return <ReactMapGL {...this.state.viewport} onViewportChange={(viewport) => this.setState({ viewport })} />
-    }
+  };
+
+  _onViewportChange = (viewport: ViewportProps) => this.setState({ viewport });
+
+  render() {
+    const { viewport } = this.state;
+    return (
+      <AutoSizer>
+        {({ width, height }) => (
+          <ReactMapGL
+            {...viewport}
+            width={width}
+            height={height}
+            mapboxApiAccessToken="pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjazBqaXVveXEwN3k3M25tcjRzZHJkZmUzIn0.m0p9C09Vm2V-YVtQEgSQtg"
+            onViewportChange={this._onViewportChange}
+          />
+        )}
+      </AutoSizer>
+    );
+  }
 }

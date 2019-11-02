@@ -21,15 +21,19 @@
   "homepage": "https://github.com/OTrainFans/OTrainMap#readme",
   "devDependencies": {
     "@types/mapbox-gl": "^0.54.4",
-    "@types/react-map-gl": "^5.0.2",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
+    "@types/react-map-gl": "^5.0.2",
+    "@types/react-virtualized": "^9.21.5",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.0",
     "typescript": "^3.6.3",
-    "webpack": "^4.41.0",
+    "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
   },
@@ -37,6 +41,8 @@
     "mapbox-gl": "^1.4.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-map-gl": "^5.0.11"
+    "react-map-gl": "^5.1.1",
+    "react-virtualized": "^9.21.1",
+    "reset-css": "^5.0.1"
   }
 }
