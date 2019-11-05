@@ -1,11 +1,12 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "target": "es6",
-        "jsx": "react"
-    }
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "jsx": "react",
+    "resolveJsonModule": true
+  }
 }
