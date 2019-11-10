@@ -13,7 +13,10 @@ import * as stage2south from "../../data/stage2south.json";
 import * as stage2east from "../../data/stage2east.json";
 import * as stage2west from "../../data/stage2west.json";
 import * as stage3kanata from "../../data/stage3kanata.json";
+import * as stage3barrhaven from "../../data/stage3barrhaven.json";
 import { GeoJSON } from "geojson";
+
+import _ from "../images/station.png";
 
 export class Map extends React.Component<{}, { viewport: ViewState }> {
   readonly state = {
@@ -25,7 +28,28 @@ export class Map extends React.Component<{}, { viewport: ViewState }> {
     }
   };
 
+  private mapComponent: React.RefObject<ReactMapGL>;
+
+  constructor(props: {}) {
+    super(props);
+
+    this.mapComponent = React.createRef();
+  }
+
+  componentDidMount() {
+    let map = this.mapComponent.current.getMap();
+    map.loadImage("./images/station.png", (error: any, value: any) => {
+      map.addImage("station", value);
+    });
+  }
+
   _onViewportChange = (viewport: ViewportProps) => this.setState({ viewport });
+
+  // _renderStationMarker = (station:, index) => {
+  //   return (
+  //     <Marker key={`station-${station}`}
+  //   )
+  // }
 
   render() {
     const { viewport } = this.state;
@@ -33,6 +57,7 @@ export class Map extends React.Component<{}, { viewport: ViewState }> {
       <AutoSizer>
         {({ width, height }) => (
           <ReactMapGL
+            ref={this.mapComponent}
             {...viewport}
             width={width}
             height={height}
@@ -48,6 +73,7 @@ export class Map extends React.Component<{}, { viewport: ViewState }> {
             <Line data={stage2east as GeoJSON} name="stage2east" />
             <Line data={stage2west as GeoJSON} name="stage2west" />
             <Line data={stage3kanata as GeoJSON} name="stage3kanata" />
+            <Line data={stage3barrhaven as GeoJSON} name="stage3barrhaven" />
           </ReactMapGL>
         )}
       </AutoSizer>

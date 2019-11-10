@@ -128,7 +128,7 @@ export class Line extends React.Component<LineProps> {
           filter={["==", "type", "station-label"]}
           minzoom={10}
           layout={{
-            "icon-image": "images/station.png",
+            "icon-image": "station",
             "text-field": "{name}",
             "text-anchor": "left",
             "text-offset": [0.75, 0],
