@@ -40,6 +40,20 @@ export interface LineProps {
   name: string;
 }
 
+export type LineFeatureType =
+  | "tracks"
+  | "station-platforms"
+  | "station-label"
+  | "overpass"
+  | "tunnel";
+
+export interface LineDataProps {
+  name: string;
+  color: string;
+  type: LineFeatureType;
+  url?: string;
+}
+
 export class Line extends React.Component<LineProps> {
   render() {
     let { name } = this.props;
