@@ -4,7 +4,6 @@ import "./index.scss";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Map } from "./components/Map";
-import mapboxgl from "mapbox-gl";
+import { OverviewMap } from "./components/Map";
 
-ReactDOM.render(<Map />, document.getElementById("content"));
+ReactDOM.render(<OverviewMap />, document.getElementById("content"));

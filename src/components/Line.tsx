@@ -1,42 +1,10 @@
 import * as React from "react";
-import { GeoJSON } from "geojson";
+import * as GeoJSON from "geojson";
 import { Source, Layer } from "react-map-gl";
-import { Layer as MapboxLayer } from "mapbox-gl";
-
-// Simple type definitions for missing react-map-gl types
-declare module "react-map-gl" {
-  interface SourceProps {
-    id?: string;
-    type:
-      | "vector"
-      | "raster"
-      | "raster-dem"
-      | "geojson"
-      | "image"
-      | "video"
-      | "canvas";
-    children?: any;
-  }
-
-  class Source<Props extends SourceProps> extends React.PureComponent<Props> {}
-
-  interface LayerProps {
-    id?: string;
-    type: string;
-    source?: string;
-    beforeId?: string;
-    layout?: any;
-    paint: any;
-    filter?: any[];
-    minzoom?: number;
-    maxzoom?: number;
-  }
-
-  class Layer<Props extends MapboxLayer> extends React.PureComponent<Props> {}
-}
+import { Layer as MapboxLayer, AnyLayout } from "mapbox-gl";
 
 export interface LineProps {
-  data: GeoJSON;
+  data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   name: string;
 }
 
@@ -119,7 +87,7 @@ export class Line extends React.Component<LineProps> {
           filter={["==", "type", "station-platforms"]}
           paint={{
             "fill-color": ["get", "color"],
-            "fill-opacity": 0.6
+            "fill-opacity": 0.68
           }}
         />
         <Layer
@@ -127,21 +95,44 @@ export class Line extends React.Component<LineProps> {
           type="symbol"
           filter={["==", "type", "station-label"]}
           minzoom={10}
-          layout={{
-            "icon-image": "station",
-            "text-field": "{name}",
-            "text-anchor": "left",
-            "text-offset": [0.75, 0],
-            "text-optional": true,
-            "icon-optional": false,
-            "icon-allow-overlap": true,
-            "text-size": 14,
-            "icon-size": ["interpolate", ["linear"], ["zoom"], 10, 0.5, 13.5, 1]
-          }}
+          layout={
+            {
+              "icon-image": "station",
+              "text-field": "{name}",
+              "text-anchor": "left",
+              "text-offset": [0.75, 0],
+              "text-optional": true,
+              "icon-optional": false,
+              "icon-allow-overlap": true,
+              "icon-size": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                10,
+                0.5,
+                13.5,
+                1
+              ],
+              "text-transform": "uppercase",
+              "text-font": ["Raleway Bold"],
+              "text-size": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                10,
+                14,
+                15,
+                16,
+                18,
+                24
+              ]
+            } as AnyLayout
+          }
           paint={{
-            "text-halo-width": 1,
-            "text-color": "#212121",
-            "text-halo-color": "#FFFFFF"
+            "text-halo-width": 30,
+            "text-halo-blur": 10,
+            "text-color": "#FFFFFF",
+            "text-halo-color": ["get", "color"]
           }}
         />
       </Source>
