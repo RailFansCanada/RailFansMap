@@ -1,7 +1,6 @@
 import * as React from "react";
 import ReactMapGL, {
   ViewState,
-  FlyToInterpolator,
   LinearInterpolator
 } from "react-map-gl";
 import { AutoSizer } from "react-virtualized";
@@ -17,13 +16,19 @@ import { easeCubicOut } from "d3-ease";
 
 import _ from "../images/station.png";
 
-export const OverviewMap = () => {
-  const [viewport, setViewport] = React.useState<ViewState>({
-    longitude: -75.6294,
-    latitude: 45.3745,
-    zoom: 11,
-    bearing: -30
-  });
+export interface OverviewMapProps {
+  initialViewState?: ViewState | null;
+}
+
+export const OverviewMap = (props: OverviewMapProps) => {
+  const [viewport, setViewport] = React.useState<ViewState>(
+    props.initialViewState ?? {
+      longitude: -75.6294,
+      latitude: 45.3745,
+      zoom: 11,
+      bearing: -30
+    }
+  );
 
   const mapRef = React.useRef<ReactMapGL>();
 
