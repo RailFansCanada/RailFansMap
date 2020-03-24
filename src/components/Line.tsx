@@ -29,6 +29,7 @@ export class Line extends React.Component<LineProps> {
       <Source id={name} type="geojson" data={this.props.data}>
         <Layer
           id={`${name}-tunnel`}
+          beforeId="content-mask"
           type="fill"
           filter={["==", "type", "tunnel"]}
           minzoom={14}
@@ -47,6 +48,7 @@ export class Line extends React.Component<LineProps> {
         />
         <Layer
           id={`${name}-tracks`}
+          beforeId="content-mask"
           type="line"
           filter={["==", "type", "tracks"]}
           layout={{
@@ -60,6 +62,7 @@ export class Line extends React.Component<LineProps> {
         />
         <Layer
           id={`${name}-overpass`}
+          beforeId="content-mask"
           type="line"
           filter={["==", "type", "overpass"]}
           minzoom={14}
@@ -83,6 +86,7 @@ export class Line extends React.Component<LineProps> {
         />
         <Layer
           id={`${name}-platforms`}
+          beforeId="content-mask"
           type="fill"
           filter={["==", "type", "station-platforms"]}
           paint={{
@@ -91,13 +95,33 @@ export class Line extends React.Component<LineProps> {
           }}
         />
         <Layer
+          id={`${name}-station`}
+          beforeId="circle-mask"
+          type="circle"
+          filter={["==", "type", "station-label"]}
+          layout={{}}
+          paint={{
+            "circle-color": "#ffffff",
+            "circle-stroke-color": "#212121",
+            "circle-stroke-width": 2,
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              10,
+              2,
+              13.5,
+              6
+            ]
+          }}/>
+        <Layer
           id={`${name}-labels`}
+          beforeId="symbol-mask"
           type="symbol"
           filter={["==", "type", "station-label"]}
           minzoom={10}
           layout={
             {
-              "icon-image": "station",
               "text-field": "{name}",
               "text-anchor": "left",
               "text-offset": [0.75, 0],

@@ -1,7 +1,9 @@
 import * as React from "react";
 import ReactMapGL, {
   ViewState,
-  LinearInterpolator
+  LinearInterpolator,
+  Layer,
+  Source
 } from "react-map-gl";
 import { AutoSizer } from "react-virtualized";
 import { Line } from "./Line";
@@ -23,8 +25,8 @@ export interface OverviewMapProps {
 export const OverviewMap = (props: OverviewMapProps) => {
   const [viewport, setViewport] = React.useState<ViewState>(
     props.initialViewState ?? {
-      longitude: -75.6294,
-      latitude: 45.3745,
+      longitude: -75.6701,
+      latitude: 45.3599,
       zoom: 11,
       bearing: -30
     }
@@ -44,6 +46,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
     <AutoSizer>
       {({ width, height }) => (
         <ReactMapGL
+          mapStyle="mapbox://styles/mapbox/light-v10"
           ref={mapRef}
           {...viewport}
           width={width}
@@ -58,6 +61,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
           transitionInterpolator={new LinearInterpolator()}
           transitionEasing={easeCubicOut}
         >
+          {/* Layer z-ordering hack */}
+          <Source
+            id="blank"
+            type="geojson"
+            data={{ type: "FeatureCollection", features: [] }}
+          >
+            <Layer type="fill" id="content-mask" paint={{}} layout={{}} />
+            <Layer type="fill" id="circle-mask" paint={{}} layout={{}} />
+            <Layer type="fill" id="symbol-mask" paint={{}} layout={{}} />
+          </Source>
           <Line
             data={
               stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>
