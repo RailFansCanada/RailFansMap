@@ -2,9 +2,12 @@ import * as React from "react";
 import ReactMapGL, {
   ViewState,
   LinearInterpolator,
+  NavigationControl,
   Layer,
-  Source
+  Source,
+  FlyToInterpolator,
 } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { AutoSizer } from "react-virtualized";
 import { Line } from "./Line";
 import * as stage1 from "../../data/stage1.json";
@@ -16,8 +19,6 @@ import * as stage3barrhaven from "../../data/stage3barrhaven.json";
 import * as GeoJSON from "geojson";
 import { easeCubicOut } from "d3-ease";
 
-import _ from "../images/station.png";
-
 export interface OverviewMapProps {
   initialViewState?: ViewState | null;
 }
@@ -28,26 +29,15 @@ export const OverviewMap = (props: OverviewMapProps) => {
       longitude: -75.6701,
       latitude: 45.3599,
       zoom: 11,
-      bearing: -30
+      bearing: -30,
     }
   );
-
-  const mapRef = React.useRef<ReactMapGL>();
-
-  React.useEffect(() => {
-    const map = mapRef.current.getMap();
-
-    map.loadImage("./images/station.png", (error: any, value: any) => {
-      map.addImage("station", value);
-    });
-  }, []);
 
   return (
     <AutoSizer>
       {({ width, height }) => (
         <ReactMapGL
           mapStyle="mapbox://styles/mapbox/light-v10"
-          ref={mapRef}
           {...viewport}
           width={width}
           height={height}
@@ -55,12 +45,12 @@ export const OverviewMap = (props: OverviewMapProps) => {
           onViewportChange={setViewport}
           mapOptions={{
             hash: true,
-            customAttribution: ["Data: City of Ottawa"]
+            customAttribution: ["Data: City of Ottawa"],
           }}
-          transitionDuration={0}
-          transitionInterpolator={new LinearInterpolator()}
-          transitionEasing={easeCubicOut}
         >
+          <div style={{ position: "absolute", right: 16, top: 16 }}>
+            <NavigationControl />
+          </div>
           {/* Layer z-ordering hack */}
           <Source
             id="blank"

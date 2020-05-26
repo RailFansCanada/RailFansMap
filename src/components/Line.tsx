@@ -22,11 +22,10 @@ export interface LineDataProps {
   url?: string;
 }
 
-export class Line extends React.Component<LineProps> {
-  render() {
-    let { name } = this.props;
+export const Line = (props: LineProps) => {
+  let { name, data } = props;
     return (
-      <Source id={name} type="geojson" data={this.props.data}>
+      <Source id={name} type="geojson" data={data}>
         <Layer
           id={`${name}-tunnel`}
           beforeId="content-mask"
@@ -137,29 +136,30 @@ export class Line extends React.Component<LineProps> {
                 13.5,
                 1
               ],
-              "text-transform": "uppercase",
+              // "text-transform": "uppercase",
               "text-font": ["Raleway Bold"],
               "text-size": [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
                 10,
-                14,
-                15,
                 16,
+                15,
                 18,
-                24
+                18,
+                26
               ]
             } as AnyLayout
           }
           paint={{
-            "text-halo-width": 30,
-            "text-halo-blur": 10,
-            "text-color": "#FFFFFF",
-            "text-halo-color": ["get", "color"]
+            "text-halo-width": 2,
+            "text-halo-blur": 0,
+            // "text-color": "#FFFFFF",
+            // "text-halo-color": ["get", "color"]
+            "text-color": ["get", "color"],
+            "text-halo-color": "#FFFFFF"
           }}
         />
       </Source>
     );
-  }
 }
