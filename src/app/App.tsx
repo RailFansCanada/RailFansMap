@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  useMediaQuery,
-  MuiThemeProvider,
-} from "@material-ui/core";
+import { useMediaQuery, MuiThemeProvider } from "@material-ui/core";
 import { OverviewMap } from "../components/Map";
-import {themeFactory} from "./theme"; 
-import { initialViewState } from "./utils";
+import { themeFactory } from "./theme";
 
 type ThemeSetting = "light" | "dark" | "system";
 
@@ -23,7 +19,7 @@ export const App = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <OverviewMap initialViewState={initialViewState()}/>
+      <OverviewMap />
     </MuiThemeProvider>
   );
 };
