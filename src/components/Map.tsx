@@ -30,6 +30,7 @@ const Map = ReactMapboxGl({
     "pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjazBqaXVveXEwN3k3M25tcjRzZHJkZmUzIn0.m0p9C09Vm2V-YVtQEgSQtg",
   customAttribution: ["Data: City of Ottawa"],
   hash: true,
+  antialias: true,
 });
 
 export const OverviewMap = () => {

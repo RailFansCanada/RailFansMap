@@ -1,11 +1,16 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PnpWebpackPlugin = require("pnp-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js"]
+    extensions: [".ts", ".tsx", ".js"],
+    plugins: [PnpWebpackPlugin],
+  },
+  resolveLoader: {
+    plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
 
   module: {
@@ -13,25 +18,24 @@ module.exports = {
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
-        loader: "ts-loader"
+        loader: "ts-loader",
       },
       {
         enforce: "pre",
         test: /\.js$/,
-        loader: "source-map-loader"
+        loader: "source-map-loader",
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === "development"
-            }
+              hmr: process.env.NODE_ENV === "development",
+            },
           },
           "css-loader",
-          "sass-loader"
-        ]
+        ],
       },
       {
         test: /\.(png|jp(e*)g|svg)$/,
@@ -39,22 +43,22 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "images/[hash]-[name].[ext]"
-            }
-          }
-        ]
-      }
-    ]
+              name: "images/[hash]-[name].[ext]",
+            },
+          },
+        ],
+      },
+    ],
   },
 
   plugins: [
     new HtmlWebPackPlugin({
       template: "./index.html",
-      filename: "./index.html"
+      filename: "./index.html",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ]
+      chunkFilename: "[id].css",
+    }),
+  ],
 };
