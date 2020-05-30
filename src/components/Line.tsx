@@ -157,7 +157,7 @@ export const Line = ({ name, data, color }: LineProps) => {
               ["linear"],
               ["zoom"],
               10,
-              16,
+              12,
               15,
               18,
               18,
