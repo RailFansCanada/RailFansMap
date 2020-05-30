@@ -38,6 +38,43 @@ const Map = ReactMapboxGl({
 });
 
 export const OverviewMap = () => {
+  const handleClick = (
+    map: mapboxgl.Map,
+    event: React.SyntheticEvent<any, Event> &
+      mapboxgl.MapMouseEvent &
+      mapboxgl.EventData
+  ) => {
+    const features = map.queryRenderedFeatures(event.point);
+    for (let feature of features) {
+      if (feature.properties.url != null) {
+        window.parent.location.href = `https://www.otrainfans.ca/${feature.properties.url}`;
+      }
+    }
+  };
+
+  const handleMouseMove = (
+    map: mapboxgl.Map,
+    event: React.SyntheticEvent<any, Event> &
+      mapboxgl.MapMouseEvent &
+      mapboxgl.EventData
+  ) => {
+    let hovered = false;
+    const features = map.queryRenderedFeatures(event.point);
+    if (features.length > 0) {
+      for (let feature of features) {
+        if (feature.properties.type === "station-label") {
+          map.getCanvas().style.cursor = "pointer";
+          hovered = true;
+          break;
+        }
+      }
+    }
+
+    if (!hovered) {
+      map.getCanvas().style.cursor = "";
+    }
+  };
+
   return (
     <Map
       style="mapbox://styles/mapbox/light-v10"
@@ -45,6 +82,8 @@ export const OverviewMap = () => {
         height: "100vh",
         width: "100vw",
       }}
+      onClick={handleClick}
+      onMouseMove={handleMouseMove}
     >
       <ZoomControl />
       <RotationControl />
