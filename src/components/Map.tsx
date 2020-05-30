@@ -77,26 +77,32 @@ export const OverviewMap = () => {
       <Line
         data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
         name="stage3barrhaven"
+        color="#C8963E"
       />
       <Line
         data={stage2south as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
         name="stage2south"
+        color="#76BE43"
       />
       <Line
         data={stage2east as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
         name="stage2east"
+        color="#D62937"
       />
       <Line
         data={stage2west as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
         name="stage2west"
+        color="#D62937"
       />
       <Line
         data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
         name="stage1"
+        color="#D62937"
       />
       <Line
         data={stage3kanata as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
         name="stage3kanata"
+        color="#5202F1"
       />
     </Map>
   );

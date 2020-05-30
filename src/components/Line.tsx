@@ -6,11 +6,13 @@ import { AnyLayout } from "mapbox-gl";
 export interface LineProps {
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   name: string;
+  color: string;
 }
 
 export type LineFeatureType =
   | "tracks"
   | "station-platforms"
+  | "station-platforms-future"
   | "station-label"
   | "overpass"
   | "tunnel";
@@ -22,7 +24,7 @@ export interface LineDataProps {
   url?: string;
 }
 
-export const Line = ({ name, data }: LineProps) => {
+export const Line = ({ name, data, color }: LineProps) => {
   const dataRef = React.useRef({ type: "geojson", data });
   return (
     <>
@@ -35,7 +37,7 @@ export const Line = ({ name, data }: LineProps) => {
         filter={["==", "type", "tunnel"]}
         minzoom={14}
         paint={{
-          "fill-color": ["get", "color"],
+          "fill-color": color,
           "fill-opacity": ["interpolate", ["linear"], ["zoom"], 14, 0, 15, 0.5],
         }}
       />
@@ -50,7 +52,7 @@ export const Line = ({ name, data }: LineProps) => {
           "line-cap": "round",
         }}
         paint={{
-          "line-color": ["get", "color"],
+          "line-color": color,
           "line-width": 3,
         }}
       />
@@ -66,7 +68,7 @@ export const Line = ({ name, data }: LineProps) => {
           "line-cap": "square",
         }}
         paint={{
-          "line-color": ["get", "color"],
+          "line-color": color,
           "line-width": 1.5,
           "line-gap-width": [
             "interpolate",
@@ -86,8 +88,20 @@ export const Line = ({ name, data }: LineProps) => {
         sourceId={name}
         filter={["==", "type", "station-platforms"]}
         paint={{
-          "fill-color": ["get", "color"],
+          "fill-color": color,
           "fill-opacity": 0.68,
+        }}
+      />
+      <Layer
+        id={`${name}-platforms-future`}
+        beforeId="content-mask"
+        type="line"
+        sourceId={name}
+        filter={["==", "type", "station-platforms-future"]}
+        paint={{
+          "line-color": color,
+          "line-dasharray": [3, 3],
+          "line-width": 1.5
         }}
       />
       <Layer
@@ -156,7 +170,7 @@ export const Line = ({ name, data }: LineProps) => {
           "text-halo-blur": 0,
           // "text-color": "#FFFFFF",
           // "text-halo-color": ["get", "color"]
-          "text-color": ["get", "color"],
+          "text-color": color,
           "text-halo-color": "#FFFFFF",
         }}
       />
