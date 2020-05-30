@@ -12,6 +12,9 @@ module.exports = {
   resolveLoader: {
     plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
+  devServer: {
+    hot: true,
+  },
 
   module: {
     rules: [
