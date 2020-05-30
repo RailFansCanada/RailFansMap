@@ -17,13 +17,17 @@ import ReactMapboxGl, {
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Line } from "./Line";
-import * as stage1 from "../../data/stage1.json";
-import * as stage2south from "../../data/stage2south.json";
-import * as stage2east from "../../data/stage2east.json";
-import * as stage2west from "../../data/stage2west.json";
-import * as stage3kanata from "../../data/stage3kanata.json";
-import * as stage3barrhaven from "../../data/stage3barrhaven.json";
-import * as GeoJSON from "geojson";
+import { RailYard } from "./RailYard";
+import stage1 from "../../data/stage1.json";
+import stage2south from "../../data/stage2south.json";
+import stage2east from "../../data/stage2east.json";
+import stage2west from "../../data/stage2west.json";
+import stage3kanata from "../../data/stage3kanata.json";
+import stage3barrhaven from "../../data/stage3barrhaven.json";
+import belfastYard from "../../data/belfastYard.json";
+import moodieYard from "../../data/moodieYard.json";
+import walkleyYard from "../../data/walkleyYard.json";
+import GeoJSON from "geojson";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -73,6 +77,21 @@ export const OverviewMap = () => {
         id="symbol-mask"
         paint={{}}
         layout={{}}
+      />
+      <RailYard
+        data={belfastYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+        name="Belfast Yard"
+        position={[-75.64087, 45.41546]}
+      />
+      <RailYard
+        data={moodieYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+        name="Moodie Yard"
+        position={[-75.84918, 45.33587]}
+      />
+      <RailYard
+        data={walkleyYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+        name="Walkley Yard"
+        position={[-75.65288, 45.36539]}
       />
       <Line
         data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
