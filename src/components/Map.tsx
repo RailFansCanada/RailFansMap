@@ -29,9 +29,9 @@ import moodieYard from "../../data/moodieYard.json";
 import walkleyYard from "../../data/walkleyYard.json";
 import GeoJSON from "geojson";
 
+
 const Map = ReactMapboxGl({
-  accessToken:
-    "pk.eyJ1IjoiZGVsbGlzZCIsImEiOiJjazBqaXVveXEwN3k3M25tcjRzZHJkZmUzIn0.m0p9C09Vm2V-YVtQEgSQtg",
+  accessToken: MAPBOX_KEY,
   customAttribution: ["Data: City of Ottawa"],
   hash: true,
   antialias: true,

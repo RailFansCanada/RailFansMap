@@ -1,13 +1,17 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
+const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
+const webpack = require("webpack");
 
 module.exports = {
   devtool: "source-map",
 
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
-    plugins: [PnpWebpackPlugin],
+    plugins: [
+      PnpWebpackPlugin,
+    ],
   },
   resolveLoader: {
     plugins: [PnpWebpackPlugin.moduleLoader(module)],
@@ -62,6 +66,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
+    }),
+    new webpack.DefinePlugin({
+      MAPBOX_KEY: `"${dotenv.parsed.MAPBOX_KEY}"`,
     }),
   ],
 };

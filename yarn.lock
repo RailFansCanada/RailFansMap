@@ -2080,6 +2080,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "dotenv@npm:8.2.0"
+  checksum: 3/16cb89cbd7b98b053899b8aba8c5044c8fb61a2db8a81fe70360b75035fce5fed53bd7a34d772be717d0880c0321122a4c09423f518025e1b52d96791521b1a7
+  languageName: node
+  linkType: hard
+
 "duplexify@npm:^3.4.2, duplexify@npm:^3.6.0":
   version: 3.7.1
   resolution: "duplexify@npm:3.7.1"
@@ -4766,6 +4773,7 @@ fsevents@~2.1.2:
     "@types/react-map-gl": ^5.1.1
     "@types/react-virtualized": ^9.21.8
     css-loader: ^3.5.3
+    dotenv: ^8.2.0
     file-loader: ^6.0.0
     html-webpack-plugin: ^4.3.0
     mapbox-gl: ^1.8.1
