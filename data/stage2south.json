@@ -2749,7 +2749,8 @@
         "name": "South Keys",
         "type": "station-label",
         "url": "trillium-stations/south-keys",
-        "color": "#76BE43"
+        "color": "#76BE43",
+        "major": true
       }
     },
     {
@@ -2809,7 +2810,8 @@
         "name": "Carleton",
         "type": "station-label",
         "url": "trillium-stations/carleton",
-        "color": "#76BE43"
+        "color": "#76BE43",
+        "major": true
       }
     },
     {
@@ -2854,7 +2856,8 @@
         "name": "Bayview",
         "type": "station-label",
         "url": "interchange-stations/bayview",
-        "color": "#76BE43"
+        "color": "#76BE43",
+        "major": true
       }
     },
     {
@@ -2899,7 +2902,8 @@
         "name": "Limebank",
         "type": "station-label",
         "url": "trillium-stations/limebank",
-        "color": "#76BE43"
+        "color": "#76BE43",
+        "major": true
       }
     },
     {
@@ -2913,7 +2917,8 @@
         "type": "station-label",
         "name": "Airport",
         "url": "trillium-stations/airport-link/airport",
-        "color": "#76BE43"
+        "color": "#76BE43",
+        "major": true
       }
     },
     {

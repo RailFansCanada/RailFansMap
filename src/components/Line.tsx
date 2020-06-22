@@ -132,7 +132,56 @@ export const Line = ({ name, data, color }: LineProps) => {
         type="symbol"
         sourceId={name}
         filter={["==", "type", "station-label"]}
-        minzoom={10}
+        minZoom={11}
+        layout={
+          {
+            "text-field": "{name}",
+            "text-anchor": "left",
+            "text-offset": [0.75, 0],
+            "text-optional": true,
+            "icon-optional": false,
+            "icon-allow-overlap": true,
+            "icon-size": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              10,
+              0.5,
+              13.5,
+              1,
+            ],
+            // "text-transform": "uppercase",
+            "text-font": ["Raleway Bold"],
+            "text-size": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              10,
+              12,
+              15,
+              18,
+              18,
+              26,
+            ],
+          } as AnyLayout
+        }
+        paint={{
+          "text-halo-width": 2,
+          "text-halo-blur": 0,
+          // "text-color": "#FFFFFF",
+          // "text-halo-color": ["get", "color"]
+          "text-color": color,
+          "text-halo-color": "#FFFFFF",
+        }}
+      />
+      <Layer
+        id={`${name}-labels-major`}
+        beforeId="symbol-mask"
+        type="symbol"
+        sourceId={name}
+        filter={["all", ["==", "type", "station-label"], ["==", "major", true]]}
+        maxZoom={11}
+        minZoom={9}
         layout={
           {
             "text-field": "{name}",

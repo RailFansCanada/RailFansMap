@@ -84,9 +84,12 @@ export const OverviewMap = () => {
       }}
       onClick={handleClick}
       onMouseMove={handleMouseMove}
+      center={[-75.6579, 45.3629]}
+      zoom={[11]}
+      bearing={[-30]}
     >
-      <ZoomControl />
-      <RotationControl />
+      <ZoomControl position="bottom-right"/>
+      <RotationControl position="bottom-right" />
       {/* Layer z-ordering hack */}
       <Source
         id="blank"
@@ -162,6 +165,31 @@ export const OverviewMap = () => {
         name="stage3kanata"
         color="#5202F1"
       />
+      <Layer
+        id="3d-buildings"
+        sourceId="composite"
+        sourceLayer="building"
+        filter={["==", "extrude", "true"]}
+        type="fill-extrusion"
+        minZoom={15}
+        paint={{
+          'fill-extrusion-color': "#FFFFFF",
+
+          // use an 'interpolate' expression to add a smooth transition effect to the
+          // buildings as the user zooms in
+          'fill-extrusion-height': [
+              "interpolate", ["linear"], ["zoom"],
+              15, 0,
+              15.05, ["get", "height"]
+          ],
+          'fill-extrusion-base': [
+              "interpolate", ["linear"], ["zoom"],
+              15, 0,
+              15.05, ["get", "min_height"]
+          ],
+          'fill-extrusion-opacity': .6
+      }}
+        />
     </Map>
   );
 };
