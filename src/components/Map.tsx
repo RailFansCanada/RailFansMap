@@ -28,7 +28,16 @@ import belfastYard from "../../data/belfastYard.json";
 import moodieYard from "../../data/moodieYard.json";
 import walkleyYard from "../../data/walkleyYard.json";
 import GeoJSON from "geojson";
+import { State, AppTheme, MapStyle } from "../redux";
+import { connect } from "react-redux";
+import { Theme, makeStyles } from "@material-ui/core";
+import { useIsDarkTheme } from "../app/utils";
 
+export interface OverviewMapProps {
+  readonly show3DBuildings: boolean;
+  readonly appTheme: AppTheme;
+  readonly mapStyle: MapStyle;
+}
 
 const Map = ReactMapboxGl({
   accessToken: MAPBOX_KEY,
@@ -37,7 +46,14 @@ const Map = ReactMapboxGl({
   antialias: true,
 });
 
-export const OverviewMap = () => {
+export const OverviewMapComponent = (props: OverviewMapProps) => {
+  const [location, setLocation] = React.useState<[number, number]>([
+    -75.6579,
+    45.3629,
+  ]);
+  const [zoom, setZoom] = React.useState<[number]>([11]);
+  const [bearing, setBearing] = React.useState<[number]>([-30]);
+
   const handleClick = (
     map: mapboxgl.Map,
     event: React.SyntheticEvent<any, Event> &
@@ -75,20 +91,41 @@ export const OverviewMap = () => {
     }
   };
 
+  const isDarkTheme = useIsDarkTheme(props.appTheme);
+
+  const [style, setStyle] = React.useState("mapbox://styles/mapbox/light-v10");
+
+  React.useEffect(() => {
+    if (props.mapStyle === "satellite") {
+      setStyle("mapbox://styles/mapbox/satellite-streets-v11");
+    } else {
+      setStyle(
+        isDarkTheme
+          ? "mapbox://styles/mapbox/dark-v10"
+          : "mapbox://styles/mapbox/light-v10"
+      );
+    }
+  }, [isDarkTheme, props.appTheme, props.mapStyle]);
+
   return (
     <Map
-      style="mapbox://styles/mapbox/light-v10"
+      style={style}
       containerStyle={{
         height: "100vh",
         width: "100vw",
       }}
       onClick={handleClick}
       onMouseMove={handleMouseMove}
-      center={[-75.6579, 45.3629]}
-      zoom={[11]}
-      bearing={[-30]}
+      center={location}
+      zoom={zoom}
+      bearing={bearing}
+      onZoomEnd={(map) => setZoom([map.getZoom()])}
+      onDragEnd={(map) =>
+        setLocation(map.getCenter().toArray() as [number, number])
+      }
+      onRotateEnd={(map) => setBearing([map.getBearing()])}
     >
-      <ZoomControl position="bottom-right"/>
+      <ZoomControl position="bottom-right" />
       <RotationControl position="bottom-right" />
       {/* Layer z-ordering hack */}
       <Source
@@ -99,6 +136,42 @@ export const OverviewMap = () => {
           data: { type: "FeatureCollection", features: [] },
         }}
       ></Source>
+      {props.show3DBuildings && (
+        <Layer
+          id="3d-buildings"
+          sourceId="composite"
+          sourceLayer="building"
+          filter={["==", "extrude", "true"]}
+          type="fill-extrusion"
+          before="circle-mask"
+          minZoom={15}
+          paint={{
+            "fill-extrusion-color": "#FFFFFF",
+
+            // use an 'interpolate' expression to add a smooth transition effect to the
+            // buildings as the user zooms in
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "height"],
+            ],
+            "fill-extrusion-base": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "min_height"],
+            ],
+            "fill-extrusion-opacity": 0.6,
+          }}
+        />
+      )}
       <Layer
         sourceId="blank"
         type="fill"
@@ -165,31 +238,14 @@ export const OverviewMap = () => {
         name="stage3kanata"
         color="#5202F1"
       />
-      <Layer
-        id="3d-buildings"
-        sourceId="composite"
-        sourceLayer="building"
-        filter={["==", "extrude", "true"]}
-        type="fill-extrusion"
-        minZoom={15}
-        paint={{
-          'fill-extrusion-color': "#FFFFFF",
-
-          // use an 'interpolate' expression to add a smooth transition effect to the
-          // buildings as the user zooms in
-          'fill-extrusion-height': [
-              "interpolate", ["linear"], ["zoom"],
-              15, 0,
-              15.05, ["get", "height"]
-          ],
-          'fill-extrusion-base': [
-              "interpolate", ["linear"], ["zoom"],
-              15, 0,
-              15.05, ["get", "min_height"]
-          ],
-          'fill-extrusion-opacity': .6
-      }}
-        />
     </Map>
   );
 };
+
+const mapStateToProps = (state: State) => ({
+  show3DBuildings: state.show3DBuildings,
+  appTheme: state.appTheme,
+  mapStyle: state.mapStyle,
+});
+
+export const OverviewMap = connect(mapStateToProps)(OverviewMapComponent);

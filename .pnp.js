@@ -34,6 +34,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.10.0"
       ],
       [
+        "@material-ui/icons",
+        "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.9.1"
+      ],
+      [
         "@reduxjs/toolkit",
         "npm:1.3.6"
       ],
@@ -62,8 +66,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:5.2.4"
       ],
       [
+        "@types/react-redux",
+        "npm:7.1.9"
+      ],
+      [
         "@types/react-virtualized",
         "npm:9.21.10"
+      ],
+      [
+        "clsx",
+        "npm:1.1.1"
       ],
       [
         "css-loader",
@@ -154,6 +166,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@material-ui/core", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.10.0"],
+            ["@material-ui/icons", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.9.1"],
             ["@reduxjs/toolkit", "npm:1.3.6"],
             ["@types/d3-ease", "npm:1.0.9"],
             ["@types/geojson", "npm:7946.0.7"],
@@ -161,7 +174,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:16.9.35"],
             ["@types/react-dom", "npm:16.9.8"],
             ["@types/react-map-gl", "npm:5.2.4"],
+            ["@types/react-redux", "npm:7.1.9"],
             ["@types/react-virtualized", "npm:9.21.10"],
+            ["clsx", "npm:1.1.1"],
             ["css-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:3.5.3"],
             ["dotenv", "npm:8.2.0"],
             ["file-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.0.0"],
@@ -315,6 +330,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-transition-group", "virtual:b1b587b48c705e9f020e4daa0f1ba2aba625c0b7edcbec1eb512fb95a254ab8d403207dc4c7ed7bdfe7a98941a66081d1c7ddb08e8a27e71fba9002b9337b728#npm:4.4.1"]
           ],
           "packagePeers": [
+            "@types/react",
+            "react",
+            "react-dom"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@material-ui/icons", [
+        ["virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.9.1", {
+          "packageLocation": "./.yarn/$$virtual/@material-ui-icons-virtual-48e60270c1/0/cache/@material-ui-icons-npm-4.9.1-b72f1f7c51-3.zip/node_modules/@material-ui/icons/",
+          "packageDependencies": [
+            ["@material-ui/icons", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.9.1"],
+            ["@babel/runtime", "npm:7.10.0"],
+            ["@material-ui/core", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.10.0"],
+            ["@types/react", "npm:16.9.35"],
+            ["react", "npm:16.13.1"],
+            ["react-dom", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:16.13.1"]
+          ],
+          "packagePeers": [
+            "@material-ui/core",
             "@types/react",
             "react",
             "react-dom"
@@ -505,6 +540,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/hoist-non-react-statics", [
+        ["npm:3.3.1", {
+          "packageLocation": "./.yarn/cache/@types-hoist-non-react-statics-npm-3.3.1-c0081332b2-3.zip/node_modules/@types/hoist-non-react-statics/",
+          "packageDependencies": [
+            ["@types/hoist-non-react-statics", "npm:3.3.1"],
+            ["@types/react", "npm:16.9.35"],
+            ["hoist-non-react-statics", "npm:3.3.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/html-minifier-terser", [
         ["npm:5.1.0", {
           "packageLocation": "./.yarn/cache/@types-html-minifier-terser-npm-5.1.0-0424fa430e-3.zip/node_modules/@types/html-minifier-terser/",
@@ -581,6 +627,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mapbox-gl", "npm:0.54.5"],
             ["@types/react", "npm:16.9.35"],
             ["@types/viewport-mercator-project", "npm:6.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/react-redux", [
+        ["npm:7.1.9", {
+          "packageLocation": "./.yarn/cache/@types-react-redux-npm-7.1.9-f1ca2ff600-3.zip/node_modules/@types/react-redux/",
+          "packageDependencies": [
+            ["@types/react-redux", "npm:7.1.9"],
+            ["@types/hoist-non-react-statics", "npm:3.3.1"],
+            ["@types/react", "npm:16.9.35"],
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["redux", "npm:4.0.5"]
           ],
           "linkType": "HARD",
         }]
@@ -1786,6 +1845,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/clsx-npm-1.1.0-0bdbad31e3-3.zip/node_modules/clsx/",
           "packageDependencies": [
             ["clsx", "npm:1.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/clsx-npm-1.1.1-362bec0598-3.zip/node_modules/clsx/",
+          "packageDependencies": [
+            ["clsx", "npm:1.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -5551,6 +5617,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["otrainmap", "workspace:."],
             ["@material-ui/core", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.10.0"],
+            ["@material-ui/icons", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.9.1"],
             ["@reduxjs/toolkit", "npm:1.3.6"],
             ["@types/d3-ease", "npm:1.0.9"],
             ["@types/geojson", "npm:7946.0.7"],
@@ -5558,7 +5625,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:16.9.35"],
             ["@types/react-dom", "npm:16.9.8"],
             ["@types/react-map-gl", "npm:5.2.4"],
+            ["@types/react-redux", "npm:7.1.9"],
             ["@types/react-virtualized", "npm:9.21.10"],
+            ["clsx", "npm:1.1.1"],
             ["css-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:3.5.3"],
             ["dotenv", "npm:8.2.0"],
             ["file-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.0.0"],

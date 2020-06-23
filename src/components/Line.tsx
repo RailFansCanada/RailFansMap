@@ -101,7 +101,7 @@ export const Line = ({ name, data, color }: LineProps) => {
         paint={{
           "line-color": color,
           "line-dasharray": [3, 3],
-          "line-width": 1.5
+          "line-width": 1.5,
         }}
       />
       <Layer
@@ -163,15 +163,16 @@ export const Line = ({ name, data, color }: LineProps) => {
               18,
               26,
             ],
+            "text-transform": "uppercase",
           } as AnyLayout
         }
         paint={{
-          "text-halo-width": 2,
-          "text-halo-blur": 0,
-          // "text-color": "#FFFFFF",
-          // "text-halo-color": ["get", "color"]
-          "text-color": color,
-          "text-halo-color": "#FFFFFF",
+          "text-halo-width": 50,
+          "text-halo-blur": 50,
+          "text-color": "#FFFFFF",
+          "text-halo-color": color,
+          //"text-color": color,
+          //"text-halo-color": "#FFFFFF",
         }}
       />
       <Layer
@@ -199,7 +200,7 @@ export const Line = ({ name, data, color }: LineProps) => {
               13.5,
               1,
             ],
-            // "text-transform": "uppercase",
+            "text-transform": "uppercase",
             "text-font": ["Raleway Bold"],
             "text-size": [
               "interpolate",
@@ -215,12 +216,10 @@ export const Line = ({ name, data, color }: LineProps) => {
           } as AnyLayout
         }
         paint={{
-          "text-halo-width": 2,
-          "text-halo-blur": 0,
-          // "text-color": "#FFFFFF",
-          // "text-halo-color": ["get", "color"]
-          "text-color": color,
-          "text-halo-color": "#FFFFFF",
+          "text-halo-width": 50,
+          "text-halo-blur": 50,
+          "text-color": "#FFFFFF",
+          "text-halo-color": color,
         }}
       />
     </>

@@ -69,13 +69,14 @@ export const RailYard = ({ position, name, data }: RailYardProps) => {
               18,
               26,
             ],
+            "text-transform": "uppercase",
           } as AnyLayout
         }
         paint={{
-          "text-halo-width": 2,
-          "text-halo-blur": 0,
-          "text-color": "#212121",
-          "text-halo-color": "#FFFFFF",
+          "text-halo-width": 30,
+          "text-halo-blur": 30,
+          "text-color": "#FFFFFF",
+          "text-halo-color": "#212121",
         }}
       />
     </>

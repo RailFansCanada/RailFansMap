@@ -9,3 +9,7 @@ body {
 #content {
   height: 100%;
 }
+
+::selection {
+  background: #f44336;
+}
