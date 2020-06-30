@@ -28,7 +28,7 @@ import belfastYard from "../../data/belfastYard.json";
 import moodieYard from "../../data/moodieYard.json";
 import walkleyYard from "../../data/walkleyYard.json";
 import GeoJSON from "geojson";
-import { State, AppTheme, MapStyle } from "../redux";
+import { State, AppTheme, MapStyle, LineState } from "../redux";
 import { connect } from "react-redux";
 import { Theme, makeStyles } from "@material-ui/core";
 import { useIsDarkTheme } from "../app/utils";
@@ -37,6 +37,7 @@ export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
   readonly appTheme: AppTheme;
   readonly mapStyle: MapStyle;
+  readonly lines: LineState;
 }
 
 const Map = ReactMapboxGl({
@@ -193,51 +194,67 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
         paint={{}}
         layout={{}}
       />
-      <RailYard
-        data={belfastYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="Belfast Yard"
-        position={[-75.64087, 45.41546]}
-      />
-      <RailYard
-        data={moodieYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="Moodie Yard"
-        position={[-75.84918, 45.33587]}
-      />
-      <RailYard
-        data={walkleyYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="Walkley Yard"
-        position={[-75.65288, 45.36539]}
-      />
-      <Line
-        data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="stage3barrhaven"
-        color="#C8963E"
-      />
-      <Line
-        data={stage2south as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="stage2south"
-        color="#76BE43"
-      />
-      <Line
-        data={stage2east as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="stage2east"
-        color="#D62937"
-      />
-      <Line
-        data={stage2west as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="stage2west"
-        color="#D62937"
-      />
-      <Line
-        data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="stage1"
-        color="#D62937"
-      />
-      <Line
-        data={stage3kanata as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-        name="stage3kanata"
-        color="#5202F1"
-      />
+
+      {props.lines.barrhavenExtension && (
+        <Line
+          data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+          name="stage3barrhaven"
+          color="#C8963E"
+        />
+      )}
+
+      {props.lines.trilliumLine && (
+        <>
+          <RailYard
+            data={walkleyYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="Walkley Yard"
+            position={[-75.65288, 45.36539]}
+          />
+          <Line
+            data={stage2south as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="stage2south"
+            color="#76BE43"
+          />
+        </>
+      )}
+
+      {props.lines.confederationLine && (
+        <>
+          <RailYard
+            data={belfastYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="Belfast Yard"
+            position={[-75.64087, 45.41546]}
+          />
+          <RailYard
+            data={moodieYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="Moodie Yard"
+            position={[-75.84918, 45.33587]}
+          />
+          <Line
+            data={stage2east as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="stage2east"
+            color="#D62937"
+          />
+          <Line
+            data={stage2west as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="stage2west"
+            color="#D62937"
+          />
+          <Line
+            data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="stage1"
+            color="#D62937"
+          />
+        </>
+      )}
+
+      {props.lines.kanataExtension && (
+        <Line
+          data={stage3kanata as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+          name="stage3kanata"
+          color="#5202F1"
+        />
+      )}
     </Map>
   );
 };
@@ -246,6 +263,7 @@ const mapStateToProps = (state: State) => ({
   show3DBuildings: state.show3DBuildings,
   appTheme: state.appTheme,
   mapStyle: state.mapStyle,
+  lines: state.lines,
 });
 
 export const OverviewMap = connect(mapStateToProps)(OverviewMapComponent);

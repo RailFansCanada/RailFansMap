@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: theme.palette.primary.main,
-    backgroundColor: fade(theme.palette.primary.main, 0.1),
+    backgroundColor: fade(theme.palette.primary.main, 0.2),
   },
 }));
 

@@ -18,6 +18,8 @@ import {
   setAppTheme,
   MapStyle,
   setMapStyle,
+  LineState,
+  setShowLine,
 } from "../../redux";
 import { connect } from "react-redux";
 import { Close } from "@material-ui/icons";
@@ -36,6 +38,9 @@ interface SettingsDrawerProps {
 
   readonly mapStyle: MapStyle;
   readonly setMapStyle: typeof setMapStyle;
+
+  readonly lines: LineState;
+  readonly setShowLine: typeof setShowLine;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -124,6 +129,52 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
       </AppBar>
       <div className={classes.layerCardContainer}>
         <Typography className={classes.sectionHeader} variant="h6">
+          O-Train Lines
+        </Typography>
+
+        <LayerOption
+          primary="Confederation Line"
+          secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
+          selected={props.lines.confederationLine}
+          onClick={() =>
+            props.setShowLine([
+              "confederationLine",
+              !props.lines.confederationLine,
+            ])
+          }
+        />
+
+        <LayerOption
+          primary="Trillium Line"
+          secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
+          selected={props.lines.trilliumLine}
+          onClick={() =>
+            props.setShowLine(["trilliumLine", !props.lines.trilliumLine])
+          }
+        />
+
+        <LayerOption
+          primary="Kanata Extension"
+          secondary="The proposed extension of the Confederation Line into Kanata"
+          selected={props.lines.kanataExtension}
+          onClick={() =>
+            props.setShowLine(["kanataExtension", !props.lines.kanataExtension])
+          }
+        />
+
+        <LayerOption
+          primary="Barrhaven Extension"
+          secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
+          selected={props.lines.barrhavenExtension}
+          onClick={() =>
+            props.setShowLine([
+              "barrhavenExtension",
+              !props.lines.barrhavenExtension,
+            ])
+          }
+        />
+
+        <Typography className={classes.sectionHeader} variant="h6">
           Basemap
         </Typography>
         <LayerOption
@@ -165,6 +216,7 @@ const mapStateToProps = (state: State) => ({
   show3DBuildings: state.show3DBuildings,
   appTheme: state.appTheme,
   mapStyle: state.mapStyle,
+  lines: state.lines,
 });
 
 const mapDispatchToProps = {
@@ -172,6 +224,7 @@ const mapDispatchToProps = {
   setShow3DBuildings,
   setAppTheme,
   setMapStyle,
+  setShowLine,
 };
 
 export const SettingsDrawer = connect(
