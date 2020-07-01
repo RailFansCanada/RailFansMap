@@ -199,9 +199,6 @@ export const BarrhavenOptionComponent = (props: BarrhavenOptionProps) => {
 const useCheckboxStyles = makeStyles((theme: Theme) => ({
   root: {
     color: theme.palette.text.primary,
-    "&$checked": {
-      color: theme.palette.text.primary,
-    },
   },
 }));
 
