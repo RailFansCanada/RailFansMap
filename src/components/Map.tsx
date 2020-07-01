@@ -1,12 +1,4 @@
 import * as React from "react";
-// import ReactMapGL, {
-//   ViewState,
-//   LinearInterpolator,
-//   NavigationControl,
-//   Layer,
-//   Source,
-//   FlyToInterpolator,
-// } from "react-map-gl";
 
 import ReactMapboxGl, { Source, Layer } from "react-mapbox-gl";
 
@@ -26,6 +18,7 @@ import GeoJSON from "geojson";
 import { State, AppTheme, MapStyle, LineState, setTargetZoom } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
+import { BarrhavenLine } from "./BarrhavenLine";
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -207,7 +200,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
         />
       )}
       {props.lines.barrhavenExtension && (
-        <Line
+        <BarrhavenLine
           data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
           name="stage3barrhaven"
           color={blue}

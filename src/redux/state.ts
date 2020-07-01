@@ -2,7 +2,7 @@ export type AppTheme = "system" | "light" | "dark";
 
 export type MapStyle = "vector" | "satellite";
 
-export type Alternatives = "1" | "2" | "3" | "3A" | "4" | "5" | "6";
+export type Alternatives = "1" | "2" | "3" | "A" | "4" | "5" | "6";
 
 export interface State {
   readonly drawerOpen: boolean;

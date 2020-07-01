@@ -161,9 +161,9 @@ export const BarrhavenOptionComponent = (props: BarrhavenOptionProps) => {
           <AlternativeItem
             primary="Alternative 3A"
             secondary="West Hunt Club Station on East side of Woodroffe Avenue"
-            checked={props.alternatives.includes("3A")}
+            checked={props.alternatives.includes("A")}
             onCheck={(checked) => {
-              setAlternative(checked, "3A");
+              setAlternative(checked, "A");
             }}
           />
           <AlternativeItem
