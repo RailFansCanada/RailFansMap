@@ -4,3 +4,15 @@
 # Development-only files
 converter/
 dev.html
+
+node_modules
+dist
+
+.vscode/
+
+local.env
+
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins

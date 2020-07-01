@@ -1,0 +1,1 @@
+declare const MAPBOX_KEY: string;
