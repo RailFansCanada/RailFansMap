@@ -9,6 +9,7 @@ import {
   Typography,
   useTheme,
   List,
+  Divider,
 } from "@material-ui/core";
 import {
   State,
@@ -32,6 +33,7 @@ import Scrollbars from "react-custom-scrollbars";
 import confederationLine from "../../images/confederation.svg";
 import trilliumLine from "../../images/trillium.svg";
 import { useIsDarkTheme } from "../../app/utils";
+import { BarrhavenOption } from "./BarrhavenOption";
 
 interface SettingsDrawerProps {
   readonly open: boolean;
@@ -69,17 +71,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.primary,
   },
   layerCardContainer: {
-    padding: theme.spacing(1, 0),
+    display: "flex",
+    flexGrow: 1,
   },
   appBar: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
+    display: "flex",
+    flexGrow: 0,
   },
   sectionHeader: {
     width: "100%",
-    padding: theme.spacing(1, 2),
-    margin: theme.spacing(1, 0),
-    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(0, 2),
+    margin: theme.spacing(2, 0, 0, 0),
     boxSizing: "border-box",
+    display: "block",
   },
 }));
 
@@ -124,25 +129,25 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
       open={props.open}
       elevation={4}
     >
-      <Scrollbars>
-        <AppBar className={classes.appBar} position="static" elevation={0}>
-          <Toolbar>
-            <IconButton
-              className={classes.closeButton}
-              edge="start"
-              onClick={() => {
-                props.setDrawerOpen(false);
-              }}
-            >
-              <Close />
-            </IconButton>
-            <Typography className={classes.title} variant="h6">
-              Map Settings
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <div className={classes.layerCardContainer}>
-          <Typography className={classes.sectionHeader} variant="h6">
+      <AppBar className={classes.appBar} position="static">
+        <Toolbar>
+          <IconButton
+            className={classes.closeButton}
+            edge="start"
+            onClick={() => {
+              props.setDrawerOpen(false);
+            }}
+          >
+            <Close />
+          </IconButton>
+          <Typography className={classes.title} variant="h6">
+            Map Settings
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.layerCardContainer}>
+        <Scrollbars>
+          <Typography className={classes.sectionHeader} variant="overline">
             O-Train Lines
           </Typography>
 
@@ -185,7 +190,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             tint={blue}
           />
 
-          <LayerOption
+          <BarrhavenOption
             primary="Barrhaven Extension"
             secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
             selected={props.lines.barrhavenExtension}
@@ -198,8 +203,8 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             imageUrl={confederationLine}
             tint={blue}
           />
-
-          <Typography className={classes.sectionHeader} variant="h6">
+          <Divider />
+          <Typography className={classes.sectionHeader} variant="overline">
             Basemap
           </Typography>
           <LayerOption
@@ -214,7 +219,9 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             selected={props.mapStyle === "satellite"}
             onClick={() => props.setMapStyle("satellite")}
           />
-          <Typography className={classes.sectionHeader} variant="h6">
+          <Divider />
+
+          <Typography className={classes.sectionHeader} variant="overline">
             Other Settings
           </Typography>
 
@@ -225,7 +232,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               onToggle={(checked) => props.setShow3DBuildings(checked)}
             />
             <SwitchOption
-              primary="Show High Contrast Labels"
+              primary="High Contrast Labels"
               checked={props.accessibleLabels}
               onToggle={(checked) => props.setUseAccessibleLabels(checked)}
             />
@@ -236,8 +243,8 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               onChange={handleThemeChange}
             />
           </List>
-        </div>
-      </Scrollbars>
+        </Scrollbars>
+      </div>
     </Drawer>
   );
 };

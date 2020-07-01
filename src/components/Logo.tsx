@@ -3,8 +3,8 @@ import { AppTheme, State } from "../redux";
 import { useIsDarkTheme } from "../app/utils";
 import { Theme, makeStyles } from "@material-ui/core";
 
-import logoLight from "../images/logo_light.svg";
-import logoDark from "../images/logo_dark.svg";
+import logoLight from "../images/logoLight.svg";
+import logoDark from "../images/logoDark.svg";
 import { connect } from "react-redux";
 
 interface LogoProps {
@@ -14,9 +14,9 @@ interface LogoProps {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     position: "fixed",
-    width: 72,
+    width: 88,
     bottom: theme.spacing(2),
-    left: "calc(50% - 37px)",
+    left: "calc(50% - 44px)",
   },
 }));
 

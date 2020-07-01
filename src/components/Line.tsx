@@ -36,7 +36,11 @@ export const Line = React.memo(
           sourceId={name}
           before="content-mask"
           type="fill"
-          filter={["==", "type", "tunnel"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "tunnel"],
+          ]}
           minzoom={14}
           paint={{
             "fill-color": color,
@@ -56,7 +60,11 @@ export const Line = React.memo(
           before="content-mask"
           type="line"
           sourceId={name}
-          filter={["==", "type", "tracks"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "tracks"],
+          ]}
           layout={{
             "line-join": "round",
             "line-cap": "round",
@@ -71,7 +79,11 @@ export const Line = React.memo(
           before="content-mask"
           type="line"
           sourceId={name}
-          filter={["==", "type", "overpass"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "overpass"],
+          ]}
           minzoom={14}
           layout={{
             "line-join": "round",
@@ -96,7 +108,11 @@ export const Line = React.memo(
           before="content-mask"
           type="fill"
           sourceId={name}
-          filter={["==", "type", "station-platforms"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "station-platforms"],
+          ]}
           paint={{
             "fill-color": color,
             "fill-opacity": 0.68,
@@ -107,7 +123,11 @@ export const Line = React.memo(
           before="content-mask"
           type="line"
           sourceId={name}
-          filter={["==", "type", "station-platforms-future"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "station-platforms-future"],
+          ]}
           paint={{
             "line-color": color,
             "line-dasharray": [3, 3],
@@ -119,7 +139,11 @@ export const Line = React.memo(
           before="circle-mask"
           type="circle"
           sourceId={name}
-          filter={["==", "type", "station-label"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "station-label"],
+          ]}
           layout={{}}
           paint={{
             "circle-color": "#ffffff",
@@ -141,7 +165,11 @@ export const Line = React.memo(
           before="symbol-mask"
           type="symbol"
           sourceId={name}
-          filter={["==", "type", "station-label"]}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "station-label"],
+          ]}
           minZoom={11}
           layout={
             {
@@ -192,8 +220,9 @@ export const Line = React.memo(
           sourceId={name}
           filter={[
             "all",
-            ["==", "type", "station-label"],
-            ["==", "major", true],
+            ["==", ["get", "type"], "station-label"],
+            ["==", ["get", "major"], true],
+            ["==", ["get", "alternatives"], null],
           ]}
           maxZoom={11}
           minZoom={9}

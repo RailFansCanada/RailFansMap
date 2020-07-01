@@ -5,7 +5,7 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "ES2019",
     "jsx": "react",
     "resolveJsonModule": true
   }

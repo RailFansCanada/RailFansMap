@@ -9,6 +9,8 @@ import {
   setTargetZoom,
   zoomIn,
   zoomOut,
+  enableAlternative,
+  disableAlternative,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -25,6 +27,7 @@ const initialState: State = {
     barrhavenExtension: false,
   },
   targetZoom: 11,
+  barrhavenAlternatives: ["1"],
 };
 
 export const reducer = createReducer<State>(initialState, (builder) => {
@@ -63,5 +66,13 @@ export const reducer = createReducer<State>(initialState, (builder) => {
       if (state.targetZoom < 0) {
         state.targetZoom = 0;
       }
+    })
+    .addCase(enableAlternative, (state, action) => {
+      state.barrhavenAlternatives.push(action.payload);
+    })
+    .addCase(disableAlternative, (state, action) => {
+      state.barrhavenAlternatives = state.barrhavenAlternatives.filter(
+        (value) => value !== action.payload
+      );
     });
 });

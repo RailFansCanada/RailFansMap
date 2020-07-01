@@ -2,6 +2,8 @@ export type AppTheme = "system" | "light" | "dark";
 
 export type MapStyle = "vector" | "satellite";
 
+export type Alternatives = "1" | "2" | "3" | "3A" | "4" | "5" | "6";
+
 export interface State {
   readonly drawerOpen: boolean;
 
@@ -13,6 +15,8 @@ export interface State {
   readonly lines: LineState;
 
   readonly targetZoom: number;
+
+  readonly barrhavenAlternatives: Alternatives[];
 }
 
 export interface LineState {

@@ -42,16 +42,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   content: {
     display: "flex",
     flexDirection: "column",
+    flexGrow: 1,
   },
   selected: {
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: (props: any) => props.tint,
-    backgroundColor: (props: any) => fade(props.tint, 0.2),
+    backgroundColor: (props: any) => fade(props.tint, 0.1),
   },
   imagery: {
     display: "flex",
-    flexGrow: 1,
+    flexGrow: 0,
     flexShrink: 0,
     width: 88,
     height: 88,
@@ -65,9 +66,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       height: "100%",
     },
+    border: `1px solid ${theme.palette.text.disabled}`,
   },
   imagerySelected: {
     filter: "grayscale(0)",
+    borderColor: (props) => (props as any).tint,
   },
 }));
 
