@@ -19,8 +19,8 @@ interface ControlsProps {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     position: "fixed",
-    right: theme.spacing(2),
-    top: theme.spacing(2),
+    right: theme.spacing(1),
+    top: theme.spacing(1),
   },
 }));
 

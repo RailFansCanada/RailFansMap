@@ -11,6 +11,8 @@ export interface State {
   readonly mapStyle: MapStyle;
 
   readonly lines: LineState;
+
+  readonly targetZoom: number;
 }
 
 export interface LineState {

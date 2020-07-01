@@ -6,6 +6,9 @@ import {
   setMapStyle,
   setShowLine,
   setUseAccessibleLabels,
+  setTargetZoom,
+  zoomIn,
+  zoomOut,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -21,6 +24,7 @@ const initialState: State = {
     kanataExtension: false,
     barrhavenExtension: false,
   },
+  targetZoom: 11,
 };
 
 export const reducer = createReducer<State>(initialState, (builder) => {
@@ -43,5 +47,21 @@ export const reducer = createReducer<State>(initialState, (builder) => {
     .addCase(setShowLine, (state, action) => {
       const [key, value] = action.payload;
       state.lines[key] = value;
+    })
+
+    .addCase(setTargetZoom, (state, action) => {
+      state.targetZoom = action.payload;
+    })
+    .addCase(zoomIn, (state) => {
+      state.targetZoom += 0.5;
+      if (state.targetZoom > 20) {
+        state.targetZoom = 20;
+      }
+    })
+    .addCase(zoomOut, (state) => {
+      state.targetZoom -= 0.5;
+      if (state.targetZoom < 0) {
+        state.targetZoom = 0;
+      }
     });
 });

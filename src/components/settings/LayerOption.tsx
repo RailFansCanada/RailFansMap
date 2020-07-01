@@ -8,6 +8,8 @@ import {
   CardActionArea,
   fade,
   Hidden,
+  ThemeProvider,
+  useTheme,
 } from "@material-ui/core";
 import clsx from "clsx";
 
@@ -21,6 +23,7 @@ export interface LayerOptionProps {
   readonly onClick?: () => void;
 
   readonly imageUrl?: string;
+  readonly tint?: string;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -43,8 +46,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   selected: {
     borderWidth: 1,
     borderStyle: "solid",
-    borderColor: theme.palette.primary.main,
-    backgroundColor: fade(theme.palette.primary.main, 0.2),
+    borderColor: (props: any) => props.tint,
+    backgroundColor: (props: any) => fade(props.tint, 0.2),
   },
   imagery: {
     display: "flex",
@@ -69,7 +72,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const LayerOption = (props: LayerOptionProps) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const classes = useStyles({
+    tint: props.tint ?? theme.palette.secondary.main,
+  });
   return (
     <Card
       className={clsx(classes.root, { [classes.selected]: props.selected })}

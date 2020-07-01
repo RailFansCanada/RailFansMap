@@ -8,12 +8,7 @@ import * as React from "react";
 //   FlyToInterpolator,
 // } from "react-map-gl";
 
-import ReactMapboxGl, {
-  Source,
-  Layer,
-  ZoomControl,
-  RotationControl,
-} from "react-mapbox-gl";
+import ReactMapboxGl, { Source, Layer } from "react-mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Line } from "./Line";
@@ -28,9 +23,8 @@ import belfastYard from "../../data/belfastYard.json";
 import moodieYard from "../../data/moodieYard.json";
 import walkleyYard from "../../data/walkleyYard.json";
 import GeoJSON from "geojson";
-import { State, AppTheme, MapStyle, LineState } from "../redux";
+import { State, AppTheme, MapStyle, LineState, setTargetZoom } from "../redux";
 import { connect } from "react-redux";
-import { Theme, makeStyles } from "@material-ui/core";
 import { useIsDarkTheme } from "../app/utils";
 
 export interface OverviewMapProps {
@@ -39,6 +33,9 @@ export interface OverviewMapProps {
   readonly mapStyle: MapStyle;
   readonly lines: LineState;
   readonly accessibleLabels: boolean;
+
+  readonly targetZoom: number;
+  readonly setTargetZoom: typeof setTargetZoom;
 }
 
 const Map = ReactMapboxGl({
@@ -95,7 +92,13 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
-  const [style, setStyle] = React.useState("mapbox://styles/mapbox/light-v10");
+  const [style, setStyle] = React.useState(
+    props.mapStyle === "satellite"
+      ? "mapbox://styles/mapbox/satellite-streets-v11"
+      : isDarkTheme
+      ? "mapbox://styles/mapbox/dark-v10"
+      : "mapbox://styles/mapbox/light-v10"
+  );
 
   React.useEffect(() => {
     if (props.mapStyle === "satellite") {
@@ -109,6 +112,13 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     }
   }, [isDarkTheme, props.appTheme, props.mapStyle]);
 
+  React.useEffect(() => {
+    // Zoom input from +/- buttons
+    setZoom([props.targetZoom]);
+  }, [props.targetZoom]);
+
+  const blue = isDarkTheme ? "#8142fd" : "#5202F1";
+
   return (
     <Map
       style={style}
@@ -121,14 +131,15 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       center={location}
       zoom={zoom}
       bearing={bearing}
-      onZoomEnd={(map) => setZoom([map.getZoom()])}
+      onZoomEnd={(map) => {
+        setZoom([map.getZoom()]);
+        props.setTargetZoom(map.getZoom());
+      }}
       onDragEnd={(map) =>
         setLocation(map.getCenter().toArray() as [number, number])
       }
       onRotateEnd={(map) => setBearing([map.getBearing()])}
     >
-      <ZoomControl position="bottom-right" />
-      <RotationControl position="bottom-right" />
       {/* Layer z-ordering hack */}
       <Source
         id="blank"
@@ -200,7 +211,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
         <Line
           data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
           name="stage3barrhaven"
-          color="#C8963E"
+          color={blue}
           highContrastLabels={props.accessibleLabels}
         />
       )}
@@ -258,7 +269,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
         <Line
           data={stage3kanata as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
           name="stage3kanata"
-          color="#5202F1"
+          color={blue}
           highContrastLabels={props.accessibleLabels}
         />
       )}
@@ -272,6 +283,14 @@ const mapStateToProps = (state: State) => ({
   mapStyle: state.mapStyle,
   lines: state.lines,
   accessibleLabels: state.accessibleLabels,
+  targetZoom: state.targetZoom,
 });
 
-export const OverviewMap = connect(mapStateToProps)(OverviewMapComponent);
+const mapDispatchToProps = {
+  setTargetZoom,
+};
+
+export const OverviewMap = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OverviewMapComponent);

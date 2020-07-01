@@ -7,8 +7,20 @@ import { SettingsDrawer } from "../components/settings/SettingsDrawer";
 import { reducer, AppTheme, State } from "../redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider, connect } from "react-redux";
+import { MapControls } from "../components/MapControls";
+import { Logo } from "../components/Logo";
 
-const store = configureStore({ reducer });
+const store = configureStore({
+  reducer,
+  preloadedState:
+    localStorage["settings"] && JSON.parse(localStorage["settings"]),
+});
+
+// Write current settings to localStorage
+store.subscribe(() => {
+  const { targetZoom, drawerOpen, ...rest } = store.getState();
+  localStorage["settings"] = JSON.stringify(rest);
+});
 
 export const App = () => {
   return (
@@ -33,7 +45,9 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
       <div style={{ display: "flex" }}>
         <OverviewMap />
         <Controls />
+        <MapControls />
         <SettingsDrawer />
+        <Logo />
       </div>
     </MuiThemeProvider>
   );

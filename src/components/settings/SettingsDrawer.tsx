@@ -31,6 +31,7 @@ import Scrollbars from "react-custom-scrollbars";
 
 import confederationLine from "../../images/confederation.svg";
 import trilliumLine from "../../images/trillium.svg";
+import { useIsDarkTheme } from "../../app/utils";
 
 interface SettingsDrawerProps {
   readonly open: boolean;
@@ -112,6 +113,9 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
     }
   };
 
+  const isDarkTheme = useIsDarkTheme(props.appTheme);
+  const blue = isDarkTheme ? "#8142fd" : "#5202F1";
+
   return (
     <Drawer
       classes={{ paper: classes.drawerPaper }}
@@ -153,6 +157,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               ])
             }
             imageUrl={confederationLine}
+            tint="#D62937"
           />
 
           <LayerOption
@@ -163,6 +168,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               props.setShowLine(["trilliumLine", !props.lines.trilliumLine])
             }
             imageUrl={trilliumLine}
+            tint="#76BE43"
           />
 
           <LayerOption
@@ -176,6 +182,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               ])
             }
             imageUrl={confederationLine}
+            tint={blue}
           />
 
           <LayerOption
@@ -189,6 +196,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               ])
             }
             imageUrl={confederationLine}
+            tint={blue}
           />
 
           <Typography className={classes.sectionHeader} variant="h6">
