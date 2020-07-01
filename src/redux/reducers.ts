@@ -5,12 +5,14 @@ import {
   setAppTheme,
   setMapStyle,
   setShowLine,
+  setUseAccessibleLabels,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
 const initialState: State = {
   drawerOpen: false,
   show3DBuildings: false,
+  accessibleLabels: false,
   appTheme: "system",
   mapStyle: "vector",
   lines: {
@@ -28,6 +30,9 @@ export const reducer = createReducer<State>(initialState, (builder) => {
     })
     .addCase(setShow3DBuildings, (state, action) => {
       state.show3DBuildings = action.payload;
+    })
+    .addCase(setUseAccessibleLabels, (state, action) => {
+      state.accessibleLabels = action.payload;
     })
     .addCase(setAppTheme, (state, action) => {
       state.appTheme = action.payload;

@@ -38,6 +38,7 @@ export interface OverviewMapProps {
   readonly appTheme: AppTheme;
   readonly mapStyle: MapStyle;
   readonly lines: LineState;
+  readonly accessibleLabels: boolean;
 }
 
 const Map = ReactMapboxGl({
@@ -200,6 +201,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
           name="stage3barrhaven"
           color="#C8963E"
+          highContrastLabels={props.accessibleLabels}
         />
       )}
 
@@ -214,6 +216,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             data={stage2south as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
             name="stage2south"
             color="#76BE43"
+            highContrastLabels={props.accessibleLabels}
           />
         </>
       )}
@@ -234,16 +237,19 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             data={stage2east as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
             name="stage2east"
             color="#D62937"
+            highContrastLabels={props.accessibleLabels}
           />
           <Line
             data={stage2west as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
             name="stage2west"
             color="#D62937"
+            highContrastLabels={props.accessibleLabels}
           />
           <Line
             data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
             name="stage1"
             color="#D62937"
+            highContrastLabels={props.accessibleLabels}
           />
         </>
       )}
@@ -253,6 +259,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           data={stage3kanata as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
           name="stage3kanata"
           color="#5202F1"
+          highContrastLabels={props.accessibleLabels}
         />
       )}
     </Map>
@@ -264,6 +271,7 @@ const mapStateToProps = (state: State) => ({
   appTheme: state.appTheme,
   mapStyle: state.mapStyle,
   lines: state.lines,
+  accessibleLabels: state.accessibleLabels,
 });
 
 export const OverviewMap = connect(mapStateToProps)(OverviewMapComponent);

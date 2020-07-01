@@ -340,6 +340,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-custom-scroll@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@types/react-custom-scroll@npm:4.2.0"
+  dependencies:
+    "@types/react": "*"
+  checksum: 3/15331d7be4de27ea129bd81f6f5456a493a374f3b641f9bbf986d4d0f7596803b79f0d3b192418a0efb8caa7eabef1de5cac9905f3a3902797f69148f8591d3b
+  languageName: node
+  linkType: hard
+
+"@types/react-custom-scrollbars@npm:^4.0.6":
+  version: 4.0.6
+  resolution: "@types/react-custom-scrollbars@npm:4.0.6"
+  dependencies:
+    "@types/react": "*"
+  checksum: 3/148eb7c5a40054fe57ee994502b19d15d78e98d9730168355f5031c17c23254fc7abbd2c66c871f1b97dde316b1e9222b5d2b65171813dbc672b49073341e211
+  languageName: node
+  linkType: hard
+
 "@types/react-dom@npm:^16.9.5":
   version: 16.9.8
   resolution: "@types/react-dom@npm:16.9.8"
@@ -693,6 +711,13 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 3/7aa4623c6d2705e9a26057ccfdd409154f8b634973ce109a63fa2c7e679af689bb50378379610794ec9744975db7a3a3b97e2b83f87fab1b635ad19b6c0ac3be
+  languageName: node
+  linkType: hard
+
+"add-px-to-style@npm:1.0.0":
+  version: 1.0.0
+  resolution: "add-px-to-style@npm:1.0.0"
+  checksum: 3/1d9a386d2280662190d0eb3c805041481f277f328e051f4777de3dd31aa51a54589d73beb12b38a4d96067f64c5747fe2d48de30a977cd46466284bacb9fe426
   languageName: node
   linkType: hard
 
@@ -2043,6 +2068,17 @@ __metadata:
   dependencies:
     utila: ~0.4
   checksum: 3/437b4464bd3c5e654decf855f9263e939d633d7bb720512f9a400b3e1005d870eb4a5fbead7d9ccb7849f7df5ee30c62f9a56b68143c13575ae5fef16007742c
+  languageName: node
+  linkType: hard
+
+"dom-css@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "dom-css@npm:2.1.0"
+  dependencies:
+    add-px-to-style: 1.0.0
+    prefix-style: 2.0.1
+    to-camel-case: 1.0.0
+  checksum: 3/9aa8f9373ebe542c1ef9504914ef2ba28b582aaeab09f52cec2f2ac710d19cc2ab77cf4d72c0ad5fd3535fbe55410cf8ab4669f975cdb26d1570199e549f124f
   languageName: node
   linkType: hard
 
@@ -4816,6 +4852,8 @@ fsevents@~2.1.2:
     "@types/geojson": ^7946.0.7
     "@types/mapbox-gl": ^0.54.5
     "@types/react": ^16.9.19
+    "@types/react-custom-scroll": ^4.2.0
+    "@types/react-custom-scrollbars": ^4.0.6
     "@types/react-dom": ^16.9.5
     "@types/react-map-gl": ^5.1.1
     "@types/react-redux": ^7.1.9
@@ -4829,6 +4867,8 @@ fsevents@~2.1.2:
     mini-css-extract-plugin: ^0.9.0
     pnp-webpack-plugin: ^1.6.4
     react: ^16.13.1
+    react-custom-scroll: ^4.2.1
+    react-custom-scrollbars: ^4.2.1
     react-dom: ^16.13.1
     react-mapbox-gl: ^4.8.6
     react-redux: ^7.2.0
@@ -5217,6 +5257,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"prefix-style@npm:2.0.1":
+  version: 2.0.1
+  resolution: "prefix-style@npm:2.0.1"
+  checksum: 3/561220a0ab6b1ce201e4ec9a34b6ee28c0d86ffd84f900f07814990c404fe396341cdda7e871be4c90c34fb5940b42db3f9304c2151323473fa0973dad81625f
+  languageName: node
+  linkType: hard
+
 "prepend-http@npm:^1.0.0":
   version: 1.0.4
   resolution: "prepend-http@npm:1.0.4"
@@ -5255,7 +5302,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.5.10, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -5415,6 +5462,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"raf@npm:^3.1.0":
+  version: 3.4.1
+  resolution: "raf@npm:3.4.1"
+  dependencies:
+    performance-now: ^2.1.0
+  checksum: 3/567b0160be46ed20b124a05ace6e653f4ad3c047c48d02ac76161e9ac624488c0fdf622b2f4fb9c35c0c828a13dfa549044ad1db89c7af075cb0f99403b88c4b
+  languageName: node
+  linkType: hard
+
 "randombytes@npm:^2.0.0, randombytes@npm:^2.0.1, randombytes@npm:^2.0.5":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -5450,6 +5506,31 @@ fsevents@~2.1.2:
     iconv-lite: 0.4.24
     unpipe: 1.0.0
   checksum: 3/46dc02f8b4f358786d41e18fb55533fbe4702d390e22bbe2b9c98c88dec41cab23ea2315f3ae0bf4bc0213a2872c89943d3df6857f4e21f996ea9d2d92f1bcaa
+  languageName: node
+  linkType: hard
+
+"react-custom-scroll@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "react-custom-scroll@npm:4.2.1"
+  peerDependencies:
+    prop-types: "*"
+    react: "*"
+    react-dom: "*"
+  checksum: 3/b13ebf40ec0bd925fe0b566a675bb6f37f51e58691ba2c11b642a4dac3ba3301616183afdaa6cbb59d4d8c7ea2c8ccd0d072a183c12092511c139dde784a45cc
+  languageName: node
+  linkType: hard
+
+"react-custom-scrollbars@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "react-custom-scrollbars@npm:4.2.1"
+  dependencies:
+    dom-css: ^2.0.0
+    prop-types: ^15.5.10
+    raf: ^3.1.0
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16.0.0
+    react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
+  checksum: 3/6b5e3b0135a1d89a11bb7312e2c0258227032203d28980fe13d659cd17bf48faf0836009d1c874d4c88915a3abb9519f0bfabb9447e09cabe97e781eeb5cc745
   languageName: node
   linkType: hard
 
@@ -6544,6 +6625,22 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"to-camel-case@npm:1.0.0":
+  version: 1.0.0
+  resolution: "to-camel-case@npm:1.0.0"
+  dependencies:
+    to-space-case: ^1.0.0
+  checksum: 3/260aae15d572724dfb9376353e3105909c46fa8273f2c0f89b561a0df73d01f2a44be5f2e415fae2edac892768865e94d100d83a5e566297e38d188cfffe617e
+  languageName: node
+  linkType: hard
+
+"to-no-case@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "to-no-case@npm:1.0.2"
+  checksum: 3/7aa8962a71897a7086d3e35f3fa4f0377a4c1cb7a77c6cd6bdc0f2778f3e08cf8008dd35f3c60322e5f358c961f5a6691fbb125b68a644b83eebb233b23c5b76
+  languageName: node
+  linkType: hard
+
 "to-object-path@npm:^0.3.0":
   version: 0.3.0
   resolution: "to-object-path@npm:0.3.0"
@@ -6581,6 +6678,15 @@ fsevents@~2.1.2:
     regex-not: ^1.0.2
     safe-regex: ^1.1.0
   checksum: 3/ed733fdff8970628ef2d425564d1331a812e57cbb6ab7675c970046b2b792cbf2386c8292e45bb201bf85ca71a7708e3e1ffb979f5cd089ad4a82a12df75939b
+  languageName: node
+  linkType: hard
+
+"to-space-case@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "to-space-case@npm:1.0.0"
+  dependencies:
+    to-no-case: ^1.0.0
+  checksum: 3/e83f61676ec329b9d661f6561b648b3ed951ee75f3d32cbdf5b187d271782159cdba7dfbc5b40a50d314e6eeb143d7eca575b63874a285dffc2e5e607e92d151
   languageName: node
   linkType: hard
 

@@ -7,6 +7,7 @@ export interface LineProps {
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   name: string;
   color: string;
+  highContrastLabels?: boolean;
 }
 
 export type LineFeatureType =
@@ -24,7 +25,7 @@ export interface LineDataProps {
   url?: string;
 }
 
-export const Line = ({ name, data, color }: LineProps) => {
+export const Line = ({ name, data, color, highContrastLabels }: LineProps) => {
   const dataRef = React.useRef({ type: "geojson", data });
   return (
     <>
@@ -170,7 +171,7 @@ export const Line = ({ name, data, color }: LineProps) => {
           "text-halo-width": 50,
           "text-halo-blur": 50,
           "text-color": "#FFFFFF",
-          "text-halo-color": color,
+          "text-halo-color": highContrastLabels ? "#212121" : color,
           //"text-color": color,
           //"text-halo-color": "#FFFFFF",
         }}
@@ -219,7 +220,7 @@ export const Line = ({ name, data, color }: LineProps) => {
           "text-halo-width": 50,
           "text-halo-blur": 50,
           "text-color": "#FFFFFF",
-          "text-halo-color": color,
+          "text-halo-color": highContrastLabels ? "#212121" : color,
         }}
       />
     </>

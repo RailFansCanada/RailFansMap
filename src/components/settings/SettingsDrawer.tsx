@@ -20,11 +20,17 @@ import {
   setMapStyle,
   LineState,
   setShowLine,
+  setUseAccessibleLabels,
 } from "../../redux";
 import { connect } from "react-redux";
 import { Close } from "@material-ui/icons";
 import { LayerOption } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
+
+import Scrollbars from "react-custom-scrollbars";
+
+import confederationLine from "../../images/confederation.svg";
+import trilliumLine from "../../images/trillium.svg";
 
 interface SettingsDrawerProps {
   readonly open: boolean;
@@ -32,6 +38,9 @@ interface SettingsDrawerProps {
 
   readonly show3DBuildings: boolean;
   readonly setShow3DBuildings: typeof setShow3DBuildings;
+
+  readonly accessibleLabels: boolean;
+  readonly setUseAccessibleLabels: typeof setUseAccessibleLabels;
 
   readonly appTheme: AppTheme;
   readonly setAppTheme: typeof setAppTheme;
@@ -45,7 +54,7 @@ interface SettingsDrawerProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawerPaper: {
-    width: 380,
+    width: 420,
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
@@ -111,102 +120,116 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
       open={props.open}
       elevation={4}
     >
-      <AppBar className={classes.appBar} position="static" elevation={0}>
-        <Toolbar>
-          <IconButton
-            className={classes.closeButton}
-            edge="start"
-            onClick={() => {
-              props.setDrawerOpen(false);
-            }}
-          >
-            <Close />
-          </IconButton>
-          <Typography className={classes.title} variant="h6">
-            Map Settings
+      <Scrollbars>
+        <AppBar className={classes.appBar} position="static" elevation={0}>
+          <Toolbar>
+            <IconButton
+              className={classes.closeButton}
+              edge="start"
+              onClick={() => {
+                props.setDrawerOpen(false);
+              }}
+            >
+              <Close />
+            </IconButton>
+            <Typography className={classes.title} variant="h6">
+              Map Settings
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.layerCardContainer}>
+          <Typography className={classes.sectionHeader} variant="h6">
+            O-Train Lines
           </Typography>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.layerCardContainer}>
-        <Typography className={classes.sectionHeader} variant="h6">
-          O-Train Lines
-        </Typography>
 
-        <LayerOption
-          primary="Confederation Line"
-          secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
-          selected={props.lines.confederationLine}
-          onClick={() =>
-            props.setShowLine([
-              "confederationLine",
-              !props.lines.confederationLine,
-            ])
-          }
-        />
-
-        <LayerOption
-          primary="Trillium Line"
-          secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
-          selected={props.lines.trilliumLine}
-          onClick={() =>
-            props.setShowLine(["trilliumLine", !props.lines.trilliumLine])
-          }
-        />
-
-        <LayerOption
-          primary="Kanata Extension"
-          secondary="The proposed extension of the Confederation Line into Kanata"
-          selected={props.lines.kanataExtension}
-          onClick={() =>
-            props.setShowLine(["kanataExtension", !props.lines.kanataExtension])
-          }
-        />
-
-        <LayerOption
-          primary="Barrhaven Extension"
-          secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
-          selected={props.lines.barrhavenExtension}
-          onClick={() =>
-            props.setShowLine([
-              "barrhavenExtension",
-              !props.lines.barrhavenExtension,
-            ])
-          }
-        />
-
-        <Typography className={classes.sectionHeader} variant="h6">
-          Basemap
-        </Typography>
-        <LayerOption
-          primary="Vector Basemap"
-          secondary="Basic vector basemap in either light or dark themes"
-          selected={props.mapStyle === "vector"}
-          onClick={() => props.setMapStyle("vector")}
-        />
-        <LayerOption
-          primary="Satellite Basemap"
-          secondary="Satellite imagery"
-          selected={props.mapStyle === "satellite"}
-          onClick={() => props.setMapStyle("satellite")}
-        />
-        <Typography className={classes.sectionHeader} variant="h6">
-          Other Settings
-        </Typography>
-
-        <List>
-          <SwitchOption
-            primary="Show 3D buildings"
-            checked={props.show3DBuildings}
-            onToggle={(checked) => props.setShow3DBuildings(checked)}
+          <LayerOption
+            primary="Confederation Line"
+            secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
+            selected={props.lines.confederationLine}
+            onClick={() =>
+              props.setShowLine([
+                "confederationLine",
+                !props.lines.confederationLine,
+              ])
+            }
+            imageUrl={confederationLine}
           />
-          <MenuOption
-            primary="Choose Theme"
-            options={themeSettings}
-            value={appThemeToIndex(props.appTheme)}
-            onChange={handleThemeChange}
+
+          <LayerOption
+            primary="Trillium Line"
+            secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
+            selected={props.lines.trilliumLine}
+            onClick={() =>
+              props.setShowLine(["trilliumLine", !props.lines.trilliumLine])
+            }
+            imageUrl={trilliumLine}
           />
-        </List>
-      </div>
+
+          <LayerOption
+            primary="Kanata Extension"
+            secondary="The proposed extension of the Confederation Line into Kanata"
+            selected={props.lines.kanataExtension}
+            onClick={() =>
+              props.setShowLine([
+                "kanataExtension",
+                !props.lines.kanataExtension,
+              ])
+            }
+            imageUrl={confederationLine}
+          />
+
+          <LayerOption
+            primary="Barrhaven Extension"
+            secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
+            selected={props.lines.barrhavenExtension}
+            onClick={() =>
+              props.setShowLine([
+                "barrhavenExtension",
+                !props.lines.barrhavenExtension,
+              ])
+            }
+            imageUrl={confederationLine}
+          />
+
+          <Typography className={classes.sectionHeader} variant="h6">
+            Basemap
+          </Typography>
+          <LayerOption
+            primary="Vector Basemap"
+            secondary="Basic vector basemap in either light or dark themes"
+            selected={props.mapStyle === "vector"}
+            onClick={() => props.setMapStyle("vector")}
+          />
+          <LayerOption
+            primary="Satellite Basemap"
+            secondary="Satellite imagery"
+            selected={props.mapStyle === "satellite"}
+            onClick={() => props.setMapStyle("satellite")}
+          />
+          <Typography className={classes.sectionHeader} variant="h6">
+            Other Settings
+          </Typography>
+
+          <List>
+            <SwitchOption
+              primary="Show 3D buildings"
+              checked={props.show3DBuildings}
+              onToggle={(checked) => props.setShow3DBuildings(checked)}
+            />
+            <SwitchOption
+              primary="Show High Contrast Labels"
+              checked={props.accessibleLabels}
+              onToggle={(checked) => props.setUseAccessibleLabels(checked)}
+            />
+            <MenuOption
+              primary="Choose Theme"
+              options={themeSettings}
+              value={appThemeToIndex(props.appTheme)}
+              onChange={handleThemeChange}
+            />
+          </List>
+        </div>
+      </Scrollbars>
     </Drawer>
   );
 };
@@ -214,6 +237,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
 const mapStateToProps = (state: State) => ({
   open: state.drawerOpen,
   show3DBuildings: state.show3DBuildings,
+  accessibleLabels: state.accessibleLabels,
   appTheme: state.appTheme,
   mapStyle: state.mapStyle,
   lines: state.lines,
@@ -222,6 +246,7 @@ const mapStateToProps = (state: State) => ({
 const mapDispatchToProps = {
   setDrawerOpen,
   setShow3DBuildings,
+  setUseAccessibleLabels,
   setAppTheme,
   setMapStyle,
   setShowLine,

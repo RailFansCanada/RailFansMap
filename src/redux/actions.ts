@@ -6,6 +6,10 @@ export const setDrawerOpen = createAction<boolean>("setDrawerOpen");
 
 export const setShow3DBuildings = createAction<boolean>("setShow3DBuildings");
 
+export const setUseAccessibleLabels = createAction<boolean>(
+  "setUseAccessibleLabels"
+);
+
 export const setAppTheme = createAction<AppTheme>("setAppTheme");
 
 export const setMapStyle = createAction<MapStyle>("setMapStyle");
