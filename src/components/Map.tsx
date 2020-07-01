@@ -45,7 +45,7 @@ const Map = ReactMapboxGl({
   antialias: true,
 });
 
-export const OverviewMapComponent = (props: OverviewMapProps) => {
+export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
   const [location, setLocation] = React.useState<[number, number]>([
     -75.6579,
     45.3629,
@@ -149,6 +149,27 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           data: { type: "FeatureCollection", features: [] },
         }}
       ></Source>
+      <Layer
+        sourceId="blank"
+        type="fill"
+        id="content-mask"
+        paint={{}}
+        layout={{}}
+      />
+      <Layer
+        sourceId="blank"
+        type="fill"
+        id="circle-mask"
+        paint={{}}
+        layout={{}}
+      />
+      <Layer
+        sourceId="blank"
+        type="fill"
+        id="symbol-mask"
+        paint={{}}
+        layout={{}}
+      />
       {props.show3DBuildings && (
         <Layer
           id="3d-buildings"
@@ -156,7 +177,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           sourceLayer="building"
           filter={["==", "extrude", "true"]}
           type="fill-extrusion"
-          before="circle-mask"
+          before="content-mask"
           minZoom={15}
           paint={{
             "fill-extrusion-color": "#FFFFFF",
@@ -185,28 +206,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           }}
         />
       )}
-      <Layer
-        sourceId="blank"
-        type="fill"
-        id="content-mask"
-        paint={{}}
-        layout={{}}
-      />
-      <Layer
-        sourceId="blank"
-        type="fill"
-        id="circle-mask"
-        paint={{}}
-        layout={{}}
-      />
-      <Layer
-        sourceId="blank"
-        type="fill"
-        id="symbol-mask"
-        paint={{}}
-        layout={{}}
-      />
-
       {props.lines.barrhavenExtension && (
         <Line
           data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
@@ -245,6 +244,12 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             position={[-75.84918, 45.33587]}
           />
           <Line
+            data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="stage1"
+            color="#D62937"
+            highContrastLabels={props.accessibleLabels}
+          />
+          <Line
             data={stage2east as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
             name="stage2east"
             color="#D62937"
@@ -253,12 +258,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           <Line
             data={stage2west as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
             name="stage2west"
-            color="#D62937"
-            highContrastLabels={props.accessibleLabels}
-          />
-          <Line
-            data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="stage1"
             color="#D62937"
             highContrastLabels={props.accessibleLabels}
           />
@@ -275,7 +274,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       )}
     </Map>
   );
-};
+});
 
 const mapStateToProps = (state: State) => ({
   show3DBuildings: state.show3DBuildings,
