@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   layerCardContainer: {
     display: "flex",
     flexGrow: 1,
+    height: "100%",
   },
   appBar: {
     backgroundColor: theme.palette.background.default,
