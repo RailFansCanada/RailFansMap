@@ -29,6 +29,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-map-gl": "^5.1.1",
     "@types/react-virtualized": "^9.21.8",
+    "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^3.5.3",
     "dotenv": "^8.2.0",
     "file-loader": "^6.0.0",
