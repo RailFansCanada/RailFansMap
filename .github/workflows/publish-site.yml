@@ -18,7 +18,7 @@ jobs:
         run: yarn run build
         
       - name: Deploy 🚉
-        if: sucess()
+        if: success()
         uses: JamesIves/github-pages-deploy-action@3.5.8
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
