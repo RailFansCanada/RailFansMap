@@ -13,6 +13,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
+      
+      - name: Set up local secrets
+        env:
+          MAPBOX_KEY: ${{ secrets.MAPBOX_KEY }}
+        run: echo MAPBOX_KEY="$MAPBOX_KEY" > local.env
           
       - name: Build dist
         run: yarn run build
