@@ -12,6 +12,7 @@ export interface LineProps {
 
 export type LineFeatureType =
   | "tracks"
+  | "tracks-future"
   | "station-platforms"
   | "station-platforms-future"
   | "station-label"
@@ -72,6 +73,26 @@ export const Line = React.memo(
           paint={{
             "line-color": color,
             "line-width": 3,
+          }}
+        />
+        <Layer
+          id={`${name}-tracks-future`}
+          before="content-mask"
+          type="line"
+          sourceId={name}
+          filter={[
+            "all",
+            ["==", ["get", "alternatives"], null],
+            ["==", ["get", "type"], "tracks-future"],
+          ]}
+          layout={{
+            "line-join": "round",
+            "line-cap": "round",
+          }}
+          paint={{
+            "line-color": color,
+            "line-width": 3,
+            "line-dasharray": [3, 3],
           }}
         />
         <Layer
