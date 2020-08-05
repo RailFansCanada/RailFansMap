@@ -51,7 +51,7 @@ export const RailYard = ({ position, name, data }: RailYardProps) => {
         type="symbol"
         sourceId={name}
         filter={["==", "type", "yard-label"]}
-        minZoom={10}
+        minZoom={11}
         layout={
           {
             "text-field": name,
