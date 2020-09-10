@@ -106,6 +106,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.3.0"
       ],
       [
+        "immer",
+        "npm:7.0.9"
+      ],
+      [
         "mapbox-gl",
         "npm:1.11.1"
       ],
@@ -204,6 +208,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:8.2.0"],
             ["file-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.0.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.3.0"],
+            ["immer", "npm:7.0.9"],
             ["mapbox-gl", "npm:1.11.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:0.9.0"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
@@ -4261,6 +4266,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["immer", "npm:7.0.7"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:7.0.9", {
+          "packageLocation": "./.yarn/cache/immer-npm-7.0.9-83e7165eca-3.zip/node_modules/immer/",
+          "packageDependencies": [
+            ["immer", "npm:7.0.9"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["import-local", [
@@ -5974,6 +5986,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:8.2.0"],
             ["file-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.0.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.3.0"],
+            ["immer", "npm:7.0.9"],
             ["mapbox-gl", "npm:1.11.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:0.9.0"],
             ["pnp-webpack-plugin", "npm:1.6.4"],

@@ -191,7 +191,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             tint={blue}
           />
 
-          <BarrhavenOption
+          <LayerOption
             primary="Barrhaven Extension"
             secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
             selected={props.lines.barrhavenExtension}

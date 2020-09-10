@@ -14,6 +14,8 @@ import stage3barrhaven from "../../data/stage3barrhaven.json";
 import belfastYard from "../../data/belfastYard.json";
 import moodieYard from "../../data/moodieYard.json";
 import walkleyYard from "../../data/walkleyYard.json";
+import greenbankYard from "../../data/greenbankYard.json";
+
 import GeoJSON from "geojson";
 import { State, AppTheme, MapStyle, LineState, setTargetZoom } from "../redux";
 import { connect } from "react-redux";
@@ -54,8 +56,8 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
   ) => {
     const features = map.queryRenderedFeatures(event.point);
     for (let feature of features) {
-      if (feature.properties.url != null) {
-        window.parent.location.href = `https://otrain.railfans.ca/${feature.properties.url}`;
+      if (feature.properties.url != null && feature.properties.url !== "null") {
+        window.parent.location.href = `https://www.otrainfans.ca/${feature.properties.url}`;
       }
     }
   };
@@ -200,12 +202,21 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
         />
       )}
       {props.lines.barrhavenExtension && (
-        <BarrhavenLine
-          data={stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-          name="stage3barrhaven"
-          color={blue}
-          highContrastLabels={props.accessibleLabels}
-        />
+        <>
+          <RailYard
+            data={greenbankYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
+            name="Greenbank Yard"
+            position={[-75.7501105, 45.2805257]}
+          />
+          <Line
+            data={
+              stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>
+            }
+            name="stage3barrhaven"
+            color={blue}
+            highContrastLabels={props.accessibleLabels}
+          />
+        </>
       )}
 
       {props.lines.trilliumLine && (

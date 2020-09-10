@@ -3588,6 +3588,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"immer@npm:^7.0.9":
+  version: 7.0.9
+  resolution: "immer@npm:7.0.9"
+  checksum: 3/20fba3dabd033f9584eb1df9c16210b64c16a536a6376b0dedf153176554d89432ee86409458d8773edd142ddcae75f8e242b1952cd5b61c22767a4538880dd0
+  languageName: node
+  linkType: hard
+
 "import-local@npm:^2.0.0":
   version: 2.0.0
   resolution: "import-local@npm:2.0.0"
@@ -5131,6 +5138,7 @@ fsevents@~2.1.2:
     dotenv: ^8.2.0
     file-loader: ^6.0.0
     html-webpack-plugin: ^4.3.0
+    immer: ^7.0.9
     mapbox-gl: ^1.11.1
     mini-css-extract-plugin: ^0.9.0
     pnp-webpack-plugin: ^1.6.4

@@ -14,7 +14,7 @@ import {
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
-const initialState: State = {
+export const initialState: State = {
   drawerOpen: false,
   show3DBuildings: false,
   accessibleLabels: false,
