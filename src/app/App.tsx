@@ -4,16 +4,33 @@ import { OverviewMap } from "../components/Map";
 import { themeFactory } from "./theme";
 import { Controls } from "../components/settings/Controls";
 import { SettingsDrawer } from "../components/settings/SettingsDrawer";
-import { reducer, AppTheme, State } from "../redux";
+import { reducer, AppTheme, State, initialState } from "../redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider, connect } from "react-redux";
 import { MapControls } from "../components/MapControls";
 import { Logo } from "../components/Logo";
+import { produce } from "immer";
+
+const getPreloadedState = () => {
+  let state: State =
+    (localStorage["settings"] && JSON.parse(localStorage["settings"])) ??
+    initialState;
+
+  return produce(state, (draft) => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("stage3") == "true" || params.get("kanata") == "true") {
+      draft.lines.kanataExtension = true;
+    }
+
+    if (params.get("barrhaven") == "true") {
+      draft.lines.barrhavenExtension = true;
+    }
+  });
+};
 
 const store = configureStore({
   reducer,
-  preloadedState:
-    localStorage["settings"] && JSON.parse(localStorage["settings"]),
+  preloadedState: getPreloadedState(),
 });
 
 // Write current settings to localStorage
