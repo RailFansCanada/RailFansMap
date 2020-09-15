@@ -367,6 +367,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/json-schema@npm:^7.0.5":
+  version: 7.0.6
+  resolution: "@types/json-schema@npm:7.0.6"
+  checksum: 3/820cabe35ac915b93e38b0c01957e5c49d7d9f69251dddfbf39af0ff4fe24f6e08b39e55603e0d212dea7bcaa383b1218b58a738d1c02013dc22df06547ff238
+  languageName: node
+  linkType: hard
+
 "@types/mapbox-gl@npm:*":
   version: 0.54.5
   resolution: "@types/mapbox-gl@npm:0.54.5"
@@ -376,12 +383,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:^1.11.1":
-  version: 1.11.1
-  resolution: "@types/mapbox-gl@npm:1.11.1"
+"@types/mapbox-gl@npm:^1.12.0":
+  version: 1.12.0
+  resolution: "@types/mapbox-gl@npm:1.12.0"
   dependencies:
     "@types/geojson": "*"
-  checksum: 3/d6d82c53dfc16ed74e6a66f87b1bbd042fd467c0c45809288875d4fc0802e90e93394e1ed6368eed63b62a0b7a79afc830f07c187c7e4f6f90538aa365b8bedb
+  checksum: 3/d0728aaf91b8edeeaffa9d2f398aa0a5ea20ac2b609ad40965cb06cc9c50e26dcef4636f8fed417160730cc10f88b2168f8f09a5122d23f4b63dd5130b56bfe7
   languageName: node
   linkType: hard
 
@@ -415,12 +422,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-custom-scrollbars@npm:^4.0.6":
-  version: 4.0.6
-  resolution: "@types/react-custom-scrollbars@npm:4.0.6"
+"@types/react-custom-scrollbars@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "@types/react-custom-scrollbars@npm:4.0.7"
   dependencies:
     "@types/react": "*"
-  checksum: 3/148eb7c5a40054fe57ee994502b19d15d78e98d9730168355f5031c17c23254fc7abbd2c66c871f1b97dde316b1e9222b5d2b65171813dbc672b49073341e211
+  checksum: 3/089e7534aeb05362b8b4f93748bb6758052992d8322902be2641abe1d17fd809d07c43376f1b4d0a850058b4e6a59e8b5d3f602413abb4df9dceae8b960b0126
   languageName: node
   linkType: hard
 
@@ -433,15 +440,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-map-gl@npm:^5.2.6":
-  version: 5.2.6
-  resolution: "@types/react-map-gl@npm:5.2.6"
+"@types/react-map-gl@npm:^5.2.7":
+  version: 5.2.7
+  resolution: "@types/react-map-gl@npm:5.2.7"
   dependencies:
     "@types/geojson": "*"
     "@types/mapbox-gl": "*"
     "@types/react": "*"
     "@types/viewport-mercator-project": "*"
-  checksum: 3/e18e8aa60da77f68a394898756c6be985a123d9f04ebaf8d3e28dcaab780abf9513f99292b97e2b2660b695d8ae04d79e190e151f80c24c0114ce18fae98dfac
+  checksum: 3/b40765575f3110fbacc3dae4a1c776d0716341a746a85b77e0b4e94577c424ec23221ac8f4f30400d69024afafa8dbd3e98743c95e32ff4e7394135335e8271f
   languageName: node
   linkType: hard
 
@@ -486,13 +493,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^16.9.43":
-  version: 16.9.43
-  resolution: "@types/react@npm:16.9.43"
+"@types/react@npm:^16.9.49":
+  version: 16.9.49
+  resolution: "@types/react@npm:16.9.49"
   dependencies:
     "@types/prop-types": "*"
-    csstype: ^2.2.0
-  checksum: 3/b9d4491463ab013e0752bf6f99bd578f91504f74dfd1ebd7fbceebbdffe89762b040494a78403e249bb72d1645d2784f844890e7b1acdb3634432533ff9732fb
+    csstype: ^3.0.2
+  checksum: 3/cf5dabe1e9c893a19a338002ac4bf5a86c9bc3cd88eb07aece54e6d2e5af35debe2a8c72d211ad9133391543ce115219cd7c7f2a6f649b81caf4548e1cc99061
   languageName: node
   linkType: hard
 
@@ -757,10 +764,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abab@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "abab@npm:2.0.3"
-  checksum: 3/07bd561e87dba729824956cdcd02b19f31e2ed91385e3b808ae9d9abae9b3a4394530d87453103da4bd36053dd456f9630e15c0b77b95a0f19449183d44a8ee9
+"abab@npm:^2.0.4":
+  version: 2.0.5
+  resolution: "abab@npm:2.0.5"
+  checksum: 3/a42b91bd9dd2451a3fc6996bc8953139904ff7b1a793719205041148da892337afc97ed0589ef2c44765c4da3d688eed145781db1623b611621d805294c367a3
   languageName: node
   linkType: hard
 
@@ -825,6 +832,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ajv-keywords@npm:^3.5.2":
+  version: 3.5.2
+  resolution: "ajv-keywords@npm:3.5.2"
+  peerDependencies:
+    ajv: ^6.9.1
+  checksum: 3/01f26c292304870c03a1cd14fc1ddcf7c713a05611a122c5193694d4050063d5fba46cbf8b5b2ebde364166fddd3c2e0abdcd97df655b7a7fbb3e6634eeb056a
+  languageName: node
+  linkType: hard
+
 "ajv@npm:^6.1.0, ajv@npm:^6.10.2, ajv@npm:^6.12.0, ajv@npm:^6.12.2, ajv@npm:^6.5.5":
   version: 6.12.2
   resolution: "ajv@npm:6.12.2"
@@ -834,6 +850,18 @@ __metadata:
     json-schema-traverse: ^0.4.1
     uri-js: ^4.2.2
   checksum: 3/09f3d7992c4a6e554e65accab279878c2da2a7e3ca782032de51c7c91d80a43a3e2aeb26efb8e8950b3941a89882f21aaca1170dafada784a7a0f275b5e6e745
+  languageName: node
+  linkType: hard
+
+"ajv@npm:^6.12.4":
+  version: 6.12.5
+  resolution: "ajv@npm:6.12.5"
+  dependencies:
+    fast-deep-equal: ^3.1.1
+    fast-json-stable-stringify: ^2.0.0
+    json-schema-traverse: ^0.4.1
+    uri-js: ^4.2.2
+  checksum: 3/d9ec559bd71be2479b91d293a5b14c96d60ba89f471d8b3369443830b6c72954bdc38f480194413f45f46fc250c8bd769275584ffde033aeb3c56cc218868d95
   languageName: node
   linkType: hard
 
@@ -1403,7 +1431,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacache@npm:^15.0.4":
+"cacache@npm:^15.0.5":
   version: 15.0.5
   resolution: "cacache@npm:15.0.5"
   dependencies:
@@ -1819,24 +1847,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"copy-webpack-plugin@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "copy-webpack-plugin@npm:6.0.3"
+"copy-webpack-plugin@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "copy-webpack-plugin@npm:6.1.0"
   dependencies:
-    cacache: ^15.0.4
+    cacache: ^15.0.5
     fast-glob: ^3.2.4
     find-cache-dir: ^3.3.1
     glob-parent: ^5.1.1
     globby: ^11.0.1
     loader-utils: ^2.0.0
     normalize-path: ^3.0.0
-    p-limit: ^3.0.1
-    schema-utils: ^2.7.0
+    p-limit: ^3.0.2
+    schema-utils: ^2.7.1
     serialize-javascript: ^4.0.0
     webpack-sources: ^1.4.3
   peerDependencies:
     webpack: ^4.37.0 || ^5.0.0
-  checksum: 3/02bb71e9ad0959c883a6bb3ca7351f15d7d4123cec21aa48d7a879a6116fa07bdc1465cc57eb3616482c0844bfa100acf33123c1c49545e1e0eee0996da782c3
+  checksum: 3/bb289324cdda4c8aaa7fd508c34e499cdad96771703e0c5081c78a0f821eeb133500dcc10439e6258f723c32903dd3df46a5cf07585266e6cd0600c57e8db082
   languageName: node
   linkType: hard
 
@@ -1916,26 +1944,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-loader@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "css-loader@npm:4.2.0"
+"css-loader@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "css-loader@npm:4.3.0"
   dependencies:
     camelcase: ^6.0.0
     cssesc: ^3.0.0
     icss-utils: ^4.1.1
     loader-utils: ^2.0.0
-    normalize-path: ^3.0.0
     postcss: ^7.0.32
     postcss-modules-extract-imports: ^2.0.0
     postcss-modules-local-by-default: ^3.0.3
     postcss-modules-scope: ^2.2.0
     postcss-modules-values: ^3.0.0
     postcss-value-parser: ^4.1.0
-    schema-utils: ^2.7.0
+    schema-utils: ^2.7.1
     semver: ^7.3.2
   peerDependencies:
     webpack: ^4.27.0 || ^5.0.0
-  checksum: 3/cb813eb5eeb46fb970e3d1d692ccdedcec5f1b16f7a6bd9e29284afb60e50b20fd982d229f993b6c2f3563824bbbd90cdb7dc536e252e51208cc46a79c1bcc80
+  checksum: 3/1f441ac567e3c45dde1009860fcc0d2807d5af4e42e799c77070a121f91a8a8c0ce41d6aa19b664bd9fbc127c5375abefa8f871ba503e55f2ea27c3e1385f3fa
   languageName: node
   linkType: hard
 
@@ -1991,6 +2018,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"csstype@npm:^3.0.2":
+  version: 3.0.3
+  resolution: "csstype@npm:3.0.3"
+  checksum: 3/ec722366b468229bcc6c7fa3f07eb795efddfc4fdcfeb81728046f8bd20e21584735e89973ec18e8b0d4d3c8dddb288872440ee034836c159d664798da4cf832
+  languageName: node
+  linkType: hard
+
 "cyclist@npm:^1.0.1":
   version: 1.0.1
   resolution: "cyclist@npm:1.0.1"
@@ -2004,17 +2038,6 @@ __metadata:
   dependencies:
     assert-plus: ^1.0.0
   checksum: 3/5959409ee42dc4bdbf3fa384b801ece580ca336658bb0342ffab0099b3fc6bf9b3e239e1b82dcc4fcaeee315353e08f2eae47b0928a6a579391598c44958afa1
-  languageName: node
-  linkType: hard
-
-"data-urls@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "data-urls@npm:2.0.0"
-  dependencies:
-    abab: ^2.0.3
-    whatwg-mimetype: ^2.3.0
-    whatwg-url: ^8.0.0
-  checksum: 3/42239927c6a202e2d02b7f41c94ca53e3cea036898b97b8bf6120ed1b25e0dd11c48ec7aa5c84cf807c2cb9f3a637df9fb50f3ca25a52863186a4ac46254726b
   languageName: node
   linkType: hard
 
@@ -2772,15 +2795,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-loader@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "file-loader@npm:6.0.0"
+"file-loader@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "file-loader@npm:6.1.0"
   dependencies:
     loader-utils: ^2.0.0
-    schema-utils: ^2.6.5
+    schema-utils: ^2.7.1
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
-  checksum: 3/745f5ee763fe46f2124921ff4fb7ed601eb1e8d6ac975cf6af321b3957ce8f78afb885c636e64a9031634e85e26dc9e8ef40ebeb532153c6a80a7d06b56876cb
+  checksum: 3/ad930c9e7fa8c85cc048afa44c370c86f6a9ba89149b2b24e362f0b279595a05d039211263bf65117e4850f337f9bff251288ddff426dda997468a00e1268ffc
   languageName: node
   linkType: hard
 
@@ -3407,9 +3430,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"html-webpack-plugin@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "html-webpack-plugin@npm:4.3.0"
+"html-webpack-plugin@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "html-webpack-plugin@npm:4.4.1"
   dependencies:
     "@types/html-minifier-terser": ^5.0.0
     "@types/tapable": ^1.0.5
@@ -3422,7 +3445,7 @@ fsevents@~2.1.2:
     util.promisify: 1.0.0
   peerDependencies:
     webpack: ">=4.0.0 < 6.0.0"
-  checksum: 3/13c23547ac83142f2e23a993a82e6fa6beb21291848a856c09d27e0dae12f5781699ed9c1fe798fb03cf317a6a4dce164d224fd6023640abc167f222b59a0fa0
+  checksum: 3/5bf56a8c24ddea93468f028de2b9aacbb5686fdf226e911616aec6bb7fe26aa6e3ed63096faabc10eb0bbef659e422be47056d2eb7d186e5f603261ea5db0eb5
   languageName: node
   linkType: hard
 
@@ -3542,12 +3565,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:^0.5.1":
-  version: 0.5.1
-  resolution: "iconv-lite@npm:0.5.1"
+"iconv-lite@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "iconv-lite@npm:0.6.2"
   dependencies:
-    safer-buffer: ">= 2.1.2 < 3"
-  checksum: 3/e21730d7f434b74c55863cbb13ace62b070e0f15dd07825bc652ac5d1f7884b34cdbb7b75e74a4a71bbb61326417a8040c1b93631c0b38ee9fdc8672657ee158
+    safer-buffer: ">= 2.1.2 < 3.0.0"
+  checksum: 3/0785670120f57b5912c6a4391d6a69914906746d259b59de884dc6d324a52a0abde38d5804f67370192fec6878d01e7306de525568abcea70eb41c2bceb9f547
   languageName: node
   linkType: hard
 
@@ -4281,13 +4304,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"lodash.sortby@npm:^4.7.0":
-  version: 4.7.0
-  resolution: "lodash.sortby@npm:4.7.0"
-  checksum: 3/43cde11276c66da7b3eda5e9f00dc6edc276d2bcf0a5969ffc62b612cd1c4baf2eff5e84cee11383005722c460a9ca0f521fad4fa1cd2dc1ef013ee4da2dfe63
-  languageName: node
-  linkType: hard
-
 "lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.15":
   version: 4.17.15
   resolution: "lodash@npm:4.17.15"
@@ -4375,9 +4391,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"mapbox-gl@npm:1.11.1, mapbox-gl@npm:^1.11.1":
-  version: 1.11.1
-  resolution: "mapbox-gl@npm:1.11.1"
+"mapbox-gl@npm:1.12.0, mapbox-gl@npm:^1.12.0":
+  version: 1.12.0
+  resolution: "mapbox-gl@npm:1.12.0"
   dependencies:
     "@mapbox/geojson-rewind": ^0.5.0
     "@mapbox/geojson-types": ^1.0.2
@@ -4402,7 +4418,7 @@ fsevents@~2.1.2:
     supercluster: ^7.1.0
     tinyqueue: ^2.0.3
     vt-pbf: ^3.1.1
-  checksum: 3/c3aa3806b7d8fde50e82734345bc8a96ce5caaf334b3dbea24913d0ce9b38e331647ad6bf9ce3aefd15c5dabc8f29f4bd5807283bcd067a50cd047e08b06f9e9
+  checksum: 3/5d96c6ec6a476f74fe28afc49e70330b990bf4d73e4e6574d969f0688cbf3a547f26313e7af07497c2a3552db9cba55e12a100780006cbc7b7c22ae3a4fd93ab
   languageName: node
   linkType: hard
 
@@ -4542,17 +4558,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "mini-css-extract-plugin@npm:0.9.0"
+"mini-css-extract-plugin@npm:^0.11.2":
+  version: 0.11.2
+  resolution: "mini-css-extract-plugin@npm:0.11.2"
   dependencies:
     loader-utils: ^1.1.0
     normalize-url: 1.9.1
     schema-utils: ^1.0.0
     webpack-sources: ^1.1.0
   peerDependencies:
-    webpack: ^4.4.0
-  checksum: 3/654be33368f70857371fcd36e191ffc2ba2f6af338f3e112b3136cf2ccffd6ebf30b0271e87660b81d02a52988edb70d5caaec3a8628725b87ca0b49b4fcc225
+    webpack: ^4.4.0 || ^5.0.0
+  checksum: 3/2dfedd9cb35f63e5e31cf05b6cc9ea180b9e1197a0ac113e7e9a2766b2e415d158797169387645eefca41173b2d2239d69a8d518fade22868ba270c741d75151
   languageName: node
   linkType: hard
 
@@ -5124,23 +5140,23 @@ fsevents@~2.1.2:
     "@reduxjs/toolkit": ^1.4.0
     "@types/d3-ease": ^1.0.9
     "@types/geojson": ^7946.0.7
-    "@types/mapbox-gl": ^1.11.1
-    "@types/react": ^16.9.43
+    "@types/mapbox-gl": ^1.12.0
+    "@types/react": ^16.9.49
     "@types/react-custom-scroll": ^4.2.0
-    "@types/react-custom-scrollbars": ^4.0.6
+    "@types/react-custom-scrollbars": ^4.0.7
     "@types/react-dom": ^16.9.8
-    "@types/react-map-gl": ^5.2.6
+    "@types/react-map-gl": ^5.2.7
     "@types/react-redux": ^7.1.9
     "@types/react-virtualized": ^9.21.10
     clsx: ^1.1.1
-    copy-webpack-plugin: ^6.0.3
-    css-loader: ^4.2.0
+    copy-webpack-plugin: ^6.1.0
+    css-loader: ^4.3.0
     dotenv: ^8.2.0
-    file-loader: ^6.0.0
-    html-webpack-plugin: ^4.3.0
+    file-loader: ^6.1.0
+    html-webpack-plugin: ^4.4.1
     immer: ^7.0.9
-    mapbox-gl: ^1.11.1
-    mini-css-extract-plugin: ^0.9.0
+    mapbox-gl: ^1.12.0
+    mini-css-extract-plugin: ^0.11.2
     pnp-webpack-plugin: ^1.6.4
     react: ^16.13.1
     react-custom-scroll: ^4.2.1
@@ -5149,10 +5165,10 @@ fsevents@~2.1.2:
     react-mapbox-gl: ^4.8.6
     react-redux: ^7.2.1
     redux: ^4.0.5
-    source-map-loader: ^1.0.1
+    source-map-loader: ^1.1.0
     tiny-warning: ^1.0.3
-    ts-loader: ^8.0.1
-    typescript: ^3.9.7
+    ts-loader: ^8.0.3
+    typescript: ^4.0.2
     url-loader: ^4.1.0
     webpack: ^4.44.1
     webpack-cli: ^3.3.12
@@ -5176,7 +5192,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"p-limit@npm:^3.0.1":
+"p-limit@npm:^3.0.2":
   version: 3.0.2
   resolution: "p-limit@npm:3.0.2"
   dependencies:
@@ -6263,7 +6279,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"safer-buffer@npm:>= 2.1.2 < 3, safer-buffer@npm:^2.0.2, safer-buffer@npm:^2.1.0, safer-buffer@npm:~2.1.0":
+"safer-buffer@npm:>= 2.1.2 < 3, safer-buffer@npm:>= 2.1.2 < 3.0.0, safer-buffer@npm:^2.0.2, safer-buffer@npm:^2.1.0, safer-buffer@npm:~2.1.0":
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: 3/549ba83f5b314b59898efe3422120ce1ca7987a6eae5925a5fa5db930dc414d4a9dde0a5594f89638cd6ea60b6840ea961872908933ac2428d1726489db46fa5
@@ -6291,7 +6307,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^2.6.5, schema-utils@npm:^2.6.6":
+"schema-utils@npm:^2.6.5":
   version: 2.6.6
   resolution: "schema-utils@npm:2.6.6"
   dependencies:
@@ -6309,6 +6325,17 @@ fsevents@~2.1.2:
     ajv: ^6.12.2
     ajv-keywords: ^3.4.1
   checksum: 3/5d3e7c9e532712bbe0b7ba2f0bdbebc88ca3066c00ceb89877667c3c7b7ea5ee65e0ff7ffbf5164ebda43b0726166d4d39b382e91e9554b7ad2f6b06e77f947d
+  languageName: node
+  linkType: hard
+
+"schema-utils@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "schema-utils@npm:2.7.1"
+  dependencies:
+    "@types/json-schema": ^7.0.5
+    ajv: ^6.12.4
+    ajv-keywords: ^3.5.2
+  checksum: 3/3851bcc7e44a3f35d3ca96e460c598aa24cec9fe395b196395316a043dc111d25735a9a49b1a115e4b52d5ed0d8bbcfb9fe1bfd077610f192b613e020d3f3ef2
   languageName: node
   linkType: hard
 
@@ -6578,18 +6605,19 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"source-map-loader@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "source-map-loader@npm:1.0.1"
+"source-map-loader@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "source-map-loader@npm:1.1.0"
   dependencies:
-    data-urls: ^2.0.0
-    iconv-lite: ^0.5.1
+    abab: ^2.0.4
+    iconv-lite: ^0.6.2
     loader-utils: ^2.0.0
-    schema-utils: ^2.6.6
-    source-map: ^0.6.0
+    schema-utils: ^2.7.0
+    source-map: ^0.6.1
+    whatwg-mimetype: ^2.3.0
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
-  checksum: 3/03baea1db39a1df3548d675feb0074a06092f02a40430e1add21be0d2614731c4430331517d1888ece9c25a57bbc5fd4e62df2a5abf68cd620de2336d26c44cc
+  checksum: 3/2f68e4709996b782c41f1f9c0e61aa1e244ad2e52feff7f14ca49567e319b84d157d349c2afed52c0a7a04158e6b630c0793c28df192ca4732f5100cc63a82e9
   languageName: node
   linkType: hard
 
@@ -7123,18 +7151,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"tr46@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "tr46@npm:2.0.2"
-  dependencies:
-    punycode: ^2.1.1
-  checksum: 3/c8c221907944e8b577c4fff14d180a213c21a29b54a12a031aa6986cbb711a5d470588b556a7be9c7844f09142e12deef6b76fe10f6bd4d274b54f1a7e0aac9e
-  languageName: node
-  linkType: hard
-
-"ts-loader@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "ts-loader@npm:8.0.1"
+"ts-loader@npm:^8.0.3":
+  version: 8.0.3
+  resolution: "ts-loader@npm:8.0.3"
   dependencies:
     chalk: ^2.3.0
     enhanced-resolve: ^4.0.0
@@ -7143,7 +7162,7 @@ fsevents@~2.1.2:
     semver: ^6.0.0
   peerDependencies:
     typescript: "*"
-  checksum: 3/62772faf481c687f2ddf16cb6c7e8ec1a989868bfc442baec6a28b78a5bcc5476bf1c10d22311f2bed4ef4cf47f2a00fba21e9702b8b2f3ae1fd9715c93d78cb
+  checksum: 3/fe39e52d6f571889481e80586bf20006c15bc60670ec5f8c8d294e4b1a95c5d99bb6675ab5012aa1f2edbde7963fc8018a3fefded0b82e4fc23a3f1205e42671
   languageName: node
   linkType: hard
 
@@ -7206,23 +7225,23 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-typescript@^3.9.7:
-  version: 3.9.7
-  resolution: "typescript@npm:3.9.7"
+typescript@^4.0.2:
+  version: 4.0.2
+  resolution: "typescript@npm:4.0.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3/10848a9c35fd8c70a8792b8bd9485317534bcd58768793d3b7d9c7486e9fd30cf345f83fa2a324e0bf6088bc8a4d8d061d58fda38b18c2ff187cf01fbbff6267
+  checksum: 3/cc0e7806eee7997a1b4b2990badacc4a8d089893ed0a377f35c9658e2ac392503cb340d0187203ed82e36e427dda94b0fb7107e44a71cca99efac86be26e16ee
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^3.9.7#builtin<compat/typescript>":
-  version: 3.9.7
-  resolution: "typescript@patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=8cac75"
+"typescript@patch:typescript@^4.0.2#builtin<compat/typescript>":
+  version: 4.0.2
+  resolution: "typescript@patch:typescript@npm%3A4.0.2#builtin<compat/typescript>::version=4.0.2&hash=8cac75"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3/520abe4c1a6ca47dd812e5a73a3383688aa343f8ec5b3be07ca95724873c28116feb3f1a2c74373e2c0806cba8060bf207eec47e26e502042d4076a115209f11
+  checksum: 3/21597de9008aadd492293dd1095da301cec56fd9dac393e269ecb58738ec4fe27dd7355b67af0a545867d4fc1b2d1d7204260e8a2651b3338377ea840bdef61c
   languageName: node
   linkType: hard
 
@@ -7483,13 +7502,6 @@ typescript@^3.9.7:
   languageName: node
   linkType: hard
 
-"webidl-conversions@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "webidl-conversions@npm:5.0.0"
-  checksum: 3/af4e465fb3111f45930e48f8e4206d6ae41675f03f35d6dfa10b2d7186430236ef1b406d8c3e57f75c8a60e424ca715c9fe6b6b2316a1b999ecffe8280414dff
-  languageName: node
-  linkType: hard
-
 "webpack-cli@npm:^3.3.12":
   version: 3.3.12
   resolution: "webpack-cli@npm:3.3.12"
@@ -7658,17 +7670,6 @@ typescript@^3.9.7:
   version: 2.3.0
   resolution: "whatwg-mimetype@npm:2.3.0"
   checksum: 3/926e6ef8c7e53d158e501ce5e3c0e491d343c3c97e71b3d30451ffe4b1d6f81844c336b46a446a0b4f3fe4f327d76e3451d53ee8055344a0f5f2f35b84518011
-  languageName: node
-  linkType: hard
-
-"whatwg-url@npm:^8.0.0":
-  version: 8.1.0
-  resolution: "whatwg-url@npm:8.1.0"
-  dependencies:
-    lodash.sortby: ^4.7.0
-    tr46: ^2.0.2
-    webidl-conversions: ^5.0.0
-  checksum: 3/1cc612b2733d71bd9db47537836440aac8ce016e57d33d4f1e5f5cfb6952fccca9085507812f4374920a6835f09125ee359e41ce550b7ca83b9f560a544c14b8
   languageName: node
   linkType: hard
 
