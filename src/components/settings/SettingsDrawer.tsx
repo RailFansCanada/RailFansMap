@@ -156,12 +156,6 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             primary="Confederation Line"
             secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
             selected={props.lines.confederationLine}
-            onClick={() =>
-              props.setShowLine([
-                "confederationLine",
-                !props.lines.confederationLine,
-              ])
-            }
             imageUrl={confederationLine}
             tint="#D62937"
           />
@@ -170,9 +164,6 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             primary="Trillium Line"
             secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
             selected={props.lines.trilliumLine}
-            onClick={() =>
-              props.setShowLine(["trilliumLine", !props.lines.trilliumLine])
-            }
             imageUrl={trilliumLine}
             tint="#76BE43"
           />

@@ -25,6 +25,18 @@ const getPreloadedState = () => {
     if (params.get("barrhaven") == "true") {
       draft.lines.barrhavenExtension = true;
     }
+
+    if (params.get("map") === "satellite") {
+      draft.mapStyle = "satellite";
+    } else if (params.get("map") === "vector") {
+      draft.mapStyle = "vector";
+    }
+
+    if (params.get("theme") === "light") {
+      draft.appTheme = "light";
+    } else if (params.get("theme") === "dark") {
+      draft.appTheme = "dark";
+    }
   });
 };
 
