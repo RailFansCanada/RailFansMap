@@ -7,13 +7,9 @@ import {
   Theme,
   CardActionArea,
   fade,
-  Hidden,
-  ThemeProvider,
   useTheme,
 } from "@material-ui/core";
 import clsx from "clsx";
-
-import image from "../../images/confederation.svg";
 
 export interface LayerOptionProps {
   readonly primary: string;
