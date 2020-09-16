@@ -11,11 +11,13 @@ import {
   zoomOut,
   enableAlternative,
   disableAlternative,
+  setShareSheetOpen,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
 export const initialState: State = {
   drawerOpen: false,
+  shareSheetOpen: false,
   show3DBuildings: false,
   accessibleLabels: false,
   appTheme: "system",
@@ -34,6 +36,9 @@ export const reducer = createReducer<State>(initialState, (builder) => {
   builder
     .addCase(setDrawerOpen, (state, action) => {
       state.drawerOpen = action.payload;
+    })
+    .addCase(setShareSheetOpen, (state, action) => {
+      state.shareSheetOpen = action.payload;
     })
     .addCase(setShow3DBuildings, (state, action) => {
       state.show3DBuildings = action.payload;

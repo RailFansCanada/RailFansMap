@@ -18,23 +18,23 @@ const getPreloadedState = () => {
 
   return produce(state, (draft) => {
     const params = new URLSearchParams(location.search);
-    if (params.get("stage3") == "true" || params.get("kanata") == "true") {
+    if (params.get("stage3")?.includes("true") || params.get("kanata")?.includes("true")) {
       draft.lines.kanataExtension = true;
     }
 
-    if (params.get("barrhaven") == "true") {
+    if (params.get("barrhaven")?.includes("true")) {
       draft.lines.barrhavenExtension = true;
     }
 
-    if (params.get("map") === "satellite") {
+    if (params.get("map")?.includes("satellite")) {
       draft.mapStyle = "satellite";
-    } else if (params.get("map") === "vector") {
+    } else if (params.get("map")?.includes("vector")) {
       draft.mapStyle = "vector";
     }
 
-    if (params.get("theme") === "light") {
+    if (params.get("theme")?.includes("light")) {
       draft.appTheme = "light";
-    } else if (params.get("theme") === "dark") {
+    } else if (params.get("theme")?.includes("dark")) {
       draft.appTheme = "dark";
     }
   });
@@ -47,7 +47,7 @@ const store = configureStore({
 
 // Write current settings to localStorage
 store.subscribe(() => {
-  const { targetZoom, drawerOpen, ...rest } = store.getState();
+  const { targetZoom, drawerOpen, shareSheetOpen, ...rest } = store.getState();
   localStorage["settings"] = JSON.stringify(rest);
 });
 

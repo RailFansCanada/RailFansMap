@@ -6,6 +6,7 @@ export type Alternatives = "1" | "2" | "3" | "A" | "4" | "5" | "6";
 
 export interface State {
   readonly drawerOpen: boolean;
+  readonly shareSheetOpen: boolean;
 
   readonly show3DBuildings: boolean;
   readonly accessibleLabels: boolean;
