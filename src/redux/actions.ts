@@ -1,8 +1,9 @@
 import { createAction } from "@reduxjs/toolkit";
 import { AppTheme, MapStyle, LineState, Alternatives } from "./state";
-import { LinearScaleTwoTone } from "@material-ui/icons";
 
 export const setDrawerOpen = createAction<boolean>("setDrawerOpen");
+
+export const setShareSheetOpen = createAction<boolean>("setShareSheetOpen");
 
 export const setShow3DBuildings = createAction<boolean>("setShow3DBuildings");
 

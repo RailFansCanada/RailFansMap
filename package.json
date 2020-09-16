@@ -45,8 +45,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "@material-ui/core": "next",
+    "@material-ui/icons": "next",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/react-custom-scroll": "^4.2.0",
     "@types/react-redux": "^7.1.9",
