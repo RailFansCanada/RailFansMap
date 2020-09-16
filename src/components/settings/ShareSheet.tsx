@@ -73,14 +73,11 @@ const ShareOption = (props: {
   onCheck: (checked: boolean) => void;
 }) => {
   const classes = useCheckboxStyles();
+  const handleChange = () => {
+    props.onCheck(!props.checked);
+  };
   return (
-    <ListItem
-      button
-      onClick={() => {
-        props.onCheck(!props.checked);
-      }}
-      dense
-    >
+    <ListItem button onClick={handleChange} dense>
       <ListItemText primary={props.primary} secondary={props.secondary} />
       <ListItemSecondaryAction>
         <Checkbox
@@ -88,6 +85,7 @@ const ShareOption = (props: {
           className={classes.root}
           checked={props.checked}
           edge="start"
+          onChange={handleChange}
         />
       </ListItemSecondaryAction>
     </ListItem>
@@ -103,6 +101,17 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
   const [useLocation, setUseLocation] = React.useState(true);
   const [useMap, setUseMap] = React.useState(false);
   const [useTheme, setUseTheme] = React.useState(false);
+  const [useKanata, setUseKanata] = React.useState(
+    props.state.lines.kanataExtension
+  );
+  const [useBarrhaven, setUseBarrhaven] = React.useState(
+    props.state.lines.barrhavenExtension
+  );
+
+  React.useEffect(() => {
+    setUseKanata(props.state.lines.kanataExtension);
+    setUseBarrhaven(props.state.lines.barrhavenExtension);
+  }, [props.state.lines]);
 
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
   const isDarkMode =
@@ -128,6 +137,14 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
 
     if (useTheme) {
       url.searchParams.append("theme", isDarkMode ? "dark" : "light");
+    }
+
+    if (useKanata) {
+      url.searchParams.append("kanata", "true");
+    }
+
+    if (useBarrhaven) {
+      url.searchParams.append("barrhaven", "true");
     }
 
     return url.toString();
@@ -181,13 +198,25 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
             primary="Current Location"
             secondary="Share the map at the current location"
             checked={useLocation}
-            onCheck={() => setUseLocation(!useLocation)}
+            onCheck={(checked) => setUseLocation(checked)}
           />
           <ShareOption
             primary="Current Map"
             secondary={`Share the map using the ${props.state.mapStyle} base map`}
             checked={useMap}
-            onCheck={() => setUseMap(!useMap)}
+            onCheck={(checked) => setUseMap(checked)}
+          />
+          <ShareOption
+            primary="Show Kanata Extension"
+            secondary="Show the Stage 3 Kanata extension on the shared map"
+            checked={useKanata}
+            onCheck={(checked) => setUseKanata(checked)}
+          />
+          <ShareOption
+            primary="Show Barrhaven Extension"
+            secondary="Show the Stage 3 Barrhaven extension on the shared map"
+            checked={useBarrhaven}
+            onCheck={(checked) => setUseBarrhaven(checked)}
           />
           {/* <ShareOption
             primary="Current Theme"
