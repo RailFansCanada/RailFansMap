@@ -57,7 +57,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     const features = map.queryRenderedFeatures(event.point);
     for (let feature of features) {
       if (feature.properties.url != null && feature.properties.url !== "null") {
-        window.parent.location.href = `https://www.otrainfans.ca/${feature.properties.url}`;
+        window.parent.location.href = `https://www.railfans.ca/otrain/${feature.properties.url}`;
       }
     }
   };
