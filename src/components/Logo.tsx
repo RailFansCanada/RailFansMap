@@ -25,7 +25,7 @@ const LogoComponent = (props: LogoProps) => {
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
   return (
-    <a href="https://otrainfans.ca">
+    <a href="https://www.railfans.ca">
       <img src={isDarkTheme ? logoLight : logoDark} className={classes.root} />
     </a>
   );
