@@ -2423,7 +2423,7 @@
         ]
       },
       "properties": {
-        "name": "Gladstone",
+        "name": "Corso Italia",
         "color": "#76BE43",
         "type": "station-platforms"
       }
@@ -2476,7 +2476,7 @@
         ]
       },
       "properties": {
-        "name": "Carling",
+        "name": "Dow's Lake",
         "color": "#76BE43",
         "type": "station-platforms"
       }
@@ -2823,9 +2823,9 @@
       },
       "properties": {
         "OBJECTID": 7,
-        "name": "Carling",
+        "name": "Dow's Lake",
         "type": "station-label",
-        "url": "trillium-stations/carling",
+        "url": "trillium-stations/dows-lake",
         "color": "#76BE43"
       }
     },
@@ -2838,9 +2838,9 @@
       },
       "properties": {
         "OBJECTID": 8,
-        "name": "Gladstone",
+        "name": "Corso Italia",
         "type": "station-label",
-        "url": "trillium-stations/gladstone",
+        "url": "trillium-stations/corso-italia",
         "color": "#76BE43"
       }
     },
