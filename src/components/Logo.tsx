@@ -14,9 +14,9 @@ interface LogoProps {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     position: "fixed",
-    width: 88,
+    width: 140,
     bottom: theme.spacing(2),
-    left: "calc(50% - 44px)",
+    left: "calc(50% - 70px)",
   },
 }));
 
@@ -26,7 +26,7 @@ const LogoComponent = (props: LogoProps) => {
 
   return (
     <a href="https://www.railfans.ca">
-      <img src={isDarkTheme ? logoLight : logoDark} className={classes.root} />
+      <img src={isDarkTheme ? logoDark : logoLight} className={classes.root} />
     </a>
   );
 };
