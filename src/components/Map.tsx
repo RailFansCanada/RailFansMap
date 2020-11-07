@@ -5,22 +5,11 @@ import ReactMapboxGl, { Source, Layer } from "react-mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Line } from "./Line";
 import { RailYard } from "./RailYard";
-import stage1 from "../../data/stage1.json";
-import stage2south from "../../data/stage2south.json";
-import stage2east from "../../data/stage2east.json";
-import stage2west from "../../data/stage2west.json";
-import stage3kanata from "../../data/stage3kanata.json";
-import stage3barrhaven from "../../data/stage3barrhaven.json";
-import belfastYard from "../../data/belfastYard.json";
-import moodieYard from "../../data/moodieYard.json";
-import walkleyYard from "../../data/walkleyYard.json";
-import greenbankYard from "../../data/greenbankYard.json";
 
-import GeoJSON from "geojson";
 import { State, AppTheme, MapStyle, LineState, setTargetZoom } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
-import { BarrhavenLine } from "./BarrhavenLine";
+import { DataContext } from "./DataContext"
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -112,8 +101,6 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     setZoom([props.targetZoom]);
   }, [props.targetZoom]);
 
-  const blue = isDarkTheme ? "#8142fd" : "#5202F1";
-
   return (
     <Map
       style={style}
@@ -201,81 +188,23 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
           }}
         />
       )}
-      {props.lines.barrhavenExtension && (
-        <>
-          <RailYard
-            data={greenbankYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="Greenbank Yard"
-            position={[-75.7501105, 45.2805257]}
-          />
-          <Line
-            data={
-              stage3barrhaven as GeoJSON.FeatureCollection<GeoJSON.Geometry>
-            }
-            name="stage3barrhaven"
-            color={blue}
-            highContrastLabels={props.accessibleLabels}
-          />
-        </>
-      )}
 
-      {props.lines.trilliumLine && (
-        <>
-          <RailYard
-            data={walkleyYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="Walkley Yard"
-            position={[-75.65288, 45.36539]}
-          />
-          <Line
-            data={stage2south as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="stage2south"
-            color="#76BE43"
-            highContrastLabels={props.accessibleLabels}
-          />
-        </>
-      )}
-
-      {props.lines.confederationLine && (
-        <>
-          <RailYard
-            data={belfastYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="Belfast Yard"
-            position={[-75.64087, 45.41546]}
-          />
-          <RailYard
-            data={moodieYard as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="Moodie Yard"
-            position={[-75.84918, 45.33587]}
-          />
-          <Line
-            data={stage1 as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="stage1"
-            color="#D62937"
-            highContrastLabels={props.accessibleLabels}
-          />
-          <Line
-            data={stage2east as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="stage2east"
-            color="#D62937"
-            highContrastLabels={props.accessibleLabels}
-          />
-          <Line
-            data={stage2west as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-            name="stage2west"
-            color="#D62937"
-            highContrastLabels={props.accessibleLabels}
-          />
-        </>
-      )}
-
-      {props.lines.kanataExtension && (
-        <Line
-          data={stage3kanata as GeoJSON.FeatureCollection<GeoJSON.Geometry>}
-          name="stage3kanata"
-          color={blue}
-          highContrastLabels={props.accessibleLabels}
-        />
-      )}
+      <DataContext.Consumer>
+          {(cache) => {
+            return Object.entries(cache).map(([key, data]) => {
+              if (data.metadata?.type == "rail-line" && (data.metadata.filterKey == null || props.lines[data.metadata.filterKey]) ) {
+                return <Line
+                  data={data}
+                  name={key}
+                  color={data.metadata.color ?? "#212121"}
+                  highContrastLabels={props.accessibleLabels}
+                />
+              } else if (data.metadata?.type == "rail-yard" && (data.metadata.filterKey == null || props.lines[data.metadata.filterKey]) ) {
+                return <RailYard name={key} data={data}/>
+              }
+            })
+          }}
+      </DataContext.Consumer> 
     </Map>
   );
 });

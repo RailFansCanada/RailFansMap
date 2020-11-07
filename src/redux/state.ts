@@ -25,4 +25,5 @@ export interface LineState {
   readonly trilliumLine: boolean;
   readonly kanataExtension: boolean;
   readonly barrhavenExtension: boolean;
+  readonly [key: string]: boolean;
 }

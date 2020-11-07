@@ -1,5 +1,9 @@
 {
   "type": "FeatureCollection",
+  "metadata": {
+    "type": "rail-line",
+    "color": "#76BE43"
+  },
   "features": [
     {
       "type": "Feature",

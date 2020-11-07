@@ -10,6 +10,8 @@ import { Provider, connect } from "react-redux";
 import { MapControls } from "../components/MapControls";
 import { Logo } from "../components/Logo";
 import { produce } from "immer";
+import { DataContext, MapData, MapDataCache } from "../components/DataContext";
+import { cities } from "./cities";
 
 const getPreloadedState = () => {
   let state: State =
@@ -18,7 +20,10 @@ const getPreloadedState = () => {
 
   return produce(state, (draft) => {
     const params = new URLSearchParams(location.search);
-    if (params.get("stage3")?.includes("true") || params.get("kanata")?.includes("true")) {
+    if (
+      params.get("stage3")?.includes("true") ||
+      params.get("kanata")?.includes("true")
+    ) {
       draft.lines.kanataExtension = true;
     }
 
@@ -59,6 +64,16 @@ export const App = () => {
   );
 };
 
+async function loadData(fileName: string): Promise<MapData> {
+  const result = await fetch(`data/${fileName}`);
+  if (!result.ok) {
+    throw `Could not load ${fileName}`;
+  }
+
+  const json = await result.json();
+  return json as MapData;
+}
+
 const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = React.useMemo(() => {
@@ -69,15 +84,30 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
     return themeFactory(isDarkMode);
   }, [prefersDarkScheme, props.appTheme]);
 
+  const [cache, setCache] = React.useState<MapDataCache>({});
+
+  // Load in data
+  React.useEffect(() => {
+    Object.entries(cities).forEach(([key, value]) => {
+      value.data.forEach((name) => {
+        loadData(name)
+          .then((value) => setCache((cache) => ({ ...cache, [name]: value })))
+          .catch((reason) => console.error(reason));
+      });
+    });
+  }, []);
+
   return (
     <MuiThemeProvider theme={theme}>
-      <div style={{ display: "flex" }}>
-        <OverviewMap />
-        <Controls />
-        <MapControls />
-        <SettingsDrawer />
-        <Logo />
-      </div>
+      <DataContext.Provider value={cache}>
+        <div style={{ display: "flex" }}>
+          <OverviewMap />
+          <Controls />
+          <MapControls />
+          <SettingsDrawer />
+          <Logo />
+        </div>
+      </DataContext.Provider>
     </MuiThemeProvider>
   );
 };
