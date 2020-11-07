@@ -1,4 +1,8 @@
-{ "type": "FeatureCollection", "name": "stage3barrhaven", "features": [
+{ "type": "FeatureCollection", "name": "stage3barrhaven", "metadata": {
+    "type": "rail-line",
+    "color": "#8142fd",
+    "filterKey": "barrhavenExtension"
+},"features": [
     { "type": "Feature", "properties": { "type": "station-label", "name": "Barrhaven Centre", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.741477041566483, 45.267939117486982 ] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "Strandherd", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.745938485731131, 45.274188373662575 ] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "Longfields", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.746791517802478, 45.285521129407741 ] } },

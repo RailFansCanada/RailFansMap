@@ -1,6 +1,10 @@
 {
 "type": "FeatureCollection",
-"name": "stage3kanata",
+"name": "stage3kanata", "metadata": {
+    "type": "rail-line",
+    "color": "#8142fd",
+    "filterKey": "kanataExtension"
+},
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
     { "type": "Feature", "properties": { "type": "overpass" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.848342216199896, 45.336052352637282 ], [ -75.848497418071602, 45.335987405768059 ] ] } },
