@@ -6,7 +6,7 @@ const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
 const webpack = require("webpack");
 
 module.exports = {
-  devtool: "source-map",
+  devtool: "inline-source-map",
 
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -22,6 +22,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
         loader: "ts-loader",
@@ -33,15 +39,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === "development",
-            },
-          },
-          "css-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|jp(e*)g|svg)$/,
