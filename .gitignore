@@ -12,7 +12,7 @@ dist
 
 local.env
 
+# Zero-installs is not enabled
 .yarn/*
-!.yarn/cache
 !.yarn/releases
 !.yarn/plugins
