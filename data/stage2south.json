@@ -2752,7 +2752,7 @@
         "OBJECTID": 1,
         "name": "South Keys",
         "type": "station-label",
-        "url": "otrain/trillium-stations/south-keys",
+        "url": "otrain/transfer-station/south-keys",
         "color": "#76BE43",
         "major": true
       }
@@ -2768,7 +2768,7 @@
         "OBJECTID": 3,
         "name": "Greenboro",
         "type": "station-label",
-        "url": "otrain/trillium-stations/greenboro",
+        "url": "otrain/line-2-stations/greenboro",
         "color": "#76BE43"
       }
     },
@@ -2783,7 +2783,7 @@
         "OBJECTID": 4,
         "name": "Walkley",
         "type": "station-label",
-        "url": "otrain/trillium-stations/walkley",
+        "url": "otrain/line-2-stations/walkley",
         "color": "#76BE43"
       }
     },
@@ -2798,7 +2798,7 @@
         "OBJECTID": 5,
         "name": "Mooney's Bay",
         "type": "station-label",
-        "url": "otrain/trillium-stations/mooneys-bay",
+        "url": "otrain/line-2-stations/mooneys-bay",
         "color": "#76BE43"
       }
     },
@@ -2813,7 +2813,7 @@
         "OBJECTID": 6,
         "name": "Carleton",
         "type": "station-label",
-        "url": "otrain/trillium-stations/carleton",
+        "url": "otrain/line-2-stations/carleton",
         "color": "#76BE43",
         "major": true
       }
@@ -2829,7 +2829,7 @@
         "OBJECTID": 7,
         "name": "Dow's Lake",
         "type": "station-label",
-        "url": "otrain/trillium-stations/dows-lake",
+        "url": "otrain/line-2-stations/dows-lake",
         "color": "#76BE43"
       }
     },
@@ -2844,7 +2844,7 @@
         "OBJECTID": 8,
         "name": "Corso Italia",
         "type": "station-label",
-        "url": "otrain/trillium-stations/corso-italia",
+        "url": "otrain/line-2-stations/corso-italia",
         "color": "#76BE43"
       }
     },
@@ -2859,7 +2859,7 @@
         "OBJECTID": 9,
         "name": "Bayview",
         "type": "station-label",
-        "url": "otrain/interchange-stations/bayview",
+        "url": "otrain/transfer-station/bayview-station",
         "color": "#76BE43",
         "major": true
       }
@@ -2875,7 +2875,7 @@
         "OBJECTID": 10,
         "name": "Leitrim",
         "type": "station-label",
-        "url": "otrain/trillium-stations/leitrim",
+        "url": "otrain/line-2-stations/leitrim",
         "color": "#76BE43"
       }
     },
@@ -2890,7 +2890,7 @@
         "OBJECTID": 11,
         "name": "Bowesville",
         "type": "station-label",
-        "url": "otrain/trillium-stations/bowesville",
+        "url": "otrain/line-2-stations/bowesville",
         "color": "#76BE43"
       }
     },
@@ -2905,7 +2905,7 @@
         "OBJECTID": 12,
         "name": "Limebank",
         "type": "station-label",
-        "url": "otrain/trillium-stations/limebank",
+        "url": "otrain/line-2-stations/limebank",
         "color": "#76BE43",
         "major": true
       }
@@ -2920,7 +2920,7 @@
         "OBJECTID": 13,
         "type": "station-label",
         "name": "Airport",
-        "url": "otrain/trillium-stations/airport-link/airport",
+        "url": "otrain/line-4-stations/airport",
         "color": "#76BE43",
         "major": true
       }
@@ -2935,7 +2935,7 @@
         "OBJECTID": 14,
         "type": "station-label",
         "name": "Uplands",
-        "url": "otrain/trillium-stations/airport-link/uplands",
+        "url": "otrain/line-4-stations/uplands",
         "color": "#76BE43"
       }
     },
