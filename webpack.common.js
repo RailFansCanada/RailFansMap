@@ -2,12 +2,11 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
 const webpack = require("webpack");
 
 module.exports = {
-  devtool: "inline-source-map",
-
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     plugins: [PnpWebpackPlugin],
@@ -15,10 +14,6 @@ module.exports = {
   resolveLoader: {
     plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
-  devServer: {
-    hot: true,
-  },
-
   module: {
     rules: [
       {
@@ -31,6 +26,9 @@ module.exports = {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
         loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+        },
       },
       {
         enforce: "pre",
@@ -54,7 +52,6 @@ module.exports = {
       },
     ],
   },
-
   plugins: [
     new HtmlWebPackPlugin({
       template: "./index.html",
@@ -66,9 +63,11 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       MAPBOX_KEY: `"${dotenv.parsed.MAPBOX_KEY}"`,
+      BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
     }),
     new CopyPlugin({
       patterns: [{ from: "CNAME" }],
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };

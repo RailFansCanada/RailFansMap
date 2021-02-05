@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as GeoJSON from "geojson";
-import { Source, Layer } from "react-mapbox-gl";
+import React from "react";
+import GeoJSON from "geojson";
+import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 
 export interface LineProps {
@@ -28,14 +28,11 @@ export interface LineDataProps {
 
 export const Line = React.memo(
   ({ name, data, color, highContrastLabels }: LineProps) => {
-    const dataRef = React.useRef({ type: "geojson", data });
     return (
-      <>
-        <Source id={name} type="geojson" geoJsonSource={dataRef.current} />
+      <Source id={name} type="geojson" data={data}>
         <Layer
           id={`${name}-tunnel`}
-          sourceId={name}
-          before="content-mask"
+          beforeId="content-mask"
           type="fill"
           filter={[
             "all",
@@ -58,9 +55,8 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-tracks`}
-          before="content-mask"
+          beforeId="content-mask"
           type="line"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
@@ -77,9 +73,8 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-tracks-future`}
-          before="content-mask"
+          beforeId="content-mask"
           type="line"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
@@ -97,9 +92,8 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-overpass`}
-          before="content-mask"
+          beforeId="content-mask"
           type="line"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
@@ -126,9 +120,8 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-platforms`}
-          before="content-mask"
+          beforeId="content-mask"
           type="fill"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
@@ -141,9 +134,8 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-platforms-future`}
-          before="content-mask"
+          beforeId="content-mask"
           type="line"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
@@ -157,9 +149,8 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-station`}
-          before="circle-mask"
+          beforeId="circle-mask"
           type="circle"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
@@ -183,15 +174,14 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-labels`}
-          before="symbol-mask"
+          beforeId="symbol-mask"
           type="symbol"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "alternatives"], null],
             ["==", ["get", "type"], "station-label"],
           ]}
-          minZoom={11}
+          minzoom={11}
           layout={
             {
               "text-field": "{name}",
@@ -236,17 +226,16 @@ export const Line = React.memo(
         />
         <Layer
           id={`${name}-labels-major`}
-          before="symbol-mask"
+          beforeId="symbol-mask"
           type="symbol"
-          sourceId={name}
           filter={[
             "all",
             ["==", ["get", "type"], "station-label"],
             ["==", ["get", "major"], true],
             ["==", ["get", "alternatives"], null],
           ]}
-          maxZoom={11}
-          minZoom={9}
+          maxzoom={11}
+          minzoom={9}
           layout={
             {
               "text-field": "{name}",
@@ -286,7 +275,7 @@ export const Line = React.memo(
             "text-halo-color": highContrastLabels ? "#212121" : color,
           }}
         />
-      </>
+      </Source>
     );
   }
 );

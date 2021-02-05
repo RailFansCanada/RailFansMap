@@ -1,4 +1,5 @@
 import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import { useMediaQuery, MuiThemeProvider } from "@material-ui/core";
 import { OverviewMap } from "../components/Map";
 import { themeFactory } from "./theme";
@@ -10,8 +11,8 @@ import { Provider, connect } from "react-redux";
 import { MapControls } from "../components/MapControls";
 import { Logo } from "../components/Logo";
 import { produce } from "immer";
-import { DataContext, MapData, MapDataCache } from "../components/DataContext";
-import { cities } from "./cities";
+import { ProvideData } from "../hooks/useData";
+import { ProvideHash } from "../hooks/useHash";
 
 const getPreloadedState = () => {
   let state: State =
@@ -64,15 +65,11 @@ export const App = () => {
   );
 };
 
-async function loadData(fileName: string): Promise<MapData> {
-  const result = await fetch(`data/${fileName}`);
-  if (!result.ok) {
-    throw `Could not load ${fileName}`;
-  }
-
-  const json = await result.json();
-  return json as MapData;
-}
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
 
 const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
@@ -84,30 +81,19 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
     return themeFactory(isDarkMode);
   }, [prefersDarkScheme, props.appTheme]);
 
-  const [cache, setCache] = React.useState<MapDataCache>({});
-
-  // Load in data
-  React.useEffect(() => {
-    Object.entries(cities).forEach(([key, value]) => {
-      value.data.forEach((name) => {
-        loadData(name)
-          .then((value) => setCache((cache) => ({ ...cache, [name]: value })))
-          .catch((reason) => console.error(reason));
-      });
-    });
-  }, []);
-
   return (
     <MuiThemeProvider theme={theme}>
-      <DataContext.Provider value={cache}>
-        <div style={{ display: "flex" }}>
-          <OverviewMap />
-          <Controls />
-          <MapControls />
-          <SettingsDrawer />
-          <Logo />
-        </div>
-      </DataContext.Provider>
+      <ProvideData>
+        <ProvideHash>
+          <Container>
+            <OverviewMap />
+            <Controls />
+            <MapControls />
+            <SettingsDrawer />
+            <Logo />
+          </Container>
+        </ProvideHash>
+      </ProvideData>
     </MuiThemeProvider>
   );
 };

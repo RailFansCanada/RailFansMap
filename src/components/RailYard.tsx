@@ -1,6 +1,6 @@
 import React from "react";
 import GeoJSON from "geojson";
-import { Source, Layer } from "react-mapbox-gl";
+import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 
 export interface RailYardProps {
@@ -9,15 +9,12 @@ export interface RailYardProps {
 }
 
 export const RailYard = ({ name, data }: RailYardProps) => {
-  const dataRef = React.useRef({ type: "geojson", data });
   return (
-    <>
-      <Source id={name} type="geojson" geoJsonSource={dataRef.current} />
+    <Source id={name} type="geojson" data={data}>
       <Layer
         id={`${name}-tracks`}
-        before="content-mask"
+        beforeId="content-mask"
         type="line"
-        sourceId={name}
         filter={["==", "type", "tracks"]}
         layout={{
           "line-join": "round",
@@ -32,9 +29,8 @@ export const RailYard = ({ name, data }: RailYardProps) => {
         id={`${name}-labels`}
         beforeId="symbol-mask"
         type="symbol"
-        sourceId={name}
         filter={["==", "type", "yard-label"]}
-        minZoom={11}
+        minzoom={11}
         layout={
           {
             "text-field": ["get", "name"],
@@ -62,6 +58,6 @@ export const RailYard = ({ name, data }: RailYardProps) => {
           "text-halo-color": "#212121",
         }}
       />
-    </>
+    </Source>
   );
 };

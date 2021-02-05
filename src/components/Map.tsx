@@ -1,15 +1,29 @@
-import * as React from "react";
+import React, { useCallback, useState } from "react";
 
-import ReactMapboxGl, { Source, Layer } from "react-mapbox-gl";
+import ReactMapGL, {
+  Source,
+  Layer,
+  MapEvent,
+  ViewportProps,
+} from "react-map-gl";
+import styled from "styled-components";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Line } from "./Line";
 import { RailYard } from "./RailYard";
 
-import { State, AppTheme, MapStyle, LineState, setTargetZoom } from "../redux";
+import {
+  State,
+  AppTheme,
+  MapStyle,
+  LineState,
+  setTargetZoom,
+  setZoom,
+} from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
-import { DataContext } from "./DataContext"
+import { useData } from "../hooks/useData";
+import { useHash } from "../hooks/useHash";
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -20,59 +34,41 @@ export interface OverviewMapProps {
 
   readonly targetZoom: number;
   readonly setTargetZoom: typeof setTargetZoom;
+  readonly setZoom: typeof setZoom;
 }
 
-const Map = ReactMapboxGl({
-  accessToken: MAPBOX_KEY,
-  customAttribution: ["Data: City of Ottawa"],
-  hash: true,
-  antialias: true,
-});
+const Map = styled(ReactMapGL)`
+  width: 100vw;
+  height: 100vw;
+`;
 
 export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
-  const [location, setLocation] = React.useState<[number, number]>([
-    -75.6579,
-    45.3629,
-  ]);
-  const [zoom, setZoom] = React.useState<[number]>([11]);
-  const [bearing, setBearing] = React.useState<[number]>([-30]);
+  const hash = useHash();
+  const [viewport, setViewport] = useState<ViewportProps>({
+    longitude: -75.6579,
+    latitude: 45.3629,
+    zoom: 11,
+    bearing: -30,
+    width: ("100%" as unknown) as number,
+    height: ("100%" as unknown) as number,
+    ...hash,
+  });
 
-  const handleClick = (
-    map: mapboxgl.Map,
-    event: React.SyntheticEvent<any, Event> &
-      mapboxgl.MapMouseEvent &
-      mapboxgl.EventData
-  ) => {
-    const features = map.queryRenderedFeatures(event.point);
-    for (let feature of features) {
-      if (feature.properties.url != null && feature.properties.url !== "null") {
-        window.parent.location.href = `https://www.railfans.ca/${feature.properties.url}`;
+  const data = useData();
+  // Give station icons and all labels the pointer cursor
+  const interactiveLayerIds = Object.keys(data)
+    .filter(
+      (key) =>
+        data[key].metadata.filterKey == null ||
+        props.lines[data[key].metadata.filterKey]
+    )
+    .flatMap((key) => {
+      if (data[key].metadata.type === "rail-line") {
+        return [`${key}-station`, `${key}-labels`];
+      } else if (data[key].metadata.type === "rail-yard") {
+        return [`${key}-labels`];
       }
-    }
-  };
-
-  const handleMouseMove = (
-    map: mapboxgl.Map,
-    event: React.SyntheticEvent<any, Event> &
-      mapboxgl.MapMouseEvent &
-      mapboxgl.EventData
-  ) => {
-    let hovered = false;
-    const features = map.queryRenderedFeatures(event.point);
-    if (features.length > 0) {
-      for (let feature of features) {
-        if (feature.properties.type === "station-label") {
-          map.getCanvas().style.cursor = "pointer";
-          hovered = true;
-          break;
-        }
-      }
-    }
-
-    if (!hovered) {
-      map.getCanvas().style.cursor = "";
-    }
-  };
+    });
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
@@ -83,6 +79,14 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
       ? "mapbox://styles/mapbox/dark-v10"
       : "mapbox://styles/mapbox/light-v10"
   );
+
+  const handleClick = (event: MapEvent) => {
+    event.features?.forEach((feature) => {
+      if (feature.properties.url != null && feature.properties.url !== "null") {
+        window.parent.location.href = `${BASE_URL}/${feature.properties.url}`;
+      }
+    });
+  };
 
   React.useEffect(() => {
     if (props.mapStyle === "satellite") {
@@ -98,71 +102,63 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
 
   React.useEffect(() => {
     // Zoom input from +/- buttons
-    setZoom([props.targetZoom]);
+    setViewport((viewport) => ({ ...viewport, zoom: props.targetZoom }));
   }, [props.targetZoom]);
+
+  React.useEffect(() => {
+    props.setZoom(viewport.zoom);
+  }, [viewport]);
 
   return (
     <Map
-      style={style}
-      containerStyle={{
-        height: "100vh",
-        width: "100vw",
-      }}
+      mapStyle={style}
+      {...viewport}
+      onViewportChange={setViewport}
       onClick={handleClick}
-      onMouseMove={handleMouseMove}
-      center={location}
-      zoom={zoom}
-      bearing={bearing}
-      onZoomEnd={(map) => {
-        setZoom([map.getZoom()]);
-        props.setTargetZoom(map.getZoom());
+      interactiveLayerIds={interactiveLayerIds}
+      mapboxApiAccessToken={MAPBOX_KEY}
+      scrollZoom={({ speed: 1 } as unknown) as boolean}
+      mapOptions={{
+        customAttribution: ["Data: City of Ottawa"],
+        hash: true,
+        antiAlias: true,
       }}
-      onDragEnd={(map) =>
-        setLocation(map.getCenter().toArray() as [number, number])
-      }
-      onRotateEnd={(map) => setBearing([map.getBearing()])}
     >
       {/* Layer z-ordering hack */}
       <Source
         id="blank"
         type="geojson"
-        geoJsonSource={{
-          type: "geojson",
-          data: { type: "FeatureCollection", features: [] },
+        data={{
+          type: "FeatureCollection",
+          features: [],
         }}
-      ></Source>
+      >
+        <Layer type="fill" id="content-mask" paint={{}} layout={{}} />
+        <Layer type="fill" id="circle-mask" paint={{}} layout={{}} />
+        <Layer type="fill" id="symbol-mask" paint={{}} layout={{}} />
+      </Source>
+
       <Layer
-        sourceId="blank"
-        type="fill"
-        id="content-mask"
-        paint={{}}
-        layout={{}}
+        id="sky"
+        type="sky"
+        paint={
+          {
+            "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
+          } as unknown
+        }
       />
-      <Layer
-        sourceId="blank"
-        type="fill"
-        id="circle-mask"
-        paint={{}}
-        layout={{}}
-      />
-      <Layer
-        sourceId="blank"
-        type="fill"
-        id="symbol-mask"
-        paint={{}}
-        layout={{}}
-      />
+
       {props.show3DBuildings && (
         <Layer
           id="3d-buildings"
-          sourceId="composite"
-          sourceLayer="building"
+          source="composite"
+          {...{ "source-layer": "building" }}
           filter={["==", "extrude", "true"]}
           type="fill-extrusion"
-          before="content-mask"
-          minZoom={15}
+          beforeId="content-mask"
+          minzoom={15}
           paint={{
-            "fill-extrusion-color": "#FFFFFF",
+            "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
 
             // use an 'interpolate' expression to add a smooth transition effect to the
             // buildings as the user zooms in
@@ -188,23 +184,28 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
           }}
         />
       )}
-
-      <DataContext.Consumer>
-          {(cache) => {
-            return Object.entries(cache).map(([key, data]) => {
-              if (data.metadata?.type == "rail-line" && (data.metadata.filterKey == null || props.lines[data.metadata.filterKey]) ) {
-                return <Line
-                  data={data}
-                  name={key}
-                  color={data.metadata.color ?? "#212121"}
-                  highContrastLabels={props.accessibleLabels}
-                />
-              } else if (data.metadata?.type == "rail-yard" && (data.metadata.filterKey == null || props.lines[data.metadata.filterKey]) ) {
-                return <RailYard name={key} data={data}/>
-              }
-            })
-          }}
-      </DataContext.Consumer> 
+      {Object.entries(data).map(([key, data]) => {
+        if (
+          data.metadata?.type === "rail-line" &&
+          (data.metadata.filterKey == null ||
+            props.lines[data.metadata.filterKey])
+        ) {
+          return (
+            <Line
+              data={data}
+              name={key}
+              color={data.metadata.color ?? "#212121"}
+              highContrastLabels={props.accessibleLabels}
+            />
+          );
+        } else if (
+          data.metadata?.type === "rail-yard" &&
+          (data.metadata.filterKey == null ||
+            props.lines[data.metadata.filterKey])
+        ) {
+          return <RailYard name={key} data={data} />;
+        }
+      })}
     </Map>
   );
 });
@@ -220,6 +221,7 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = {
   setTargetZoom,
+  setZoom,
 };
 
 export const OverviewMap = connect(
