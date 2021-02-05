@@ -17,7 +17,8 @@ jobs:
       - name: Set up local secrets
         env:
           MAPBOX_KEY: ${{ secrets.MAPBOX_KEY }}
-        run: echo MAPBOX_KEY="$MAPBOX_KEY" > local.env
+          BASE_URL: ${{ secrets.BASE_URL }}
+        run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL" > local.env
           
       - name: Build dist
         run: yarn run build
