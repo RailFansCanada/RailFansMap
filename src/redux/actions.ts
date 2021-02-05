@@ -19,7 +19,8 @@ export const setShowLine = createAction<[keyof LineState, boolean]>(
   "setShowLine"
 );
 
-export const setTargetZoom = createAction<number>("setZoom");
+export const setTargetZoom = createAction<number>("setTargetZoom");
+export const setZoom = createAction<number>("setZoom")
 export const zoomIn = createAction("zoomIn");
 export const zoomOut = createAction("zoomOut");
 

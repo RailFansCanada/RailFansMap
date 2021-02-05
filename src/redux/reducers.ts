@@ -12,6 +12,7 @@ import {
   enableAlternative,
   disableAlternative,
   setShareSheetOpen,
+  setZoom,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -29,6 +30,7 @@ export const initialState: State = {
     barrhavenExtension: false,
   },
   targetZoom: 11,
+  zoom: 11,
   barrhavenAlternatives: ["1"],
 };
 
@@ -56,18 +58,20 @@ export const reducer = createReducer<State>(initialState, (builder) => {
       const [key, value] = action.payload;
       state.lines[key] = value;
     })
-
     .addCase(setTargetZoom, (state, action) => {
       state.targetZoom = action.payload;
     })
+    .addCase(setZoom, (state, action) => {
+      state.zoom = action.payload;
+    })
     .addCase(zoomIn, (state) => {
-      state.targetZoom += 0.5;
+      state.targetZoom = state.zoom + 0.5;
       if (state.targetZoom > 20) {
         state.targetZoom = 20;
       }
     })
     .addCase(zoomOut, (state) => {
-      state.targetZoom -= 0.5;
+      state.targetZoom = state.zoom - 0.5;
       if (state.targetZoom < 0) {
         state.targetZoom = 0;
       }

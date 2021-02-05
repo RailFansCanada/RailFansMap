@@ -32,6 +32,7 @@
     "@types/react-map-gl": "^5.2.9",
     "@types/react-redux": "^7.1.16",
     "@types/react-virtualized": "^9.21.11",
+    "@types/styled-components": "^5.1.7",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
@@ -61,9 +62,11 @@
     "react-custom-scroll": "^4.2.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.1",
-    "react-mapbox-gl": "^5.1.1",
+    "react-is": "^17.0.1",
+    "react-map-gl": "^6.1.1",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "styled-components": "^5.2.1",
     "tiny-warning": "^1.0.3"
   }
 }

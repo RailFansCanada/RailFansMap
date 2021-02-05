@@ -1,10 +1,10 @@
-import { ViewState } from "react-map-gl";
+import { ViewportProps } from "react-map-gl";
 import { AppTheme } from "../redux";
 import { useMediaQuery } from "@material-ui/core";
 
-export const initialViewState = (): ViewState | null => {
+export const initialViewState = (): ViewportProps | null => {
   const hashParts = location.hash.substr(1).split("/");
-  let builder: ViewState = null;
+  let builder: ViewportProps = null;
 
   const zoom = parseFloat(hashParts[0]);
   const latitude = parseFloat(hashParts[1]);

@@ -16,6 +16,7 @@ export interface State {
   readonly lines: LineState;
 
   readonly targetZoom: number;
+  readonly zoom: number;
 
   readonly barrhavenAlternatives: Alternatives[];
 }

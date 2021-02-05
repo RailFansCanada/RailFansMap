@@ -63,6 +63,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       MAPBOX_KEY: `"${dotenv.parsed.MAPBOX_KEY}"`,
+      BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
     }),
     new CopyPlugin({
       patterns: [{ from: "CNAME" }],
