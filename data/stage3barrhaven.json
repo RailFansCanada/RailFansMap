@@ -1,6 +1,6 @@
 { "type": "FeatureCollection", "name": "stage3barrhaven", "metadata": {
     "type": "rail-line",
-    "color": "#8142fd",
+    "color": "#D62937",
     "filterKey": "barrhavenExtension"
 },"features": [
     { "type": "Feature", "properties": { "type": "station-label", "name": "Barrhaven Centre", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.741477041566483, 45.267939117486982 ] } },

@@ -194,6 +194,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
             <Line
               data={data}
               name={key}
+              offset={data.metadata.offset ?? 0}
               color={data.metadata.color ?? "#212121"}
               highContrastLabels={props.accessibleLabels}
             />

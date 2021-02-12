@@ -7,6 +7,7 @@ export interface LineProps {
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   name: string;
   color: string;
+  offset: number;
   highContrastLabels?: boolean;
 }
 
@@ -27,7 +28,7 @@ export interface LineDataProps {
 }
 
 export const Line = React.memo(
-  ({ name, data, color, highContrastLabels }: LineProps) => {
+  ({ name, data, color, offset, highContrastLabels }: LineProps) => {
     return (
       <Source id={name} type="geojson" data={data}>
         <Layer
@@ -69,6 +70,7 @@ export const Line = React.memo(
           paint={{
             "line-color": color,
             "line-width": 3,
+            "line-offset": offset * 3
           }}
         />
         <Layer
@@ -102,20 +104,21 @@ export const Line = React.memo(
           minzoom={14}
           layout={{
             "line-join": "round",
-            "line-cap": "square",
+            "line-cap": "butt",
           }}
           paint={{
             "line-color": color,
-            "line-width": 1.5,
+            "line-width": 1,
             "line-gap-width": [
               "interpolate",
               ["exponential", 2],
               ["zoom"],
-              14,
-              0,
               15,
-              5,
+              0,
+              18,
+              15,
             ],
+            "line-offset": offset * 3
           }}
         />
         <Layer

@@ -42,7 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@reduxjs/toolkit", "npm:1.5.0"],
             ["@types/d3-ease", "npm:2.0.0"],
             ["@types/geojson", "npm:7946.0.7"],
-            ["@types/mapbox-gl", "npm:2.0.4"],
+            ["@types/mapbox-gl", "npm:2.0.5"],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-custom-scroll", "npm:4.2.0"],
             ["@types/react-custom-scrollbars", "npm:4.0.7"],
@@ -59,7 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.5.1"],
             ["immer", "npm:8.0.1"],
-            ["mapbox-gl", "npm:2.0.1"],
+            ["mapbox-gl", "npm:2.1.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.3.5"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["react", "npm:17.0.1"],
@@ -357,6 +357,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@mapbox-tiny-sdf-npm-1.1.1-9db60bb1ef-c449b45c5d.zip/node_modules/@mapbox/tiny-sdf/",
           "packageDependencies": [
             ["@mapbox/tiny-sdf", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.2.3", {
+          "packageLocation": "./.yarn/cache/@mapbox-tiny-sdf-npm-1.2.3-c47fb474e2-ca3bf4a861.zip/node_modules/@mapbox/tiny-sdf/",
+          "packageDependencies": [
+            ["@mapbox/tiny-sdf", "npm:1.2.3"]
           ],
           "linkType": "HARD",
         }]
@@ -798,6 +805,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.0.4-91244ed4db-91c62899a4.zip/node_modules/@types/mapbox-gl/",
           "packageDependencies": [
             ["@types/mapbox-gl", "npm:2.0.4"],
+            ["@types/geojson", "npm:7946.0.7"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.0.5", {
+          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.0.5-8309c238e6-866e8540c5.zip/node_modules/@types/mapbox-gl/",
+          "packageDependencies": [
+            ["@types/mapbox-gl", "npm:2.0.5"],
             ["@types/geojson", "npm:7946.0.7"]
           ],
           "linkType": "HARD",
@@ -5298,6 +5313,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vt-pbf", "npm:3.1.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:2.1.1", {
+          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.1.1-9b5a5d6107-f36ed05eaf.zip/node_modules/mapbox-gl/",
+          "packageDependencies": [
+            ["mapbox-gl", "npm:2.1.1"],
+            ["@mapbox/geojson-rewind", "npm:0.5.0"],
+            ["@mapbox/geojson-types", "npm:1.0.2"],
+            ["@mapbox/jsonlint-lines-primitives", "npm:2.0.2"],
+            ["@mapbox/mapbox-gl-supported", "npm:2.0.0"],
+            ["@mapbox/point-geometry", "npm:0.1.0"],
+            ["@mapbox/tiny-sdf", "npm:1.2.3"],
+            ["@mapbox/unitbezier", "npm:0.0.0"],
+            ["@mapbox/vector-tile", "npm:1.3.1"],
+            ["@mapbox/whoots-js", "npm:3.1.0"],
+            ["csscolorparser", "npm:1.0.3"],
+            ["earcut", "npm:2.2.2"],
+            ["geojson-vt", "npm:3.2.1"],
+            ["gl-matrix", "npm:3.3.0"],
+            ["grid-index", "npm:1.1.0"],
+            ["minimist", "npm:1.2.5"],
+            ["murmurhash-js", "npm:1.0.0"],
+            ["pbf", "npm:3.2.1"],
+            ["potpack", "npm:1.0.1"],
+            ["quickselect", "npm:2.0.0"],
+            ["rw", "npm:1.3.3"],
+            ["supercluster", "npm:7.1.2"],
+            ["tinyqueue", "npm:2.0.3"],
+            ["vt-pbf", "npm:3.1.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["media-typer", [
@@ -6016,7 +6061,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@reduxjs/toolkit", "npm:1.5.0"],
             ["@types/d3-ease", "npm:2.0.0"],
             ["@types/geojson", "npm:7946.0.7"],
-            ["@types/mapbox-gl", "npm:2.0.4"],
+            ["@types/mapbox-gl", "npm:2.0.5"],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-custom-scroll", "npm:4.2.0"],
             ["@types/react-custom-scrollbars", "npm:4.0.7"],
@@ -6033,7 +6078,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.5.1"],
             ["immer", "npm:8.0.1"],
-            ["mapbox-gl", "npm:2.0.1"],
+            ["mapbox-gl", "npm:2.1.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.3.5"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["react", "npm:17.0.1"],
@@ -8031,6 +8076,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/supercluster-npm-7.1.0-5bb9d3c8cc-82ee4a0a35.zip/node_modules/supercluster/",
           "packageDependencies": [
             ["supercluster", "npm:7.1.0"],
+            ["kdbush", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:7.1.2", {
+          "packageLocation": "./.yarn/cache/supercluster-npm-7.1.2-a4ab1c6017-4fec26a636.zip/node_modules/supercluster/",
+          "packageDependencies": [
+            ["supercluster", "npm:7.1.2"],
             ["kdbush", "npm:3.0.0"]
           ],
           "linkType": "HARD",

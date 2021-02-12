@@ -2,7 +2,7 @@
 "type": "FeatureCollection",
 "name": "stage3kanata", "metadata": {
     "type": "rail-line",
-    "color": "#8142fd",
+    "color": "#AF882D",
     "filterKey": "kanataExtension"
 },
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

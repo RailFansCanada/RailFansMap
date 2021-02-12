@@ -247,6 +247,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mapbox/tiny-sdf@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@mapbox/tiny-sdf@npm:1.2.3"
+  checksum: ca3bf4a861445cc38faf2c2450d937d3ffcbee70c759356a3aa81a809a1b53d76e1fb415d55cb01cf39696503c680ef18892ca246c2c39084f56ff9b1174c653
+  languageName: node
+  linkType: hard
+
 "@mapbox/unitbezier@npm:^0.0.0":
   version: 0.0.0
   resolution: "@mapbox/unitbezier@npm:0.0.0"
@@ -567,12 +574,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:^2.0.3, @types/mapbox-gl@npm:^2.0.4":
+"@types/mapbox-gl@npm:^2.0.3":
   version: 2.0.4
   resolution: "@types/mapbox-gl@npm:2.0.4"
   dependencies:
     "@types/geojson": "*"
   checksum: 91c62899a43c727d34cebd974bf7714eef9da1413a9044ce81d2777dabebe395c927e20ab9bde44bfb9cd99b58f05970e12ac3ba677be5f7f90fe1ebd4ff3cef
+  languageName: node
+  linkType: hard
+
+"@types/mapbox-gl@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@types/mapbox-gl@npm:2.0.5"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 866e8540c5ad2aff2ed9c77c87ab8c8acfea377b68895a22b8a1448b108eae64897ce43a41254f5017b7eb82e4fe112606d5b850542b084e8393d67f4a264a53
   languageName: node
   linkType: hard
 
@@ -4432,6 +4448,37 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"mapbox-gl@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "mapbox-gl@npm:2.1.1"
+  dependencies:
+    "@mapbox/geojson-rewind": ^0.5.0
+    "@mapbox/geojson-types": ^1.0.2
+    "@mapbox/jsonlint-lines-primitives": ^2.0.2
+    "@mapbox/mapbox-gl-supported": ^2.0.0
+    "@mapbox/point-geometry": ^0.1.0
+    "@mapbox/tiny-sdf": ^1.2.3
+    "@mapbox/unitbezier": ^0.0.0
+    "@mapbox/vector-tile": ^1.3.1
+    "@mapbox/whoots-js": ^3.1.0
+    csscolorparser: ~1.0.3
+    earcut: ^2.2.2
+    geojson-vt: ^3.2.1
+    gl-matrix: ^3.2.1
+    grid-index: ^1.1.0
+    minimist: ^1.2.5
+    murmurhash-js: ^1.0.0
+    pbf: ^3.2.1
+    potpack: ^1.0.1
+    quickselect: ^2.0.0
+    rw: ^1.3.3
+    supercluster: ^7.1.2
+    tinyqueue: ^2.0.3
+    vt-pbf: ^3.1.1
+  checksum: f36ed05eaff11979c7a4309323acdd38b0ec83cd60d834455a35ec55e739b3fa6e51e0a184a432eca330b227a137f8fcfe979681d50bfb9dacdaea983e700018
+  languageName: node
+  linkType: hard
+
 "media-typer@npm:0.3.0":
   version: 0.3.0
   resolution: "media-typer@npm:0.3.0"
@@ -5067,7 +5114,7 @@ fsevents@~2.3.1:
     "@reduxjs/toolkit": ^1.5.0
     "@types/d3-ease": ^2.0.0
     "@types/geojson": ^7946.0.7
-    "@types/mapbox-gl": ^2.0.4
+    "@types/mapbox-gl": ^2.0.5
     "@types/react": ^17.0.0
     "@types/react-custom-scroll": ^4.2.0
     "@types/react-custom-scrollbars": ^4.0.7
@@ -5084,7 +5131,7 @@ fsevents@~2.3.1:
     fork-ts-checker-webpack-plugin: ^6.1.0
     html-webpack-plugin: ^4.5.1
     immer: ^8.0.1
-    mapbox-gl: ^2.0.1
+    mapbox-gl: ^2.1.1
     mini-css-extract-plugin: ^1.3.5
     pnp-webpack-plugin: ^1.6.4
     react: ^17.0.1
@@ -6759,6 +6806,15 @@ resolve@^1.9.0:
   dependencies:
     kdbush: ^3.0.0
   checksum: 82ee4a0a35c278faf5095d82e2c16503ec1c08b9a7799e040c00c9993763630bd58e0d52ba483bbd23c0780e3dc49ca0600ca1c56c779e4c8320cc256a60cf2b
+  languageName: node
+  linkType: hard
+
+"supercluster@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "supercluster@npm:7.1.2"
+  dependencies:
+    kdbush: ^3.0.0
+  checksum: 4fec26a63678c924807b1f07109dbf5ea9e139ec84a63cf51a807b34df1e73af2bd08437f9524ec765558755a31e7d3b6960bbef0b8ca46b250c3c9c65f58ffc
   languageName: node
   linkType: hard
 
