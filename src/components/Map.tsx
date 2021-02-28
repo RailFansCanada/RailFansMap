@@ -1,10 +1,19 @@
-import React, { useCallback, useState } from "react";
+import React, {
+  createRef,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import ReactMapGL, {
   Source,
   Layer,
   MapEvent,
   ViewportProps,
+  MapRef,
+  MapContext,
 } from "react-map-gl";
 import styled from "styled-components";
 
@@ -24,6 +33,7 @@ import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
 import { useData } from "../hooks/useData";
 import { useHash } from "../hooks/useHash";
+import { Icons } from "./Icons";
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -44,6 +54,7 @@ const Map = styled(ReactMapGL)`
 
 export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
   const hash = useHash();
+  console.dir(hash);
   const [viewport, setViewport] = useState<ViewportProps>({
     longitude: -75.6579,
     latitude: 45.3629,
@@ -72,7 +83,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
-  const [style, setStyle] = React.useState(
+  const [style, setStyle] = useState(
     props.mapStyle === "satellite"
       ? "mapbox://styles/mapbox/satellite-streets-v11"
       : isDarkTheme
@@ -88,7 +99,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.mapStyle === "satellite") {
       setStyle("mapbox://styles/mapbox/satellite-streets-v11");
     } else {
@@ -100,12 +111,12 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     }
   }, [isDarkTheme, props.appTheme, props.mapStyle]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Zoom input from +/- buttons
     setViewport((viewport) => ({ ...viewport, zoom: props.targetZoom }));
   }, [props.targetZoom]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.setZoom(viewport.zoom);
   }, [viewport]);
 
@@ -124,6 +135,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
         antiAlias: true,
       }}
     >
+      <Icons />
       {/* Layer z-ordering hack */}
       <Source
         id="blank"
