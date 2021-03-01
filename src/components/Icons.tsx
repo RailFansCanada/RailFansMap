@@ -26,7 +26,7 @@ const icons = [
   },
 ];
 
-export const Icons = () => {
+export const Icons = (props: {style: string}) => {
   const { map } = useContext(MapContext);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const Icons = () => {
         })
       }
     })
-  }, []);
+  }, [props.style]);
 
   return <></>;
 };

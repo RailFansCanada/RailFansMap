@@ -178,7 +178,7 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
         fullWidth
         maxWidth="sm"
         onClose={handleClose}
-        open={props.shareSheetOpen}
+        open={props.shareSheetOpen ?? false}
       >
         <DialogTitle disableTypography>
           <Typography variant="h6">Share Map</Typography>

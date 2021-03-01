@@ -248,9 +248,9 @@ __metadata:
   linkType: hard
 
 "@mapbox/tiny-sdf@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "@mapbox/tiny-sdf@npm:1.2.3"
-  checksum: ca3bf4a861445cc38faf2c2450d937d3ffcbee70c759356a3aa81a809a1b53d76e1fb415d55cb01cf39696503c680ef18892ca246c2c39084f56ff9b1174c653
+  version: 1.2.5
+  resolution: "@mapbox/tiny-sdf@npm:1.2.5"
+  checksum: 2abd5bcbc9e33237383fc056b4cca62b2aa4a38cdcdb17e8ad25a8bd1056cdd5bcc4e885f24cf8a0da9c01eabd005bcb4077d01de30b1082911c837e2f290495
   languageName: node
   linkType: hard
 
@@ -4933,7 +4933,7 @@ fsevents@~2.3.1:
     react-custom-scrollbars: ^4.2.1
     react-dom: ^17.0.1
     react-is: ^17.0.1
-    react-map-gl: ^6.1.9
+    react-map-gl: ^6.1.10
     react-redux: ^7.2.2
     redux: ^4.0.5
     source-map-loader: ^2.0.1
@@ -5564,9 +5564,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-map-gl@npm:^6.1.9":
-  version: 6.1.9
-  resolution: "react-map-gl@npm:6.1.9"
+"react-map-gl@npm:^6.1.10":
+  version: 6.1.10
+  resolution: "react-map-gl@npm:6.1.10"
   dependencies:
     "@babel/runtime": ^7.0.0
     "@types/geojson": ^7946.0.7
@@ -5578,7 +5578,7 @@ fsevents@~2.3.1:
     viewport-mercator-project: ^6.2.3 || ^7.0.2
   peerDependencies:
     react: ">=16.3.0"
-  checksum: a3c888b1ba28bd8342883d3b2a9629b99626e0eb2160cf52a7748b226a7246b32e47bc9a472304737b2043a08ecb311f8c978ea3e9f20887c22d17b0aac500b2
+  checksum: 224b46075908b7b5b29a7758b1b5f17672feffa2e0df8533a4501f51d33110d7959ddba93a73171ad6195a53952ab7ee5ad54a39c14b6a0986538ae9fd7c80c2
   languageName: node
   linkType: hard
 

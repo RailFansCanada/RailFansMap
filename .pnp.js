@@ -67,7 +67,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-custom-scrollbars", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.2.1"],
             ["react-dom", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:17.0.1"],
             ["react-is", "npm:17.0.1"],
-            ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.9"],
+            ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.10"],
             ["react-redux", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:7.2.2"],
             ["redux", "npm:4.0.5"],
             ["source-map-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.0.1"],
@@ -360,10 +360,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:1.2.3", {
-          "packageLocation": "./.yarn/cache/@mapbox-tiny-sdf-npm-1.2.3-c47fb474e2-ca3bf4a861.zip/node_modules/@mapbox/tiny-sdf/",
+        ["npm:1.2.5", {
+          "packageLocation": "./.yarn/cache/@mapbox-tiny-sdf-npm-1.2.5-629b4030d6-2abd5bcbc9.zip/node_modules/@mapbox/tiny-sdf/",
           "packageDependencies": [
-            ["@mapbox/tiny-sdf", "npm:1.2.3"]
+            ["@mapbox/tiny-sdf", "npm:1.2.5"]
           ],
           "linkType": "HARD",
         }]
@@ -5141,7 +5141,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mapbox/jsonlint-lines-primitives", "npm:2.0.2"],
             ["@mapbox/mapbox-gl-supported", "npm:2.0.0"],
             ["@mapbox/point-geometry", "npm:0.1.0"],
-            ["@mapbox/tiny-sdf", "npm:1.2.3"],
+            ["@mapbox/tiny-sdf", "npm:1.2.5"],
             ["@mapbox/unitbezier", "npm:0.0.0"],
             ["@mapbox/vector-tile", "npm:1.3.1"],
             ["@mapbox/whoots-js", "npm:3.1.0"],
@@ -5862,7 +5862,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-custom-scrollbars", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:4.2.1"],
             ["react-dom", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:17.0.1"],
             ["react-is", "npm:17.0.1"],
-            ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.9"],
+            ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.10"],
             ["react-redux", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:7.2.2"],
             ["redux", "npm:4.0.5"],
             ["source-map-loader", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.0.1"],
@@ -6681,17 +6681,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["react-map-gl", [
-        ["npm:6.1.9", {
-          "packageLocation": "./.yarn/cache/react-map-gl-npm-6.1.9-d0d1a5fc8f-a3c888b1ba.zip/node_modules/react-map-gl/",
+        ["npm:6.1.10", {
+          "packageLocation": "./.yarn/cache/react-map-gl-npm-6.1.10-ac1994e838-224b460759.zip/node_modules/react-map-gl/",
           "packageDependencies": [
-            ["react-map-gl", "npm:6.1.9"]
+            ["react-map-gl", "npm:6.1.10"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.9", {
-          "packageLocation": "./.yarn/$$virtual/react-map-gl-virtual-e5c46308f6/0/cache/react-map-gl-npm-6.1.9-d0d1a5fc8f-a3c888b1ba.zip/node_modules/react-map-gl/",
+        ["virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.10", {
+          "packageLocation": "./.yarn/$$virtual/react-map-gl-virtual-da60e6e740/0/cache/react-map-gl-npm-6.1.10-ac1994e838-224b460759.zip/node_modules/react-map-gl/",
           "packageDependencies": [
-            ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.9"],
+            ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.10"],
             ["@babel/runtime", "npm:7.12.5"],
             ["@types/geojson", "npm:7946.0.7"],
             ["@types/mapbox-gl", "npm:2.0.4"],

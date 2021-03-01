@@ -13,11 +13,13 @@ import { Logo } from "../components/Logo";
 import { produce } from "immer";
 import { ProvideData } from "../hooks/useData";
 import { ProvideHash } from "../hooks/useHash";
+import { ProvideWindow } from "../hooks/useWindow";
 
 const getPreloadedState = () => {
   let state: State =
     (localStorage["settings"] && JSON.parse(localStorage["settings"])) ??
     initialState;
+    console.dir(state);
 
   return produce(state, (draft) => {
     const params = new URLSearchParams(location.search);
@@ -85,13 +87,15 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
     <MuiThemeProvider theme={theme}>
       <ProvideData>
         <ProvideHash>
-          <Container>
-            <OverviewMap />
-            <Controls />
-            <MapControls />
-            <SettingsDrawer />
-            <Logo />
-          </Container>
+          <ProvideWindow>
+            <Container>
+              <OverviewMap />
+              <Controls />
+              {/* <MapControls /> */}
+              <SettingsDrawer />
+              <Logo />
+            </Container>
+          </ProvideWindow>
         </ProvideHash>
       </ProvideData>
     </MuiThemeProvider>

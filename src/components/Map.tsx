@@ -34,6 +34,7 @@ import { useIsDarkTheme } from "../app/utils";
 import { useData } from "../hooks/useData";
 import { useHash } from "../hooks/useHash";
 import { Icons } from "./Icons";
+import { useWindow } from "../hooks/useWindow";
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -52,18 +53,30 @@ const Map = styled(ReactMapGL)`
   height: 100vw;
 `;
 
-export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
-  const hash = useHash();
-  console.dir(hash);
+export const OverviewMapComponent = (props: OverviewMapProps) => {
+  const windowSize = useWindow();
   const [viewport, setViewport] = useState<ViewportProps>({
     longitude: -75.6579,
     latitude: 45.3629,
     zoom: 11,
     bearing: -30,
-    width: ("100%" as unknown) as number,
-    height: ("100%" as unknown) as number,
-    ...hash,
+    width: windowSize[0],
+    height: windowSize[1],
+    ...useHash(),
   });
+
+  const handleViewportChange = (viewport: ViewportProps) => {
+    setViewport(viewport);
+    props.setZoom(viewport.zoom);
+  };
+
+  useEffect(() => {
+    setViewport((old) => ({
+      ...old,
+      width: windowSize[0],
+      height: windowSize[1],
+    }));
+  }, [windowSize]);
 
   const data = useData();
   // Give station icons and all labels the pointer cursor
@@ -111,31 +124,22 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     }
   }, [isDarkTheme, props.appTheme, props.mapStyle]);
 
-  useEffect(() => {
-    // Zoom input from +/- buttons
-    setViewport((viewport) => ({ ...viewport, zoom: props.targetZoom }));
-  }, [props.targetZoom]);
-
-  useEffect(() => {
-    props.setZoom(viewport.zoom);
-  }, [viewport]);
-
   return (
     <Map
       mapStyle={style}
       {...viewport}
-      onViewportChange={setViewport}
+      onViewportChange={handleViewportChange}
       onClick={handleClick}
       interactiveLayerIds={interactiveLayerIds}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={({ speed: 1 } as unknown) as boolean}
+      scrollZoom={({ speed: 0.5 } as unknown) as boolean}
       mapOptions={{
         customAttribution: ["Data: City of Ottawa"],
         hash: true,
-        antiAlias: true,
+        antiAlias: false,
       }}
     >
-      <Icons />
+      <Icons style={style} />
       {/* Layer z-ordering hack */}
       <Source
         id="blank"
@@ -206,6 +210,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
             <Line
               data={data}
               name={key}
+              key={key}
               offset={data.metadata.offset ?? 0}
               color={data.metadata.color ?? "#212121"}
               highContrastLabels={props.accessibleLabels}
@@ -216,12 +221,12 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
           (data.metadata.filterKey == null ||
             props.lines[data.metadata.filterKey])
         ) {
-          return <RailYard name={key} data={data} />;
+          return <RailYard key={key} name={key} data={data} />;
         }
       })}
     </Map>
   );
-});
+};
 
 const mapStateToProps = (state: State) => ({
   show3DBuildings: state.show3DBuildings,

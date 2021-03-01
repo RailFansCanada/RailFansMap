@@ -222,7 +222,7 @@ export const Line = React.memo(
               "text-size": 16,
               "icon-image": "label-background",
               "icon-text-fit": "both",
-              "icon-text-fit-padding": [1, 4, 0, 4]
+              "icon-text-fit-padding": [1, 4, 0, 4],
             } as AnyLayout
           }
           paint={{
