@@ -48,6 +48,8 @@ export interface OverviewMapProps {
   readonly setZoom: typeof setZoom;
 }
 
+export const LINE_OFFSET = 3;
+
 const Map = styled(ReactMapGL)`
   width: 100vw;
   height: 100vw;
@@ -221,7 +223,14 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           (data.metadata.filterKey == null ||
             props.lines[data.metadata.filterKey])
         ) {
-          return <RailYard key={key} name={key} data={data} />;
+          return (
+            <RailYard
+              key={key}
+              name={key}
+              data={data}
+              offset={data.metadata.offset ?? 0}
+            />
+          );
         }
       })}
     </Map>
