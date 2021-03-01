@@ -2,13 +2,15 @@ import React from "react";
 import GeoJSON from "geojson";
 import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
+import { LINE_OFFSET } from "./Map";
 
 export interface RailYardProps {
   name: string;
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+  offset: number;
 }
 
-export const RailYard = ({ name, data }: RailYardProps) => {
+export const RailYard = ({ name, data, offset }: RailYardProps) => {
   return (
     <Source id={name} type="geojson" data={data}>
       <Layer
@@ -23,6 +25,7 @@ export const RailYard = ({ name, data }: RailYardProps) => {
         paint={{
           "line-color": "#818181",
           "line-width": 3,
+          "line-offset": offset * LINE_OFFSET,
         }}
       />
       <Layer
@@ -37,25 +40,14 @@ export const RailYard = ({ name, data }: RailYardProps) => {
             "text-anchor": "center",
             "text-optional": true,
             "text-font": ["Raleway Bold"],
-            "text-size": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              10,
-              12,
-              15,
-              18,
-              18,
-              26,
-            ],
-            "text-transform": "uppercase",
+            "text-size": 16,
+            "icon-image": "label-background",
+            "icon-text-fit": "both",
+            "icon-text-fit-padding": [1, 4, 0, 4],
           } as AnyLayout
         }
         paint={{
-          "text-halo-width": 30,
-          "text-halo-blur": 30,
           "text-color": "#FFFFFF",
-          "text-halo-color": "#212121",
         }}
       />
     </Source>

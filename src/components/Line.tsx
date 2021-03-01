@@ -7,6 +7,7 @@ export interface LineProps {
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   name: string;
   color: string;
+  offset: number;
   highContrastLabels?: boolean;
 }
 
@@ -26,8 +27,36 @@ export interface LineDataProps {
   url?: string;
 }
 
+const labelExpression = [
+  "format",
+  ["get", "name"],
+  {},
+  " ",
+  {},
+  ["case", 
+    ["in", 1, ["get", "lines"]], ["image", "line1icon"],
+    ""
+  ],
+  {},
+  ["case", 
+    ["in", 2, ["get", "lines"]], ["image", "line2icon"],
+    ""
+  ],
+  {},
+  ["case", 
+    ["in", 3, ["get", "lines"]], ["image", "line3icon"],
+    ""
+  ],
+  {},
+  ["case", 
+    ["in", 4, ["get", "lines"]], ["image", "line4icon"],
+    ""
+  ],
+  {},
+]
+
 export const Line = React.memo(
-  ({ name, data, color, highContrastLabels }: LineProps) => {
+  ({ name, data, color, offset, highContrastLabels }: LineProps) => {
     return (
       <Source id={name} type="geojson" data={data}>
         <Layer
@@ -41,7 +70,7 @@ export const Line = React.memo(
           ]}
           minzoom={14}
           paint={{
-            "fill-color": color,
+            "fill-color": "#212121",
             "fill-opacity": [
               "interpolate",
               ["linear"],
@@ -49,7 +78,7 @@ export const Line = React.memo(
               14,
               0,
               15,
-              0.5,
+              0.3,
             ],
           }}
         />
@@ -69,6 +98,7 @@ export const Line = React.memo(
           paint={{
             "line-color": color,
             "line-width": 3,
+            "line-offset": offset * 3
           }}
         />
         <Layer
@@ -102,20 +132,21 @@ export const Line = React.memo(
           minzoom={14}
           layout={{
             "line-join": "round",
-            "line-cap": "square",
+            "line-cap": "butt",
           }}
           paint={{
             "line-color": color,
-            "line-width": 1.5,
+            "line-width": 1,
             "line-gap-width": [
               "interpolate",
               ["exponential", 2],
               ["zoom"],
-              14,
-              0,
               15,
-              5,
+              0,
+              18,
+              15,
             ],
+            "line-offset": offset * 3
           }}
         />
         <Layer
@@ -184,44 +215,18 @@ export const Line = React.memo(
           minzoom={11}
           layout={
             {
-              "text-field": "{name}",
+              "text-field": /*"{name}"*/ labelExpression,
               "text-anchor": "left",
               "text-offset": [0.75, 0],
-              "text-optional": true,
-              "icon-optional": false,
-              "icon-allow-overlap": true,
-              "icon-size": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                10,
-                0.5,
-                13.5,
-                1,
-              ],
-              // "text-transform": "uppercase",
               "text-font": ["Raleway Bold"],
-              "text-size": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                10,
-                12,
-                15,
-                18,
-                18,
-                26,
-              ],
-              "text-transform": "uppercase",
+              "text-size": 16,
+              "icon-image": "label-background",
+              "icon-text-fit": "both",
+              "icon-text-fit-padding": [1, 4, 0, 4],
             } as AnyLayout
           }
           paint={{
-            "text-halo-width": 50,
-            "text-halo-blur": 50,
             "text-color": "#FFFFFF",
-            "text-halo-color": highContrastLabels ? "#212121" : color,
-            //"text-color": color,
-            //"text-halo-color": "#FFFFFF",
           }}
         />
         <Layer
@@ -238,41 +243,18 @@ export const Line = React.memo(
           minzoom={9}
           layout={
             {
-              "text-field": "{name}",
+              "text-field": /*"{name}"*/ labelExpression,
               "text-anchor": "left",
               "text-offset": [0.75, 0],
-              "text-optional": true,
-              "icon-optional": false,
-              "icon-allow-overlap": true,
-              "icon-size": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                10,
-                0.5,
-                13.5,
-                1,
-              ],
-              "text-transform": "uppercase",
               "text-font": ["Raleway Bold"],
-              "text-size": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                10,
-                12,
-                15,
-                18,
-                18,
-                26,
-              ],
+              "text-size": 16,
+              "icon-image": "label-background",
+              "icon-text-fit": "both",
+              "icon-text-fit-padding": [1, 4, 0, 4]
             } as AnyLayout
           }
           paint={{
-            "text-halo-width": 50,
-            "text-halo-blur": 50,
             "text-color": "#FFFFFF",
-            "text-halo-color": highContrastLabels ? "#212121" : color,
           }}
         />
       </Source>

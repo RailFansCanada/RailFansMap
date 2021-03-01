@@ -1,10 +1,19 @@
-import React, { useCallback, useState } from "react";
+import React, {
+  createRef,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import ReactMapGL, {
   Source,
   Layer,
   MapEvent,
   ViewportProps,
+  MapRef,
+  MapContext,
 } from "react-map-gl";
 import styled from "styled-components";
 
@@ -24,6 +33,8 @@ import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
 import { useData } from "../hooks/useData";
 import { useHash } from "../hooks/useHash";
+import { Icons } from "./Icons";
+import { useWindow } from "../hooks/useWindow";
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -37,22 +48,37 @@ export interface OverviewMapProps {
   readonly setZoom: typeof setZoom;
 }
 
+export const LINE_OFFSET = 3;
+
 const Map = styled(ReactMapGL)`
   width: 100vw;
   height: 100vw;
 `;
 
-export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
-  const hash = useHash();
+export const OverviewMapComponent = (props: OverviewMapProps) => {
+  const windowSize = useWindow();
   const [viewport, setViewport] = useState<ViewportProps>({
     longitude: -75.6579,
     latitude: 45.3629,
     zoom: 11,
     bearing: -30,
-    width: ("100%" as unknown) as number,
-    height: ("100%" as unknown) as number,
-    ...hash,
+    width: windowSize[0],
+    height: windowSize[1],
+    ...useHash(),
   });
+
+  const handleViewportChange = (viewport: ViewportProps) => {
+    setViewport(viewport);
+    props.setZoom(viewport.zoom);
+  };
+
+  useEffect(() => {
+    setViewport((old) => ({
+      ...old,
+      width: windowSize[0],
+      height: windowSize[1],
+    }));
+  }, [windowSize]);
 
   const data = useData();
   // Give station icons and all labels the pointer cursor
@@ -72,7 +98,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
-  const [style, setStyle] = React.useState(
+  const [style, setStyle] = useState(
     props.mapStyle === "satellite"
       ? "mapbox://styles/mapbox/satellite-streets-v11"
       : isDarkTheme
@@ -88,7 +114,7 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.mapStyle === "satellite") {
       setStyle("mapbox://styles/mapbox/satellite-streets-v11");
     } else {
@@ -100,30 +126,22 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
     }
   }, [isDarkTheme, props.appTheme, props.mapStyle]);
 
-  React.useEffect(() => {
-    // Zoom input from +/- buttons
-    setViewport((viewport) => ({ ...viewport, zoom: props.targetZoom }));
-  }, [props.targetZoom]);
-
-  React.useEffect(() => {
-    props.setZoom(viewport.zoom);
-  }, [viewport]);
-
   return (
     <Map
       mapStyle={style}
       {...viewport}
-      onViewportChange={setViewport}
+      onViewportChange={handleViewportChange}
       onClick={handleClick}
       interactiveLayerIds={interactiveLayerIds}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={({ speed: 1 } as unknown) as boolean}
+      scrollZoom={({ speed: 0.5 } as unknown) as boolean}
       mapOptions={{
         customAttribution: ["Data: City of Ottawa"],
         hash: true,
-        antiAlias: true,
+        antiAlias: false,
       }}
     >
+      <Icons style={style} />
       {/* Layer z-ordering hack */}
       <Source
         id="blank"
@@ -194,6 +212,8 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
             <Line
               data={data}
               name={key}
+              key={key}
+              offset={data.metadata.offset ?? 0}
               color={data.metadata.color ?? "#212121"}
               highContrastLabels={props.accessibleLabels}
             />
@@ -203,12 +223,19 @@ export const OverviewMapComponent = React.memo((props: OverviewMapProps) => {
           (data.metadata.filterKey == null ||
             props.lines[data.metadata.filterKey])
         ) {
-          return <RailYard name={key} data={data} />;
+          return (
+            <RailYard
+              key={key}
+              name={key}
+              data={data}
+              offset={data.metadata.offset ?? 0}
+            />
+          );
         }
       })}
     </Map>
   );
-});
+};
 
 const mapStateToProps = (state: State) => ({
   show3DBuildings: state.show3DBuildings,

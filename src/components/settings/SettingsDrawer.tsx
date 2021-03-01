@@ -179,7 +179,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               ])
             }
             imageUrl={confederationLine}
-            tint={blue}
+            tint="#AF882D"
           />
 
           <LayerOption
@@ -193,7 +193,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               ])
             }
             imageUrl={confederationLine}
-            tint={blue}
+            tint="#D62937"
           />
           <Divider />
           <Typography className={classes.sectionHeader} variant="overline">
@@ -222,11 +222,6 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               primary="Show 3D buildings"
               checked={props.show3DBuildings}
               onToggle={(checked) => props.setShow3DBuildings(checked)}
-            />
-            <SwitchOption
-              primary="High Contrast Labels"
-              checked={props.accessibleLabels}
-              onToggle={(checked) => props.setUseAccessibleLabels(checked)}
             />
             <MenuOption
               primary="Choose Theme"

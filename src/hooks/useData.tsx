@@ -6,6 +6,7 @@ export interface Metadata {
   type: "rail-line" | "rail-yard";
   color?: string;
   filterKey?: string;
+  offset?: number;
 }
 
 export interface WithMetadata {
