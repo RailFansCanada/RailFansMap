@@ -19,7 +19,6 @@ const getPreloadedState = () => {
   let state: State =
     (localStorage["settings"] && JSON.parse(localStorage["settings"])) ??
     initialState;
-    console.dir(state);
 
   return produce(state, (draft) => {
     const params = new URLSearchParams(location.search);

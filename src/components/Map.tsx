@@ -1,19 +1,10 @@
-import React, {
-  createRef,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 
 import ReactMapGL, {
   Source,
   Layer,
   MapEvent,
   ViewportProps,
-  MapRef,
-  MapContext,
 } from "react-map-gl";
 import styled from "styled-components";
 
@@ -31,10 +22,35 @@ import {
 } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
-import { useData } from "../hooks/useData";
+import { useData, MapDataCache } from "../hooks/useData";
 import { useHash } from "../hooks/useHash";
-import { Icons } from "./Icons";
+import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
+import labelBackground from "../images/label.svg";
+
+const provideLabelStyle = (mapData: MapDataCache) => [
+  "format",
+  ["get", "name"],
+  {},
+  " ",
+  {},
+  ...Object.values(mapData)
+    .filter((value) => value.metadata.icon != null)
+    .map((value) => value.metadata.id)
+    .sort()
+    .flatMap((id) => [
+      ["case", ["in", id, ["get", "lines"]], ["image", id], ""],
+      {},
+    ]),
+];
+
+interface LabelProvider {
+  labelStyle: {}[];
+}
+
+export const LabelProviderContext = React.createContext<LabelProvider>({
+  labelStyle: [],
+});
 
 export interface OverviewMapProps {
   readonly show3DBuildings: boolean;
@@ -82,17 +98,18 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   const data = useData();
   // Give station icons and all labels the pointer cursor
-  const interactiveLayerIds = Object.keys(data)
+  const interactiveLayerIds = Object.values(data)
     .filter(
-      (key) =>
-        data[key].metadata.filterKey == null ||
-        props.lines[data[key].metadata.filterKey]
+      (value) =>
+        value.metadata.filterKey == null ||
+        props.lines[value.metadata.filterKey]
     )
-    .flatMap((key) => {
-      if (data[key].metadata.type === "rail-line") {
-        return [`${key}-station`, `${key}-labels`];
-      } else if (data[key].metadata.type === "rail-yard") {
-        return [`${key}-labels`];
+    .flatMap((value) => {
+      const id = value.metadata.id;
+      if (value.metadata.type === "rail-line") {
+        return [`${id}-station`, `${id}-labels`];
+      } else if (value.metadata.type === "rail-yard") {
+        return [`${id}-labels`];
       }
     });
 
@@ -105,6 +122,8 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       ? "mapbox://styles/mapbox/dark-v10"
       : "mapbox://styles/mapbox/light-v10"
   );
+
+  const [labelStyle, setLabelStyle] = useState<{}[]>([]);
 
   const handleClick = (event: MapEvent) => {
     event.features?.forEach((feature) => {
@@ -126,6 +145,10 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     }
   }, [isDarkTheme, props.appTheme, props.mapStyle]);
 
+  useEffect(() => {
+    setLabelStyle(provideLabelStyle(data));
+  }, [data]);
+
   return (
     <Map
       mapStyle={style}
@@ -134,105 +157,125 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       onClick={handleClick}
       interactiveLayerIds={interactiveLayerIds}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={({ speed: 0.5 } as unknown) as boolean}
+      scrollZoom={({ speed: 0.25, smooth: true } as unknown) as boolean}
       mapOptions={{
         customAttribution: ["Data: City of Ottawa"],
         hash: true,
         antiAlias: false,
       }}
     >
-      <Icons style={style} />
-      {/* Layer z-ordering hack */}
-      <Source
-        id="blank"
-        type="geojson"
-        data={{
-          type: "FeatureCollection",
-          features: [],
-        }}
-      >
-        <Layer type="fill" id="content-mask" paint={{}} layout={{}} />
-        <Layer type="fill" id="circle-mask" paint={{}} layout={{}} />
-        <Layer type="fill" id="symbol-mask" paint={{}} layout={{}} />
-      </Source>
-
-      <Layer
-        id="sky"
-        type="sky"
-        paint={
-          {
-            "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
-          } as unknown
-        }
-      />
-
-      {props.show3DBuildings && (
-        <Layer
-          id="3d-buildings"
-          source="composite"
-          {...{ "source-layer": "building" }}
-          filter={["==", "extrude", "true"]}
-          type="fill-extrusion"
-          beforeId="content-mask"
-          minzoom={15}
-          paint={{
-            "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
-
-            // use an 'interpolate' expression to add a smooth transition effect to the
-            // buildings as the user zooms in
-            "fill-extrusion-height": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              15,
-              0,
-              15.05,
-              ["get", "height"],
-            ],
-            "fill-extrusion-base": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              15,
-              0,
-              15.05,
-              ["get", "min_height"],
-            ],
-            "fill-extrusion-opacity": 0.6,
-          }}
+      <LabelProviderContext.Provider value={{ labelStyle }}>
+        {Object.values(data)
+          .filter((entry) => entry.metadata.icon != null)
+          .map((entry) => (
+            <MapIcon
+              style={style}
+              width={16}
+              height={16}
+              id={entry.metadata.id}
+              key={entry.metadata.id}
+              url={`icons/${entry.metadata.icon}`}
+            />
+          ))}
+        <MapIcon
+          style={style}
+          width={24}
+          height={24}
+          id="label-background"
+          url={labelBackground}
         />
-      )}
-      {Object.entries(data).map(([key, data]) => {
-        if (
-          data.metadata?.type === "rail-line" &&
-          (data.metadata.filterKey == null ||
-            props.lines[data.metadata.filterKey])
-        ) {
-          return (
-            <Line
-              data={data}
-              name={key}
-              key={key}
-              offset={data.metadata.offset ?? 0}
-              color={data.metadata.color ?? "#212121"}
-              highContrastLabels={props.accessibleLabels}
-            />
-          );
-        } else if (
-          data.metadata?.type === "rail-yard" &&
-          (data.metadata.filterKey == null ||
-            props.lines[data.metadata.filterKey])
-        ) {
-          return (
-            <RailYard
-              key={key}
-              name={key}
-              data={data}
-              offset={data.metadata.offset ?? 0}
-            />
-          );
-        }
-      })}
+        {/* Layer z-ordering hack */}
+        <Source
+          id="blank"
+          type="geojson"
+          data={{
+            type: "FeatureCollection",
+            features: [],
+          }}
+        >
+          <Layer type="fill" id="content-mask" paint={{}} layout={{}} />
+          <Layer type="fill" id="circle-mask" paint={{}} layout={{}} />
+          <Layer type="fill" id="symbol-mask" paint={{}} layout={{}} />
+        </Source>
+
+        <Layer
+          id="sky"
+          type="sky"
+          paint={
+            {
+              "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
+            } as unknown
+          }
+        />
+
+        {props.show3DBuildings && (
+          <Layer
+            id="3d-buildings"
+            source="composite"
+            {...{ "source-layer": "building" }}
+            filter={["==", "extrude", "true"]}
+            type="fill-extrusion"
+            beforeId="content-mask"
+            minzoom={15}
+            paint={{
+              "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
+
+              // use an 'interpolate' expression to add a smooth transition effect to the
+              // buildings as the user zooms in
+              "fill-extrusion-height": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                15,
+                0,
+                15.05,
+                ["get", "height"],
+              ],
+              "fill-extrusion-base": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                15,
+                0,
+                15.05,
+                ["get", "min_height"],
+              ],
+              "fill-extrusion-opacity": 0.6,
+            }}
+          />
+        )}
+        {Object.entries(data).map(([key, data]) => {
+          if (
+            data.metadata?.type === "rail-line" &&
+            (data.metadata.filterKey == null ||
+              props.lines[data.metadata.filterKey])
+          ) {
+            return (
+              <Line
+                data={data}
+                name={data.metadata.id}
+                key={data.metadata.id}
+                offset={data.metadata.offset ?? 0}
+                color={data.metadata.color ?? "#212121"}
+                highContrastLabels={props.accessibleLabels}
+              />
+            );
+          } else if (
+            data.metadata?.type === "rail-yard" &&
+            (data.metadata.filterKey == null ||
+              props.lines[data.metadata.filterKey])
+          ) {
+            return (
+              <RailYard
+                key={data.metadata.id}
+                name={data.metadata.id}
+                data={data}
+                offset={data.metadata.offset ?? 0}
+              />
+            );
+          }
+        })}
+      </LabelProviderContext.Provider>
     </Map>
   );
 };

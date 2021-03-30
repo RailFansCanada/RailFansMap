@@ -3,7 +3,8 @@
 "name": "walkleyYard",
 "metadata": {
     "type": "rail-yard",
-    "offset": 0
+    "offset": 0,
+    "id": "ottawa/walkley"
   },
 "features": [
   { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.653612469712087, 45.365217849853593 ], [ -75.653540193959259, 45.365247302764914 ], [ -75.651230021695909, 45.36590063200368 ], [ -75.651157736061649, 45.365930086452941 ] ] } },

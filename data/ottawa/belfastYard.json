@@ -1,7 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "type": "rail-yard"
+    "type": "rail-yard",
+    "id": "ottawa/belfast"
   },
   "features": [
     {

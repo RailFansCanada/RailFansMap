@@ -1,0 +1,36 @@
+{
+    "type": "FeatureCollection",
+    "name": "line4-toronto",
+    "metadata": {
+        "type": "rail-line",
+        "color": "#B32078",
+        "offset": 0,
+        "id": "toronto/4",
+        "icon": "toronto/line4.svg"
+    },
+    "features": [
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3627434, 43.7715774 ], [ -79.3481851, 43.7748865 ], [ -79.3474095, 43.7750628 ], [ -79.3463568, 43.7753021 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4108365, 43.7615238 ], [ -79.4094981, 43.7618127 ], [ -79.4087579, 43.7619725 ], [ -79.4041528, 43.7629668 ], [ -79.4036747, 43.7630732 ], [ -79.3882209, 43.7666244 ], [ -79.3873063, 43.7668565 ], [ -79.3865667, 43.7670442 ], [ -79.3860805, 43.7671813 ], [ -79.3854848, 43.7673223 ], [ -79.3846352, 43.7675027 ], [ -79.3823468, 43.7679886 ], [ -79.3774296, 43.7690162 ], [ -79.3766224, 43.7691704 ], [ -79.3757239, 43.769342 ], [ -79.3665051, 43.7709844 ], [ -79.3657991, 43.771092 ], [ -79.3647898, 43.7712459 ], [ -79.3639422, 43.7713696 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3639422, 43.7713696 ], [ -79.3630142, 43.7715245 ], [ -79.3627434, 43.7715774 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4152086, 43.7605728 ], [ -79.4145431, 43.7607175 ], [ -79.4126381, 43.7611319 ], [ -79.4108365, 43.7615238 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4145431, 43.7607175 ], [ -79.4141047, 43.7607751 ], [ -79.4136637, 43.7608232 ], [ -79.4129897, 43.7609494 ], [ -79.4118894, 43.7611976 ], [ -79.4108544, 43.7614219 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4094981, 43.7618127 ], [ -79.4090991, 43.7618505 ], [ -79.408713, 43.7618871 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.409436, 43.76173 ], [ -79.4090991, 43.7618505 ], [ -79.4087579, 43.7619725 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4118894, 43.7611976 ], [ -79.4126381, 43.7611319 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3854644, 43.7672381 ], [ -79.3850431, 43.7673725 ], [ -79.3846352, 43.7675027 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3854848, 43.7673223 ], [ -79.3850431, 43.7673725 ], [ -79.3845899, 43.7674241 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3463568, 43.7753021 ], [ -79.3451233, 43.7755678 ], [ -79.3443882, 43.7757246 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3463222, 43.7752205 ], [ -79.3450895, 43.775486 ], [ -79.3443587, 43.7756356 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3481851, 43.7748865 ], [ -79.3477826, 43.7749332 ], [ -79.3473821, 43.7749796 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3474095, 43.7750628 ], [ -79.3477826, 43.7749332 ], [ -79.3481538, 43.7748042 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3627103, 43.7714955 ], [ -79.3481538, 43.7748042 ], [ -79.3473821, 43.7749796 ], [ -79.3463222, 43.7752205 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3639176, 43.7712861 ], [ -79.3629854, 43.7714417 ], [ -79.3627103, 43.7714955 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4108544, 43.7614219 ], [ -79.409436, 43.76173 ], [ -79.4092101, 43.7617791 ], [ -79.408713, 43.7618871 ], [ -79.4041184, 43.7628851 ], [ -79.403639, 43.7629918 ], [ -79.3881753, 43.7665421 ], [ -79.3872719, 43.7667759 ], [ -79.3865291, 43.7669682 ], [ -79.3860537, 43.767096 ], [ -79.3854644, 43.7672381 ], [ -79.3845899, 43.7674241 ], [ -79.3823015, 43.7679108 ], [ -79.3774033, 43.7689353 ], [ -79.3765929, 43.7690913 ], [ -79.3756999, 43.7692632 ], [ -79.3664856, 43.7708992 ], [ -79.3657739, 43.7710098 ], [ -79.364767, 43.7711665 ], [ -79.3639176, 43.7712861 ] ] } },
+{ "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/4"], "type": "station-label", "name": "Sheppard-Yonge", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.410918196243912, 43.761456152318885 ] } },
+{ "type": "Feature", "properties": { "lines": ["toronto/4"], "type": "station-label", "name": "Bayview", "major": false }, "geometry": { "type": "Point", "coordinates": [ -79.387790651071398, 43.766687442208109 ] } },
+{ "type": "Feature", "properties": { "lines": ["toronto/4"], "type": "station-label", "name": "Bessarion", "major": false }, "geometry": { "type": "Point", "coordinates": [ -79.376633420773061, 43.769128722268526 ] } },
+{ "type": "Feature", "properties": { "lines": ["toronto/4"], "type": "station-label", "name": "Leslie", "major": false }, "geometry": { "type": "Point", "coordinates": [ -79.366811847647782, 43.770887642168326 ] } },
+{ "type": "Feature", "properties": { "lines": ["toronto/4"], "type": "station-label", "name": "Don Mills", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.346052891126632, 43.77532597601602 ] } }
+    ]
+    }
+    

@@ -33,8 +33,6 @@ const useProvideHash = (): ViewportProps => {
         result = {...result, pitch};
     }
 
-    console.dir(result);
-
     return result;
 }
 

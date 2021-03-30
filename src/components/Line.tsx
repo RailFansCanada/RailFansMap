@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import GeoJSON from "geojson";
 import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
+import { LabelProviderContext } from "./Map";
 
 export interface LineProps {
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
@@ -27,36 +28,9 @@ export interface LineDataProps {
   url?: string;
 }
 
-const labelExpression = [
-  "format",
-  ["get", "name"],
-  {},
-  " ",
-  {},
-  ["case", 
-    ["in", 1, ["get", "lines"]], ["image", "line1icon"],
-    ""
-  ],
-  {},
-  ["case", 
-    ["in", 2, ["get", "lines"]], ["image", "line2icon"],
-    ""
-  ],
-  {},
-  ["case", 
-    ["in", 3, ["get", "lines"]], ["image", "line3icon"],
-    ""
-  ],
-  {},
-  ["case", 
-    ["in", 4, ["get", "lines"]], ["image", "line4icon"],
-    ""
-  ],
-  {},
-]
-
 export const Line = React.memo(
   ({ name, data, color, offset, highContrastLabels }: LineProps) => {
+    const { labelStyle } = useContext(LabelProviderContext);
     return (
       <Source id={name} type="geojson" data={data}>
         <Layer
@@ -98,7 +72,7 @@ export const Line = React.memo(
           paint={{
             "line-color": color,
             "line-width": 3,
-            "line-offset": offset * 3
+            "line-offset": offset * 3,
           }}
         />
         <Layer
@@ -146,7 +120,7 @@ export const Line = React.memo(
               18,
               15,
             ],
-            "line-offset": offset * 3
+            "line-offset": offset * 3,
           }}
         />
         <Layer
@@ -215,7 +189,7 @@ export const Line = React.memo(
           minzoom={11}
           layout={
             {
-              "text-field": /*"{name}"*/ labelExpression,
+              "text-field": labelStyle,
               "text-anchor": "left",
               "text-offset": [0.75, 0],
               "text-font": ["Raleway Bold"],
@@ -243,14 +217,14 @@ export const Line = React.memo(
           minzoom={9}
           layout={
             {
-              "text-field": /*"{name}"*/ labelExpression,
+              "text-field": labelStyle,
               "text-anchor": "left",
               "text-offset": [0.75, 0],
               "text-font": ["Raleway Bold"],
               "text-size": 16,
               "icon-image": "label-background",
               "icon-text-fit": "both",
-              "icon-text-fit-padding": [1, 4, 0, 4]
+              "icon-text-fit-padding": [1, 4, 0, 4],
             } as AnyLayout
           }
           paint={{
