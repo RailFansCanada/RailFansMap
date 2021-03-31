@@ -66,7 +66,11 @@ module.exports = {
       BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
     }),
     new CopyPlugin({
-      patterns: [{ from: "CNAME" }, { from: "data", to: "data" }],
+      patterns: [
+        { from: "CNAME" },
+        { from: "data", to: "data" },
+        { from: "icons/**/*.svg" },
+      ],
     }),
     new ForkTsCheckerWebpackPlugin(),
   ],

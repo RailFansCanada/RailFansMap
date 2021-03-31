@@ -7,6 +7,8 @@ export interface Metadata {
   color?: string;
   filterKey?: string;
   offset?: number;
+  id: string;
+  icon?: string;
 }
 
 export interface WithMetadata {

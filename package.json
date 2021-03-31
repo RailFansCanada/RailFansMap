@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --config webpack.dev.js",
-    "analyze": "webpack --profile --json > stats.json"
+    "analyze": "webpack --profile --json > stats.json",
+    "clean": "rm -r dist"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
   "devDependencies": {
     "@types/d3-ease": "^2.0.0",
     "@types/geojson": "^7946.0.7",
-    "@types/mapbox-gl": "^2.1.0",
+    "@types/mapbox-gl": "^2.1.1",
     "@types/react": "^17.0.2",
     "@types/react-custom-scroll": "^4.2.1",
     "@types/react-custom-scrollbars": "^4.0.7",
@@ -57,7 +58,7 @@
     "@reduxjs/toolkit": "^1.5.0",
     "clsx": "^1.1.1",
     "immer": "^8.0.1",
-    "mapbox-gl": "^2.1.1",
+    "mapbox-gl": "^2.2.0",
     "react": "^17.0.1",
     "react-custom-scroll": "^4.2.2",
     "react-custom-scrollbars": "^4.2.1",

@@ -1,16 +1,19 @@
-{ "type": "FeatureCollection", "name": "stage3barrhaven", "metadata": {
-    "type": "rail-line",
-    "color": "#D62937",
-    "filterKey": "barrhavenExtension",
-    "offset": 0.5
-},"features": [
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Barrhaven Centre", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.741477041566483, 45.267939117486982 ] } },
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Strandherd", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.745938485731131, 45.274188373662575 ] } },
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Longfields", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.746791517802478, 45.285521129407741 ] } },
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Fallowfield", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.736740145574515, 45.298375871871258 ] } },
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Nepean Sportsplex", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.747908606696598, 45.326285274985331 ] } },
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Knoxdale", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.752831267894052, 45.334457054290759 ] } },
-    { "type": "Feature", "properties": { "lines": [1], "type": "station-label", "name": "Tallwood", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.756782308800965, 45.341284875716674 ] } },
+{ "type": "FeatureCollection", "name": "stage3barrhaven", 
+    "metadata": {
+        "id": "ottawa/barrhaven",
+        "type": "rail-line",
+        "color": "#D62937",
+        "filterKey": "barrhavenExtension",
+        "offset": 0.5
+    },
+"features": [
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Barrhaven Centre", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.741477041566483, 45.267939117486982 ] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Strandherd", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.745938485731131, 45.274188373662575 ] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Longfields", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.746791517802478, 45.285521129407741 ] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Fallowfield", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.736740145574515, 45.298375871871258 ] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Nepean Sportsplex", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.747908606696598, 45.326285274985331 ] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Knoxdale", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.752831267894052, 45.334457054290759 ] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Tallwood", "url": null }, "geometry": { "type": "Point", "coordinates": [ -75.756782308800965, 45.341284875716674 ] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.735391130756298, 45.305009474450458 ], [ -75.735570694578541, 45.305313819643168 ], [ -75.735834763037332, 45.305759121492763 ], [ -75.736732432031715, 45.307325191035886 ], [ -75.737929718596874, 45.309415332455984 ], [ -75.740001876466465, 45.313023199290939 ], [ -75.741788433779092, 45.316137929360963 ], [ -75.743483216992232, 45.319077219180436 ], [ -75.744448381941439, 45.320659634313607 ], [ -75.745717626450229, 45.322744167941281 ], [ -75.746259927090804, 45.323613138111313 ], [ -75.747023000003111, 45.324882177194709 ], [ -75.748275877100681, 45.326963356060105 ], [ -75.752046662844975, 45.333221791223977 ], [ -75.752965826452964, 45.334745407550585 ], [ -75.753309582802714, 45.335311912752481 ], [ -75.753436721820421, 45.335529050793731 ], [ -75.753525534921209, 45.33568434414844 ], [ -75.753934225283814, 45.336394513266022 ], [ -75.756395322106258, 45.340684809509675 ] ] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.735444945711748, 45.30499163343093 ], [ -75.735649920281233, 45.305338990341689 ], [ -75.735971226882441, 45.305882713743067 ], [ -75.736628713321338, 45.307031372318377 ], [ -75.738341822012572, 45.310016695145009 ], [ -75.739777687823135, 45.312523039957426 ], [ -75.740787554355663, 45.314283364615612 ], [ -75.74215883409471, 45.316670831419373 ], [ -75.74359359465349, 45.319156476405787 ], [ -75.745772454560679, 45.322728289702795 ], [ -75.747009267888444, 45.324725741358662 ], [ -75.749349389993682, 45.328612755556641 ], [ -75.750677653333355, 45.330817081016235 ], [ -75.752271162034347, 45.333456500792991 ], [ -75.753387699845959, 45.335308545984873 ], [ -75.75346587311607, 45.33543923177993 ], [ -75.753582460992263, 45.335642079764739 ], [ -75.753793350743763, 45.336012849596344 ], [ -75.754518711748091, 45.337275747984876 ], [ -75.755007519816857, 45.338126420041398 ], [ -75.755389871558805, 45.338793809720016 ], [ -75.755672688495437, 45.339287231865768 ], [ -75.756463856818414, 45.340663952542322 ] ] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.734425043045135, 45.303439053288329 ], [ -75.735391130756298, 45.305009474450458 ] ] } },

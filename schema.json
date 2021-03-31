@@ -199,15 +199,16 @@
           "properties": {
             "type": { "const": "station-label" },
             "name": { "type": "string" },
+            "major": { "type": "boolean" },
             "url": {
               "oneOf": [
                 { "type": "string", "format": "uri-reference" },
                 { "type": "null" }
               ]
             },
-            "lines": { "type": "array" }
+            "lines": { "type": "array", "items": { "type": "string" } }
           },
-          "required": ["type", "name"]
+          "required": ["type", "name", "lines"]
         },
         "geometry": {
           "$ref": "#/definitions/Point"
@@ -267,20 +268,30 @@
           "type": "string",
           "pattern": "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
         },
+        "icon": {
+          "type": "string",
+          "format": "uri-reference"
+        },
         "offset": {
           "type": "number"
+        },
+        "id": {
+          "type": "string"
         }
       },
-      "required": ["type", "color"]
+      "required": ["id", "type", "color"]
     },
     "metadata-rail-yard": {
       "type": "object",
       "properties": {
         "type": {
           "const": "rail-yard"
+        },
+        "id": {
+          "type": "string"
         }
       },
-      "required": ["type"]
+      "required": ["type", "id"]
     }
   }
 }

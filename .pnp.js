@@ -42,7 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@reduxjs/toolkit", "npm:1.5.0"],
             ["@types/d3-ease", "npm:2.0.0"],
             ["@types/geojson", "npm:7946.0.7"],
-            ["@types/mapbox-gl", "npm:2.1.0"],
+            ["@types/mapbox-gl", "npm:2.1.1"],
             ["@types/react", "npm:17.0.2"],
             ["@types/react-custom-scroll", "npm:4.2.1"],
             ["@types/react-custom-scrollbars", "npm:4.0.7"],
@@ -59,7 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.2.0"],
             ["immer", "npm:8.0.1"],
-            ["mapbox-gl", "npm:2.1.1"],
+            ["mapbox-gl", "npm:2.2.0"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.3.9"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["react", "npm:17.0.1"],
@@ -800,10 +800,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:2.1.0", {
-          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.1.0-eac95bf87c-3f71824d5c.zip/node_modules/@types/mapbox-gl/",
+        ["npm:2.1.1", {
+          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.1.1-964730f60d-d740de4748.zip/node_modules/@types/mapbox-gl/",
           "packageDependencies": [
-            ["@types/mapbox-gl", "npm:2.1.0"],
+            ["@types/mapbox-gl", "npm:2.1.1"],
             ["@types/geojson", "npm:7946.0.7"]
           ],
           "linkType": "HARD",
@@ -5132,10 +5132,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:2.1.1", {
-          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.1.1-9b5a5d6107-f36ed05eaf.zip/node_modules/mapbox-gl/",
+        ["npm:2.2.0", {
+          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.2.0-6d8417d117-f344e76904.zip/node_modules/mapbox-gl/",
           "packageDependencies": [
-            ["mapbox-gl", "npm:2.1.1"],
+            ["mapbox-gl", "npm:2.2.0"],
             ["@mapbox/geojson-rewind", "npm:0.5.0"],
             ["@mapbox/geojson-types", "npm:1.0.2"],
             ["@mapbox/jsonlint-lines-primitives", "npm:2.0.2"],
@@ -5837,7 +5837,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@reduxjs/toolkit", "npm:1.5.0"],
             ["@types/d3-ease", "npm:2.0.0"],
             ["@types/geojson", "npm:7946.0.7"],
-            ["@types/mapbox-gl", "npm:2.1.0"],
+            ["@types/mapbox-gl", "npm:2.1.1"],
             ["@types/react", "npm:17.0.2"],
             ["@types/react-custom-scroll", "npm:4.2.1"],
             ["@types/react-custom-scrollbars", "npm:4.0.7"],
@@ -5854,7 +5854,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.2.0"],
             ["immer", "npm:8.0.1"],
-            ["mapbox-gl", "npm:2.1.1"],
+            ["mapbox-gl", "npm:2.2.0"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.3.9"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["react", "npm:17.0.1"],
