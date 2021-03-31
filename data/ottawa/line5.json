@@ -4,7 +4,9 @@
     "metadata": {
         "type": "rail-line",
         "color": "#8f0181",
-        "offset": 0
+        "offset": 0,
+        "id": "ottawa/5",
+        "icon": "ottawa/line5.svg"
     },
     "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.708049245396253, 45.397394059141917 ], [ -75.709984536161386, 45.396572235626223 ], [ -75.712774852785557, 45.39534382596522 ], [ -75.716116556532981, 45.393866992376076 ], [ -75.719430900697546, 45.39240715752269 ], [ -75.721589162297306, 45.391481876850932 ], [ -75.724015099594922, 45.390415058306097 ], [ -75.726263148956818, 45.389429253193015 ], [ -75.728511022871842, 45.388546510482307 ], [ -75.730488196805567, 45.387679024465406 ], [ -75.733381515224494, 45.386417165785396 ] ] } },
@@ -15,23 +17,23 @@
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.77044350042658, 45.37024105707173 ], [ -75.779539317369029, 45.366316468364218 ], [ -75.781735556983364, 45.365320171787374 ] ] } },
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.781735556983364, 45.365320171787374 ], [ -75.783683633098619, 45.364479614908767 ], [ -75.78792644133955, 45.362642002188409 ], [ -75.791870258498591, 45.360908204531022 ], [ -75.795740083958052, 45.359231903904309 ], [ -75.80166981687637, 45.356608565567548 ], [ -75.806869002258793, 45.354289224339077 ] ] } },
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.806869002258793, 45.354289224339077 ], [ -75.81062501847407, 45.352691662495772 ], [ -75.814496632816315, 45.351034611379056 ], [ -75.815586432695099, 45.350547812395433 ], [ -75.815886456588956, 45.350431826145844 ], [ -75.816472914126763, 45.350364026918712 ], [ -75.817189267283354, 45.350281682401736 ], [ -75.818247299590212, 45.34990397604885 ] ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [2, 5], "name": "Dow's Lake" }, "geometry": { "type": "Point", "coordinates": [ -75.708536208926787, 45.397187270627256 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Maple" }, "geometry": { "type": "Point", "coordinates": [ -75.715436802043371, 45.394167406412606 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Melrose" }, "geometry": { "type": "Point", "coordinates": [ -75.718906690543534, 45.39263805345135 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Parkdale" }, "geometry": { "type": "Point", "coordinates": [ -75.722802130946107, 45.39094847009558 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Harmer" }, "geometry": { "type": "Point", "coordinates": [ -75.728186147590534, 45.388674090236798 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Merivale" }, "geometry": { "type": "Point", "coordinates": [ -75.731994020936057, 45.387022295131153 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Kirkwood N" }, "geometry": { "type": "Point", "coordinates": [ -75.740241870340839, 45.384882294618478 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Kirkwood S" }, "geometry": { "type": "Point", "coordinates": [ -75.739424656556324, 45.383678874970023 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Clyde" }, "geometry": { "type": "Point", "coordinates": [ -75.749639957808867, 45.379343167973353 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Broadview" }, "geometry": { "type": "Point", "coordinates": [ -75.754119414349276, 45.377404572741959 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Bromley" }, "geometry": { "type": "Point", "coordinates": [ -75.76264958380672, 45.373657872007094 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Woodroffe" }, "geometry": { "type": "Point", "coordinates": [ -75.770072286441405, 45.370403465483967 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [1, 3, 5], "name": "Lincoln Fields" }, "geometry": { "type": "Point", "coordinates": [ -75.781735556983364, 45.365320171787374 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Forest" }, "geometry": { "type": "Point", "coordinates": [ -75.788431766670058, 45.362419851887189 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Britannia" }, "geometry": { "type": "Point", "coordinates": [ -75.796115913667705, 45.359065638898286 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Kempster" }, "geometry": { "type": "Point", "coordinates": [ -75.80591758605685, 45.354713655400069 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "lines": [5], "name": "Andrew Haydon Park" }, "geometry": { "type": "Point", "coordinates": [ -75.81771828343679, 45.350092829540358 ] } }
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/2", "ottawa/5"], "name": "Dow's Lake" }, "geometry": { "type": "Point", "coordinates": [ -75.708536208926787, 45.397187270627256 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Maple" }, "geometry": { "type": "Point", "coordinates": [ -75.715436802043371, 45.394167406412606 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Melrose" }, "geometry": { "type": "Point", "coordinates": [ -75.718906690543534, 45.39263805345135 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Parkdale" }, "geometry": { "type": "Point", "coordinates": [ -75.722802130946107, 45.39094847009558 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Harmer" }, "geometry": { "type": "Point", "coordinates": [ -75.728186147590534, 45.388674090236798 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Merivale" }, "geometry": { "type": "Point", "coordinates": [ -75.731994020936057, 45.387022295131153 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Kirkwood N" }, "geometry": { "type": "Point", "coordinates": [ -75.740241870340839, 45.384882294618478 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Kirkwood S" }, "geometry": { "type": "Point", "coordinates": [ -75.739424656556324, 45.383678874970023 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Clyde" }, "geometry": { "type": "Point", "coordinates": [ -75.749639957808867, 45.379343167973353 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Broadview" }, "geometry": { "type": "Point", "coordinates": [ -75.754119414349276, 45.377404572741959 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Bromley" }, "geometry": { "type": "Point", "coordinates": [ -75.76264958380672, 45.373657872007094 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Woodroffe" }, "geometry": { "type": "Point", "coordinates": [ -75.770072286441405, 45.370403465483967 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/1", "ottawa/3", "ottawa/5"], "name": "Lincoln Fields" }, "geometry": { "type": "Point", "coordinates": [ -75.781735556983364, 45.365320171787374 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Forest" }, "geometry": { "type": "Point", "coordinates": [ -75.788431766670058, 45.362419851887189 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Britannia" }, "geometry": { "type": "Point", "coordinates": [ -75.796115913667705, 45.359065638898286 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Kempster" }, "geometry": { "type": "Point", "coordinates": [ -75.80591758605685, 45.354713655400069 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "lines": ["ottawa/5"], "name": "Andrew Haydon Park" }, "geometry": { "type": "Point", "coordinates": [ -75.81771828343679, 45.350092829540358 ] } }
 
     ]
 }

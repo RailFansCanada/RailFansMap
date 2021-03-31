@@ -10,6 +10,8 @@ export const cities = {
       "ottawa/line3.json",
       "ottawa/line4.json",
       "ottawa/line2.json",
+      "ottawa/line5.json",
+      "ottawa/line6.json",
       "ottawa/stage3barrhaven.json",
       "ottawa/stage3kanata.json",
     ],
