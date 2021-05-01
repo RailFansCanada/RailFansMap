@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FeatureCollection, Geometry } from "geojson";
-import { cities } from "../app/cities";
+import cities from "../cities.json";
 
 export interface Metadata {
   type: "rail-line" | "rail-yard";
@@ -33,7 +33,6 @@ const loadData = async (fileName: string): Promise<MapData> => {
 
 const useProvideData = (): MapDataCache => {
   const [cache, setCache] = React.useState<MapDataCache>({});
-
   // Load in data
   React.useEffect(() => {
     Object.entries(cities).forEach(([_, value]) => {
