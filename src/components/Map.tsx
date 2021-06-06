@@ -60,6 +60,7 @@ export interface OverviewMapProps {
   readonly lines: LineState;
   readonly accessibleLabels: boolean;
   readonly alternatives: Alternatives;
+  readonly showLineLabels: boolean;
 
   readonly targetZoom: number;
   readonly setTargetZoom: typeof setTargetZoom;
@@ -100,7 +101,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   const data = useData();
   // Give station icons and all labels the pointer cursor
-  const interactiveLayerIds = Object.values(data)
+  const interactiveLayerIds = props.showLineLabels ? Object.values(data)
     .filter(
       (value) =>
         value.metadata.filterKey == null ||
@@ -113,7 +114,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       } else if (value.metadata.type === "rail-yard") {
         return [`${id}-labels`];
       }
-    });
+    }) : [];
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
@@ -259,7 +260,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
                 key={data.metadata.id}
                 offset={data.metadata.offset ?? 0}
                 color={data.metadata.color ?? "#212121"}
-                highContrastLabels={props.accessibleLabels}
+                showLineLabels={props.showLineLabels}
                 activeAlternatives={props.alternatives[data.metadata.filterKey]}
               />
             );
@@ -273,6 +274,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
                 key={data.metadata.id}
                 name={data.metadata.id}
                 data={data}
+                showLabels={props.showLineLabels}
                 offset={data.metadata.offset ?? 0}
               />
             );
@@ -291,6 +293,7 @@ const mapStateToProps = (state: State) => ({
   accessibleLabels: state.accessibleLabels,
   targetZoom: state.targetZoom,
   alternatives: state.alternatives,
+  showLineLabels: state.showLineLabels,
 });
 
 const mapDispatchToProps = {

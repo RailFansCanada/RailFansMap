@@ -13,6 +13,9 @@ export interface State {
   readonly accessibleLabels: boolean;
   readonly appTheme: AppTheme;
   readonly mapStyle: MapStyle;
+  
+  readonly showSatelliteLabels: boolean;
+  readonly showLineLabels: boolean;
 
   readonly lines: LineState;
 

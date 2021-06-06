@@ -33,6 +33,10 @@ const getPreloadedState = () => {
       draft.lines.barrhavenExtension = true;
     }
 
+    if (params.get("gatineau")?.includes("true")) {
+      draft.lines.gatineauLrt = true;
+    }
+
     if (params.get("map")?.includes("satellite")) {
       draft.mapStyle = "satellite";
     } else if (params.get("map")?.includes("vector")) {

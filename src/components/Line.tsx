@@ -9,7 +9,7 @@ export interface LineProps {
   name: string;
   color: string;
   offset: number;
-  highContrastLabels?: boolean;
+  showLineLabels?: boolean;
   activeAlternatives: string[] | null;
 }
 
@@ -30,7 +30,7 @@ export interface LineDataProps {
 }
 
 export const Line = React.memo(
-  ({ name, data, color, offset, highContrastLabels, activeAlternatives }: LineProps) => {
+  ({ name, data, color, offset, showLineLabels, activeAlternatives }: LineProps) => {
     const { labelStyle } = useContext(LabelProviderContext);
 
     const alternativesFilter = activeAlternatives != null ? [
@@ -206,7 +206,7 @@ export const Line = React.memo(
             ],
           }}
         />
-        <Layer
+        { showLineLabels && (<Layer
           id={`${name}-labels`}
           beforeId="symbol-mask"
           type="symbol"
@@ -231,8 +231,8 @@ export const Line = React.memo(
           paint={{
             "text-color": "#FFFFFF",
           }}
-        />
-        <Layer
+        />) }
+        { showLineLabels && (<Layer
           id={`${name}-labels-major`}
           beforeId="symbol-mask"
           type="symbol"
@@ -259,7 +259,7 @@ export const Line = React.memo(
           paint={{
             "text-color": "#FFFFFF",
           }}
-        />
+        />) }
       </Source>
     );
   }

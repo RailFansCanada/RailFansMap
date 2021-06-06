@@ -107,6 +107,7 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
   const [useBarrhaven, setUseBarrhaven] = React.useState(
     props.state.lines.barrhavenExtension
   );
+  const [useGatineau, setUseGatineau] = React.useState(props.state.lines.gatineauLrt);
 
   React.useEffect(() => {
     setUseKanata(props.state.lines.kanataExtension);
@@ -145,6 +146,10 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
 
     if (useBarrhaven) {
       url.searchParams.append("barrhaven", "true");
+    }
+    
+    if (useGatineau) {
+      url.searchParams.append("gatineau", "true");
     }
 
     return url.toString();
@@ -217,6 +222,12 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
             secondary="Show the Stage 3 Barrhaven extension on the shared map"
             checked={useBarrhaven}
             onCheck={(checked) => setUseBarrhaven(checked)}
+          />
+          <ShareOption
+            primary="Show Gatineau Tramway"
+            secondary="Show the proposed Gatineau Tramway on the shared map"
+            checked={useGatineau}
+            onCheck={(checked) => setUseGatineau(checked)}
           />
           {/* <ShareOption
             primary="Current Theme"

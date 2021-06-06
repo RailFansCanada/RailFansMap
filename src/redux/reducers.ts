@@ -13,6 +13,7 @@ import {
   disableAlternative,
   setShareSheetOpen,
   setZoom,
+  setShowLineLabels,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -23,6 +24,8 @@ export const initialState: State = {
   accessibleLabels: false,
   appTheme: "system",
   mapStyle: "vector",
+  showSatelliteLabels: true,
+  showLineLabels: true,
   lines: {
     confederationLine: true,
     trilliumLine: true,
@@ -91,5 +94,8 @@ export const reducer = createReducer<State>(initialState, (builder) => {
       state.alternatives[key] = state.alternatives[key]?.filter(
         (v) => v !== value
       );
+    })
+    .addCase(setShowLineLabels, (state, action) => {
+      state.showLineLabels = action.payload;
     });
 });

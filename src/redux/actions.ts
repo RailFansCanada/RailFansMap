@@ -15,6 +15,10 @@ export const setAppTheme = createAction<AppTheme>("setAppTheme");
 
 export const setMapStyle = createAction<MapStyle>("setMapStyle");
 
+export const setShowSatelliteLabels = createAction<boolean>("setShowSatelliteLabels");
+
+export const setShowLineLabels = createAction<boolean>("setShowLineLabels");
+
 export const setShowLine = createAction<[keyof LineState, boolean]>(
   "setShowLine"
 );
