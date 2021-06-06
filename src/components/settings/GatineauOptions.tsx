@@ -20,18 +20,18 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 
-import image from "../../images/confederation.svg";
 import {
   State,
-  Alternatives,
   enableAlternative,
   disableAlternative,
+  Alternatives,
 } from "../../redux";
 import { connect } from "react-redux";
 
-export interface BarrhavenOptionProps {
+export interface GatineauOptionProps {
   readonly primary: string;
   readonly secondary?: string;
+  readonly tertiary?: string;
 
   readonly selected?: boolean;
   readonly onClick?: () => void;
@@ -39,7 +39,7 @@ export interface BarrhavenOptionProps {
   readonly imageUrl?: string;
   readonly tint?: string;
 
-  readonly alternatives: Alternatives[];
+  readonly alternatives: Alternatives;
   readonly enableAlternative: typeof enableAlternative;
   readonly disableAlternative: typeof disableAlternative;
 }
@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: "100%",
     overflow: "hidden",
     background: theme.palette.background.default,
+    transform: "scaleX(-1)",
     filter: "grayscale(1)",
     transition: theme.transitions.create("filter"),
     "& img": {
@@ -92,17 +93,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const BarrhavenOptionComponent = (props: BarrhavenOptionProps) => {
+export const GatineauOptionComponent = (props: GatineauOptionProps) => {
   const theme = useTheme();
   const classes = useStyles({
     tint: props.tint ?? theme.palette.secondary.main,
   });
 
-  const setAlternative = (value: boolean, alternative: Alternatives) => {
+  const setAlternative = (value: boolean, alternative: string) => {
     if (value) {
-      props.enableAlternative(alternative);
+      props.enableAlternative(["gatineauLrt", alternative]);
     } else {
-      props.disableAlternative(alternative);
+      props.disableAlternative(["gatineauLrt", alternative]);
     }
   };
 
@@ -129,67 +130,28 @@ export const BarrhavenOptionComponent = (props: BarrhavenOptionProps) => {
             {props.primary}
           </Typography>
           <Typography variant="body1">{props.secondary}</Typography>
+          <Typography variant="caption">{props.tertiary}</Typography>
         </CardContent>
       </CardActionArea>
       <Collapse in={props.selected}>
         <Divider />
         <List>
           <AlternativeItem
-            primary="Alternative 1"
-            secondary="Cut and Cover Tunnel in Woodroffe Avenue Corridor"
-            checked={props.alternatives.includes("1")}
+            primary="Sparks Tunnel"
+            secondary="Tunnel under Sparks Street"
+            checked={props.alternatives["gatineauLrt"]?.includes("1")}
             onCheck={(checked) => {
               setAlternative(checked, "1");
             }}
           />
           <AlternativeItem
-            primary="Alternative 2"
-            secondary="Trench in Woodroffe Avenue Corridor"
-            checked={props.alternatives.includes("2")}
+            primary="Wellington Street"
+            secondary="Tracks at street level on Wellington"
+            checked={props.alternatives["gatineauLrt"]?.includes("2")}
             onCheck={(checked) => {
               setAlternative(checked, "2");
             }}
-          />
-          <AlternativeItem
-            primary="Alternative 3"
-            secondary="Elevated in Woodroffe Avenue Corridor (Median)"
-            checked={props.alternatives.includes("3")}
-            onCheck={(checked) => {
-              setAlternative(checked, "3");
-            }}
-          />
-          <AlternativeItem
-            primary="Alternative 3A"
-            secondary="West Hunt Club Station on East side of Woodroffe Avenue"
-            checked={props.alternatives.includes("A")}
-            onCheck={(checked) => {
-              setAlternative(checked, "A");
-            }}
-          />
-          <AlternativeItem
-            primary="Alternative 4"
-            secondary="Elevated in Woodroffe Avenue Corridor (West Side)"
-            checked={props.alternatives.includes("4")}
-            onCheck={(checked) => {
-              setAlternative(checked, "4");
-            }}
-          />
-          <AlternativeItem
-            primary="Alternative 5"
-            secondary="Trench West of Woodroffe Avenue"
-            checked={props.alternatives.includes("5")}
-            onCheck={(checked) => {
-              setAlternative(checked, "5");
-            }}
-          />
-          <AlternativeItem
-            primary="Alternative 6"
-            secondary="Elevated West of Woodroffe Avenue"
-            checked={props.alternatives.includes("6")}
-            onCheck={(checked) => {
-              setAlternative(checked, "6");
-            }}
-          />
+            />
         </List>
       </Collapse>
     </Card>
@@ -231,7 +193,7 @@ const AlternativeItem = (props: {
 };
 
 const mapStateToProps = (state: State) => ({
-  alternatives: state.barrhavenAlternatives,
+  alternatives: state.alternatives,
 });
 
 const mapDispatchToProps = {
@@ -239,7 +201,7 @@ const mapDispatchToProps = {
   disableAlternative,
 };
 
-export const BarrhavenOption = connect(
+export const GatineauOptions = connect(
   mapStateToProps,
   mapDispatchToProps
-)(BarrhavenOptionComponent);
+)(GatineauOptionComponent);

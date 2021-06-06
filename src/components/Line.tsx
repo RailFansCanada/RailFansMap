@@ -10,6 +10,7 @@ export interface LineProps {
   color: string;
   offset: number;
   highContrastLabels?: boolean;
+  activeAlternatives: string[] | null;
 }
 
 export type LineFeatureType =
@@ -29,8 +30,16 @@ export interface LineDataProps {
 }
 
 export const Line = React.memo(
-  ({ name, data, color, offset, highContrastLabels }: LineProps) => {
+  ({ name, data, color, offset, highContrastLabels, activeAlternatives }: LineProps) => {
     const { labelStyle } = useContext(LabelProviderContext);
+
+    const alternativesFilter = activeAlternatives != null ? [
+      "any",
+      ...activeAlternatives.map((value) => {
+        return ["!=", ["index-of", value, ["get", "alternatives"]], -1];
+      }),
+    ] : ["literal", true];
+
     return (
       <Source id={name} type="geojson" data={data}>
         <Layer
@@ -57,12 +66,32 @@ export const Line = React.memo(
           }}
         />
         <Layer
+          id={`${name}-alignment`}
+          beforeId="content-mask"
+          type="line"
+          filter={[
+            "all",
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
+            ["==", ["get", "type"], "alignment"],
+          ]}
+          layout={{
+            "line-join": "round",
+            "line-cap": "round",
+          }}
+          paint={{
+            "line-color": color,
+            "line-opacity": ["interpolate", ["linear"], ["zoom"], 14, 1, 20, 0.3],
+            "line-width": ["interpolate", ["exponential", 2], ["zoom"], 14, 3, 20, 150],
+            "line-offset": ["interpolate", ["exponential", 2], ["zoom"], 14, offset * 3, 20, offset * 150],
+          }}
+        />
+        <Layer
           id={`${name}-tracks`}
           beforeId="content-mask"
           type="line"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "tracks"],
           ]}
           layout={{
@@ -81,7 +110,7 @@ export const Line = React.memo(
           type="line"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "tracks-future"],
           ]}
           layout={{
@@ -100,7 +129,7 @@ export const Line = React.memo(
           type="line"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "overpass"],
           ]}
           minzoom={14}
@@ -129,7 +158,7 @@ export const Line = React.memo(
           type="fill"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "station-platforms"],
           ]}
           paint={{
@@ -143,7 +172,7 @@ export const Line = React.memo(
           type="line"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "station-platforms-future"],
           ]}
           paint={{
@@ -158,7 +187,7 @@ export const Line = React.memo(
           type="circle"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "station-label"],
           ]}
           layout={{}}
@@ -183,10 +212,10 @@ export const Line = React.memo(
           type="symbol"
           filter={[
             "all",
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
             ["==", ["get", "type"], "station-label"],
           ]}
-          minzoom={11}
+          minzoom={13}
           layout={
             {
               "text-field": labelStyle,
@@ -211,9 +240,9 @@ export const Line = React.memo(
             "all",
             ["==", ["get", "type"], "station-label"],
             ["==", ["get", "major"], true],
-            ["==", ["get", "alternatives"], null],
+            ["any", ["==", ["get", "alternatives"], null], alternativesFilter],
           ]}
-          maxzoom={11}
+          maxzoom={13}
           minzoom={9}
           layout={
             {

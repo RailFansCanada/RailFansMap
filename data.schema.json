@@ -21,6 +21,7 @@
       "type": "array",
       "items": {
         "oneOf": [
+          { "$ref": "#/definitions/alignment" },
           { "$ref": "#/definitions/tracks" },
           { "$ref": "#/definitions/tracks-future" },
           { "$ref": "#/definitions/overpass" },
@@ -97,6 +98,23 @@
       "required": ["type", "coordinates"]
     },
 
+    "alignment": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "Feature" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "type": { "const": "alignment" }
+          },
+          "required": ["type"]
+        },
+        "geometry": {
+          "$ref": "#/definitions/LineString"
+        }
+      },
+      "required": ["type", "properties", "geometry"]
+    },
     "tracks": {
       "type": "object",
       "properties": {
@@ -277,6 +295,10 @@
         },
         "id": {
           "type": "string"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       },
       "required": ["id", "type", "color"]
