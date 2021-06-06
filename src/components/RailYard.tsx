@@ -8,9 +8,10 @@ export interface RailYardProps {
   name: string;
   data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
   offset: number;
+  showLabels: boolean;
 }
 
-export const RailYard = ({ name, data, offset }: RailYardProps) => {
+export const RailYard = ({ name, data, offset, showLabels }: RailYardProps) => {
   return (
     <Source id={name} type="geojson" data={data}>
       <Layer
@@ -28,7 +29,7 @@ export const RailYard = ({ name, data, offset }: RailYardProps) => {
           "line-offset": offset * LINE_OFFSET,
         }}
       />
-      <Layer
+      { showLabels && (<Layer
         id={`${name}-labels`}
         beforeId="symbol-mask"
         type="symbol"
@@ -49,7 +50,7 @@ export const RailYard = ({ name, data, offset }: RailYardProps) => {
         paint={{
           "text-color": "#FFFFFF",
         }}
-      />
+      />)}
     </Source>
   );
 };

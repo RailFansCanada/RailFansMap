@@ -21,6 +21,8 @@ import {
   LineState,
   setShowLine,
   setUseAccessibleLabels,
+  setShowLineLabels,
+  setShowSatelliteLabels
 } from "../../redux";
 import { connect } from "react-redux";
 import { Close } from "@material-ui/icons";
@@ -53,6 +55,12 @@ interface SettingsDrawerProps {
 
   readonly lines: LineState;
   readonly setShowLine: typeof setShowLine;
+
+  readonly showLineLabels: boolean;
+  readonly setShowLineLabels: typeof setShowLineLabels;
+
+  readonly showSatelliteLabels: boolean;
+  readonly setShowSatelliteLabels: typeof setShowSatelliteLabels;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -240,6 +248,17 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
               checked={props.show3DBuildings}
               onToggle={(checked) => props.setShow3DBuildings(checked)}
             />
+            {/* <SwitchOption
+              primary="Show street names on Satellite view"
+              checked={props.showSatelliteLabels}
+              disabled={props.mapStyle != "satellite"}
+              onToggle={(checked) => props.setShowSatelliteLabels(checked)}
+            /> */}
+            <SwitchOption
+              primary="Show station labels"
+              checked={props.showLineLabels}
+              onToggle={(checked) => props.setShowLineLabels(checked)}
+            />
             <MenuOption
               primary="Choose Theme"
               options={themeSettings}
@@ -260,6 +279,8 @@ const mapStateToProps = (state: State) => ({
   appTheme: state.appTheme,
   mapStyle: state.mapStyle,
   lines: state.lines,
+  showLineLabels: state.showLineLabels,
+  showSatelliteLabels: state.showSatelliteLabels,
 });
 
 const mapDispatchToProps = {
@@ -269,6 +290,8 @@ const mapDispatchToProps = {
   setAppTheme,
   setMapStyle,
   setShowLine,
+  setShowLineLabels,
+  setShowSatelliteLabels,
 };
 
 export const SettingsDrawer = connect(

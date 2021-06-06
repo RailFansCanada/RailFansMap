@@ -11,6 +11,7 @@ import {
 export interface SwitchOptionProps {
   readonly primary: string;
   readonly secondary?: string;
+  disabled?: boolean;
   checked?: boolean;
   onToggle?: (checked: boolean) => void;
 }
@@ -21,10 +22,10 @@ export const SwitchOption = (props: SwitchOptionProps) => {
   };
 
   return (
-    <ListItem onClick={handleToggle} button>
+    <ListItem disabled={props.disabled} onClick={handleToggle} button>
       <ListItemText primary={props.primary} secondary={props.secondary} />
       <ListItemSecondaryAction>
-        <Switch onChange={handleToggle} checked={props.checked} edge="end" />
+        <Switch disabled={props.disabled} onChange={handleToggle} checked={props.checked} edge="end" />
       </ListItemSecondaryAction>
     </ListItem>
   );
