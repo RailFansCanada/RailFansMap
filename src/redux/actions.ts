@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { AppTheme, MapStyle, LineState, Alternatives } from "./state";
+import { AppTheme, MapStyle, LineState } from "./state";
 
 export const setDrawerOpen = createAction<boolean>("setDrawerOpen");
 
@@ -24,9 +24,9 @@ export const setZoom = createAction<number>("setZoom")
 export const zoomIn = createAction("zoomIn");
 export const zoomOut = createAction("zoomOut");
 
-export const enableAlternative = createAction<Alternatives>(
+export const enableAlternative = createAction<[string, string]>(
   "enableAlternative"
 );
-export const disableAlternative = createAction<Alternatives>(
+export const disableAlternative = createAction<[string, string]>(
   "disableAlternative"
 );

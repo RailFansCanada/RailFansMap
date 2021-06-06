@@ -58,7 +58,7 @@
     "@reduxjs/toolkit": "^1.5.0",
     "clsx": "^1.1.1",
     "immer": "^8.0.1",
-    "mapbox-gl": "^2.2.0",
+    "mapbox-gl": "^2.3.0",
     "react": "^17.0.1",
     "react-custom-scroll": "^4.2.2",
     "react-custom-scrollbars": "^4.2.1",

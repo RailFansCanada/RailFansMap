@@ -2,7 +2,8 @@ export type AppTheme = "system" | "light" | "dark";
 
 export type MapStyle = "vector" | "satellite";
 
-export type Alternatives = "1" | "2" | "3" | "A" | "4" | "5" | "6";
+// Maps a toggle key to an array of alternative IDs
+export type Alternatives = { [key: string]: string[] }
 
 export interface State {
   readonly drawerOpen: boolean;
@@ -18,7 +19,7 @@ export interface State {
   readonly targetZoom: number;
   readonly zoom: number;
 
-  readonly barrhavenAlternatives: Alternatives[];
+  readonly alternatives: Alternatives;
 }
 
 export interface LineState {
@@ -26,5 +27,6 @@ export interface LineState {
   readonly trilliumLine: boolean;
   readonly kanataExtension: boolean;
   readonly barrhavenExtension: boolean;
+  readonly gatineauLrt: boolean;
   readonly [key: string]: boolean;
 }

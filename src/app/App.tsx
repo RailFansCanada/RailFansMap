@@ -17,7 +17,7 @@ import { ProvideWindow } from "../hooks/useWindow";
 
 const getPreloadedState = () => {
   let state: State =
-    (localStorage["settings"] && JSON.parse(localStorage["settings"])) ??
+    (localStorage["settings"] && {...initialState, ...JSON.parse(localStorage["settings"])}) ??
     initialState;
 
   return produce(state, (draft) => {

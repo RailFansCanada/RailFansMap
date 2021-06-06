@@ -59,7 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.2.0"],
             ["immer", "npm:8.0.1"],
-            ["mapbox-gl", "npm:2.2.0"],
+            ["mapbox-gl", "npm:2.3.0"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.3.9"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["react", "npm:17.0.1"],
@@ -5132,10 +5132,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:2.2.0", {
-          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.2.0-6d8417d117-f344e76904.zip/node_modules/mapbox-gl/",
+        ["npm:2.3.0", {
+          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.3.0-8dc9aff794-ee0756548f.zip/node_modules/mapbox-gl/",
           "packageDependencies": [
-            ["mapbox-gl", "npm:2.2.0"],
+            ["mapbox-gl", "npm:2.3.0"],
             ["@mapbox/geojson-rewind", "npm:0.5.0"],
             ["@mapbox/geojson-types", "npm:1.0.2"],
             ["@mapbox/jsonlint-lines-primitives", "npm:2.0.2"],
@@ -5156,7 +5156,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["potpack", "npm:1.0.1"],
             ["quickselect", "npm:2.0.0"],
             ["rw", "npm:1.3.3"],
-            ["supercluster", "npm:7.1.2"],
+            ["supercluster", "npm:7.1.3"],
             ["tinyqueue", "npm:2.0.3"],
             ["vt-pbf", "npm:3.1.1"]
           ],
@@ -5854,7 +5854,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.0"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.2.0"],
             ["immer", "npm:8.0.1"],
-            ["mapbox-gl", "npm:2.2.0"],
+            ["mapbox-gl", "npm:2.3.0"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.3.9"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["react", "npm:17.0.1"],
@@ -7803,10 +7803,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:7.1.2", {
-          "packageLocation": "./.yarn/cache/supercluster-npm-7.1.2-a4ab1c6017-4fec26a636.zip/node_modules/supercluster/",
+        ["npm:7.1.3", {
+          "packageLocation": "./.yarn/cache/supercluster-npm-7.1.3-94c6832821-2a16571c02.zip/node_modules/supercluster/",
           "packageDependencies": [
-            ["supercluster", "npm:7.1.2"],
+            ["supercluster", "npm:7.1.3"],
             ["kdbush", "npm:3.0.0"]
           ],
           "linkType": "HARD",

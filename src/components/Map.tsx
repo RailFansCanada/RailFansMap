@@ -19,6 +19,7 @@ import {
   LineState,
   setTargetZoom,
   setZoom,
+  Alternatives,
 } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
@@ -28,14 +29,14 @@ import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 
-const provideLabelStyle = (mapData: MapDataCache) => [
+const provideLabelStyle = (mapData: MapDataCache, state: LineState) => [
   "format",
   ["get", "name"],
   {},
   " ",
   {},
   ...Object.values(mapData)
-    .filter((value) => value.metadata.icon != null)
+    .filter((value) => value.metadata.icon != null && (value.metadata.filterKey == null || state[value.metadata.filterKey]))
     .map((value) => value.metadata.id)
     .sort()
     .flatMap((id) => [
@@ -58,6 +59,7 @@ export interface OverviewMapProps {
   readonly mapStyle: MapStyle;
   readonly lines: LineState;
   readonly accessibleLabels: boolean;
+  readonly alternatives: Alternatives;
 
   readonly targetZoom: number;
   readonly setTargetZoom: typeof setTargetZoom;
@@ -146,8 +148,8 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
   }, [isDarkTheme, props.appTheme, props.mapStyle]);
 
   useEffect(() => {
-    setLabelStyle(provideLabelStyle(data));
-  }, [data]);
+    setLabelStyle(provideLabelStyle(data, props.lines));
+  }, [data, props.lines]);
 
   return (
     <Map
@@ -258,6 +260,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
                 offset={data.metadata.offset ?? 0}
                 color={data.metadata.color ?? "#212121"}
                 highContrastLabels={props.accessibleLabels}
+                activeAlternatives={props.alternatives[data.metadata.filterKey]}
               />
             );
           } else if (
@@ -287,6 +290,7 @@ const mapStateToProps = (state: State) => ({
   lines: state.lines,
   accessibleLabels: state.accessibleLabels,
   targetZoom: state.targetZoom,
+  alternatives: state.alternatives,
 });
 
 const mapDispatchToProps = {

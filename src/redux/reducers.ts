@@ -28,10 +28,13 @@ export const initialState: State = {
     trilliumLine: true,
     kanataExtension: false,
     barrhavenExtension: false,
+    gatineauLrt: false,
   },
   targetZoom: 11,
   zoom: 11,
-  barrhavenAlternatives: ["1"],
+  alternatives: {
+    "gatineauLrt": ["1"]
+  },
 };
 
 export const reducer = createReducer<State>(initialState, (builder) => {
@@ -77,11 +80,16 @@ export const reducer = createReducer<State>(initialState, (builder) => {
       }
     })
     .addCase(enableAlternative, (state, action) => {
-      state.barrhavenAlternatives.push(action.payload);
+      const [key, value] = action.payload;
+      if (state.alternatives[key] == null) {
+        state.alternatives[key] = [];
+      }
+      state.alternatives[key].push(value);
     })
     .addCase(disableAlternative, (state, action) => {
-      state.barrhavenAlternatives = state.barrhavenAlternatives.filter(
-        (value) => value !== action.payload
+      const [key, value] = action.payload;
+      state.alternatives[key] = state.alternatives[key]?.filter(
+        (v) => v !== value
       );
     });
 });

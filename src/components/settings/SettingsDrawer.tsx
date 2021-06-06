@@ -7,7 +7,6 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  useTheme,
   List,
   Divider,
 } from "@material-ui/core";
@@ -32,8 +31,9 @@ import Scrollbars from "react-custom-scrollbars";
 
 import confederationLine from "../../images/confederation.svg";
 import trilliumLine from "../../images/trillium.svg";
+import gatineauIcon from "../../images/gatineau.svg";
 import { useIsDarkTheme } from "../../app/utils";
-import { BarrhavenOption } from "./BarrhavenOption";
+import { GatineauOptions } from "./GatineauOptions";
 
 interface SettingsDrawerProps {
   readonly open: boolean;
@@ -149,7 +149,7 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
       <div className={classes.layerCardContainer}>
         <Scrollbars>
           <Typography className={classes.sectionHeader} variant="overline">
-            O-Train Lines
+            O-Train
           </Typography>
 
           <LayerOption
@@ -194,6 +194,23 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             }
             imageUrl={confederationLine}
             tint="#D62937"
+          />
+          <Typography className={classes.sectionHeader} variant="overline">
+            Gatineau LRT
+          </Typography>
+          <GatineauOptions
+            primary="Gatineau Tramway"
+            secondary="The proposed corridors for the Gatineau Tramway to Aylmer and the Plateau"
+            tertiary="*(Station locations and names are approximated)"
+            selected={props.lines.gatineauLrt}
+            onClick={() => 
+              props.setShowLine([
+                "gatineauLrt",
+                !props.lines.gatineauLrt,
+              ])
+            }
+            imageUrl={gatineauIcon}
+            tint="#007E88"
           />
           <Divider />
           <Typography className={classes.sectionHeader} variant="overline">
