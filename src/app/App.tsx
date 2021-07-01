@@ -17,7 +17,10 @@ import { ProvideWindow } from "../hooks/useWindow";
 
 const getPreloadedState = () => {
   let state: State =
-    (localStorage["settings"] && {...initialState, ...JSON.parse(localStorage["settings"])}) ??
+    (localStorage["settings"] && {
+      ...initialState,
+      ...JSON.parse(localStorage["settings"]),
+    }) ??
     initialState;
 
   return produce(state, (draft) => {
@@ -35,6 +38,16 @@ const getPreloadedState = () => {
 
     if (params.get("gatineau")?.includes("true")) {
       draft.lines.gatineauLrt = true;
+
+      const options = params
+        .get("gatineauOptions")
+        ?.split(",")
+        ?.filter((v) => v === "1" || v === "2");
+      if (options?.length == 0) {
+        draft.alternatives.gatineauLrt = ["1"];
+      } else {
+        draft.alternatives.gatineauLrt = options;
+      }
     }
 
     if (params.get("map")?.includes("satellite")) {
