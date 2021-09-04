@@ -1,6 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
@@ -9,10 +8,6 @@ const webpack = require("webpack");
 module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
-    plugins: [PnpWebpackPlugin],
-  },
-  resolveLoader: {
-    plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
   module: {
     rules: [
@@ -72,6 +67,5 @@ module.exports = {
         { from: "icons/**/*.svg" },
       ],
     }),
-    new ForkTsCheckerWebpackPlugin(),
   ],
 };
