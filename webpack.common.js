@@ -67,5 +67,6 @@ module.exports = {
         { from: "icons/**/*.svg" },
       ],
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
