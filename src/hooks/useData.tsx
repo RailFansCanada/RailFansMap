@@ -1,23 +1,8 @@
 import React, { useContext } from "react";
-import { FeatureCollection, Geometry } from "geojson";
-import cities from "../cities.json";
+import { config } from "../config";
+import type { MapData } from "../config";
 
-export interface Metadata {
-  type: "rail-line" | "rail-yard";
-  color?: string;
-  filterKey?: string;
-  offset?: number;
-  id: string;
-  icon?: string;
-}
-
-export interface WithMetadata {
-  metadata: Metadata;
-}
-
-export type MapData = FeatureCollection<Geometry> & WithMetadata;
-
-export interface MapDataCache {
+export interface DataCache {
   [key: string]: MapData;
 }
 
@@ -31,14 +16,14 @@ const loadData = async (fileName: string): Promise<MapData> => {
   return json as MapData;
 };
 
-const useProvideData = (): MapDataCache => {
-  const [cache, setCache] = React.useState<MapDataCache>({});
+const useProvideData = (): DataCache => {
+  const [cache, setCache] = React.useState<DataCache>({});
   // Load in data
   React.useEffect(() => {
-    Object.entries(cities).forEach(([_, value]) => {
+    Object.entries(config.agencies).forEach(([_, value]) => {
       value.data.forEach((name) => {
         loadData(name)
-          .then((value) => setCache((cache) => ({ ...cache, [name]: value })))
+          .then((value) => setCache((cache) => ({ ...cache, [value.metadata.id]: value })))
           .catch((reason) => console.error(reason));
       });
     });
@@ -47,7 +32,7 @@ const useProvideData = (): MapDataCache => {
   return cache;
 };
 
-const DataContext = React.createContext<MapDataCache>({});
+const DataContext = React.createContext<DataCache>({});
 
 export const ProvideData = (props: { children: React.ReactNode }) => {
   const cache = useProvideData();

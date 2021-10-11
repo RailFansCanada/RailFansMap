@@ -1,0 +1,42 @@
+{
+  "agencies": {
+    "oc-transpo": {
+      "name": "OC Transpo",
+      "bbox": [-76.01715, 45.2275134, -75.463027, 45.506346],
+      "data": [
+        "ottawa/belfastYard.json",
+        "ottawa/greenbankYard.json",
+        "ottawa/moodieYard.json",
+        "ottawa/walkleyYard.json",
+        "ottawa/line1.json",
+        "ottawa/line3.json",
+        "ottawa/line4.json",
+        "ottawa/line2.json",
+        "ottawa/stage3barrhaven.json",
+        "ottawa/stage3kanata.json"
+      ]
+    },
+    "sto": {
+      "name": "STO",
+      "bbox": [-76.01715, 45.2275134, -75.463027, 45.506346],
+      "data": ["gatineau/b.json", "gatineau/a.json"]
+    },
+    "ttc": {
+      "name": "TTC",
+      "bbox": [-79.654312, 43.573426, -79.216232, 43.902839],
+      "data": [
+        "toronto/line1.json",
+        "toronto/line2.json",
+        "toronto/line3.json",
+        "toronto/line4.json",
+        "toronto/line5.json"
+      ]
+    }
+  },
+  "regions": {
+    "ottawa-gatineau": {
+      "title": "Ottawa-Gatineau",
+      "location": [-75.691042, 45.420472]
+    }
+  }
+}

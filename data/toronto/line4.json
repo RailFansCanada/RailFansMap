@@ -6,7 +6,8 @@
         "color": "#B32078",
         "offset": 0,
         "id": "toronto/4",
-        "icon": "toronto/line4.svg"
+        "icon": "toronto/line4.svg",
+        "source": ["OpenStreetMap"]
     },
     "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3627434, 43.7715774 ], [ -79.3481851, 43.7748865 ], [ -79.3474095, 43.7750628 ], [ -79.3463568, 43.7753021 ] ] } },

@@ -6,7 +6,8 @@
     "type": "rail-line",
     "color": "#D62937",
     "offset": 0.5,
-    "icon": "ottawa/line1.svg"
+    "icon": "ottawa/line1.svg",
+    "source": ["City of Ottawa"]
 },
 "features": [
     { "type": "Feature", "properties": { "type": "tracks", "offsetFactor": null }, "geometry": { "type": "LineString", "coordinates": [ [ -75.660680031685217, 45.413554248473986 ], [ -75.6606235016027, 45.413840547407361 ] ] } },

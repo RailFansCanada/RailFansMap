@@ -4,7 +4,8 @@
         "type": "rail-line",
         "color": "#D62937",
         "filterKey": "barrhavenExtension",
-        "offset": 0.5
+        "offset": 0.5,
+        "source": ["City of Ottawa"]
     },
 "features": [
     { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Barrhaven Centre", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [ -75.741477041566483, 45.267939117486982 ] } },

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import GeoJSON from "geojson";
+import type { MapData } from "../config";
 import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 import { LabelProviderContext } from "./Map";
 
 export interface LineProps {
-  data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+  data: MapData;
   name: string;
   color: string;
   offset: number;

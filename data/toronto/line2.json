@@ -6,7 +6,8 @@
         "color": "#16A753",
         "offset": 0,
         "id": "toronto/2",
-        "icon": "toronto/line2.svg"
+        "icon": "toronto/line2.svg",
+        "source": ["OpenStreetMap"]
     },
     "features": [
         { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.2911533, 43.6938204 ], [ -79.2905089, 43.6941681 ], [ -79.2903349, 43.6942409 ], [ -79.2901526, 43.6943294 ], [ -79.289844, 43.694455 ] ] } },
@@ -139,7 +140,7 @@
 { "type": "Feature", "properties": { "lines": ["toronto/2"], "type": "station-label", "name": "Main Street" }, "geometry": { "type": "Point", "coordinates": [ -79.301645707053183, 43.689049036183746 ] } },
 { "type": "Feature", "properties": { "lines": ["toronto/2"], "type": "station-label", "name": "Victoria Park" }, "geometry": { "type": "Point", "coordinates": [ -79.288578193286867, 43.694961376788534 ] } },
 { "type": "Feature", "properties": { "lines": ["toronto/2"], "type": "station-label", "name": "Warden" }, "geometry": { "type": "Point", "coordinates": [ -79.278978211880997, 43.711404702435864 ] } },
-{ "type": "Feature", "properties": { "lines": ["toronto/2", "toronto/3"], "type": "station-label", "name": "Kennedy", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.263627750882506, 43.732465649291491 ] } }
+{ "type": "Feature", "properties": { "lines": ["toronto/2", "toronto/3", "toronto/5"], "type": "station-label", "name": "Kennedy", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.263627750882506, 43.732465649291491 ] } }
 
     ]
 }

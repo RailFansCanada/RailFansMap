@@ -1,12 +1,12 @@
 import React from "react";
-import GeoJSON from "geojson";
+import type { MapData } from "../config";
 import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 import { LINE_OFFSET } from "./Map";
 
 export interface RailYardProps {
   name: string;
-  data: GeoJSON.FeatureCollection<GeoJSON.Geometry>;
+  data: MapData;
   offset: number;
   showLabels: boolean;
 }

@@ -37,7 +37,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@material-ui/core", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.0.0-alpha.10"],
             ["@material-ui/icons", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.0.0-alpha.7"],
-            ["@reduxjs/toolkit", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.1"],
+            ["@reduxjs/toolkit", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.2"],
+            ["@turf/bbox", "npm:6.5.0"],
+            ["@turf/bbox-polygon", "npm:6.5.0"],
+            ["@turf/boolean-contains", "npm:6.5.0"],
+            ["@turf/boolean-overlap", "npm:6.5.0"],
             ["@types/d3-ease", "npm:3.0.0"],
             ["@types/geojson", "npm:7946.0.8"],
             ["@types/mapbox-gl", "npm:2.4.1"],
@@ -638,24 +642,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@reduxjs/toolkit", [
-        ["npm:1.6.1", {
-          "packageLocation": "./.yarn/cache/@reduxjs-toolkit-npm-1.6.1-a0999c8262-487e340036.zip/node_modules/@reduxjs/toolkit/",
+        ["npm:1.6.2", {
+          "packageLocation": "./.yarn/cache/@reduxjs-toolkit-npm-1.6.2-67af09515f-895e30518d.zip/node_modules/@reduxjs/toolkit/",
           "packageDependencies": [
-            ["@reduxjs/toolkit", "npm:1.6.1"]
+            ["@reduxjs/toolkit", "npm:1.6.2"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.1", {
-          "packageLocation": "./.yarn/__virtual__/@reduxjs-toolkit-virtual-aae563b6a1/0/cache/@reduxjs-toolkit-npm-1.6.1-a0999c8262-487e340036.zip/node_modules/@reduxjs/toolkit/",
+        ["virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.2", {
+          "packageLocation": "./.yarn/__virtual__/@reduxjs-toolkit-virtual-7552276f08/0/cache/@reduxjs-toolkit-npm-1.6.2-67af09515f-895e30518d.zip/node_modules/@reduxjs/toolkit/",
           "packageDependencies": [
-            ["@reduxjs/toolkit", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.1"],
+            ["@reduxjs/toolkit", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.2"],
             ["@types/react", "npm:17.0.19"],
             ["@types/react-redux", "npm:7.1.18"],
             ["immer", "npm:9.0.6"],
             ["react", "npm:17.0.2"],
             ["react-redux", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:7.2.4"],
             ["redux", "npm:4.1.1"],
-            ["redux-thunk", "virtual:aae563b6a1fe758a23a96ac07c8b70b28d2d290bbb854b218424bb14fcf90ee5a28918d3680e42dcb19f468716e4b3fc94b7918bc078bed2bbc983c8579cf386#npm:2.3.0"],
+            ["redux-thunk", "virtual:7552276f08a9def65071c38c250631f5d64038b6c01fe385b393d98fd249ea9d819589e9a05cf8a9402c25a1f1fafcda752e94980d028c05d7738cb3769773f5#npm:2.3.0"],
             ["reselect", "npm:4.0.0"]
           ],
           "packagePeers": [
@@ -663,6 +667,199 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/react",
             "react-redux",
             "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/bbox", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-bbox-npm-6.5.0-7e0db31887-537be56ae0.zip/node_modules/@turf/bbox/",
+          "packageDependencies": [
+            ["@turf/bbox", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/bbox-polygon", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-bbox-polygon-npm-6.5.0-f32fc827ac-b877dc59ff.zip/node_modules/@turf/bbox-polygon/",
+          "packageDependencies": [
+            ["@turf/bbox-polygon", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/bearing", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-bearing-npm-6.5.0-ebcc1b8fd8-f2883fb56d.zip/node_modules/@turf/bearing/",
+          "packageDependencies": [
+            ["@turf/bearing", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/boolean-contains", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-boolean-contains-npm-6.5.0-f6a2989d38-85d062c298.zip/node_modules/@turf/boolean-contains/",
+          "packageDependencies": [
+            ["@turf/boolean-contains", "npm:6.5.0"],
+            ["@turf/bbox", "npm:6.5.0"],
+            ["@turf/boolean-point-in-polygon", "npm:6.5.0"],
+            ["@turf/boolean-point-on-line", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/boolean-overlap", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-boolean-overlap-npm-6.5.0-24556e08ad-1c10eac571.zip/node_modules/@turf/boolean-overlap/",
+          "packageDependencies": [
+            ["@turf/boolean-overlap", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"],
+            ["@turf/line-intersect", "npm:6.5.0"],
+            ["@turf/line-overlap", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"],
+            ["geojson-equality", "npm:0.1.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/boolean-point-in-polygon", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-boolean-point-in-polygon-npm-6.5.0-a1fdefa88c-624e54d995.zip/node_modules/@turf/boolean-point-in-polygon/",
+          "packageDependencies": [
+            ["@turf/boolean-point-in-polygon", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/boolean-point-on-line", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-boolean-point-on-line-npm-6.5.0-978d803579-469bc39dfe.zip/node_modules/@turf/boolean-point-on-line/",
+          "packageDependencies": [
+            ["@turf/boolean-point-on-line", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/destination", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-destination-npm-6.5.0-748ae1ba0c-eac68b89fb.zip/node_modules/@turf/destination/",
+          "packageDependencies": [
+            ["@turf/destination", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/distance", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-distance-npm-6.5.0-31f0d31a23-f311e19a5d.zip/node_modules/@turf/distance/",
+          "packageDependencies": [
+            ["@turf/distance", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/helpers", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-helpers-npm-6.5.0-a40ad42565-d57f746351.zip/node_modules/@turf/helpers/",
+          "packageDependencies": [
+            ["@turf/helpers", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/invariant", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-invariant-npm-6.5.0-63bdebfa9a-f45109ee41.zip/node_modules/@turf/invariant/",
+          "packageDependencies": [
+            ["@turf/invariant", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/line-intersect", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-line-intersect-npm-6.5.0-7b76bbb820-ae5eb762d8.zip/node_modules/@turf/line-intersect/",
+          "packageDependencies": [
+            ["@turf/line-intersect", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"],
+            ["@turf/line-segment", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"],
+            ["geojson-rbush", "npm:3.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/line-overlap", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-line-overlap-npm-6.5.0-53336c73c9-51638b7e9c.zip/node_modules/@turf/line-overlap/",
+          "packageDependencies": [
+            ["@turf/line-overlap", "npm:6.5.0"],
+            ["@turf/boolean-point-on-line", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"],
+            ["@turf/line-segment", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"],
+            ["@turf/nearest-point-on-line", "npm:6.5.0"],
+            ["deep-equal", "npm:1.1.1"],
+            ["geojson-rbush", "npm:3.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/line-segment", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-line-segment-npm-6.5.0-239e24ade0-c58c91066f.zip/node_modules/@turf/line-segment/",
+          "packageDependencies": [
+            ["@turf/line-segment", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/meta", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-meta-npm-6.5.0-66a9378eac-c6bb936aa9.zip/node_modules/@turf/meta/",
+          "packageDependencies": [
+            ["@turf/meta", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@turf/nearest-point-on-line", [
+        ["npm:6.5.0", {
+          "packageLocation": "./.yarn/cache/@turf-nearest-point-on-line-npm-6.5.0-eaa67a26e0-5d059e43e6.zip/node_modules/@turf/nearest-point-on-line/",
+          "packageDependencies": [
+            ["@turf/nearest-point-on-line", "npm:6.5.0"],
+            ["@turf/bearing", "npm:6.5.0"],
+            ["@turf/destination", "npm:6.5.0"],
+            ["@turf/distance", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/invariant", "npm:6.5.0"],
+            ["@turf/line-intersect", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1774,6 +1971,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["call-bind", [
+        ["npm:1.0.2", {
+          "packageLocation": "./.yarn/cache/call-bind-npm-1.0.2-c957124861-f8e31de9d1.zip/node_modules/call-bind/",
+          "packageDependencies": [
+            ["call-bind", "npm:1.0.2"],
+            ["function-bind", "npm:1.1.1"],
+            ["get-intrinsic", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["callsites", [
         ["npm:3.1.0", {
           "packageLocation": "./.yarn/cache/callsites-npm-3.1.0-268f989910-072d17b6ab.zip/node_modules/callsites/",
@@ -2403,6 +2611,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["deep-equal", "npm:1.0.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/deep-equal-npm-1.1.1-67ff9c29b9-f92686f2c5.zip/node_modules/deep-equal/",
+          "packageDependencies": [
+            ["deep-equal", "npm:1.1.1"],
+            ["is-arguments", "npm:1.1.1"],
+            ["is-date-object", "npm:1.0.5"],
+            ["is-regex", "npm:1.1.4"],
+            ["object-is", "npm:1.1.5"],
+            ["object-keys", "npm:1.1.1"],
+            ["regexp.prototype.flags", "npm:1.3.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["deepmerge", [
@@ -2429,6 +2650,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/define-lazy-prop-npm-2.0.0-bba0cd91a7-0115fdb065.zip/node_modules/define-lazy-prop/",
           "packageDependencies": [
             ["define-lazy-prop", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["define-properties", [
+        ["npm:1.1.3", {
+          "packageLocation": "./.yarn/cache/define-properties-npm-1.1.3-0f3115e2b9-da80dba55d.zip/node_modules/define-properties/",
+          "packageDependencies": [
+            ["define-properties", "npm:1.1.3"],
+            ["object-keys", "npm:1.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -3249,11 +3480,47 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["geojson-equality", [
+        ["npm:0.1.6", {
+          "packageLocation": "./.yarn/cache/geojson-equality-npm-0.1.6-0e310e049e-47229c4598.zip/node_modules/geojson-equality/",
+          "packageDependencies": [
+            ["geojson-equality", "npm:0.1.6"],
+            ["deep-equal", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["geojson-rbush", [
+        ["npm:3.2.0", {
+          "packageLocation": "./.yarn/cache/geojson-rbush-npm-3.2.0-33df663f10-f373e646f3.zip/node_modules/geojson-rbush/",
+          "packageDependencies": [
+            ["geojson-rbush", "npm:3.2.0"],
+            ["@turf/bbox", "npm:6.5.0"],
+            ["@turf/helpers", "npm:6.5.0"],
+            ["@turf/meta", "npm:6.5.0"],
+            ["@types/geojson", "npm:7946.0.8"],
+            ["rbush", "npm:3.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["geojson-vt", [
         ["npm:3.2.1", {
           "packageLocation": "./.yarn/cache/geojson-vt-npm-3.2.1-80c8f60496-7c7973cfaf.zip/node_modules/geojson-vt/",
           "packageDependencies": [
             ["geojson-vt", "npm:3.2.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["get-intrinsic", [
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/get-intrinsic-npm-1.1.1-7e868745da-a9fe2ca8fa.zip/node_modules/get-intrinsic/",
+          "packageDependencies": [
+            ["get-intrinsic", "npm:1.1.1"],
+            ["function-bind", "npm:1.1.1"],
+            ["has", "npm:1.0.3"],
+            ["has-symbols", "npm:1.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -3481,6 +3748,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/has-flag-npm-4.0.0-32af9f0536-261a135703.zip/node_modules/has-flag/",
           "packageDependencies": [
             ["has-flag", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["has-symbols", [
+        ["npm:1.0.2", {
+          "packageLocation": "./.yarn/cache/has-symbols-npm-1.0.2-50e53af115-2309c42607.zip/node_modules/has-symbols/",
+          "packageDependencies": [
+            ["has-symbols", "npm:1.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["has-tostringtag", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/has-tostringtag-npm-1.0.0-b1fcf3ab55-cc12eb28cb.zip/node_modules/has-tostringtag/",
+          "packageDependencies": [
+            ["has-tostringtag", "npm:1.0.0"],
+            ["has-symbols", "npm:1.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -3892,6 +4178,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["is-arguments", [
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/is-arguments-npm-1.1.1-eff4f6d4d7-7f02700ec2.zip/node_modules/is-arguments/",
+          "packageDependencies": [
+            ["is-arguments", "npm:1.1.1"],
+            ["call-bind", "npm:1.0.2"],
+            ["has-tostringtag", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["is-arrayish", [
         ["npm:0.2.1", {
           "packageLocation": "./.yarn/cache/is-arrayish-npm-0.2.1-23927dfb15-eef4417e3c.zip/node_modules/is-arrayish/",
@@ -3917,6 +4214,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["is-core-module", "npm:2.2.0"],
             ["has", "npm:1.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["is-date-object", [
+        ["npm:1.0.5", {
+          "packageLocation": "./.yarn/cache/is-date-object-npm-1.0.5-88f3d08b5e-baa9077cdf.zip/node_modules/is-date-object/",
+          "packageDependencies": [
+            ["is-date-object", "npm:1.0.5"],
+            ["has-tostringtag", "npm:1.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -4020,6 +4327,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["is-plain-object", "npm:2.0.4"],
             ["isobject", "npm:3.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["is-regex", [
+        ["npm:1.1.4", {
+          "packageLocation": "./.yarn/cache/is-regex-npm-1.1.4-cca193ef11-362399b335.zip/node_modules/is-regex/",
+          "packageDependencies": [
+            ["is-regex", "npm:1.1.4"],
+            ["call-bind", "npm:1.0.2"],
+            ["has-tostringtag", "npm:1.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -4944,6 +5262,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["object-is", [
+        ["npm:1.1.5", {
+          "packageLocation": "./.yarn/cache/object-is-npm-1.1.5-48a862602b-989b18c4cb.zip/node_modules/object-is/",
+          "packageDependencies": [
+            ["object-is", "npm:1.1.5"],
+            ["call-bind", "npm:1.0.2"],
+            ["define-properties", "npm:1.1.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["object-keys", [
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/object-keys-npm-1.1.1-1bf2f1be93-b363c5e764.zip/node_modules/object-keys/",
+          "packageDependencies": [
+            ["object-keys", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["obuf", [
         ["npm:1.1.2", {
           "packageLocation": "./.yarn/cache/obuf-npm-1.1.2-8db5fae8dd-41a2ba310e.zip/node_modules/obuf/",
@@ -5049,7 +5387,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["otrainmap", "workspace:."],
             ["@material-ui/core", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.0.0-alpha.10"],
             ["@material-ui/icons", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.0.0-alpha.7"],
-            ["@reduxjs/toolkit", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.1"],
+            ["@reduxjs/toolkit", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:1.6.2"],
+            ["@turf/bbox", "npm:6.5.0"],
+            ["@turf/bbox-polygon", "npm:6.5.0"],
+            ["@turf/boolean-contains", "npm:6.5.0"],
+            ["@turf/boolean-overlap", "npm:6.5.0"],
             ["@types/d3-ease", "npm:3.0.0"],
             ["@types/geojson", "npm:7946.0.8"],
             ["@types/mapbox-gl", "npm:2.4.1"],
@@ -5684,6 +6026,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["rbush", [
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/rbush-npm-3.0.1-9fc2a71778-b7def5ba76.zip/node_modules/rbush/",
+          "packageDependencies": [
+            ["rbush", "npm:3.0.1"],
+            ["quickselect", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react", [
         ["npm:17.0.2", {
           "packageLocation": "./.yarn/cache/react-npm-17.0.2-99ba37d931-b254cc17ce.zip/node_modules/react/",
@@ -5968,10 +6320,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:aae563b6a1fe758a23a96ac07c8b70b28d2d290bbb854b218424bb14fcf90ee5a28918d3680e42dcb19f468716e4b3fc94b7918bc078bed2bbc983c8579cf386#npm:2.3.0", {
-          "packageLocation": "./.yarn/__virtual__/redux-thunk-virtual-9bfaec609b/0/cache/redux-thunk-npm-2.3.0-a5eb89e35e-d13f442ffc.zip/node_modules/redux-thunk/",
+        ["virtual:7552276f08a9def65071c38c250631f5d64038b6c01fe385b393d98fd249ea9d819589e9a05cf8a9402c25a1f1fafcda752e94980d028c05d7738cb3769773f5#npm:2.3.0", {
+          "packageLocation": "./.yarn/__virtual__/redux-thunk-virtual-11e09fc429/0/cache/redux-thunk-npm-2.3.0-a5eb89e35e-d13f442ffc.zip/node_modules/redux-thunk/",
           "packageDependencies": [
-            ["redux-thunk", "virtual:aae563b6a1fe758a23a96ac07c8b70b28d2d290bbb854b218424bb14fcf90ee5a28918d3680e42dcb19f468716e4b3fc94b7918bc078bed2bbc983c8579cf386#npm:2.3.0"],
+            ["redux-thunk", "virtual:7552276f08a9def65071c38c250631f5d64038b6c01fe385b393d98fd249ea9d819589e9a05cf8a9402c25a1f1fafcda752e94980d028c05d7738cb3769773f5#npm:2.3.0"],
             ["@types/redux", null],
             ["redux", "npm:4.1.1"]
           ],
@@ -5987,6 +6339,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/regenerator-runtime-npm-0.13.5-290ae86e15-afc42d8b86.zip/node_modules/regenerator-runtime/",
           "packageDependencies": [
             ["regenerator-runtime", "npm:0.13.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["regexp.prototype.flags", [
+        ["npm:1.3.1", {
+          "packageLocation": "./.yarn/cache/regexp.prototype.flags-npm-1.3.1-f0c34f894f-343595db5a.zip/node_modules/regexp.prototype.flags/",
+          "packageDependencies": [
+            ["regexp.prototype.flags", "npm:1.3.1"],
+            ["call-bind", "npm:1.0.2"],
+            ["define-properties", "npm:1.1.3"]
           ],
           "linkType": "HARD",
         }]

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import ReactMapGL, {
   Source,
   Layer,
   MapEvent,
   ViewportProps,
+  MapRef,
+  AttributionControl,
 } from "react-map-gl";
 import styled from "styled-components";
 
@@ -23,20 +25,24 @@ import {
 } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
-import { useData, MapDataCache } from "../hooks/useData";
+import { useData, DataCache } from "../hooks/useData";
 import { useHash } from "../hooks/useHash";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 
-const provideLabelStyle = (mapData: MapDataCache, state: LineState) => [
+const provideLabelStyle = (mapData: DataCache, state: LineState) => [
   "format",
   ["get", "name"],
   {},
   " ",
   {},
   ...Object.values(mapData)
-    .filter((value) => value.metadata.icon != null && (value.metadata.filterKey == null || state[value.metadata.filterKey]))
+    .filter(
+      (value) =>
+        value.metadata.icon != null &&
+        (value.metadata.filterKey == null || state[value.metadata.filterKey])
+    )
     .map((value) => value.metadata.id)
     .sort()
     .flatMap((id) => [
@@ -85,6 +91,8 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     height: windowSize[1],
     ...useHash(),
   });
+  const data = useData();
+  const mapRef = useRef<MapRef>();
 
   const handleViewportChange = (viewport: ViewportProps) => {
     setViewport(viewport);
@@ -99,22 +107,23 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     }));
   }, [windowSize]);
 
-  const data = useData();
   // Give station icons and all labels the pointer cursor
-  const interactiveLayerIds = props.showLineLabels ? Object.values(data)
-    .filter(
-      (value) =>
-        value.metadata.filterKey == null ||
-        props.lines[value.metadata.filterKey]
-    )
-    .flatMap((value) => {
-      const id = value.metadata.id;
-      if (value.metadata.type === "rail-line") {
-        return [`${id}-station`, `${id}-labels`];
-      } else if (value.metadata.type === "rail-yard") {
-        return [`${id}-labels`];
-      }
-    }) : [];
+  const interactiveLayerIds = props.showLineLabels
+    ? Object.values(data)
+        .filter(
+          (value) =>
+            value.metadata.filterKey == null ||
+            props.lines[value.metadata.filterKey]
+        )
+        .flatMap((value) => {
+          const id = value.metadata.id;
+          if (value.metadata.type === "rail-line") {
+            return [`${id}-station`, `${id}-labels`];
+          } else if (value.metadata.type === "rail-yard") {
+            return [`${id}-labels`];
+          }
+        })
+    : [];
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
@@ -154,19 +163,20 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   return (
     <Map
+      ref={mapRef}
       mapStyle={style}
       {...viewport}
       onViewportChange={handleViewportChange}
       onClick={handleClick}
       interactiveLayerIds={interactiveLayerIds}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={({ speed: 0.25, smooth: true } as unknown) as boolean}
+      scrollZoom={{ speed: 0.25, smooth: true } as unknown as boolean}
       mapOptions={{
-        customAttribution: ["Data: City of Ottawa"],
         hash: true,
         antiAlias: false,
       }}
     >
+      <AttributionControl />
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(data)
           .filter((entry) => entry.metadata.icon != null)

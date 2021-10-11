@@ -2,7 +2,8 @@
   "type": "FeatureCollection",
   "metadata": {
     "type": "rail-yard",
-    "id": "ottawa/belfast"
+    "id": "ottawa/belfast",
+    "source": ["City of Ottawa"]
   },
   "features": [
     {

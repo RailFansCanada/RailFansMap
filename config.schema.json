@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://map.railfans.ca/city-schema.json",
+  "title": "Railmap Configuration",
+  "description": "Map configuration for the RailFans Canada map",
+  "type": "object",
+  "properties": {
+    "agencies": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^([A-Za-z])\\w+"
+      },
+      "patternProperties": {
+        "": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "bbox": {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": { "type": "number" },
+              "additionalItems": false
+            },
+            "data": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "required": ["bbox", "data", "name"]
+        }
+      }
+    },
+    "regions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^([A-Za-z])\\w+"
+      },
+      "patternProperties": {
+        "": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number" },
+              "additionalItems": false
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": ["location", "title"]
+        }
+      }
+    }
+  }
+}

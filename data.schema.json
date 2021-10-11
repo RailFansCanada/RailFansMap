@@ -299,9 +299,13 @@
         "alternatives": {
           "type": "array",
           "items": { "type": "string" }
+        },
+        "sources": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       },
-      "required": ["id", "type", "color"]
+      "required": ["id", "type", "color", "source"]
     },
     "metadata-rail-yard": {
       "type": "object",
@@ -311,9 +315,13 @@
         },
         "id": {
           "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       },
-      "required": ["type", "id"]
+      "required": ["type", "id", "source"]
     }
   }
 }
