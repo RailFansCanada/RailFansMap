@@ -31,6 +31,20 @@
         "toronto/line4.json",
         "toronto/line5.json"
       ]
+    },
+    "go": {
+      "name": "GO",
+      "bbox": [-79.654312, 43.573426, -79.216232, 43.902839],
+      "data": [
+        "go/le.json",
+        "go/st.json",
+        "go/rh.json",
+        "go/br.json",
+        "go/ki.json",
+        "go/mi.json",
+        "go/lw.json",
+        "go/up.json"
+      ]
     }
   },
   "regions": {
