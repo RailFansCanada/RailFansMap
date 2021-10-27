@@ -97,7 +97,7 @@
 { "type": "Feature", "properties": { "lines": ["go/up", "go/ki"], "type": "station-label", "name": "Weston" }, "geometry": { "type": "Point", "coordinates": [ -79.511034611509984, 43.699169476382984 ] } },
 { "type": "Feature", "properties": { "lines": ["go/up", "toronto/5", "go/ki"], "type": "station-label", "name": "Mount Dennis" }, "geometry": { "type": "Point", "coordinates": [ -79.487657258835981, 43.687612595693082 ] } },
 { "type": "Feature", "properties": { "lines": ["go/up", "toronto/2", "go/ki"], "type": "station-label", "name": "Bloor" }, "geometry": { "type": "Point", "coordinates": [ -79.452015590497851, 43.658968620556166 ] } },
-{ "type": "Feature", "properties": { "lines": ["go/up", "toronto/1", "go/le", "go/st", "go/rh", "go/ki"], "type": "station-label", "name": "Union", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.3804274, 43.644353900000098 ] } }
+{ "type": "Feature", "properties": { "lines": ["go/up", "toronto/1", "go/le", "go/st", "go/rh", "go/br", "go/ki", "go/mi", "go/lw"], "type": "station-label", "name": "Union", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.3804274, 43.644353900000098 ] } }
 ]
 }
     

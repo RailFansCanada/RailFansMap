@@ -25,6 +25,9 @@
       "name": "TTC",
       "bbox": [-79.654312, 43.573426, -79.216232, 43.902839],
       "data": [
+        "toronto/davisvilleYard.json",
+        "toronto/wilsonYard.json",
+        "toronto/greenwoodYard.json",
         "toronto/line1.json",
         "toronto/line2.json",
         "toronto/line3.json",

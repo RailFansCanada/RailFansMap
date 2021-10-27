@@ -1,5 +1,5 @@
 import type { BBox, FeatureCollection, Geometry, Position } from "geojson";
-import configJson from "./config.json";
+import configJson from "../config.json";
 
 export const config = configJson as unknown as Config;
 
