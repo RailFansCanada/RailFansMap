@@ -8,6 +8,9 @@ import {
   CardActionArea,
   fade,
   useTheme,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
 } from "@material-ui/core";
 import clsx from "clsx";
 
@@ -41,9 +44,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
   },
   selected: {
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: (props: any) => props.tint,
+    //borderWidth: 1,
+    //borderStyle: "solid",
+    //borderColor: (props: any) => props.tint,
     backgroundColor: (props: any) => fade(props.tint, 0.1),
   },
   imagery: {
@@ -101,5 +104,23 @@ export const LayerOption = (props: LayerOptionProps) => {
         </CardContent>
       </CardActionArea>
     </Card>
+  );
+};
+
+export const LayerOption2 = (props: Readonly<LayerOptionProps>) => {
+  const theme = useTheme();
+  const classes = useStyles({
+    tint: props.tint ?? theme.palette.secondary.main,
+  });
+
+  return (
+    <ListItem className={clsx(classes.selected)}>
+      {props.imageUrl && (
+        <ListItemAvatar>
+          <img src={props.imageUrl} />
+        </ListItemAvatar>
+      )}
+      <ListItemText primary={props.primary} secondary={props.secondary} />
+    </ListItem>
   );
 };

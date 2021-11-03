@@ -26,7 +26,7 @@ import {
 } from "../../redux";
 import { connect } from "react-redux";
 import { Close } from "@material-ui/icons";
-import { LayerOption } from "./LayerOption";
+import { LayerOption, LayerOption2 } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
 
 import Scrollbars from "react-custom-scrollbars";
@@ -133,7 +133,6 @@ const SettingsDrawerComponent = (props: Readonly<SettingsDrawerProps>) => {
   };
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
-  const blue = isDarkTheme ? "#8142fd" : "#5202F1";
 
   return (
     <Drawer
@@ -161,15 +160,33 @@ const SettingsDrawerComponent = (props: Readonly<SettingsDrawerProps>) => {
       </AppBar>
       <div className={classes.layerCardContainer}>
         <Scrollbars>
-          <Typography className={classes.sectionHeader} variant="overline">
-            O-Train
-          </Typography>
-
-          <div>
-            {props.visible.map((value) => (
-              <p>{value.name}</p>
-            ))}
-          </div>
+          <List>
+            {props.visible.map((value) => {
+              return (
+                <>
+                  <Typography
+                    className={classes.sectionHeader}
+                    variant="overline"
+                  >
+                    {value.name}
+                  </Typography>
+                  {value.data
+                    .map((id) => props.data[id]?.metadata)
+                    .filter((metadata) => metadata?.type === "rail-line")
+                    .map((metadata) => {
+                      return (
+                        <LayerOption2
+                          primary={metadata.name}
+                          secondary={metadata.description}
+                          tint={metadata.color}
+                          imageUrl={`icons/${metadata.icon}`}
+                        />
+                      );
+                    })}
+                </>
+              );
+            })}
+          </List>
           <LayerOption
             primary="Confederation Line"
             secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
