@@ -9,11 +9,15 @@ export const config = configJson as unknown as Config;
 export interface Metadata {
   type: "rail-line" | "rail-yard";
   color?: string;
-  filterKey?: string;
   offset?: number;
   id: string;
   icon?: string;
   source: string[];
+  sources: string[];
+  name: string;
+  description: string;
+  notes?: string;
+  filterKey?: string;
 }
 
 /**

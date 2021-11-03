@@ -278,6 +278,7 @@
 
     "metadata-rail-line": {
       "type": "object",
+      "allOf": [{ "$ref": "#/definitions/info" }],
       "properties": {
         "type": {
           "const": "rail-line"
@@ -299,15 +300,12 @@
         "alternatives": {
           "type": "array",
           "items": { "type": "string" }
-        },
-        "sources": {
-          "type": "array",
-          "items": { "type": "string" }
         }
       },
-      "required": ["id", "type", "color", "source"]
+      "required": ["id", "type", "color"]
     },
     "metadata-rail-yard": {
+      "allOf": [{ "$ref": "#/definitions/info" }],
       "type": "object",
       "properties": {
         "type": {
@@ -315,13 +313,21 @@
         },
         "id": {
           "type": "string"
-        },
-        "sources": {
-          "type": "array",
-          "items": { "type": "string" }
         }
       },
-      "required": ["type", "id", "source"]
+      "required": ["type", "id"]
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "filterKey": { "type": "string" },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "notes": { "type": "string" },
+        "alternatives": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["sources", "name", "description"]
     }
   }
 }

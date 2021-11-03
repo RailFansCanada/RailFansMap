@@ -7,7 +7,10 @@
         "offset": 0,
         "id": "toronto/3",
         "icon": "toronto/line3.svg",
-        "source": ["OpenStreetMap"]
+        "source": ["OpenStreetMap"],
+        "name": "Line 3",
+        "description": "Kennedy — McCowan",
+        "sources": ["OpenStreetMap"]
     },
     "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.2753722, 43.7697406 ], [ -79.2755917, 43.7696788 ], [ -79.2757465, 43.7696218 ], [ -79.2758867, 43.7695615 ], [ -79.2760127, 43.7694983 ], [ -79.276134, 43.7694253 ], [ -79.2762401, 43.7693536 ], [ -79.2763399, 43.7692606 ], [ -79.2764065, 43.7691838 ] ] } },

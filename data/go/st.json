@@ -6,7 +6,9 @@
         "offset": -1,
         "id": "go/st",
         "icon": "go/st.svg",
-        "source": ["Ontario Ministry of Natural Resources and Forestry"]
+        "name": "Stouffville Line",
+        "description": "",
+        "sources": ["Ontario Ministry of Natural Resources and Forestry"]
     },
     "features": [
         { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3727623999999, 43.645913300000103 ], [ -79.373146899999895, 43.645862700000102 ] ] } },

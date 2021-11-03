@@ -6,7 +6,9 @@
         "offset": -1.5,
         "id": "go/up",
         "icon": "go/up.svg",
-        "source": ["Ontario Ministry of Natural Resources and Forestry"]
+        "name": "Union Pearson Express",
+        "description": "",
+        "sources": ["Ontario Ministry of Natural Resources and Forestry"]
     },
     "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.605287099999885, 43.705518 ], [ -79.6048117, 43.7055491 ], [ -79.604193999999893, 43.7055789 ] ] } },

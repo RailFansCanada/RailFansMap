@@ -8,6 +8,7 @@ import ReactMapGL, {
   MapRef,
   AttributionControl,
 } from "react-map-gl";
+import { Map as MapboxMap } from "mapbox-gl";
 import styled from "styled-components";
 
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -25,13 +26,15 @@ import {
 } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
-import { useData, DataCache } from "../hooks/useData";
+import { Dataset } from "../hooks/useData";
 import { useHash } from "../hooks/useHash";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
+import { BBox } from "geojson";
+import { MapboxOptions } from "mapbox-gl";
 
-const provideLabelStyle = (mapData: DataCache, state: LineState) => [
+const provideLabelStyle = (mapData: Dataset, state: LineState) => [
   "format",
   ["get", "name"],
   {},
@@ -71,6 +74,9 @@ export interface OverviewMapProps {
   readonly targetZoom: number;
   readonly setTargetZoom: typeof setTargetZoom;
   readonly setZoom: typeof setZoom;
+
+  readonly data: Dataset;
+  updateBbox(bbox: BBox): void;
 }
 
 export const LINE_OFFSET = 3;
@@ -91,12 +97,44 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     height: windowSize[1],
     ...useHash(),
   });
-  const data = useData();
+  const data = props.data;
   const mapRef = useRef<MapRef>();
 
   const handleViewportChange = (viewport: ViewportProps) => {
     setViewport(viewport);
     props.setZoom(viewport.zoom);
+  };
+
+  const handleInteractionStateChange = (state: /* ExtraState */ any) => {
+    const {
+      isDragging,
+      inTransition,
+      isRotating,
+      isZooming,
+      isHovering,
+      isPanning,
+    } = state;
+    if (
+      isDragging ||
+      inTransition ||
+      isRotating ||
+      isZooming ||
+      isHovering ||
+      isPanning
+    )
+      return;
+
+    if (mapRef.current != null) {
+      const map: MapboxMap = mapRef.current.getMap();
+      const bounds = map.getBounds();
+
+      props.updateBbox([
+        bounds.getWest(),
+        bounds.getSouth(),
+        bounds.getEast(),
+        bounds.getNorth(),
+      ]);
+    }
   };
 
   useEffect(() => {
@@ -167,14 +205,12 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       mapStyle={style}
       {...viewport}
       onViewportChange={handleViewportChange}
+      onInteractionStateChange={handleInteractionStateChange}
       onClick={handleClick}
       interactiveLayerIds={interactiveLayerIds}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={{ speed: 0.25, smooth: true } as unknown as boolean}
-      mapOptions={{
-        hash: true,
-        antiAlias: false,
-      }}
+      scrollZoom={{ speed: 0.25, smooth: true }}
+      mapOptions={{ hash: true }}
     >
       <AttributionControl />
       <LabelProviderContext.Provider value={{ labelStyle }}>

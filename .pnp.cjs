@@ -44,12 +44,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@turf/boolean-overlap", "npm:6.5.0"],
             ["@types/d3-ease", "npm:3.0.0"],
             ["@types/geojson", "npm:7946.0.8"],
-            ["@types/mapbox-gl", "npm:2.4.1"],
+            ["@types/mapbox-gl", "npm:2.4.2"],
             ["@types/react", "npm:17.0.19"],
             ["@types/react-custom-scroll", "npm:4.3.1"],
             ["@types/react-custom-scrollbars", "npm:4.0.8"],
             ["@types/react-dom", "npm:17.0.9"],
-            ["@types/react-map-gl", "npm:5.2.10"],
             ["@types/react-redux", "npm:7.1.18"],
             ["@types/react-virtualized", "npm:9.21.13"],
             ["@types/styled-components", "npm:5.1.14"],
@@ -61,7 +60,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.3.3"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.3.2"],
             ["immer", "npm:9.0.6"],
-            ["mapbox-gl", "npm:2.4.1"],
+            ["mapbox-gl", "npm:2.5.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.2.2"],
             ["pnp-webpack-plugin", "npm:1.7.0"],
             ["react", "npm:17.0.2"],
@@ -216,6 +215,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["regenerator-runtime", "npm:0.13.5"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:7.16.0", {
+          "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.16.0-2f490bebb5-bfbca3ec52.zip/node_modules/@babel/runtime/",
+          "packageDependencies": [
+            ["@babel/runtime", "npm:7.16.0"],
+            ["regenerator-runtime", "npm:0.13.5"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@babel/template", [
@@ -363,10 +370,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@mapbox/tiny-sdf", [
-        ["npm:1.2.5", {
-          "packageLocation": "./.yarn/cache/@mapbox-tiny-sdf-npm-1.2.5-629b4030d6-d4cfd700c8.zip/node_modules/@mapbox/tiny-sdf/",
+        ["npm:2.0.4", {
+          "packageLocation": "./.yarn/cache/@mapbox-tiny-sdf-npm-2.0.4-cfc3d68271-a03af2334e.zip/node_modules/@mapbox/tiny-sdf/",
           "packageDependencies": [
-            ["@mapbox/tiny-sdf", "npm:1.2.5"]
+            ["@mapbox/tiny-sdf", "npm:2.0.4"]
           ],
           "linkType": "HARD",
         }]
@@ -591,11 +598,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@math.gl/web-mercator", [
-        ["npm:3.5.4", {
-          "packageLocation": "./.yarn/cache/@math.gl-web-mercator-npm-3.5.4-0fd36ecf98-5d89c0d580.zip/node_modules/@math.gl/web-mercator/",
+        ["npm:3.5.6", {
+          "packageLocation": "./.yarn/cache/@math.gl-web-mercator-npm-3.5.6-a9a6a324ae-4aea72466f.zip/node_modules/@math.gl/web-mercator/",
           "packageDependencies": [
-            ["@math.gl/web-mercator", "npm:3.5.4"],
-            ["@babel/runtime", "npm:7.12.5"],
+            ["@math.gl/web-mercator", "npm:3.5.6"],
+            ["@babel/runtime", "npm:7.16.0"],
             ["gl-matrix", "npm:3.3.0"]
           ],
           "linkType": "HARD",
@@ -927,15 +934,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@types/gl-matrix", [
-        ["npm:2.4.5", {
-          "packageLocation": "./.yarn/cache/@types-gl-matrix-npm-2.4.5-2060040aa3-099c3b1862.zip/node_modules/@types/gl-matrix/",
-          "packageDependencies": [
-            ["@types/gl-matrix", "npm:2.4.5"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@types/hoist-non-react-statics", [
         ["npm:3.3.1", {
           "packageLocation": "./.yarn/cache/@types-hoist-non-react-statics-npm-3.3.1-c0081332b2-2c0778570d.zip/node_modules/@types/hoist-non-react-statics/",
@@ -990,26 +988,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/mapbox-gl", [
-        ["npm:0.54.5", {
-          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-0.54.5-818de864ab-c4def8f242.zip/node_modules/@types/mapbox-gl/",
+        ["npm:2.4.2", {
+          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.4.2-fa0d8ff61c-d18b388bb9.zip/node_modules/@types/mapbox-gl/",
           "packageDependencies": [
-            ["@types/mapbox-gl", "npm:0.54.5"],
-            ["@types/geojson", "npm:7946.0.7"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:2.0.4", {
-          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.0.4-91244ed4db-0c6d7e3869.zip/node_modules/@types/mapbox-gl/",
-          "packageDependencies": [
-            ["@types/mapbox-gl", "npm:2.0.4"],
-            ["@types/geojson", "npm:7946.0.7"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:2.4.1", {
-          "packageLocation": "./.yarn/cache/@types-mapbox-gl-npm-2.4.1-a266b5b216-88d507400e.zip/node_modules/@types/mapbox-gl/",
-          "packageDependencies": [
-            ["@types/mapbox-gl", "npm:2.4.1"],
+            ["@types/mapbox-gl", "npm:2.4.2"],
             ["@types/geojson", "npm:7946.0.7"]
           ],
           "linkType": "HARD",
@@ -1103,19 +1085,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@types/react-map-gl", [
-        ["npm:5.2.10", {
-          "packageLocation": "./.yarn/cache/@types-react-map-gl-npm-5.2.10-d0519d9d57-8af0e30459.zip/node_modules/@types/react-map-gl/",
-          "packageDependencies": [
-            ["@types/react-map-gl", "npm:5.2.10"],
-            ["@types/geojson", "npm:7946.0.7"],
-            ["@types/mapbox-gl", "npm:0.54.5"],
-            ["@types/react", "npm:16.9.35"],
-            ["@types/viewport-mercator-project", "npm:6.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@types/react-redux", [
         ["npm:7.1.16", {
           "packageLocation": "./.yarn/cache/@types-react-redux-npm-7.1.16-90de23cd7d-c07ee677be.zip/node_modules/@types/react-redux/",
@@ -1187,16 +1156,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/hoist-non-react-statics", "npm:3.3.1"],
             ["@types/react", "npm:16.9.35"],
             ["csstype", "npm:3.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/viewport-mercator-project", [
-        ["npm:6.1.0", {
-          "packageLocation": "./.yarn/cache/@types-viewport-mercator-project-npm-6.1.0-c3ada7dfe5-100b96fa74.zip/node_modules/@types/viewport-mercator-project/",
-          "packageDependencies": [
-            ["@types/viewport-mercator-project", "npm:6.1.0"],
-            ["@types/gl-matrix", "npm:2.4.5"]
           ],
           "linkType": "HARD",
         }]
@@ -4740,46 +4699,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["mapbox-gl", [
-        ["npm:2.3.0", {
-          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.3.0-8dc9aff794-0a5149cd20.zip/node_modules/mapbox-gl/",
+        ["npm:2.5.1", {
+          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.5.1-af720f84df-6afdea86d7.zip/node_modules/mapbox-gl/",
           "packageDependencies": [
-            ["mapbox-gl", "npm:2.3.0"],
+            ["mapbox-gl", "npm:2.5.1"],
             ["@mapbox/geojson-rewind", "npm:0.5.0"],
             ["@mapbox/geojson-types", "npm:1.0.2"],
             ["@mapbox/jsonlint-lines-primitives", "npm:2.0.2"],
             ["@mapbox/mapbox-gl-supported", "npm:2.0.0"],
             ["@mapbox/point-geometry", "npm:0.1.0"],
-            ["@mapbox/tiny-sdf", "npm:1.2.5"],
-            ["@mapbox/unitbezier", "npm:0.0.0"],
-            ["@mapbox/vector-tile", "npm:1.3.1"],
-            ["@mapbox/whoots-js", "npm:3.1.0"],
-            ["csscolorparser", "npm:1.0.3"],
-            ["earcut", "npm:2.2.2"],
-            ["geojson-vt", "npm:3.2.1"],
-            ["gl-matrix", "npm:3.3.0"],
-            ["grid-index", "npm:1.1.0"],
-            ["minimist", "npm:1.2.5"],
-            ["murmurhash-js", "npm:1.0.0"],
-            ["pbf", "npm:3.2.1"],
-            ["potpack", "npm:1.0.1"],
-            ["quickselect", "npm:2.0.0"],
-            ["rw", "npm:1.3.3"],
-            ["supercluster", "npm:7.1.3"],
-            ["tinyqueue", "npm:2.0.3"],
-            ["vt-pbf", "npm:3.1.1"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:2.4.1", {
-          "packageLocation": "./.yarn/cache/mapbox-gl-npm-2.4.1-7d6142909b-7ea12d2761.zip/node_modules/mapbox-gl/",
-          "packageDependencies": [
-            ["mapbox-gl", "npm:2.4.1"],
-            ["@mapbox/geojson-rewind", "npm:0.5.0"],
-            ["@mapbox/geojson-types", "npm:1.0.2"],
-            ["@mapbox/jsonlint-lines-primitives", "npm:2.0.2"],
-            ["@mapbox/mapbox-gl-supported", "npm:2.0.0"],
-            ["@mapbox/point-geometry", "npm:0.1.0"],
-            ["@mapbox/tiny-sdf", "npm:1.2.5"],
+            ["@mapbox/tiny-sdf", "npm:2.0.4"],
             ["@mapbox/unitbezier", "npm:0.0.0"],
             ["@mapbox/vector-tile", "npm:1.3.1"],
             ["@mapbox/whoots-js", "npm:3.1.0"],
@@ -5034,11 +4963,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["mjolnir.js", [
-        ["npm:2.5.0", {
-          "packageLocation": "./.yarn/cache/mjolnir.js-npm-2.5.0-885ed636d9-4b21a6fa94.zip/node_modules/mjolnir.js/",
+        ["npm:2.6.0", {
+          "packageLocation": "./.yarn/cache/mjolnir.js-npm-2.6.0-a8900b3e4b-6b2ff2df8b.zip/node_modules/mjolnir.js/",
           "packageDependencies": [
-            ["mjolnir.js", "npm:2.5.0"],
-            ["@babel/runtime", "npm:7.12.5"],
+            ["mjolnir.js", "npm:2.6.0"],
+            ["@babel/runtime", "npm:7.16.0"],
             ["hammerjs", "npm:2.0.8"]
           ],
           "linkType": "HARD",
@@ -5394,12 +5323,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@turf/boolean-overlap", "npm:6.5.0"],
             ["@types/d3-ease", "npm:3.0.0"],
             ["@types/geojson", "npm:7946.0.8"],
-            ["@types/mapbox-gl", "npm:2.4.1"],
+            ["@types/mapbox-gl", "npm:2.4.2"],
             ["@types/react", "npm:17.0.19"],
             ["@types/react-custom-scroll", "npm:4.3.1"],
             ["@types/react-custom-scrollbars", "npm:4.0.8"],
             ["@types/react-dom", "npm:17.0.9"],
-            ["@types/react-map-gl", "npm:5.2.10"],
             ["@types/react-redux", "npm:7.1.18"],
             ["@types/react-virtualized", "npm:9.21.13"],
             ["@types/styled-components", "npm:5.1.14"],
@@ -5411,7 +5339,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.3.3"],
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.3.2"],
             ["immer", "npm:9.0.6"],
-            ["mapbox-gl", "npm:2.4.1"],
+            ["mapbox-gl", "npm:2.5.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.2.2"],
             ["pnp-webpack-plugin", "npm:1.7.0"],
             ["react", "npm:17.0.2"],
@@ -6159,16 +6087,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/react-map-gl-virtual-c5a255dce6/0/cache/react-map-gl-npm-6.1.16-75a7cf7e1e-4c7cc7ebb6.zip/node_modules/react-map-gl/",
           "packageDependencies": [
             ["react-map-gl", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:6.1.16"],
-            ["@babel/runtime", "npm:7.12.5"],
-            ["@types/geojson", "npm:7946.0.7"],
-            ["@types/mapbox-gl", "npm:2.0.4"],
+            ["@babel/runtime", "npm:7.16.0"],
+            ["@types/geojson", "npm:7946.0.8"],
+            ["@types/mapbox-gl", "npm:2.4.2"],
             ["@types/react", "npm:17.0.19"],
-            ["mapbox-gl", "npm:2.3.0"],
-            ["mjolnir.js", "npm:2.5.0"],
+            ["mapbox-gl", "npm:2.5.1"],
+            ["mjolnir.js", "npm:2.6.0"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.2"],
             ["resize-observer-polyfill", "npm:1.5.1"],
-            ["viewport-mercator-project", "npm:7.0.3"]
+            ["viewport-mercator-project", "npm:7.0.4"]
           ],
           "packagePeers": [
             "@types/react",
@@ -7530,11 +7458,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["viewport-mercator-project", [
-        ["npm:7.0.3", {
-          "packageLocation": "./.yarn/cache/viewport-mercator-project-npm-7.0.3-af11b3fdb3-b1419f559e.zip/node_modules/viewport-mercator-project/",
+        ["npm:7.0.4", {
+          "packageLocation": "./.yarn/cache/viewport-mercator-project-npm-7.0.4-1b46427093-ef6fad785e.zip/node_modules/viewport-mercator-project/",
           "packageDependencies": [
-            ["viewport-mercator-project", "npm:7.0.3"],
-            ["@math.gl/web-mercator", "npm:3.5.4"]
+            ["viewport-mercator-project", "npm:7.0.4"],
+            ["@math.gl/web-mercator", "npm:3.5.6"]
           ],
           "linkType": "HARD",
         }]

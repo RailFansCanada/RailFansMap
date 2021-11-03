@@ -3,7 +3,9 @@
   "metadata": {
     "type": "rail-yard",
     "id": "ottawa/belfast",
-    "source": ["City of Ottawa"]
+    "name": "Belfast Yard",
+    "description": "Maintenance and Storage Facility for Lines 1 and 3",
+    "sources": ["City of Ottawa"]
   },
   "features": [
     {

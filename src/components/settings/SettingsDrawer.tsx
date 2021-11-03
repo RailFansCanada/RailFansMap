@@ -22,7 +22,7 @@ import {
   setShowLine,
   setUseAccessibleLabels,
   setShowLineLabels,
-  setShowSatelliteLabels
+  setShowSatelliteLabels,
 } from "../../redux";
 import { connect } from "react-redux";
 import { Close } from "@material-ui/icons";
@@ -36,31 +36,36 @@ import trilliumLine from "../../images/trillium.svg";
 import gatineauIcon from "../../images/gatineau.svg";
 import { useIsDarkTheme } from "../../app/utils";
 import { GatineauOptions } from "./GatineauOptions";
+import { Dataset } from "../../hooks/useData";
+import { Agency } from "../../config";
 
 interface SettingsDrawerProps {
-  readonly open: boolean;
-  readonly setDrawerOpen: typeof setDrawerOpen;
+  open: boolean;
+  setDrawerOpen: typeof setDrawerOpen;
 
-  readonly show3DBuildings: boolean;
-  readonly setShow3DBuildings: typeof setShow3DBuildings;
+  show3DBuildings: boolean;
+  setShow3DBuildings: typeof setShow3DBuildings;
 
-  readonly accessibleLabels: boolean;
-  readonly setUseAccessibleLabels: typeof setUseAccessibleLabels;
+  accessibleLabels: boolean;
+  setUseAccessibleLabels: typeof setUseAccessibleLabels;
 
-  readonly appTheme: AppTheme;
-  readonly setAppTheme: typeof setAppTheme;
+  appTheme: AppTheme;
+  setAppTheme: typeof setAppTheme;
 
-  readonly mapStyle: MapStyle;
-  readonly setMapStyle: typeof setMapStyle;
+  mapStyle: MapStyle;
+  setMapStyle: typeof setMapStyle;
 
-  readonly lines: LineState;
-  readonly setShowLine: typeof setShowLine;
+  lines: LineState;
+  setShowLine: typeof setShowLine;
 
-  readonly showLineLabels: boolean;
-  readonly setShowLineLabels: typeof setShowLineLabels;
+  showLineLabels: boolean;
+  setShowLineLabels: typeof setShowLineLabels;
 
-  readonly showSatelliteLabels: boolean;
-  readonly setShowSatelliteLabels: typeof setShowSatelliteLabels;
+  showSatelliteLabels: boolean;
+  setShowSatelliteLabels: typeof setShowSatelliteLabels;
+
+  visible: Agency[];
+  data: Dataset;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -108,7 +113,7 @@ const appThemeToIndex = (appTheme: AppTheme) => {
   }
 };
 
-const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
+const SettingsDrawerComponent = (props: Readonly<SettingsDrawerProps>) => {
   const classes = useStyles();
   const handleThemeChange = (index: number) => {
     switch (index) {
@@ -160,6 +165,11 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             O-Train
           </Typography>
 
+          <div>
+            {props.visible.map((value) => (
+              <p>{value.name}</p>
+            ))}
+          </div>
           <LayerOption
             primary="Confederation Line"
             secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
@@ -211,11 +221,8 @@ const SettingsDrawerComponent = (props: SettingsDrawerProps) => {
             secondary="The proposed corridors for the Gatineau Tramway to Aylmer and the Plateau"
             tertiary="*(Station locations and names are approximated)"
             selected={props.lines.gatineauLrt}
-            onClick={() => 
-              props.setShowLine([
-                "gatineauLrt",
-                !props.lines.gatineauLrt,
-              ])
+            onClick={() =>
+              props.setShowLine(["gatineauLrt", !props.lines.gatineauLrt])
             }
             imageUrl={gatineauIcon}
             tint="#007E88"

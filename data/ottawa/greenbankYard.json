@@ -5,7 +5,9 @@
         "type": "rail-yard",
         "filterKey": "barrhavenExtension",
         "id": "ottawa/greenbank",
-        "source": ["City of Ottawa"]
+        "name": "Greenbank Yard",
+        "description": "Proposed Maintenance and Storage Facility for Lines 1 and 3 as part of the Line 1 Barrhaven Extension",
+        "sources": ["City of Ottawa"]
       },
     "features": [
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.750106658010722, 45.28127145804433 ], [ -75.749581119805114, 45.28195169620308 ], [ -75.749326067063521, 45.282285399986989 ], [ -75.749144002674797, 45.28248020888946 ] ] } },

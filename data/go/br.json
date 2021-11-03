@@ -6,7 +6,9 @@
         "offset": 0,
         "id": "go/br",
         "icon": "go/br.svg",
-        "source": ["Ontario Ministry of Natural Resources and Forestry"]
+        "name": "Barrie Line",
+        "description": "",
+        "sources": ["Ontario Ministry of Natural Resources and Forestry"]
     },
     "features": [
         { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3849086, 43.6434045 ], [ -79.384698399999905, 43.6434316 ], [ -79.3844612, 43.643462300000103 ], [ -79.3844589, 43.643462600000099 ], [ -79.3843667, 43.6434746 ] ] } },

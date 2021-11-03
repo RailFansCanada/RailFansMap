@@ -6,7 +6,9 @@
         "offset": 0,
         "id": "go/le",
         "icon": "go/le.svg",
-        "source": ["Ontario Ministry of Natural Resources and Forestry"]
+        "name": "Lakeshore East Line",
+        "description": "",
+        "sources": ["Ontario Ministry of Natural Resources and Forestry"]
     },
     "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -78.9475565, 43.866044600000095 ], [ -78.946720899999903, 43.8659934 ] ] } },

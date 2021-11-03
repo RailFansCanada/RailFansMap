@@ -7,7 +7,10 @@
         "offset": 0,
         "id": "toronto/5",
         "icon": "toronto/line5.svg",
-        "source": ["OpenStreetMap"]
+        "source": ["OpenStreetMap"],
+        "name": "Line 5",
+        "description": "Eglinton Crosstown",
+        "sources": ["OpenStreetMap"]
     },
     "features": [
         { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4799985, 43.6890868 ], [ -79.4804488, 43.6890391 ], [ -79.4809512, 43.6889955 ] ] } },

@@ -11,7 +11,7 @@ import { Provider, connect } from "react-redux";
 import { MapControls } from "../components/MapControls";
 import { Logo } from "../components/Logo";
 import { produce } from "immer";
-import { ProvideData } from "../hooks/useData";
+import { ProvideData, useData } from "../hooks/useData";
 import { ProvideHash } from "../hooks/useHash";
 import { ProvideWindow } from "../hooks/useWindow";
 
@@ -89,6 +89,20 @@ const Container = styled.div`
   height: 100%;
 `;
 
+const Content = () => {
+  const { data, visible, updateBbox } = useData();
+
+  return (
+    <Container>
+      <OverviewMap data={data} updateBbox={updateBbox} />
+      <Controls />
+      {/* <MapControls /> */}
+      <SettingsDrawer visible={visible} data={data} />
+      <Logo />
+    </Container>
+  );
+};
+
 const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = React.useMemo(() => {
@@ -104,13 +118,7 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
       <ProvideData>
         <ProvideHash>
           <ProvideWindow>
-            <Container>
-              <OverviewMap />
-              <Controls />
-              {/* <MapControls /> */}
-              <SettingsDrawer />
-              <Logo />
-            </Container>
+            <Content />
           </ProvideWindow>
         </ProvideHash>
       </ProvideData>

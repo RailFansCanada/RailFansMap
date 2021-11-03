@@ -6,7 +6,9 @@
         "offset": 1,
         "id": "go/rh",
         "icon": "go/rh.svg",
-        "source": ["Ontario Ministry of Natural Resources and Forestry"]
+        "name": "Richmond Hill Line",
+        "description": "",
+        "sources": ["Ontario Ministry of Natural Resources and Forestry"]
     },
     "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4161207, 43.831161200000096 ], [ -79.415067899999897, 43.830165500000099 ] ] } },
