@@ -52,6 +52,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-redux", "npm:7.1.18"],
             ["@types/react-virtualized", "npm:9.21.13"],
             ["@types/styled-components", "npm:5.1.14"],
+            ["ajv", "npm:8.6.3"],
+            ["ajv-formats", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.1.1"],
             ["bbox", "npm:0.4.0"],
             ["clsx", "npm:1.1.1"],
             ["copy-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:9.0.1"],
@@ -62,6 +64,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.3.2"],
             ["immer", "npm:9.0.6"],
             ["jest", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:27.3.1"],
+            ["json-stringify-pretty-compact", "npm:3.0.0"],
             ["mapbox-gl", "npm:2.5.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.2.2"],
             ["pnp-webpack-plugin", "npm:1.7.0"],
@@ -2739,6 +2742,39 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fast-json-stable-stringify", "npm:2.1.0"],
             ["json-schema-traverse", "npm:0.4.1"],
             ["uri-js", "npm:4.2.2"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:8.6.3", {
+          "packageLocation": "./.yarn/cache/ajv-npm-8.6.3-ccbb84803e-690ffb9408.zip/node_modules/ajv/",
+          "packageDependencies": [
+            ["ajv", "npm:8.6.3"],
+            ["fast-deep-equal", "npm:3.1.1"],
+            ["json-schema-traverse", "npm:1.0.0"],
+            ["require-from-string", "npm:2.0.2"],
+            ["uri-js", "npm:4.2.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ajv-formats", [
+        ["npm:2.1.1", {
+          "packageLocation": "./.yarn/cache/ajv-formats-npm-2.1.1-3cec02eae9-4a287d937f.zip/node_modules/ajv-formats/",
+          "packageDependencies": [
+            ["ajv-formats", "npm:2.1.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.1.1", {
+          "packageLocation": "./.yarn/__virtual__/ajv-formats-virtual-b158ca0b37/0/cache/ajv-formats-npm-2.1.1-3cec02eae9-4a287d937f.zip/node_modules/ajv-formats/",
+          "packageDependencies": [
+            ["ajv-formats", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.1.1"],
+            ["@types/ajv", null],
+            ["ajv", "npm:8.6.3"]
+          ],
+          "packagePeers": [
+            "@types/ajv",
+            "ajv"
           ],
           "linkType": "HARD",
         }]
@@ -6982,6 +7018,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json-schema-traverse", "npm:0.4.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/json-schema-traverse-npm-1.0.0-fb3684f4f0-02f2f466cd.zip/node_modules/json-schema-traverse/",
+          "packageDependencies": [
+            ["json-schema-traverse", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["json-stringify-pretty-compact", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/json-stringify-pretty-compact-npm-3.0.0-e94e77fb9f-01ab5c5c82.zip/node_modules/json-stringify-pretty-compact/",
+          "packageDependencies": [
+            ["json-stringify-pretty-compact", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["json-stringify-safe", [
@@ -7982,6 +8034,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-redux", "npm:7.1.18"],
             ["@types/react-virtualized", "npm:9.21.13"],
             ["@types/styled-components", "npm:5.1.14"],
+            ["ajv", "npm:8.6.3"],
+            ["ajv-formats", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.1.1"],
             ["bbox", "npm:0.4.0"],
             ["clsx", "npm:1.1.1"],
             ["copy-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:9.0.1"],
@@ -7992,6 +8046,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["html-webpack-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:5.3.2"],
             ["immer", "npm:9.0.6"],
             ["jest", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:27.3.1"],
+            ["json-stringify-pretty-compact", "npm:3.0.0"],
             ["mapbox-gl", "npm:2.5.1"],
             ["mini-css-extract-plugin", "virtual:8a2b140b9f1d56223c130a25c2ff73793d30fa163a4ff3df356a940fe4329aff99bed373d19f25e57036dbf3497a26bb6fbc7ef8f22dee4117f002b110332e19#npm:2.2.2"],
             ["pnp-webpack-plugin", "npm:1.7.0"],
@@ -9053,6 +9108,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/require-directory-npm-2.1.1-8608aee50b-fb47e70bf0.zip/node_modules/require-directory/",
           "packageDependencies": [
             ["require-directory", "npm:2.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["require-from-string", [
+        ["npm:2.0.2", {
+          "packageLocation": "./.yarn/cache/require-from-string-npm-2.0.2-8557e0db12-a03ef68954.zip/node_modules/require-from-string/",
+          "packageDependencies": [
+            ["require-from-string", "npm:2.0.2"]
           ],
           "linkType": "HARD",
         }]

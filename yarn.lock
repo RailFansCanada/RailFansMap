@@ -1987,6 +1987,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ajv-formats@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "ajv-formats@npm:2.1.1"
+  dependencies:
+    ajv: ^8.0.0
+  peerDependencies:
+    ajv: ^8.0.0
+  peerDependenciesMeta:
+    ajv:
+      optional: true
+  checksum: 4a287d937f1ebaad4683249a4c40c0fa3beed30d9ddc0adba04859026a622da0d317851316ea64b3680dc60f5c3c708105ddd5d5db8fe595d9d0207fd19f90b7
+  languageName: node
+  linkType: hard
+
 "ajv-keywords@npm:^3.4.1, ajv-keywords@npm:^3.5.2":
   version: 3.5.2
   resolution: "ajv-keywords@npm:3.5.2"
@@ -2017,6 +2031,18 @@ __metadata:
     json-schema-traverse: ^0.4.1
     uri-js: ^4.2.2
   checksum: 4a87256bbe209b71f5cc49ac98e21f36874747a728b39209635ea3be6f12536f401739ef210ce2877aa30e2abfe31bc9b741a7ee402216728ff4e66132e550e4
+  languageName: node
+  linkType: hard
+
+"ajv@npm:^8.0.0, ajv@npm:^8.6.3":
+  version: 8.6.3
+  resolution: "ajv@npm:8.6.3"
+  dependencies:
+    fast-deep-equal: ^3.1.1
+    json-schema-traverse: ^1.0.0
+    require-from-string: ^2.0.2
+    uri-js: ^4.2.2
+  checksum: 690ffb9408415fdab43686b3f92037ba0c8362f5d0709a123ba3fb546e6ad81414455f80a2b5cc432ce924afe9864671198f022bc331a19c072d4ede152ec3ca
   languageName: node
   linkType: hard
 
@@ -5615,10 +5641,24 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"json-schema-traverse@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "json-schema-traverse@npm:1.0.0"
+  checksum: 02f2f466cdb0362558b2f1fd5e15cce82ef55d60cd7f8fa828cf35ba74330f8d767fcae5c5c2adb7851fa811766c694b9405810879bc4e1ddd78a7c0e03658ad
+  languageName: node
+  linkType: hard
+
 "json-schema@npm:0.2.3":
   version: 0.2.3
   resolution: "json-schema@npm:0.2.3"
   checksum: bbc2070988fb5f2a2266a31b956f1b5660e03ea7eaa95b33402901274f625feb586ae0c485e1df854fde40a7f0dc679f3b3ca8e5b8d31f8ea07a0d834de785c7
+  languageName: node
+  linkType: hard
+
+"json-stringify-pretty-compact@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "json-stringify-pretty-compact@npm:3.0.0"
+  checksum: 01ab5c5c8260299414868d96db97f53aef93c290fe469edd9a1363818e795006e01c952fa2fd7b47cbbab506d5768998eccc25e1da4fa2ccfebd1788c6098791
   languageName: node
   linkType: hard
 
@@ -6508,6 +6548,8 @@ fsevents@~2.3.1:
     "@types/react-redux": ^7.1.18
     "@types/react-virtualized": ^9.21.13
     "@types/styled-components": ^5.1.14
+    ajv: ^8.6.3
+    ajv-formats: ^2.1.1
     bbox: ^0.4.0
     clsx: ^1.1.1
     copy-webpack-plugin: ^9.0.1
@@ -6518,6 +6560,7 @@ fsevents@~2.3.1:
     html-webpack-plugin: ^5.3.2
     immer: ^9.0.6
     jest: ^27.3.1
+    json-stringify-pretty-compact: ^3.0.0
     mapbox-gl: ^2.5.1
     mini-css-extract-plugin: ^2.2.2
     pnp-webpack-plugin: ^1.7.0
@@ -7342,6 +7385,13 @@ fsevents@~2.3.1:
   version: 2.1.1
   resolution: "require-directory@npm:2.1.1"
   checksum: fb47e70bf0001fdeabdc0429d431863e9475e7e43ea5f94ad86503d918423c1543361cc5166d713eaa7029dd7a3d34775af04764bebff99ef413111a5af18c80
+  languageName: node
+  linkType: hard
+
+"require-from-string@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "require-from-string@npm:2.0.2"
+  checksum: a03ef6895445f33a4015300c426699bc66b2b044ba7b670aa238610381b56d3f07c686251740d575e22f4c87531ba662d06937508f0f3c0f1ddc04db3130560b
   languageName: node
   linkType: hard
 
