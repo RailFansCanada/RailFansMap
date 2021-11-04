@@ -7,9 +7,6 @@
     "offset": 0,
     "id": "toronto/4",
     "icon": "toronto/line4.svg",
-    "source": [
-      "OpenStreetMap"
-    ],
     "name": "Line 4",
     "description": "Sheppard-Yonge — Don Mills",
     "sources": [
