@@ -32,7 +32,6 @@ import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 import { BBox } from "geojson";
-import { MapboxOptions } from "mapbox-gl";
 
 const provideLabelStyle = (mapData: Dataset, state: LineState) => [
   "format",
@@ -209,7 +208,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       onClick={handleClick}
       interactiveLayerIds={interactiveLayerIds}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={{ speed: 0.25, smooth: true }}
+      scrollZoom={{ speed: 1, smooth: true }}
       mapOptions={{ hash: true }}
     >
       <AttributionControl />
