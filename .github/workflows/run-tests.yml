@@ -21,5 +21,5 @@ jobs:
           BASE_URL: ${{ secrets.BASE_URL }}
         run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL" > local.env
           
-      - name: Build dist
+      - name: Run Tests
         run: yarn && yarn test --verbose

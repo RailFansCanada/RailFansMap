@@ -69,6 +69,14 @@ A complete example of the `metadata` object, for Toronto's Line 4:
 
 Features specify actual geometry. GeoJSON allows for a variety of different types of geometry, however the rail map only makes use of `Point`, `LineString`, `Polygon` and `MultiPolygon` geometries. GeoJSON `Feature` objects can define additional `properties`, similar to the metadata object described above. These properties are used to change the way the data is interpreted and displayed on the map, primarily by specifying a `type` property which describes what the `Feature` is meant to represent.
 
+* [Tracks](#tracks)
+* [Overpass](#overpass)
+* [Station Label](#station-label)
+* [Yard Label](#yard-label)
+* [Station Platforms](#station-platforms)
+* [Station Label (Future!)](#station-label-future)
+* [Tunnels](#tunnels)
+
 #### Tracks
 
 Type: `"tracks"`  
