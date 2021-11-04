@@ -5655,13 +5655,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"json-stringify-pretty-compact@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "json-stringify-pretty-compact@npm:3.0.0"
-  checksum: 01ab5c5c8260299414868d96db97f53aef93c290fe469edd9a1363818e795006e01c952fa2fd7b47cbbab506d5768998eccc25e1da4fa2ccfebd1788c6098791
-  languageName: node
-  linkType: hard
-
 "json-stringify-safe@npm:~5.0.1":
   version: 5.0.1
   resolution: "json-stringify-safe@npm:5.0.1"
@@ -6560,7 +6553,6 @@ fsevents@~2.3.1:
     html-webpack-plugin: ^5.3.2
     immer: ^9.0.6
     jest: ^27.3.1
-    json-stringify-pretty-compact: ^3.0.0
     mapbox-gl: ^2.5.1
     mini-css-extract-plugin: ^2.2.2
     pnp-webpack-plugin: ^1.7.0
