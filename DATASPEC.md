@@ -74,7 +74,7 @@ Features specify actual geometry. GeoJSON allows for a variety of different type
 * [Station Label](#station-label)
 * [Yard Label](#yard-label)
 * [Station Platforms](#station-platforms)
-* [Station Label (Future!)](#station-label-future)
+* [Station Platforms (Future!)](#station-platforms-future)
 * [Tunnels](#tunnels)
 
 #### Tracks
