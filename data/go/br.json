@@ -135,7 +135,7 @@
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.3895787, 43.6426448], [-79.3883373, 43.6429085]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.4812699999999, 43.7684144], [-79.4807924, 43.7660005000001], [-79.4807466999999, 43.7657701000001], [-79.4807456, 43.7657643000001], [-79.4807155, 43.7656122000001], [-79.480014, 43.7620663000001], [-79.4799636, 43.7618106]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.6899175, 44.3737523], [-79.6879379, 44.3735028]] } },
-    { "type": "Feature", "properties": { "lines": ["go/br"], "type": "station-label", "name": "Allandale Waterfront" }, "geometry": { "type": "Point", "coordinates": [-79.68683703714107, 44.3733763146217] } },
+    { "type": "Feature", "properties": { "lines": ["go/br"], "type": "station-label", "name": "Allandale Waterfront", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.68683703714107, 44.3733763146217] } },
     { "type": "Feature", "properties": { "lines": ["go/br"], "type": "station-label", "name": "Barrie South" }, "geometry": { "type": "Point", "coordinates": [-79.62716975290105, 44.35116125199473] } },
     { "type": "Feature", "properties": { "lines": ["go/br"], "type": "station-label", "name": "Bradford" }, "geometry": { "type": "Point", "coordinates": [-79.55602889216253, 44.11715059295264] } },
     { "type": "Feature", "properties": { "lines": ["go/br"], "type": "station-label", "name": "East Gwillimbury" }, "geometry": { "type": "Point", "coordinates": [-79.45517645162018, 44.077190765081376] } },

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import ReactMapGL, {
-  Source,
   Layer,
   MapEvent,
   ViewportProps,
@@ -12,8 +11,7 @@ import { Map as MapboxMap } from "mapbox-gl";
 import styled from "styled-components";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Line } from "./Line";
-import { RailYard } from "./RailYard";
+import { Lines } from "./Line";
 
 import {
   State,
@@ -31,7 +29,7 @@ import { useHash } from "../hooks/useHash";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
-import { BBox } from "geojson";
+import { BBox, FeatureCollection } from "geojson";
 
 const provideLabelStyle = (mapData: Dataset, state: LineState) => [
   "format",
@@ -98,6 +96,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
   });
   const data = props.data;
   const mapRef = useRef<MapRef>();
+  const [fullData, setFullData] = useState<FeatureCollection | null>(null);
 
   const handleViewportChange = (viewport: ViewportProps) => {
     setViewport(viewport);
@@ -144,24 +143,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     }));
   }, [windowSize]);
 
-  // Give station icons and all labels the pointer cursor
-  const interactiveLayerIds = props.showLineLabels
-    ? Object.values(data)
-        .filter(
-          (value) =>
-            value.metadata.filterKey == null ||
-            props.lines[value.metadata.filterKey]
-        )
-        .flatMap((value) => {
-          const id = value.metadata.id;
-          if (value.metadata.type === "rail-line") {
-            return [`${id}-station`, `${id}-labels`];
-          } else if (value.metadata.type === "rail-yard") {
-            return [`${id}-labels`];
-          }
-        })
-    : [];
-
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
   const [style, setStyle] = useState(
@@ -198,6 +179,44 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     setLabelStyle(provideLabelStyle(data, props.lines));
   }, [data, props.lines]);
 
+  // TODO: Move this to useData
+  useEffect(() => {
+    const allFeatures = Object.values(data)
+      .filter((entry) => {
+        return (
+          entry.metadata.filterKey == null ||
+          props.lines[entry.metadata.filterKey]
+        );
+      })
+      .flatMap((entry) =>
+        entry.features
+          .map((feature) => ({
+            ...feature,
+            properties: {
+              ...feature.properties,
+              class: entry.metadata.type,
+              color: entry.metadata.color,
+              offset: entry.metadata.offset,
+              alternatives: feature.properties.alternatives as
+                | string[]
+                | undefined,
+            },
+          }))
+          .filter(
+            (feature) =>
+              feature.properties.alternatives == null ||
+              feature.properties.alternatives.some((a) =>
+                props.alternatives[entry.metadata.filterKey]?.includes(a)
+              )
+          )
+      );
+
+    setFullData({
+      type: "FeatureCollection",
+      features: allFeatures,
+    });
+  }, [data, props.lines, props.alternatives]);
+
   return (
     <Map
       ref={mapRef}
@@ -206,9 +225,9 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       onViewportChange={handleViewportChange}
       onInteractionStateChange={handleInteractionStateChange}
       onClick={handleClick}
-      interactiveLayerIds={interactiveLayerIds}
+      interactiveLayerIds={["rail-station", "rail-labels", "yard-labels"]}
       mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={{ speed: 1, smooth: true }}
+      scrollZoom={{ /*speed: 1,*/ smooth: false }}
       mapOptions={{ hash: true }}
     >
       <AttributionControl />
@@ -232,20 +251,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           id="label-background"
           url={labelBackground}
         />
-        {/* Layer z-ordering hack */}
-        <Source
-          id="blank"
-          type="geojson"
-          data={{
-            type: "FeatureCollection",
-            features: [],
-          }}
-        >
-          <Layer type="fill" id="content-mask" paint={{}} layout={{}} />
-          <Layer type="fill" id="circle-mask" paint={{}} layout={{}} />
-          <Layer type="fill" id="symbol-mask" paint={{}} layout={{}} />
-        </Source>
-
         <Layer
           id="sky"
           type="sky"
@@ -263,7 +268,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             {...{ "source-layer": "building" }}
             filter={["==", "extrude", "true"]}
             type="fill-extrusion"
-            beforeId="content-mask"
             minzoom={15}
             paint={{
               "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
@@ -292,39 +296,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             }}
           />
         )}
-        {Object.entries(data).map(([key, data]) => {
-          if (
-            data.metadata?.type === "rail-line" &&
-            (data.metadata.filterKey == null ||
-              props.lines[data.metadata.filterKey])
-          ) {
-            return (
-              <Line
-                data={data}
-                name={data.metadata.id}
-                key={data.metadata.id}
-                offset={data.metadata.offset ?? 0}
-                color={data.metadata.color ?? "#212121"}
-                showLineLabels={props.showLineLabels}
-                activeAlternatives={props.alternatives[data.metadata.filterKey]}
-              />
-            );
-          } else if (
-            data.metadata?.type === "rail-yard" &&
-            (data.metadata.filterKey == null ||
-              props.lines[data.metadata.filterKey])
-          ) {
-            return (
-              <RailYard
-                key={data.metadata.id}
-                name={data.metadata.id}
-                data={data}
-                showLabels={props.showLineLabels}
-                offset={data.metadata.offset ?? 0}
-              />
-            );
-          }
-        })}
+        <Lines data={fullData} showLineLabels={props.showLineLabels} />
       </LabelProviderContext.Provider>
     </Map>
   );

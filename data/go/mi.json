@@ -186,7 +186,7 @@
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.3920611999999, 43.6423962000001], [-79.391554, 43.642461500000095], [-79.3911836, 43.6425162], [-79.3909295999999, 43.6425595000001], [-79.39092709999989, 43.6425599], [-79.3902474, 43.6426759]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.3902474, 43.6426759], [-79.3882674, 43.6430599], [-79.3881011, 43.6430939000001], [-79.38749349999989, 43.6432329]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.3902474, 43.6426759], [-79.3899395, 43.6427087000001]] } },
-    { "type": "Feature", "properties": { "lines": ["go/mi"], "type": "station-label", "name": "Milton" }, "geometry": { "type": "Point", "coordinates": [-79.86622019429606, 43.52374468284627] } },
+    { "type": "Feature", "properties": { "lines": ["go/mi"], "type": "station-label", "name": "Milton", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.86622019429606, 43.52374468284627] } },
     { "type": "Feature", "properties": { "lines": ["go/mi"], "type": "station-label", "name": "Lisgar" }, "geometry": { "type": "Point", "coordinates": [-79.7889681999999, 43.5900178000001] } },
     { "type": "Feature", "properties": { "lines": ["go/mi"], "type": "station-label", "name": "Meadowvale" }, "geometry": { "type": "Point", "coordinates": [-79.75342115133544, 43.59764886972433] } },
     { "type": "Feature", "properties": { "lines": ["go/mi"], "type": "station-label", "name": "Streetsville" }, "geometry": { "type": "Point", "coordinates": [-79.70903082871456, 43.576161747166836] } },
