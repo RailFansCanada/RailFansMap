@@ -1,14 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-
-import ReactMapGL, {
-  Layer,
-  MapEvent,
-  ViewportProps,
-  MapRef,
-  AttributionControl,
-} from "react-map-gl";
-import { Map as MapboxMap } from "mapbox-gl";
-import styled from "styled-components";
+import MapGL, { Viewport, Layer, NavigationControl } from "@urbica/react-map-gl";
+import { Map as MapboxMap, MapboxGeoJSONFeature } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
@@ -25,7 +17,6 @@ import {
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
 import { Dataset } from "../hooks/useData";
-import { useHash } from "../hooks/useHash";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
@@ -76,51 +67,21 @@ export interface OverviewMapProps {
   updateBbox(bbox: BBox): void;
 }
 
-export const LINE_OFFSET = 3;
-
-const Map = styled(ReactMapGL)`
-  width: 100vw;
-  height: 100vw;
-`;
-
 export const OverviewMapComponent = (props: OverviewMapProps) => {
   const windowSize = useWindow();
-  const [viewport, setViewport] = useState<ViewportProps>({
+
+  const data = props.data;
+  const mapRef = useRef<MapGL>();
+  const [fullData, setFullData] = useState<FeatureCollection | null>(null);
+
+  const [viewport, setViewport] = useState<Viewport>({
     longitude: -75.6579,
     latitude: 45.3629,
     zoom: 11,
-    bearing: -30,
-    width: windowSize[0],
-    height: windowSize[1],
-    ...useHash(),
   });
-  const data = props.data;
-  const mapRef = useRef<MapRef>();
-  const [fullData, setFullData] = useState<FeatureCollection | null>(null);
 
-  const handleViewportChange = (viewport: ViewportProps) => {
-    setViewport(viewport);
-    props.setZoom(viewport.zoom);
-  };
-
-  const handleInteractionStateChange = (state: /* ExtraState */ any) => {
-    const {
-      isDragging,
-      inTransition,
-      isRotating,
-      isZooming,
-      isHovering,
-      isPanning,
-    } = state;
-    if (
-      isDragging ||
-      inTransition ||
-      isRotating ||
-      isZooming ||
-      isHovering ||
-      isPanning
-    )
-      return;
+  const handleViewportChange = (v: Viewport) => {
+    setViewport(v);
 
     if (mapRef.current != null) {
       const map: MapboxMap = mapRef.current.getMap();
@@ -135,14 +96,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     }
   };
 
-  useEffect(() => {
-    setViewport((old) => ({
-      ...old,
-      width: windowSize[0],
-      height: windowSize[1],
-    }));
-  }, [windowSize]);
-
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
   const [style, setStyle] = useState(
@@ -155,12 +108,26 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   const [labelStyle, setLabelStyle] = useState<{}[]>([]);
 
-  const handleClick = (event: MapEvent) => {
-    event.features?.forEach((feature) => {
+  const handleClick = (event: any) => {
+    event.features?.forEach((feature: MapboxGeoJSONFeature) => {
       if (feature.properties.url != null && feature.properties.url !== "null") {
         window.parent.location.href = `${BASE_URL}/${feature.properties.url}`;
       }
     });
+  };
+
+  const handleMouseEnter = () => {
+    const canvas = mapRef.current?.getMap()?.getCanvas();
+    if (canvas == null) return;
+
+    canvas.style.cursor = "pointer";
+  };
+
+  const handleMouseLeave = () => {
+    const canvas = mapRef.current?.getMap()?.getCanvas();
+    if (canvas == null) return;
+
+    canvas.style.cursor = "";
   };
 
   useEffect(() => {
@@ -197,15 +164,13 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
               class: entry.metadata.type,
               color: entry.metadata.color,
               offset: entry.metadata.offset,
-              alternatives: feature.properties.alternatives as
-                | string[]
-                | undefined,
+              alternatives: feature.properties.alternatives,
             },
           }))
           .filter(
             (feature) =>
               feature.properties.alternatives == null ||
-              feature.properties.alternatives.some((a) =>
+              feature.properties.alternatives.some((a: string) =>
                 props.alternatives[entry.metadata.filterKey]?.includes(a)
               )
           )
@@ -217,20 +182,22 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     });
   }, [data, props.lines, props.alternatives]);
 
+  const clickableLayers = ["rail-station", "rail-labels", "yard-labels"];
+
   return (
-    <Map
-      ref={mapRef}
+    <MapGL
+      style={{ width: windowSize[0], height: windowSize[1] }}
       mapStyle={style}
-      {...viewport}
+      accessToken={MAPBOX_KEY}
+      hash={true}
       onViewportChange={handleViewportChange}
-      onInteractionStateChange={handleInteractionStateChange}
-      onClick={handleClick}
-      interactiveLayerIds={["rail-station", "rail-labels", "yard-labels"]}
-      mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={{ /*speed: 1,*/ smooth: false }}
-      mapOptions={{ hash: true }}
+      onClick={[clickableLayers, handleClick]}
+      onMouseenter={[clickableLayers, handleMouseEnter]}
+      onMouseleave={[clickableLayers, handleMouseLeave]}
+      ref={mapRef}
+      {...viewport}
     >
-      <AttributionControl />
+      <NavigationControl showCompass showZoom position="bottom-right"/>
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(data)
           .filter((entry) => entry.metadata.icon != null)
@@ -298,7 +265,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
         )}
         <Lines data={fullData} showLineLabels={props.showLineLabels} />
       </LabelProviderContext.Provider>
-    </Map>
+    </MapGL>
   );
 };
 

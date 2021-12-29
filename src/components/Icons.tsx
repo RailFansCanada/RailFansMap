@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useCallback, useRef } from "react";
-import { MapContext } from "react-map-gl";
+import React, { useEffect, useState, useRef } from "react";
+import { Image as MapImage } from "@urbica/react-map-gl";
 
 export interface MapIconProps {
   id: string;
@@ -10,21 +10,16 @@ export interface MapIconProps {
 }
 
 export const MapIcon = ({ width, height, ...props }: MapIconProps) => {
-  const { map } = useContext(MapContext);
   const imageRef = useRef(new Image(width, height));
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     const img = imageRef.current;
     img.onload = () => {
-      console.log(img);
-      map.on("styledata", () => {
-        if (!map.hasImage(props.id)) {
-          map.addImage(props.id, img);
-        }
-      });
+      setLoaded(true);
     };
     img.src = props.url;
   }, [props.style]);
 
-  return <></>;
+  return loaded ? <MapImage id={props.id} image={imageRef.current} /> : <></>;
 };

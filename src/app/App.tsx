@@ -8,11 +8,9 @@ import { SettingsDrawer } from "../components/settings/SettingsDrawer";
 import { reducer, AppTheme, State, initialState } from "../redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider, connect } from "react-redux";
-import { MapControls } from "../components/MapControls";
 import { Logo } from "../components/Logo";
 import { produce } from "immer";
 import { ProvideData, useData } from "../hooks/useData";
-import { ProvideHash } from "../hooks/useHash";
 import { ProvideWindow } from "../hooks/useWindow";
 
 const getPreloadedState = () => {
@@ -116,11 +114,9 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <ProvideData>
-        <ProvideHash>
-          <ProvideWindow>
-            <Content />
-          </ProvideWindow>
-        </ProvideHash>
+        <ProvideWindow>
+          <Content />
+        </ProvideWindow>
       </ProvideData>
     </MuiThemeProvider>
   );

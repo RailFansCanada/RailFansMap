@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import type { MapData } from "../config";
-import { Source, Layer } from "react-map-gl";
+import { Source, Layer } from "@urbica/react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 import { LabelProviderContext } from "./Map";
 import { FeatureCollection } from "geojson";
@@ -14,10 +14,12 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
   const { labelStyle } = useContext(LabelProviderContext);
 
   return (
-    <Source id={"raildata"} type="geojson" data={data}>
+    <>
+      <Source id={"raildata"} type="geojson" data={data} />
       {/* Rail Yard layers */}
       <Layer
         id={`yard-tracks`}
+        source="raildata"
         type="line"
         filter={[
           "all",
@@ -36,6 +38,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-tunnel`}
+        source="raildata"
         type="fill"
         filter={["all", ["==", ["get", "type"], "tunnel"]]}
         minzoom={14}
@@ -46,6 +49,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-alignment`}
+        source="raildata"
         type="line"
         filter={["==", ["get", "type"], "alignment"]}
         layout={{
@@ -77,6 +81,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-tracks`}
+        source="raildata"
         type="line"
         filter={[
           "all",
@@ -95,6 +100,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-tracks-future`}
+        source="raildata"
         type="line"
         filter={["==", ["get", "type"], "tracks-future"]}
         layout={{
@@ -109,6 +115,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-overpass`}
+        source="raildata"
         type="line"
         filter={["==", ["get", "type"], "overpass"]}
         minzoom={14}
@@ -133,6 +140,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-platforms`}
+        source="raildata"
         type="fill"
         filter={["==", ["get", "type"], "station-platforms"]}
         paint={{
@@ -142,6 +150,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-platforms-future`}
+        source="raildata"
         type="line"
         filter={["==", ["get", "type"], "station-platforms-future"]}
         paint={{
@@ -152,6 +161,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       />
       <Layer
         id={`rail-station`}
+        source="raildata"
         type="circle"
         filter={["==", ["get", "type"], "station-label"]}
         layout={{}}
@@ -173,6 +183,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       {showLineLabels && (
         <Layer
           id={`rail-labels`}
+          source="raildata"
           type="symbol"
           filter={["==", ["get", "type"], "station-label"]}
           minzoom={13}
@@ -196,6 +207,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       {showLineLabels && (
         <Layer
           id={`rail-labels-major`}
+          source="raildata"
           type="symbol"
           filter={[
             "all",
@@ -224,6 +236,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
       {showLineLabels && (
         <Layer
           id={`yard-labels`}
+          source="raildata"
           type="symbol"
           filter={["==", "type", "yard-label"]}
           minzoom={11}
@@ -244,6 +257,6 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
           }}
         />
       )}
-    </Source>
+    </>
   );
 });
