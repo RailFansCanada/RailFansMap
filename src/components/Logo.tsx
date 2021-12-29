@@ -1,7 +1,9 @@
 import React from "react";
 import { AppTheme, State } from "../redux";
 import { useIsDarkTheme } from "../app/utils";
-import { Theme, makeStyles } from "@material-ui/core";
+import { Theme } from "@mui/material";
+
+import makeStyles from '@mui/styles/makeStyles';
 
 import logoLight from "../images/logoLight.svg";
 import logoDark from "../images/logoDark.svg";

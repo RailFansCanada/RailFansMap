@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { useMediaQuery, MuiThemeProvider } from "@material-ui/core";
+import { useMediaQuery, ThemeProvider, Theme, StyledEngineProvider } from "@mui/material";
 import { OverviewMap } from "../components/Map";
 import { themeFactory } from "./theme";
 import { Controls } from "../components/settings/Controls";
@@ -112,13 +112,15 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   }, [prefersDarkScheme, props.appTheme]);
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <ProvideData>
-        <ProvideWindow>
-          <Content />
-        </ProvideWindow>
-      </ProvideData>
-    </MuiThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <ProvideData>
+          <ProvideWindow>
+            <Content />
+          </ProvideWindow>
+        </ProvideData>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

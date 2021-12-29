@@ -3,15 +3,15 @@ import {
   Card,
   CardContent,
   Typography,
-  makeStyles,
   Theme,
   CardActionArea,
-  fade,
+  alpha,
   useTheme,
   ListItem,
   ListItemAvatar,
   ListItemText,
-} from "@material-ui/core";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 
 export interface LayerOptionProps {
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     //borderWidth: 1,
     //borderStyle: "solid",
     //borderColor: (props: any) => props.tint,
-    backgroundColor: (props: any) => fade(props.tint, 0.1),
+    backgroundColor: (props: any) => alpha(props.tint, 0.1),
   },
   imagery: {
     display: "flex",

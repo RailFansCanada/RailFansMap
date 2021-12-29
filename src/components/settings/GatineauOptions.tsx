@@ -3,12 +3,12 @@ import {
   Card,
   CardContent,
   Typography,
-  makeStyles,
   Theme,
   CardActionArea,
-  fade,
+  alpha,
   Hidden,
   ThemeProvider,
+  StyledEngineProvider,
   useTheme,
   Collapse,
   List,
@@ -17,7 +17,8 @@ import {
   ListItemIcon,
   Checkbox,
   Divider,
-} from "@material-ui/core";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 
 import {
@@ -27,6 +28,13 @@ import {
   Alternatives,
 } from "../../redux";
 import { connect } from "react-redux";
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 export interface GatineauOptionProps {
   readonly primary: string;
@@ -66,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: (props: any) => props.tint,
-    backgroundColor: (props: any) => fade(props.tint, 0.1),
+    backgroundColor: (props: any) => alpha(props.tint, 0.1),
   },
   imagery: {
     display: "flex",

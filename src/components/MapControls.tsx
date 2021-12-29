@@ -1,6 +1,7 @@
 import * as React from "react";
-import { makeStyles, Theme, Fab, useTheme, emphasize } from "@material-ui/core";
-import { Add as AddIcon, Remove as RemoveIcon } from "@material-ui/icons";
+import { Theme, Fab, useTheme, emphasize } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import { Add as AddIcon, Remove as RemoveIcon } from "@mui/icons-material";
 import { connect } from "react-redux";
 import { zoomIn, zoomOut } from "../redux";
 

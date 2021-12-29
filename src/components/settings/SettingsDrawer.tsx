@@ -1,15 +1,6 @@
 import React from "react";
-import {
-  Drawer,
-  AppBar,
-  makeStyles,
-  Theme,
-  Toolbar,
-  IconButton,
-  Typography,
-  List,
-  Divider,
-} from "@material-ui/core";
+import { Drawer, AppBar, Theme, Toolbar, IconButton, Typography, List, Divider } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import {
   State,
   setDrawerOpen,
@@ -25,7 +16,7 @@ import {
   setShowSatelliteLabels,
 } from "../../redux";
 import { connect } from "react-redux";
-import { Close } from "@material-ui/icons";
+import { Close } from "@mui/icons-material";
 import { LayerOption, LayerOption2 } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
 
@@ -71,7 +62,7 @@ interface SettingsDrawerProps {
 const useStyles = makeStyles((theme: Theme) => ({
   drawerPaper: {
     width: 420,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       width: "100%",
     },
     boxShadow: theme.shadows[4],
@@ -150,7 +141,7 @@ const SettingsDrawerComponent = (props: Readonly<SettingsDrawerProps>) => {
             onClick={() => {
               props.setDrawerOpen(false);
             }}
-          >
+            size="large">
             <Close />
           </IconButton>
           <Typography className={classes.title} variant="h6">
