@@ -8,11 +8,9 @@ import { SettingsDrawer } from "../components/settings/SettingsDrawer";
 import { reducer, AppTheme, State, initialState } from "../redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider, connect } from "react-redux";
-import { MapControls } from "../components/MapControls";
 import { Logo } from "../components/Logo";
 import { produce } from "immer";
-import { ProvideData } from "../hooks/useData";
-import { ProvideHash } from "../hooks/useHash";
+import { ProvideData, useData } from "../hooks/useData";
 import { ProvideWindow } from "../hooks/useWindow";
 
 const getPreloadedState = () => {
@@ -89,6 +87,20 @@ const Container = styled.div`
   height: 100%;
 `;
 
+const Content = () => {
+  const { data, visible, updateBbox } = useData();
+
+  return (
+    <Container>
+      <OverviewMap data={data} updateBbox={updateBbox} />
+      <Controls />
+      {/* <MapControls /> */}
+      <SettingsDrawer visible={visible} data={data} />
+      <Logo />
+    </Container>
+  );
+};
+
 const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = React.useMemo(() => {
@@ -102,17 +114,9 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <ProvideData>
-        <ProvideHash>
-          <ProvideWindow>
-            <Container>
-              <OverviewMap />
-              <Controls />
-              {/* <MapControls /> */}
-              <SettingsDrawer />
-              <Logo />
-            </Container>
-          </ProvideWindow>
-        </ProvideHash>
+        <ProvideWindow>
+          <Content />
+        </ProvideWindow>
       </ProvideData>
     </MuiThemeProvider>
   );

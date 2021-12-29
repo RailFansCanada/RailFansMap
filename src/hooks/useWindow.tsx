@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ViewportProps } from "react-map-gl";
 
 const useProvideWindow = (): [number, number] => {
   const [size, setSize] = useState<[number, number]>([

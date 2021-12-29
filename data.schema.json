@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://map.railfans.ca/schema.json",
   "title": "Data",
   "description": "Data used in the RailFans Canada map",
@@ -41,7 +40,9 @@
         "type": { "const": "Point" },
         "coordinates": {
           "type": "array",
-          "items": [{ "type": "number" }, { "type": "number" }]
+          "maxItems": 2,
+          "minItems": 2,
+          "items": { "type": "number" }
         }
       },
       "required": ["type", "coordinates"]
@@ -54,7 +55,9 @@
           "type": "array",
           "items": {
             "type": "array",
-            "items": [{ "type": "number" }, { "type": "number" }]
+            "maxItems": 2,
+            "minItems": 2,
+            "items": { "type": "number" }
           }
         }
       },
@@ -70,7 +73,9 @@
             "type": "array",
             "items": {
               "type": "array",
-              "items": [{ "type": "number" }, { "type": "number" }]
+              "maxItems": 2,
+              "minItems": 2,
+              "items": { "type": "number" }
             }
           }
         }
@@ -89,7 +94,9 @@
               "type": "array",
               "items": {
                 "type": "array",
-                "items": [{ "type": "number" }, { "type": "number" }]
+                "maxItems": 2,
+                "minItems": 2,
+                "items": { "type": "number" }
               }
             }
           }
@@ -278,6 +285,7 @@
 
     "metadata-rail-line": {
       "type": "object",
+      "allOf": [{ "$ref": "#/definitions/info" }],
       "properties": {
         "type": {
           "const": "rail-line"
@@ -304,6 +312,7 @@
       "required": ["id", "type", "color"]
     },
     "metadata-rail-yard": {
+      "allOf": [{ "$ref": "#/definitions/info" }],
       "type": "object",
       "properties": {
         "type": {
@@ -314,6 +323,18 @@
         }
       },
       "required": ["type", "id"]
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "filterKey": { "type": "string" },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "notes": { "type": "string" },
+        "alternatives": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["sources", "name", "description"]
     }
   }
 }

@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
-
-import ReactMapGL, {
-  Source,
-  Layer,
-  MapEvent,
-  ViewportProps,
-} from "react-map-gl";
-import styled from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import MapGL, { Viewport, Layer, NavigationControl } from "@urbica/react-map-gl";
+import { Map as MapboxMap, MapboxGeoJSONFeature } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Line } from "./Line";
-import { RailYard } from "./RailYard";
+import { Lines } from "./Line";
 
 import {
   State,
@@ -23,20 +16,24 @@ import {
 } from "../redux";
 import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
-import { useData, MapDataCache } from "../hooks/useData";
-import { useHash } from "../hooks/useHash";
+import { Dataset } from "../hooks/useData";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
+import { BBox, FeatureCollection } from "geojson";
 
-const provideLabelStyle = (mapData: MapDataCache, state: LineState) => [
+const provideLabelStyle = (mapData: Dataset, state: LineState) => [
   "format",
   ["get", "name"],
   {},
   " ",
   {},
   ...Object.values(mapData)
-    .filter((value) => value.metadata.icon != null && (value.metadata.filterKey == null || state[value.metadata.filterKey]))
+    .filter(
+      (value) =>
+        value.metadata.icon != null &&
+        (value.metadata.filterKey == null || state[value.metadata.filterKey])
+    )
     .map((value) => value.metadata.id)
     .sort()
     .flatMap((id) => [
@@ -65,56 +62,39 @@ export interface OverviewMapProps {
   readonly targetZoom: number;
   readonly setTargetZoom: typeof setTargetZoom;
   readonly setZoom: typeof setZoom;
+
+  readonly data: Dataset;
+  updateBbox(bbox: BBox): void;
 }
-
-export const LINE_OFFSET = 3;
-
-const Map = styled(ReactMapGL)`
-  width: 100vw;
-  height: 100vw;
-`;
 
 export const OverviewMapComponent = (props: OverviewMapProps) => {
   const windowSize = useWindow();
-  const [viewport, setViewport] = useState<ViewportProps>({
+
+  const data = props.data;
+  const mapRef = useRef<MapGL>();
+  const [fullData, setFullData] = useState<FeatureCollection | null>(null);
+
+  const [viewport, setViewport] = useState<Viewport>({
     longitude: -75.6579,
     latitude: 45.3629,
     zoom: 11,
-    bearing: -30,
-    width: windowSize[0],
-    height: windowSize[1],
-    ...useHash(),
   });
 
-  const handleViewportChange = (viewport: ViewportProps) => {
-    setViewport(viewport);
-    props.setZoom(viewport.zoom);
+  const handleViewportChange = (v: Viewport) => {
+    setViewport(v);
+
+    if (mapRef.current != null) {
+      const map: MapboxMap = mapRef.current.getMap();
+      const bounds = map.getBounds();
+
+      props.updateBbox([
+        bounds.getWest(),
+        bounds.getSouth(),
+        bounds.getEast(),
+        bounds.getNorth(),
+      ]);
+    }
   };
-
-  useEffect(() => {
-    setViewport((old) => ({
-      ...old,
-      width: windowSize[0],
-      height: windowSize[1],
-    }));
-  }, [windowSize]);
-
-  const data = useData();
-  // Give station icons and all labels the pointer cursor
-  const interactiveLayerIds = props.showLineLabels ? Object.values(data)
-    .filter(
-      (value) =>
-        value.metadata.filterKey == null ||
-        props.lines[value.metadata.filterKey]
-    )
-    .flatMap((value) => {
-      const id = value.metadata.id;
-      if (value.metadata.type === "rail-line") {
-        return [`${id}-station`, `${id}-labels`];
-      } else if (value.metadata.type === "rail-yard") {
-        return [`${id}-labels`];
-      }
-    }) : [];
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
@@ -128,12 +108,26 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   const [labelStyle, setLabelStyle] = useState<{}[]>([]);
 
-  const handleClick = (event: MapEvent) => {
-    event.features?.forEach((feature) => {
+  const handleClick = (event: any) => {
+    event.features?.forEach((feature: MapboxGeoJSONFeature) => {
       if (feature.properties.url != null && feature.properties.url !== "null") {
         window.parent.location.href = `${BASE_URL}/${feature.properties.url}`;
       }
     });
+  };
+
+  const handleMouseEnter = () => {
+    const canvas = mapRef.current?.getMap()?.getCanvas();
+    if (canvas == null) return;
+
+    canvas.style.cursor = "pointer";
+  };
+
+  const handleMouseLeave = () => {
+    const canvas = mapRef.current?.getMap()?.getCanvas();
+    if (canvas == null) return;
+
+    canvas.style.cursor = "";
   };
 
   useEffect(() => {
@@ -152,21 +146,58 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     setLabelStyle(provideLabelStyle(data, props.lines));
   }, [data, props.lines]);
 
+  // TODO: Move this to useData
+  useEffect(() => {
+    const allFeatures = Object.values(data)
+      .filter((entry) => {
+        return (
+          entry.metadata.filterKey == null ||
+          props.lines[entry.metadata.filterKey]
+        );
+      })
+      .flatMap((entry) =>
+        entry.features
+          .map((feature) => ({
+            ...feature,
+            properties: {
+              ...feature.properties,
+              class: entry.metadata.type,
+              color: entry.metadata.color,
+              offset: entry.metadata.offset,
+              alternatives: feature.properties.alternatives,
+            },
+          }))
+          .filter(
+            (feature) =>
+              feature.properties.alternatives == null ||
+              feature.properties.alternatives.some((a: string) =>
+                props.alternatives[entry.metadata.filterKey]?.includes(a)
+              )
+          )
+      );
+
+    setFullData({
+      type: "FeatureCollection",
+      features: allFeatures,
+    });
+  }, [data, props.lines, props.alternatives]);
+
+  const clickableLayers = ["rail-station", "rail-labels", "yard-labels"];
+
   return (
-    <Map
+    <MapGL
+      style={{ width: windowSize[0], height: windowSize[1] }}
       mapStyle={style}
-      {...viewport}
+      accessToken={MAPBOX_KEY}
+      hash={true}
       onViewportChange={handleViewportChange}
-      onClick={handleClick}
-      interactiveLayerIds={interactiveLayerIds}
-      mapboxApiAccessToken={MAPBOX_KEY}
-      scrollZoom={({ speed: 0.25, smooth: true } as unknown) as boolean}
-      mapOptions={{
-        customAttribution: ["Data: City of Ottawa"],
-        hash: true,
-        antiAlias: false,
-      }}
+      onClick={[clickableLayers, handleClick]}
+      onMouseenter={[clickableLayers, handleMouseEnter]}
+      onMouseleave={[clickableLayers, handleMouseLeave]}
+      ref={mapRef}
+      {...viewport}
     >
+      <NavigationControl showCompass showZoom position="bottom-right"/>
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(data)
           .filter((entry) => entry.metadata.icon != null)
@@ -187,20 +218,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           id="label-background"
           url={labelBackground}
         />
-        {/* Layer z-ordering hack */}
-        <Source
-          id="blank"
-          type="geojson"
-          data={{
-            type: "FeatureCollection",
-            features: [],
-          }}
-        >
-          <Layer type="fill" id="content-mask" paint={{}} layout={{}} />
-          <Layer type="fill" id="circle-mask" paint={{}} layout={{}} />
-          <Layer type="fill" id="symbol-mask" paint={{}} layout={{}} />
-        </Source>
-
         <Layer
           id="sky"
           type="sky"
@@ -218,7 +235,6 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             {...{ "source-layer": "building" }}
             filter={["==", "extrude", "true"]}
             type="fill-extrusion"
-            beforeId="content-mask"
             minzoom={15}
             paint={{
               "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
@@ -247,41 +263,9 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
             }}
           />
         )}
-        {Object.entries(data).map(([key, data]) => {
-          if (
-            data.metadata?.type === "rail-line" &&
-            (data.metadata.filterKey == null ||
-              props.lines[data.metadata.filterKey])
-          ) {
-            return (
-              <Line
-                data={data}
-                name={data.metadata.id}
-                key={data.metadata.id}
-                offset={data.metadata.offset ?? 0}
-                color={data.metadata.color ?? "#212121"}
-                showLineLabels={props.showLineLabels}
-                activeAlternatives={props.alternatives[data.metadata.filterKey]}
-              />
-            );
-          } else if (
-            data.metadata?.type === "rail-yard" &&
-            (data.metadata.filterKey == null ||
-              props.lines[data.metadata.filterKey])
-          ) {
-            return (
-              <RailYard
-                key={data.metadata.id}
-                name={data.metadata.id}
-                data={data}
-                showLabels={props.showLineLabels}
-                offset={data.metadata.offset ?? 0}
-              />
-            );
-          }
-        })}
+        <Lines data={fullData} showLineLabels={props.showLineLabels} />
       </LabelProviderContext.Provider>
-    </Map>
+    </MapGL>
   );
 };
 
