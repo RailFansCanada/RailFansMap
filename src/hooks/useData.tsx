@@ -11,6 +11,7 @@ import bboxPolygon from "@turf/bbox-polygon";
 export type Dataset = { [key: string]: MapData };
 export interface DataCache {
   data: Dataset;
+  agencies: Agency[];
   visible: Agency[];
   updateBbox(bbox: BBox): void;
 }
@@ -34,6 +35,7 @@ const useProvideData = (): DataCache => {
 
   const [cache, setCache] = React.useState<DataCache>({
     data: {},
+    agencies: Object.values(config.agencies),
     visible: [],
     updateBbox,
   });
@@ -80,6 +82,7 @@ const useProvideData = (): DataCache => {
 
 const DataContext = React.createContext<DataCache>({
   data: {},
+  agencies: Object.values(config.agencies),
   visible: [],
   updateBbox: () => {},
 });

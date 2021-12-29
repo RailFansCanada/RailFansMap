@@ -1,6 +1,15 @@
 import React from "react";
-import { Drawer, AppBar, Theme, Toolbar, IconButton, Typography, List, Divider } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import {
+  Drawer,
+  AppBar,
+  Theme,
+  Toolbar,
+  IconButton,
+  Typography,
+  List,
+  Divider,
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import {
   State,
   setDrawerOpen,
@@ -29,6 +38,7 @@ import { useIsDarkTheme } from "../../app/utils";
 import { GatineauOptions } from "./GatineauOptions";
 import { Dataset } from "../../hooks/useData";
 import { Agency } from "../../config";
+import { MenuDrawer } from "./MenuDrawer";
 
 interface SettingsDrawerProps {
   open: boolean;
@@ -54,15 +64,12 @@ interface SettingsDrawerProps {
 
   showSatelliteLabels: boolean;
   setShowSatelliteLabels: typeof setShowSatelliteLabels;
-
-  visible: Agency[];
-  data: Dataset;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawerPaper: {
     width: 420,
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: "100%",
     },
     boxShadow: theme.shadows[4],
@@ -123,167 +130,115 @@ const SettingsDrawerComponent = (props: Readonly<SettingsDrawerProps>) => {
     }
   };
 
-  const isDarkTheme = useIsDarkTheme(props.appTheme);
-
   return (
-    <Drawer
-      classes={{ paper: classes.drawerPaper }}
-      variant="persistent"
-      anchor="right"
+    <MenuDrawer
       open={props.open}
-      elevation={4}
+      onClose={() => {
+        props.setDrawerOpen(false);
+      }}
+      title="Map Settings"
     >
-      <AppBar className={classes.appBar} position="static">
-        <Toolbar>
-          <IconButton
-            className={classes.closeButton}
-            edge="start"
-            onClick={() => {
-              props.setDrawerOpen(false);
-            }}
-            size="large">
-            <Close />
-          </IconButton>
-          <Typography className={classes.title} variant="h6">
-            Map Settings
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.layerCardContainer}>
-        <Scrollbars>
-          <List>
-            {props.visible.map((value) => {
-              return (
-                <>
-                  <Typography
-                    className={classes.sectionHeader}
-                    variant="overline"
-                  >
-                    {value.name}
-                  </Typography>
-                  {value.data
-                    .map((id) => props.data[id]?.metadata)
-                    .filter((metadata) => metadata?.type === "rail-line")
-                    .map((metadata) => {
-                      return (
-                        <LayerOption2
-                          primary={metadata.name}
-                          secondary={metadata.description}
-                          tint={metadata.color}
-                          imageUrl={`icons/${metadata.icon}`}
-                        />
-                      );
-                    })}
-                </>
-              );
-            })}
-          </List>
-          <LayerOption
-            primary="Confederation Line"
-            secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
-            selected={props.lines.confederationLine}
-            imageUrl={confederationLine}
-            tint="#D62937"
-          />
+      <LayerOption
+        primary="Confederation Line"
+        secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
+        selected={props.lines.confederationLine}
+        imageUrl={confederationLine}
+        tint="#D62937"
+      />
 
-          <LayerOption
-            primary="Trillium Line"
-            secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
-            selected={props.lines.trilliumLine}
-            imageUrl={trilliumLine}
-            tint="#76BE43"
-          />
+      <LayerOption
+        primary="Trillium Line"
+        secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
+        selected={props.lines.trilliumLine}
+        imageUrl={trilliumLine}
+        tint="#76BE43"
+      />
 
-          <LayerOption
-            primary="Kanata Extension"
-            secondary="The proposed extension of the Confederation Line into Kanata"
-            selected={props.lines.kanataExtension}
-            onClick={() =>
-              props.setShowLine([
-                "kanataExtension",
-                !props.lines.kanataExtension,
-              ])
-            }
-            imageUrl={confederationLine}
-            tint="#AF882D"
-          />
+      <LayerOption
+        primary="Kanata Extension"
+        secondary="The proposed extension of the Confederation Line into Kanata"
+        selected={props.lines.kanataExtension}
+        onClick={() =>
+          props.setShowLine(["kanataExtension", !props.lines.kanataExtension])
+        }
+        imageUrl={confederationLine}
+        tint="#AF882D"
+      />
 
-          <LayerOption
-            primary="Barrhaven Extension"
-            secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
-            selected={props.lines.barrhavenExtension}
-            onClick={() =>
-              props.setShowLine([
-                "barrhavenExtension",
-                !props.lines.barrhavenExtension,
-              ])
-            }
-            imageUrl={confederationLine}
-            tint="#D62937"
-          />
-          <Typography className={classes.sectionHeader} variant="overline">
-            Gatineau LRT
-          </Typography>
-          <GatineauOptions
-            primary="Gatineau Tramway"
-            secondary="The proposed corridors for the Gatineau Tramway to Aylmer and the Plateau"
-            tertiary="*(Station locations and names are approximated)"
-            selected={props.lines.gatineauLrt}
-            onClick={() =>
-              props.setShowLine(["gatineauLrt", !props.lines.gatineauLrt])
-            }
-            imageUrl={gatineauIcon}
-            tint="#007E88"
-          />
-          <Divider />
-          <Typography className={classes.sectionHeader} variant="overline">
-            Basemap
-          </Typography>
-          <LayerOption
-            primary="Vector Basemap"
-            secondary="Basic vector basemap in either light or dark themes"
-            selected={props.mapStyle === "vector"}
-            onClick={() => props.setMapStyle("vector")}
-          />
-          <LayerOption
-            primary="Satellite Basemap"
-            secondary="Satellite imagery"
-            selected={props.mapStyle === "satellite"}
-            onClick={() => props.setMapStyle("satellite")}
-          />
-          <Divider />
+      <LayerOption
+        primary="Barrhaven Extension"
+        secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
+        selected={props.lines.barrhavenExtension}
+        onClick={() =>
+          props.setShowLine([
+            "barrhavenExtension",
+            !props.lines.barrhavenExtension,
+          ])
+        }
+        imageUrl={confederationLine}
+        tint="#D62937"
+      />
+      <Typography className={classes.sectionHeader} variant="overline">
+        Gatineau LRT
+      </Typography>
+      <GatineauOptions
+        primary="Gatineau Tramway"
+        secondary="The proposed corridors for the Gatineau Tramway to Aylmer and the Plateau"
+        tertiary="*(Station locations and names are approximated)"
+        selected={props.lines.gatineauLrt}
+        onClick={() =>
+          props.setShowLine(["gatineauLrt", !props.lines.gatineauLrt])
+        }
+        imageUrl={gatineauIcon}
+        tint="#007E88"
+      />
+      <Divider />
+      <Typography className={classes.sectionHeader} variant="overline">
+        Basemap
+      </Typography>
+      <LayerOption
+        primary="Vector Basemap"
+        secondary="Basic vector basemap in either light or dark themes"
+        selected={props.mapStyle === "vector"}
+        onClick={() => props.setMapStyle("vector")}
+      />
+      <LayerOption
+        primary="Satellite Basemap"
+        secondary="Satellite imagery"
+        selected={props.mapStyle === "satellite"}
+        onClick={() => props.setMapStyle("satellite")}
+      />
+      <Divider />
 
-          <Typography className={classes.sectionHeader} variant="overline">
-            Other Settings
-          </Typography>
+      <Typography className={classes.sectionHeader} variant="overline">
+        Other Settings
+      </Typography>
 
-          <List>
-            <SwitchOption
-              primary="Show 3D buildings"
-              checked={props.show3DBuildings}
-              onToggle={(checked) => props.setShow3DBuildings(checked)}
-            />
-            {/* <SwitchOption
+      <List>
+        <SwitchOption
+          primary="Show 3D buildings"
+          checked={props.show3DBuildings}
+          onToggle={(checked) => props.setShow3DBuildings(checked)}
+        />
+        {/* <SwitchOption
               primary="Show street names on Satellite view"
               checked={props.showSatelliteLabels}
               disabled={props.mapStyle != "satellite"}
               onToggle={(checked) => props.setShowSatelliteLabels(checked)}
             /> */}
-            <SwitchOption
-              primary="Show station labels"
-              checked={props.showLineLabels}
-              onToggle={(checked) => props.setShowLineLabels(checked)}
-            />
-            <MenuOption
-              primary="Choose Theme"
-              options={themeSettings}
-              value={appThemeToIndex(props.appTheme)}
-              onChange={handleThemeChange}
-            />
-          </List>
-        </Scrollbars>
-      </div>
-    </Drawer>
+        <SwitchOption
+          primary="Show station labels"
+          checked={props.showLineLabels}
+          onToggle={(checked) => props.setShowLineLabels(checked)}
+        />
+        <MenuOption
+          primary="Choose Theme"
+          options={themeSettings}
+          value={appThemeToIndex(props.appTheme)}
+          onChange={handleThemeChange}
+        />
+      </List>
+    </MenuDrawer>
   );
 };
 

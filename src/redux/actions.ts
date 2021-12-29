@@ -3,6 +3,8 @@ import { AppTheme, MapStyle, LineState } from "./state";
 
 export const setDrawerOpen = createAction<boolean>("setDrawerOpen");
 
+export const setLegendDrawerOpen = createAction<boolean>("setLegendDrawerOpen");
+
 export const setShareSheetOpen = createAction<boolean>("setShareSheetOpen");
 
 export const setShow3DBuildings = createAction<boolean>("setShow3DBuildings");

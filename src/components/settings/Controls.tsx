@@ -1,16 +1,21 @@
 import * as React from "react";
 import { IconButton, Theme, Paper, Tooltip } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import { Layers, Share, GitHub } from "@mui/icons-material";
-import { setDrawerOpen, setShareSheetOpen } from "../../redux";
+import { Layers, Share, GitHub, Settings } from "@mui/icons-material";
+import {
+  setDrawerOpen,
+  setLegendDrawerOpen,
+  setShareSheetOpen,
+} from "../../redux";
 import { connect } from "react-redux";
 import { ShareSheet } from "./ShareSheet";
 import styled from "styled-components";
 
-interface ControlsProps {
-  readonly setDrawerOpen: typeof setDrawerOpen;
-  readonly setShareSheetOpen: typeof setShareSheetOpen;
-}
+type ControlsProps = {
+  setDrawerOpen: typeof setDrawerOpen;
+  setShareSheetOpen: typeof setShareSheetOpen;
+  setLegendDrawerOpen: typeof setLegendDrawerOpen;
+};
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -54,9 +59,19 @@ const ControlsComponent = (props: ControlsProps) => {
     <>
       <ControlsContainer>
         <ControlPaper>
+          <Tooltip title="Map Legend">
+            <IconButton
+              onClick={() => props.setLegendDrawerOpen(true)}
+              size="large"
+            >
+              <Layers />
+            </IconButton>
+          </Tooltip>
+        </ControlPaper>
+        <ControlPaper>
           <Tooltip title="Map Settings">
             <IconButton onClick={() => props.setDrawerOpen(true)} size="large">
-              <Layers />
+              <Settings />
             </IconButton>
           </Tooltip>
         </ControlPaper>
@@ -88,6 +103,7 @@ const ControlsComponent = (props: ControlsProps) => {
 
 const mapDispatchToProps = {
   setDrawerOpen,
+  setLegendDrawerOpen,
   setShareSheetOpen,
 };
 

@@ -16,9 +16,11 @@ import {
   setShowLineLabels,
 } from "./actions";
 import { createReducer } from "@reduxjs/toolkit";
+import { setLegendDrawerOpen } from ".";
 
 export const initialState: State = {
   drawerOpen: false,
+  legendDrawerOpen: false,
   shareSheetOpen: false,
   show3DBuildings: false,
   accessibleLabels: false,
@@ -44,6 +46,9 @@ export const reducer = createReducer<State>(initialState, (builder) => {
   builder
     .addCase(setDrawerOpen, (state, action) => {
       state.drawerOpen = action.payload;
+    })
+    .addCase(setLegendDrawerOpen, (state, action) => {
+      state.legendDrawerOpen = action.payload;
     })
     .addCase(setShareSheetOpen, (state, action) => {
       state.shareSheetOpen = action.payload;

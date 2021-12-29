@@ -7,6 +7,7 @@ export type Alternatives = { [key: string]: string[] }
 
 export interface State {
   readonly drawerOpen: boolean;
+  readonly legendDrawerOpen: boolean;
   readonly shareSheetOpen: boolean;
 
   readonly show3DBuildings: boolean;

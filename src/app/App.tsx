@@ -1,6 +1,11 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { useMediaQuery, ThemeProvider, Theme, StyledEngineProvider } from "@mui/material";
+import {
+  useMediaQuery,
+  ThemeProvider,
+  Theme,
+  StyledEngineProvider,
+} from "@mui/material";
 import { OverviewMap } from "../components/Map";
 import { themeFactory } from "./theme";
 import { Controls } from "../components/settings/Controls";
@@ -12,6 +17,7 @@ import { Logo } from "../components/Logo";
 import { produce } from "immer";
 import { ProvideData, useData } from "../hooks/useData";
 import { ProvideWindow } from "../hooks/useWindow";
+import { LegendDrawer } from "../components/settings/LegendDrawer";
 
 const getPreloadedState = () => {
   let state: State =
@@ -88,14 +94,15 @@ const Container = styled.div`
 `;
 
 const Content = () => {
-  const { data, visible, updateBbox } = useData();
+  const { data, visible, agencies, updateBbox } = useData();
 
   return (
     <Container>
       <OverviewMap data={data} updateBbox={updateBbox} />
       <Controls />
       {/* <MapControls /> */}
-      <SettingsDrawer visible={visible} data={data} />
+      <SettingsDrawer />
+      <LegendDrawer visible={visible} data={data} allAgencies={agencies} />
       <Logo />
     </Container>
   );
