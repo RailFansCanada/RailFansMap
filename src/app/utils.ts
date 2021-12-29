@@ -1,5 +1,5 @@
 import { AppTheme } from "../redux";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 
 export const useIsDarkTheme = (appTheme: AppTheme): boolean => {
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");

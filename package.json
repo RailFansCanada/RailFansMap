@@ -7,6 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --config webpack.prod.js",
+    "dev": "webpack serve --config webpack.dev.js",
     "start": "webpack serve --config webpack.dev.js",
     "analyze": "webpack --profile --json > stats.json",
     "clean": "rm -r dist"
@@ -55,8 +56,10 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@material-ui/core": "next",
-    "@material-ui/icons": "next",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.6",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@^5.1.0",
+    "@mui/styles": "^5.2.3",
     "@reduxjs/toolkit": "^1.7.1",
     "@turf/bbox": "^6.5.0",
     "@turf/bbox-polygon": "^6.5.0",
@@ -76,6 +79,9 @@
     "redux": "^4.1.2",
     "styled-components": "^5.3.3",
     "tiny-warning": "^1.0.3"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@^5.1.0"
   },
   "packageManager": "yarn@3.1.1"
 }

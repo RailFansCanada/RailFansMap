@@ -6,7 +6,7 @@ import {
   Switch,
   Menu,
   MenuItem,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface SwitchOptionProps {
   readonly primary: string;
