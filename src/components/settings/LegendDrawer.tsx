@@ -21,6 +21,7 @@ import { LayerOption2 } from "./LayerOption";
 import { Fullscreen } from "@mui/icons-material";
 import { Chevron } from "../Chevron";
 import { BBox } from "geojson";
+import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 
 type EntryData = {
   id: string;
@@ -45,12 +46,7 @@ type LegendGroupProps = {
   entries: EntryData[];
 };
 
-type LegendEntryProps = {
-  title: string;
-  description: string;
-  tint: string;
-  icon?: string;
-};
+type LegendEntryProps = Omit<EntryData, "id">;
 
 const LegendEntryColorBar = styled.div<{ tint: string }>`
   width: 5px;
@@ -61,9 +57,16 @@ const LegendEntryColorBar = styled.div<{ tint: string }>`
 `;
 
 const LegendEntry = (props: LegendEntryProps) => {
+  const { setTarget } = useMapTarget();
   return (
     <ListItem disablePadding dense>
-      <ListItemButton>
+      <ListItemButton
+        onClick={() => {
+          if (props.bbox != null) {
+            setTarget(props.bbox as SimpleBBox);
+          }
+        }}
+      >
         {props.icon && (
           <ListItemAvatar>
             <img src={props.icon} />
@@ -146,13 +149,14 @@ const LegendDrawerComponent = (props: LegendDrawerProps) => {
       <List>
         {props.allAgencies.map((value) => {
           const entries: EntryData[] = value.data
-            .map((id) => props.data[id]?.metadata)
+            .map((id) => ({ ...props.data[id]?.metadata, bbox: props.data[id]?.bbox }))
             .filter((metadata) => metadata?.type === "rail-line")
             .map((metadata) => ({
               id: metadata.id,
               title: metadata.name,
               description: metadata.description,
               tint: metadata.color,
+              bbox: metadata.bbox,
               icon: `icons/${metadata.icon}`,
             }));
           return (

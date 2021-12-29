@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import MapGL, { Viewport, Layer, NavigationControl } from "@urbica/react-map-gl";
-import { Map as MapboxMap, MapboxGeoJSONFeature } from "mapbox-gl";
+import MapGL, {
+  Viewport,
+  Layer,
+  NavigationControl,
+} from "@urbica/react-map-gl";
+import {
+  Map as MapboxMap,
+  MapboxGeoJSONFeature,
+  PaddingOptions,
+} from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
@@ -21,6 +29,7 @@ import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 import { BBox, FeatureCollection } from "geojson";
+import { useMapTarget } from "../hooks/useMapTarget";
 
 const provideLabelStyle = (mapData: Dataset, state: LineState) => [
   "format",
@@ -58,6 +67,8 @@ export interface OverviewMapProps {
   readonly accessibleLabels: boolean;
   readonly alternatives: Alternatives;
   readonly showLineLabels: boolean;
+  drawerOpen: boolean;
+  legendDrawerOpen: boolean;
 
   readonly targetZoom: number;
   readonly setTargetZoom: typeof setTargetZoom;
@@ -80,8 +91,20 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     zoom: 11,
   });
 
+  const { target: mapTarget, setTarget: setMapTarget } = useMapTarget();
+  useEffect(() => {
+    if (mapTarget != null) {
+      const map = mapRef.current?.getMap();
+
+      map?.fitBounds(mapTarget, {
+        padding: 64,
+      });
+    }
+  }, [mapTarget]);
+
   const handleViewportChange = (v: Viewport) => {
     setViewport(v);
+    setMapTarget(undefined);
 
     if (mapRef.current != null) {
       const map: MapboxMap = mapRef.current.getMap();
@@ -95,6 +118,13 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       ]);
     }
   };
+
+  useEffect(() => {
+    // TODO: Mobile behaviour
+    const open = props.drawerOpen || props.legendDrawerOpen;
+    const padding = { right: open ? 420 : 0 } as PaddingOptions;
+    mapRef.current?.getMap()?.easeTo({ padding });
+  }, [props.drawerOpen, props.legendDrawerOpen]);
 
   const isDarkTheme = useIsDarkTheme(props.appTheme);
 
@@ -197,7 +227,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       ref={mapRef}
       {...viewport}
     >
-      <NavigationControl showCompass showZoom position="bottom-right"/>
+      <NavigationControl showCompass showZoom position="bottom-right" />
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(data)
           .filter((entry) => entry.metadata.icon != null)
@@ -278,6 +308,8 @@ const mapStateToProps = (state: State) => ({
   targetZoom: state.targetZoom,
   alternatives: state.alternatives,
   showLineLabels: state.showLineLabels,
+  drawerOpen: state.drawerOpen,
+  legendDrawerOpen: state.legendDrawerOpen,
 });
 
 const mapDispatchToProps = {

@@ -9,6 +9,12 @@
       "City of Ottawa"
     ]
   },
+  "bbox": [
+    -75.64820782497546,
+    45.41375017033193,
+    -75.63755788898123,
+    45.419185613751736
+  ],
   "features": [
     { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [[-75.64060531086072, 45.41551771811577], [-75.64348935657196, 45.41561085682764]] }, "properties": { "type": "tracks" } },
     { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [[-75.64061472879817, 45.415561985554746], [-75.64348651160746, 45.41565472377526]] }, "properties": { "type": "tracks" } },

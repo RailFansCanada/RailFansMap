@@ -1,7 +1,12 @@
-import * as React from "react";
-import { IconButton, Theme, Paper, Tooltip } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
-import { Layers, Share, GitHub, Settings } from "@mui/icons-material";
+import React, { useState } from "react";
+import {
+  IconButton,
+  Paper,
+  Tooltip,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import { Layers, Share, GitHub, Settings, NearMe } from "@mui/icons-material";
 import {
   setDrawerOpen,
   setLegendDrawerOpen,
@@ -10,23 +15,14 @@ import {
 import { connect } from "react-redux";
 import { ShareSheet } from "./ShareSheet";
 import styled from "styled-components";
+import { config, Region } from "../../config";
+import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 
 type ControlsProps = {
   setDrawerOpen: typeof setDrawerOpen;
   setShareSheetOpen: typeof setShareSheetOpen;
   setLegendDrawerOpen: typeof setLegendDrawerOpen;
 };
-
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    position: "fixed",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-  },
-  share: {
-    marginTop: theme.spacing(1),
-  },
-}));
 
 const ControlsContainer = styled.div(
   ({ theme }) => `
@@ -53,11 +49,58 @@ const ControlPaper = styled(Paper)(
 `
 );
 
+type QuickNavProps = {
+  open: boolean;
+  onClose: () => void;
+  anchorEl: Element | null;
+};
+
+const QuickNavigationMenu = (props: QuickNavProps) => {
+  const { setTarget } = useMapTarget();
+
+  const handleSelect = (selected: Region) => {
+    props.onClose();
+    setTarget(selected.bbox as SimpleBBox);
+  };
+
+  return (
+    <Menu anchorEl={props.anchorEl} open={props.open} onClose={props.onClose}>
+      <MenuItem disabled>Jump to…</MenuItem>
+      {Object.values(config.regions).map((region) => (
+        <MenuItem
+          key={region.title}
+          onClick={() => {
+            handleSelect(region);
+          }}
+        >
+          {region.title}
+        </MenuItem>
+      ))}
+    </Menu>
+  );
+};
+
 const ControlsComponent = (props: ControlsProps) => {
-  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState<Element>(null);
+
+  const handleQuickNavOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleQuickNavClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
       <ControlsContainer>
+        <ControlPaper>
+          <Tooltip title="Quick Navigation">
+            <IconButton onClick={handleQuickNavOpen} size="large">
+              <NearMe />
+            </IconButton>
+          </Tooltip>
+        </ControlPaper>
         <ControlPaper>
           <Tooltip title="Map Legend">
             <IconButton
@@ -97,6 +140,11 @@ const ControlsComponent = (props: ControlsProps) => {
         </ControlPaper>
       </ControlsContainer>
       <ShareSheet />
+      <QuickNavigationMenu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleQuickNavClose}
+      />
     </>
   );
 };

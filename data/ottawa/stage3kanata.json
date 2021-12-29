@@ -14,12 +14,12 @@
       "City of Ottawa"
     ]
   },
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-    }
-  },
+  "bbox": [
+    -75.93239095708121,
+    45.28439702050031,
+    -75.84208112556463,
+    45.33892236017073
+  ],
   "features": [
     { "type": "Feature", "properties": { "type": "overpass" }, "geometry": { "type": "LineString", "coordinates": [[-75.8484974180716, 45.33598740576806], [-75.8483422161999, 45.33605235263728]] } },
     { "type": "Feature", "properties": { "type": "overpass" }, "geometry": { "type": "LineString", "coordinates": [[-75.84847830587742, 45.33595362713708], [-75.8483150769384, 45.336020829921196]] } },

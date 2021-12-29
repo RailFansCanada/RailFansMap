@@ -179,5 +179,11 @@
     { "type": "Feature", "properties": { "lines": ["go/le", "go/st"], "type": "station-label", "name": "Scarborough" }, "geometry": { "type": "Point", "coordinates": [-79.25482967476529, 43.71724741882458] } },
     { "type": "Feature", "properties": { "lines": ["go/le", "go/st"], "type": "station-label", "name": "Danforth" }, "geometry": { "type": "Point", "coordinates": [-79.29904324837841, 43.686637659875075] } },
     { "type": "Feature", "properties": { "lines": ["toronto/1", "go/le", "go/st", "go/rh"], "type": "station-label", "name": "Union" }, "geometry": { "type": "Point", "coordinates": [-79.3804274, 43.6443539000001] } }
+  ],
+  "bbox": [
+    -79.3845783,
+    43.6434582000001,
+    -79.2321296,
+    43.9984975
   ]
 }

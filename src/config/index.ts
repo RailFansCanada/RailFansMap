@@ -42,6 +42,7 @@ export interface Agency {
 export interface Region {
   readonly title: string;
   readonly location: Position;
+  readonly bbox: BBox;
 }
 
 export interface Config {

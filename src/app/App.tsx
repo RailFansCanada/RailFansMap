@@ -18,6 +18,7 @@ import { produce } from "immer";
 import { ProvideData, useData } from "../hooks/useData";
 import { ProvideWindow } from "../hooks/useWindow";
 import { LegendDrawer } from "../components/settings/LegendDrawer";
+import { ProvideMapTarget } from "../hooks/useMapTarget";
 
 const getPreloadedState = () => {
   let state: State =
@@ -123,7 +124,9 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
       <ThemeProvider theme={theme}>
         <ProvideData>
           <ProvideWindow>
-            <Content />
+            <ProvideMapTarget>
+              <Content />
+            </ProvideMapTarget>
           </ProvideWindow>
         </ProvideData>
       </ThemeProvider>
