@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Drawer,
-  AppBar,
-  Theme,
-  Toolbar,
-  IconButton,
-  Typography,
-  List,
-  Divider,
-} from "@mui/material";
+import { Theme, Typography, List, Divider } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import {
   State,
@@ -25,19 +16,9 @@ import {
   setShowSatelliteLabels,
 } from "../../redux";
 import { connect } from "react-redux";
-import { Close } from "@mui/icons-material";
-import { LayerOption, LayerOption2 } from "./LayerOption";
+import { LayerOption } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
 
-import Scrollbars from "react-custom-scrollbars";
-
-import confederationLine from "../../images/confederation.svg";
-import trilliumLine from "../../images/trillium.svg";
-import gatineauIcon from "../../images/gatineau.svg";
-import { useIsDarkTheme } from "../../app/utils";
-import { GatineauOptions } from "./GatineauOptions";
-import { Dataset } from "../../hooks/useData";
-import { Agency } from "../../config";
 import { MenuDrawer } from "./MenuDrawer";
 
 interface SettingsDrawerProps {
@@ -138,61 +119,6 @@ const SettingsDrawerComponent = (props: Readonly<SettingsDrawerProps>) => {
       }}
       title="Map Settings"
     >
-      <LayerOption
-        primary="Confederation Line"
-        secondary="Stages 1 and 2 of the Confederation Line, including Belfast and Moodie yards"
-        selected={props.lines.confederationLine}
-        imageUrl={confederationLine}
-        tint="#D62937"
-      />
-
-      <LayerOption
-        primary="Trillium Line"
-        secondary="The Trillium Line following the Stage 2 upgrades, including the new Walkley Yard"
-        selected={props.lines.trilliumLine}
-        imageUrl={trilliumLine}
-        tint="#76BE43"
-      />
-
-      <LayerOption
-        primary="Kanata Extension"
-        secondary="The proposed extension of the Confederation Line into Kanata"
-        selected={props.lines.kanataExtension}
-        onClick={() =>
-          props.setShowLine(["kanataExtension", !props.lines.kanataExtension])
-        }
-        imageUrl={confederationLine}
-        tint="#AF882D"
-      />
-
-      <LayerOption
-        primary="Barrhaven Extension"
-        secondary="The proposed alignments and stations of the Confederation Line extension to Barrhaven"
-        selected={props.lines.barrhavenExtension}
-        onClick={() =>
-          props.setShowLine([
-            "barrhavenExtension",
-            !props.lines.barrhavenExtension,
-          ])
-        }
-        imageUrl={confederationLine}
-        tint="#D62937"
-      />
-      <Typography className={classes.sectionHeader} variant="overline">
-        Gatineau LRT
-      </Typography>
-      <GatineauOptions
-        primary="Gatineau Tramway"
-        secondary="The proposed corridors for the Gatineau Tramway to Aylmer and the Plateau"
-        tertiary="*(Station locations and names are approximated)"
-        selected={props.lines.gatineauLrt}
-        onClick={() =>
-          props.setShowLine(["gatineauLrt", !props.lines.gatineauLrt])
-        }
-        imageUrl={gatineauIcon}
-        tint="#007E88"
-      />
-      <Divider />
       <Typography className={classes.sectionHeader} variant="overline">
         Basemap
       </Typography>

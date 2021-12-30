@@ -3,25 +3,26 @@ import styled from "styled-components";
 
 export const Chevron = styled.div<{ down: boolean; color?: string }>`
   display: inline-block;
-  margin-top: 6px;
-  min-width: 16px;
+  margin-top: 4px;
+  width: 24px;
+  height: 20px;
   &:before {
-    width: 4px;
-    height: 12px;
+    width: 3px;
+    height: 10px;
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     display: inline-block;
-    border-radius: 8px;
+    border-radius: 2px;
     background: ${(props) => props.color ?? "#FFFFFF"};
     transform: ${(props) =>
       props.down ? "rotate(-135deg)" : "rotate(-45deg)"};
     content: "";
   }
   &:after {
-    width: 4px;
-    height: 12px;
+    width: 3px;
+    height: 10px;
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     display: inline-block;
-    border-radius: 8px;
+    border-radius: 2px;
     background: ${(props) => props.color ?? "#FFFFFF"};
     transform: ${(props) =>
       props.down ? "rotate(-45deg)" : "rotate(-135deg)"};

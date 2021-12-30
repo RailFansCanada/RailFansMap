@@ -84,6 +84,8 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
   const data = props.data;
   const mapRef = useRef<MapGL>();
   const [fullData, setFullData] = useState<FeatureCollection | null>(null);
+  // TODO: Fix?
+  const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
   const [viewport, setViewport] = useState<Viewport>({
     longitude: -75.6579,
@@ -224,77 +226,84 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       onClick={[clickableLayers, handleClick]}
       onMouseenter={[clickableLayers, handleMouseEnter]}
       onMouseleave={[clickableLayers, handleMouseLeave]}
+      onLoad={() => {
+        setMapLoaded(true);
+      }}
       ref={mapRef}
       {...viewport}
     >
-      <NavigationControl showCompass showZoom position="bottom-right" />
-      <LabelProviderContext.Provider value={{ labelStyle }}>
-        {Object.values(data)
-          .filter((entry) => entry.metadata.icon != null)
-          .map((entry) => (
+      {mapLoaded && (
+        <>
+          <NavigationControl showCompass showZoom position="bottom-right" />
+          <LabelProviderContext.Provider value={{ labelStyle }}>
+            {Object.values(data)
+              .filter((entry) => entry.metadata.icon != null)
+              .map((entry) => (
+                <MapIcon
+                  style={style}
+                  width={16}
+                  height={16}
+                  id={entry.metadata.id}
+                  key={entry.metadata.id}
+                  url={`icons/${entry.metadata.icon}`}
+                />
+              ))}
             <MapIcon
               style={style}
-              width={16}
-              height={16}
-              id={entry.metadata.id}
-              key={entry.metadata.id}
-              url={`icons/${entry.metadata.icon}`}
+              width={24}
+              height={24}
+              id="label-background"
+              url={labelBackground}
             />
-          ))}
-        <MapIcon
-          style={style}
-          width={24}
-          height={24}
-          id="label-background"
-          url={labelBackground}
-        />
-        <Layer
-          id="sky"
-          type="sky"
-          paint={
-            {
-              "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
-            } as unknown
-          }
-        />
+            <Layer
+              id="sky"
+              type="sky"
+              paint={
+                {
+                  "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
+                } as unknown
+              }
+            />
 
-        {props.show3DBuildings && (
-          <Layer
-            id="3d-buildings"
-            source="composite"
-            {...{ "source-layer": "building" }}
-            filter={["==", "extrude", "true"]}
-            type="fill-extrusion"
-            minzoom={15}
-            paint={{
-              "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
+            {props.show3DBuildings && (
+              <Layer
+                id="3d-buildings"
+                source="composite"
+                {...{ "source-layer": "building" }}
+                filter={["==", "extrude", "true"]}
+                type="fill-extrusion"
+                minzoom={15}
+                paint={{
+                  "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
 
-              // use an 'interpolate' expression to add a smooth transition effect to the
-              // buildings as the user zooms in
-              "fill-extrusion-height": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                15,
-                0,
-                15.05,
-                ["get", "height"],
-              ],
-              "fill-extrusion-base": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                15,
-                0,
-                15.05,
-                ["get", "min_height"],
-              ],
-              "fill-extrusion-opacity": 0.6,
-            }}
-          />
-        )}
-        <Lines data={fullData} showLineLabels={props.showLineLabels} />
-      </LabelProviderContext.Provider>
+                  // use an 'interpolate' expression to add a smooth transition effect to the
+                  // buildings as the user zooms in
+                  "fill-extrusion-height": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    15,
+                    0,
+                    15.05,
+                    ["get", "height"],
+                  ],
+                  "fill-extrusion-base": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    15,
+                    0,
+                    15.05,
+                    ["get", "min_height"],
+                  ],
+                  "fill-extrusion-opacity": 0.6,
+                }}
+              />
+            )}
+            <Lines data={fullData} showLineLabels={props.showLineLabels} />
+          </LabelProviderContext.Provider>
+        </>
+      )}
     </MapGL>
   );
 };

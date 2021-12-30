@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  IconButton,
-  Paper,
-  Tooltip,
-  Menu,
-  MenuItem,
-} from "@mui/material";
+import { IconButton, Paper, Tooltip, Menu, MenuItem } from "@mui/material";
 import { Layers, Share, GitHub, Settings, NearMe } from "@mui/icons-material";
 import {
   setDrawerOpen,
@@ -24,21 +18,18 @@ type ControlsProps = {
   setLegendDrawerOpen: typeof setLegendDrawerOpen;
 };
 
-const ControlsContainer = styled.div(
-  ({ theme }) => `
+const ControlsContainer = styled.div`
   position: fixed;
-  right: ${theme.spacing(1)};
-  top: ${theme.spacing(1)};
+  right: ${({ theme }) => theme.spacing(1)};
+  top: ${({ theme }) => theme.spacing(1)};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
-);
+`;
 
-const ControlPaper = styled(Paper)(
-  ({ theme }) => `
-  margin: ${theme.spacing(0.5)} 0;
-  
+const ControlPaper = styled(Paper)`
+  margin: ${({ theme }) => theme.spacing(0.5)} 0;
+
   &:first-child {
     margin-top: 0;
   }
@@ -46,8 +37,7 @@ const ControlPaper = styled(Paper)(
   &:last-child {
     margin-bottom: 0;
   }
-`
-);
+`;
 
 type QuickNavProps = {
   open: boolean;
