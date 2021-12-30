@@ -21,6 +21,7 @@ import labelBackground from "../images/label.svg";
 import { BBox, FeatureCollection } from "geojson";
 import { useMapTarget } from "../hooks/useMapTarget";
 import { LineFilterState, useAppState } from "../hooks/useAppState";
+import { useTheme } from "@mui/styles";
 
 const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
   "format",
@@ -44,7 +45,7 @@ const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
 
 type LabelProvider = {
   labelStyle: {}[];
-}
+};
 
 export const LabelProviderContext = React.createContext<LabelProvider>({
   labelStyle: [],
@@ -53,9 +54,10 @@ export const LabelProviderContext = React.createContext<LabelProvider>({
 export type OverviewMapProps = {
   data: Dataset;
   updateBbox(bbox: BBox): void;
-}
+};
 
 export const OverviewMap = (props: OverviewMapProps) => {
+  const theme = useTheme();
   const windowSize = useWindow();
   const {
     legendDrawerOpen,
@@ -108,11 +110,14 @@ export const OverviewMap = (props: OverviewMapProps) => {
   };
 
   useEffect(() => {
-    // TODO: Mobile behaviour
     const open = settingsDrawerOpen || legendDrawerOpen;
-    const padding = { right: open ? 420 : 0 } as PaddingOptions;
-    mapRef.current?.getMap()?.easeTo({ padding });
-  }, [settingsDrawerOpen, legendDrawerOpen]);
+
+    // On small screens the drawer takes up entire screen width so padding is useless
+    if (windowSize[0] > theme.breakpoints.values.md) {
+      const padding = { right: open ? 420 : 0 } as PaddingOptions;
+      mapRef.current?.getMap()?.easeTo({ padding });
+    }
+  }, [settingsDrawerOpen, legendDrawerOpen, windowSize]);
 
   const isDarkTheme = useIsDarkTheme(appTheme);
 
@@ -173,9 +178,9 @@ export const OverviewMap = (props: OverviewMapProps) => {
           lineFilterState[entry.metadata.filterKey]
         );
       })
-      .flatMap((entry) =>
-        entry.features
-          .map((feature) => ({
+      .flatMap(
+        (entry) =>
+          entry.features.map((feature) => ({
             ...feature,
             properties: {
               ...feature.properties,
@@ -185,13 +190,13 @@ export const OverviewMap = (props: OverviewMapProps) => {
               alternatives: feature.properties.alternatives,
             },
           }))
-          // .filter(
-          //   (feature) =>
-          //     feature.properties.alternatives == null ||
-          //     feature.properties.alternatives.some((a: string) =>
-          //       props.alternatives[entry.metadata.filterKey]?.includes(a)
-          //     )
-          // )
+        // .filter(
+        //   (feature) =>
+        //     feature.properties.alternatives == null ||
+        //     feature.properties.alternatives.some((a: string) =>
+        //       props.alternatives[entry.metadata.filterKey]?.includes(a)
+        //     )
+        // )
       );
 
     setFullData({

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   Checkbox,
   Collapse,
@@ -19,6 +19,7 @@ import { Chevron } from "../Chevron";
 import { BBox } from "geojson";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
+import { useWindow } from "../../hooks/useWindow";
 
 type EntryData = {
   id: string;
@@ -66,6 +67,21 @@ const LegendEntryItem = styled(ListItem)<{ checked: boolean }>`
 const LegendEntry = (props: LegendEntryProps) => {
   const { setTarget } = useMapTarget();
 
+  // For handling mobile
+  const [windowWidth] = useWindow();
+  const theme = useTheme();
+  const { setLegendDrawerOpen } = useAppState();
+
+  const handleClick = () => {
+    if (props.bbox != null) {
+      setTarget(props.bbox as SimpleBBox);
+    }
+
+    if (windowWidth <= theme.breakpoints.values.md) {
+      setLegendDrawerOpen(false);
+    }
+  };
+
   return (
     <LegendEntryItem
       disablePadding
@@ -82,14 +98,7 @@ const LegendEntry = (props: LegendEntryProps) => {
         )
       }
     >
-      <ListItemButton
-        disabled={!props.enabled}
-        onClick={() => {
-          if (props.bbox != null) {
-            setTarget(props.bbox as SimpleBBox);
-          }
-        }}
-      >
+      <ListItemButton disabled={!props.enabled} onClick={handleClick}>
         {props.icon && (
           <ListItemAvatar>
             <img src={props.icon} />
@@ -116,8 +125,6 @@ const LegendGroupHeader = styled(ListItemButton)`
   align-items: center;
   padding: ${({ theme }) => theme.spacing(2)};
 `;
-
-const LegendGroupActions = styled.div``;
 
 const LegendGroup = (props: LegendGroupProps) => {
   const theme = useTheme();
@@ -150,9 +157,6 @@ const LegendGroup = (props: LegendGroupProps) => {
       <LegendGroupHeader onClick={handleExpand}>
         <Typography variant="subtitle1">{props.agency.name}</Typography>
         <div>
-          {/* <IconButton>
-            <Fullscreen />
-          </IconButton> */}
           <Chevron down={open} color={theme.palette.text.primary} />
         </div>
       </LegendGroupHeader>
