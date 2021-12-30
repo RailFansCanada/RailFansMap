@@ -12,9 +12,9 @@
         "ottawa/moodieYard.json",
         "ottawa/walkleyYard.json",
         "ottawa/line1.json",
+        "ottawa/line2.json",
         "ottawa/line3.json",
         "ottawa/line4.json",
-        "ottawa/line2.json",
         "ottawa/stage3barrhaven.json",
         "ottawa/stage3kanata.json"
       ]
@@ -25,7 +25,7 @@
         -75.86578535776559, 45.39536917415158, -75.69585303512089,
         45.43724924103122
       ],
-      "data": ["gatineau/b.json", "gatineau/a.json"]
+      "data": ["gatineau/a.json", "gatineau/b.json"]
     },
     "ttc": {
       "name": "TTC",
@@ -45,13 +45,13 @@
       "name": "GO",
       "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
       "data": [
-        "go/le.json",
-        "go/st.json",
-        "go/rh.json",
         "go/br.json",
         "go/ki.json",
-        "go/mi.json",
+        "go/le.json",
         "go/lw.json",
+        "go/mi.json",
+        "go/rh.json",
+        "go/st.json",
         "go/up.json"
       ]
     }
