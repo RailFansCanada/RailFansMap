@@ -443,5 +443,11 @@
     { "type": "Feature", "properties": { "lines": ["go/lw"], "type": "station-label", "name": "Mimico" }, "geometry": { "type": "Point", "coordinates": [-79.49679966168289, 43.61665629775276] } },
     { "type": "Feature", "properties": { "lines": ["go/lw"], "type": "station-label", "name": "Exhibition", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.41902145693217, 43.63598672179336] } },
     { "type": "Feature", "properties": { "lines": ["toronto/1", "go/le", "go/st", "go/rh", "go/ki", "go/mi", "go/lw"], "type": "station-label", "name": "Union", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.3804274, 43.6443539000001] } }
+  ],
+  "bbox": [
+    -79.8924767,
+    43.1089166,
+    -79.0605097,
+    43.645532600000095
   ]
 }

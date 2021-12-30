@@ -195,5 +195,11 @@
     { "type": "Feature", "properties": { "lines": ["go/mi"], "type": "station-label", "name": "Dixie" }, "geometry": { "type": "Point", "coordinates": [-79.57703359409183, 43.60807022631423] } },
     { "type": "Feature", "properties": { "lines": ["toronto/2", "go/mi"], "type": "station-label", "name": "Kipling" }, "geometry": { "type": "Point", "coordinates": [-79.5374039633262, 43.63569994658469] } },
     { "type": "Feature", "properties": { "lines": ["toronto/1", "go/le", "go/st", "go/rh", "go/ki", "go/mi"], "type": "station-label", "name": "Union" }, "geometry": { "type": "Point", "coordinates": [-79.3804274, 43.6443539000001] } }
+  ],
+  "bbox": [
+    -79.8782773999999,
+    43.5190836,
+    -79.3733326,
+    43.6672477000001
   ]
 }

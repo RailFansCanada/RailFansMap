@@ -132,5 +132,11 @@
     { "type": "Feature", "properties": { "lines": ["go/rh"], "type": "station-label", "name": "Old Cummer" }, "geometry": { "type": "Point", "coordinates": [-79.37134901016124, 43.79259251410735] } },
     { "type": "Feature", "properties": { "lines": ["go/rh"], "type": "station-label", "name": "Oriole" }, "geometry": { "type": "Point", "coordinates": [-79.36546382588735, 43.76654382155788] } },
     { "type": "Feature", "properties": { "lines": ["toronto/1", "go/le", "go/st", "go/rh"], "type": "station-label", "name": "Union" }, "geometry": { "type": "Point", "coordinates": [-79.3804274, 43.6443539000001] } }
+  ],
+  "bbox": [
+    -79.43447259999989,
+    43.6434582000001,
+    -79.3196295,
+    43.976596
   ]
 }

@@ -14,6 +14,12 @@
       "City of Ottawa"
     ]
   },
+  "bbox": [
+    -75.76051390912036,
+    45.26587692566606,
+    -75.7340583984209,
+    45.346212859700934
+  ],
   "features": [
     { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Barrhaven Centre", "url": null, "major": true }, "geometry": { "type": "Point", "coordinates": [-75.74147704156648, 45.26793911748698] } },
     { "type": "Feature", "properties": { "lines": ["ottawa/1"], "type": "station-label", "name": "Strandherd", "url": null }, "geometry": { "type": "Point", "coordinates": [-75.74593848573113, 45.274188373662575] } },

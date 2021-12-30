@@ -1,29 +1,38 @@
 {
-  "agencies": {
-    "oc-transpo": {
+  "agencies": [
+    {
+      "id": "oc-transpo",
       "name": "OC Transpo",
-      "bbox": [-75.93239095708121,45.26587692566606,-75.47978870927166,45.49642647588418],
+      "bbox": [
+        -75.93239095708121, 45.26587692566606, -75.47978870927166,
+        45.49642647588418
+      ],
       "data": [
         "ottawa/belfastYard.json",
         "ottawa/greenbankYard.json",
         "ottawa/moodieYard.json",
         "ottawa/walkleyYard.json",
         "ottawa/line1.json",
+        "ottawa/line2.json",
         "ottawa/line3.json",
         "ottawa/line4.json",
-        "ottawa/line2.json",
         "ottawa/stage3barrhaven.json",
         "ottawa/stage3kanata.json"
       ]
     },
-    "sto": {
+    {
+      "id": "sto",
       "name": "STO",
-      "bbox": [-75.86578535776559,45.39536917415158,-75.69585303512089,45.43724924103122],
-      "data": ["gatineau/b.json", "gatineau/a.json"]
+      "bbox": [
+        -75.86578535776559, 45.39536917415158, -75.69585303512089,
+        45.43724924103122
+      ],
+      "data": ["gatineau/a.json", "gatineau/b.json"]
     },
-    "ttc": {
+    {
+      "id": "ttc",
       "name": "TTC",
-      "bbox": [-79.5376857,43.6356882,-79.2512528,43.7958192],
+      "bbox": [-79.5376857, 43.6356882, -79.2512528, 43.7958192],
       "data": [
         "toronto/davisvilleYard.json",
         "toronto/wilsonYard.json",
@@ -35,25 +44,37 @@
         "toronto/line5.json"
       ]
     },
-    "go": {
+    {
+      "id": "go",
       "name": "GO",
-      "bbox": [-81.2493479999999,42.98024840000009,-78.885068,44.3737523],
+      "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
       "data": [
-        "go/le.json",
-        "go/st.json",
-        "go/rh.json",
         "go/br.json",
         "go/ki.json",
-        "go/mi.json",
+        "go/le.json",
         "go/lw.json",
+        "go/mi.json",
+        "go/rh.json",
+        "go/st.json",
         "go/up.json"
       ]
     }
-  },
-  "regions": {
-    "ottawa-gatineau": {
+  ],
+  "regions": [
+    {
+      "id": "ottawa-gatineau",
       "title": "Ottawa-Gatineau",
-      "location": [-75.691042, 45.420472]
+      "location": [-75.691042, 45.420472],
+      "bbox": [
+        -75.93239095708121, 45.26587692566606, -75.47978870927166,
+        45.49642647588418
+      ]
+    },
+    {
+      "id": "toronto",
+      "title": "Toronto",
+      "location": [-79.383849, 43.653482],
+      "bbox": [-79.5376857, 43.6356882, -79.2512528, 43.7958192]
     }
-  }
+  ]
 }

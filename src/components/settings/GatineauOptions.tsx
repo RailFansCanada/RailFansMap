@@ -6,9 +6,6 @@ import {
   Theme,
   CardActionArea,
   alpha,
-  Hidden,
-  ThemeProvider,
-  StyledEngineProvider,
   useTheme,
   Collapse,
   List,
@@ -18,23 +15,13 @@ import {
   Checkbox,
   Divider,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 
-import {
-  State,
-  enableAlternative,
-  disableAlternative,
-  Alternatives,
-} from "../../redux";
-import { connect } from "react-redux";
-
-
-declare module '@mui/styles/defaultTheme' {
+declare module "@mui/styles/defaultTheme" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
-
 
 export interface GatineauOptionProps {
   readonly primary: string;
@@ -47,9 +34,9 @@ export interface GatineauOptionProps {
   readonly imageUrl?: string;
   readonly tint?: string;
 
-  readonly alternatives: Alternatives;
-  readonly enableAlternative: typeof enableAlternative;
-  readonly disableAlternative: typeof disableAlternative;
+  // readonly alternatives: Alternatives;
+  // readonly enableAlternative: typeof enableAlternative;
+  // readonly disableAlternative: typeof disableAlternative;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -109,9 +96,9 @@ export const GatineauOptionComponent = (props: GatineauOptionProps) => {
 
   const setAlternative = (value: boolean, alternative: string) => {
     if (value) {
-      props.enableAlternative(["gatineauLrt", alternative]);
+      //props.enableAlternative(["gatineauLrt", alternative]);
     } else {
-      props.disableAlternative(["gatineauLrt", alternative]);
+      //props.disableAlternative(["gatineauLrt", alternative]);
     }
   };
 
@@ -147,7 +134,8 @@ export const GatineauOptionComponent = (props: GatineauOptionProps) => {
           <AlternativeItem
             primary="Sparks Tunnel"
             secondary="Tunnel under Sparks Street"
-            checked={props.alternatives["gatineauLrt"]?.includes("1")}
+            checked
+            //checked={props.alternatives["gatineauLrt"]?.includes("1")}
             onCheck={(checked) => {
               setAlternative(checked, "1");
             }}
@@ -155,11 +143,12 @@ export const GatineauOptionComponent = (props: GatineauOptionProps) => {
           <AlternativeItem
             primary="Wellington Street"
             secondary="Tracks at street level on Wellington"
-            checked={props.alternatives["gatineauLrt"]?.includes("2")}
+            checked
+            //checked={props.alternatives["gatineauLrt"]?.includes("2")}
             onCheck={(checked) => {
               setAlternative(checked, "2");
             }}
-            />
+          />
         </List>
       </Collapse>
     </Card>
@@ -199,17 +188,3 @@ const AlternativeItem = (props: {
     </ListItem>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  alternatives: state.alternatives,
-});
-
-const mapDispatchToProps = {
-  enableAlternative,
-  disableAlternative,
-};
-
-export const GatineauOptions = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GatineauOptionComponent);

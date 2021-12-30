@@ -101,5 +101,11 @@
     { "type": "Feature", "properties": { "lines": ["go/up", "toronto/5", "go/ki"], "type": "station-label", "name": "Mount Dennis" }, "geometry": { "type": "Point", "coordinates": [-79.48765725883598, 43.68761259569308] } },
     { "type": "Feature", "properties": { "lines": ["go/up", "toronto/2", "go/ki"], "type": "station-label", "name": "Bloor" }, "geometry": { "type": "Point", "coordinates": [-79.45201559049785, 43.658968620556166] } },
     { "type": "Feature", "properties": { "lines": ["go/up", "toronto/1", "go/le", "go/st", "go/rh", "go/br", "go/ki", "go/mi", "go/lw"], "type": "station-label", "name": "Union", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.3804274, 43.6443539000001] } }
+  ],
+  "bbox": [
+    -79.6158774,
+    43.6400807000001,
+    -79.3804274,
+    43.7069382
   ]
 }

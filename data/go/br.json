@@ -146,5 +146,11 @@
     { "type": "Feature", "properties": { "lines": ["go/br"], "type": "station-label", "name": "Rutherford" }, "geometry": { "type": "Point", "coordinates": [-79.4981028999999, 43.8374816] } },
     { "type": "Feature", "properties": { "lines": ["toronto/1", "go/br"], "type": "station-label", "name": "Downsview" }, "geometry": { "type": "Point", "coordinates": [-79.47834054881423, 43.753651676883024] } },
     { "type": "Feature", "properties": { "lines": ["toronto/1", "go/le", "go/st", "go/rh", "go/br"], "type": "station-label", "name": "Union" }, "geometry": { "type": "Point", "coordinates": [-79.3804274, 43.6443539000001] } }
+  ],
+  "bbox": [
+    -79.6899175,
+    43.6401634000001,
+    -79.3733326,
+    44.3737523
   ]
 }

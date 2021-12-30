@@ -79,5 +79,11 @@
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Birchmount" }, "geometry": { "type": "Point", "coordinates": [-79.27701488870478, 43.73016869781307] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Ionview" }, "geometry": { "type": "Point", "coordinates": [-79.27177221859472, 43.731368881493346] } },
     { "type": "Feature", "properties": { "lines": ["toronto/2", "toronto/3", "toronto/5"], "type": "station-label", "name": "Kennedy", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.26422523704261, 43.73312730942908] } }
+  ],
+  "bbox": [
+    -79.4880309,
+    43.6875004,
+    -79.263243,
+    43.7333686
   ]
 }

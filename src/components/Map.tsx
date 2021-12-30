@@ -1,28 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
-import MapGL, { Viewport, Layer, NavigationControl } from "@urbica/react-map-gl";
-import { Map as MapboxMap, MapboxGeoJSONFeature } from "mapbox-gl";
+import MapGL, {
+  Viewport,
+  Layer,
+  NavigationControl,
+} from "@urbica/react-map-gl";
+import {
+  Map as MapboxMap,
+  MapboxGeoJSONFeature,
+  PaddingOptions,
+} from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
 
-import {
-  State,
-  AppTheme,
-  MapStyle,
-  LineState,
-  setTargetZoom,
-  setZoom,
-  Alternatives,
-} from "../redux";
-import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
 import { Dataset } from "../hooks/useData";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 import { BBox, FeatureCollection } from "geojson";
+import { useMapTarget } from "../hooks/useMapTarget";
+import { LineFilterState, useAppState } from "../hooks/useAppState";
+import { useTheme } from "@mui/styles";
 
-const provideLabelStyle = (mapData: Dataset, state: LineState) => [
+const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
   "format",
   ["get", "name"],
   {},
@@ -42,46 +43,58 @@ const provideLabelStyle = (mapData: Dataset, state: LineState) => [
     ]),
 ];
 
-interface LabelProvider {
+type LabelProvider = {
   labelStyle: {}[];
-}
+};
 
 export const LabelProviderContext = React.createContext<LabelProvider>({
   labelStyle: [],
 });
 
-export interface OverviewMapProps {
-  readonly show3DBuildings: boolean;
-  readonly appTheme: AppTheme;
-  readonly mapStyle: MapStyle;
-  readonly lines: LineState;
-  readonly accessibleLabels: boolean;
-  readonly alternatives: Alternatives;
-  readonly showLineLabels: boolean;
-
-  readonly targetZoom: number;
-  readonly setTargetZoom: typeof setTargetZoom;
-  readonly setZoom: typeof setZoom;
-
-  readonly data: Dataset;
+export type OverviewMapProps = {
+  data: Dataset;
   updateBbox(bbox: BBox): void;
-}
+};
 
-export const OverviewMapComponent = (props: OverviewMapProps) => {
+export const OverviewMap = (props: OverviewMapProps) => {
+  const theme = useTheme();
   const windowSize = useWindow();
+  const {
+    legendDrawerOpen,
+    settingsDrawerOpen,
+    appTheme,
+    mapStyle,
+    show3DBuildings,
+    showLabels,
+    lineFilterState,
+  } = useAppState();
 
   const data = props.data;
   const mapRef = useRef<MapGL>();
   const [fullData, setFullData] = useState<FeatureCollection | null>(null);
+  // TODO: Fix?
+  const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
   const [viewport, setViewport] = useState<Viewport>({
-    longitude: -75.6579,
-    latitude: 45.3629,
-    zoom: 11,
+    longitude: -77.653,
+    latitude: 44.655,
+    zoom: 7,
   });
+
+  const { target: mapTarget, setTarget: setMapTarget } = useMapTarget();
+  useEffect(() => {
+    if (mapTarget != null) {
+      const map = mapRef.current?.getMap();
+
+      map?.fitBounds(mapTarget, {
+        padding: 64,
+      });
+    }
+  }, [mapTarget]);
 
   const handleViewportChange = (v: Viewport) => {
     setViewport(v);
+    setMapTarget(undefined);
 
     if (mapRef.current != null) {
       const map: MapboxMap = mapRef.current.getMap();
@@ -96,10 +109,20 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
     }
   };
 
-  const isDarkTheme = useIsDarkTheme(props.appTheme);
+  useEffect(() => {
+    const open = settingsDrawerOpen || legendDrawerOpen;
+
+    // On small screens the drawer takes up entire screen width so padding is useless
+    if (windowSize[0] > theme.breakpoints.values.md) {
+      const padding = { right: open ? 420 : 0 } as PaddingOptions;
+      mapRef.current?.getMap()?.easeTo({ padding });
+    }
+  }, [settingsDrawerOpen, legendDrawerOpen, windowSize]);
+
+  const isDarkTheme = useIsDarkTheme(appTheme);
 
   const [style, setStyle] = useState(
-    props.mapStyle === "satellite"
+    mapStyle === "satellite"
       ? "mapbox://styles/mapbox/satellite-streets-v11"
       : isDarkTheme
       ? "mapbox://styles/mapbox/dark-v10"
@@ -131,7 +154,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
   };
 
   useEffect(() => {
-    if (props.mapStyle === "satellite") {
+    if (mapStyle === "satellite") {
       setStyle("mapbox://styles/mapbox/satellite-streets-v11");
     } else {
       setStyle(
@@ -140,11 +163,11 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           : "mapbox://styles/mapbox/light-v10"
       );
     }
-  }, [isDarkTheme, props.appTheme, props.mapStyle]);
+  }, [isDarkTheme, appTheme, mapStyle]);
 
   useEffect(() => {
-    setLabelStyle(provideLabelStyle(data, props.lines));
-  }, [data, props.lines]);
+    setLabelStyle(provideLabelStyle(data, lineFilterState));
+  }, [data, lineFilterState]);
 
   // TODO: Move this to useData
   useEffect(() => {
@@ -152,12 +175,12 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       .filter((entry) => {
         return (
           entry.metadata.filterKey == null ||
-          props.lines[entry.metadata.filterKey]
+          lineFilterState[entry.metadata.filterKey]
         );
       })
-      .flatMap((entry) =>
-        entry.features
-          .map((feature) => ({
+      .flatMap(
+        (entry) =>
+          entry.features.map((feature) => ({
             ...feature,
             properties: {
               ...feature.properties,
@@ -167,20 +190,20 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
               alternatives: feature.properties.alternatives,
             },
           }))
-          .filter(
-            (feature) =>
-              feature.properties.alternatives == null ||
-              feature.properties.alternatives.some((a: string) =>
-                props.alternatives[entry.metadata.filterKey]?.includes(a)
-              )
-          )
+        // .filter(
+        //   (feature) =>
+        //     feature.properties.alternatives == null ||
+        //     feature.properties.alternatives.some((a: string) =>
+        //       props.alternatives[entry.metadata.filterKey]?.includes(a)
+        //     )
+        // )
       );
 
     setFullData({
       type: "FeatureCollection",
       features: allFeatures,
     });
-  }, [data, props.lines, props.alternatives]);
+  }, [data, lineFilterState]);
 
   const clickableLayers = ["rail-station", "rail-labels", "yard-labels"];
 
@@ -194,98 +217,84 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       onClick={[clickableLayers, handleClick]}
       onMouseenter={[clickableLayers, handleMouseEnter]}
       onMouseleave={[clickableLayers, handleMouseLeave]}
+      onLoad={() => {
+        setMapLoaded(true);
+      }}
       ref={mapRef}
       {...viewport}
     >
-      <NavigationControl showCompass showZoom position="bottom-right"/>
-      <LabelProviderContext.Provider value={{ labelStyle }}>
-        {Object.values(data)
-          .filter((entry) => entry.metadata.icon != null)
-          .map((entry) => (
+      {mapLoaded && (
+        <>
+          <NavigationControl showCompass showZoom position="bottom-right" />
+          <LabelProviderContext.Provider value={{ labelStyle }}>
+            {Object.values(data)
+              .filter((entry) => entry.metadata.icon != null)
+              .map((entry) => (
+                <MapIcon
+                  style={style}
+                  width={16}
+                  height={16}
+                  id={entry.metadata.id}
+                  key={entry.metadata.id}
+                  url={`icons/${entry.metadata.icon}`}
+                />
+              ))}
             <MapIcon
               style={style}
-              width={16}
-              height={16}
-              id={entry.metadata.id}
-              key={entry.metadata.id}
-              url={`icons/${entry.metadata.icon}`}
+              width={24}
+              height={24}
+              id="label-background"
+              url={labelBackground}
             />
-          ))}
-        <MapIcon
-          style={style}
-          width={24}
-          height={24}
-          id="label-background"
-          url={labelBackground}
-        />
-        <Layer
-          id="sky"
-          type="sky"
-          paint={
-            {
-              "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
-            } as unknown
-          }
-        />
+            <Layer
+              id="sky"
+              type="sky"
+              paint={
+                {
+                  "sky-atmosphere-sun": isDarkTheme ? [0, 95] : [0, 0],
+                } as unknown
+              }
+            />
 
-        {props.show3DBuildings && (
-          <Layer
-            id="3d-buildings"
-            source="composite"
-            {...{ "source-layer": "building" }}
-            filter={["==", "extrude", "true"]}
-            type="fill-extrusion"
-            minzoom={15}
-            paint={{
-              "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
+            {show3DBuildings && (
+              <Layer
+                id="3d-buildings"
+                source="composite"
+                {...{ "source-layer": "building" }}
+                filter={["==", "extrude", "true"]}
+                type="fill-extrusion"
+                minzoom={15}
+                paint={{
+                  "fill-extrusion-color": isDarkTheme ? "#212121" : "#FFFFFF",
 
-              // use an 'interpolate' expression to add a smooth transition effect to the
-              // buildings as the user zooms in
-              "fill-extrusion-height": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                15,
-                0,
-                15.05,
-                ["get", "height"],
-              ],
-              "fill-extrusion-base": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                15,
-                0,
-                15.05,
-                ["get", "min_height"],
-              ],
-              "fill-extrusion-opacity": 0.6,
-            }}
-          />
-        )}
-        <Lines data={fullData} showLineLabels={props.showLineLabels} />
-      </LabelProviderContext.Provider>
+                  // use an 'interpolate' expression to add a smooth transition effect to the
+                  // buildings as the user zooms in
+                  "fill-extrusion-height": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    15,
+                    0,
+                    15.05,
+                    ["get", "height"],
+                  ],
+                  "fill-extrusion-base": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    15,
+                    0,
+                    15.05,
+                    ["get", "min_height"],
+                  ],
+                  "fill-extrusion-opacity": 0.6,
+                }}
+              />
+            )}
+            <Lines data={fullData} showLineLabels={showLabels} />
+          </LabelProviderContext.Provider>
+        </>
+      )}
     </MapGL>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  show3DBuildings: state.show3DBuildings,
-  appTheme: state.appTheme,
-  mapStyle: state.mapStyle,
-  lines: state.lines,
-  accessibleLabels: state.accessibleLabels,
-  targetZoom: state.targetZoom,
-  alternatives: state.alternatives,
-  showLineLabels: state.showLineLabels,
-});
-
-const mapDispatchToProps = {
-  setTargetZoom,
-  setZoom,
-};
-
-export const OverviewMap = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OverviewMapComponent);
