@@ -74,9 +74,9 @@ export const OverviewMap = (props: OverviewMapProps) => {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
   const [viewport, setViewport] = useState<Viewport>({
-    longitude: -75.6579,
-    latitude: 45.3629,
-    zoom: 11,
+    longitude: -77.653,
+    latitude: 44.655,
+    zoom: 7,
   });
 
   const { target: mapTarget, setTarget: setMapTarget } = useMapTarget();

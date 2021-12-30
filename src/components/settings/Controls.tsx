@@ -1,6 +1,21 @@
 import React, { useState } from "react";
-import { IconButton, Paper, Tooltip, Menu, MenuItem } from "@mui/material";
-import { Layers, Share, GitHub, Settings, NearMe } from "@mui/icons-material";
+import {
+  IconButton,
+  Paper,
+  Tooltip,
+  Menu,
+  MenuItem,
+  Divider,
+  Icon,
+} from "@mui/material";
+import {
+  Layers,
+  Share,
+  GitHub,
+  Settings,
+  NearMe,
+  Feedback,
+} from "@mui/icons-material";
 import { ShareSheet } from "./ShareSheet";
 import styled from "styled-components";
 import { config, Region } from "../../config";
@@ -114,6 +129,15 @@ export const Controls = () => {
               size="large"
             >
               <GitHub />
+            </IconButton>
+          </Tooltip>
+          <Divider />
+          <Tooltip title="Submit Feeback">
+            <IconButton
+              href="mailto:map@railfans.ca?subject=Map%20Feedback&amp;body=Report%20a%20bug%20or%20suggest%20a%20feature"
+              size="large"
+            >
+              <Feedback />
             </IconButton>
           </Tooltip>
         </ControlPaper>
