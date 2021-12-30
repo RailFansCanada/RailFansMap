@@ -93,32 +93,16 @@ export const ShareSheet = () => {
     appTheme,
     mapStyle,
   } = useAppState();
+
   const classes = useStyles();
+
   const [snackbarMessage, setSnackbarMessage] = React.useState<string | null>(
     null
   );
 
-  const [useLocation, setUseLocation] = React.useState(true);
-  const [useMap, setUseMap] = React.useState(false);
-  const [useTheme, setUseTheme] = React.useState(false);
-  const [useKanata, setUseKanata] = React.useState(
-    lineFilterState["kanataExtension"]
-  );
-  const [useBarrhaven, setUseBarrhaven] = React.useState(
-    lineFilterState["barrhavenExtension"]
-  );
-  const [useGatineau, setUseGatineau] = React.useState(
-    lineFilterState["gatineauLrt"]
-  );
-
-  React.useEffect(() => {
-    setUseKanata(lineFilterState["kanataExtension"]);
-    setUseBarrhaven(lineFilterState["barrhavenExtension"]);
-  }, [lineFilterState]);
-
-  const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
-  const isDarkMode =
-    (appTheme === "system" && prefersDarkScheme) || appTheme === "dark";
+  const [withLocation, setWithLocation] = React.useState(true);
+  const [withSatellite, setWithSatellite] = React.useState(false);
+  const [withToggledLines, setWithToggledLines] = React.useState(false);
 
   const handleClose = () => {
     setShareSheetOpen(false);
@@ -129,28 +113,20 @@ export const ShareSheet = () => {
     const host = location.host;
     const url = new URL(`${protocol}//${host}/`);
 
-    if (useLocation) {
+    if (withLocation) {
       url.hash = location.hash;
     }
 
-    if (useMap) {
-      url.searchParams.append("map", mapStyle);
+    if (withSatellite) {
+      url.searchParams.append("map", "satellite");
     }
 
-    if (useTheme) {
-      url.searchParams.append("theme", isDarkMode ? "dark" : "light");
-    }
-
-    if (useKanata) {
-      url.searchParams.append("kanata", "true");
-    }
-
-    if (useBarrhaven) {
-      url.searchParams.append("barrhaven", "true");
-    }
-
-    if (useGatineau) {
-      url.searchParams.append("gatineau", "true");
+    if (withToggledLines) {
+      const lines = Object.keys(lineFilterState)
+        .filter((key) => lineFilterState[key])
+        .map((key) => key)
+        .join(",");
+      url.searchParams.append("show", lines);
     }
 
     return url.toString();
@@ -170,7 +146,7 @@ export const ShareSheet = () => {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: "O-Train Map",
+        title: "Rail Fans Map",
         url: getShareUrl(),
       });
     } else if (navigator.clipboard.writeText) {
@@ -187,7 +163,7 @@ export const ShareSheet = () => {
         open={shareSheetOpen}
       >
         <DialogTitle>
-          <Typography variant="h6">Share Map</Typography>
+          <Typography variant="h6">Share This Map</Typography>
           <IconButton
             className={classes.closeButton}
             onClick={handleClose}
@@ -206,42 +182,22 @@ export const ShareSheet = () => {
           </Button>
           <ShareOption
             primary="Current Location"
-            secondary="Share the map at the current location"
-            checked={useLocation}
-            onCheck={(checked) => setUseLocation(checked)}
+            secondary="Share the map with the current location visible"
+            checked={withLocation}
+            onCheck={(checked) => setWithLocation(checked)}
           />
           <ShareOption
-            primary="Current Map"
-            secondary={`Share the map using the ${mapStyle} base map`}
-            checked={useMap}
-            onCheck={(checked) => setUseMap(checked)}
+            primary="Satellite Basemap"
+            secondary={`Share the map using the satellite basemap`}
+            checked={withSatellite}
+            onCheck={(checked) => setWithSatellite(checked)}
           />
           <ShareOption
-            primary="Show Kanata Extension"
-            secondary="Show the Stage 3 Kanata extension on the shared map"
-            checked={useKanata}
-            onCheck={(checked) => setUseKanata(checked)}
+            primary="Include Toggled Lines"
+            secondary="Show all lines that have been toggled in the legend"
+            checked={withToggledLines}
+            onCheck={(checked) => setWithToggledLines(checked)}
           />
-          <ShareOption
-            primary="Show Barrhaven Extension"
-            secondary="Show the Stage 3 Barrhaven extension on the shared map"
-            checked={useBarrhaven}
-            onCheck={(checked) => setUseBarrhaven(checked)}
-          />
-          <ShareOption
-            primary="Show Gatineau Tramway"
-            secondary="Show the proposed Gatineau Tramway on the shared map"
-            checked={useGatineau}
-            onCheck={(checked) => setUseGatineau(checked)}
-          />
-          {/* <ShareOption
-          primary="Current Theme"
-          secondary={`Share the map with the ${
-            isDarkMode ? "dark" : "light"
-          } theme applied`}
-          checked={useTheme}
-          onCheck={() => setUseTheme(!useTheme)}
-        /> */}
         </DialogContent>
       </Dialog>
       <Snackbar
