@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 import { IconButton, Paper, Tooltip, Menu, MenuItem } from "@mui/material";
 import { Layers, Share, GitHub, Settings, NearMe } from "@mui/icons-material";
-import {
-  setDrawerOpen,
-  setLegendDrawerOpen,
-  setShareSheetOpen,
-} from "../../redux";
-import { connect } from "react-redux";
 import { ShareSheet } from "./ShareSheet";
 import styled from "styled-components";
 import { config, Region } from "../../config";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
-
-type ControlsProps = {
-  setDrawerOpen: typeof setDrawerOpen;
-  setShareSheetOpen: typeof setShareSheetOpen;
-  setLegendDrawerOpen: typeof setLegendDrawerOpen;
-};
+import { useAppState } from "../../hooks/useAppState";
 
 const ControlsContainer = styled.div`
   position: fixed;
@@ -56,7 +45,7 @@ const QuickNavigationMenu = (props: QuickNavProps) => {
   return (
     <Menu anchorEl={props.anchorEl} open={props.open} onClose={props.onClose}>
       <MenuItem disabled>Jump to…</MenuItem>
-      {Object.values(config.regions).map((region) => (
+      {config.regions.map((region) => (
         <MenuItem
           key={region.title}
           onClick={() => {
@@ -70,7 +59,7 @@ const QuickNavigationMenu = (props: QuickNavProps) => {
   );
 };
 
-const ControlsComponent = (props: ControlsProps) => {
+export const Controls = () => {
   const [anchorEl, setAnchorEl] = useState<Element>(null);
 
   const handleQuickNavOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -80,6 +69,9 @@ const ControlsComponent = (props: ControlsProps) => {
   const handleQuickNavClose = () => {
     setAnchorEl(null);
   };
+
+  const { setLegendDrawerOpen, setSettingsDrawerOpen, setShareSheetOpen } =
+    useAppState();
 
   return (
     <>
@@ -93,27 +85,24 @@ const ControlsComponent = (props: ControlsProps) => {
         </ControlPaper>
         <ControlPaper>
           <Tooltip title="Map Legend">
-            <IconButton
-              onClick={() => props.setLegendDrawerOpen(true)}
-              size="large"
-            >
+            <IconButton onClick={() => setLegendDrawerOpen(true)} size="large">
               <Layers />
             </IconButton>
           </Tooltip>
         </ControlPaper>
         <ControlPaper>
           <Tooltip title="Map Settings">
-            <IconButton onClick={() => props.setDrawerOpen(true)} size="large">
+            <IconButton
+              onClick={() => setSettingsDrawerOpen(true)}
+              size="large"
+            >
               <Settings />
             </IconButton>
           </Tooltip>
         </ControlPaper>
         <ControlPaper>
           <Tooltip title="Share">
-            <IconButton
-              onClick={() => props.setShareSheetOpen(true)}
-              size="large"
-            >
+            <IconButton onClick={() => setShareSheetOpen(true)} size="large">
               <Share />
             </IconButton>
           </Tooltip>
@@ -138,11 +127,3 @@ const ControlsComponent = (props: ControlsProps) => {
     </>
   );
 };
-
-const mapDispatchToProps = {
-  setDrawerOpen,
-  setLegendDrawerOpen,
-  setShareSheetOpen,
-};
-
-export const Controls = connect(null, mapDispatchToProps)(ControlsComponent);

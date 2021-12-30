@@ -30,22 +30,24 @@ export type MapData = FeatureCollection<Geometry> & { metadata: Metadata };
 /**
  * Definition for a transit agency. Definitions are placed into cities.json.
  */
-export interface Agency {
-  readonly name: string;
-  readonly bbox: BBox;
-  readonly data: string[];
-}
+export type Agency = {
+  id: string;
+  name: string;
+  bbox: BBox;
+  data: string[];
+};
 
 /**
  * Definition for a region. Used for display labels on the map at the specified location.
  */
-export interface Region {
-  readonly title: string;
-  readonly location: Position;
-  readonly bbox: BBox;
-}
+export type Region = {
+  id: string;
+  title: string;
+  location: Position;
+  bbox: BBox;
+};
 
 export interface Config {
-  readonly agencies: { [key: string]: Agency };
-  readonly regions: { [key: string]: Region };
+  readonly agencies: Agency[];
+  readonly regions: Region[];
 }

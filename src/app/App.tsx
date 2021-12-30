@@ -1,90 +1,26 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import {
   useMediaQuery,
   ThemeProvider,
-  Theme,
   StyledEngineProvider,
 } from "@mui/material";
 import { OverviewMap } from "../components/Map";
 import { themeFactory } from "./theme";
 import { Controls } from "../components/settings/Controls";
 import { SettingsDrawer } from "../components/settings/SettingsDrawer";
-import { reducer, AppTheme, State, initialState } from "../redux";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider, connect } from "react-redux";
 import { Logo } from "../components/Logo";
-import { produce } from "immer";
 import { ProvideData, useData } from "../hooks/useData";
 import { ProvideWindow } from "../hooks/useWindow";
 import { LegendDrawer } from "../components/settings/LegendDrawer";
 import { ProvideMapTarget } from "../hooks/useMapTarget";
-
-const getPreloadedState = () => {
-  let state: State =
-    (localStorage["settings"] && {
-      ...initialState,
-      ...JSON.parse(localStorage["settings"]),
-    }) ??
-    initialState;
-
-  return produce(state, (draft) => {
-    const params = new URLSearchParams(location.search);
-    if (
-      params.get("stage3")?.includes("true") ||
-      params.get("kanata")?.includes("true")
-    ) {
-      draft.lines.kanataExtension = true;
-    }
-
-    if (params.get("barrhaven")?.includes("true")) {
-      draft.lines.barrhavenExtension = true;
-    }
-
-    if (params.get("gatineau")?.includes("true")) {
-      draft.lines.gatineauLrt = true;
-
-      const options = params
-        .get("gatineauOptions")
-        ?.split(",")
-        ?.filter((v) => v === "1" || v === "2");
-      if (options?.length == 0) {
-        draft.alternatives.gatineauLrt = ["1"];
-      } else {
-        draft.alternatives.gatineauLrt = options;
-      }
-    }
-
-    if (params.get("map")?.includes("satellite")) {
-      draft.mapStyle = "satellite";
-    } else if (params.get("map")?.includes("vector")) {
-      draft.mapStyle = "vector";
-    }
-
-    if (params.get("theme")?.includes("light")) {
-      draft.appTheme = "light";
-    } else if (params.get("theme")?.includes("dark")) {
-      draft.appTheme = "dark";
-    }
-  });
-};
-
-const store = configureStore({
-  reducer,
-  preloadedState: getPreloadedState(),
-});
-
-// Write current settings to localStorage
-store.subscribe(() => {
-  const { targetZoom, drawerOpen, shareSheetOpen, ...rest } = store.getState();
-  localStorage["settings"] = JSON.stringify(rest);
-});
+import { ProvideAppState, useAppState } from "../hooks/useAppState";
 
 export const App = () => {
   return (
-    <Provider store={store}>
+    <ProvideAppState>
       <ThemedApp />
-    </Provider>
+    </ProvideAppState>
   );
 };
 
@@ -92,6 +28,7 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
 const Content = () => {
@@ -101,7 +38,6 @@ const Content = () => {
     <Container>
       <OverviewMap data={data} updateBbox={updateBbox} />
       <Controls />
-      {/* <MapControls /> */}
       <SettingsDrawer />
       <LegendDrawer visible={visible} data={data} allAgencies={agencies} />
       <Logo />
@@ -109,15 +45,15 @@ const Content = () => {
   );
 };
 
-const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
+const ThemedApp = () => {
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
+  const { appTheme } = useAppState();
   const theme = React.useMemo(() => {
     const isDarkMode =
-      (props.appTheme === "system" && prefersDarkScheme) ||
-      props.appTheme === "dark";
+      (appTheme === "system" && prefersDarkScheme) || appTheme === "dark";
 
     return themeFactory(isDarkMode);
-  }, [prefersDarkScheme, props.appTheme]);
+  }, [prefersDarkScheme, appTheme]);
 
   return (
     <StyledEngineProvider injectFirst>
@@ -133,9 +69,3 @@ const ThemedAppComponent = (props: { appTheme: AppTheme }) => {
     </StyledEngineProvider>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  appTheme: state.appTheme,
-});
-
-const ThemedApp = connect(mapStateToProps)(ThemedAppComponent);

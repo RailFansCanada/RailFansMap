@@ -13,16 +13,6 @@ import {
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
 
-import {
-  State,
-  AppTheme,
-  MapStyle,
-  LineState,
-  setTargetZoom,
-  setZoom,
-  Alternatives,
-} from "../redux";
-import { connect } from "react-redux";
 import { useIsDarkTheme } from "../app/utils";
 import { Dataset } from "../hooks/useData";
 import { MapIcon } from "./Icons";
@@ -30,8 +20,9 @@ import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 import { BBox, FeatureCollection } from "geojson";
 import { useMapTarget } from "../hooks/useMapTarget";
+import { LineFilterState, useAppState } from "../hooks/useAppState";
 
-const provideLabelStyle = (mapData: Dataset, state: LineState) => [
+const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
   "format",
   ["get", "name"],
   {},
@@ -51,7 +42,7 @@ const provideLabelStyle = (mapData: Dataset, state: LineState) => [
     ]),
 ];
 
-interface LabelProvider {
+type LabelProvider = {
   labelStyle: {}[];
 }
 
@@ -59,27 +50,22 @@ export const LabelProviderContext = React.createContext<LabelProvider>({
   labelStyle: [],
 });
 
-export interface OverviewMapProps {
-  readonly show3DBuildings: boolean;
-  readonly appTheme: AppTheme;
-  readonly mapStyle: MapStyle;
-  readonly lines: LineState;
-  readonly accessibleLabels: boolean;
-  readonly alternatives: Alternatives;
-  readonly showLineLabels: boolean;
-  drawerOpen: boolean;
-  legendDrawerOpen: boolean;
-
-  readonly targetZoom: number;
-  readonly setTargetZoom: typeof setTargetZoom;
-  readonly setZoom: typeof setZoom;
-
-  readonly data: Dataset;
+export type OverviewMapProps = {
+  data: Dataset;
   updateBbox(bbox: BBox): void;
 }
 
-export const OverviewMapComponent = (props: OverviewMapProps) => {
+export const OverviewMap = (props: OverviewMapProps) => {
   const windowSize = useWindow();
+  const {
+    legendDrawerOpen,
+    settingsDrawerOpen,
+    appTheme,
+    mapStyle,
+    show3DBuildings,
+    showLabels,
+    lineFilterState,
+  } = useAppState();
 
   const data = props.data;
   const mapRef = useRef<MapGL>();
@@ -123,15 +109,15 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
 
   useEffect(() => {
     // TODO: Mobile behaviour
-    const open = props.drawerOpen || props.legendDrawerOpen;
+    const open = settingsDrawerOpen || legendDrawerOpen;
     const padding = { right: open ? 420 : 0 } as PaddingOptions;
     mapRef.current?.getMap()?.easeTo({ padding });
-  }, [props.drawerOpen, props.legendDrawerOpen]);
+  }, [settingsDrawerOpen, legendDrawerOpen]);
 
-  const isDarkTheme = useIsDarkTheme(props.appTheme);
+  const isDarkTheme = useIsDarkTheme(appTheme);
 
   const [style, setStyle] = useState(
-    props.mapStyle === "satellite"
+    mapStyle === "satellite"
       ? "mapbox://styles/mapbox/satellite-streets-v11"
       : isDarkTheme
       ? "mapbox://styles/mapbox/dark-v10"
@@ -163,7 +149,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
   };
 
   useEffect(() => {
-    if (props.mapStyle === "satellite") {
+    if (mapStyle === "satellite") {
       setStyle("mapbox://styles/mapbox/satellite-streets-v11");
     } else {
       setStyle(
@@ -172,11 +158,11 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
           : "mapbox://styles/mapbox/light-v10"
       );
     }
-  }, [isDarkTheme, props.appTheme, props.mapStyle]);
+  }, [isDarkTheme, appTheme, mapStyle]);
 
   useEffect(() => {
-    setLabelStyle(provideLabelStyle(data, props.lines));
-  }, [data, props.lines]);
+    setLabelStyle(provideLabelStyle(data, lineFilterState));
+  }, [data, lineFilterState]);
 
   // TODO: Move this to useData
   useEffect(() => {
@@ -184,7 +170,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
       .filter((entry) => {
         return (
           entry.metadata.filterKey == null ||
-          props.lines[entry.metadata.filterKey]
+          lineFilterState[entry.metadata.filterKey]
         );
       })
       .flatMap((entry) =>
@@ -199,20 +185,20 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
               alternatives: feature.properties.alternatives,
             },
           }))
-          .filter(
-            (feature) =>
-              feature.properties.alternatives == null ||
-              feature.properties.alternatives.some((a: string) =>
-                props.alternatives[entry.metadata.filterKey]?.includes(a)
-              )
-          )
+          // .filter(
+          //   (feature) =>
+          //     feature.properties.alternatives == null ||
+          //     feature.properties.alternatives.some((a: string) =>
+          //       props.alternatives[entry.metadata.filterKey]?.includes(a)
+          //     )
+          // )
       );
 
     setFullData({
       type: "FeatureCollection",
       features: allFeatures,
     });
-  }, [data, props.lines, props.alternatives]);
+  }, [data, lineFilterState]);
 
   const clickableLayers = ["rail-station", "rail-labels", "yard-labels"];
 
@@ -265,7 +251,7 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
               }
             />
 
-            {props.show3DBuildings && (
+            {show3DBuildings && (
               <Layer
                 id="3d-buildings"
                 source="composite"
@@ -300,33 +286,10 @@ export const OverviewMapComponent = (props: OverviewMapProps) => {
                 }}
               />
             )}
-            <Lines data={fullData} showLineLabels={props.showLineLabels} />
+            <Lines data={fullData} showLineLabels={showLabels} />
           </LabelProviderContext.Provider>
         </>
       )}
     </MapGL>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  show3DBuildings: state.show3DBuildings,
-  appTheme: state.appTheme,
-  mapStyle: state.mapStyle,
-  lines: state.lines,
-  accessibleLabels: state.accessibleLabels,
-  targetZoom: state.targetZoom,
-  alternatives: state.alternatives,
-  showLineLabels: state.showLineLabels,
-  drawerOpen: state.drawerOpen,
-  legendDrawerOpen: state.legendDrawerOpen,
-});
-
-const mapDispatchToProps = {
-  setTargetZoom,
-  setZoom,
-};
-
-export const OverviewMap = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OverviewMapComponent);

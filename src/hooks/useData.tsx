@@ -35,14 +35,14 @@ const useProvideData = (): DataCache => {
 
   const [cache, setCache] = React.useState<DataCache>({
     data: {},
-    agencies: Object.values(config.agencies),
+    agencies: config.agencies,
     visible: [],
     updateBbox,
   });
 
   // Load in data
   React.useEffect(() => {
-    Object.values(config.agencies).forEach((value) => {
+    config.agencies.forEach((value) => {
       value.data.forEach((name) => {
         loadData(name)
           .then((value) =>
@@ -61,7 +61,7 @@ const useProvideData = (): DataCache => {
   React.useEffect(() => {
     const visibilityBbox = bboxPolygon(currentBbox);
 
-    const visibleAgencies = Object.values(config.agencies).filter((agency) => {
+    const visibleAgencies = config.agencies.filter((agency) => {
       const agencyBbox = bboxPolygon(agency.bbox);
       return (
         booleanOverlap(visibilityBbox, agencyBbox) ||
@@ -82,7 +82,7 @@ const useProvideData = (): DataCache => {
 
 const DataContext = React.createContext<DataCache>({
   data: {},
-  agencies: Object.values(config.agencies),
+  agencies: config.agencies,
   visible: [],
   updateBbox: () => {},
 });

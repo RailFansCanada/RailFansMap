@@ -3,7 +3,6 @@ import {
   Checkbox,
   Collapse,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemAvatar,
@@ -12,21 +11,14 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import {
-  LineState,
-  setLegendDrawerOpen,
-  setShowLine,
-  State,
-} from "../../redux";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import { MenuDrawer } from "./MenuDrawer";
 import { Agency } from "../../config";
 import { Dataset } from "../../hooks/useData";
-import { Fullscreen } from "@mui/icons-material";
 import { Chevron } from "../Chevron";
 import { BBox } from "geojson";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
+import { useAppState } from "../../hooks/useAppState";
 
 type EntryData = {
   id: string;
@@ -39,23 +31,14 @@ type EntryData = {
 };
 
 type LegendDrawerProps = {
-  open: boolean;
-  setLegendDrawerOpen: typeof setLegendDrawerOpen;
-
-  lineState: LineState;
-  setShowLine: typeof setShowLine;
-
   visible: Agency[];
   allAgencies: Agency[];
   data: Dataset;
 };
 
 type LegendGroupProps = {
-  title: string;
+  agency: Agency;
   entries: EntryData[];
-
-  lineState: LineState;
-  setShowLine: typeof setShowLine;
 };
 
 type LegendEntryProps = Omit<EntryData, "id"> & {
@@ -138,12 +121,18 @@ const LegendGroupActions = styled.div``;
 
 const LegendGroup = (props: LegendGroupProps) => {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const {
+    lineFilterState,
+    setLineFiltered,
+    legendGroupState,
+    setLegendGroupOpen,
+  } = useAppState();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const open = legendGroupState[props.agency.id] ?? false;
   const handleExpand = () => {
-    setOpen(!open);
+    setLegendGroupOpen(props.agency.id, !open);
 
     // Scroll so that the bottom of the group is in view
     if (!open) {
@@ -159,7 +148,7 @@ const LegendGroup = (props: LegendGroupProps) => {
   return (
     <LegendGroupContainer ref={containerRef}>
       <LegendGroupHeader onClick={handleExpand}>
-        <Typography variant="subtitle1">{props.title}</Typography>
+        <Typography variant="subtitle1">{props.agency.name}</Typography>
         <div>
           {/* <IconButton>
             <Fullscreen />
@@ -174,7 +163,7 @@ const LegendGroup = (props: LegendGroupProps) => {
           if (filterKey === undefined) {
             enabled = true;
           } else {
-            enabled = props.lineState[filterKey] ?? false;
+            enabled = lineFilterState[filterKey] ?? false;
           }
           return (
             <LegendEntry
@@ -182,7 +171,7 @@ const LegendGroup = (props: LegendGroupProps) => {
               {...entry}
               enabled={enabled}
               onChecked={() => {
-                props.setShowLine([filterKey, !enabled]);
+                setLineFiltered(filterKey, !enabled);
               }}
             />
           );
@@ -193,11 +182,13 @@ const LegendGroup = (props: LegendGroupProps) => {
   );
 };
 
-const LegendDrawerComponent = (props: LegendDrawerProps) => {
+export const LegendDrawer = (props: LegendDrawerProps) => {
+  const { legendDrawerOpen, setLegendDrawerOpen } = useAppState();
+
   return (
     <MenuDrawer
-      open={props.open}
-      onClose={() => props.setLegendDrawerOpen(false)}
+      open={legendDrawerOpen}
+      onClose={() => setLegendDrawerOpen(false)}
       title="Map Legend"
     >
       <List>
@@ -218,31 +209,10 @@ const LegendDrawerComponent = (props: LegendDrawerProps) => {
               filterKey: metadata.filterKey,
             }));
           return (
-            <LegendGroup
-              key={value.name}
-              title={value.name}
-              entries={entries}
-              lineState={props.lineState}
-              setShowLine={props.setShowLine}
-            />
+            <LegendGroup agency={value} key={value.id} entries={entries} />
           );
         })}
       </List>
     </MenuDrawer>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  open: state.legendDrawerOpen,
-  lineState: state.lines,
-});
-
-const mapDispatchToProps = {
-  setLegendDrawerOpen,
-  setShowLine,
-};
-
-export const LegendDrawer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LegendDrawerComponent);

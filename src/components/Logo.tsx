@@ -1,40 +1,24 @@
 import React from "react";
-import { AppTheme, State } from "../redux";
 import { useIsDarkTheme } from "../app/utils";
-import { Theme } from "@mui/material";
-
-import makeStyles from '@mui/styles/makeStyles';
-
 import logoLight from "../images/logoLight.svg";
 import logoDark from "../images/logoDark.svg";
-import { connect } from "react-redux";
+import { useAppState } from "../hooks/useAppState";
+import styled from "styled-components";
 
-interface LogoProps {
-  readonly appTheme: AppTheme;
-}
+const LogoImg = styled.img`
+  position: fixed;
+  width: 140px;
+  bottom: ${({ theme }) => theme.spacing(2)};
+  left: calc(50% - 70px);
+`;
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    position: "fixed",
-    width: 140,
-    bottom: theme.spacing(2),
-    left: "calc(50% - 70px)",
-  },
-}));
-
-const LogoComponent = (props: LogoProps) => {
-  const classes = useStyles();
-  const isDarkTheme = useIsDarkTheme(props.appTheme);
+export const Logo = () => {
+  const { appTheme } = useAppState();
+  const isDarkTheme = useIsDarkTheme(appTheme);
 
   return (
     <a href="https://www.railfans.ca">
-      <img src={isDarkTheme ? logoDark : logoLight} className={classes.root} />
+      <LogoImg src={isDarkTheme ? logoDark : logoLight} />
     </a>
   );
 };
-
-const mapStateToProps = (state: State) => ({
-  appTheme: state.appTheme,
-});
-
-export const Logo = connect(mapStateToProps)(LogoComponent);

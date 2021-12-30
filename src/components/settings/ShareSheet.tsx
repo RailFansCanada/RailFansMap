@@ -16,17 +16,10 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import { Close, ContentCopy } from "@mui/icons-material";
 import React from "react";
-import { connect } from "react-redux";
-import { setShareSheetOpen, State } from "../../redux";
-
-export interface ShareSheetProps {
-  readonly shareSheetOpen: boolean;
-  readonly setShareSheetOpen: typeof setShareSheetOpen;
-  readonly state: State;
-}
+import { useAppState } from "../../hooks/useAppState";
 
 const useStyles = makeStyles((theme) => ({
   closeButton: {
@@ -92,7 +85,14 @@ const ShareOption = (props: {
   );
 };
 
-const ShareSheetComponent = (props: ShareSheetProps) => {
+export const ShareSheet = () => {
+  const {
+    shareSheetOpen,
+    setShareSheetOpen,
+    lineFilterState,
+    appTheme,
+    mapStyle,
+  } = useAppState();
   const classes = useStyles();
   const [snackbarMessage, setSnackbarMessage] = React.useState<string | null>(
     null
@@ -102,25 +102,26 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
   const [useMap, setUseMap] = React.useState(false);
   const [useTheme, setUseTheme] = React.useState(false);
   const [useKanata, setUseKanata] = React.useState(
-    props.state.lines.kanataExtension
+    lineFilterState["kanataExtension"]
   );
   const [useBarrhaven, setUseBarrhaven] = React.useState(
-    props.state.lines.barrhavenExtension
+    lineFilterState["barrhavenExtension"]
   );
-  const [useGatineau, setUseGatineau] = React.useState(props.state.lines.gatineauLrt);
+  const [useGatineau, setUseGatineau] = React.useState(
+    lineFilterState["gatineauLrt"]
+  );
 
   React.useEffect(() => {
-    setUseKanata(props.state.lines.kanataExtension);
-    setUseBarrhaven(props.state.lines.barrhavenExtension);
-  }, [props.state.lines]);
+    setUseKanata(lineFilterState["kanataExtension"]);
+    setUseBarrhaven(lineFilterState["barrhavenExtension"]);
+  }, [lineFilterState]);
 
   const prefersDarkScheme = useMediaQuery("(prefers-color-scheme: dark)");
   const isDarkMode =
-    (props.state.appTheme === "system" && prefersDarkScheme) ||
-    props.state.appTheme === "dark";
+    (appTheme === "system" && prefersDarkScheme) || appTheme === "dark";
 
   const handleClose = () => {
-    props.setShareSheetOpen(false);
+    setShareSheetOpen(false);
   };
 
   const getShareUrl = () => {
@@ -133,7 +134,7 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
     }
 
     if (useMap) {
-      url.searchParams.append("map", props.state.mapStyle);
+      url.searchParams.append("map", mapStyle);
     }
 
     if (useTheme) {
@@ -147,7 +148,7 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
     if (useBarrhaven) {
       url.searchParams.append("barrhaven", "true");
     }
-    
+
     if (useGatineau) {
       url.searchParams.append("gatineau", "true");
     }
@@ -177,58 +178,63 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
     }
   };
 
-  return <>
-    <Dialog
-      fullWidth
-      maxWidth="sm"
-      onClose={handleClose}
-      open={props.shareSheetOpen ?? false}
-    >
-      <DialogTitle>
-        <Typography variant="h6">Share Map</Typography>
-        <IconButton className={classes.closeButton} onClick={handleClose} size="large">
-          <Close />
-        </IconButton>
-      </DialogTitle>
-      <DialogContent className={classes.dialogContent}>
-        <Button
-          className={classes.shareButton}
-          onClick={handleShare}
-          endIcon={<ContentCopy />}
-        >
-          <span className={classes.buttonText}>{getShareUrl()}</span>
-        </Button>
-        <ShareOption
-          primary="Current Location"
-          secondary="Share the map at the current location"
-          checked={useLocation}
-          onCheck={(checked) => setUseLocation(checked)}
-        />
-        <ShareOption
-          primary="Current Map"
-          secondary={`Share the map using the ${props.state.mapStyle} base map`}
-          checked={useMap}
-          onCheck={(checked) => setUseMap(checked)}
-        />
-        <ShareOption
-          primary="Show Kanata Extension"
-          secondary="Show the Stage 3 Kanata extension on the shared map"
-          checked={useKanata}
-          onCheck={(checked) => setUseKanata(checked)}
-        />
-        <ShareOption
-          primary="Show Barrhaven Extension"
-          secondary="Show the Stage 3 Barrhaven extension on the shared map"
-          checked={useBarrhaven}
-          onCheck={(checked) => setUseBarrhaven(checked)}
-        />
-        <ShareOption
-          primary="Show Gatineau Tramway"
-          secondary="Show the proposed Gatineau Tramway on the shared map"
-          checked={useGatineau}
-          onCheck={(checked) => setUseGatineau(checked)}
-        />
-        {/* <ShareOption
+  return (
+    <>
+      <Dialog
+        fullWidth
+        maxWidth="sm"
+        onClose={handleClose}
+        open={shareSheetOpen}
+      >
+        <DialogTitle>
+          <Typography variant="h6">Share Map</Typography>
+          <IconButton
+            className={classes.closeButton}
+            onClick={handleClose}
+            size="large"
+          >
+            <Close />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent className={classes.dialogContent}>
+          <Button
+            className={classes.shareButton}
+            onClick={handleShare}
+            endIcon={<ContentCopy />}
+          >
+            <span className={classes.buttonText}>{getShareUrl()}</span>
+          </Button>
+          <ShareOption
+            primary="Current Location"
+            secondary="Share the map at the current location"
+            checked={useLocation}
+            onCheck={(checked) => setUseLocation(checked)}
+          />
+          <ShareOption
+            primary="Current Map"
+            secondary={`Share the map using the ${mapStyle} base map`}
+            checked={useMap}
+            onCheck={(checked) => setUseMap(checked)}
+          />
+          <ShareOption
+            primary="Show Kanata Extension"
+            secondary="Show the Stage 3 Kanata extension on the shared map"
+            checked={useKanata}
+            onCheck={(checked) => setUseKanata(checked)}
+          />
+          <ShareOption
+            primary="Show Barrhaven Extension"
+            secondary="Show the Stage 3 Barrhaven extension on the shared map"
+            checked={useBarrhaven}
+            onCheck={(checked) => setUseBarrhaven(checked)}
+          />
+          <ShareOption
+            primary="Show Gatineau Tramway"
+            secondary="Show the proposed Gatineau Tramway on the shared map"
+            checked={useGatineau}
+            onCheck={(checked) => setUseGatineau(checked)}
+          />
+          {/* <ShareOption
           primary="Current Theme"
           secondary={`Share the map with the ${
             isDarkMode ? "dark" : "light"
@@ -236,28 +242,15 @@ const ShareSheetComponent = (props: ShareSheetProps) => {
           checked={useTheme}
           onCheck={() => setUseTheme(!useTheme)}
         /> */}
-      </DialogContent>
-    </Dialog>
-    <Snackbar
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      open={snackbarMessage != null}
-      onClose={() => setSnackbarMessage(null)}
-      message={snackbarMessage}
-      autoHideDuration={2400}
-    />
-  </>;
+        </DialogContent>
+      </Dialog>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        open={snackbarMessage != null}
+        onClose={() => setSnackbarMessage(null)}
+        message={snackbarMessage}
+        autoHideDuration={2400}
+      />
+    </>
+  );
 };
-
-const mapStateToProps = (state: State) => ({
-  shareSheetOpen: state.shareSheetOpen,
-  state,
-});
-
-const mapDispatchToProps = {
-  setShareSheetOpen,
-};
-
-export const ShareSheet = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShareSheetComponent);
