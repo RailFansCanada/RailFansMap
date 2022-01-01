@@ -10,7 +10,7 @@
       "OpenStreetMap"
     ],
     "name": "Line 5",
-    "description": "Eglinton Crosstown",
+    "description": "Eglinton Crosstown (Opening 2023)",
     "sources": [
       "OpenStreetMap"
     ]
@@ -97,7 +97,7 @@
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Forest Hill" }, "geometry": { "type": "Point", "coordinates": [-79.42544594844654, 43.70106784024601] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Chaplin" }, "geometry": { "type": "Point", "coordinates": [-79.41665119112973, 43.70294621725617] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Avenue" }, "geometry": { "type": "Point", "coordinates": [-79.40835210011737, 43.70471701465773] } },
-    { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/5"], "type": "station-label", "name": "Eglinton", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.39854808174923, 43.70674482664515] } },
+    { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/5"], "type": "station-label", "name": "Eglinton", "major": true }, "geometry": { "type": "Point", "coordinates": [ -79.398548081749226, 43.706744826645149 ] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Mount Pleasant" }, "geometry": { "type": "Point", "coordinates": [-79.38997034621956, 43.70849853375377] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Leaside" }, "geometry": { "type": "Point", "coordinates": [-79.37694311890468, 43.71115603290268] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Laird" }, "geometry": { "type": "Point", "coordinates": [-79.36481607476688, 43.71359268876343] } },

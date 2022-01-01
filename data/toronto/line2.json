@@ -8,7 +8,7 @@
     "id": "toronto/2",
     "icon": "toronto/line2.svg",
     "name": "Line 2",
-    "description": "Kipling — Kennedy",
+    "description": "Bloor - Danforth",
     "sources": [
       "OpenStreetMap"
     ]
