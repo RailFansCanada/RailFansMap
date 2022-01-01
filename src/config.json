@@ -32,17 +32,20 @@
     {
       "id": "ttc",
       "name": "TTC",
-      "bbox": [-79.5376857, 43.6356882, -79.2512528, 43.7958192],
+      "bbox": [-79.6028192,43.6356882,-79.2449002,43.7958192],
       "data": [
         "toronto/davisvilleYard.json",
         "toronto/wilsonYard.json",
         "toronto/greenwoodYard.json",
+        "toronto/mccowanYard.json",
         "toronto/eglintonMSF.json",
+        "toronto/finchMSF.json",
         "toronto/line1.json",
         "toronto/line2.json",
         "toronto/line3.json",
         "toronto/line4.json",
-        "toronto/line5.json"
+        "toronto/line5.json",
+        "toronto/line6.json"
       ]
     },
     {
