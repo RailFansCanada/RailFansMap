@@ -10,7 +10,8 @@
     "description": "",
     "sources": [
       "Ontario Ministry of Natural Resources and Forestry"
-    ]
+    ],
+    "filterKey": "go"
   },
   "features": [
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.60528709999988, 43.705518], [-79.6048117, 43.7055491], [-79.6041939999999, 43.7055789]] } },
