@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IconButton,
   Paper,
@@ -21,6 +21,7 @@ import styled from "styled-components";
 import { config, Region } from "../../config";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
+import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
 
 const ControlsContainer = styled.div`
   position: fixed;
@@ -76,8 +77,13 @@ const QuickNavigationMenu = (props: QuickNavProps) => {
 
 export const Controls = () => {
   const [anchorEl, setAnchorEl] = useState<Element>(null);
+  const rippleTimeoutRef = React.useRef<number>(null);
 
   const handleQuickNavOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    localStorage["quickNav"] = true;
+    if (rippleTimeoutRef.current) {
+      clearTimeout(rippleTimeoutRef.current)
+    }
     setAnchorEl(e.currentTarget);
   };
 
@@ -88,12 +94,47 @@ export const Controls = () => {
   const { setLegendDrawerOpen, setSettingsDrawerOpen, setShareSheetOpen } =
     useAppState();
 
+  const rippleRef = React.useRef(null);
+  const buttonRef = React.useRef(null);
+
+  const triggerRipple = () => {
+    const container = buttonRef.current;
+    const rect = container.getBoundingClientRect();
+
+    rippleRef.current.start(
+      {
+        clientX: rect.left + rect.width / 2,
+        clientY: rect.top + rect.height / 2,
+      },
+      { center: false }
+    );
+
+    setTimeout(() => rippleRef.current.stop({}), 320);
+  };
+
+  useEffect(() => {
+    if (!localStorage["quickNav"]) {
+      const repeatRipple = () => {
+        triggerRipple();
+        if (!localStorage["quickNav"]) {
+          rippleTimeoutRef.current = setTimeout(repeatRipple, 2000);
+        }
+      };
+      repeatRipple();
+    }
+  }, []);
+
   return (
     <>
       <ControlsContainer>
         <ControlPaper>
           <Tooltip title="Quick Navigation">
-            <IconButton onClick={handleQuickNavOpen} size="large">
+            <IconButton
+              ref={buttonRef}
+              onClick={handleQuickNavOpen}
+              size="large"
+            >
+              <TouchRipple ref={rippleRef} center />
               <NearMe />
             </IconButton>
           </Tooltip>

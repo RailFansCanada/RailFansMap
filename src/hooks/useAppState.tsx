@@ -18,6 +18,8 @@ export type LegendGroupState = {
   [key: string]: boolean;
 };
 
+export type ViewportSettings = [lng: number, lat: number, zoom: number, bearing: number];
+
 type AppState = {
   settingsDrawerOpen: boolean;
   legendDrawerOpen: boolean;
@@ -30,6 +32,8 @@ type AppState = {
 
   lineFilterState: LineFilterState;
   legendGroupState: LegendGroupState;
+
+  lastLocation: ViewportSettings | null;
 };
 
 type AppStateActions = {
@@ -44,6 +48,8 @@ type AppStateActions = {
 
   setLineFiltered: (filterKey: string, show: boolean) => void;
   setLegendGroupOpen: (key: string, open: boolean) => void;
+
+  setLastLocation: (location: ViewportSettings) => void;
 };
 
 type UseAppState = AppState & AppStateActions;
@@ -105,6 +111,7 @@ const useProvideAppContext = (): UseAppState => {
   const [showLabels, setShowLabels] = useState(true);
   const [appTheme, setAppTheme] = useState<AppTheme>("system");
   const [mapStyle, setMapStyle] = useState<MapStyle>("vector");
+  const [lastLocation, setLastLocation] = useState<ViewportSettings>(null);
 
   const [lineFilterState, setLineFilterState] = useState<LineFilterState>({});
   const [legendGroupState, setLegendGroupState] = useState<LegendGroupState>(
@@ -128,6 +135,7 @@ const useProvideAppContext = (): UseAppState => {
     setMapStyle(merged.mapStyle ?? "vector");
     setLineFilterState(merged.lineFilterState ?? {});
     setLegendGroupState(merged.legendGroupState ?? {});
+    setLastLocation(merged.lastLocation)
   }, []);
 
   const setLineFiltered = (filterKey: string, show: boolean) => {
@@ -165,6 +173,9 @@ const useProvideAppContext = (): UseAppState => {
 
     legendGroupState,
     setLegendGroupOpen,
+
+    lastLocation,
+    setLastLocation
   };
 
   // Write settings to localstorage on every update
