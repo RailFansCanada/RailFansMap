@@ -112,7 +112,8 @@
         "properties": {
           "type": "object",
           "properties": {
-            "type": { "const": "alignment" }
+            "type": { "const": "alignment" },
+            "layer": { "type": "number" }
           },
           "required": ["type"]
         },
@@ -129,7 +130,8 @@
         "properties": {
           "type": "object",
           "properties": {
-            "type": { "const": "tracks" }
+            "type": { "const": "tracks" },
+            "layer": { "type": "number" }
           },
           "required": ["type"]
         },
@@ -146,7 +148,8 @@
         "properties": {
           "type": "object",
           "properties": {
-            "type": { "const": "tracks-future" }
+            "type": { "const": "tracks-future" },
+            "layer": { "type": "number" }
           },
           "required": ["type"]
         },
@@ -163,7 +166,8 @@
         "properties": {
           "type": "object",
           "properties": {
-            "type": { "const": "overpass" }
+            "type": { "const": "overpass" },
+            "layer": { "type": "number" }
           },
           "required": ["type"]
         },
@@ -181,7 +185,8 @@
           "type": "object",
           "properties": {
             "type": { "const": "station-platforms" },
-            "name": { "type": "string" }
+            "name": { "type": "string" },
+            "layer": { "type": "number" }
           },
           "required": ["type", "name"]
         },
@@ -202,7 +207,8 @@
           "type": "object",
           "properties": {
             "type": { "const": "station-platforms-future" },
-            "name": { "type": "string" }
+            "name": { "type": "string" },
+            "layer": { "type": "number" }
           },
           "required": ["type", "name"]
         },

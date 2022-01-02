@@ -1,0 +1,25 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+      "type": "rail-yard",
+      "id": "toronto/keele",
+      "name": "Keele Yard",
+      "description": "Storage yard for Line 2",
+      "sources": [
+        "OpenStreetMap"
+      ]
+    },
+    "bbox": [-79.4575713,43.6559874,-79.4527193,43.6569425],
+    "features": [
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4569632, 43.6560538 ], [ -79.4568261, 43.6560734 ], [ -79.4566944, 43.6560992 ], [ -79.4565956, 43.6561228 ], [ -79.4564743, 43.6561671 ], [ -79.4563997, 43.6561936 ], [ -79.4563126, 43.656219 ], [ -79.4546475, 43.6565593 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4575713, 43.6559874 ], [ -79.4574086, 43.6560118 ], [ -79.4572901, 43.6560263 ], [ -79.4569632, 43.6560538 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4546198, 43.6564818 ], [ -79.4527328, 43.6568635 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4546023, 43.6564463 ], [ -79.4527193, 43.6568289 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4546023, 43.6564463 ], [ -79.4562058, 43.6561168 ], [ -79.456325, 43.6561016 ], [ -79.4565565, 43.6560859 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4546323, 43.6565237 ], [ -79.4527494, 43.6569062 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4565956, 43.6561228 ], [ -79.4562655, 43.6561904 ], [ -79.4546323, 43.6565237 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4546475, 43.6565593 ], [ -79.4527573, 43.6569425 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4569632, 43.6560538 ], [ -79.4566885, 43.6560747 ], [ -79.4565565, 43.6560859 ], [ -79.4546198, 43.6564818 ] ] } },
+        { "type": "Feature", "properties": { "type": "yard-label", "name": "Keele Yard" }, "geometry": { "type": "Point", "coordinates": [-79.4556375,43.6562976] } }
+    ]
+  }

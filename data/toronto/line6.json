@@ -12,6 +12,7 @@
     "name": "Line 6",
     "description": "Finch West LRT (Opening 2023)",
     "sources": [
+      "Metrolinx",
       "OpenStreetMap"
     ]
   },
