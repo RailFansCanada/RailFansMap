@@ -29,6 +29,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         layout={{
           "line-join": "round",
           "line-cap": "round",
+          "line-sort-key": ["get", "layer"],
         }}
         paint={{
           "line-color": "#818181",
@@ -42,6 +43,9 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         type="fill"
         filter={["all", ["==", ["get", "type"], "tunnel"]]}
         minzoom={14}
+        layout={{
+          "fill-sort-key": ["get", "layer"],
+        }}
         paint={{
           "fill-color": "#212121",
           "fill-opacity": ["interpolate", ["linear"], ["zoom"], 14, 0, 15, 0.3],
@@ -55,6 +59,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         layout={{
           "line-join": "round",
           "line-cap": "round",
+          "line-sort-key": ["get", "layer"],
         }}
         paint={{
           "line-color": ["get", "color"],
@@ -91,6 +96,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         layout={{
           "line-join": "round",
           "line-cap": "round",
+          "line-sort-key": ["get", "layer"],
         }}
         paint={{
           "line-color": ["get", "color"],
@@ -106,6 +112,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         layout={{
           "line-join": "round",
           "line-cap": "round",
+          "line-sort-key": ["get", "layer"],
         }}
         paint={{
           "line-color": ["get", "color"],
@@ -122,6 +129,7 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         layout={{
           "line-join": "round",
           "line-cap": "butt",
+          "line-sort-key": ["get", "layer"],
         }}
         paint={{
           "line-color": ["get", "color"],
@@ -143,6 +151,9 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         source="raildata"
         type="fill"
         filter={["==", ["get", "type"], "station-platforms"]}
+        layout={{
+          "fill-sort-key": ["get", "layer"],
+        }}
         paint={{
           "fill-color": ["get", "color"],
           "fill-opacity": 0.68,
@@ -153,6 +164,9 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         source="raildata"
         type="line"
         filter={["==", ["get", "type"], "station-platforms-future"]}
+        layout={{
+          "line-sort-key": ["get", "layer"],
+        }}
         paint={{
           "line-color": ["get", "color"],
           "line-dasharray": [3, 3],
@@ -180,6 +194,30 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
           ],
         }}
       />
+      {showLineLabels && (
+        <Layer
+          id={`yard-labels`}
+          source="raildata"
+          type="symbol"
+          filter={["==", "type", "yard-label"]}
+          minzoom={11}
+          layout={
+            {
+              "text-field": ["get", "name"],
+              "text-anchor": "center",
+              "text-optional": true,
+              "text-font": ["Raleway Bold"],
+              "text-size": 16,
+              "icon-image": "label-background",
+              "icon-text-fit": "both",
+              "icon-text-fit-padding": [1, 4, 0, 4],
+            } as AnyLayout
+          }
+          paint={{
+            "text-color": "#FFFFFF",
+          }}
+        />
+      )}
       {showLineLabels && (
         <Layer
           id={`rail-labels`}
@@ -221,30 +259,6 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
               "text-field": labelStyle,
               "text-anchor": "left",
               "text-offset": [0.75, 0],
-              "text-font": ["Raleway Bold"],
-              "text-size": 16,
-              "icon-image": "label-background",
-              "icon-text-fit": "both",
-              "icon-text-fit-padding": [1, 4, 0, 4],
-            } as AnyLayout
-          }
-          paint={{
-            "text-color": "#FFFFFF",
-          }}
-        />
-      )}
-      {showLineLabels && (
-        <Layer
-          id={`yard-labels`}
-          source="raildata"
-          type="symbol"
-          filter={["==", "type", "yard-label"]}
-          minzoom={11}
-          layout={
-            {
-              "text-field": ["get", "name"],
-              "text-anchor": "center",
-              "text-optional": true,
               "text-font": ["Raleway Bold"],
               "text-size": 16,
               "icon-image": "label-background",
