@@ -3,6 +3,7 @@ import MapGL, {
   Viewport,
   Layer,
   NavigationControl,
+  Source,
 } from "@urbica/react-map-gl";
 import {
   Map as MapboxMap,
@@ -19,9 +20,14 @@ import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
 import { BBox, FeatureCollection } from "geojson";
-import { useMapTarget } from "../hooks/useMapTarget";
-import { LineFilterState, useAppState } from "../hooks/useAppState";
+import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
+import {
+  LineFilterState,
+  useAppState,
+  ViewportSettings,
+} from "../hooks/useAppState";
 import { useTheme } from "@mui/styles";
+import { config } from "../config";
 
 const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
   "format",
@@ -56,6 +62,22 @@ export type OverviewMapProps = {
   updateBbox(bbox: BBox): void;
 };
 
+const regionFeatures = config.regions.map((region) => ({
+  type: "Feature",
+  bbox: region.bbox,
+  geometry: {
+    type: "Point",
+    coordinates: region.location,
+  },
+  properties: {
+    type: "region-label",
+    id: region.id,
+    name: region.title,
+    target: region.bbox,
+  },
+}));
+const regionData = { type: "FeatureCollection", features: regionFeatures };
+
 export const OverviewMap = (props: OverviewMapProps) => {
   const theme = useTheme();
   const windowSize = useWindow();
@@ -67,7 +89,13 @@ export const OverviewMap = (props: OverviewMapProps) => {
     show3DBuildings,
     showLabels,
     lineFilterState,
+    setLastLocation,
   } = useAppState();
+
+  // Used to restore last location if no location hash is provided
+  const lastLocation: ViewportSettings = JSON.parse(
+    localStorage["settings"]
+  ).lastLocation;
 
   const data = props.data;
   const mapRef = useRef<MapGL>();
@@ -75,11 +103,20 @@ export const OverviewMap = (props: OverviewMapProps) => {
   // TODO: Fix?
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
-  const [viewport, setViewport] = useState<Viewport>({
-    longitude: -77.653,
-    latitude: 44.655,
-    zoom: 7,
-  });
+  const [viewport, setViewport] = useState<Viewport>(
+    lastLocation
+      ? {
+          longitude: lastLocation[0],
+          latitude: lastLocation[1],
+          zoom: lastLocation[2],
+          bearing: lastLocation[3],
+        }
+      : {
+          longitude: -79.3934,
+          latitude: 43.7169,
+          zoom: 11.25,
+        }
+  );
 
   const { target: mapTarget, setTarget: setMapTarget } = useMapTarget();
   useEffect(() => {
@@ -95,6 +132,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
   const handleViewportChange = (v: Viewport) => {
     setViewport(v);
     setMapTarget(undefined);
+    setLastLocation([v.longitude, v.latitude, v.zoom, v.bearing ?? 0]);
 
     if (mapRef.current != null) {
       const map: MapboxMap = mapRef.current.getMap();
@@ -132,21 +170,32 @@ export const OverviewMap = (props: OverviewMapProps) => {
   const [labelStyle, setLabelStyle] = useState<{}[]>([]);
 
   const handleClick = (event: any) => {
-    event.features?.forEach((feature: MapboxGeoJSONFeature) => {
-      if (feature.properties.url != null && feature.properties.url !== "null") {
-        window.parent.location.href = `${BASE_URL}/${feature.properties.url}`;
+    if (event.features == null) return;
+
+    for (let feature of event.features) {
+      if (feature.properties.type === "station-label") {
+        if (
+          feature.properties.url != null &&
+          feature.properties.url !== "null"
+        ) {
+          window.parent.location.href = `${BASE_URL}/${feature.properties.url}`;
+        }
+        break;
+      } else if (feature.properties.type === "region-label") {
+        setMapTarget(JSON.parse(feature.properties.target) as SimpleBBox);
+        break;
       }
-    });
+    }
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: any) => {
     const canvas = mapRef.current?.getMap()?.getCanvas();
     if (canvas == null) return;
 
     canvas.style.cursor = "pointer";
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (e: any) => {
     const canvas = mapRef.current?.getMap()?.getCanvas();
     if (canvas == null) return;
 
@@ -205,7 +254,12 @@ export const OverviewMap = (props: OverviewMapProps) => {
     });
   }, [data, lineFilterState]);
 
-  const clickableLayers = ["rail-station", "rail-labels", "yard-labels"];
+  const clickableLayers = [
+    "rail-station",
+    "rail-labels",
+    "yard-labels",
+    "regions-labels",
+  ];
 
   return (
     <MapGL
@@ -225,6 +279,11 @@ export const OverviewMap = (props: OverviewMapProps) => {
     >
       {mapLoaded && (
         <>
+          <Source
+            id="regions"
+            type="geojson"
+            data={regionData as FeatureCollection}
+          />
           <NavigationControl showCompass showZoom position="bottom-right" />
           <LabelProviderContext.Provider value={{ labelStyle }}>
             {Object.values(data)
@@ -293,6 +352,21 @@ export const OverviewMap = (props: OverviewMapProps) => {
             )}
             <Lines data={fullData} showLineLabels={showLabels} />
           </LabelProviderContext.Provider>
+          <Layer
+            id="regions-labels"
+            source="regions"
+            type="symbol"
+            layout={{
+              "text-field": ["get", "name"],
+              "text-size": 20,
+            }}
+            paint={{
+              "text-color": isDarkTheme ? "#FFFFFF" : "#121212",
+              "text-halo-color": isDarkTheme ? "#121212" : "#FFFFFF",
+              "text-halo-width": 2,
+            }}
+            maxzoom={9}
+          />
         </>
       )}
     </MapGL>
