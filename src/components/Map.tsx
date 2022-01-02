@@ -93,9 +93,10 @@ export const OverviewMap = (props: OverviewMapProps) => {
   } = useAppState();
 
   // Used to restore last location if no location hash is provided
-  const lastLocation: ViewportSettings = JSON.parse(
-    localStorage["settings"]
-  ).lastLocation;
+  const lastLocation: ViewportSettings =
+    localStorage["settings"] != null
+      ? JSON.parse(localStorage["settings"]).lastLocation
+      : null;
 
   const data = props.data;
   const mapRef = useRef<MapGL>();
