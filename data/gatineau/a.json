@@ -6,8 +6,8 @@
     "color": "#33A948",
     "offset": 0.5,
     "icon": "gatineau/lineA.svg",
-    "name": "Gatineau Tramway",
-    "description": "The proposed corridor for the Gatineau Tramway to Aylmer",
+    "name": "Gatineau Tramway to Aylmer",
+    "description": "Proposed corridor for the Gatineau Tramway",
     "sources": [
       "STO"
     ],

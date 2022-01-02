@@ -8,8 +8,8 @@
     "filterKey": "kanataExtension",
     "icon": "ottawa/line3.svg",
     "offset": -0.5,
-    "name": "Line 3 Kanata Extension",
-    "description": "The proposed extension of the Line 3 into Kanata",
+    "name": "Line 3 - Kanata Extension",
+    "description": "Proposed extension to Kanata",
     "sources": [
       "City of Ottawa"
     ]
