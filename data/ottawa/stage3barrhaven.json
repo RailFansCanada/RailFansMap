@@ -8,8 +8,8 @@
     "filterKey": "barrhavenExtension",
     "icon": "ottawa/line1.svg",
     "offset": 0.5,
-    "name": "Line 1 Barrhaven Extension",
-    "description": "The proposed extension of the Line 1 into Barrhaven",
+    "name": "Line 1 - Barrhaven Extension",
+    "description": "Proposed extension to Barrhaven",
     "sources": [
       "City of Ottawa"
     ]

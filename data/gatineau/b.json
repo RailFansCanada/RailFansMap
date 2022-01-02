@@ -6,8 +6,8 @@
     "color": "#007E88",
     "offset": -0.5,
     "icon": "gatineau/lineB.svg",
-    "name": "Gatineau Tramway",
-    "description": "The proposed corridor for the Gatineau Tramway to the Plateau",
+    "name": "Gatineau Tramway to the Plateau",
+    "description": "Proposed corridor for the Gatineau Tramway",
     "sources": [
       "STO"
     ],
