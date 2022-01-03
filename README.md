@@ -1,10 +1,7 @@
-This project requires `yarn` to run. It uses yarn 2's zero-installs feature.
+# Rail Map
 
-To run the app:
+To see the map in action, check out https://map.railfans.ca!
 
-1. Create a `local.env` file and add the following to it:
-```
-MAPBOX_KEY=<your mapbox key here>
-```
+## Contributing
 
-2. Run `yarn start`
+Interested in contributing? [Read more](/CONTRIBUTING.md).
