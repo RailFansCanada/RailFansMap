@@ -101,7 +101,7 @@
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Mount Pleasant" }, "geometry": { "type": "Point", "coordinates": [-79.38997034621956, 43.70849853375377] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Leaside" }, "geometry": { "type": "Point", "coordinates": [-79.37694311890468, 43.71115603290268] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Laird" }, "geometry": { "type": "Point", "coordinates": [-79.36481607476688, 43.71359268876343] } },
-    { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Sunybrook Park" }, "geometry": { "type": "Point", "coordinates": [-79.34900358812493, 43.71733820728052] } },
+    { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Sunnybrook Park" }, "geometry": { "type": "Point", "coordinates": [-79.34900358812493, 43.71733820728052] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Science Centre" }, "geometry": { "type": "Point", "coordinates": [-79.33948099734758, 43.72032364869575] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Aga Khan Park & Museum" }, "geometry": { "type": "Point", "coordinates": [-79.33271141542667, 43.72240582869692] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Wynford" }, "geometry": { "type": "Point", "coordinates": [-79.32666323717869, 43.72407196572125] } },
