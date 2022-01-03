@@ -65,6 +65,41 @@
         "toronto/ontarioLine.json",
         "toronto/ynse.json"
       ]
+    },
+    {
+      "id": "go",
+      "name": "GO",
+      "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
+      "data": [
+        "go/br.json",
+        "go/ki.json",
+        "go/le.json",
+        "go/lw.json",
+        "go/mi.json",
+        "go/rh.json",
+        "go/st.json",
+        "go/up.json"
+      ]
+    },
+    {
+      "id": "stm",
+      "name": "STM",
+      "bbox": [-73.7215378, 45.4462383, -73.5219729, 45.5971494],
+      "data": [
+        "montreal/green.json",
+        "montreal/orange.json",
+        "montreal/blue.json",
+        "montreal/yellow.json"
+      ]
+    },
+    {
+      "id": "rem",
+      "name": "REM",
+      "bbox": [-73.9144974,45.4305912,-73.425561,45.67481794612502],
+      "data": [
+        "montreal/rem.json",
+        "montreal/remEst.json"
+      ]
     }
   ],
   "regions": [
@@ -91,6 +126,13 @@
       "agencies": ["ttc"],
       "location": [-79.383849, 43.653482],
       "bbox": [-79.60331150195182, 43.63443706290249, -79.2443698561092, 43.795826398803186]
+    },
+    {
+      "id": "montreal",
+      "title": "Montréal",
+      "agencies": ["rem", "stm"],
+      "location": [-73.59991, 45.49535],
+      "bbox": [-73.7215378, 45.4462383, -73.5219729, 45.5971494]
     }
   ]
 }
