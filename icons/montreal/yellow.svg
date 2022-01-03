@@ -56,7 +56,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -70,7 +70,7 @@
        transform="translate(18.294048,32.142151)"
        style="stroke-width:1.05833;stroke-miterlimit:4;stroke-dasharray:none">
       <circle
-         style="fill:#ffdc01;fill-opacity:1;stroke:#ffffff;stroke-width:1.05833333;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
+         style="fill:#ffdc01;fill-opacity:1;stroke:#ffdc01;stroke-width:1.05833333;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers;stroke-opacity:1"
          id="path3313-5"
          cx="11.188095"
          cy="4.8995161"
