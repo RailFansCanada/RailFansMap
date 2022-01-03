@@ -15,6 +15,14 @@ If you do not have a GitHub account, errors and bugs can also be reported to `ma
 
 Compiling the map requires Node.js installed. Dependencies are managed with yarn.
 
+The map is built with mapbox-gl-js, which requires an access token to use.
+You can obtain one for free from [Mapbox](mapbox.com).
+Once you have your access token, create a `local.env` file with the following content:
+```env
+MAPBOX_KEY={your access token here}
+BASE_URL=https://www.railfans.ca
+```
+
 Build and run the app locally:
 ```bash
 $ yarn dev
