@@ -3,8 +3,11 @@
     {
       "id": "grt",
       "name": "GRT",
-      "bbox": [-80.54520517587662, 43.4221650454896, -80.44124409556389, 43.50163426403371],
-      "data": ["waterloo/ion.json"]
+      "bbox": [ -80.545261, 43.419397, -80.44124409556389, 43.501633 ],
+      "data": [
+        "waterloo/ion.json",
+        "waterloo/ionOMSF.json"
+      ]
     },
     {
       "id": "oc-transpo",

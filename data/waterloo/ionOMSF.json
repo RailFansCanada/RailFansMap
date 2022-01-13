@@ -1,0 +1,18 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+       "id": "waterloo/ionOMSF", 
+       "type": "rail-yard",  
+       "name": "ION OMSF", 
+       "description": "Operations, Maintenance and Storage Facility for the ION Light Rail", 
+       "sources": [ "OpenStreetMap" ] 
+    },
+    "bbox": [],                                              
+    "features": [
+      { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -80.511448, 43.457126 ], [ -80.510588, 43.456839 ], [ -80.509887, 43.456611 ], [ -80.509776, 43.456577 ], [ -80.509689, 43.456541 ], [ -80.5081, 43.456021 ], [ -80.505228, 43.455099 ], [ -80.503149, 43.454461 ], [ -80.502891, 43.454381 ], [ -80.502768, 43.454343 ], [ -80.502517, 43.454266 ], [ -80.502255, 43.454181 ], [ -80.502107, 43.454133 ], [ -80.501477, 43.453931 ], [ -80.501285, 43.453877 ], [ -80.501243, 43.453869 ] ] } },
+      { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -80.526457, 43.464583 ], [ -80.526027, 43.464438 ] ] } },
+      
+      { "type": "Feature", "properties": { "type": "yard-label", "name": "Ion OMSF" }, "geometry": { "type": "Point", "coordinates": [ -80.540573000907898, 43.495020480732435 ] } }
+    ]
+  }
+  
