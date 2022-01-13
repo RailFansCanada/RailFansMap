@@ -192,6 +192,33 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
             13.5,
             6,
           ],
+          "circle-pitch-alignment": "map",
+        }}
+      />
+      <Layer
+        id="rail-connector-labels-bg"
+        source="raildata"
+        type="line"
+        filter={["==", ["get", "type"], "station-connector-label"]}
+        layout={{
+          "line-cap": "round",
+        }}
+        paint={{
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 8, 13.5, 16],
+          "line-color": "#212121",
+        }}
+      />
+      <Layer
+        id="rail-connector-labels"
+        source="raildata"
+        type="line"
+        filter={["==", ["get", "type"], "station-connector-label"]}
+        layout={{
+          "line-cap": "round",
+        }}
+        paint={{
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 4, 13.5, 12],
+          "line-color": "#FFFFFF",
         }}
       />
       {showLineLabels && (

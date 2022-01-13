@@ -137,7 +137,12 @@
     { "type": "Feature", "properties": { "type": "station-platforms", "name": "Fairbank" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.44951705273536, 43.695961813122], [-79.44948733119327, 43.69588887107869], [-79.45067477692002, 43.6956341467024], [-79.45070449979363, 43.69570708845955], [-79.44951705273536, 43.695961813122]]]] } },
     { "type": "Feature", "properties": { "type": "station-platforms", "name": "Caledonia" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.46656892733893, 43.69210248121708], [-79.46653728659548, 43.692024814639346], [-79.46534781249345, 43.6922799450655], [-79.46537945181704, 43.69235761194858], [-79.46656892733893, 43.69210248121708]]]] } },
     { "type": "Feature", "properties": { "type": "station-platforms", "name": "Keelesdale" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.47465277626887, 43.69025751042584], [-79.47462032996191, 43.69018293912446], [-79.47580326224234, 43.68991192035245], [-79.475835709888, 43.68998649134072], [-79.47465277626887, 43.69025751042584]]]] } },
-    { "type": "Feature", "properties": { "type": "station-platforms", "name": "Mount Dennis" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.48633600846858, 43.68795927412811], [-79.4863019326855, 43.6878764798792], [-79.48748744825212, 43.687619539161375], [-79.48752152554047, 43.68770233308195], [-79.48633600846858, 43.68795927412811]]]] } }
+    { "type": "Feature", "properties": { "type": "station-platforms", "name": "Mount Dennis" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.48633600846858, 43.68795927412811], [-79.4863019326855, 43.6878764798792], [-79.48748744825212, 43.687619539161375], [-79.48752152554047, 43.68770233308195], [-79.48633600846858, 43.68795927412811]]]] } },
+    
+    
+    { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/5"], "type": "station-connector-label", "name": "Cedarvale", "major": true }, "geometry": { "type": "LineString", "coordinates": [[-79.435926412289, 43.69883639986705], [ -79.436137353642692, 43.69933379121975 ]] } },
+    { "type": "Feature", "properties": { "lines": ["toronto/2", "toronto/3", "toronto/5"], "type": "station-connector-label", "name": "Kennedy", "major": true }, "geometry": { "type": "LineString", "coordinates": [[-79.26486512883682, 43.732791913150734], [ -79.263803526638711, 43.732466095918937 ]] } }
+
   ],
   "bbox": [
     -79.4880309,
