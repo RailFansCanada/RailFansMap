@@ -27,8 +27,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="7.9195959"
-     inkscape:cx="-12.81631"
-     inkscape:cy="2.2728432"
+     inkscape:cx="8.9019694"
+     inkscape:cy="15.59423"
      inkscape:document-units="mm"
      inkscape:current-layer="g4534"
      inkscape:document-rotation="0"
@@ -39,11 +39,11 @@
      fit-margin-left="2"
      fit-margin-right="2"
      fit-margin-bottom="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="942"
+     inkscape:window-width="1312"
+     inkscape:window-height="1027"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:pagecheckerboard="true"
      inkscape:snap-bbox="true"
      inkscape:snap-bbox-midpoints="true" />
@@ -77,14 +77,14 @@
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.05833;stroke-miterlimit:4;stroke-dasharray:none"
-         x="11.40169"
+         x="11.14951"
          y="5.9027271"
          id="text3884-2"><tspan
            sodipodi:role="line"
            id="tspan3882-7"
-           x="11.40169"
+           x="11.14951"
            y="5.9027271"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:1.05833;stroke-miterlimit:4;stroke-dasharray:none">301</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:1.05833;stroke-miterlimit:4;stroke-dasharray:none">ION</tspan></text>
     </g>
   </g>
 </svg>
