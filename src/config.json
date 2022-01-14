@@ -64,7 +64,7 @@
   "regions": [
     {
       "id": "waterloo",
-      "title": "Waterloo Region",
+      "title": "Kitchener-Waterloo",
       "agencies": ["grt"],
       "location": [-80.5, 43.466667],
       "bbox": [-80.54520517587662, 43.4221650454896, -80.44124409556389, 43.50163426403371]
