@@ -7,7 +7,8 @@
       "description": "Maintenance and Storage Facility for the Ontario Line",
       "sources": [
         "Metrolinx"
-      ]
+      ],
+      "filterKey": "ontarioLine"
     },
     "bbox": [-79.2512567,43.7740959,-79.2449002,43.7763748],
     "features": [

@@ -6,14 +6,12 @@
       "offset": 0,
       "id": "toronto/ontario",
       "icon": "toronto/line3.svg",
-      "source": [
-        "OpenStreetMap"
-      ],
       "name": "Ontario Line",
       "description": "Proposed Ontario Line",
       "sources": [
         "Metrolinx"
-      ]
+      ],
+      "filterKey": "ontarioLine"
     },
     "bbox": [-79.4249901340652, 43.63443706290249, -79.33674099961033, 43.72371938716497],
     "features": [

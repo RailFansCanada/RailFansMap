@@ -6,14 +6,12 @@
     "offset": 0,
     "id": "toronto/3",
     "icon": "toronto/line3.svg",
-    "source": [
-      "OpenStreetMap"
-    ],
     "name": "Line 3",
     "description": "Scarborough",
     "sources": [
       "OpenStreetMap"
-    ]
+    ],
+    "filterKey": "!ontarioLine"
   },
   "bbox": [-79.2767585,43.7317335,-79.25125128315466,43.7750473],
   "features": [

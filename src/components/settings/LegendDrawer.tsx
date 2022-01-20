@@ -88,7 +88,8 @@ const LegendEntry = (props: LegendEntryProps) => {
       dense
       checked={props.enabled}
       secondaryAction={
-        props.filterKey && (
+        props.filterKey &&
+        !props.filterKey.startsWith("!") && (
           <Checkbox
             style={{ color: props.tint }}
             checked={props.enabled}
@@ -166,6 +167,8 @@ const LegendGroup = (props: LegendGroupProps) => {
           let enabled: boolean;
           if (filterKey === undefined) {
             enabled = true;
+          } else if (filterKey.startsWith("!")) {
+            enabled = !(lineFilterState[filterKey.slice(1)] ?? false);
           } else {
             enabled = lineFilterState[filterKey] ?? false;
           }
