@@ -223,10 +223,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
   useEffect(() => {
     const allFeatures = Object.values(data)
       .filter((entry) => {
-        return (
-          entry.metadata.filterKey == null ||
-          lineFilterState[entry.metadata.filterKey]
-        );
+        const key = entry.metadata.filterKey;
+        if (key == null) {
+          return true;
+        }
+
+        if (key.startsWith("!")) {
+          return !lineFilterState[key.slice(1)];
+        } else {
+          return lineFilterState[key];
+        }
       })
       .flatMap(
         (entry) =>

@@ -36,17 +36,18 @@ The `type` property specifies that this is a GeoJSON `FeatureCollection` object,
 
 The `metadata` proeprty is not a standard part of GeoJSON and is used specifically by the rail map to identify which rail line or yard is being defined by a particular file. The following properties can be defined in the `metadata` object:
 
-| Property    | Required | Type                           | Description                                                                                                                    | Examples                                                             |
-| ----------- | -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| id          | yes      | `string`                       | A unique identifier for this `FeatureCollection`, usually in the format `{region}/{name}`                                      | `ottawa/1` for Ottawa's Line 1 <br/> `go/ki` for GO's Kitchener Line |
-| type        | yes      | `"rail-line"` or `"rail-yard"` | Identifies whether this file describes a `rail-line` or a `rail-yard`                                                          |
-| color       | yes\*    | Hex Colour String              | The colour of the rail line, commonly used to identify the line.                                                               | `#D62937`, Ottawa Line 1's red colour                                |
-| offset      | no       | `number`                       | Controls the relative offset of the track alignment when shown on the map. Used when multiple lines overlap on the same track. | `0.5`, `-0.5`                                                        |
-| icon        | yes\*    | `string`                       | Specifies a relative path to the rail line's icon located under the `icons` directory.                                         | `ottawa/line1.svg`                                                   |
-| name        | yes      | `string`                       | The primary name of the rail line or rail yard being described                                                                 | `Line 1`, `Milton Line`                                              |
-| description | yes      | `string`                       | A description of the line or yard.                                                                                             | `Stages 1 and 2 of the Confederation Line, Line 1`                   |
-| notes       | no       | `string`                       | Any additional info about the data                                                                                             | `*(Station locations and names are approximated)`                    |
-| sources     | yes      | `string[]`                     | A list of sources from which the data was sourced from                                                                         | `["City of Ottawa"]`                                                 |
+| Property    | Required | Type                           | Description                                                                                                                                                                    | Examples                                                             |
+| ----------- | -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| id          | yes      | `string`                       | A unique identifier for this `FeatureCollection`, usually in the format `{region}/{name}`                                                                                      | `ottawa/1` for Ottawa's Line 1 <br/> `go/ki` for GO's Kitchener Line |
+| type        | yes      | `"rail-line"` or `"rail-yard"` | Identifies whether this file describes a `rail-line` or a `rail-yard`                                                                                                          |
+| color       | yes\*    | Hex Colour String              | The colour of the rail line, commonly used to identify the line.                                                                                                               | `#D62937`, Ottawa Line 1's red colour                                |
+| offset      | no       | `number`                       | Controls the relative offset of the track alignment when shown on the map. Used when multiple lines overlap on the same track.                                                 | `0.5`, `-0.5`                                                        |
+| icon        | yes\*    | `string`                       | Specifies a relative path to the rail line's icon located under the `icons` directory.                                                                                         | `ottawa/line1.svg`                                                   |
+| name        | yes      | `string`                       | The primary name of the rail line or rail yard being described                                                                                                                 | `Line 1`, `Milton Line`                                              |
+| description | yes      | `string`                       | A description of the line or yard.                                                                                                                                             | `Stages 1 and 2 of the Confederation Line, Line 1`                   |
+| notes       | no       | `string`                       | Any additional info about the data                                                                                                                                             | `*(Station locations and names are approximated)`                    |
+| sources     | yes      | `string[]`                     | A list of sources from which the data was sourced from                                                                                                                         | `["City of Ottawa"]`                                                 |
+| filterKey   | no       | `string`                       | If included, this key will enable a toggle option in the legend. If the filter key begins with a `!` the layer will be displayed if the corresponding toggle is _not_ enabled. | `ontarioLine`, or `!ontarioLine`                                     |
 
 \*Only applicable to rail lines, not rail yards
 
@@ -69,13 +70,13 @@ A complete example of the `metadata` object, for Toronto's Line 4:
 
 Features specify actual geometry. GeoJSON allows for a variety of different types of geometry, however the rail map only makes use of `Point`, `LineString`, `Polygon` and `MultiPolygon` geometries. GeoJSON `Feature` objects can define additional `properties`, similar to the metadata object described above. These properties are used to change the way the data is interpreted and displayed on the map, primarily by specifying a `type` property which describes what the `Feature` is meant to represent.
 
-* [Tracks](#tracks)
-* [Overpass](#overpass)
-* [Station Label](#station-label)
-* [Yard Label](#yard-label)
-* [Station Platforms](#station-platforms)
-* [Station Platforms (Future!)](#station-platforms-future)
-* [Tunnels](#tunnels)
+- [Tracks](#tracks)
+- [Overpass](#overpass)
+- [Station Label](#station-label)
+- [Yard Label](#yard-label)
+- [Station Platforms](#station-platforms)
+- [Station Platforms (Future!)](#station-platforms-future)
+- [Tunnels](#tunnels)
 
 #### Tracks
 
