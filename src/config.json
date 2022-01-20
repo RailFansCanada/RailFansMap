@@ -59,7 +59,8 @@
         "toronto/ontarioLine.json",
         "toronto/line4.json",
         "toronto/line5.json",
-        "toronto/line6.json"
+        "toronto/line6.json",
+        "toronto/line5west.json"
       ]
     }
   ],
