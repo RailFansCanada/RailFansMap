@@ -27,6 +27,7 @@
           { "$ref": "#/definitions/station-platforms" },
           { "$ref": "#/definitions/station-platforms-future" },
           { "$ref": "#/definitions/station-label" },
+          { "$ref": "#/definitions/station-connector-label" },
           { "$ref": "#/definitions/yard-label" },
           { "$ref": "#/definitions/tunnel" }
         ]
@@ -243,6 +244,31 @@
         },
         "geometry": {
           "$ref": "#/definitions/Point"
+        }
+      },
+      "required": ["type", "properties", "geometry"]
+    },
+    "station-connector-label": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "Feature" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "type": { "const": "station-connector-label" },
+            "name": { "type": "string" },
+            "url": {
+              "oneOf": [
+                { "type": "string", "format": "uri-reference" },
+                { "type": "null" }
+              ]
+            },
+            "lines": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["type", "name", "lines"]
+        },
+        "geometry": {
+          "$ref": "#/definitions/LineString"
         }
       },
       "required": ["type", "properties", "geometry"]

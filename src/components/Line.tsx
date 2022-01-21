@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import type { MapData } from "../config";
 import { Source, Layer } from "@urbica/react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 import { LabelProviderContext } from "./Map";
 import { FeatureCollection } from "geojson";
+import { useIsDarkTheme } from "../app/utils";
+import { useAppState } from "../hooks/useAppState";
 
 type NewLineProps = {
   data: FeatureCollection;
@@ -12,6 +13,8 @@ type NewLineProps = {
 
 export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
   const { labelStyle } = useContext(LabelProviderContext);
+  const { appTheme } = useAppState();
+  const isDarkTheme = useIsDarkTheme(appTheme);
 
   return (
     <>
@@ -174,6 +177,22 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
         }}
       />
       <Layer
+        id="rail-connector-labels-dash"
+        source="raildata"
+        type="line"
+        filter={["==", ["get", "type"], "station-connector-label"]}
+        minzoom={15}
+        layout={{
+          "line-cap": "round",
+        }}
+        paint={{
+          "line-width": 2,
+          "line-color": isDarkTheme ? "#FFFFFF" : "#212121",
+          "line-gap-width": 10,
+          "line-dasharray": [4, 4],
+        }}
+      />
+      <Layer
         id={`rail-station`}
         source="raildata"
         type="circle"
@@ -192,6 +211,37 @@ export const Lines = React.memo(({ data, showLineLabels }: NewLineProps) => {
             13.5,
             6,
           ],
+          "circle-pitch-alignment": "map",
+        }}
+      />
+      <Layer
+        id="rail-connector-labels-bg"
+        source="raildata"
+        type="line"
+        filter={["==", ["get", "type"], "station-connector-label"]}
+        maxzoom={16}
+        layout={{
+          "line-cap": "round",
+        }}
+        paint={{
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 8, 13.5, 16],
+          "line-color": "#212121",
+          "line-opacity": ["interpolate", ["linear"], ["zoom"], 15, 1, 16, 0],
+        }}
+      />
+      <Layer
+        id="rail-connector-labels"
+        source="raildata"
+        type="line"
+        filter={["==", ["get", "type"], "station-connector-label"]}
+        maxzoom={16}
+        layout={{
+          "line-cap": "round",
+        }}
+        paint={{
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 4, 13.5, 12],
+          "line-color": "#FFFFFF",
+          "line-opacity": ["interpolate", ["linear"], ["zoom"], 15, 1, 16, 0],
         }}
       />
       {showLineLabels && (

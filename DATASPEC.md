@@ -146,6 +146,38 @@ A `"station-label"` feature must have `Point` geometry. These features define th
 }
 ```
 
+#### Station Connector Label
+
+Type: `"station-connector-label"`  
+Geometry: `LineString`
+
+A `"station-connector-label"` is used to represent a transfer station where the location of the stations' labels may not overlap directly. The `LineString` used for these features should start and end at the corresponding station's label points. This is shown as a "connector blob" on the map at low zoom levels, and as a dashed outline at high zoom levels.
+
+| Property | Required | Type       | Description                                                                                       | Examples                         |
+| -------- | -------- | ---------- | ------------------------------------------------------------------------------------------------- | -------------------------------- |
+| name     | yes      | `string`   | The display name of the station                                                                   | `Sheppard-Yonge`, `Don Mills`    |
+| lines    | yes      | `string[]` | A list of the ID's of all lines which serve this particular station. (See section about metadata) | `["toronto/1", "toronto/4"]`     |
+| url      | no       | `string`   | A relative path to a page about this station on the RailFans Canada site                          | `otrain/line-1-stations/hurdman` |
+
+```json
+{
+  "type": "Feature",
+  "properties": {
+    "lines": ["toronto/1", "toronto/2"],
+    "type": "station-connector-label",
+    "name": "Spadina",
+    "url": "subway/transfer-stations/spadina"
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [-79.404884499396815, 43.667098033956847],
+      [-79.404897438695755, 43.669282344826279]
+    ]
+  }
+}
+```
+
 #### Yard Label
 
 Type: `"yard-label"`  
