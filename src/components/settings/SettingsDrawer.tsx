@@ -1,5 +1,12 @@
 import React from "react";
-import { Typography, List, Divider } from "@mui/material";
+import {
+  Typography,
+  List,
+  Divider,
+  ListItem,
+  ListItemText,
+  ListItemButton,
+} from "@mui/material";
 import { LayerOption } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
 import { MenuDrawer } from "./MenuDrawer";
@@ -105,6 +112,23 @@ export const SettingsDrawer = () => {
           value={appThemeToIndex(appTheme)}
           onChange={handleThemeChange}
         />
+      </List>
+
+      <Divider />
+      <SectionHeader variant="overline">About</SectionHeader>
+      <List>
+        <ListItemButton href="https://www.iubenda.com/privacy-policy/15954265">
+          <ListItemText primary="Privacy Policy" />
+        </ListItemButton>
+        <ListItem dense>
+          <ListItemText primary="Version" secondary={VERSION} />
+        </ListItem>
+        <ListItem dense>
+          <ListItemText
+            primary="Built at"
+            secondary={new Date(BUILD_DATE).toLocaleString()}
+          />
+        </ListItem>
       </List>
     </MenuDrawer>
   );

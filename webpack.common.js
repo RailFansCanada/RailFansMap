@@ -4,6 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
 const webpack = require("webpack");
+const package = require("./package.json");
 
 module.exports = {
   resolve: {
@@ -59,6 +60,8 @@ module.exports = {
     new webpack.DefinePlugin({
       MAPBOX_KEY: `"${dotenv.parsed.MAPBOX_KEY}"`,
       BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
+      VERSION: `"${package.version}"`,
+      BUILD_DATE: `${Date.now()}`
     }),
     new CopyPlugin({
       patterns: [
