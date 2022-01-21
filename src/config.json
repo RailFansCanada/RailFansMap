@@ -41,7 +41,7 @@
     {
       "id": "ttc",
       "name": "TTC",
-      "bbox": [-79.60331150195182,43.63443706290249,-79.2449002,43.795826398803186],
+      "bbox": [-79.60331150195182, 43.63443706290249, -79.2443698561092, 43.795826398803186],
       "data": [
         "toronto/davisvilleYard.json",
         "toronto/wilsonYard.json",
@@ -60,7 +60,8 @@
         "toronto/line4.json",
         "toronto/line5.json",
         "toronto/line6.json",
-        "toronto/line5west.json"
+        "toronto/line5west.json",
+        "toronto/sse.json"
       ]
     }
   ],
@@ -87,7 +88,7 @@
       "title": "Toronto",
       "agencies": ["ttc"],
       "location": [-79.383849, 43.653482],
-      "bbox": [-79.60331150195182, 43.6356882, -79.2449002, 43.795826398803186]
+      "bbox": [-79.60331150195182, 43.63443706290249, -79.2443698561092, 43.795826398803186]
     }
   ]
 }
