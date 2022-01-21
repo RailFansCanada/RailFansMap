@@ -56,12 +56,12 @@
         "toronto/line1.json",
         "toronto/line2.json",
         "toronto/line3.json",
-        "toronto/ontarioLine.json",
         "toronto/line4.json",
         "toronto/line5.json",
         "toronto/line6.json",
         "toronto/line5west.json",
-        "toronto/sse.json"
+        "toronto/sse.json",
+        "toronto/ontarioLine.json"
       ]
     }
   ],

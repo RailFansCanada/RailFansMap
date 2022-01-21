@@ -102,7 +102,7 @@
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Leaside" }, "geometry": { "type": "Point", "coordinates": [-79.37694311890468, 43.71115603290268] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Laird" }, "geometry": { "type": "Point", "coordinates": [-79.36481607476688, 43.71359268876343] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Sunnybrook Park" }, "geometry": { "type": "Point", "coordinates": [-79.34900358812493, 43.71733820728052] } },
-    { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Science Centre" }, "geometry": { "type": "Point", "coordinates": [-79.33948099734758, 43.72032364869575] } },
+    { "type": "Feature", "properties": { "lines": ["toronto/3ontario", "toronto/5"], "type": "station-label", "name": "Science Centre" }, "geometry": { "type": "Point", "coordinates": [-79.33948099734758, 43.72032364869575] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Aga Khan Park & Museum" }, "geometry": { "type": "Point", "coordinates": [-79.33271141542667, 43.72240582869692] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Wynford" }, "geometry": { "type": "Point", "coordinates": [-79.32666323717869, 43.72407196572125] } },
     { "type": "Feature", "properties": { "lines": ["toronto/5"], "type": "station-label", "name": "Sloane" }, "geometry": { "type": "Point", "coordinates": [-79.31259088706251, 43.72590519369344] } },
@@ -139,10 +139,8 @@
     { "type": "Feature", "properties": { "type": "station-platforms", "name": "Keelesdale" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.47465277626887, 43.69025751042584], [-79.47462032996191, 43.69018293912446], [-79.47580326224234, 43.68991192035245], [-79.475835709888, 43.68998649134072], [-79.47465277626887, 43.69025751042584]]]] } },
     { "type": "Feature", "properties": { "type": "station-platforms", "name": "Mount Dennis" }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[-79.48633600846858, 43.68795927412811], [-79.4863019326855, 43.6878764798792], [-79.48748744825212, 43.687619539161375], [-79.48752152554047, 43.68770233308195], [-79.48633600846858, 43.68795927412811]]]] } },
     
-    
     { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/5"], "type": "station-connector-label", "name": "Cedarvale", "major": true }, "geometry": { "type": "LineString", "coordinates": [[-79.435926412289, 43.69883639986705], [ -79.436137353642692, 43.69933379121975 ]] } },
     { "type": "Feature", "properties": { "lines": ["toronto/2", "toronto/3", "toronto/5"], "type": "station-connector-label", "name": "Kennedy", "major": true }, "geometry": { "type": "LineString", "coordinates": [[-79.26486512883682, 43.732791913150734], [ -79.263803526638711, 43.732466095918937 ]] } }
-
   ],
   "bbox": [
     -79.4880309,

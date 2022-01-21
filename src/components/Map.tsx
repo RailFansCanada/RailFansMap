@@ -8,7 +8,6 @@ import MapGL, {
 } from "@urbica/react-map-gl";
 import {
   Map as MapboxMap,
-  MapboxGeoJSONFeature,
   PaddingOptions,
 } from "mapbox-gl";
 
@@ -40,7 +39,7 @@ const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
     .filter(
       (value) =>
         value.metadata.icon != null &&
-        (value.metadata.filterKey == null || state[value.metadata.filterKey])
+        isLineEnabled(value.metadata.filterKey, state)
     )
     .map((value) => value.metadata.id)
     .sort()
