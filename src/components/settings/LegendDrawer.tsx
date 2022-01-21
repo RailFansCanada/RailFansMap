@@ -20,6 +20,7 @@ import { BBox } from "geojson";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
 import { useWindow } from "../../hooks/useWindow";
+import { isLineEnabled } from "../../app/utils";
 
 type EntryData = {
   id: string;
@@ -163,22 +164,14 @@ const LegendGroup = (props: LegendGroupProps) => {
       </LegendGroupHeader>
       <Collapse in={open}>
         {props.entries.map((entry) => {
-          const filterKey = entry.filterKey;
-          let enabled: boolean;
-          if (filterKey === undefined) {
-            enabled = true;
-          } else if (filterKey.startsWith("!")) {
-            enabled = !(lineFilterState[filterKey.slice(1)] ?? false);
-          } else {
-            enabled = lineFilterState[filterKey] ?? false;
-          }
+          const enabled = isLineEnabled(entry.filterKey, lineFilterState);
           return (
             <LegendEntry
               key={entry.id}
               {...entry}
               enabled={enabled}
               onChecked={() => {
-                setLineFiltered(filterKey, !enabled);
+                setLineFiltered(entry.filterKey, !enabled);
               }}
             />
           );

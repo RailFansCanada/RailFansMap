@@ -15,7 +15,7 @@ import {
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
 
-import { useIsDarkTheme } from "../app/utils";
+import { isLineEnabled, useIsDarkTheme } from "../app/utils";
 import { Dataset } from "../hooks/useData";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
@@ -223,18 +223,9 @@ export const OverviewMap = (props: OverviewMapProps) => {
   // TODO: Move this to useData
   useEffect(() => {
     const allFeatures = Object.values(data)
-      .filter((entry) => {
-        const key = entry.metadata.filterKey;
-        if (key == null) {
-          return true;
-        }
-
-        if (key.startsWith("!")) {
-          return !lineFilterState[key.slice(1)];
-        } else {
-          return lineFilterState[key];
-        }
-      })
+      .filter((entry) =>
+        isLineEnabled(entry.metadata.filterKey, lineFilterState)
+      )
       .flatMap(
         (entry) =>
           entry.features.map((feature) => ({
