@@ -9,7 +9,8 @@ declare module "@urbica/react-map-gl" {
     AnySourceData,
     AnyLayer,
     MapboxGeoJSONFeature,
-    NavigationControl as MapboxNavigationControl
+    NavigationControl as MapboxNavigationControl,
+    AttributionControl as MapboxAttributionControl,
   } from "mapbox-gl";
   import type { PureComponent, ReactNode } from "react";
 
@@ -485,51 +486,70 @@ declare module "@urbica/react-map-gl" {
   export class Layer extends PureComponent<LayerProps> {}
 
   type MapboxImage =
-  | HTMLImageElement
-  | ImageData
-  | { width: number; height: number; data: Uint8Array | Uint8ClampedArray };
+    | HTMLImageElement
+    | ImageData
+    | { width: number; height: number; data: Uint8Array | Uint8ClampedArray };
 
   type ImageProps = {
     /** The ID of the image. */
     id: string;
-  
+
     /**
      * The image as an `HTMLImageElement`, `ImageData`, object with `width`,
      * `height`, and `data` properties with the same format as `ImageData`
      * or image url string
      * */
     image: MapboxImage | string;
-  
+
     /** The ratio of pixels in the image to physical pixels on the screen */
     pixelRatio?: number;
-  
+
     /** Whether the image should be interpreted as an SDF image */
     sdf?: boolean;
   };
-  
+
   export class Image extends PureComponent<ImageProps> {
     constructor(props: ImageProps);
   }
-  
+
   type NavigationControlProps = {
     /** If true the compass button is included. */
     showCompass?: boolean;
-  
+
     /** If true the zoom-in and zoom-out buttons are included. */
     showZoom?: boolean;
-  
+
     /**
      * If true the pitch is visualized by rotating X-axis of compass
      * and pitch will reset by clicking on the compass.
      */
     visualizePitch?: boolean;
-  
+
     /** A string representing the position of the control on the map. */
     position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   };
-  
+
   export class NavigationControl extends PureComponent<NavigationControlProps> {
     getControl(): MapboxNavigationControl;
   }
-  
+
+  type AttributionControlProps = {
+    /**
+     * If `true` force a compact attribution that shows the full
+     * attribution on mouse hover, or if  false force the full attribution
+     * control. The default is a responsive attribution that collapses when
+     * the map is less than 640 pixels wide.
+     */
+    compact: boolean;
+
+    /* String or strings to show in addition to any other attributions. */
+    customAttribution: string | Array<string>;
+
+    /* A string representing the position of the control on the map. */
+    position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  };
+
+  export class AttributionControl extends PureComponent<AttributionControlProps> {
+    getControl(): MapboxAttributionControl;
+  }
 }

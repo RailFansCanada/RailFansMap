@@ -4,6 +4,7 @@ import MapGL, {
   Layer,
   NavigationControl,
   Source,
+  AttributionControl,
 } from "@urbica/react-map-gl";
 import {
   Map as MapboxMap,
@@ -283,6 +284,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       }}
       ref={mapRef}
       {...viewport}
+      attributionControl={false}
     >
       {mapLoaded && (
         <>
@@ -290,6 +292,13 @@ export const OverviewMap = (props: OverviewMapProps) => {
             id="regions"
             type="geojson"
             data={regionData as FeatureCollection}
+          />
+          <AttributionControl
+            compact={false}
+            position="bottom-right"
+            customAttribution={`Updated on ${new Date(
+              BUILD_DATE
+            ).toLocaleDateString()}`}
           />
           <NavigationControl showCompass showZoom position="bottom-right" />
           <LabelProviderContext.Provider value={{ labelStyle }}>
