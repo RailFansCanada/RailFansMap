@@ -169,7 +169,7 @@
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Panama" }, "geometry": { "type": "Point", "coordinates": [ -73.470372701263301, 45.464962401165302 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Île-des-Sœurs" }, "geometry": { "type": "Point", "coordinates": [ -73.538815920893569, 45.470336990713065 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Griffintown - Bernard-Landry" }, "geometry": { "type": "Point", "coordinates": [ -73.55880019506337, 45.496269114230174 ] } },
-      { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Gare Centrale" }, "geometry": { "type": "Point", "coordinates": [ -73.566793904731199, 45.499693816445664 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/orange", "montreal/rem", "exo/3", "exo/5"], "type": "station-label", "name": "Gare Centrale" }, "geometry": { "type": "Point", "coordinates": [ -73.567604105446776, 45.500076289514865 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/green", "montreal/rem"], "type": "station-label", "name": "McGill", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.572283935952228, 45.502583587947505 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/blue", "montreal/rem"], "type": "station-label", "name": "Édouard-Montpetit", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.612610597502112, 45.510077423163786 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Canora" }, "geometry": { "type": "Point", "coordinates": [ -73.634399450850736, 45.513904432103338 ] } },
@@ -189,8 +189,9 @@
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Des Sources" }, "geometry": { "type": "Point", "coordinates": [ -73.791062302916131, 45.477119467293349 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Fairview–Pointe-Claire" }, "geometry": { "type": "Point", "coordinates": [ -73.835337941121139, 45.45994196029249 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Kirkland" }, "geometry": { "type": "Point", "coordinates": [ -73.885537628188501, 45.440286438916651 ] } },
-      { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Anse-à-l'Orme", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.909900614865848, 45.431573492892383 ] } }
+      { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Anse-à-l'Orme", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.909900614865848, 45.431573492892383 ] } },
           
+      { "type": "Feature", "properties": { "lines": ["montreal/green", "montreal/rem"], "type": "station-connector-label", "name": "McGill" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.572283935952214, 45.502583587947498 ], [ -73.5715335, 45.5040687 ] ] } }
 
     ]
   }
