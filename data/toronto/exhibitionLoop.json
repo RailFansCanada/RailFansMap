@@ -1,0 +1,19 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "type": "rail-yard",
+        "id": "toronto/exhibitionLoop",
+        "name": "Exhibition Loop",
+        "description": "Loop tracks for Route 509 and Route 511.",
+        "sources": ["OpenStreetMap"]
+    },
+    "bbox": [ -79.418116, 43.63600975809139, -79.413161, 43.637281 ],
+    "features": [
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.413161, 43.637226 ], [ -79.413295, 43.637265 ], [ -79.413349, 43.637277 ], [ -79.413416, 43.637281 ], [ -79.413469, 43.637274 ], [ -79.413565, 43.637252 ], [ -79.413894, 43.637171 ], [ -79.414638, 43.636968 ], [ -79.415652, 43.636692 ], [ -79.416727, 43.636396 ], [ -79.417804, 43.636101 ], [ -79.417875, 43.636083 ], [ -79.417925, 43.636076 ], [ -79.418079, 43.636059 ], [ -79.418116, 43.636055 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.416732513625888, 43.63600975809139 ], [ -79.41649882591004, 43.636115806110816 ], [ -79.414547246454049, 43.636645236868993 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.415263260021675, 43.636412006046768 ], [ -79.415078117765063, 43.636501250590044 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.416098213846638, 43.636224562368845 ], [ -79.415892869026749, 43.63624034529839 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.416096150549478, 43.63618493070139 ], [ -79.415888034106075, 43.636281469833321 ] ] } },
+        { "type": "Feature", "properties": { "type": "yard-label", "name": "Exhibition Loop" }, "geometry": { "type": "Point", "coordinates": [ -79.41566383746773, 43.6365291924335 ] } }
+    ]
+}
