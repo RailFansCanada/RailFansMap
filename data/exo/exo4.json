@@ -155,6 +155,6 @@
 
       { "type": "Feature", "properties": { "lines": ["exo/1", "exo/2", "exo/4"], "type": "station-connector-label", "name": "Montréal-Ouest" }, "geometry": { "type": "LineString", "coordinates": [[ -73.641745399741296, 45.453679550685756 ], [ -73.641817004434245, 45.453751322883875 ]] }},
       { "type": "Feature", "properties": { "lines": ["montreal/orange", "exo/1", "exo/2", "exo/4"], "type": "station-connector-label", "name": "Vendôme" }, "geometry": { "type": "LineString", "coordinates": [[ -73.603317156170291, 45.473557152731523 ], [ -73.603389516010239, 45.473619285141197 ], [ -73.6037345, 45.4739214 ]] }},
-      { "type": "Feature", "properties": { "lines": ["montreal/orange", "exo/1", "exo/2", "exo/4"], "type": "station-connector-label", "name": "Lucien-L'Allier" }, "geometry": { "type": "LineString", "coordinates": [[ -73.5709676, 45.4949933 ], [ -73.570386045338026, 45.494955126985595 ], [ -73.570334193289142, 45.494920445258195 ], [ -73.570194836577869, 45.494827235113874 ]] }}
+      { "type": "Feature", "properties": { "lines": ["montreal/orange", "exo/1", "exo/2", "exo/4"], "type": "station-connector-label", "name": "Lucien-L'Allier" }, "geometry": { "type": "LineString", "coordinates": [[ -73.571299047873211, 45.494614657109146 ], [ -73.570386045338026, 45.494955126985595 ], [ -73.570334193289142, 45.494920445258195 ], [ -73.570194836577869, 45.494827235113874 ]] }}
     ]
   }
