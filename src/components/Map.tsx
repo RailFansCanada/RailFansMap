@@ -217,39 +217,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
     setLabelStyle(provideLabelStyle(props.lines, lineFilterState));
   }, [props.lines, lineFilterState]);
 
-  // TODO: Move this to useData
-  // useEffect(() => {
-  //   const allFeatures = Object.values(data)
-  //     .filter((entry) =>
-  //       isLineEnabled(entry.metadata.filterKey, lineFilterState)
-  //     )
-  //     .flatMap(
-  //       (entry) =>
-  //         entry.features.map((feature) => ({
-  //           ...feature,
-  //           properties: {
-  //             ...feature.properties,
-  //             class: entry.metadata.type,
-  //             color: entry.metadata.color,
-  //             offset: entry.metadata.offset,
-  //             alternatives: feature.properties.alternatives,
-  //           },
-  //         }))
-  //       // .filter(
-  //       //   (feature) =>
-  //       //     feature.properties.alternatives == null ||
-  //       //     feature.properties.alternatives.some((a: string) =>
-  //       //       props.alternatives[entry.metadata.filterKey]?.includes(a)
-  //       //     )
-  //       // )
-  //     );
-
-  //   setFullData({
-  //     type: "FeatureCollection",
-  //     features: allFeatures,
-  //   });
-  // }, [data, lineFilterState]);
-
   const clickableLayers = [
     "rail-station",
     "rail-labels",
@@ -282,7 +249,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
             data={regionData as FeatureCollection}
           />
           <AttributionControl
-            compact={false}
+            compact={windowSize[0] <= 600}
             position="bottom-right"
             customAttribution={`Updated on ${new Date(
               BUILD_DATE

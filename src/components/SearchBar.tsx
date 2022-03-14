@@ -7,6 +7,7 @@ import {
   Train,
 } from "@mui/icons-material";
 import {
+  Collapse,
   Grow,
   IconButton,
   InputBase,
@@ -30,14 +31,19 @@ import buffer from "@turf/buffer";
 import bbox from "@turf/bbox";
 import { BBox, Point } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
+import { useWindow } from "../hooks/useWindow";
 
 const SearchContainer = styled.div`
   position: fixed;
-  top: ${({ theme }) => theme.spacing(1)};
-  left: ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => theme.spacing(1)};
   width: 400px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    width: calc(100% - 56px);
+  }
 `;
 
 const SearchBarPaper = styled(Paper)`
@@ -49,6 +55,9 @@ const SearchBarPaper = styled(Paper)`
 
 const SearchInput = styled(InputBase)`
   flex-grow: 1;
+  & input:placeholder-shown {
+    text-overflow: ellipsis;
+  }
 `;
 
 const SearchButton = styled(IconButton)`
@@ -122,6 +131,7 @@ const LineResultItem = (
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
   const { db } = useData2();
+  const [width] = useWindow();
   const [results, setResults] = useState<SearchResult[]>([]);
   const [showResults, setShowResults] = useState(false);
 
@@ -165,18 +175,16 @@ export const SearchBar = () => {
           value={query}
           placeholder="Search stations, lines, yards..."
         />
-        {showResults && (
-          <SearchButton
-            onClick={() => {
-              setQuery("");
-              setShowResults(false);
-            }}
-          >
-            <Close />
-          </SearchButton>
-        )}
+        <SearchButton
+          onClick={() => {
+            setQuery("");
+            setShowResults(false);
+          }}
+        >
+          <Close />
+        </SearchButton>
       </SearchBarPaper>
-      <Grow in={showResults} style={{ transformOrigin: "50% 0 0" }}>
+      <Grow in={showResults} style={{ transformOrigin: "50% 0 0" }} unmountOnExit>
         <ResultsPaper>
           <List>
             {results.length === 0 && (
