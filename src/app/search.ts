@@ -1,7 +1,7 @@
 import { BBox, Feature, FeatureCollection, Point } from "geojson";
 import initSqlJs, { Database } from "sql.js";
-import { Agency, MapData, Region } from "../config";
-import { LoadedMapData, LoadedMetadata } from "../hooks/useData";
+import { Agency, Region } from "../config";
+import { LoadedMetadata } from "../hooks/useData";
 import ddl from "./database.sql";
 
 export type Station = {
@@ -24,6 +24,11 @@ export type BoundsResult = {
 };
 
 export type SearchResult = StationResult | BoundsResult;
+
+function escapeQuery(query: string): string {
+  const cleaned = query.replace(/\"/g, '""');
+  return `"${cleaned}"`;
+}
 
 export async function prepDatabase(): Promise<Database> {
   const SQL = await initSqlJs();
@@ -167,8 +172,8 @@ export async function search(
   db: Database,
   query: string
 ): Promise<SearchResult[]> {
-  const stations = await searchStations(db, query);
-  const bounds = await searchBounds(db, query);
+  const stations = await searchStations(db, escapeQuery(query));
+  const bounds = await searchBounds(db, escapeQuery(query));
 
   const all = [...stations, ...bounds].sort((a, b) => a.rank - b.rank);
   return all;
