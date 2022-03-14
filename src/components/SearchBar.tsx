@@ -86,9 +86,11 @@ const StationResultItem = (
         </ListItemIcon>
         <ListItemText primary={props.name} secondary={props.description} />
         <ResultLineIconContainer>
-          {props.lines.map((icon) => (
-            <ResultLineIcon key={icon} src={`icons/${lines[icon].icon}`} />
-          ))}
+          {props.lines
+            .filter((icon) => lines[icon])
+            .map((icon) => (
+              <ResultLineIcon key={icon} src={`icons/${lines[icon].icon}`} />
+            ))}
         </ResultLineIconContainer>
       </ListItemButton>
     </ListItem>
@@ -119,7 +121,7 @@ const LineResultItem = (
 
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const { db, lines } = useData2();
+  const { db } = useData2();
   const [results, setResults] = useState<SearchResult[]>([]);
   const [showResults, setShowResults] = useState(false);
 
@@ -147,7 +149,6 @@ export const SearchBar = () => {
         setShowResults(true);
       }
       setResults(r);
-      console.dir(r);
     });
   }, [query]);
 
