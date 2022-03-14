@@ -2,13 +2,13 @@
 
 This document contains a set of how-to guides for contributing to this project.
 
-* [Data Editing Basics](#data-editing-basics)
-* [Adding a New Rail Line](#adding-a-new-rail-line)
-  * [Creating a New Data File](#creating-a-new-data-file)
-  * [Adding your Data File to the Config](#adding-your-data-file-to-the-config)
-  * [Bounding Boxes](#bounding-boxes)
-  * [Adding a New Icon](#adding-a-new-icon)
-  * [Testing your New Line](#testing-your-new-line)
+- [Data Editing Basics](#data-editing-basics)
+- [Adding a New Rail Line](#adding-a-new-rail-line)
+  - [Creating a New Data File](#creating-a-new-data-file)
+  - [Adding your Data File to the Config](#adding-your-data-file-to-the-config)
+  - [Bounding Boxes](#bounding-boxes)
+  - [Adding a New Icon](#adding-a-new-icon)
+  - [Testing your New Line](#testing-your-new-line)
 
 # Data Editing Basics
 
@@ -52,15 +52,15 @@ Create a new file for your new line, give it a descriptive name, and a `.json` f
 Here you can start filling out some of the details for line.
 The following table explains how to fill out the mandatory metadata fields that the map needs.
 
-| Property      | Description                                                                                                                                                  | Example                                                                            |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| `id`          | A unique identifier for this line. Generally you can use `{city or system}/{line number or name}` as a template for the id.                                  | e.g. `toronto/1` or `go/mi` (for Toronto Line 1 and GO Milton Line, respectively). |
-| `type`        | This tells the map what kind of data this file contains. This should be left as `rail-line`                                                                  |                                                                                    |
-| `color`       | A hexadecimal color string that will control the color of the line when shown on the map.                                                                    | e.g. `"#FF0000"`                                                                   |
-| `icon`        | Controls the icon used to represent the line on the map, and in the legend. For now this can be left blank, this will be covered in [a later section](#adding-a-new-icon).      |                                                                                    |
-| `name`        | This should be the _primary_ official name of the rail line. This is displayed in the map legend.                                                            | e.g. `"Line 1"`                                                                    |
-| `description` | Some additional information about the line, such as an alternate name or future opening date(s). This can be left blank if there is no suitable description. | e.g. `"Yonge - University"` or `"(Opening 2025)"`.                                 |
-| `sources`     | A list of sources from which you will be adding data from. This can be filled out now, or later.                                                             | e.g. `["OpenStreetMap"]`                                                           |
+| Property      | Description                                                                                                                                                                | Example                                                                            |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `id`          | A unique identifier for this line. Generally you can use `{city or system}/{line number or name}` as a template for the id.                                                | e.g. `toronto/1` or `go/mi` (for Toronto Line 1 and GO Milton Line, respectively). |
+| `type`        | This tells the map what kind of data this file contains. This should be left as `rail-line`                                                                                |                                                                                    |
+| `color`       | A hexadecimal color string that will control the color of the line when shown on the map.                                                                                  | e.g. `"#FF0000"`                                                                   |
+| `icon`        | Controls the icon used to represent the line on the map, and in the legend. For now this can be left blank, this will be covered in [a later section](#adding-a-new-icon). |                                                                                    |
+| `name`        | This should be the _primary_ official name of the rail line. This is displayed in the map legend.                                                                          | e.g. `"Line 1"`                                                                    |
+| `description` | Some additional information about the line, such as an alternate name or future opening date(s). This can be left blank if there is no suitable description.               | e.g. `"Yonge - University"` or `"(Opening 2025)"`.                                 |
+| `sources`     | A list of sources from which you will be adding data from. This can be filled out now, or later.                                                                           | e.g. `["OpenStreetMap"]`                                                           |
 
 The `bbox` property will be [filled in later](#bounding-boxes).
 
@@ -132,14 +132,14 @@ This part of the configuration is used to populate the "Quick Navigation" menu w
 
 To add a region, copy the following template to add to the list:
 
-```json 
+```json
 {
-      "id": "",
-      "title": "",
-      "agencies": [],
-      "location": [],
-      "bbox": []
-    }
+  "id": "",
+  "title": "",
+  "agencies": [],
+  "location": [],
+  "bbox": []
+}
 ```
 
 The `id` should be a unique identifier for this region.
@@ -158,7 +158,7 @@ For this reason, all data files, agencies, and regions must have bounding box pr
 
 A bounding box is defined as `[west, south, east, north]` where each value is a latitude or longitude value. Some editing tools can compute these values for you, but a utility script is included with this project to calculate them.
 
-To calculate a bounding box for a data file in this project, run the following command: 
+To calculate a bounding box for a data file in this project, run the following command:
 
 ```bash
 yarn node utils/bbox.js {your data file}

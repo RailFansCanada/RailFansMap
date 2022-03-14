@@ -11,7 +11,8 @@
     "description": "Sheppard",
     "sources": [
       "OpenStreetMap"
-    ]
+    ],
+    "searchTerms": ["Sheppard"]
   },
   "bbox": [
     -79.4152086,

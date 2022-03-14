@@ -10,7 +10,7 @@ import { themeFactory } from "./theme";
 import { Controls } from "../components/settings/Controls";
 import { SettingsDrawer } from "../components/settings/SettingsDrawer";
 import { Logo } from "../components/Logo";
-import { ProvideData, useData } from "../hooks/useData";
+import { ProvideData2, useData2 } from "../hooks/useData";
 import { ProvideWindow } from "../hooks/useWindow";
 import { LegendDrawer } from "../components/settings/LegendDrawer";
 import { ProvideMapTarget } from "../hooks/useMapTarget";
@@ -33,14 +33,14 @@ const Container = styled.div`
 `;
 
 const Content = () => {
-  const { data, visible, agencies, updateBbox } = useData();
+  const { features, agencies, lines } = useData2();
 
   return (
     <Container>
-      <OverviewMap data={data} updateBbox={updateBbox} />
+      <OverviewMap lines={lines} features={features} />
       <Controls />
       <SettingsDrawer />
-      <LegendDrawer visible={visible} data={data} allAgencies={agencies} />
+      <LegendDrawer lines={lines} allAgencies={agencies} />
       <Logo />
       <SearchBar />
     </Container>
@@ -60,13 +60,13 @@ const ThemedApp = () => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <ProvideData>
+        <ProvideData2>
           <ProvideWindow>
             <ProvideMapTarget>
               <Content />
             </ProvideMapTarget>
           </ProvideWindow>
-        </ProvideData>
+        </ProvideData2>
       </ThemeProvider>
     </StyledEngineProvider>
   );

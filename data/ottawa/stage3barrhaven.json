@@ -12,7 +12,8 @@
     "description": "Proposed extension to Barrhaven",
     "sources": [
       "City of Ottawa"
-    ]
+    ],
+    "searchTerms": ["Confederation Line", "Barrhaven"]
   },
   "bbox": [
     -75.76051390912036,

@@ -1,4 +1,11 @@
-import { Close, LocationOn, Search } from "@mui/icons-material";
+import {
+  Build,
+  Close,
+  FilterList,
+  LocationOn,
+  Search,
+  Train,
+} from "@mui/icons-material";
 import {
   Grow,
   IconButton,
@@ -12,11 +19,16 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { searchStations, Station } from "../app/search";
-import { useData } from "../hooks/useData";
+import {
+  BoundsResult,
+  search,
+  SearchResult,
+  StationResult,
+} from "../app/search";
+import { useData2 } from "../hooks/useData";
 import buffer from "@turf/buffer";
 import bbox from "@turf/bbox";
-import { Feature, Point } from "geojson";
+import { BBox, Point } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 
 const SearchContainer = styled.div`
@@ -48,10 +60,67 @@ const ResultsPaper = styled(Paper)`
   margin-top: ${({ theme }) => theme.spacing(1)};
 `;
 
+const ResultLineIcon = styled.img`
+  height: 24px;
+  width: 24px;
+`;
+
+const ResultLineIconContainer = styled(ListItemIcon)`
+  justify-content: end;
+`;
+
+const NoResultsItem = styled(ListItem)`
+  user-select: none;
+`;
+
+const StationResultItem = (
+  props: StationResult & { onClick(lng: number, lat: number): void }
+) => {
+  const { lines } = useData2();
+
+  return (
+    <ListItem disablePadding dense>
+      <ListItemButton onClick={() => props.onClick(props.lng, props.lat)}>
+        <ListItemIcon>
+          <LocationOn />
+        </ListItemIcon>
+        <ListItemText primary={props.name} secondary={props.description} />
+        <ResultLineIconContainer>
+          {props.lines.map((icon) => (
+            <ResultLineIcon key={icon} src={`icons/${lines[icon].icon}`} />
+          ))}
+        </ResultLineIconContainer>
+      </ListItemButton>
+    </ListItem>
+  );
+};
+
+const LineResultItem = (
+  props: BoundsResult & { onClick(bounds: BBox): void }
+) => {
+  const { lines } = useData2();
+
+  return (
+    <ListItem disablePadding dense>
+      <ListItemButton onClick={() => props.onClick(props.bounds)}>
+        <ListItemIcon>
+          {props.type === "rail-yard" ? <Build /> : <Train />}
+        </ListItemIcon>
+        <ListItemText primary={props.name} secondary={props.description} />
+        {lines[props.id].icon && (
+          <ResultLineIconContainer>
+            <ResultLineIcon src={`icons/${lines[props.id].icon}`} />
+          </ResultLineIconContainer>
+        )}
+      </ListItemButton>
+    </ListItem>
+  );
+};
+
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const { db } = useData();
-  const [results, setResults] = useState<Station[]>([]);
+  const { db, lines } = useData2();
+  const [results, setResults] = useState<SearchResult[]>([]);
   const [showResults, setShowResults] = useState(false);
 
   const { setTarget } = useMapTarget();
@@ -64,16 +133,21 @@ export const SearchBar = () => {
     setTarget(targetBbox as SimpleBBox);
   };
 
+  const handleBoundClick = (bounds: BBox) => {
+    setTarget(bounds as SimpleBBox);
+  };
+
   useEffect(() => {
     if (query == "") {
       return;
     }
 
-    searchStations(db, query).then((r) => {
+    search(db, query).then((r) => {
       if (r.length > 0) {
         setShowResults(true);
       }
       setResults(r);
+      console.dir(r);
     });
   }, [query]);
 
@@ -88,9 +162,9 @@ export const SearchBar = () => {
             setQuery(e.target.value);
           }}
           value={query}
-          placeholder="Search stations by name..."
+          placeholder="Search stations, lines, yards..."
         />
-        {query !== "" && (
+        {showResults && (
           <SearchButton
             onClick={() => {
               setQuery("");
@@ -104,18 +178,33 @@ export const SearchBar = () => {
       <Grow in={showResults} style={{ transformOrigin: "50% 0 0" }}>
         <ResultsPaper>
           <List>
-            {results.map((result, i) => (
-              <ListItem key={i} disablePadding>
-                <ListItemButton
-                  onClick={() => handleResultClick(result.lng, result.lat)}
-                >
-                  <ListItemIcon>
-                    <LocationOn color="disabled" />
-                  </ListItemIcon>
-                  <ListItemText primary={result.name} key={i} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+            {results.length === 0 && (
+              <NoResultsItem disabled>
+                <ListItemIcon>
+                  <FilterList />
+                </ListItemIcon>
+                <ListItemText primary="No results..." />
+              </NoResultsItem>
+            )}
+            {results.slice(0, 10).map((result, i) => {
+              if (result.type === "station") {
+                return (
+                  <StationResultItem
+                    key={i}
+                    {...(result as StationResult)}
+                    onClick={handleResultClick}
+                  />
+                );
+              } else {
+                return (
+                  <LineResultItem
+                    key={i}
+                    {...(result as BoundsResult)}
+                    onClick={handleBoundClick}
+                  />
+                );
+              }
+            })}
           </List>
         </ResultsPaper>
       </Grow>

@@ -11,7 +11,8 @@
     "sources": [
       "OpenStreetMap"
     ],
-    "filterKey": "!ontarioLine,!sse"
+    "filterKey": "!sse",
+    "searchTerms": ["Scarborough RT"]
   },
   "bbox": [-79.2767585,43.7317335,-79.25125128315466,43.7750473],
   "features": [

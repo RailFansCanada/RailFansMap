@@ -12,7 +12,8 @@
     "description": "Proposed extension to Kanata",
     "sources": [
       "City of Ottawa"
-    ]
+    ],
+    "searchTerms": ["Confederation Line", "Kanata"]
   },
   "bbox": [
     -75.93239095708121,

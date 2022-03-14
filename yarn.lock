@@ -7015,13 +7015,14 @@ __metadata:
     mapbox-gl: ^2.7.0
     mini-css-extract-plugin: ^2.5.3
     pnp-webpack-plugin: ^1.7.0
+    raw-loader: ^4.0.2
     react: ^17.0.2
     react-custom-scroll: ^4.4.0
     react-custom-scrollbars: ^4.2.1
     react-dom: ^17.0.2
     react-is: ^17.0.2
     source-map-loader: ^3.0.1
-    sql.js: ^1.6.2
+    sql.js: "file:./sqljs"
     styled-components: ^5.3.3
     tiny-warning: ^1.0.3
     ts-loader: ^9.2.6
@@ -7509,6 +7510,18 @@ __metadata:
     iconv-lite: 0.4.24
     unpipe: 1.0.0
   checksum: 6343906939e018c6e633a34a938a5d6d1e93ffcfa48646e00207d53b418e941953b521473950c079347220944dc75ba10e7b3c08bf97e3ac72c7624882db09bb
+  languageName: node
+  linkType: hard
+
+"raw-loader@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "raw-loader@npm:4.0.2"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 51cc1b0d0e8c37c4336b5318f3b2c9c51d6998ad6f56ea09612afcfefc9c1f596341309e934a744ae907177f28efc9f1654eacd62151e82853fcc6d37450e795
   languageName: node
   linkType: hard
 
@@ -8261,10 +8274,10 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
-"sql.js@npm:^1.6.2":
+"sql.js@file:./sqljs::locator=otrainmap%40workspace%3A.":
   version: 1.6.2
-  resolution: "sql.js@npm:1.6.2"
-  checksum: 880a98527be7a62f1c25099192b0760a105ea0ac634b78293d9bd46244209f9e96329974316ad98cbdf2ba3f7c8db167588139c31d9f7dfed2a779eb05da2809
+  resolution: "sql.js@file:./sqljs#./sqljs::hash=a8a621&locator=otrainmap%40workspace%3A."
+  checksum: 0b0e025627f2e9f35621f2cb196aac33723ce34aabe19f9e076415d798db1f2cbba4490edd337546d03bf8cf3feb7898af2d5c97347198f5266b7afeb0f9f627
   languageName: node
   linkType: hard
 

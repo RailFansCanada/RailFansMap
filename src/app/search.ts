@@ -1,4 +1,8 @@
+import { BBox, Feature, FeatureCollection, Point } from "geojson";
 import initSqlJs, { Database } from "sql.js";
+import { Agency, MapData, Region } from "../config";
+import { LoadedMapData, LoadedMetadata } from "../hooks/useData";
+import ddl from "./database.sql";
 
 export type Station = {
   name: string;
@@ -8,37 +12,60 @@ export type Station = {
   lat: number;
 };
 
+export type StationResult = Station & { type: "station"; rank: number };
+
+export type BoundsResult = {
+  name: string;
+  description: string;
+  id: string;
+  type: string;
+  bounds: BBox;
+  rank: number;
+};
+
+export type SearchResult = StationResult | BoundsResult;
+
 export async function prepDatabase(): Promise<Database> {
   const SQL = await initSqlJs();
   const db = new SQL.Database();
 
-  const sqlStr =
-    "CREATE VIRTUAL TABLE stations_search USING fts3 (\
-        name TEXT NOT NULL,\
-        description TEXT NOT NULL,\
-        lines TEXT NOT NULL,\
-        lng REAL NOT NULL,\
-        lat REAL NOT NULL\
-      );";
-
-  db.run(sqlStr);
-
+  db.run(ddl);
   return db;
 }
 
-export async function insertStations(db: Database, stations: Station[]) {
+export async function processFeatures(
+  db: Database,
+  collection: FeatureCollection,
+  agencies: { [key: string]: Agency },
+  regions: { [key: string]: Region }
+) {
   db.exec("BEGIN TRANSACTION;");
 
   const stmt = db.prepare(
     "INSERT INTO stations_search VALUES($name, $description, $lines, $lng, $lat)"
   );
-  stations.forEach((s) => {
+
+  // Get all unique station entries using the station name + lines as a key
+  const set: { [key: string]: Feature } = {};
+  collection.features
+    .filter((feature) => feature.properties.type === "station-label")
+    .forEach((feature) => {
+      const key =
+        feature.properties.name + feature.properties.lines.sort().join();
+      set[key] = feature;
+    });
+
+  // Insert all stations to the database
+  Object.values(set).forEach((f) => {
+    const point = f.geometry as Point;
     const station = {
-      $name: s.name,
-      $description: s.description,
-      $lng: s.lng,
-      $lat: s.lat,
-      $lines: s.lines.join(),
+      $name: f.properties.name,
+      $description: `${agencies[f.properties.agency].name} — ${
+        regions[f.properties.region].title
+      }`,
+      $lng: point.coordinates[0],
+      $lat: point.coordinates[1],
+      $lines: f.properties.lines.join(),
     };
     stmt.run(station);
   });
@@ -46,30 +73,103 @@ export async function insertStations(db: Database, stations: Station[]) {
   db.exec("COMMIT;");
 }
 
-export async function searchStations(
+export async function processBounds(
+  db: Database,
+  data: LoadedMetadata[],
+  agencies: { [key: string]: Agency },
+  regions: { [key: string]: Region }
+) {
+  db.exec("BEGIN TRANSACTION;");
+
+  const stmt = db.prepare(
+    "INSERT INTO bounds_search VALUES($name, $description, $terms, $id, $type, $bounds)"
+  );
+
+  data.forEach((entry) => {
+    const bound = {
+      $name: entry.name,
+      $description: `${agencies[entry.agency].name} — ${
+        regions[entry.region].title
+      }`,
+      $terms: entry.searchTerms?.join() ?? "",
+      $id: entry.id,
+      $type: entry.type,
+      $bounds: JSON.stringify(entry.bbox),
+    };
+
+    stmt.run(bound);
+  });
+
+  db.exec("COMMIT;");
+}
+
+async function searchStations(
   db: Database,
   query: string,
   limit: number = 10
-): Promise<Station[]> {
+): Promise<StationResult[]> {
   if (query === "") {
     return [];
   }
 
   const stmt = db.prepare(
-    "SELECT * FROM stations_search WHERE stations_search MATCH $query || '*' LIMIT $limit"
+    "SELECT *, rank FROM stations_search WHERE name MATCH $query || '*' ORDER BY rank LIMIT $limit"
   );
   stmt.bind({ $query: query, $limit: limit });
 
-  const results: Station[] = [];
+  const results: StationResult[] = [];
   while (stmt.step()) {
     const o = stmt.getAsObject();
 
-    const station = { ...o /*lines: (o.lines as string).split(",")*/ };
+    const station = {
+      ...o,
+      type: "station",
+      lines: (o.lines as string).split(","),
+    };
 
-    results.push(station as unknown as Station);
+    results.push(station as unknown as StationResult);
   }
 
   stmt.free();
 
   return results;
+}
+
+async function searchBounds(
+  db: Database,
+  query: string,
+  limit: number = 10
+): Promise<BoundsResult[]> {
+  if (query === "") {
+    return [];
+  }
+
+  const stmt = db.prepare(
+    "SELECT *, rank FROM bounds_search WHERE bounds_search MATCH $query || '*' ORDER BY rank LIMIT $limit"
+  );
+  stmt.bind({ $query: query, $limit: limit });
+
+  const results: BoundsResult[] = [];
+  while (stmt.step()) {
+    const o = stmt.getAsObject();
+
+    const station = { ...o, bounds: JSON.parse(o.bounds as string) as BBox };
+
+    results.push(station as unknown as BoundsResult);
+  }
+
+  stmt.free();
+
+  return results;
+}
+
+export async function search(
+  db: Database,
+  query: string
+): Promise<SearchResult[]> {
+  const stations = await searchStations(db, query);
+  const bounds = await searchBounds(db, query);
+
+  const all = [...stations, ...bounds].sort((a, b) => a.rank - b.rank);
+  return all;
 }

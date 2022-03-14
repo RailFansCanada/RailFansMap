@@ -11,7 +11,8 @@
     "description": "Yonge - University",
     "sources": [
       "OpenStreetMap"
-    ]
+    ],
+    "searchTerms": ["Yonge University Spadina", "YUS"]
   },
   "bbox": [-79.52793127830097,43.6452559,-79.3770742,43.795826398803186],
   "features": [

@@ -51,6 +51,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.sql$/,
+        use: "raw-loader",
+      },
     ],
   },
   plugins: [

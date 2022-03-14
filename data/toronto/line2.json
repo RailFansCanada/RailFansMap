@@ -11,7 +11,8 @@
     "description": "Bloor - Danforth",
     "sources": [
       "OpenStreetMap"
-    ]
+    ], 
+    "searchTerms": ["Bloor Danforth"]
   },
   "bbox": [
     -79.5376857,

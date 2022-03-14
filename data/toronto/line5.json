@@ -13,7 +13,8 @@
     "description": "Eglinton Crosstown (Opening 2023)",
     "sources": [
       "OpenStreetMap"
-    ]
+    ],
+    "searchTerms": ["Eglinton Crosstown"]
   },
   "features": [
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4879851, 43.6875004 ], [ -79.4871376, 43.6876865 ] ] } },

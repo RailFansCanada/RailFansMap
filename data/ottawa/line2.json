@@ -14,7 +14,8 @@
     "description": "Bayview - Limebank",
     "sources": [
       "City of Ottawa"
-    ]
+    ],
+    "searchTerms": ["Trillium Line"]
   },
   "bbox": [
     -75.72237184280527,

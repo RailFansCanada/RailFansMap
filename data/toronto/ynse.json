@@ -11,7 +11,8 @@
       "sources": [
         "Metrolinx"
       ],
-      "filterKey": "ynse"
+      "filterKey": "ynse",
+      "searchTerms": ["YNSE"]
     },
     "bbox": [-79.4271000617893, 43.784293706309555, -79.41553978957982, 43.842441490220025],
     "features": [
