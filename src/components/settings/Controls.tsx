@@ -82,7 +82,7 @@ export const Controls = () => {
   const handleQuickNavOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     localStorage["quickNav"] = true;
     if (rippleTimeoutRef.current) {
-      clearTimeout(rippleTimeoutRef.current)
+      clearTimeout(rippleTimeoutRef.current);
     }
     setAnchorEl(e.currentTarget);
   };
@@ -117,7 +117,7 @@ export const Controls = () => {
       const repeatRipple = () => {
         triggerRipple();
         if (!localStorage["quickNav"]) {
-          rippleTimeoutRef.current = setTimeout(repeatRipple, 2000);
+          rippleTimeoutRef.current = window.setTimeout(repeatRipple, 2000);
         }
       };
       repeatRipple();
@@ -162,23 +162,13 @@ export const Controls = () => {
               <Share />
             </IconButton>
           </Tooltip>
-        </ControlPaper>
-        <ControlPaper>
+          <Divider />
           <Tooltip title="Contribute on GitHub">
             <IconButton
               href="https://github.com/RailFansCanada/RailFansMap"
               size="large"
             >
               <GitHub />
-            </IconButton>
-          </Tooltip>
-          <Divider />
-          <Tooltip title="Submit Feeback">
-            <IconButton
-              href="mailto:map@railfans.ca?subject=Map%20Feedback&amp;body=Report%20a%20bug%20or%20suggest%20a%20feature"
-              size="large"
-            >
-              <Feedback />
             </IconButton>
           </Tooltip>
         </ControlPaper>
