@@ -1531,6 +1531,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@turf/buffer@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@turf/buffer@npm:6.5.0"
+  dependencies:
+    "@turf/bbox": ^6.5.0
+    "@turf/center": ^6.5.0
+    "@turf/helpers": ^6.5.0
+    "@turf/meta": ^6.5.0
+    "@turf/projection": ^6.5.0
+    d3-geo: 1.7.1
+    turf-jsts: "*"
+  checksum: d069ef219b19dbcd4f9c393bf5bdc8d8b4378866cda282649bd92e112e132f8ab22f92134f422a5c688c2e7d5e0a50635d069de66fc599efd8b8b047f1a1794f
+  languageName: node
+  linkType: hard
+
+"@turf/center@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@turf/center@npm:6.5.0"
+  dependencies:
+    "@turf/bbox": ^6.5.0
+    "@turf/helpers": ^6.5.0
+  checksum: d0e26ff714537a57ff67c4fbcce3acbcabb7a4ff7caae5cc031668243649e49fb66f2648480c47f5ef8d7b5c47d2e34511a4727293b59381d8c4ac5f397f3808
+  languageName: node
+  linkType: hard
+
+"@turf/clone@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@turf/clone@npm:6.5.0"
+  dependencies:
+    "@turf/helpers": ^6.5.0
+  checksum: 8ef6f6ba8876bb32b35691b62554a74b1e8e2b9d04a1c4f7bcba9348163b4ae4cde774b9e8e9f63211e5eb816517d94b94c3d54e5f855691a84cd3556d3157e4
+  languageName: node
+  linkType: hard
+
 "@turf/destination@npm:^6.5.0":
   version: 6.5.0
   resolution: "@turf/destination@npm:6.5.0"
@@ -1631,6 +1665,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@turf/projection@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@turf/projection@npm:6.5.0"
+  dependencies:
+    "@turf/clone": ^6.5.0
+    "@turf/helpers": ^6.5.0
+    "@turf/meta": ^6.5.0
+  checksum: 31baafb27e3c2a7b639a08156b38c771d312236a9ab218133f7136b4f5ac94cec2465ad62b7da8a0b7f26d5afb09b79d122e56022c27fd17fc9994213fe61833
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14":
   version: 7.1.16
   resolution: "@types/babel__core@npm:7.1.16"
@@ -1714,6 +1759,13 @@ __metadata:
   version: 3.0.0
   resolution: "@types/d3-ease@npm:3.0.0"
   checksum: 1be7c993643b5a08332e0ee146375a3845545d8deb423db5d152e0b061524385d2345ceccf968f75f605247b940dd3f9a144335fee2e7d935cddaf187afb7095
+  languageName: node
+  linkType: hard
+
+"@types/emscripten@npm:*":
+  version: 1.39.6
+  resolution: "@types/emscripten@npm:1.39.6"
+  checksum: 437f2f9cdfd9057255662508fa9a415fe704ba484c6198f3549c5b05feebcdcd612b1ec7b10026d2566935d05d3c36f9366087cb42bc90bd25772a88fcfc9343
   languageName: node
   linkType: hard
 
@@ -2042,6 +2094,16 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: b9bbb2b5c5ead2fb884bb019f61a014e37410bddd295de28184e1b2e71ee6b04120c5ba7b9954617f0bdf962c13d06249ce65004490889c747c80d3f628ea842
+  languageName: node
+  linkType: hard
+
+"@types/sql.js@npm:^1.4.3":
+  version: 1.4.3
+  resolution: "@types/sql.js@npm:1.4.3"
+  dependencies:
+    "@types/emscripten": "*"
+    "@types/node": "*"
+  checksum: ba02fdc13efd96e0a59590b198cc62326dc30e252bda2c494beab9dcea16cd0cb7a145da473d4b3aaf2abc682b8caa0cd8febe0e0093a76cb596d131cbf58359
   languageName: node
   linkType: hard
 
@@ -3542,6 +3604,22 @@ __metadata:
   version: 3.0.3
   resolution: "csstype@npm:3.0.3"
   checksum: ae9b4fcd9b596164e6513181ffc1c99e76836610697826d88a03251c87c52e739f19c151c33d624171bf2bc970f1e4dfe3cc9f1492b9cc5a07a5a3b69ee8ebaf
+  languageName: node
+  linkType: hard
+
+"d3-array@npm:1":
+  version: 1.2.4
+  resolution: "d3-array@npm:1.2.4"
+  checksum: d0be1fa7d72dbfac8a3bcffbb669d42bcb9128d8818d84d2b1df0c60bbe4c8e54a798be0457c55a219b399e2c2fabcbd581cbb130eb638b5436b0618d7e56000
+  languageName: node
+  linkType: hard
+
+"d3-geo@npm:1.7.1":
+  version: 1.7.1
+  resolution: "d3-geo@npm:1.7.1"
+  dependencies:
+    d3-array: 1
+  checksum: 5b771ba8d95bed4ea4f221a62193302a9334bdd00b361e8fa45b92b24ba937b0be17c44992bd5e04fc88faca8fcdbf88f89275b8a3aeee8c1ae230773601ad29
   languageName: node
   linkType: hard
 
@@ -6910,6 +6988,7 @@ __metadata:
     "@turf/bbox-polygon": ^6.5.0
     "@turf/boolean-contains": ^6.5.0
     "@turf/boolean-overlap": ^6.5.0
+    "@turf/buffer": ^6.5.0
     "@types/d3-ease": ^3.0.0
     "@types/geojson": ^7946.0.8
     "@types/mapbox-gl": ^2.6.1
@@ -6918,6 +6997,7 @@ __metadata:
     "@types/react-custom-scrollbars": ^4.0.10
     "@types/react-dom": ^17.0.11
     "@types/react-virtualized": ^9.21.20
+    "@types/sql.js": ^1.4.3
     "@types/styled-components": ^5.1.23
     "@urbica/react-map-gl": ^1.14.4
     ajv: ^8.10.0
@@ -6941,6 +7021,7 @@ __metadata:
     react-dom: ^17.0.2
     react-is: ^17.0.2
     source-map-loader: ^3.0.1
+    sql.js: ^1.6.2
     styled-components: ^5.3.3
     tiny-warning: ^1.0.3
     ts-loader: ^9.2.6
@@ -8180,6 +8261,13 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
+"sql.js@npm:^1.6.2":
+  version: 1.6.2
+  resolution: "sql.js@npm:1.6.2"
+  checksum: 880a98527be7a62f1c25099192b0760a105ea0ac634b78293d9bd46244209f9e96329974316ad98cbdf2ba3f7c8db167588139c31d9f7dfed2a779eb05da2809
+  languageName: node
+  linkType: hard
+
 "sshpk@npm:^1.7.0":
   version: 1.16.1
   resolution: "sshpk@npm:1.16.1"
@@ -8659,6 +8747,13 @@ resolve@^1.9.0:
   dependencies:
     safe-buffer: ^5.0.1
   checksum: 05f6510358f8afc62a057b8b692f05d70c1782b70db86d6a1e0d5e28a32389e52fa6e7707b6c5ecccacc031462e4bc35af85ecfe4bbc341767917b7cf6965711
+  languageName: node
+  linkType: hard
+
+"turf-jsts@npm:*":
+  version: 1.2.3
+  resolution: "turf-jsts@npm:1.2.3"
+  checksum: 89238606b0d659069d5853f1d3ec4d95942c81e527fc48198206a7edf2d297f8d126cc228b969b0c99a1d6adef7aef570904b139167309face02d99f8e3f7856
   languageName: node
   linkType: hard
 

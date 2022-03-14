@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { Agency, config } from "../config";
 import type { MapData } from "../config";
 import produce from "immer";
-import { BBox } from "geojson";
+import { BBox, Point } from "geojson";
 
 import booleanContains from "@turf/boolean-contains";
 import booleanOverlap from "@turf/boolean-overlap";
 import bboxPolygon from "@turf/bbox-polygon";
+import { insertStations, prepDatabase } from "../app/search";
+import { Database } from "sql.js";
 
 export type Dataset = { [key: string]: MapData };
 export interface DataCache {
@@ -14,6 +16,7 @@ export interface DataCache {
   agencies: Agency[];
   visible: Agency[];
   updateBbox(bbox: BBox): void;
+  db: Database;
 }
 
 const loadData = async (fileName: string): Promise<MapData> => {
@@ -38,23 +41,47 @@ const useProvideData = (): DataCache => {
     agencies: config.agencies,
     visible: [],
     updateBbox,
+    db: null,
   });
 
   // Load in data
   React.useEffect(() => {
-    config.agencies.forEach((value) => {
-      value.data.forEach((name) => {
-        loadData(name)
-          .then((value) =>
-            setCache((cache) => {
-              return produce(cache, (draft) => {
-                draft.data[name] = value;
+    async function init() {
+      const db = await prepDatabase();
+
+      config.agencies.forEach((value) => {
+        value.data.forEach((name) => {
+          loadData(name)
+            .then((value) => {
+              // Insert station details into database
+              const stations = value.features
+                .filter((f) => f.properties.type === "station-label")
+                .map((f) => {
+                  const point = f.geometry as Point;
+                  return {
+                    name: f.properties.name,
+                    lines: f.properties.lines,
+                    lng: point.coordinates[0],
+                    lat: point.coordinates[1],
+                    description: "",
+                  };
+                });
+              insertStations(db, stations);
+
+              setCache((cache) => {
+                return produce(cache, (draft) => {
+                  draft.data[name] = value;
+                });
               });
             })
-          )
-          .catch((reason) => console.error(reason));
+            .catch((reason) => console.error(reason));
+        });
       });
-    });
+
+      setCache((cache) => ({ ...cache, db }));
+    }
+
+    init();
   }, []);
 
   // Find all agencies that are contained in the current bbox, i.e. visible on screen
@@ -85,6 +112,7 @@ const DataContext = React.createContext<DataCache>({
   agencies: config.agencies,
   visible: [],
   updateBbox: () => {},
+  db: null,
 });
 
 export const ProvideData = (props: { children: React.ReactNode }) => {

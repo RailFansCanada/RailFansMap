@@ -117,7 +117,7 @@ export const Controls = () => {
       const repeatRipple = () => {
         triggerRipple();
         if (!localStorage["quickNav"]) {
-          rippleTimeoutRef.current = setTimeout(repeatRipple, 2000);
+          rippleTimeoutRef.current = window.setTimeout(repeatRipple, 2000);
         }
       };
       repeatRipple();

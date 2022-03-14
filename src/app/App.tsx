@@ -15,6 +15,7 @@ import { ProvideWindow } from "../hooks/useWindow";
 import { LegendDrawer } from "../components/settings/LegendDrawer";
 import { ProvideMapTarget } from "../hooks/useMapTarget";
 import { ProvideAppState, useAppState } from "../hooks/useAppState";
+import { SearchBar } from "../components/SearchBar";
 
 export const App = () => {
   return (
@@ -41,6 +42,7 @@ const Content = () => {
       <SettingsDrawer />
       <LegendDrawer visible={visible} data={data} allAgencies={agencies} />
       <Logo />
+      <SearchBar />
     </Container>
   );
 };

@@ -32,6 +32,7 @@
     "@types/react-custom-scrollbars": "^4.0.10",
     "@types/react-dom": "^17.0.11",
     "@types/react-virtualized": "^9.21.20",
+    "@types/sql.js": "^1.4.3",
     "@types/styled-components": "^5.1.23",
     "ajv": "^8.10.0",
     "ajv-formats": "^2.1.1",
@@ -63,6 +64,7 @@
     "@turf/bbox-polygon": "^6.5.0",
     "@turf/boolean-contains": "^6.5.0",
     "@turf/boolean-overlap": "^6.5.0",
+    "@turf/buffer": "^6.5.0",
     "@urbica/react-map-gl": "^1.14.4",
     "bbox": "^0.4.0",
     "clsx": "^1.1.1",
@@ -73,6 +75,7 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
+    "sql.js": "^1.6.2",
     "styled-components": "^5.3.3",
     "tiny-warning": "^1.0.3"
   },
