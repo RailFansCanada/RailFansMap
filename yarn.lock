@@ -8276,8 +8276,8 @@ resolve@^1.9.0:
 
 "sql.js@file:./sqljs::locator=otrainmap%40workspace%3A.":
   version: 1.6.2
-  resolution: "sql.js@file:./sqljs#./sqljs::hash=a8a621&locator=otrainmap%40workspace%3A."
-  checksum: 0b0e025627f2e9f35621f2cb196aac33723ce34aabe19f9e076415d798db1f2cbba4490edd337546d03bf8cf3feb7898af2d5c97347198f5266b7afeb0f9f627
+  resolution: "sql.js@file:./sqljs#./sqljs::hash=3aeded&locator=otrainmap%40workspace%3A."
+  checksum: 5d8c153b129a63f8ceaf24ec5dd7e88c06a7682f024ca713aa5317d049f664e0a41ebd4378c26256ed27524d1745594a8c68448469724dd1e09a907f834d7fa2
   languageName: node
   linkType: hard
 
