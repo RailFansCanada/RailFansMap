@@ -5,7 +5,6 @@ import { BBox, FeatureCollection, Geometry } from "geojson";
 import { prepDatabase, processBounds, processFeatures } from "../app/search";
 import { Database } from "sql.js";
 
-export type Dataset = { [key: string]: MapData };
 export type LoadedMapData = FeatureCollection<Geometry> & {
   metadata: LoadedMetadata;
 };

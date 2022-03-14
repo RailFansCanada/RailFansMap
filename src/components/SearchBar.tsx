@@ -7,7 +7,6 @@ import {
   Train,
 } from "@mui/icons-material";
 import {
-  Collapse,
   Grow,
   IconButton,
   InputBase,
@@ -31,7 +30,8 @@ import buffer from "@turf/buffer";
 import bbox from "@turf/bbox";
 import { BBox, Point } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
-import { useWindow } from "../hooks/useWindow";
+import { useAppState } from "../hooks/useAppState";
+import { isLineEnabled } from "../app/utils";
 
 const SearchContainer = styled.div`
   position: fixed;
@@ -83,13 +83,13 @@ const NoResultsItem = styled(ListItem)`
 `;
 
 const StationResultItem = (
-  props: StationResult & { onClick(lng: number, lat: number): void }
+  props: StationResult & { onClick(result: StationResult): void }
 ) => {
   const { lines } = useData2();
 
   return (
     <ListItem disablePadding dense>
-      <ListItemButton onClick={() => props.onClick(props.lng, props.lat)}>
+      <ListItemButton onClick={() => props.onClick(props)}>
         <ListItemIcon>
           <LocationOn />
         </ListItemIcon>
@@ -107,13 +107,13 @@ const StationResultItem = (
 };
 
 const LineResultItem = (
-  props: BoundsResult & { onClick(bounds: BBox): void }
+  props: BoundsResult & { onClick(result: BoundsResult): void }
 ) => {
   const { lines } = useData2();
 
   return (
     <ListItem disablePadding dense>
-      <ListItemButton onClick={() => props.onClick(props.bounds)}>
+      <ListItemButton onClick={() => props.onClick(props)}>
         <ListItemIcon>
           {props.type === "rail-yard" ? <Build /> : <Train />}
         </ListItemIcon>
@@ -130,23 +130,39 @@ const LineResultItem = (
 
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const { db } = useData2();
-  const [width] = useWindow();
+  const { db, lines } = useData2();
   const [results, setResults] = useState<SearchResult[]>([]);
   const [showResults, setShowResults] = useState(false);
 
+  const { lineFilterState, setLineFiltered } = useAppState();
+
   const { setTarget } = useMapTarget();
 
-  const handleResultClick = (lng: number, lat: number) => {
-    const point: Point = { type: "Point", coordinates: [lng, lat] };
+  const handleResultClick = (result: StationResult) => {
+    // Enable the line if it's being filtered
+    const filterKey = lines[result.parent].filterKey;
+    if (filterKey && !isLineEnabled(filterKey, lineFilterState)) {
+      setLineFiltered(filterKey, true);
+    }
+
+    const point: Point = {
+      type: "Point",
+      coordinates: [result.lng, result.lat],
+    };
     const buffered = buffer(point, 0.5, { units: "kilometers" });
     const targetBbox = bbox(buffered);
 
     setTarget(targetBbox as SimpleBBox);
   };
 
-  const handleBoundClick = (bounds: BBox) => {
-    setTarget(bounds as SimpleBBox);
+  const handleBoundClick = (result: BoundsResult) => {
+    // Enable the line if it's being filtered
+    const filterKey = lines[result.id].filterKey;
+    if (filterKey && !isLineEnabled(filterKey, lineFilterState)) {
+      setLineFiltered(filterKey, true);
+    }
+
+    setTarget(result.bounds as SimpleBBox);
   };
 
   useEffect(() => {
@@ -184,7 +200,11 @@ export const SearchBar = () => {
           <Close />
         </SearchButton>
       </SearchBarPaper>
-      <Grow in={showResults} style={{ transformOrigin: "50% 0 0" }} unmountOnExit>
+      <Grow
+        in={showResults}
+        style={{ transformOrigin: "50% 0 0" }}
+        unmountOnExit
+      >
         <ResultsPaper>
           <List>
             {results.length === 0 && (

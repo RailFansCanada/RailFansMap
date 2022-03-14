@@ -10,6 +10,7 @@ export type Station = {
   lines: string[];
   lng: number;
   lat: number;
+  parent: string;
 };
 
 export type StationResult = Station & { type: "station"; rank: number };
@@ -47,7 +48,7 @@ export async function processFeatures(
   db.exec("BEGIN TRANSACTION;");
 
   const stmt = db.prepare(
-    "INSERT INTO stations_search VALUES($name, $description, $lines, $lng, $lat)"
+    "INSERT INTO stations_search VALUES($name, $description, $parent, $lines, $lng, $lat)"
   );
 
   // Get all unique station entries using the station name + lines as a key
@@ -68,6 +69,7 @@ export async function processFeatures(
       $description: `${agencies[f.properties.agency].name} — ${
         regions[f.properties.region].title
       }`,
+      $parent: f.properties.parent,
       $lng: point.coordinates[0],
       $lat: point.coordinates[1],
       $lines: f.properties.lines.join(),

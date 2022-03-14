@@ -6,17 +6,16 @@ import MapGL, {
   Source,
   AttributionControl,
 } from "@urbica/react-map-gl";
-import { Map as MapboxMap, PaddingOptions } from "mapbox-gl";
+import { PaddingOptions } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
 
 import { isLineEnabled, useIsDarkTheme } from "../app/utils";
-import { Dataset } from "../hooks/useData";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
-import { BBox, FeatureCollection } from "geojson";
+import { FeatureCollection } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import {
   LineFilterState,
@@ -110,7 +109,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
       : null;
 
   const mapRef = useRef<MapGL>();
-  const [fullData, setFullData] = useState<FeatureCollection | null>(null);
   // TODO: Fix?
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
