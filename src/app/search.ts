@@ -48,7 +48,7 @@ export async function processFeatures(
   db.exec("BEGIN TRANSACTION;");
 
   const stmt = db.prepare(
-    "INSERT INTO stations_search VALUES($name, $description, $parent, $lines, $lng, $lat)"
+    "INSERT INTO stations_search VALUES($name, $description, $parent, $terms, $lines, $lng, $lat)"
   );
 
   // Get all unique station entries using the station name + lines as a key
@@ -70,6 +70,7 @@ export async function processFeatures(
         regions[f.properties.region].title
       }`,
       $parent: f.properties.parent,
+      $terms: f.properties.searchTerms?.join() ?? "",
       $lng: point.coordinates[0],
       $lat: point.coordinates[1],
       $lines: f.properties.lines.join(),
@@ -120,7 +121,7 @@ async function searchStations(
   }
 
   const stmt = db.prepare(
-    "SELECT *, rank FROM stations_search WHERE name MATCH $query || '*' ORDER BY rank LIMIT $limit"
+    "SELECT *, rank FROM stations_search WHERE stations_search MATCH $query || '*' ORDER BY rank LIMIT $limit"
   );
   stmt.bind({ $query: query, $limit: limit });
 

@@ -2,6 +2,7 @@ CREATE VIRTUAL TABLE stations_search USING fts5 (
     name,
     description,
     parent,
+    terms,
     lines,
     lng,
     lat

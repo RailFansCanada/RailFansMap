@@ -238,7 +238,8 @@
                 { "type": "null" }
               ]
             },
-            "lines": { "type": "array", "items": { "type": "string" } }
+            "lines": { "type": "array", "items": { "type": "string" } },
+            "searchTerms": { "type": "array", "items": { "type": "string" } }
           },
           "required": ["type", "name", "lines"]
         },
