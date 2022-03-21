@@ -24,6 +24,7 @@ type AppState = {
   settingsDrawerOpen: boolean;
   legendDrawerOpen: boolean;
   shareSheetOpen: boolean;
+  searchOpen: boolean;
 
   show3DBuildings: boolean;
   showLabels: boolean;
@@ -40,6 +41,7 @@ type AppStateActions = {
   setSettingsDrawerOpen: (open: boolean) => void;
   setLegendDrawerOpen: (open: boolean) => void;
   setShareSheetOpen: (open: boolean) => void;
+  setSearchOpen: (open: boolean) => void;
 
   setShow3DBuildings: (show: boolean) => void;
   setShowLabels: (show: boolean) => void;
@@ -106,6 +108,7 @@ const useProvideAppContext = (): UseAppState => {
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
   const [legendDrawerOpen, setLegendDrawerOpen] = useState(false);
   const [shareSheetOpen, setShareSheetOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const [show3DBuildings, setShow3DBuildings] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
@@ -155,6 +158,9 @@ const useProvideAppContext = (): UseAppState => {
 
     shareSheetOpen,
     setShareSheetOpen,
+
+    searchOpen,
+    setSearchOpen,
 
     show3DBuildings,
     setShow3DBuildings,

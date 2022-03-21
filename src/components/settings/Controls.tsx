@@ -6,7 +6,6 @@ import {
   Menu,
   MenuItem,
   Divider,
-  Icon,
 } from "@mui/material";
 import {
   Layers,
@@ -22,14 +21,18 @@ import { config, Region } from "../../config";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
 import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
+import { useWindow } from "../../hooks/useWindow";
 
-const ControlsContainer = styled.div`
+const ControlsContainer = styled.div<{ hidden: boolean }>`
   position: fixed;
-  right: ${({ theme }) => theme.spacing(1)};
+  right: ${({ theme, hidden }) =>
+    hidden ? theme.spacing(-8) : theme.spacing(1)};
   top: ${({ theme }) => theme.spacing(1)};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: ${({ theme }) => theme.transitions.create("right")};
+  z-index: 500;
 `;
 
 const ControlPaper = styled(Paper)`
@@ -82,7 +85,7 @@ export const Controls = () => {
   const handleQuickNavOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     localStorage["quickNav"] = true;
     if (rippleTimeoutRef.current) {
-      clearTimeout(rippleTimeoutRef.current)
+      clearTimeout(rippleTimeoutRef.current);
     }
     setAnchorEl(e.currentTarget);
   };
@@ -91,8 +94,13 @@ export const Controls = () => {
     setAnchorEl(null);
   };
 
-  const { setLegendDrawerOpen, setSettingsDrawerOpen, setShareSheetOpen } =
-    useAppState();
+  const {
+    setLegendDrawerOpen,
+    setSettingsDrawerOpen,
+    setShareSheetOpen,
+    searchOpen,
+  } = useAppState();
+  const [width] = useWindow();
 
   const rippleRef = React.useRef(null);
   const buttonRef = React.useRef(null);
@@ -126,7 +134,7 @@ export const Controls = () => {
 
   return (
     <>
-      <ControlsContainer>
+      <ControlsContainer hidden={!(width > 600) && searchOpen}>
         <ControlPaper>
           <Tooltip title="Quick Navigation">
             <IconButton

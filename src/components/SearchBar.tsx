@@ -28,10 +28,11 @@ import {
 import { useData2 } from "../hooks/useData";
 import buffer from "@turf/buffer";
 import bbox from "@turf/bbox";
-import { BBox, Point } from "geojson";
+import { Point } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import { useAppState } from "../hooks/useAppState";
 import { isLineEnabled } from "../app/utils";
+import { useWindow } from "../hooks/useWindow";
 
 const SearchContainer = styled.div`
   position: fixed;
@@ -42,19 +43,22 @@ const SearchContainer = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 600px) {
-    width: calc(100% - 56px);
+    width: 100%;
   }
 `;
 
-const SearchBarPaper = styled(Paper)`
-  padding: ${({ theme }) => theme.spacing(0.25, 1)};
-  width: 100%;
+const SearchBarPaper = styled(Paper)<{ expanded: boolean }>`
+  padding: ${({ theme, expanded }) => theme.spacing(0.25)};
+  width: ${(props) => (props.expanded ? "100%" : "48px")};
+  transition: ${({ theme }) => theme.transitions.create(["width", "padding"])};
+  overflow: clip;
   display: flex;
   box-sizing: border-box;
 `;
 
 const SearchInput = styled(InputBase)`
   flex-grow: 1;
+  margin-left: ${({ theme }) => theme.spacing(0.25)};
   & input:placeholder-shown {
     text-overflow: ellipsis;
   }
@@ -128,11 +132,74 @@ const LineResultItem = (
   );
 };
 
+type SearchProps = {
+  query: string;
+  onQueryUpdate(query: string): void;
+};
+
+const MobileSearch = (props: SearchProps) => {
+  const { searchOpen, setSearchOpen } = useAppState();
+
+  return (
+    <SearchBarPaper expanded={searchOpen}>
+      <SearchButton onClick={() => setSearchOpen(!searchOpen)}>
+        <Search />
+      </SearchButton>
+      <SearchInput
+        onChange={(e) => {
+          props.onQueryUpdate(e.target.value);
+        }}
+        value={props.query}
+        placeholder="Search stations, lines, yards..."
+      />
+      {searchOpen && (
+        <SearchButton
+          onClick={() => {
+            props.onQueryUpdate("");
+            setSearchOpen(false);
+          }}
+        >
+          <Close />
+        </SearchButton>
+      )}
+    </SearchBarPaper>
+  );
+};
+
+const DesktopSearch = (props: SearchProps) => {
+  const { searchOpen, setSearchOpen } = useAppState();
+  return (
+    <SearchBarPaper expanded>
+      <SearchButton>
+        <Search />
+      </SearchButton>
+      <SearchInput
+        onChange={(e) => {
+          props.onQueryUpdate(e.target.value);
+        }}
+        value={props.query}
+        placeholder="Search stations, lines, yards..."
+      />
+      {searchOpen && (
+        <SearchButton
+          onClick={() => {
+            props.onQueryUpdate("");
+            setSearchOpen(false);
+          }}
+        >
+          <Close />
+        </SearchButton>
+      )}
+    </SearchBarPaper>
+  );
+};
+
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
   const { db, lines } = useData2();
   const [results, setResults] = useState<SearchResult[]>([]);
-  const [showResults, setShowResults] = useState(false);
+  const { searchOpen, setSearchOpen } = useAppState();
+  const [width] = useWindow();
 
   const { lineFilterState, setLineFiltered } = useAppState();
 
@@ -153,6 +220,10 @@ export const SearchBar = () => {
     const targetBbox = bbox(buffered);
 
     setTarget(targetBbox as SimpleBBox);
+
+    if (width <= 600) {
+      setSearchOpen(false);
+    }
   };
 
   const handleBoundClick = (result: BoundsResult) => {
@@ -163,6 +234,10 @@ export const SearchBar = () => {
     }
 
     setTarget(result.bounds as SimpleBBox);
+
+    if (width <= 600) {
+      setSearchOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -172,7 +247,7 @@ export const SearchBar = () => {
 
     search(db, query).then((r) => {
       if (r.length > 0) {
-        setShowResults(true);
+        setSearchOpen(true);
       }
       setResults(r);
     });
@@ -180,28 +255,13 @@ export const SearchBar = () => {
 
   return (
     <SearchContainer>
-      <SearchBarPaper>
-        <SearchButton>
-          <Search />
-        </SearchButton>
-        <SearchInput
-          onChange={(e) => {
-            setQuery(e.target.value);
-          }}
-          value={query}
-          placeholder="Search stations, lines, yards..."
-        />
-        <SearchButton
-          onClick={() => {
-            setQuery("");
-            setShowResults(false);
-          }}
-        >
-          <Close />
-        </SearchButton>
-      </SearchBarPaper>
+      {width > 600 ? (
+        <DesktopSearch query={query} onQueryUpdate={setQuery} />
+      ) : (
+        <MobileSearch query={query} onQueryUpdate={setQuery} />
+      )}
       <Grow
-        in={showResults}
+        in={searchOpen}
         style={{ transformOrigin: "50% 0 0" }}
         unmountOnExit
       >
