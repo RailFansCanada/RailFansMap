@@ -5,7 +5,8 @@
        "type": "rail-yard",  
        "name": "ION OMSF", 
        "description": "Operations, Maintenance and Storage Facility for the ION Light Rail", 
-       "sources": [ "OpenStreetMap" ] 
+       "sources": [ "OpenStreetMap" ],
+       "searchTerms": ["ION"]
     },
     "bbox": [ -80.542348, 43.4926038070356, -80.539809, 43.496036 ],                                              
     "features": [

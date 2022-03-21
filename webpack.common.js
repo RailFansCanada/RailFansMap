@@ -9,6 +9,11 @@ const package = require("./package.json");
 module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
+    fallback: {
+      fs: false,
+      path: false,
+      crypto: false,
+    },
   },
   module: {
     rules: [
@@ -46,6 +51,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.sql$/,
+        use: "raw-loader",
+      },
     ],
   },
   plugins: [
@@ -61,13 +70,14 @@ module.exports = {
       MAPBOX_KEY: `"${dotenv.parsed.MAPBOX_KEY}"`,
       BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
       VERSION: `"${package.version}"`,
-      BUILD_DATE: `${Date.now()}`
+      BUILD_DATE: `${Date.now()}`,
     }),
     new CopyPlugin({
       patterns: [
         { from: "CNAME" },
         { from: "data", to: "data" },
         { from: "icons/**/*.svg" },
+        { from: require.resolve("sql.js/dist/sql-wasm.wasm") },
       ],
     }),
     new ForkTsCheckerWebpackPlugin(),

@@ -14,7 +14,8 @@
     "sources": [
       "Metrolinx",
       "OpenStreetMap"
-    ]
+    ],
+    "searchTerms": ["Finch West LRT"]
   },
   "bbox": [-79.60331150195182,43.72916647099461,-79.49004900345398,43.76464100356711],
   "features": [

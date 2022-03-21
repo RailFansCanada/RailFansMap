@@ -8,7 +8,8 @@
       "filterKey": "ynse",
       "sources": [
         "Metrolinx"
-      ]
+      ],
+      "searchTerms": ["YNSE"]
     },
     "bbox": [-79.42930852444869,43.84237084757532,-79.42693948780285,43.857232769665806],
     "features": [

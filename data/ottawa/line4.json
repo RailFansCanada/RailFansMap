@@ -11,7 +11,8 @@
     "description": "Airport - South Keys",
     "sources": [
       "City of Ottawa"
-    ]
+    ],
+    "searchTerms": ["Trillium Line", "Airport Branch"]
   },
   "bbox": [
     -75.66877388383615,

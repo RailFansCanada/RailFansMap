@@ -12,7 +12,8 @@
       "sources": [
         "Metrolinx"
       ],
-      "filterKey": "sse"
+      "filterKey": "sse",
+      "searchTerms": ["SSE"]
     },
     "bbox": [-79.26292379140699, 43.7327351, -79.2443698561092, 43.79312000966511],
     "features": [

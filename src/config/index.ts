@@ -6,7 +6,7 @@ export const config = configJson as unknown as Config;
 /**
  * Metadata that can be defined for a set of data that can be loaded into the map
  */
-export interface Metadata {
+export type Metadata = {
   type: "rail-line" | "rail-yard";
   color?: string;
   offset?: number;
@@ -18,7 +18,8 @@ export interface Metadata {
   description: string;
   notes?: string;
   filterKey?: string;
-}
+  searchTerms?: string[];
+};
 
 /**
  * MapData, as defined in GeoJSON files.
@@ -45,6 +46,7 @@ export type Region = {
   title: string;
   location: Position;
   bbox: BBox;
+  agencies: string[];
 };
 
 export interface Config {
