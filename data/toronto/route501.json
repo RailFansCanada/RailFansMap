@@ -7,8 +7,7 @@
         "icon": "toronto/route501.svg", 
         "name": "Route 501", 
         "description": "Queen", 
-        "sources": [ "OpenStreetMap" ],
-        "filterKey": "route501"
+        "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.544722, 43.591514, -79.281164, 43.673949],
     "features": [
