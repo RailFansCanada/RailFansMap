@@ -3,12 +3,11 @@
     "metadata": {
         "id": "toronto/510", 
         "type": "rail-line", 
-        "color": "#a60000",
+        "color": "#ff0000",
         "icon": "toronto/route510.svg", 
         "name": "Route 510", 
         "description": "Spadina", 
-        "sources": [ "OpenStreetMap" ],
-        "filterKey": "route510"
+        "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.40489743869576, 43.63752138853664, -79.376855, 43.66928234482628],
     "features": [

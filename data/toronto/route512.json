@@ -7,8 +7,7 @@
         "icon": "toronto/route512.svg", 
         "name": "Route 512", 
         "description": "St. Clair", 
-        "sources": [ "OpenStreetMap" ],
-        "filterKey": "streetcar"
+        "sources": [ "OpenStreetMap" ]
     },
     "bbox": [ -79.47186, 43.671641, -79.391426, 43.688596 ],
     "features": [

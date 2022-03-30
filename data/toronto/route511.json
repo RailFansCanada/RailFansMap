@@ -3,13 +3,12 @@
     "metadata": {
         "id": "toronto/511", 
         "type": "rail-line", 
-        "color": "#a60000",
-        "offset": -0.5,
+        "color": "#ff0000",
+        "offset": -0.25,
         "icon": "toronto/route511.svg", 
         "name": "Route 511", 
         "description": "Bathurst", 
-        "sources": [ "OpenStreetMap" ],
-        "filterKey": "streetcar"
+        "sources": [ "OpenStreetMap" ]
     },
     "bbox": [ -79.42014901345095, 43.635635, -79.399787, 43.666848 ],
     "features": [
