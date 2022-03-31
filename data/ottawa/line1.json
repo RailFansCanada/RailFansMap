@@ -11,7 +11,8 @@
     "description": "Trim - Algonquin",
     "sources": [
       "City of Ottawa"
-    ]
+    ],
+    "searchTerms": ["Confederation Line"]
   },
   "bbox": [
     -75.78228584036735,

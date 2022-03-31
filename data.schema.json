@@ -238,7 +238,8 @@
                 { "type": "null" }
               ]
             },
-            "lines": { "type": "array", "items": { "type": "string" } }
+            "lines": { "type": "array", "items": { "type": "string" } },
+            "searchTerms": { "type": "array", "items": { "type": "string" } }
           },
           "required": ["type", "name", "lines"]
         },
@@ -363,6 +364,7 @@
         "sources": { "type": "array", "items": { "type": "string" } },
         "name": { "type": "string" },
         "description": { "type": "string" },
+        "searchTerms": { "type": "array", "items": { "type": "string" } },
         "notes": { "type": "string" },
         "alternatives": { "type": "array", "items": { "type": "string" } }
       },

@@ -97,7 +97,7 @@
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.4974844, 43.6924164000001], [-79.4964371999999, 43.6919455]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.6063723, 43.7055364], [-79.6041939999999, 43.7055789]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-79.6069615, 43.705524400000094], [-79.6063723, 43.7055364]] } },
-    { "type": "Feature", "properties": { "lines": ["go/up"], "type": "station-label", "name": "Pearson", "major": true }, "geometry": { "type": "Point", "coordinates": [-79.61373062811398, 43.683256831069386] } },
+    { "type": "Feature", "properties": { "lines": ["go/up"], "type": "station-label", "name": "Pearson", "major": true, "searchTerms": ["Airport"] }, "geometry": { "type": "Point", "coordinates": [-79.61373062811398, 43.683256831069386] } },
     { "type": "Feature", "properties": { "lines": ["go/up", "go/ki"], "type": "station-label", "name": "Weston" }, "geometry": { "type": "Point", "coordinates": [-79.51103461150998, 43.699169476382984] } },
     { "type": "Feature", "properties": { "lines": ["go/up", "toronto/5", "go/ki"], "type": "station-label", "name": "Mount Dennis" }, "geometry": { "type": "Point", "coordinates": [-79.48765725883598, 43.68761259569308] } },
     { "type": "Feature", "properties": { "lines": ["go/up", "toronto/2", "go/ki"], "type": "station-label", "name": "Bloor" }, "geometry": { "type": "Point", "coordinates": [-79.45201559049785, 43.658968620556166] } },

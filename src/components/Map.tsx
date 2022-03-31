@@ -6,20 +6,16 @@ import MapGL, {
   Source,
   AttributionControl,
 } from "@urbica/react-map-gl";
-import {
-  Map as MapboxMap,
-  PaddingOptions,
-} from "mapbox-gl";
+import { PaddingOptions } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
 
 import { isLineEnabled, useIsDarkTheme } from "../app/utils";
-import { Dataset } from "../hooks/useData";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.svg";
-import { BBox, FeatureCollection } from "geojson";
+import { FeatureCollection } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import {
   LineFilterState,
@@ -27,27 +23,41 @@ import {
   ViewportSettings,
 } from "../hooks/useAppState";
 import { useTheme } from "@mui/styles";
-import { config } from "../config";
+import { config, Metadata } from "../config";
 
-const provideLabelStyle = (mapData: Dataset, state: LineFilterState) => [
+const provideLabelStyle = (
+  lines: { [key: string]: Metadata },
+  state: LineFilterState
+) => [
   "format",
   ["get", "name"],
   {},
   " ",
   {},
-  ...Object.values(mapData)
+  ...Object.values(lines)
     .filter(
-      (value) =>
-        value.metadata.icon != null &&
-        isLineEnabled(value.metadata.filterKey, state)
+      (value) => value.icon != null && isLineEnabled(value.filterKey, state)
     )
-    .map((value) => value.metadata.id)
+    .map((value) => value.id)
     .sort()
     .flatMap((id) => [
       ["case", ["in", id, ["get", "lines"]], ["image", id], ""],
       {},
     ]),
 ];
+
+// Provides a list of all state keys that are false, i.e. the features to hide
+const provideFilterList = (state: LineFilterState): string[] => {
+  const basic = Object.entries(state)
+    .filter(([_, value]) => !value)
+    .map(([key]) => key);
+
+  const inverse = Object.entries(state)
+    .filter(([_, value]) => value)
+    .map(([key]) => `!${key}`);
+
+  return [...basic, ...inverse];
+};
 
 type LabelProvider = {
   labelStyle: {}[];
@@ -58,8 +68,8 @@ export const LabelProviderContext = React.createContext<LabelProvider>({
 });
 
 export type OverviewMapProps = {
-  data: Dataset;
-  updateBbox(bbox: BBox): void;
+  features: FeatureCollection;
+  lines: { [key: string]: Metadata };
 };
 
 const regionFeatures = config.regions.map((region) => ({
@@ -98,9 +108,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       ? JSON.parse(localStorage["settings"]).lastLocation
       : null;
 
-  const data = props.data;
   const mapRef = useRef<MapGL>();
-  const [fullData, setFullData] = useState<FeatureCollection | null>(null);
   // TODO: Fix?
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
@@ -134,18 +142,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
     setViewport(v);
     setMapTarget(undefined);
     setLastLocation([v.longitude, v.latitude, v.zoom, v.bearing ?? 0]);
-
-    if (mapRef.current != null) {
-      const map: MapboxMap = mapRef.current.getMap();
-      const bounds = map.getBounds();
-
-      props.updateBbox([
-        bounds.getWest(),
-        bounds.getSouth(),
-        bounds.getEast(),
-        bounds.getNorth(),
-      ]);
-    }
   };
 
   useEffect(() => {
@@ -216,41 +212,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
   }, [isDarkTheme, appTheme, mapStyle]);
 
   useEffect(() => {
-    setLabelStyle(provideLabelStyle(data, lineFilterState));
-  }, [data, lineFilterState]);
-
-  // TODO: Move this to useData
-  useEffect(() => {
-    const allFeatures = Object.values(data)
-      .filter((entry) =>
-        isLineEnabled(entry.metadata.filterKey, lineFilterState)
-      )
-      .flatMap(
-        (entry) =>
-          entry.features.map((feature) => ({
-            ...feature,
-            properties: {
-              ...feature.properties,
-              class: entry.metadata.type,
-              color: entry.metadata.color,
-              offset: entry.metadata.offset,
-              alternatives: feature.properties.alternatives,
-            },
-          }))
-        // .filter(
-        //   (feature) =>
-        //     feature.properties.alternatives == null ||
-        //     feature.properties.alternatives.some((a: string) =>
-        //       props.alternatives[entry.metadata.filterKey]?.includes(a)
-        //     )
-        // )
-      );
-
-    setFullData({
-      type: "FeatureCollection",
-      features: allFeatures,
-    });
-  }, [data, lineFilterState]);
+    setLabelStyle(provideLabelStyle(props.lines, lineFilterState));
+  }, [props.lines, lineFilterState]);
 
   const clickableLayers = [
     "rail-station",
@@ -284,7 +247,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
             data={regionData as FeatureCollection}
           />
           <AttributionControl
-            compact={false}
+            compact={windowSize[0] <= 600}
             position="bottom-right"
             customAttribution={`Updated on ${new Date(
               BUILD_DATE
@@ -292,16 +255,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
           />
           <NavigationControl showCompass showZoom position="bottom-right" />
           <LabelProviderContext.Provider value={{ labelStyle }}>
-            {Object.values(data)
-              .filter((entry) => entry.metadata.icon != null)
+            {Object.values(props.lines)
+              .filter((entry) => entry.icon != null)
               .map((entry) => (
                 <MapIcon
                   style={style}
                   width={16}
                   height={16}
-                  id={entry.metadata.id}
-                  key={entry.metadata.id}
-                  url={`icons/${entry.metadata.icon}`}
+                  id={entry.id}
+                  key={entry.id}
+                  url={`icons/${entry.icon}`}
                 />
               ))}
             <MapIcon
@@ -356,7 +319,11 @@ export const OverviewMap = (props: OverviewMapProps) => {
                 }}
               />
             )}
-            <Lines data={fullData} showLineLabels={showLabels} />
+            <Lines
+              data={props.features}
+              showLineLabels={showLabels}
+              filterList={provideFilterList(lineFilterState)}
+            />
           </LabelProviderContext.Provider>
           <Layer
             id="regions-labels"

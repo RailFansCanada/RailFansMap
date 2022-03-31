@@ -7,7 +7,8 @@
       "description": "Connector tracks between Line 1 and Line 2",
       "sources": [
         "OpenStreetMap"
-      ]
+      ],
+      "searchTerms": ["Bloor", "Yonge"]
     },
     "bbox": [-79.4020812,43.6677215,-79.388008,43.6706718],
     "features": [

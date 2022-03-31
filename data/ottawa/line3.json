@@ -11,7 +11,8 @@
     "description": "Trim - Moodie",
     "sources": [
       "City of Ottawa"
-    ]
+    ],
+    "searchTerms": ["Confederation Line"]
   },
   "bbox": [
     -75.84210742823615,

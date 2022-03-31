@@ -5,8 +5,10 @@
 converter/
 dev.html
 
-node_modules
-dist
+node_modules/
+dist/
+# Include sqljs build dist
+!sqljs/dist
 
 .vscode/
 
