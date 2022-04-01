@@ -8,7 +8,7 @@
     "name": "Québec City Tramway",
     "description": "Proposed corridor for the Québec City Tramway",
     "sources": ["Ville de Québec"],
-    "filterkey": "quebecTramway"
+    "filterKey": "quebecTramway"
   },
   "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
   "features": [
