@@ -3,7 +3,7 @@
     "metadata": {
         "id": "toronto/511", 
         "type": "rail-line", 
-        "color": "#ff0000",
+        "color": "#EE1D23",
         "offset": -0.25,
         "icon": "toronto/route511.svg", 
         "name": "Route 511", 
