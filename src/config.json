@@ -77,22 +77,22 @@
       "name": "TTC - Streetcar",
       "bbox": [-79.544722, 43.591514, -79.281164, 43.689348391718475],
       "data": [
-      	"toronto/hillcrestComplex.json",
-        "toronto/leslieBarns.json",
-        "toronto/roncesvallesCarhouse.json",
-        "toronto/russellCarhouse.json",
+      	"toronto/streetcar/hillcrestComplex.json",
+        "toronto/streetcar/leslieBarns.json",
+        "toronto/streetcar/roncesvallesCarhouse.json",
+        "toronto/streetcar/russellCarhouse.json",
         "toronto/streetcar/streetcarLoops.json",
         "toronto/streetcar/streetcarConnectors.json",
 
-	      "toronto/route501.json",
-        "toronto/route503.json",
-	      "toronto/route504.json",
-	      "toronto/route505.json",
-	      "toronto/route506.json",
-      	"toronto/route509.json",
-      	"toronto/route510.json",
-	      "toronto/route511.json",
-	      "toronto/route512.json"
+	      "toronto/streetcar/route501.json",
+        "toronto/streetcar/route503.json",
+	      "toronto/streetcar/route504.json",
+	      "toronto/streetcar/route505.json",
+	      "toronto/streetcar/route506.json",
+      	"toronto/streetcar/route509.json",
+      	"toronto/streetcar/route510.json",
+	      "toronto/streetcar/route511.json",
+	      "toronto/streetcar/route512.json"
       ]
     }
   ],
