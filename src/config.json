@@ -47,7 +47,7 @@
     {
       "id": "ttc",
       "name": "TTC",
-      "bbox": [-79.60331150195182,43.591514,-79.2443698561092,43.857232769665806],
+      "bbox": [-79.60331150195182, 43.63445130744323, -79.2443698561092, 43.857232769665806],
       "data": [
         "toronto/davisvilleYard.json",
         "toronto/wilsonYard.json",
@@ -60,44 +60,6 @@
         "toronto/bloorYongeConnectors.json",
         "toronto/ontarioLineMSF.json",
         "toronto/ynseTSF.json",
-      	"toronto/hillcrestComplex.json",
-        "toronto/leslieBarns.json",
-        "toronto/roncesvallesCarhouse.json",
-        "toronto/russellCarhouse.json",
-        "toronto/binghamLoop.json",
-        "toronto/collegeLoop.json",
-        "toronto/coxwellLoop.json",
-        "toronto/distilleryLoop.json",
-        "toronto/dufferinGateLoop.json",
-        "toronto/earlscourtLoop.json",
-        "toronto/exhibitionLoop.json",
-        "toronto/fleetLoop.json",
-        "toronto/gunnsLoop.json",
-        "toronto/highParkLoop.json",
-        "toronto/humberLoop.json",
-        "toronto/kiplingLoop.json",
-        "toronto/longBranchLoop.json",
-        "toronto/mccaulLoop.json",
-        "toronto/nevilleParkLoop.json",
-        "toronto/oakwoodLoop.json",
-        "toronto/queensQuayLoop.json",
- 	      "toronto/sunnysideLoop.json",
-        "toronto/wolseleyLoop.json",
-        "toronto/woodbineLoop.json",
-	      "toronto/adelaideConnectors.json",
-        "toronto/bathurstConnectors.json",
-        "toronto/bayConnectors.json",
-        "toronto/churchConnectors.json",
-        "toronto/coxwellConnectors.json",
-        "toronto/dufferinConnectors.json",
-        "toronto/mcCaulConnectors.json",
-        "toronto/ossingtonConnectors.json",
-        "toronto/parliamentConnectors.json",
-        "toronto/richmondConnectors.json",
-	      "toronto/shawConnectors.json",
-	      "toronto/victoriaConnectors.json",
-	      "toronto/wellingtonConnectors.json",
-	      "toronto/yorkConnectors.json",
         "toronto/line1.json",
         "toronto/line2.json",
         "toronto/line3.json",
@@ -107,7 +69,21 @@
         "toronto/line5west.json",
         "toronto/sse.json",
         "toronto/ontarioLine.json",
-        "toronto/ynse.json",
+        "toronto/ynse.json"
+      ]
+    },
+    {
+      "id": "ttcStreetcar",
+      "name": "TTC - Streetcar",
+      "bbox": [-79.544722, 43.591514, -79.281164, 43.689348391718475],
+      "data": [
+      	"toronto/hillcrestComplex.json",
+        "toronto/leslieBarns.json",
+        "toronto/roncesvallesCarhouse.json",
+        "toronto/russellCarhouse.json",
+        "toronto/streetcar/streetcarLoops.json",
+        "toronto/streetcar/streetcarConnectors.json",
+
 	      "toronto/route501.json",
         "toronto/route503.json",
 	      "toronto/route504.json",
@@ -126,7 +102,7 @@
       "title": "Kitchener-Waterloo",
       "agencies": ["grt"],
       "location": [-80.5, 43.466667],
-      "bbox": [-80.54520517587662, 43.4221650454896, -80.44124409556389, 43.50163426403371]
+      "bbox": [-80.545261, 43.419397, -80.44124409556389, 43.501633]
     },
     {
       "id": "quebec",
@@ -148,9 +124,9 @@
     {
       "id": "toronto",
       "title": "Toronto",
-      "agencies": ["ttc"],
+      "agencies": ["ttc", "ttcStreetcar"],
       "location": [-79.383849, 43.653482],
-      "bbox": [-79.60331150195182, 43.63443706290249, -79.2443698561092, 43.795826398803186]
+      "bbox": [-79.60331150195182, 43.591514, -79.2443698561092, 43.857232769665806]
     }
   ]
 }
