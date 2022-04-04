@@ -112,7 +112,7 @@
     },
     {
       "id": "stm",
-      "name": "STM",
+      "name": "STM (Preview)",
       "bbox": [-73.7215378, 45.4462383, -73.5219729, 45.59739776405928],
       "data": [
         "montreal/green.json",
