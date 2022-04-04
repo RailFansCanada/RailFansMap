@@ -321,7 +321,7 @@
       "allOf": [{ "$ref": "#/definitions/info" }],
       "properties": {
         "type": {
-          "const": "rail-line"
+          "enum": ["rail-line", "streetcar-line"]
         },
         "color": {
           "type": "string",
@@ -349,7 +349,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "const": "rail-yard"
+          "enum": ["rail-yard", "streetcar-yard"]
         },
         "id": {
           "type": "string"

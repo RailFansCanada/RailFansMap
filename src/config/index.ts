@@ -7,7 +7,7 @@ export const config = configJson as unknown as Config;
  * Metadata that can be defined for a set of data that can be loaded into the map
  */
 export type Metadata = {
-  type: "rail-line" | "rail-yard";
+  type: "rail-line" | "rail-yard" | "streetcar-line" | "streetcar-yard";
   color?: string;
   offset?: number;
   id: string;
