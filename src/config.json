@@ -27,6 +27,12 @@
       ]
     },
     {
+      "id": "rtc",
+      "name": "RTC",
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
+      "data": ["quebec/tramway.json"]
+    },
+    {
       "id": "sto",
       "name": "STO",
       "bbox": [
@@ -67,6 +73,29 @@
       ]
     },
     {
+      "id": "ttcStreetcar",
+      "name": "TTC - Streetcar",
+      "bbox": [-79.544722, 43.591514, -79.281164, 43.689348391718475],
+      "data": [
+      	"toronto/streetcar/hillcrestComplex.json",
+        "toronto/streetcar/leslieBarns.json",
+        "toronto/streetcar/roncesvallesCarhouse.json",
+        "toronto/streetcar/russellCarhouse.json",
+        "toronto/streetcar/streetcarLoops.json",
+        "toronto/streetcar/streetcarConnectors.json",
+
+	      "toronto/streetcar/route501.json",
+        "toronto/streetcar/route503.json",
+	      "toronto/streetcar/route504.json",
+	      "toronto/streetcar/route505.json",
+	      "toronto/streetcar/route506.json",
+      	"toronto/streetcar/route509.json",
+      	"toronto/streetcar/route510.json",
+	      "toronto/streetcar/route511.json",
+	      "toronto/streetcar/route512.json"
+      ]
+    },
+    {
       "id": "go",
       "name": "GO",
       "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
@@ -100,10 +129,14 @@
       "title": "Kitchener-Waterloo",
       "agencies": ["grt"],
       "location": [-80.5, 43.466667],
-      "bbox": [
-        -80.54520517587662, 43.4221650454896, -80.44124409556389,
-        43.50163426403371
-      ]
+      "bbox": [-80.545261, 43.419397, -80.44124409556389, 43.501633]
+    },
+    {
+      "id": "quebec",
+      "title": "Québec City",
+      "agencies": ["rtc"],
+      "location": [-71.235223, 46.82596],
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
     },
     {
       "id": "ottawa-gatineau",
@@ -118,7 +151,7 @@
     {
       "id": "toronto",
       "title": "Toronto",
-      "agencies": ["ttc"],
+      "agencies": ["ttc", "ttcStreetcar"],
       "location": [-79.383849, 43.653482],
       "bbox": [
         -79.60331150195182, 43.63443706290249, -79.2443698561092,
