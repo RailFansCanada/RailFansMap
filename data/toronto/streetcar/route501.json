@@ -2,7 +2,7 @@
     "type": "FeatureCollection",
     "metadata": {
         "id": "toronto/501", 
-        "type": "rail-line", 
+        "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route501.svg", 
         "name": "Route 501", 
@@ -92,7 +92,7 @@
         { "type": "Feature", "properties": { "lines": ["toronto/501"], "type": "station-label", "name": "Queen \/ Soho"}, "geometry": { "type": "Point", "coordinates": [ -79.39333252608776, 43.64943845162678 ] } },
         { "type": "Feature", "properties": { "lines": ["toronto/501"], "type": "station-label", "name": "Queen \/ John"}, "geometry": { "type": "Point", "coordinates": [ -79.39107913523912, 43.64987197258322 ] } },
         { "type": "Feature", "properties": { "lines": ["toronto/501"], "type": "station-label", "name": "Queen \/ St. Patrick"}, "geometry": { "type": "Point", "coordinates": [ -79.38848912715912, 43.65047142477772 ] } },
-        { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/3ontario", "toronto/501"], "type": "station-label", "name": "Osgoode", "url": "subway/yonge-university-stations/osgoode" }, "geometry": { "type": "Point", "coordinates": [ -79.386567206583308, 43.650859818413409 ] } },
+        { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/3ontario", "toronto/501"], "type": "station-label", "name": "Osgoode", "url": "subway/yonge-university-stations/osgoode" }, "geometry": { "type": "Point", "coordinates": [ -79.386561158378754, 43.650846414530008 ] } },
         { "type": "Feature", "properties": { "lines": ["toronto/501"], "type": "station-label", "name": "Queen \/ York"}, "geometry": { "type": "Point", "coordinates": [ -79.38494257628918, 43.65119920167507 ] } },
         { "type": "Feature", "properties": { "lines": ["toronto/501"], "type": "station-label", "name": "Queen \/ Bay"}, "geometry": { "type": "Point", "coordinates": [ -79.38162837177515, 43.65191047377477 ] } },
         { "type": "Feature", "properties": { "lines": ["toronto/1", "toronto/3ontario", "toronto/501"], "type": "station-label", "name": "Queen", "url": "subway/yonge-university-stations/queen" }, "geometry": { "type": "Point", "coordinates": [ -79.379245002319806, 43.652422224569882 ] } },

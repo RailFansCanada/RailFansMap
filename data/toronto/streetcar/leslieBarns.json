@@ -1,7 +1,7 @@
 {
     "type": "FeatureCollection",
     "metadata": {
-      "type": "rail-yard",
+      "type": "streetcar-yard",
       "id": "toronto/leslieBarns",
       "name": "Leslie Barns",
       "description": "Maintenance and Storage Facility for streetcars.",

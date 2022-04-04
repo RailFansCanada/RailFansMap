@@ -2,7 +2,7 @@
     "type": "FeatureCollection",
     "metadata": {
         "id": "toronto/503", 
-        "type": "rail-line", 
+        "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route503.svg", 
         "name": "Route 503", 

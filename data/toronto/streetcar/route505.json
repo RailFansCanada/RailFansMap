@@ -2,7 +2,7 @@
     "type": "FeatureCollection",
     "metadata": {
         "id": "toronto/505", 
-        "type": "rail-line", 
+        "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route505.svg", 
         "name": "Route 505", 

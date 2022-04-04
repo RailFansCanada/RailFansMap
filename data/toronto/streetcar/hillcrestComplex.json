@@ -1,7 +1,7 @@
 {
     "type": "FeatureCollection",
     "metadata": {
-      "type": "rail-yard",
+      "type": "streetcar-yard",
       "id": "toronto/hillcrestComplex",
       "name": "Hillcrest Complex",
       "description": "Maintenance and Storage Facility for streetcars.",

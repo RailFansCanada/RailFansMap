@@ -1,7 +1,7 @@
 {
     "type": "FeatureCollection",
     "metadata": {
-      "type": "rail-yard",
+      "type": "streetcar-yard",
       "id": "toronto/streetcarConnectors",
       "name": "TTC Streetcar Connector Tracks",
       "description": "Connector tracks for the TTC streetcar network.",

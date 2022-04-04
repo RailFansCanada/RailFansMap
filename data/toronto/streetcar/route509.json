@@ -2,7 +2,7 @@
     "type": "FeatureCollection",
     "metadata": {
         "id": "toronto/509", 
-        "type": "rail-line", 
+        "type": "streetcar-line", 
         "color": "#EE1D23",
         "offset": 0.25,
         "icon": "toronto/route509.svg", 
