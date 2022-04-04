@@ -1,0 +1,33 @@
+{
+    "type": "FeatureCollection",
+    "name": "line4",
+    "metadata": {
+      "id": "montreal/blue",
+      "type": "rail-line",
+      "color": "#0072BC",
+      "icon": "montreal/blue.svg",
+      "name": "Blue Line",
+      "description": "Snowdon - Saint-Michel",
+      "sources": [
+        "OpenStreetMap"
+      ]
+    },
+    "bbox": [-73.6279802,45.4854686,-73.5999419,45.559813],
+    "features": [
+      { "type": "Feature", "properties": { "type": "alignment" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.5999419, 45.559813 ], [ -73.6001681, 45.5595804 ], [ -73.6007131, 45.5589262 ], [ -73.6009601, 45.5586422 ], [ -73.6013455, 45.5580386 ], [ -73.6013819, 45.5575077 ], [ -73.6012948, 45.5569852 ], [ -73.6011419, 45.5563005 ], [ -73.6010179, 45.5558024 ], [ -73.600957, 45.5551486 ], [ -73.6011049, 45.5545239 ], [ -73.6014748, 45.5539403 ], [ -73.6022739, 45.5530778 ], [ -73.607185, 45.5475449 ], [ -73.607922, 45.5467272 ], [ -73.6124331, 45.5416216 ], [ -73.6133534, 45.5394972 ], [ -73.6134985, 45.5391623 ], [ -73.6175245, 45.5367502 ], [ -73.6200292, 45.5352841 ], [ -73.6211202, 45.5342004 ], [ -73.6230603, 45.5322648 ], [ -73.6236042, 45.5318138 ], [ -73.6237971, 45.5316182 ], [ -73.6239637, 45.5313167 ], [ -73.6242619, 45.5307803 ], [ -73.6244545, 45.5304337 ], [ -73.6247646, 45.5299314 ], [ -73.6264726, 45.5270229 ], [ -73.626521, 45.5264879 ], [ -73.6265327, 45.5258301 ], [ -73.6263171, 45.5250916 ], [ -73.6258677, 45.5244588 ], [ -73.6250697, 45.523806 ], [ -73.6243404, 45.5234445 ], [ -73.6237717, 45.5232203 ], [ -73.6150802, 45.5201713 ], [ -73.6149036, 45.5200867 ], [ -73.6145717, 45.5198115 ], [ -73.6142033, 45.5195265 ], [ -73.6135298, 45.5188456 ] ] } },
+      { "type": "Feature", "properties": { "type": "alignment" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.6135298, 45.5188456 ], [ -73.6131332, 45.5181795 ], [ -73.6127415, 45.5173261 ], [ -73.6123545, 45.516452 ], [ -73.6118594, 45.5150727 ], [ -73.6116734, 45.5140952 ], [ -73.6116734, 45.5128797 ], [ -73.6117655, 45.5117194 ], [ -73.6120418, 45.5108906 ], [ -73.612563, 45.510131 ], [ -73.6154197, 45.5069483 ], [ -73.6156596, 45.5065081 ], [ -73.6164806, 45.5050237 ], [ -73.616749, 45.5045977 ], [ -73.6175641, 45.5034516 ], [ -73.618181, 45.5025065 ], [ -73.6234712, 45.4966415 ], [ -73.626486, 45.4932378 ], [ -73.6265895, 45.4928061 ], [ -73.6269597, 45.4902917 ], [ -73.6273442, 45.4869478 ], [ -73.6279802, 45.4854686 ] ] } },
+            
+      { "type": "Feature", "properties": { "lines": ["montreal/blue", "montreal/orange"], "type": "station-label", "name": "Snowdon", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.627409733258716, 45.486857357132223 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Côte-des-Neiges" }, "geometry": { "type": "Point", "coordinates": [ -73.6234712, 45.4966415 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Université-de-Montréal" }, "geometry": { "type": "Point", "coordinates": [ -73.6175641, 45.5034516 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Édouard-Montpetit" }, "geometry": { "type": "Point", "coordinates": [ -73.612563, 45.510131 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Outremont" }, "geometry": { "type": "Point", "coordinates": [ -73.6149036, 45.5200867 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Acadie" }, "geometry": { "type": "Point", "coordinates": [ -73.6237717, 45.5232203 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Parc" }, "geometry": { "type": "Point", "coordinates": [ -73.6244545, 45.5304337 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "De Castelnau" }, "geometry": { "type": "Point", "coordinates": [ -73.6200292, 45.5352841 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue", "montreal/orange"], "type": "station-label", "name": "Jean-Talon", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.6134985, 45.5391623 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Fabre" }, "geometry": { "type": "Point", "coordinates": [ -73.607922, 45.5467272 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "D'Iberville" }, "geometry": { "type": "Point", "coordinates": [ -73.6022739, 45.5530778 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/blue"], "type": "station-label", "name": "Saint-Michel", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.5999419, 45.559813 ] } }
+    ]
+  }

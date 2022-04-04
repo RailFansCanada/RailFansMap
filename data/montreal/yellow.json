@@ -1,0 +1,25 @@
+{
+    "type": "FeatureCollection",
+    "name": "line4",
+    "metadata": {
+      "id": "montreal/yellow",
+      "type": "rail-line",
+      "color": "#FFDC01",
+      "icon": "montreal/yellow.svg",
+      "name": "Yellow Line",
+      "description": "Berri-UQAM - Longueuil-Université-de-Sherbrooke",
+      "sources": [
+        "OpenStreetMap"
+      ]
+    },
+    "bbox": [-73.5616208,45.5084174,-73.5219729,45.5249659],
+    "features": [
+      { "type": "Feature", "properties": { "type": "alignment" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.5609543, 45.515401 ], [ -73.5612625, 45.5150265 ], [ -73.5616208, 45.5143433 ], [ -73.561198, 45.5140692 ], [ -73.5610373, 45.513994 ], [ -73.560861, 45.5139113 ], [ -73.5604833, 45.5137354 ], [ -73.5599069, 45.5134728 ], [ -73.5588806, 45.5130051 ], [ -73.5581452, 45.5126703 ], [ -73.5577277, 45.5124682 ], [ -73.5573358, 45.5122968 ], [ -73.5570879, 45.512185 ], [ -73.5569863, 45.5121414 ] ] } },
+      { "type": "Feature", "properties": { "type": "alignment" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.5558146, 45.5116094 ], [ -73.5553167, 45.5114532 ], [ -73.5542087, 45.5113952 ], [ -73.5539685, 45.5112891 ], [ -73.5536522, 45.5111443 ], [ -73.5535713, 45.5111065 ], [ -73.5535298, 45.5110864 ], [ -73.553, 45.5108651 ], [ -73.5529047, 45.5108233 ], [ -73.550967, 45.509975 ], [ -73.5469293, 45.5087919 ], [ -73.5445322, 45.5084646 ], [ -73.5425301, 45.5084174 ], [ -73.5408544, 45.5085731 ], [ -73.539418, 45.5089344 ], [ -73.5378972, 45.5095063 ], [ -73.5362553, 45.5102767 ], [ -73.533166, 45.5124354 ], [ -73.5320559, 45.5131707 ], [ -73.5237342, 45.5186824 ], [ -73.5231595, 45.5191353 ], [ -73.5227421, 45.519648 ], [ -73.5225456, 45.5200425 ], [ -73.5224147, 45.5206389 ], [ -73.5223078, 45.5212059 ], [ -73.5219729, 45.5249659 ] ] } },
+      { "type": "Feature", "properties": { "type": "alignment" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.5569863, 45.5121414 ], [ -73.5569325, 45.5121168 ], [ -73.5567503, 45.5120332 ], [ -73.556227, 45.5117951 ], [ -73.5558146, 45.5116094 ] ] } },
+            
+      { "type": "Feature", "properties": { "lines": ["montreal/yellow"], "type": "station-label", "name": "Longueuil-Université-de-Sherbrooke", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.5219729, 45.5249659 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/yellow"], "type": "station-label", "name": "Jean-Drapeau" }, "geometry": { "type": "Point", "coordinates": [ -73.533166, 45.5124354 ] } },
+      { "type": "Feature", "properties": { "lines": ["montreal/green", "montreal/orange", "montreal/yellow"], "type": "station-label", "name": "Berri-UQAM", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.560983698898895, 45.515382510668829 ] } }
+    ]
+  }
