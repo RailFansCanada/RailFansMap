@@ -3,11 +3,8 @@
     {
       "id": "grt",
       "name": "GRT",
-      "bbox": [ -80.545261, 43.419397, -80.44124409556389, 43.501633 ],
-      "data": [
-        "waterloo/ion.json",
-        "waterloo/ionOMSF.json"
-      ]
+      "bbox": [-80.545261, 43.419397, -80.44124409556389, 43.501633],
+      "data": ["waterloo/ion.json", "waterloo/ionOMSF.json"]
     },
     {
       "id": "oc-transpo",
@@ -47,7 +44,10 @@
     {
       "id": "ttc",
       "name": "TTC",
-      "bbox": [-79.60331150195182, 43.63445130744323, -79.2443698561092, 43.857232769665806],
+      "bbox": [
+        -79.60331150195182, 43.63443706290249, -79.2443698561092,
+        43.857232769665806
+      ],
       "data": [
         "toronto/davisvilleYard.json",
         "toronto/wilsonYard.json",
@@ -93,6 +93,32 @@
       	"toronto/streetcar/route510.json",
 	      "toronto/streetcar/route511.json",
 	      "toronto/streetcar/route512.json"
+    },
+    {
+      "id": "go",
+      "name": "GO",
+      "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
+      "data": [
+        "go/br.json",
+        "go/ki.json",
+        "go/le.json",
+        "go/lw.json",
+        "go/mi.json",
+        "go/rh.json",
+        "go/st.json",
+        "go/up.json"
+      ]
+    },
+    {
+      "id": "stm",
+      "name": "STM",
+      "bbox": [-73.7215378, 45.4462383, -73.5219729, 45.59739776405928],
+      "data": [
+        "montreal/green.json",
+        "montreal/orange.json",
+        "montreal/blue.json",
+        "montreal/yellow.json",
+        "montreal/blueExtension.json"
       ]
     }
   ],
@@ -126,7 +152,17 @@
       "title": "Toronto",
       "agencies": ["ttc", "ttcStreetcar"],
       "location": [-79.383849, 43.653482],
-      "bbox": [-79.60331150195182, 43.591514, -79.2443698561092, 43.857232769665806]
+      "bbox": [
+        -79.60331150195182, 43.63443706290249, -79.2443698561092,
+        43.795826398803186
+      ]
+    },
+    {
+      "id": "montreal",
+      "title": "Montréal",
+      "agencies": ["stm"],
+      "location": [-73.59991, 45.49535],
+      "bbox": [-73.7215378, 45.4462383, -73.5219729, 45.59739776405928]
     }
   ]
 }

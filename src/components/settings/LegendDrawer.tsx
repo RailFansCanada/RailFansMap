@@ -203,7 +203,11 @@ export const LegendDrawer = (props: LegendDrawerProps) => {
       <List>
         {Object.entries(agencyMap).map(([key, values]) => {
           const entries: EntryData[] = values
-            .filter((metadata) => metadata?.type === "rail-line")
+            .filter(
+              (metadata) =>
+                metadata?.type === "rail-line" ||
+                metadata?.type === "streetcar-line"
+            )
             .map((metadata) => ({
               id: metadata.id,
               title: metadata.name,

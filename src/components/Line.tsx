@@ -29,7 +29,11 @@ export const Lines = React.memo(
           filter={[
             "all",
             ["==", ["get", "type"], "tracks"],
-            ["==", ["get", "class"], "rail-yard"],
+            [
+              "in",
+              ["get", "class"],
+              ["literal", ["rail-yard", "streetcar-yard"]],
+            ],
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           layout={{
@@ -39,8 +43,17 @@ export const Lines = React.memo(
           }}
           paint={{
             "line-color": "#818181",
-            "line-width": 3,
-            "line-offset": ["*", ["get", "offset"], 3],
+            "line-width": [
+              "case",
+              ["==", ["get", "class"], "streetcar-yard"],
+              2,
+              3,
+            ],
+            "line-offset": [
+              "*",
+              ["get", "offset"],
+              ["case", ["==", ["get", "class"], "streetcar-yard"], 2, 3],
+            ],
           }}
         />
         <Layer
@@ -67,6 +80,41 @@ export const Lines = React.memo(
               15,
               0.3,
             ],
+          }}
+        />
+        <Layer
+          id={`rail-platforms`}
+          source="raildata"
+          type="fill"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "station-platforms"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          layout={{
+            "fill-sort-key": ["get", "layer"],
+          }}
+          paint={{
+            "fill-color": ["get", "color"],
+            "fill-opacity": 0.68,
+          }}
+        />
+        <Layer
+          id={`rail-platforms-future`}
+          source="raildata"
+          type="line"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "station-platforms-future"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          layout={{
+            "line-sort-key": ["get", "layer"],
+          }}
+          paint={{
+            "line-color": ["get", "color"],
+            "line-dasharray": [3, 3],
+            "line-width": 1.5,
           }}
         />
         <Layer
@@ -136,6 +184,27 @@ export const Lines = React.memo(
           }}
         />
         <Layer
+          id={`streetcar-tracks`}
+          source="raildata"
+          type="line"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "tracks"],
+            ["==", ["get", "class"], "streetcar-line"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          layout={{
+            "line-join": "round",
+            "line-cap": "round",
+            "line-sort-key": ["get", "layer"],
+          }}
+          paint={{
+            "line-color": ["get", "color"],
+            "line-width": 1.5,
+            "line-offset": ["*", ["get", "offset"], 1.5],
+          }}
+        />
+        <Layer
           id={`rail-tracks-future`}
           source="raildata"
           type="line"
@@ -186,41 +255,6 @@ export const Lines = React.memo(
           }}
         />
         <Layer
-          id={`rail-platforms`}
-          source="raildata"
-          type="fill"
-          filter={[
-            "all",
-            ["==", ["get", "type"], "station-platforms"],
-            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
-          ]}
-          layout={{
-            "fill-sort-key": ["get", "layer"],
-          }}
-          paint={{
-            "fill-color": ["get", "color"],
-            "fill-opacity": 0.68,
-          }}
-        />
-        <Layer
-          id={`rail-platforms-future`}
-          source="raildata"
-          type="line"
-          filter={[
-            "all",
-            ["==", ["get", "type"], "station-platforms-future"],
-            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
-          ]}
-          layout={{
-            "line-sort-key": ["get", "layer"],
-          }}
-          paint={{
-            "line-color": ["get", "color"],
-            "line-dasharray": [3, 3],
-            "line-width": 1.5,
-          }}
-        />
-        <Layer
           id="rail-connector-labels-dash"
           source="raildata"
           type="line"
@@ -241,12 +275,41 @@ export const Lines = React.memo(
           }}
         />
         <Layer
+          id={`streetcar-rail-station`}
+          source="raildata"
+          type="circle"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "station-label"],
+            ["==", ["get", "class"], "streetcar-line"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          minzoom={11}
+          layout={{}}
+          paint={{
+            "circle-color": "#FFFFFF",
+            "circle-stroke-color": ["get", "color"],
+            "circle-stroke-width": 2,
+            "circle-radius": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              10,
+              2,
+              17,
+              6,
+            ],
+            "circle-pitch-alignment": "map",
+          }}
+        />
+        <Layer
           id={`rail-station`}
           source="raildata"
           type="circle"
           filter={[
             "all",
             ["==", ["get", "type"], "station-label"],
+            ["==", ["get", "class"], "rail-line"],
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           layout={{}}
@@ -330,7 +393,7 @@ export const Lines = React.memo(
               ["==", ["get", "type"], "yard-label"],
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
             ]}
-            minzoom={11}
+            minzoom={14}
             layout={
               {
                 "text-field": ["get", "name"],
@@ -355,10 +418,40 @@ export const Lines = React.memo(
             type="symbol"
             filter={[
               "all",
+              ["==", ["get", "class"], "rail-line"],
               ["==", ["get", "type"], "station-label"],
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
             ]}
             minzoom={13}
+            layout={
+              {
+                "text-field": labelStyle,
+                "text-anchor": "left",
+                "text-offset": [0.75, 0],
+                "text-font": ["Raleway Bold"],
+                "text-size": 16,
+                "icon-image": "label-background",
+                "icon-text-fit": "both",
+                "icon-text-fit-padding": [1, 4, 0, 4],
+              } as AnyLayout
+            }
+            paint={{
+              "text-color": "#FFFFFF",
+            }}
+          />
+        )}
+        {showLineLabels && (
+          <Layer
+            id={`streetcar-labels`}
+            source="raildata"
+            type="symbol"
+            filter={[
+              "all",
+              ["==", ["get", "class"], "streetcar-line"],
+              ["==", ["get", "type"], "station-label"],
+              ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+            ]}
+            minzoom={15}
             layout={
               {
                 "text-field": labelStyle,
