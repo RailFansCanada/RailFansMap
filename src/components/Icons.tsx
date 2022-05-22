@@ -9,8 +9,15 @@ export interface MapIconProps {
   style: string;
 }
 
+export type Stretch = {
+  stretchX: [number, number][];
+  stretchY: [number, number][];
+  content: [number, number, number, number];
+};
+
 export const MapIcon = ({ width, height, ...props }: MapIconProps) => {
-  const imageRef = useRef(new Image(width, height));
+  const scale = window.devicePixelRatio;
+  const imageRef = useRef(new Image(width * scale, height * scale));
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
@@ -21,5 +28,9 @@ export const MapIcon = ({ width, height, ...props }: MapIconProps) => {
     img.src = props.url;
   }, [props.style]);
 
-  return loaded ? <MapImage id={props.id} image={imageRef.current} /> : <></>;
+  return loaded ? (
+    <MapImage id={props.id} image={imageRef.current} pixelRatio={scale} />
+  ) : (
+    <></>
+  );
 };
