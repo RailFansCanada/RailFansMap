@@ -18,7 +18,7 @@ export const Logo = () => {
 
   return (
     <a href="https://www.railfans.ca">
-      <LogoImg src={isDarkTheme ? logoDark : logoLight} />
+      <LogoImg alt="RailFans Canada Logo" src={isDarkTheme ? logoDark : logoLight} />
     </a>
   );
 };
