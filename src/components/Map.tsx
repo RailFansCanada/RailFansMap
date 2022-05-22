@@ -14,7 +14,7 @@ import { Lines } from "./Line";
 import { isLineEnabled, useIsDarkTheme } from "../app/utils";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
-import labelBackground from "../images/label.svg";
+import labelBackground from "../images/label.png";
 import { FeatureCollection } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import {
