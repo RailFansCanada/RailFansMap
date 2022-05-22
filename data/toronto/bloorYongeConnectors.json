@@ -1,0 +1,24 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+      "type": "rail-yard",
+      "id": "toronto/bloor-yonge-connectors",
+      "name": "Line 1 and Line 2 Connector Tracks",
+      "description": "Connector tracks between Line 1 and Line 2",
+      "sources": [
+        "OpenStreetMap"
+      ],
+      "searchTerms": ["Bloor", "Yonge"]
+    },
+    "bbox": [-79.4020812,43.6677215,-79.388008,43.6706718],
+    "features": [
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.38853, 43.6705983 ], [ -79.3880299, 43.6706718 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3884643, 43.6705068 ], [ -79.388008, 43.6705787 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3937209, 43.6678681 ], [ -79.3937865, 43.6681355 ], [ -79.3937945, 43.6682926 ], [ -79.3937624, 43.6685274 ], [ -79.3936899, 43.6686904 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4020594, 43.6677215 ], [ -79.4014683, 43.6677959 ], [ -79.4006771, 43.6679686 ], [ -79.4003802, 43.6680695 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3938432, 43.6678524 ], [ -79.3939103, 43.6681259 ], [ -79.3939121, 43.6681614 ], [ -79.393919, 43.6682954 ], [ -79.3938846, 43.6685458 ], [ -79.3938042, 43.6687267 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3938042, 43.6687267 ], [ -79.3935958, 43.6689915 ], [ -79.3933438, 43.6692399 ], [ -79.3931204, 43.6694197 ], [ -79.3928279, 43.6696069 ], [ -79.3925471, 43.6697308 ], [ -79.3923438, 43.6698088 ], [ -79.3888385, 43.670537 ], [ -79.38853, 43.6705983 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.4005588, 43.6681245 ], [ -79.4008206, 43.6680889 ], [ -79.4010714, 43.6680462 ], [ -79.4014026, 43.6679725 ], [ -79.4016051, 43.6679124 ], [ -79.4020812, 43.66776 ] ] } },
+        { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -79.3936899, 43.6686904 ], [ -79.3934914, 43.6689426 ], [ -79.3932474, 43.6691832 ], [ -79.3930328, 43.6693558 ], [ -79.3927538, 43.6695343 ], [ -79.3924856, 43.6696527 ], [ -79.392297, 43.6697251 ], [ -79.3888479, 43.670437 ], [ -79.3884643, 43.6705068 ] ] } }
+    ]
+}

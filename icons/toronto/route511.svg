@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666669"
+   version="1.1"
+   id="svg3963"
+   inkscape:export-filename="\\wsl$\Ubuntu\home\derek\projects\OTrainMap\src\images\line2.png"
+   inkscape:export-xdpi="48.000004"
+   inkscape:export-ydpi="48.000004"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="route511.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs3957" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="14.394674"
+     inkscape:cy="21.339473"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g4534"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     lock-margins="true"
+     fit-margin-top="2"
+     fit-margin-left="2"
+     fit-margin-right="2"
+     fit-margin-bottom="2"
+     inkscape:window-width="973"
+     inkscape:window-height="1027"
+     inkscape:window-x="931"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
+  <metadata
+     id="metadata3960">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-25.24881,-32.808334)"
+     style="display:inline">
+    <g
+       id="g4534"
+       transform="translate(18.294048,32.142151)"
+       style="stroke-width:1.05833;stroke-miterlimit:4;stroke-dasharray:none">
+      <ellipse
+         style="fill:#ff0000;fill-opacity:1;stroke:#ffffff;stroke-width:1.05829;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
+         id="path3313-5"
+         cx="11.187928"
+         cy="4.8993511"
+         rx="3.1748571"
+         ry="3.1748593" />
+      <g
+         aria-label="511"
+         id="text3884-2"
+         style="font-size:2.82222px;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#ffffff">
+        <path
+           d="m 9.0602387,4.9007294 0.3059243,0.075792 q 0.022049,-0.022049 0.046853,-0.041341 0.024805,-0.02067 0.0565,-0.035829 0.031695,-0.015158 0.073036,-0.024805 0.041341,-0.00965 0.097841,-0.00965 0.08406,0 0.1460719,0.026183 0.062012,0.026183 0.1033528,0.074414 0.041341,0.048231 0.060634,0.1157552 0.020671,0.066146 0.020671,0.1460719 0,0.081304 -0.016537,0.1515841 -0.015158,0.07028 -0.048231,0.1212672 -0.034451,0.050987 -0.089572,0.079926 -0.053743,0.028939 -0.1309135,0.028939 -0.1254014,0 -0.2067056,-0.071658 -0.079926,-0.071658 -0.093706,-0.2025715 H 9.0078733 q 0.00413,0.1391817 0.062012,0.2480467 0.059256,0.1074869 0.1529621,0.1819009 0.093707,0.074414 0.2135958,0.112999 0.1212672,0.038585 0.2508027,0.038585 0.1708766,0 0.296278,-0.053743 0.1254014,-0.053743 0.2080834,-0.1460719 0.08268,-0.092329 0.122646,-0.2135958 0.03996,-0.1212672 0.03996,-0.2563149 0,-0.1584743 -0.04134,-0.2838756 -0.04134,-0.1254014 -0.118511,-0.2122178 -0.07855,-0.086816 -0.192925,-0.1322915 -0.112999,-0.046853 -0.2576929,-0.046853 -0.1019747,0 -0.1805228,0.026183 -0.078548,0.026183 -0.1212673,0.050987 L 9.4901863,4.2075767 H 10.28807 V 3.8823599 H 9.1746158 Z"
+           style="font-weight:bold;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';text-align:center;text-anchor:middle"
+           id="path1258" />
+        <path
+           d="M 11.672997,5.888782 V 3.8823599 h -0.02067 l -0.873676,0.3155705 v 0.333485 L 11.285769,4.3495145 V 5.888782 Z"
+           style="font-weight:bold;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';text-align:center;text-anchor:middle"
+           id="path1260" />
+        <path
+           d="M 13.366605,5.888782 V 3.8823599 h -0.02067 l -0.873675,0.3155705 v 0.333485 L 12.979376,4.3495145 V 5.888782 Z"
+           style="font-weight:bold;font-family:'Roboto Mono';-inkscape-font-specification:'Roboto Mono Bold';text-align:center;text-anchor:middle"
+           id="path1262" />
+      </g>
+    </g>
+  </g>
+</svg>
