@@ -52,11 +52,13 @@ const provideFilterList = (
   lines: Metadata[]
 ): string[] => {
   const fullState = { ...state };
-  lines.forEach((line) => {
-    if (line.filterKey && !fullState.hasOwnProperty(line.filterKey)) {
-      fullState[line.filterKey] = false;
-    }
-  });
+  lines
+    .filter((line) => !line.filterKey?.startsWith("!"))
+    .forEach((line) => {
+      if (line.filterKey && !fullState.hasOwnProperty(line.filterKey)) {
+        fullState[line.filterKey] = false;
+      }
+    });
 
   const basic = Object.entries(fullState)
     .filter(([_, value]) => !value)
