@@ -47,12 +47,22 @@ const provideLabelStyle = (
 ];
 
 // Provides a list of all state keys that are false, i.e. the features to hide
-const provideFilterList = (state: LineFilterState): string[] => {
-  const basic = Object.entries(state)
+const provideFilterList = (
+  state: LineFilterState,
+  lines: Metadata[]
+): string[] => {
+  const fullState = { ...state };
+  lines.forEach((line) => {
+    if (line.filterKey && !fullState.hasOwnProperty(line.filterKey)) {
+      fullState[line.filterKey] = false;
+    }
+  });
+
+  const basic = Object.entries(fullState)
     .filter(([_, value]) => !value)
     .map(([key]) => key);
 
-  const inverse = Object.entries(state)
+  const inverse = Object.entries(fullState)
     .filter(([_, value]) => value)
     .map(([key]) => `!${key}`);
 
@@ -322,7 +332,10 @@ export const OverviewMap = (props: OverviewMapProps) => {
             <Lines
               data={props.features}
               showLineLabels={showLabels}
-              filterList={provideFilterList(lineFilterState)}
+              filterList={provideFilterList(
+                lineFilterState,
+                Object.values(props.lines)
+              )}
             />
           </LabelProviderContext.Provider>
           <Layer
