@@ -6,6 +6,16 @@ import { createGlobalStyle } from "styled-components";
 
 import { App } from "./app/App";
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      await navigator.serviceWorker.register("/service-worker.js");
+    } catch (error) {
+      console.error(error);
+    }
+  });
+}
+
 const GlobalStyle = createGlobalStyle`
   html,
   body {

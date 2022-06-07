@@ -5,6 +5,7 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
 const webpack = require("webpack");
 const package = require("./package.json");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -76,10 +77,15 @@ module.exports = {
       patterns: [
         { from: "CNAME" },
         { from: "data", to: "data" },
-        { from: "icons/**/*.svg" },
+        { from: "icons/**/*" },
         { from: require.resolve("sql.js/dist/sql-wasm.wasm") },
+        { from: "railmap.webmanifest" },
       ],
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ],
 };

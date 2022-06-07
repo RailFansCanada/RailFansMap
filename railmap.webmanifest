@@ -1,0 +1,13 @@
+{
+    "name": "RailFans Canada Rail Map",
+    "short_name": "RFC Map",
+    "icons": [
+        {
+            "src": "icons/app.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "standalone"
+}
