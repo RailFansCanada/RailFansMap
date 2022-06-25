@@ -191,7 +191,7 @@
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Kirkland" }, "geometry": { "type": "Point", "coordinates": [ -73.885537628188501, 45.440286438916651 ] } },
       { "type": "Feature", "properties": { "lines": ["montreal/rem"], "type": "station-label", "name": "Anse-à-l'Orme", "major": true }, "geometry": { "type": "Point", "coordinates": [ -73.909900614865848, 45.431573492892383 ] } },
           
-      { "type": "Feature", "properties": { "lines": ["montreal/green", "montreal/rem"], "type": "station-connector-label", "name": "McGill" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.572283935952214, 45.502583587947498 ], [ -73.5715335, 45.5040687 ] ] } }
+      { "type": "Feature", "properties": { "lines": ["montreal/green", "montreal/rem"], "type": "station-connector-label", "name": "McGill" }, "geometry": { "type": "LineString", "coordinates": [ [ -73.572283935952214, 45.502583587947498 ], [ -73.571667929949086, 45.504115542399965 ] ] } }
 
     ]
   }
