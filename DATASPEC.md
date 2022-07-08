@@ -129,7 +129,7 @@ A `"station-label"` feature must have `Point` geometry. These features define th
 | name        | yes      | `string`   | The display name of the station                                                                                                                                                  | `Sheppard-Yonge`, `Don Mills`         |
 | lines       | yes      | `string[]` | A list of the ID's of all lines which serve this particular station. (See section about metadata)                                                                                | `["toronto/1", "toronto/4"]`          |
 | major       | no       | `boolean`  | Used to define "major" stations, like terminal stations or transfer stations. The labels for these stations will have higher priority when the map is viewed at low zoom levels. | `true` for Union station              |
-| url         | no       | `string`   | A relative path to a page about this station on the RailFans Canada site                                                                                                         | `otrain/line-1-stations/hurdman`      |
+| url         | no       | `string`   | A absolute path to a page about this station on the RailFans Canada site                                                                                                         | `https://otrain.railfans.ca/station/hurdman`      |
 | searchTerms | no       | `string[]` | Additional terms that could be used to search for this station.                                                                                                                  | `["Airport"]` for Pearson on the UPX. |
 
 ```json
