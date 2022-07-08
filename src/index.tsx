@@ -2,6 +2,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
 
 import { App } from "./app/App";
@@ -24,10 +25,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+const container = document.getElementById("content");
+const root = createRoot(container!);
+root.render(
   <React.StrictMode>
     <GlobalStyle />
     <App />
-  </React.StrictMode>,
-  document.getElementById("content")
+  </React.StrictMode>
 );
