@@ -7,6 +7,7 @@
     "esModuleInterop": true,
     "target": "ES2019",
     "jsx": "react",
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+  },
+  "include": ["src"]
 }
