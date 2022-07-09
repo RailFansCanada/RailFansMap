@@ -7,8 +7,9 @@ import Map, {
   Source,
   NavigationControl,
   AttributionControl,
+  Popup,
 } from "react-map-gl";
-import { PaddingOptions } from "mapbox-gl";
+import { LngLat, PaddingOptions } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
@@ -17,7 +18,7 @@ import { isLineEnabled, useIsDarkTheme } from "../app/utils";
 import { MapIcon } from "./Icons";
 import { useWindow } from "../hooks/useWindow";
 import labelBackground from "../images/label.png";
-import { FeatureCollection } from "geojson";
+import { FeatureCollection, Position } from "geojson";
 import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import {
   LineFilterState,
@@ -176,6 +177,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
 
   const [labelStyle, setLabelStyle] = useState<{}[]>([]);
 
+  const [popupTarget, setPopupTarget] = useState<Position>(null);
+
   const handleClick = (event: any) => {
     if (event.features == null) return;
 
@@ -199,7 +202,14 @@ export const OverviewMap = (props: OverviewMapProps) => {
     const canvas = mapRef.current?.getMap()?.getCanvas();
     if (canvas == null) return;
 
+    console.log(e.features);
     canvas.style.cursor = "pointer";
+    if (e.features.length > 0) {
+      const feature = e.features[0];
+      if (feature.properties.url != null && feature.geometry.type === "Point") {
+        setPopupTarget(feature.geometry.coordinates);
+      }
+    }
   };
 
   const handleMouseLeave = (e: any) => {
@@ -207,6 +217,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
     if (canvas == null) return;
 
     canvas.style.cursor = "";
+    setPopupTarget(null);
   };
 
   useEffect(() => {
@@ -348,6 +359,18 @@ export const OverviewMap = (props: OverviewMapProps) => {
           maxzoom={9}
         />
       </Source>
+      {popupTarget && (
+        <Popup
+          longitude={popupTarget[0]}
+          latitude={popupTarget[1]}
+          closeButton={false}
+          anchor="top-left"
+          offset={4}
+          className="mapbox-popup"
+        >
+          View Station Profile
+        </Popup>
+      )}
     </Map>
   );
 };

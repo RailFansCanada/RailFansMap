@@ -23,6 +23,21 @@ const GlobalStyle = createGlobalStyle`
   ::selection {
     background: #f44336;
   }
+
+  .mapboxgl-popup-content {
+    margin-left: -16px;
+    border-radius: 4px !important;
+    background: #212121 !important;
+    color: #ffffff;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    padding: 8px !important;
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .mapboxgl-popup-tip {
+    display: none;
+  }
 `;
 
 const container = document.getElementById("content");
