@@ -64,6 +64,6 @@
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-75.65455722969303, 45.364643879821834], [-75.65436818373304, 45.3647069821035], [-75.65418217228212, 45.36477441651444], [-75.65399939476619, 45.364846111088404]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-75.6539539085718, 45.36479064585031], [-75.65003651911111, 45.366386951909355]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-75.65542195517205, 45.364480436506284], [-75.6507471996886, 45.366385427099374]] } },
-    { "type": "Feature", "properties": { "type": "yard-label", "name": "Walkley Yard", "url": "otrain/yards/walkley" }, "geometry": { "type": "Point", "coordinates": [-75.65288, 45.36539] } }
+    { "type": "Feature", "properties": { "type": "yard-label", "name": "Walkley Yard", "url": "https://otrain.railfans.ca/yards/walkley" }, "geometry": { "type": "Point", "coordinates": [-75.65288, 45.36539] } }
   ]
 }

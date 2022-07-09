@@ -113,6 +113,6 @@
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.639161463975924, 45.414856653523188 ], [ -75.64069613323089, 45.414906244277212 ] ] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.639710686754114, 45.416078401974083 ], [ -75.640561780298682, 45.41590167035752 ] ] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -75.638889718212582, 45.414941909084199 ], [ -75.638841400109683, 45.414942187792057 ], [ -75.638793408932642, 45.41494613654595 ] ] } },
-    { "type": "Feature", "properties": { "type": "yard-label", "name": "Belfast Yard", "url": "otrain/yards/belfast" }, "geometry": { "type": "Point", "coordinates": [-75.64087, 45.41546] } }
+    { "type": "Feature", "properties": { "type": "yard-label", "name": "Belfast Yard", "url": "https://otrain.railfans.ca/yards/belfast" }, "geometry": { "type": "Point", "coordinates": [-75.64087, 45.41546] } }
   ]
 }
