@@ -2299,9 +2299,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@urbica/react-map-gl@npm:1.15.1":
-  version: 1.15.1
-  resolution: "@urbica/react-map-gl@npm:1.15.1"
+"@urbica/react-map-gl@npm:1.16.1":
+  version: 1.16.1
+  resolution: "@urbica/react-map-gl@npm:1.16.1"
   dependencies:
     "@mapbox/mapbox-gl-language": ^0.10.0
     "@mapbox/mapbox-gl-traffic": ^1.0.2
@@ -2314,7 +2314,7 @@ __metadata:
       optional: true
     "@mapbox/mapbox-gl-traffic":
       optional: true
-  checksum: 7bde3eb930bd235522c2bc9ed5a9ea6f5ef6df0aa569315aebafa43b04bf9995728e43b2bae3c0e82278cfd74734481a48b37681e06309a4b972426d3780338c
+  checksum: db6a778d5fa1ab70f3f58cd08ebe68c03e818e8a4146966c59189daae9e799d75d69bcab056c8a5b1672df25668ab0906d1fc8db4ee5c08d827a394e581cb72e
   languageName: node
   linkType: hard
 
@@ -7623,7 +7623,7 @@ __metadata:
     "@types/react-virtualized": 9.21.21
     "@types/sql.js": 1.4.3
     "@types/styled-components": 5.1.25
-    "@urbica/react-map-gl": 1.15.1
+    "@urbica/react-map-gl": 1.16.1
     ajv: 8.11.0
     ajv-formats: 2.1.1
     bbox: 0.4.0

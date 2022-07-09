@@ -66,7 +66,7 @@
     "@turf/boolean-contains": "6.5.0",
     "@turf/boolean-overlap": "6.5.0",
     "@turf/buffer": "6.5.0",
-    "@urbica/react-map-gl": "1.15.1",
+    "@urbica/react-map-gl": "1.16.1",
     "bbox": "0.4.0",
     "clsx": "1.2.1",
     "immer": "9.0.15",
