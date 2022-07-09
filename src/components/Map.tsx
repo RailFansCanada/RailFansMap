@@ -202,7 +202,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
     const canvas = mapRef.current?.getMap()?.getCanvas();
     if (canvas == null) return;
 
-    console.log(e.features);
     canvas.style.cursor = "pointer";
     if (e.features.length > 0) {
       const feature = e.features[0];
