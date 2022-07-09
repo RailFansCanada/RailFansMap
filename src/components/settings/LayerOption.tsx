@@ -11,116 +11,79 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from "clsx";
+import styled from "styled-components";
 
-export interface LayerOptionProps {
-  readonly primary: string;
-  readonly secondary?: string;
+export type LayerOptionProps = {
+  primary: string;
+  secondary?: string;
 
-  readonly selected?: boolean;
-  readonly onClick?: () => void;
+  selected?: boolean;
+  onClick?: () => void;
 
-  readonly imageUrl?: string;
-  readonly tint?: string;
-}
+  imageUrl?: string;
+  tint?: string;
+};
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    margin: theme.spacing(2),
-    borderRadius: 8,
-  },
-  header: {
-    marginBottom: theme.spacing(1),
-  },
-  button: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "start",
-  },
-  content: {
-    display: "flex",
-    flexDirection: "column",
-    flexGrow: 1,
-  },
-  selected: {
-    //borderWidth: 1,
-    //borderStyle: "solid",
-    //borderColor: (props: any) => props.tint,
-    backgroundColor: (props: any) => alpha(props.tint, 0.1),
-  },
-  imagery: {
-    display: "flex",
-    flexGrow: 0,
-    flexShrink: 0,
-    width: 88,
-    height: 88,
-    margin: theme.spacing(1),
-    borderRadius: "100%",
-    overflow: "hidden",
-    background: theme.palette.background.default,
-    filter: "grayscale(1)",
-    transition: theme.transitions.create("filter"),
-    "& img": {
-      width: "100%",
-      height: "100%",
-    },
-    border: `1px solid ${theme.palette.text.disabled}`,
-  },
-  imagerySelected: {
-    filter: "grayscale(0)",
-    borderColor: (props) => (props as any).tint,
-  },
-}));
+const CardTitle = styled(Typography)`
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
+`;
+
+const OptionContent = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
+const OptionCard = styled(Card)<{ selected: boolean; tint?: string }>`
+  margin: ${({ theme }) => theme.spacing(2)};
+  border-radius: 8px;
+  ${({ selected, tint }) => selected && `background-color:${alpha(tint, 0.1)};`}
+`;
+
+const OptionActionArea = styled(CardActionArea)`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+`;
+
+const Imagery = styled.div<{ selected: boolean }>`
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  margin: ${({ theme }) => theme.spacing(1)};
+  border-radius: 100%;
+  overflow: hidden;
+  background: ${({ theme }) => theme.palette.background.default};
+  filter: ${({ selected }) => (selected ? "grayscale(0)" : "grayscale(1)")};
+  transition: ${({ theme }) => theme.transitions.create("filter")};
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+  border: 1px solid ${({ theme }) => theme.palette.text.disabled};
+`;
 
 export const LayerOption = (props: LayerOptionProps) => {
   const theme = useTheme();
-  const classes = useStyles({
-    tint: props.tint ?? theme.palette.secondary.main,
-  });
   return (
-    <Card
-      className={clsx(classes.root, { [classes.selected]: props.selected })}
+    <OptionCard
       variant="outlined"
+      selected={props.selected}
+      tint={props.tint ?? theme.palette.secondary.main}
     >
-      <CardActionArea
-        className={classes.button}
-        onClick={() => props.onClick?.()}
-      >
+      <OptionActionArea onClick={() => props.onClick?.()}>
         {props.imageUrl && (
-          <div
-            className={clsx(classes.imagery, {
-              [classes.imagerySelected]: props.selected,
-            })}
-          >
+          <Imagery selected={props.selected}>
             <img src={props.imageUrl} />
-          </div>
+          </Imagery>
         )}
-        <CardContent className={classes.content}>
-          <Typography className={classes.header} variant="h6">
-            {props.primary}
-          </Typography>
+        <OptionContent>
+          <CardTitle variant="h6">{props.primary}</CardTitle>
           <Typography variant="body1">{props.secondary}</Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
-};
-
-export const LayerOption2 = (props: Readonly<LayerOptionProps>) => {
-  const theme = useTheme();
-  const classes = useStyles({
-    tint: props.tint ?? theme.palette.secondary.main,
-  });
-
-  return (
-    <ListItem className={clsx(classes.selected)}>
-      {props.imageUrl && (
-        <ListItemAvatar>
-          <img src={props.imageUrl} />
-        </ListItemAvatar>
-      )}
-      <ListItemText primary={props.primary} secondary={props.secondary} />
-    </ListItem>
+        </OptionContent>
+      </OptionActionArea>
+    </OptionCard>
   );
 };
