@@ -18,7 +18,12 @@ export type LegendGroupState = {
   [key: string]: boolean;
 };
 
-export type ViewportSettings = [lng: number, lat: number, zoom: number, bearing: number];
+export type ViewportSettings = [
+  lng: number,
+  lat: number,
+  zoom: number,
+  bearing: number
+];
 
 type AppState = {
   settingsDrawerOpen: boolean;
@@ -104,42 +109,41 @@ const writeSettings = (state: AppState) => {
   localStorage["settings"] = JSON.stringify({ ...rest, version: "3.2" });
 };
 
+const saved = readLocalSettings();
+const params = readSearchParamsSettings();
+
+const merged = {
+  ...saved,
+  ...params,
+  lineFilterState: { ...saved.lineFilterState, ...params.lineFilterState },
+};
+
 const useProvideAppContext = (): UseAppState => {
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useState(false);
   const [legendDrawerOpen, setLegendDrawerOpen] = useState(false);
   const [shareSheetOpen, setShareSheetOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  const [show3DBuildings, setShow3DBuildings] = useState(false);
-  const [showLabels, setShowLabels] = useState(true);
-  const [appTheme, setAppTheme] = useState<AppTheme>("system");
-  const [mapStyle, setMapStyle] = useState<MapStyle>("vector");
-  const [lastLocation, setLastLocation] = useState<ViewportSettings>(null);
-
-  const [lineFilterState, setLineFilterState] = useState<LineFilterState>({});
-  const [legendGroupState, setLegendGroupState] = useState<LegendGroupState>(
-    {}
+  const [show3DBuildings, setShow3DBuildings] = useState(
+    merged.show3DBuildings ?? false
+  );
+  const [showLabels, setShowLabels] = useState(merged.showLabels ?? false);
+  const [appTheme, setAppTheme] = useState<AppTheme>(
+    merged.appTheme ?? "system"
+  );
+  const [mapStyle, setMapStyle] = useState<MapStyle>(
+    merged.mapStyle ?? "vector"
+  );
+  const [lastLocation, setLastLocation] = useState<ViewportSettings>(
+    merged.lastLocation
   );
 
-  // Load initial state from localstorage and param overrides
-  useEffect(() => {
-    const saved = readLocalSettings();
-    const params = readSearchParamsSettings();
-
-    const merged = {
-      ...saved,
-      ...params,
-      lineFilterState: { ...saved.lineFilterState, ...params.lineFilterState },
-    };
-
-    setShow3DBuildings(merged.show3DBuildings ?? false);
-    setShowLabels(merged.showLabels ?? true);
-    setAppTheme(merged.appTheme ?? "system");
-    setMapStyle(merged.mapStyle ?? "vector");
-    setLineFilterState(merged.lineFilterState ?? {});
-    setLegendGroupState(merged.legendGroupState ?? {});
-    setLastLocation(merged.lastLocation)
-  }, []);
+  const [lineFilterState, setLineFilterState] = useState<LineFilterState>(
+    merged.lineFilterState ?? {}
+  );
+  const [legendGroupState, setLegendGroupState] = useState<LegendGroupState>(
+    merged.legendGroupState ?? {}
+  );
 
   const setLineFiltered = (filterKey: string, show: boolean) => {
     setLineFilterState({ ...lineFilterState, [filterKey]: show });
@@ -181,7 +185,7 @@ const useProvideAppContext = (): UseAppState => {
     setLegendGroupOpen,
 
     lastLocation,
-    setLastLocation
+    setLastLocation,
   };
 
   // Write settings to localstorage on every update

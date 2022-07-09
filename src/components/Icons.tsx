@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Image as MapImage } from "@urbica/react-map-gl";
+import React, { useEffect, useRef } from "react";
+import { useMap } from "react-map-gl";
 
-export interface MapIconProps {
+export type MapIconProps = {
   id: string;
   url: string;
   width: number;
   height: number;
   style: string;
-}
+};
 
 export type Stretch = {
   stretchX: [number, number][];
@@ -18,19 +18,32 @@ export type Stretch = {
 export const MapIcon = ({ width, height, ...props }: MapIconProps) => {
   const scale = window.devicePixelRatio;
   const imageRef = useRef(new Image(width * scale, height * scale));
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const { current: map } = useMap();
+
+  const addToMap = () => {
+    if (!map.hasImage(props.id)) {
+      map.addImage(props.id, imageRef.current, { pixelRatio: scale });
+    }
+  };
 
   useEffect(() => {
     const img = imageRef.current;
     img.onload = () => {
-      setLoaded(true);
+      addToMap();
     };
     img.src = props.url;
-  }, [props.style]);
 
-  return loaded ? (
-    <MapImage id={props.id} image={imageRef.current} pixelRatio={scale} />
-  ) : (
-    <></>
-  );
+    map.on("styleimagemissing", (e) => {
+      if (e.id === props.id) {
+        addToMap();
+      }
+    });
+
+    return () => {
+      if (map.hasImage(props.id)) {
+        map.removeImage(props.id);
+      }
+    };
+  }, []);
+  return <></>;
 };

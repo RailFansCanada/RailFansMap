@@ -66,7 +66,6 @@
     "@turf/boolean-contains": "6.5.0",
     "@turf/boolean-overlap": "6.5.0",
     "@turf/buffer": "6.5.0",
-    "@urbica/react-map-gl": "1.16.1",
     "bbox": "0.4.0",
     "clsx": "1.2.1",
     "immer": "9.0.15",
@@ -76,6 +75,7 @@
     "react-custom-scrollbars": "4.2.1",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
+    "react-map-gl": "7.0.17",
     "sql.js": "workspace:./sqljs",
     "styled-components": "5.3.5",
     "tiny-warning": "1.0.3"

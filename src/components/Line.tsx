@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Source, Layer } from "@urbica/react-map-gl";
+import { Source, Layer } from "react-map-gl";
 import { AnyLayout } from "mapbox-gl";
 import { LabelProviderContext } from "./Map";
 import { FeatureCollection } from "geojson";
@@ -19,12 +19,10 @@ export const Lines = React.memo(
     const isDarkTheme = useIsDarkTheme(appTheme);
 
     return (
-      <>
-        <Source id={"raildata"} type="geojson" data={data} />
+      <Source id={"raildata"} type="geojson" data={data}>
         {/* Rail Yard layers */}
         <Layer
           id={`yard-tracks`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -58,7 +56,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-tunnel`}
-          source="raildata"
           type="fill"
           filter={[
             "all",
@@ -84,7 +81,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-platforms`}
-          source="raildata"
           type="fill"
           filter={[
             "all",
@@ -101,7 +97,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-platforms-future`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -119,7 +114,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-alignment`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -164,7 +158,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-tracks`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -185,7 +178,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`streetcar-tracks`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -206,7 +198,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-tracks-future`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -226,7 +217,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-overpass`}
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -256,7 +246,6 @@ export const Lines = React.memo(
         />
         <Layer
           id="rail-connector-labels-dash"
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -276,7 +265,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`streetcar-rail-station`}
-          source="raildata"
           type="circle"
           filter={[
             "all",
@@ -304,7 +292,6 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-station`}
-          source="raildata"
           type="circle"
           filter={[
             "all",
@@ -331,7 +318,6 @@ export const Lines = React.memo(
         />
         <Layer
           id="rail-connector-labels-bg"
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -358,7 +344,6 @@ export const Lines = React.memo(
         />
         <Layer
           id="rail-connector-labels"
-          source="raildata"
           type="line"
           filter={[
             "all",
@@ -386,7 +371,6 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`yard-labels`}
-            source="raildata"
             type="symbol"
             filter={[
               "all",
@@ -414,7 +398,6 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`rail-labels`}
-            source="raildata"
             type="symbol"
             filter={[
               "all",
@@ -443,7 +426,6 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`streetcar-labels`}
-            source="raildata"
             type="symbol"
             filter={[
               "all",
@@ -472,7 +454,6 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`rail-labels-major`}
-            source="raildata"
             type="symbol"
             filter={[
               "all",
@@ -499,7 +480,7 @@ export const Lines = React.memo(
             }}
           />
         )}
-      </>
+      </Source>
     );
   }
 );

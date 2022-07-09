@@ -1246,28 +1246,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mapbox/mapbox-gl-language@npm:^0.10.0":
-  version: 0.10.1
-  resolution: "@mapbox/mapbox-gl-language@npm:0.10.1"
-  peerDependencies:
-    mapbox-gl: ">=0.29.0 <2.0.0"
-  checksum: 806b5c973a829e0474b94d4a8a0e3e177c6e8e4d569b7cbe981b88145388fcbf7deacc0b34293dae8601ed6645e9131a930f6a55c208af023ead4bb7427b6bfb
-  languageName: node
-  linkType: hard
-
 "@mapbox/mapbox-gl-supported@npm:^2.0.1":
   version: 2.0.1
   resolution: "@mapbox/mapbox-gl-supported@npm:2.0.1"
   checksum: 1dffc96baacc56e34b09f2ae6ac4b2b8f10ad51a9d7c4946dc2057f456deeacd5d0729e340120857b3204a14d9961266f3218d26e101d46e81717954f1c129af
-  languageName: node
-  linkType: hard
-
-"@mapbox/mapbox-gl-traffic@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@mapbox/mapbox-gl-traffic@npm:1.0.2"
-  peerDependencies:
-    mapbox-gl: ^0.29.0
-  checksum: a43490ff0978979e043cff90e5a364c81cd3c8a0fa9df91fcada5606d722c9e5b0b1c8325e4a83edabb65024418796e17e1572c2170162299440c422a3b61328
   languageName: node
   linkType: hard
 
@@ -2036,7 +2018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:2.7.3":
+"@types/mapbox-gl@npm:2.7.3, @types/mapbox-gl@npm:^2.6.0":
   version: 2.7.3
   resolution: "@types/mapbox-gl@npm:2.7.3"
   dependencies:
@@ -2296,25 +2278,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: dfb49abe82605615712fc694eaa4f7068fe30aa03f38c085e2c2e74408beaad30471d36da9654a811482ece2ea4405575fd99b19c0aa327ed2a9736b554bbf43
-  languageName: node
-  linkType: hard
-
-"@urbica/react-map-gl@npm:1.16.1":
-  version: 1.16.1
-  resolution: "@urbica/react-map-gl@npm:1.16.1"
-  dependencies:
-    "@mapbox/mapbox-gl-language": ^0.10.0
-    "@mapbox/mapbox-gl-traffic": ^1.0.2
-  peerDependencies:
-    mapbox-gl: ^0.x || ^1.x || ^2.x
-    react: ^16.x || ^17.x || ^18.x
-    react-dom: ^16.x || ^17.x || ^18.x
-  dependenciesMeta:
-    "@mapbox/mapbox-gl-language":
-      optional: true
-    "@mapbox/mapbox-gl-traffic":
-      optional: true
-  checksum: db6a778d5fa1ab70f3f58cd08ebe68c03e818e8a4146966c59189daae9e799d75d69bcab056c8a5b1672df25668ab0906d1fc8db4ee5c08d827a394e581cb72e
   languageName: node
   linkType: hard
 
@@ -7623,7 +7586,6 @@ __metadata:
     "@types/react-virtualized": 9.21.21
     "@types/sql.js": 1.4.3
     "@types/styled-components": 5.1.25
-    "@urbica/react-map-gl": 1.16.1
     ajv: 8.11.0
     ajv-formats: 2.1.1
     bbox: 0.4.0
@@ -7645,6 +7607,7 @@ __metadata:
     react-custom-scrollbars: 4.2.1
     react-dom: 18.2.0
     react-is: 18.2.0
+    react-map-gl: 7.0.17
     source-map-loader: 4.0.0
     sql.js: "workspace:./sqljs"
     styled-components: 5.3.5
@@ -8290,6 +8253,18 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
+  languageName: node
+  linkType: hard
+
+"react-map-gl@npm:7.0.17":
+  version: 7.0.17
+  resolution: "react-map-gl@npm:7.0.17"
+  dependencies:
+    "@types/mapbox-gl": ^2.6.0
+  peerDependencies:
+    mapbox-gl: "*"
+    react: ">=16.3.0"
+  checksum: 33edb863766a57464d1f449292faf5bf7ab151e91fd713e77f8e61ed895f15a932fd00c7a075b73af90c3ee382bde245517ba73bd059bd7531522f31136a84ce
   languageName: node
   linkType: hard
 
