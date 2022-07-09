@@ -187,7 +187,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
           feature.properties.url != null &&
           feature.properties.url !== "null"
         ) {
-          window.parent.location.href = `${BASE_URL}/${feature.properties.url}`;
+          window.parent.location.href = feature.properties.url;
         }
         break;
       } else if (feature.properties.type === "region-label") {

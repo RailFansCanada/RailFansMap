@@ -29,6 +29,6 @@
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-75.8490032763444, 45.33601195946104], [-75.84913499811115, 45.3359060285832]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-75.84297902492877, 45.33860515220352], [-75.84337637762671, 45.338436601084396], [-75.84340744047094, 45.3384221492759], [-75.84343668781995, 45.33840592311157], [-75.84363065385273, 45.33828876838723], [-75.84369900666269, 45.33825070686246], [-75.84377140189142, 45.33821656405481]] } },
     { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [[-75.85033099536517, 45.33547788815816], [-75.85050452557587, 45.33540809087612]] } },
-    { "type": "Feature", "properties": { "type": "yard-label", "name": "Moodie Yard", "url": "otrain/yards/moodie" }, "geometry": { "type": "Point", "coordinates": [-75.84918, 45.33587] } }
+    { "type": "Feature", "properties": { "type": "yard-label", "name": "Moodie Yard", "url": "https://otrain.railfans.ca/yards/moodie" }, "geometry": { "type": "Point", "coordinates": [-75.84918, 45.33587] } }
   ]
 }
