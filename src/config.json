@@ -129,6 +129,26 @@
       "data": [
         "montreal/rem.json"
       ]
+    },
+    {
+      "id": "exo",
+      "name": "exo",
+      "bbox": [-74.1418435,45.3606006,-73.177615,45.7734934],
+      "data": [
+        "exo/exo1.json",
+        "exo/exo2.json",
+        "exo/exo3.json",
+        "exo/exo4.json",
+        "exo/exo5.json"
+      ]
+    },
+    {
+      "id": "translink",
+      "name": "TransLink",
+      "bbox": [-123.1124059,49.1302316,-122.3007844,49.2949003],
+      "data": [
+        "vancouver/wce.json"
+      ]
     }
   ],
   "regions": [
@@ -166,9 +186,23 @@
     {
       "id": "montreal",
       "title": "Montréal",
-      "agencies": ["rem", "stm"],
+      "agencies": ["rem", "stm", "exo"],
       "location": [-73.59991, 45.49535],
-      "bbox": [-73.9144974,45.4305912,-73.425561,45.59972319599818]
+      "bbox": [-74.1418435,45.3606006,-73.177615,45.7734934]
+    },
+    {
+      "id": "gta",
+      "title": "Greater Toronto Area",
+      "agencies": ["go"],
+      "location": [-79.45261, 43.75807],
+      "bbox": [-81.2493479999999,42.98024840000009,-78.885068,44.3737523]
+    },
+    {
+      "id": "vancouver",
+      "title": "Metro Vancouver",
+      "agencies": ["translink"],
+      "location": [-122.94575, 49.22108],
+      "bbox": [-123.1124059,49.1302316,-122.3007844,49.2949003]
     }
   ]
 }

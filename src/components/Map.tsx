@@ -257,6 +257,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       attributionControl={false}
       maxPitch={85}
       interactiveLayerIds={clickableLayers}
+      projection="globe"
     >
       <AttributionControl
         compact={windowSize[0] <= 600}
