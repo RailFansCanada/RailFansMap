@@ -25,7 +25,7 @@
   "homepage": "https://github.com/OTrainFans/OTrainMap#readme",
   "devDependencies": {
     "@types/d3-ease": "3.0.0",
-    "@types/geojson": "7946.0.8",
+    "@types/geojson": "7946.0.9",
     "@types/mapbox-gl": "2.7.3",
     "@types/react": "18.0.15",
     "@types/react-custom-scroll": "4.3.2",

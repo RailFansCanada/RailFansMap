@@ -1930,6 +1930,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/geojson@npm:7946.0.9":
+  version: 7946.0.9
+  resolution: "@types/geojson@npm:7946.0.9"
+  checksum: b858f06a27f4c11dbf441a7ea710a27563ebdd5a0326daee5869b0483a39642a19f39b0f415518e981278f911470f9275b99d86b9ede5d7b19a64c32a14cd36e
+  languageName: node
+  linkType: hard
+
 "@types/graceful-fs@npm:^4.1.3":
   version: 4.1.5
   resolution: "@types/graceful-fs@npm:4.1.5"
@@ -7577,7 +7584,7 @@ __metadata:
     "@turf/boolean-overlap": 6.5.0
     "@turf/buffer": 6.5.0
     "@types/d3-ease": 3.0.0
-    "@types/geojson": 7946.0.8
+    "@types/geojson": 7946.0.9
     "@types/mapbox-gl": 2.7.3
     "@types/react": 18.0.15
     "@types/react-custom-scroll": 4.3.2
