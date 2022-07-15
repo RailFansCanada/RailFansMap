@@ -6912,9 +6912,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mapbox-gl@npm:2.9.1":
-  version: 2.9.1
-  resolution: "mapbox-gl@npm:2.9.1"
+"mapbox-gl@npm:2.9.2":
+  version: 2.9.2
+  resolution: "mapbox-gl@npm:2.9.2"
   dependencies:
     "@mapbox/geojson-rewind": ^0.5.1
     "@mapbox/geojson-types": ^1.0.2
@@ -6938,7 +6938,7 @@ __metadata:
     supercluster: ^7.1.4
     tinyqueue: ^2.0.3
     vt-pbf: ^3.1.3
-  checksum: afd9459cc3a93d969713e75234c2ddf63de206e552239dff309c6e69f7f574fb028f5ffe9aabebe5956e890fffc31a696f4caa517e805673a5d32b69abd70218
+  checksum: 73c667e4e32a3cd13f70f1cc8f0d59eb4f505c9d9570572ec73924f4b7baea2dd4260c8c89445a497775251764b7039314d100bd923569559de263d6bf97a542
   languageName: node
   linkType: hard
 
@@ -7605,7 +7605,7 @@ __metadata:
     html-webpack-plugin: 5.5.0
     immer: 9.0.15
     jest: 28.1.3
-    mapbox-gl: 2.9.1
+    mapbox-gl: 2.9.2
     mini-css-extract-plugin: 2.6.1
     pnp-webpack-plugin: 1.7.0
     raw-loader: 4.0.2
