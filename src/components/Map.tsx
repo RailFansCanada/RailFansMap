@@ -235,12 +235,20 @@ export const OverviewMap = (props: OverviewMapProps) => {
     setLabelStyle(provideLabelStyle(props.lines, lineFilterState));
   }, [props.lines, lineFilterState]);
 
-  const clickableLayers = [
-    "rail-station",
-    "rail-labels",
-    "yard-labels",
-    "regions-labels",
-  ];
+  const [clickableLayers, setClickableLayers] = useState([]);
+
+  useEffect(() => {
+    if (showLabels) {
+      setClickableLayers([
+        "rail-station",
+        "rail-labels",
+        "yard-labels",
+        "regions-labels",
+      ]);
+    } else {
+      setClickableLayers(["rail-station", "regions-labels"]);
+    }
+  }, [showLabels]);
 
   return (
     <Map
