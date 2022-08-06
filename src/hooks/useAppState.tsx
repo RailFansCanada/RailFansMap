@@ -71,6 +71,8 @@ const readLocalSettings = (): Partial<AppState> => {
   if (saved.version == null) {
     const { showLineLabels, ...rest } = saved;
     return { ...rest, showLabels: showLineLabels };
+  } else if (saved.version < "3.4.2") {
+    return { ...saved, showLabels: true };
   } else {
     return saved;
   }
@@ -106,7 +108,7 @@ const writeSettings = (state: AppState) => {
   const { settingsDrawerOpen, legendDrawerOpen, shareSheetOpen, ...rest } =
     state;
 
-  localStorage["settings"] = JSON.stringify({ ...rest, version: "3.2" });
+  localStorage["settings"] = JSON.stringify({ ...rest, version: "3.4.2" });
 };
 
 const saved = readLocalSettings();
@@ -127,7 +129,7 @@ const useProvideAppContext = (): UseAppState => {
   const [show3DBuildings, setShow3DBuildings] = useState(
     merged.show3DBuildings ?? false
   );
-  const [showLabels, setShowLabels] = useState(merged.showLabels ?? false);
+  const [showLabels, setShowLabels] = useState(merged.showLabels ?? true);
   const [appTheme, setAppTheme] = useState<AppTheme>(
     merged.appTheme ?? "system"
   );
