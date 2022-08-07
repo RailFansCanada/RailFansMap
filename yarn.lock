@@ -2172,7 +2172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.0.15":
+"@types/react@npm:*":
   version: 18.0.15
   resolution: "@types/react@npm:18.0.15"
   dependencies:
@@ -2180,6 +2180,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e22cc388d1c145aa184787e44dc28db4789976c704cd5db475c170bb76a560eb81def5f346cfe750949bb3d43ad88822b8cbb9f19b1286e3795892a8263e7715
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:18.0.16":
+  version: 18.0.16
+  resolution: "@types/react@npm:18.0.16"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 47853419adbf7f35f302cd4ef804c5a50498a0917a34e696caa693fc60b9c52c644ca2ecf64cbba4a5efd963771167d241906f117d16d59e20e84b882215b6bd
   languageName: node
   linkType: hard
 
@@ -7604,7 +7615,7 @@ __metadata:
     "@types/d3-ease": 3.0.0
     "@types/geojson": 7946.0.10
     "@types/mapbox-gl": 2.7.5
-    "@types/react": 18.0.15
+    "@types/react": 18.0.16
     "@types/react-custom-scroll": 4.3.2
     "@types/react-custom-scrollbars": 4.0.10
     "@types/react-dom": 18.0.6
