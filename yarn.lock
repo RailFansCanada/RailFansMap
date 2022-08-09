@@ -1329,13 +1329,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:5.9.3":
-  version: 5.9.3
-  resolution: "@mui/material@npm:5.9.3"
+"@mui/material@npm:5.10.0":
+  version: 5.10.0
+  resolution: "@mui/material@npm:5.10.0"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@mui/base": 5.0.0-alpha.92
-    "@mui/system": ^5.9.3
+    "@mui/system": ^5.10.0
     "@mui/types": ^7.1.5
     "@mui/utils": ^5.9.3
     "@types/react-transition-group": ^4.4.5
@@ -1357,7 +1357,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 52efefbb3bdd02087f797d2865dbcfcb5e01cc3760e2f9dee5164a5d13f0594bb70ddf547472ba6d5958f1c9912aac599666c9038dcc4f5ed180fd496ffb9949
+  checksum: c31cdefa094ab9f802d60519cf1884e8c5a8f162f6e567d32072d86d4bfa8807a8c1e4fe52614d0853ebdd4da5daccdfdce3d4cf79b8f29e8b67864f1d326a7b
   languageName: node
   linkType: hard
 
@@ -1378,9 +1378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/styled-engine@npm:@mui/styled-engine-sc@5.9.3":
-  version: 5.9.3
-  resolution: "@mui/styled-engine-sc@npm:5.9.3"
+"@mui/styled-engine@npm:@mui/styled-engine-sc@5.10.0":
+  version: 5.10.0
+  resolution: "@mui/styled-engine-sc@npm:5.10.0"
   dependencies:
     "@babel/runtime": ^7.17.2
     prop-types: ^15.8.1
@@ -1390,7 +1390,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/styled-components":
       optional: true
-  checksum: e27fe2a28f05e35954f26ffcc22dfb0752da0aa0805bdaedf93157481af0172d78635ed93083e46ccac2009b225f7d6b818fc6c37e6193b7583bc997d740dbc3
+  checksum: baaf0326f20a72d0146c6b07715be1035105e0e173c0fbcde0e5d83dbe006e38a1278bc77a5a5d4b71420c2c5a25c9d3606b1da577bb485e7e2985678114d787
   languageName: node
   linkType: hard
 
@@ -1425,13 +1425,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.9.3":
-  version: 5.9.3
-  resolution: "@mui/system@npm:5.9.3"
+"@mui/system@npm:^5.10.0":
+  version: 5.10.0
+  resolution: "@mui/system@npm:5.10.0"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@mui/private-theming": ^5.9.3
-    "@mui/styled-engine": ^5.8.7
+    "@mui/styled-engine": ^5.10.0
     "@mui/types": ^7.1.5
     "@mui/utils": ^5.9.3
     clsx: ^1.2.1
@@ -1449,7 +1449,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: f94fda5744b50fa4730f4354a108da9b5e80c60b62c89c8f7ca3c37e1b5d6fb2efb9f4dcf04da5b3b8f00c91a547a5df0e4eb173bfce820ca147ede3167386b0
+  checksum: be86853ca79ed8a889d37fa02780c0dfe477ff5ffda4cabba8bf5865186b578cbd50646ea902c3f5712baf83d4b11fbd21428f643b42d1839d671cbedddfc546
   languageName: node
   linkType: hard
 
@@ -7604,8 +7604,8 @@ __metadata:
   resolution: "otrainmap@workspace:."
   dependencies:
     "@mui/icons-material": 5.8.4
-    "@mui/material": 5.9.3
-    "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.9.3"
+    "@mui/material": 5.10.0
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.10.0"
     "@mui/styles": 5.9.3
     "@turf/bbox": 6.5.0
     "@turf/bbox-polygon": 6.5.0
