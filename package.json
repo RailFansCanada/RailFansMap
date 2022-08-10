@@ -33,7 +33,7 @@
     "@types/react-dom": "18.0.6",
     "@types/react-virtualized": "9.21.21",
     "@types/sql.js": "1.4.3",
-    "@types/styled-components": "5.1.25",
+    "@types/styled-components": "5.1.26",
     "ajv": "8.11.0",
     "ajv-formats": "2.1.1",
     "copy-webpack-plugin": "11.0.0",
