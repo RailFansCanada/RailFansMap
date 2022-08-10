@@ -7,7 +7,6 @@
       "icon": "montreal/rem.svg",
       "name": "REM",
       "description": "(Opening 202X)",
-      "filterKey": "rem",
       "sources": [
         "OpenStreetMap"
       ]
