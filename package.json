@@ -75,7 +75,7 @@
     "react-custom-scrollbars": "4.2.1",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
-    "react-map-gl": "7.0.18",
+    "react-map-gl": "7.0.19",
     "sql.js": "workspace:./sqljs",
     "styled-components": "5.3.5",
     "tiny-warning": "1.0.3"
