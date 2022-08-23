@@ -4183,10 +4183,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"earcut@npm:^2.2.3":
-  version: 2.2.3
-  resolution: "earcut@npm:2.2.3"
-  checksum: 4e3bab80366c49e0332a0bb061649a3b9354dcbfa636155c7eee250be0670d7139d53f2aebbcf90788507c71b76ec1713c20e36527f202b9abb79c9e5858ec35
+"earcut@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "earcut@npm:2.2.4"
+  checksum: aea0466cb2f24e0c3c57148d8d28ac9846f53c4f43ee66780826474303ac851b305ef988152d0bdeb31e8f7ca939dc0df737e7505cfb1c1bdf2ff9d7f9ea2faa
   languageName: node
   linkType: hard
 
@@ -6942,9 +6942,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mapbox-gl@npm:2.9.2":
-  version: 2.9.2
-  resolution: "mapbox-gl@npm:2.9.2"
+"mapbox-gl@npm:2.10.0":
+  version: 2.10.0
+  resolution: "mapbox-gl@npm:2.10.0"
   dependencies:
     "@mapbox/geojson-rewind": ^0.5.1
     "@mapbox/geojson-types": ^1.0.2
@@ -6956,7 +6956,7 @@ __metadata:
     "@mapbox/vector-tile": ^1.3.1
     "@mapbox/whoots-js": ^3.1.0
     csscolorparser: ~1.0.3
-    earcut: ^2.2.3
+    earcut: ^2.2.4
     geojson-vt: ^3.2.1
     gl-matrix: ^3.4.3
     grid-index: ^1.1.0
@@ -6968,7 +6968,7 @@ __metadata:
     supercluster: ^7.1.4
     tinyqueue: ^2.0.3
     vt-pbf: ^3.1.3
-  checksum: 73c667e4e32a3cd13f70f1cc8f0d59eb4f505c9d9570572ec73924f4b7baea2dd4260c8c89445a497775251764b7039314d100bd923569559de263d6bf97a542
+  checksum: e96230b5695a79bb83241028e25ef3c562beffd9c60ac68c78a5fe3f021d1b51e314b43a8c95d4b73da8ef97ac6386b3489319164740e3b84e8188ee3cad8ed9
   languageName: node
   linkType: hard
 
@@ -7642,7 +7642,7 @@ __metadata:
     html-webpack-plugin: 5.5.0
     immer: 9.0.15
     jest: 28.1.3
-    mapbox-gl: 2.9.2
+    mapbox-gl: 2.10.0
     mini-css-extract-plugin: 2.6.1
     pnp-webpack-plugin: 1.7.0
     raw-loader: 4.0.2
