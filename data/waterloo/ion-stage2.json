@@ -7,7 +7,8 @@
      "icon": "waterloo/ion.svg", 
      "name": "ION Light Rail Stage 2 Extension", 
      "description": "Extension to Downtown Cambridge", 
-     "sources": [ "Region of Waterloo" ] 
+     "sources": [ "Region of Waterloo" ],
+		 "filterKey": "ion-stage2"
   },
   "bbox": [ -80.45850, 43.34431, -80.29734, 43.42583 ],
   "features": [
