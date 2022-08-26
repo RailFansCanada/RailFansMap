@@ -3,8 +3,8 @@
     {
       "id": "grt",
       "name": "GRT",
-      "bbox": [-80.545261, 43.419397, -80.44124409556389, 43.501633],
-      "data": ["waterloo/ion.json", "waterloo/ionOMSF.json"]
+      "bbox": [-80.545261,43.35583057283434,-80.30597750531045,43.501633],
+      "data": ["waterloo/ion.json", "waterloo/ionOMSF.json", "waterloo/ion-stage2.json"]
     },
     {
       "id": "oc-transpo",
@@ -137,7 +137,7 @@
       "title": "Kitchener-Waterloo",
       "agencies": ["grt"],
       "location": [-80.5, 43.466667],
-      "bbox": [-80.545261, 43.419397, -80.44124409556389, 43.501633]
+      "bbox": [-80.545261,43.35583057283434,-80.30597750531045,43.501633]
     },
     {
       "id": "quebec",
