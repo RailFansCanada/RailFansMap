@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "@mui/icons-material": "5.10.3",
-    "@mui/material": "5.10.3",
+    "@mui/material": "5.10.4",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.10.3",
     "@mui/styles": "5.10.3",
     "@turf/bbox": "6.5.0",
