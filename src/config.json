@@ -1,12 +1,6 @@
 {
   "agencies": [
     {
-      "id": "grt",
-      "name": "GRT",
-      "bbox": [-80.545261,43.35583057283434,-80.30597750531045,43.501633],
-      "data": ["waterloo/ion.json", "waterloo/ionOMSF.json", "waterloo/ion-stage2.json"]
-    },
-    {
       "id": "oc-transpo",
       "name": "OC Transpo",
       "bbox": [
@@ -27,12 +21,6 @@
       ]
     },
     {
-      "id": "rtc",
-      "name": "RTC",
-      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
-      "data": ["quebec/tramway.json"]
-    },
-    {
       "id": "sto",
       "name": "STO",
       "bbox": [
@@ -40,6 +28,26 @@
         45.43724924103122
       ],
       "data": ["gatineau/a.json", "gatineau/b.json"]
+    },
+	{
+      "id": "stm",
+      "name": "STM",
+      "bbox": [-73.7260800545552,45.44372029100138,-73.52186189872911,45.59972319599818],
+      "data": [
+        "montreal/green.json",
+        "montreal/orange.json",
+        "montreal/blue.json",
+        "montreal/yellow.json",
+        "montreal/blueExtension.json"
+      ]
+    },
+    {
+      "id": "rem",
+      "name": "REM",
+      "bbox": [-73.9144974,45.4305912,-73.425561,45.67481794612502],
+      "data": [
+        "montreal/rem.json"
+      ]
     },
     {
       "id": "ttc",
@@ -110,42 +118,22 @@
         "go/up.json"
       ]
     },
-    {
-      "id": "stm",
-      "name": "STM",
-      "bbox": [-73.7260800545552,45.44372029100138,-73.52186189872911,45.59972319599818],
-      "data": [
-        "montreal/green.json",
-        "montreal/orange.json",
-        "montreal/blue.json",
-        "montreal/yellow.json",
-        "montreal/blueExtension.json"
-      ]
+	{
+      "id": "grt",
+      "name": "GRT",
+      "bbox": [-80.545261,43.35583057283434,-80.30597750531045,43.501633],
+      "data": ["waterloo/ion.json", "waterloo/ionOMSF.json", "waterloo/ion-stage2.json"]
     },
     {
-      "id": "rem",
-      "name": "REM",
-      "bbox": [-73.9144974,45.4305912,-73.425561,45.67481794612502],
-      "data": [
-        "montreal/rem.json"
-      ]
-    }
+      "id": "rtc",
+      "name": "RTC",
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
+      "data": ["quebec/tramway.json"]
+    },
+
   ],
+  
   "regions": [
-    {
-      "id": "waterloo",
-      "title": "Kitchener-Waterloo",
-      "agencies": ["grt"],
-      "location": [-80.5, 43.466667],
-      "bbox": [-80.545261,43.35583057283434,-80.30597750531045,43.501633]
-    },
-    {
-      "id": "quebec",
-      "title": "Québec City",
-      "agencies": ["rtc"],
-      "location": [-71.235223, 46.82596],
-      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
-    },
     {
       "id": "ottawa-gatineau",
       "title": "Ottawa-Gatineau",
@@ -156,6 +144,13 @@
         45.49642647588418
       ]
     },
+	{
+      "id": "montreal",
+      "title": "Montréal",
+      "agencies": ["rem", "stm"],
+      "location": [-73.59991, 45.49535],
+      "bbox": [-73.9144974,45.4305912,-73.425561,45.59972319599818]
+    },
     {
       "id": "toronto",
       "title": "Toronto",
@@ -164,11 +159,18 @@
       "bbox": [-79.60331150195182,43.591514,-79.2443698561092,43.857232769665806]
     },
     {
-      "id": "montreal",
-      "title": "Montréal",
-      "agencies": ["rem", "stm"],
-      "location": [-73.59991, 45.49535],
-      "bbox": [-73.9144974,45.4305912,-73.425561,45.59972319599818]
-    }
+      "id": "quebec",
+      "title": "Québec City",
+      "agencies": ["rtc"],
+      "location": [-71.235223, 46.82596],
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
+    },
+	{
+      "id": "waterloo",
+      "title": "Kitchener-Waterloo",
+      "agencies": ["grt"],
+      "location": [-80.5, 43.466667],
+      "bbox": [-80.545261,43.35583057283434,-80.30597750531045,43.501633]
+    },
   ]
 }
