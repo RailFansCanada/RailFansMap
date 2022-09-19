@@ -20,15 +20,6 @@
         "ottawa/stage3kanata.json"
       ]
     },
-    {
-      "id": "sto",
-      "name": "STO",
-      "bbox": [
-        -75.86578535776559, 45.39536917415158, -75.69585303512089,
-        45.43724924103122
-      ],
-      "data": ["gatineau/a.json", "gatineau/b.json"]
-    },
 	{
       "id": "stm",
       "name": "STM",
@@ -129,8 +120,16 @@
       "name": "RTC",
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
       "data": ["quebec/tramway.json"]
+    },
+    {
+      "id": "sto",
+      "name": "STO",
+      "bbox": [
+        -75.86578535776559, 45.39536917415158, -75.69585303512089,
+        45.43724924103122
+      ],
+      "data": ["gatineau/a.json", "gatineau/b.json"]
     }
-
   ],
   
   "regions": [
