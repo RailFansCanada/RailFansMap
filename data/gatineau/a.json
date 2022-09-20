@@ -7,7 +7,7 @@
     "offset": 0.5,
     "icon": "gatineau/lineA.svg",
     "name": "Gatineau Tramway to Aylmer",
-    "description": "Proposed corridor for the Gatineau Tramway",
+    "description": "Proposed tramway corridor",
     "sources": [
       "STO"
     ],
