@@ -66,10 +66,10 @@
         "toronto/line4.json",
         "toronto/line5.json",
         "toronto/line6.json",
-        "toronto/line5west.json",
+        "toronto/ynse.json",
         "toronto/sse.json",
         "toronto/ontarioLine.json",
-        "toronto/ynse.json"
+        "toronto/line5west.json"
       ]
     },
     {
