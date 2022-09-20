@@ -30,8 +30,8 @@
       "data": [
         "montreal/green.json",
         "montreal/orange.json",
-        "montreal/blue.json",
         "montreal/yellow.json",
+        "montreal/blue.json",
         "montreal/blueExtension.json"
       ]
     },
