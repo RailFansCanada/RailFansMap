@@ -6,7 +6,7 @@
       "color": "#ACD21C",
       "icon": "montreal/rem.svg",
       "name": "REM",
-      "description": "(Opening 202X)",
+      "description": "Réseau Express Métropolitain",
       "sources": [
         "OpenStreetMap"
       ]
