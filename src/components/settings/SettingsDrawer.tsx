@@ -72,22 +72,22 @@ export const SettingsDrawer = () => {
       }}
       title="Map Settings"
     >
-      <SectionHeader variant="overline">Basemap</SectionHeader>
+      <SectionHeader variant="overline">Map Type</SectionHeader>
       <LayerOption
-        primary="Vector Basemap"
-        secondary="Basic vector basemap in either light or dark themes"
+        primary="Map View"
+        secondary="Basic map in either light or dark themes"
         selected={mapStyle === "vector"}
         onClick={() => setMapStyle("vector")}
       />
       <LayerOption
-        primary="Satellite Basemap"
+        primary="Satellite View"
         secondary="Satellite imagery"
         selected={mapStyle === "satellite"}
         onClick={() => setMapStyle("satellite")}
       />
       <Divider />
 
-      <SectionHeader variant="overline">Other Settings</SectionHeader>
+      <SectionHeader variant="overline">Additional Settings</SectionHeader>
 
       <List>
         <SwitchOption
@@ -107,7 +107,7 @@ export const SettingsDrawer = () => {
           onToggle={(checked) => setShowLabels(checked)}
         />
         <MenuOption
-          primary="Choose Theme"
+          primary="Choose theme"
           options={themeSettings}
           value={appThemeToIndex(appTheme)}
           onChange={handleThemeChange}
@@ -118,14 +118,14 @@ export const SettingsDrawer = () => {
       <SectionHeader variant="overline">About</SectionHeader>
       <List>
         <ListItemButton href="https://www.iubenda.com/privacy-policy/15954265">
-          <ListItemText primary="Privacy Policy" />
+          <ListItemText primary="Privacy policy" />
         </ListItemButton>
         <ListItem dense>
           <ListItemText primary="Version" secondary={VERSION} />
         </ListItem>
         <ListItem dense>
           <ListItemText
-            primary="Built at"
+            primary="Build date"
             secondary={new Date(BUILD_DATE).toLocaleString()}
           />
         </ListItem>
