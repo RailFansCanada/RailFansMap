@@ -2299,13 +2299,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sql.js@npm:1.4.3":
-  version: 1.4.3
-  resolution: "@types/sql.js@npm:1.4.3"
+"@types/sql.js@npm:1.4.4":
+  version: 1.4.4
+  resolution: "@types/sql.js@npm:1.4.4"
   dependencies:
     "@types/emscripten": "*"
     "@types/node": "*"
-  checksum: ba02fdc13efd96e0a59590b198cc62326dc30e252bda2c494beab9dcea16cd0cb7a145da473d4b3aaf2abc682b8caa0cd8febe0e0093a76cb596d131cbf58359
+  checksum: c71928d76b59e4899da4b137a4f1bbf8cc0cf198928efa183bba90880ae69331da23a99175b88a7f5eaa34ce9ebef8f94dd1dcca8e4abdac2abb560d860e6636
   languageName: node
   linkType: hard
 
@@ -7673,7 +7673,7 @@ __metadata:
     "@types/react-custom-scrollbars": 4.0.10
     "@types/react-dom": 18.0.6
     "@types/react-virtualized": 9.21.21
-    "@types/sql.js": 1.4.3
+    "@types/sql.js": 1.4.4
     "@types/styled-components": 5.1.26
     ajv: 8.11.0
     ajv-formats: 2.1.1
