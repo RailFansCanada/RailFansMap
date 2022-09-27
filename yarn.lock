@@ -2235,14 +2235,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.0.18":
-  version: 18.0.18
-  resolution: "@types/react@npm:18.0.18"
+"@types/react@npm:18.0.21":
+  version: 18.0.21
+  resolution: "@types/react@npm:18.0.21"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 6d72d35ab3eecf382a5e0f225923f5a2c753045fce02e4e29713f36c99a24f0f770666a49dde96167f37c86271f93339d1b7e2b8969d011b137a9ebd24ee6806
+  checksum: 36c1a7c9d507e81e2e629c1ad3db51d7b84d8b010c2d5008da411874286c6a5ccc711ae1d4c470efc0bdc77153cc8804a40e927e929e5164c669ca41b84b846d
   languageName: node
   linkType: hard
 
@@ -7668,7 +7668,7 @@ __metadata:
     "@types/d3-ease": 3.0.0
     "@types/geojson": 7946.0.10
     "@types/mapbox-gl": 2.7.5
-    "@types/react": 18.0.18
+    "@types/react": 18.0.21
     "@types/react-custom-scroll": 4.3.2
     "@types/react-custom-scrollbars": 4.0.10
     "@types/react-dom": 18.0.6
