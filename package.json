@@ -83,7 +83,7 @@
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.10.6"
   },
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@3.2.4",
   "workspaces": [
     "./sqljs"
   ]
