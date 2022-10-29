@@ -6,7 +6,7 @@
   "types": "src/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "webpack --config webpack.prod.js",
+    "build": "yarn node utils/assemble-data.js && webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
     "watch:data": "nodemon --watch data utils/assemble-data.js",
     "watch:tiles": "nodemon --watch data --exec /bin/bash utils/assemble-tiles.sh",
