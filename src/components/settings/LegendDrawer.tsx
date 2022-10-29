@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 import { MenuDrawer } from "./MenuDrawer";
-import { Agency, Metadata } from "../../config";
+import { Agency } from "../../config";
 import { LoadedMetadata } from "../../hooks/useData";
 import { Chevron } from "../Chevron";
 import { BBox } from "geojson";
@@ -21,6 +21,7 @@ import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
 import { useWindow } from "../../hooks/useWindow";
 import { isLineEnabled } from "../../app/utils";
+import metadata from "../../../build/metadata.json";
 
 type EntryData = {
   id: string;
@@ -34,7 +35,6 @@ type EntryData = {
 
 type LegendDrawerProps = {
   allAgencies: { [key: string]: Agency };
-  lines: { [key: string]: LoadedMetadata };
 };
 
 type LegendGroupProps = {
@@ -185,7 +185,9 @@ export const LegendDrawer = (props: LegendDrawerProps) => {
   const { legendDrawerOpen, setLegendDrawerOpen } = useAppState();
 
   const agencyMap: { [key: string]: LoadedMetadata[] } = {};
-  Object.values(props.lines).forEach((line) => {
+  Object.values(
+    metadata as unknown as { [key: string]: LoadedMetadata }
+  ).forEach((line) => {
     const agency = line.agency;
     if (agencyMap[agency] == null) {
       agencyMap[agency] = [];

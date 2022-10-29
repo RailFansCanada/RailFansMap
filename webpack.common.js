@@ -6,6 +6,9 @@ const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
 const webpack = require("webpack");
 const package = require("./package.json");
 
+const copyAssembledData =
+  dotenv.parsed.USE_TILES !== "true" ? [{ from: "build/assembled.json" }] : [];
+
 module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -71,6 +74,7 @@ module.exports = {
       BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
       VERSION: `"${package.version}"`,
       BUILD_DATE: `${Date.now()}`,
+      USE_TILES: `${dotenv.parsed.USE_TILES ?? false}`,
     }),
     new CopyPlugin({
       patterns: [
@@ -79,6 +83,8 @@ module.exports = {
         { from: "icons/**/*.svg" },
         { from: require.resolve("sql.js/dist/sql-wasm.wasm") },
         { from: "shortcuts" },
+        { from: "build/search.json" },
+        ...copyAssembledData,
       ],
     }),
     new ForkTsCheckerWebpackPlugin(),

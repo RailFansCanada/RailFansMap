@@ -12,16 +12,25 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
       
       - name: Set up local secrets
         env:
           MAPBOX_KEY: ${{ secrets.MAPBOX_KEY }}
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL" > local.env
+        run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL\nUSE_TILES=true" > local.env
           
       - name: Build dist
         run: yarn && yarn run build
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Set up map tools
+        run: .github/workflows/setup-tools.sh
+
+      - name: Generate tiles
+        run: .github/workflows/gen-tiles.sh && cp -r tiles dist/tiles
         
       - name: Deploy 🚉
         if: success()

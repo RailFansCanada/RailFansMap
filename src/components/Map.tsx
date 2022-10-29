@@ -8,7 +8,7 @@ import Map, {
   AttributionControl,
   Popup,
 } from "react-map-gl";
-import { Coordinate, LngLat, PaddingOptions } from "mapbox-gl";
+import { PaddingOptions } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
@@ -84,7 +84,6 @@ export const LabelProviderContext = React.createContext<LabelProvider>({
 });
 
 export type OverviewMapProps = {
-  features: FeatureCollection;
   lines: { [key: string]: Metadata };
 };
 
@@ -341,7 +340,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
           />
         )}
         <Lines
-          data={props.features}
           showLineLabels={showLabels}
           filterList={provideFilterList(
             lineFilterState,
