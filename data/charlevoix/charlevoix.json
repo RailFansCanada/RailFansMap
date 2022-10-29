@@ -23,6 +23,5 @@
 { "type": "Feature", "properties": { "station-label": "Petite-Rivière-Saint-François", "longitude": -70.566392417399996, "latitude": 47.3040906413 }, "geometry": { "type": "Point", "coordinates": [ -70.566392417399996, 47.3040906413 ] } },
 { "type": "Feature", "properties": { "station-label": "St-Irénée", "longitude": -70.204766733300005, "latitude": 47.562769874200001 }, "geometry": { "type": "Point", "coordinates": [ -70.204766733300005, 47.562769874200001 ] } },
 { "type": "Feature", "properties": { "station-label": "Les Éboulements", "longitude": -70.363625047100001, "latitude": 47.457406718500003 }, "geometry": { "type": "Point", "coordinates": [ -70.363625047100001, 47.457406718500003 ] } }
-}
 ]
 }
