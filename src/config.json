@@ -19,6 +19,24 @@
         "ottawa/stage3barrhaven.json",
         "ottawa/stage3kanata.json"
       ]
+    }, {
+      "id": "traindecharlevoix",
+      "name": "Train de Charlevoix",
+      "bbox": [
+        -73.751760000,45.446530000,-70.141690000,47.623820000
+      ],
+      "data": [
+        "charlevoix/charlevoix.json"
+      ]
+    }, {
+      "id": "viarail",
+      "name": "VIA Rail Canada",
+      "bbox": [
+        -130.359710000,42.295560000,-63.269740000,58.767720000
+      ],
+      "data": [
+        "viarail/viarail2.json"
+      ]
     },
     {
       "id": "stm",
