@@ -1,0 +1,6 @@
+{
+"type": "FeatureCollection",
+"metadata": { "id": "viarail", "type": "rail-line", "color": "#fcba03", "icon": "quebec\/qctramway.svg", "name": "VIA Rail Canada", "description": "Crown-corporation in charge of passenger rail in Canada.", "sources": [ "VIA Rail Canada" ], "filterKey": "viarail" },
+"name": "VIA Rail Canada",
+"bbox": [-130.359710000,42.295560000,-63.269740000,58.767720000],                                              
+"features": [
