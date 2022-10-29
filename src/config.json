@@ -28,11 +28,12 @@
       "data": [
         "charlevoix/charlevoix.json"
       ]
-    }, {
-      "id": "viarail",
-      "name": "VIA Rail Canada",
+    },
+	{      
+	"id": "viarail",
+      "name": "VIA Rail Canada (Beta)",
       "bbox": [
-        -130.359710000,42.295560000,-63.269740000,58.767720000
+        -130.35971, 42.29556, -63.26974, 58.76772
       ],
       "data": [
         "viarail/viarail.json"
@@ -195,6 +196,14 @@
       "agencies": ["rtc"],
       "location": [-71.235223, 46.82596],
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
+    },
+{
+      "id": "passengerrail",
+      "title": "Passenger Rail",
+      "agencies": ["viarail", "charlevoix"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [-130.35971,42.29556,-63.26974,58.76772]
     }
+
   ]
 }
