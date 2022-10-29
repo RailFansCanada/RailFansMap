@@ -8,7 +8,7 @@
 	"name": "VIA Rail Canada", 
 	"description": "Crown-corporation in charge of passenger rail in Canada.", 
 	"sources": [ "VIA Rail Canada" ],
-	"filterKey": "!viarail"
+	"filterKey": "viarail"
 	},
 	"bbox": 
 	[-130.35971, 42.29556, -63.26974, 58.76772]
