@@ -23,7 +23,7 @@
       "id": "traindecharlevoix",
       "name": "Train de Charlevoix",
       "bbox": [
-        -73.751760000,45.446530000,-70.141690000,47.623820000
+        -73.75176, 45.44653, -70.14169, 47.623821353
       ],
       "data": [
         "charlevoix/charlevoix.json"
