@@ -1,0 +1,209 @@
+{
+  "agencies": [
+    {
+      "id": "oc-transpo",
+      "name": "OC Transpo",
+      "bbox": [
+        -75.93239095708121, 45.26587692566606, -75.47978870927166,
+        45.49642647588418
+      ],
+      "data": [
+        "ottawa/belfastYard.json",
+        "ottawa/greenbankYard.json",
+        "ottawa/moodieYard.json",
+        "ottawa/walkleyYard.json",
+        "ottawa/line1.json",
+        "ottawa/line2.json",
+        "ottawa/line3.json",
+        "ottawa/line4.json",
+        "ottawa/stage3barrhaven.json",
+        "ottawa/stage3kanata.json"
+      ]
+    }, {
+      "id": "charlevoix",
+      "name": "Train de Charlevoix",
+      "bbox": [
+        -73.75176, 45.44653, -70.14169, 47.623821353
+      ],
+      "data": [
+        "charlevoix/charlevoix.json"
+      ]
+    },
+	{      
+	"id": "viarail",
+      "name": "VIA Rail Canada (Beta)",
+      "bbox": [
+        -130.35971, 42.29556, -63.26974, 58.76772
+      ],
+      "data": [
+        "viarail/viarail.json"
+      ]
+    },
+    {
+      "id": "stm",
+      "name": "STM",
+      "bbox": [
+        -73.7260800545552, 45.44372029100138, -73.52186189872911,
+        45.59972319599818
+      ],
+      "data": [
+        "montreal/green.json",
+        "montreal/orange.json",
+        "montreal/yellow.json",
+        "montreal/blue.json",
+        "montreal/blueExtension.json"
+      ]
+    },
+    {
+      "id": "rem",
+      "name": "REM",
+      "bbox": [-73.9144974, 45.4305912, -73.425561, 45.67481794612502],
+      "data": ["montreal/rem.json"]
+    },
+    {
+      "id": "ttc",
+      "name": "TTC",
+      "bbox": [
+        -79.60331150195182, 43.63443706290249, -79.2443698561092,
+        43.857232769665806
+      ],
+      "data": [
+        "toronto/davisvilleYard.json",
+        "toronto/wilsonYard.json",
+        "toronto/greenwoodYard.json",
+        "toronto/keeleYard.json",
+        "toronto/mccowanYard.json",
+        "toronto/eglintonMSF.json",
+        "toronto/finchMSF.json",
+        "toronto/sheppardWye.json",
+        "toronto/bloorYongeConnectors.json",
+        "toronto/ontarioLineMSF.json",
+        "toronto/ynseTSF.json",
+        "toronto/line1.json",
+        "toronto/line2.json",
+        "toronto/line3.json",
+        "toronto/line4.json",
+        "toronto/line5.json",
+        "toronto/line6.json",
+        "toronto/ynse.json",
+        "toronto/sse.json",
+        "toronto/ontarioLine.json",
+        "toronto/line5west.json"
+      ]
+    },
+    {
+      "id": "ttcStreetcar",
+      "name": "TTC - Streetcar",
+      "bbox": [-79.544722, 43.591514, -79.281164, 43.689348391718475],
+      "data": [
+        "toronto/streetcar/hillcrestComplex.json",
+        "toronto/streetcar/leslieBarns.json",
+        "toronto/streetcar/roncesvallesCarhouse.json",
+        "toronto/streetcar/russellCarhouse.json",
+        "toronto/streetcar/streetcarLoops.json",
+        "toronto/streetcar/streetcarConnectors.json",
+
+        "toronto/streetcar/route501.json",
+        "toronto/streetcar/route503.json",
+        "toronto/streetcar/route504.json",
+        "toronto/streetcar/route505.json",
+        "toronto/streetcar/route506.json",
+        "toronto/streetcar/route509.json",
+        "toronto/streetcar/route510.json",
+        "toronto/streetcar/route511.json",
+        "toronto/streetcar/route512.json"
+      ]
+    },
+    {
+      "id": "go",
+      "name": "GO",
+      "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
+      "data": [
+        "go/br.json",
+        "go/ki.json",
+        "go/le.json",
+        "go/lw.json",
+        "go/mi.json",
+        "go/rh.json",
+        "go/st.json",
+        "go/up.json"
+      ]
+    },
+    {
+      "id": "grt",
+      "name": "GRT",
+      "bbox": [-80.545261, 43.35583057283434, -80.30597750531045, 43.501633],
+      "data": [
+        "waterloo/ion.json",
+        "waterloo/ionOMSF.json",
+        "waterloo/ion-stage2.json"
+      ]
+    },
+    {
+      "id": "rtc",
+      "name": "RTC",
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
+      "data": ["quebec/tramway.json"]
+    },
+    {
+      "id": "sto",
+      "name": "STO",
+      "bbox": [
+        -75.86578535776559, 45.39536917415158, -75.69585303512089,
+        45.43724924103122
+      ],
+      "data": ["gatineau/a.json", "gatineau/b.json"]
+    }
+  ],
+
+  "regions": [
+    {
+      "id": "ottawa-gatineau",
+      "title": "Ottawa-Gatineau",
+      "agencies": ["oc-transpo", "sto"],
+      "location": [-75.691042, 45.420472],
+      "bbox": [
+        -75.93239095708121, 45.26587692566606, -75.47978870927166,
+        45.49642647588418
+      ]
+    },
+    {
+      "id": "montreal",
+      "title": "Montréal",
+      "agencies": ["stm", "rem"],
+      "location": [-73.59991, 45.49535],
+      "bbox": [-73.9144974, 45.4305912, -73.425561, 45.59972319599818]
+    },
+    {
+      "id": "toronto",
+      "title": "Toronto",
+      "agencies": ["ttc", "ttcStreetcar"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [
+        -79.60331150195182, 43.591514, -79.2443698561092, 43.857232769665806
+      ]
+    },
+    {
+      "id": "waterloo",
+      "title": "Kitchener-Waterloo",
+      "agencies": ["grt"],
+      "location": [-80.5, 43.466667],
+      "bbox": [-80.545261, 43.35583057283434, -80.30597750531045, 43.501633]
+    },
+    {
+      "id": "quebec",
+      "title": "Québec City",
+      "agencies": ["rtc"],
+      "location": [-71.235223, 46.82596],
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
+    },
+{
+      "id": "passengerrail",
+      "title": "Passenger Rail",
+      "agencies": ["viarail", "charlevoix"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [-130.35971,42.29556,-63.26974,58.76772]
+    }
+
+  ]
+}
