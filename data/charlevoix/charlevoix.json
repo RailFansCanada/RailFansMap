@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": 'charlevoix", "type": "rail-line", "color": "#fcba03", "name": "Train de Charlevoix", "description": "Touristic train serving the north shore of the Saint-Lawrence River between Quebec City and La Malbaie.", "sources": [ "VIA Rail Canada" ], "filterKey": "traindecharlevoix" },
+"metadata": { "id": "charlevoix", "type": "rail-line", "color": "#fcba03", "name": "Train de Charlevoix", "description": "Touristic train serving the north shore of the Saint-Lawrence River between Quebec City and La Malbaie.", "sources": [ "VIA Rail Canada" ], "filterKey": "traindecharlevoix" },
 "name": "Train de Charlevoix",
 "bbox": [ -71.14582, 46.8856781681, -70.14169, 47.623821353 ],                                                                     
 "features": [
