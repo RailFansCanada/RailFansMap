@@ -68,7 +68,7 @@
     "@turf/buffer": "6.5.0",
     "bbox": "0.4.0",
     "clsx": "1.2.1",
-    "immer": "9.0.15",
+    "immer": "9.0.16",
     "mapbox-gl": "2.10.0",
     "react": "18.2.0",
     "react-custom-scroll": "4.4.0",
