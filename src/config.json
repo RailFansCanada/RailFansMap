@@ -36,7 +36,9 @@
         -130.35971, 42.29556, -63.26974, 58.76772
       ],
       "data": [
-        "viarail/viarail.json"
+        "viarail/corridor.json",
+	"viarail/whiteriver.json",
+	"viarail/canadian.json"
       ]
     },
     {
