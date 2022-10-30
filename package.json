@@ -47,7 +47,7 @@
     "pnp-webpack-plugin": "1.7.0",
     "raw-loader": "4.0.2",
     "source-map-loader": "4.0.0",
-    "ts-loader": "9.3.1",
+    "ts-loader": "9.4.1",
     "typescript": "4.8.3",
     "url-loader": "4.1.1",
     "webpack": "5.74.0",
