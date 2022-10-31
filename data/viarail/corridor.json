@@ -72,6 +72,6 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Gananoque", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -76.15373, 44.36881 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Cornwall", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -74.743463220099997, 45.042228476200002 ] } },
 { "type": "Feature", "properties": { "type": "station-connector-label", "name": "Union", "lines": [ "canadian", "corridor", "toronto/1" ] }, "geometry": { "type": "LineString", "coordinates": [ [ -79.38032, 43.64481 ], [ -79.380230020502012, 43.645657013240722 ] ] } },
-{ "type": "Feature", "properties": { "type": "station-connector-label", "name": "Gare Centrale", "lines": [ "rem", "corridor" ] }, "geometry": { "type": "LineString", "coordinates": [ [ -73.566178542299994, 45.499919521499997 ], [ -73.566855012079159, 45.499722408921286 ] ] } }
+{ "type": "Feature", "properties": { "type": "station-connector-label", "name": "Gare Centrale", "lines": [ "corridor" ] }, "geometry": { "type": "LineString", "coordinates": [ [ -73.566178542299994, 45.499919521499997 ], [ -73.566855012079159, 45.499722408921286 ] ] } }
 ]
 }
