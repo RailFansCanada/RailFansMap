@@ -22,6 +22,7 @@ import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
 import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
 import { useWindow } from "../../hooks/useWindow";
+import { ControlPaper } from "../Controls";
 
 const ControlsContainer = styled.div<{ hidden: boolean }>`
   position: fixed;
@@ -33,18 +34,6 @@ const ControlsContainer = styled.div<{ hidden: boolean }>`
   justify-content: space-between;
   transition: ${({ theme }) => theme.transitions.create("right")};
   z-index: 500;
-`;
-
-const ControlPaper = styled(Paper)`
-  margin: ${({ theme }) => theme.spacing(0.5)} 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 `;
 
 type QuickNavProps = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Map, {
   ViewState,
   MapRef,
@@ -9,7 +9,7 @@ import Map, {
   AttributionControl,
   Popup,
 } from "react-map-gl";
-import { LngLat, PaddingOptions } from "mapbox-gl";
+import { Coordinate, LngLat, PaddingOptions } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
@@ -27,6 +27,9 @@ import {
 } from "../hooks/useAppState";
 import { useTheme } from "@mui/styles";
 import { config, Metadata } from "../config";
+import { MapControls } from "./MapControls";
+import { useGeolocation } from "../hooks/useGeolocation";
+import { useAnimationFrame } from "../hooks/useAnimationFrame";
 
 const provideLabelStyle = (
   lines: { [key: string]: Metadata },
@@ -134,6 +137,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
     showLabels,
     lineFilterState,
     setLastLocation,
+    showGeolocation,
   } = useAppState();
 
   const mapRef = useRef<MapRef>();
@@ -250,6 +254,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
     }
   }, [showLabels]);
 
+  const { geolocation: userPosition } = useGeolocation();
+
+  // A multiplier for the blur around the user's geolocation icon
+  const [blurRadius, setBlurRadius] = useState(0);
+  const frameCounter = useRef(0);
+  useAnimationFrame((delta) => {
+    setBlurRadius(0.5 + (Math.sin(frameCounter.current) * 0.5));
+    frameCounter.current = frameCounter.current + delta * 0.001;
+  });
+
   return (
     <Map
       style={{ width: windowSize[0], height: windowSize[1] }}
@@ -273,7 +287,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
           BUILD_DATE
         ).toLocaleDateString()}`}
       />
-      <NavigationControl showCompass showZoom position="bottom-right" />
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(props.lines)
           .filter((entry) => entry.icon != null)
@@ -378,6 +391,42 @@ export const OverviewMap = (props: OverviewMapProps) => {
           View Station Profile
         </Popup>
       )}
+      {showGeolocation && userPosition && (
+        <Source
+          type="geojson"
+          data={{
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                geometry: { type: "Point", coordinates: userPosition },
+                properties: {},
+              },
+            ],
+          }}
+        >
+          <Layer
+            id="geolocation-circle-glow"
+            type="circle"
+            paint={{
+              "circle-color": "#5fb7ff",
+              "circle-radius": 6 + 10 * blurRadius,
+              "circle-blur": 1,
+            }}
+          />
+          <Layer
+            id="geolocation-circle"
+            type="circle"
+            paint={{
+              "circle-color": "#038cfc",
+              "circle-radius": 6,
+              "circle-stroke-color": "#FFFFFF",
+              "circle-stroke-width": 2,
+            }}
+          />
+        </Source>
+      )}
+      <MapControls />
     </Map>
   );
 };
