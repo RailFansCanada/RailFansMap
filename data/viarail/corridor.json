@@ -61,7 +61,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Wyoming", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -82.12226, 42.94796 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Woodstock", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -80.752123, 43.126528 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Kingston", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -76.536623177899997, 44.257016447 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Union", "lines": [ "corridor", "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -79.38032, 43.64481 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Union", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -79.38032, 43.64481 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Gare Centrale", "lines": [ "corridor", "montreal/rem" ] }, "geometry": { "type": "Point", "coordinates": [ -73.566178542299994, 45.499919521499997 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Kitchener", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -80.493206874799995, 43.455741032900001 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Trenton Junction", "lines": [ "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -77.598805579499995, 44.115252309699997 ] } },
