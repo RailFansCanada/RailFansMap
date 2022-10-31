@@ -72,7 +72,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Red Lake Road", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -93.357647, 49.973263 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Capreol", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -80.929777, 46.711226 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Parry Sound", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -80.037136248, 45.350760283699998 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Union", "lines": [ "canadian", "corridor" ] }, "geometry": { "type": "Point", "coordinates": [ -79.38032, 43.64481 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Union", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -79.38032, 43.64481 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Saskatoon", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -106.738216939, 52.104541903799998 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Abbotsford", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -122.277756, 49.116845 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Watrous", "lines": [ "canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -105.468425, 51.670986 ] } },
