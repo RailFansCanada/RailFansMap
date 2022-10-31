@@ -31,14 +31,19 @@
     },
 	{      
 	"id": "viarail",
-      "name": "VIA Rail Canada (Beta)",
+      "name": "VIA Rail Canada",
       "bbox": [
         -130.35971, 42.29556, -63.26974, 58.76772
       ],
       "data": [
-        "viarail/corridor.json",
+	"viarail/canadian.json",
+  "viarail/churchill.json",
 	"viarail/whiteriver.json",
-	"viarail/canadian.json"
+	"viarail/corridor.json",
+	"viarail/ocean.json",
+	"viarail/senneterre.json",
+	"viarail/jonquiere.json",
+	"viarail/rupert.json"
       ]
     },
     {
@@ -199,7 +204,7 @@
       "location": [-71.235223, 46.82596],
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
     },
-{
+    {
       "id": "passengerrail",
       "title": "Passenger Rail",
       "agencies": ["viarail", "charlevoix"],
