@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "milleniumline", "type": "rail-line", "color": "#fed20e", "icon": null, "name": "Millenium Line", "description": "VCC-Clark - Lafarge Lake-Douglas", "filterKey": "milleniumline", "sources": [ "Translink" ] },
+"metadata": { "id": "milleniumline", "type": "rail-line", "color": "#fed20e", "icon": "vancouver/milleniumline.svg", "name": "Millenium Line", "description": "VCC-Clark - Lafarge Lake-Douglas", "filterKey": "milleniumline", "sources": [ "Translink" ] },
 "name": "millenium",
 "bbox": [ -123.079238, 49.2471, -122.791544, 49.285765 ],                                                                          
 "features": [
