@@ -7,7 +7,7 @@
 	"offset": 0,
 	"icon": "viarail/viarail.svg",
 	"name": "Montréal - Jonquière", 
-	"description": "Train service to Jonquière connecting smaller communities throughout the province of Quebec.", 
+	"description": "Passenger train service between Montréal and Jonquière serving numerous flag stops.", 
 	"sources": [ "VIA Rail Canada" ],
 	"filterKey": "jonquiere"
 	},
