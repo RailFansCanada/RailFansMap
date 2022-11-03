@@ -31,12 +31,21 @@
     },
 	{      
 	"id": "viarail",
-      "name": "VIA Rail Canada (Beta)",
+      "name": "VIA Rail Canada",
       "bbox": [
         -130.35971, 42.29556, -63.26974, 58.76772
       ],
       "data": [
-        "viarail/viarail.json"
+	"viarail/canadian.json",
+  "viarail/churchill.json",
+	"viarail/whiteriver.json",
+	"viarail/corridor.json",
+	"viarail/ocean.json",
+	"viarail/senneterre.json",
+	"viarail/jonquiere.json",
+	"viarail/rupert.json",
+	"viarail/montrealmaintenance.json",
+	"viarail/torontomaintenance.json"
       ]
     },
     {
@@ -102,7 +111,6 @@
         "toronto/streetcar/russellCarhouse.json",
         "toronto/streetcar/streetcarLoops.json",
         "toronto/streetcar/streetcarConnectors.json",
-
         "toronto/streetcar/route501.json",
         "toronto/streetcar/route503.json",
         "toronto/streetcar/route504.json",
@@ -153,6 +161,16 @@
         45.43724924103122
       ],
       "data": ["gatineau/a.json", "gatineau/b.json"]
+    }, 
+    {
+      "id": "translink",
+      "name": "TransLink",
+      "bbox": [ -123.1784200 , 49.15 , -122.791 , 49.29],
+      "data": [
+        "vancouver/canada.json",
+        "vancouver/expo.json",
+        "vancouver/millenium.json"
+      ]
     }
   ],
 
@@ -197,12 +215,19 @@
       "location": [-71.235223, 46.82596],
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
     },
-{
+    {
       "id": "passengerrail",
       "title": "Passenger Rail",
       "agencies": ["viarail", "charlevoix"],
       "location": [-79.383849, 43.653482],
       "bbox": [-130.35971,42.29556,-63.26974,58.76772]
+    },
+ {
+      "id": "vancouver",
+      "title": "Vancouver",
+      "agencies": ["translink"],
+      "location": [-123.01579, 49.23880],
+      "bbox": [-123.1784200 , 49.15 , -122.791 , 49.29]
     }
 
   ]
