@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "canadaline", "type": "rail-line", "color": "#099ec9", "icon": null, "name": "Canada Line", "description": "Waterfront - YVR Airport / Richmond-Brighouse", "filterKey": "canadaline", "sources": [ "Translink" ] },
+"metadata": { "id": "canadaline", "type": "rail-line", "color": "#099ec9", "icon": "vancouver/canadaline.svg", "name": "Canada Line", "description": "Waterfront - YVR Airport / Richmond-Brighouse", "filterKey": "canadaline", "sources": [ "Translink" ] },
 "name": "canada",
 "bbox": [ -123.178142, 49.1679899064354, -123.112448, 49.286235 ],                                                                 
 "features": [
