@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "canadian", "type": "rail-line", "color": "#9a9a9a", "icon": "viarail\/viarail.svg", "offset": 0.5, "name": "The Canadian", "description": "One of Canada's most iconic passenger train crossing through the country.", "sources": [ "VIA Rail Canada" ], "filterKey": "canadian" },
+"metadata": { "id": "canadian", "type": "rail-line", "color": "#9a9a9a", "icon": "viarail\/viarail.svg", "offset": 0.5, "name": "The Canadian", "description": "Canada's most iconic passenger train running between Toronto and Vancouver.", "sources": [ "VIA Rail Canada" ], "filterKey": "canadian" },
 "name": "canadian",
 "bbox": [ -123.096634292, 43.64481, -79.15434, 53.67002 ],                                                                         
 "features": [
