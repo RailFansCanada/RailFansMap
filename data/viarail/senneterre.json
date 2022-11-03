@@ -7,7 +7,7 @@
 	"offset": 0,
 	"icon": "viarail/viarail.svg",
 	"name": "Montréal - Senneterre", 
-	"description": "Train service to Senneterre connecting smaller communities throughout the province of Quebec.", 
+	"description": "Passenger train between Senneterre, Montréal and various flag stops.", 
 	"sources": [ "VIA Rail Canada" ],
 	"filterKey": "senneterre"
 	},
