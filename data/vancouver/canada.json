@@ -21,6 +21,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Broadway-City Hall Station", "lines": [ "canadaline" ] }, "geometry": { "type": "Point", "coordinates": [ -123.114822, 49.262717 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Olympic Village Station", "lines": [ "canadaline" ] }, "geometry": { "type": "Point", "coordinates": [ -123.115452753338786, 49.266562332820342 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Yaletown-Roundhouse Station", "lines": [ "canadaline" ] }, "geometry": { "type": "Point", "coordinates": [ -123.122141, 49.274437 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Vancouver City Centre Station", "lines": [ "canadaline" ] }, "geometry": { "type": "Point", "coordinates": [ -123.11826952849195, 49.282474033495092 ] } }
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Vancouver City Centre Station", "lines": [ "canadaline" ] }, "geometry": { "type": "Point", "coordinates": [ -123.11826952849195, 49.282474033495092 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Capstan Station", "lines": [ "canadaline" ]  }, "geometry": { "type": "Point", "coordinates": [ -123.131495315661624, 49.189548929208925 ] } }
 ]
 }
