@@ -6,7 +6,7 @@
 	"color": "#00ea8d",
 	"icon": "viarail/viarail.svg",
 	"name": "Winnipeg - Churchill", 
-	"description": "Canada's Northernmost Train connecting the Great North and its numerous communities.", 
+	"description": "Canada's northernmost passenger train between Churchill and Winnipeg.", 
 	"sources": [ "VIA Rail Canada" ],
 	"filterKey": "churchill"
 	},
