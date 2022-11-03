@@ -6,7 +6,7 @@
 	"color": "#7f024b",
 	"icon": "viarail/viarail.svg",
 	"name": "Jasper - Prince Rupert", 
-	"description": "Train service passing through numerous northern communities of British Columbia.", 
+	"description": "Service connecting Prince Rupert, Jasper and various flag stops.", 
 	"sources": [ "VIA Rail Canada" ],
 	"filterKey": "rupert"
 	},
