@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "ocean", "type": "rail-line", "color": "#5a87f0", "offset": 0, "icon": "viarail\/viarail.svg", "name": "The Ocean", "description": "Long-distance train connecting the Atlantic provinces and Montreal", "sources": [ "VIA Rail Canada" ], "filterKey": "ocean" },
+"metadata": { "id": "ocean", "type": "rail-line", "color": "#5a87f0", "offset": 0, "icon": "viarail\/viarail.svg", "name": "The Ocean", "description": "Scenic train connecting the Atlantic provinces and Montreal", "sources": [ "VIA Rail Canada" ], "filterKey": "ocean" },
 "name": "ocean",
 "bbox": [ -73.56618, 44.62798, -63.26974, 48.62748 ],                                                                              
 "features": [
