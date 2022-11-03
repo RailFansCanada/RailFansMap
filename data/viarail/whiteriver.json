@@ -6,7 +6,7 @@
 	"color": "#6b7e35",
 	"icon": "viarail/viarail.svg",
 	"name": "Sudbury - White River", 
-	"description": "Picturesque train connecting White River and Sudbury in Northern Ontario.", 
+	"description": "Picturesque train connecting White River and Sudbury.", 
 	"sources": [ "VIA Rail Canada" ],
 	"filterKey": "whiteriver"
 	},
