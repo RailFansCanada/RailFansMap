@@ -1,15 +1,15 @@
 {
 "type": "FeatureCollection",
 "metadata": { 
-	"id": "jonquiere", 
+	"id": "via/jonquiere", 
 	"type": "rail-line", 
-	"color": "#69140e",
+	"color": "#FFCC00",
 	"offset": 0,
 	"icon": "viarail/viarail.svg",
 	"name": "Montréal - Jonquière", 
 	"description": "Passenger train service between Montréal and Jonquière serving numerous flag stops.", 
 	"sources": [ "VIA Rail Canada" ],
-	"filterKey": "jonquiere"
+	"filterKey": "via/jonquiere"
 	},
 	"bbox": 
 	[-73.686890000, 45.447130000, -71.254400000, 48.482530000]
