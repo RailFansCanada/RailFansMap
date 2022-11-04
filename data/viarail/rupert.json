@@ -47,7 +47,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Willow River", "lines": [ "via/rupert" ] }, "geometry": { "type": "Point", "coordinates": [ -122.477345, 54.073935 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Upper Frazer", "lines": [ "via/rupert" ] }, "geometry": { "type": "Point", "coordinates": [ -121.946648, 54.120005 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Smithers", "lines": [ "via/rupert" ] }, "geometry": { "type": "Point", "coordinates": [ -127.176219, 54.777708 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Jasper", "lines": ["rupert", "canadian"] }, "geometry": { "type": "Point", "coordinates": [ -118.079386435, 52.875728791100002 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Jasper", "lines": ["via/rupert", "via/canadian"] }, "geometry": { "type": "Point", "coordinates": [ -118.079386435, 52.875728791100002 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "New Hazelton", "lines": [ "via/rupert" ] }, "geometry": { "type": "Point", "coordinates": [ -127.578331, 55.25068 ] } }
 ]
 }
