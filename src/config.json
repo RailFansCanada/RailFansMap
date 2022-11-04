@@ -45,7 +45,8 @@
 	"viarail/jonquiere.json",
 	"viarail/rupert.json",
 	"viarail/montrealmaintenance.json",
-	"viarail/torontomaintenance.json"
+	"viarail/torontomaintenance.json",
+	"viarail/winnipegmaintenance.json"
       ]
     },
     {
