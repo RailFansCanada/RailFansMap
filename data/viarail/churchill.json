@@ -1,14 +1,14 @@
 {
 "type": "FeatureCollection",
 "metadata": { 
-	"id": "churchill", 
+	"id": "via/churchill", 
 	"type": "rail-line", 
-	"color": "#00ea8d",
+	"color": "FFCC00",
 	"icon": "viarail/viarail.svg",
 	"name": "Winnipeg - Churchill", 
 	"description": "Canada's northernmost passenger train between Churchill and Winnipeg.", 
 	"sources": [ "VIA Rail Canada" ],
-	"filterKey": "churchill"
+	"filterKey": "via/churchill"
 	},
 	"bbox": 
 	[-102.68153, 49.83515, -94.06208, 58.76772]
