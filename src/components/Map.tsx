@@ -5,7 +5,6 @@ import Map, {
   ViewStateChangeEvent,
   Layer,
   Source,
-  NavigationControl,
   AttributionControl,
   Popup,
 } from "react-map-gl";
@@ -29,7 +28,6 @@ import { useTheme } from "@mui/styles";
 import { config, Metadata } from "../config";
 import { MapControls } from "./MapControls";
 import { useGeolocation } from "../hooks/useGeolocation";
-import { useAnimationFrame } from "../hooks/useAnimationFrame";
 
 const provideLabelStyle = (
   lines: { [key: string]: Metadata },
@@ -256,14 +254,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
 
   const { geolocation: userPosition } = useGeolocation();
 
-  // A multiplier for the blur around the user's geolocation icon
-  const [blurRadius, setBlurRadius] = useState(0);
-  const frameCounter = useRef(0);
-  useAnimationFrame((delta) => {
-    setBlurRadius(0.5 + (Math.sin(frameCounter.current) * 0.5));
-    frameCounter.current = frameCounter.current + delta * 0.001;
-  });
-
   return (
     <Map
       style={{ width: windowSize[0], height: windowSize[1] }}
@@ -410,7 +400,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
             type="circle"
             paint={{
               "circle-color": "#5fb7ff",
-              "circle-radius": 6 + 10 * blurRadius,
+              "circle-radius": 12,
               "circle-blur": 1,
             }}
           />

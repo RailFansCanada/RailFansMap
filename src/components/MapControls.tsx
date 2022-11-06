@@ -14,15 +14,21 @@ import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import buffer from "@turf/buffer";
 import bbox from "@turf/bbox";
 import { useGeolocation } from "../hooks/useGeolocation";
+import { useWindow } from "../hooks/useWindow";
+import { useAppState } from "../hooks/useAppState";
 
-const MapControlContainer = styled.div`
+const MapControlContainer = styled.div<{
+  hidden: boolean;
+  smallPadding: boolean;
+}>`
   display: flex;
   flex-direction: column;
   position: fixed;
   right: ${({ theme, hidden }) =>
     hidden ? theme.spacing(-8) : theme.spacing(1)};
-  bottom: ${({ theme }) => theme.spacing(4)};
-  z-index: 500;
+  bottom: ${({ theme, smallPadding }) => theme.spacing(smallPadding ? 4 : 5)};
+  z-index: 1;
+  transition: ${({ theme }) => theme.transitions.create("right")};
 `;
 
 export const MapControls = () => {
@@ -33,6 +39,8 @@ export const MapControls = () => {
     useState(false);
   const { requestGeolocation, requestGeolocationWatch } = useGeolocation();
   const [willBeFlying, setWillBeFyling] = useState(false);
+  const { searchOpen } = useAppState();
+  const [width] = useWindow();
 
   useEffect(() => {
     map?.on("rotate", (e) => {
@@ -67,7 +75,10 @@ export const MapControls = () => {
   };
 
   return (
-    <MapControlContainer>
+    <MapControlContainer
+      smallPadding={width > 600}
+      hidden={!(width > 600) && searchOpen}
+    >
       <ControlPaper>
         <Tooltip title="Jump to Current Location" placement="left">
           <IconButton size="large" onClick={handleJumpToCurrentLocation}>
