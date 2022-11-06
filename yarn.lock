@@ -2077,12 +2077,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:2.7.6":
-  version: 2.7.6
-  resolution: "@types/mapbox-gl@npm:2.7.6"
+"@types/mapbox-gl@npm:2.7.7":
+  version: 2.7.7
+  resolution: "@types/mapbox-gl@npm:2.7.7"
   dependencies:
     "@types/geojson": "*"
-  checksum: 7da0e9ad171172865740fa2abae9f3572ebe625ee2594cffb49f9676eaf7fd85cd78d19a511af4555147bb3a7bae0773c1d2d457cee496ca3f83f6f5de9ba296
+  checksum: 30bc11f38d5abdc2cd7162b473f803c6c6ce2ab379fdf7cbd37577ce17e407b0df3b59c96b4683b498749b378506766c48e8fee1c9a67a36fae30681860df38e
   languageName: node
   linkType: hard
 
@@ -7668,7 +7668,7 @@ __metadata:
     "@turf/buffer": 6.5.0
     "@types/d3-ease": 3.0.0
     "@types/geojson": 7946.0.10
-    "@types/mapbox-gl": 2.7.6
+    "@types/mapbox-gl": 2.7.7
     "@types/react": 18.0.24
     "@types/react-custom-scroll": 4.3.2
     "@types/react-custom-scrollbars": 4.0.10
