@@ -165,11 +165,12 @@
     {
       "id": "translink",
       "name": "TransLink",
-      "bbox": [ -123.1784200 , 49.15 , -122.791 , 49.29],
+      "bbox": [ -123.1793274,49.1675196,-122.7910283,49.2881462 ],
       "data": [
         "vancouver/canada.json",
         "vancouver/expo.json",
-        "vancouver/millenium.json"
+        "vancouver/millenium.json",
+	"vancouver/expomaintenance.json"
       ]
     }
   ],
@@ -227,7 +228,7 @@
       "title": "Vancouver",
       "agencies": ["translink"],
       "location": [-123.01579, 49.23880],
-      "bbox": [-123.1784200 , 49.15 , -122.791 , 49.29]
+      "bbox": [-123.1793274,49.1675196,-122.7910283,49.2881462]
     }
 
   ]
