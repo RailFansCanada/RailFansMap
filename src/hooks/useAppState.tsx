@@ -40,6 +40,7 @@ type AppState = {
   legendGroupState: LegendGroupState;
 
   lastLocation: ViewportSettings | null;
+  showGeolocation: boolean;
 };
 
 type AppStateActions = {
@@ -57,6 +58,7 @@ type AppStateActions = {
   setLegendGroupOpen: (key: string, open: boolean) => void;
 
   setLastLocation: (location: ViewportSettings) => void;
+  setShowGeolocation: (show: boolean) => void;
 };
 
 type UseAppState = AppState & AppStateActions;
@@ -155,6 +157,10 @@ const useProvideAppContext = (): UseAppState => {
     setLegendGroupState({ ...legendGroupState, [key]: open });
   };
 
+  const [showGeolocation, setShowGeolocation] = useState(
+    merged.showGeolocation ?? true
+  );
+
   const state = {
     settingsDrawerOpen,
     setSettingsDrawerOpen,
@@ -188,6 +194,9 @@ const useProvideAppContext = (): UseAppState => {
 
     lastLocation,
     setLastLocation,
+
+    showGeolocation,
+    setShowGeolocation,
   };
 
   // Write settings to localstorage on every update

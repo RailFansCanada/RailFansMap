@@ -1333,9 +1333,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/base@npm:5.0.0-alpha.103":
-  version: 5.0.0-alpha.103
-  resolution: "@mui/base@npm:5.0.0-alpha.103"
+"@mui/base@npm:5.0.0-alpha.104":
+  version: 5.0.0-alpha.104
+  resolution: "@mui/base@npm:5.0.0-alpha.104"
   dependencies:
     "@babel/runtime": ^7.19.0
     "@emotion/is-prop-valid": ^1.2.0
@@ -1352,14 +1352,14 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: beabe1be30534f39faf62dc586aaf2e97fb1b3a986fa002fe66124e7a0bc582ef9430ca1945069c4d375e3cf7ffad02f825fdcb9983b472e120bc4ba8f15f19a
+  checksum: f66693b4659bb50cc89b6b0e055db45d091bb546f82a4c6cc230f3699e647b68c941dcb8e8d42648e3470f83da5600f400ff21af9a8f7aaf6b018ac5ad3ceeb1
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^5.10.11":
-  version: 5.10.11
-  resolution: "@mui/core-downloads-tracker@npm:5.10.11"
-  checksum: 16a1cab20098e55bb217fdbf20fe18e56a3f52ef0daef74f9f078cebf1b2e47906e28f707f70b8d6132bca2b0a56d9a9870364ea1dfce89c53567f30af9205ce
+"@mui/core-downloads-tracker@npm:^5.10.12":
+  version: 5.10.12
+  resolution: "@mui/core-downloads-tracker@npm:5.10.12"
+  checksum: 894c7ee810851de2ee5de43648822e6f5ea639e4ab494fd54c9a6cb6dbace608b5634699fab05978f2d21efc4378bbce83b8352ef7aa958afd3d387c32373244
   languageName: node
   linkType: hard
 
@@ -1379,14 +1379,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:5.10.11":
-  version: 5.10.11
-  resolution: "@mui/material@npm:5.10.11"
+"@mui/material@npm:5.10.12":
+  version: 5.10.12
+  resolution: "@mui/material@npm:5.10.12"
   dependencies:
     "@babel/runtime": ^7.19.0
-    "@mui/base": 5.0.0-alpha.103
-    "@mui/core-downloads-tracker": ^5.10.11
-    "@mui/system": ^5.10.10
+    "@mui/base": 5.0.0-alpha.104
+    "@mui/core-downloads-tracker": ^5.10.12
+    "@mui/system": ^5.10.12
     "@mui/types": ^7.2.0
     "@mui/utils": ^5.10.9
     "@types/react-transition-group": ^4.4.5
@@ -1408,7 +1408,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 208312fc063ccdfad393e0e86f1d22d1e8e45fdcf6ba9ce5e0914211944f7dec04a2784d04f728f6014d3fe17b1b102e0279a51d9cf94147c45520c662f3be40
+  checksum: 37b3d605d0cdb5136ac5a568d1c3c00ad5a3e01242cea6bccad5ccb08512e3c600dde75af852515c947b994fb5afa972044faac07416d347cbb6e503651c23a3
   languageName: node
   linkType: hard
 
@@ -1476,9 +1476,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.10.10":
-  version: 5.10.10
-  resolution: "@mui/system@npm:5.10.10"
+"@mui/system@npm:^5.10.12":
+  version: 5.10.12
+  resolution: "@mui/system@npm:5.10.12"
   dependencies:
     "@babel/runtime": ^7.19.0
     "@mui/private-theming": ^5.10.9
@@ -1500,7 +1500,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: a2cb5bcc8e3a07038672f955d8352d3fa7a6239665efac3c7b4adf59fa64dc258b844f2decb0db3dd378b9fc0e0ca856ec5172e077702ff94e3a635b6ca8c462
+  checksum: 1803a6f54bc1fda304834f362c60697b2ee157df7629b26337cb3d180093cbc244a94df45719da436b2917f98674687a98fea353a9ec8e6de7c5c3b5ba592bc8
   languageName: node
   linkType: hard
 
@@ -2077,12 +2077,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:2.7.6":
-  version: 2.7.6
-  resolution: "@types/mapbox-gl@npm:2.7.6"
+"@types/mapbox-gl@npm:2.7.7":
+  version: 2.7.7
+  resolution: "@types/mapbox-gl@npm:2.7.7"
   dependencies:
     "@types/geojson": "*"
-  checksum: 7da0e9ad171172865740fa2abae9f3572ebe625ee2594cffb49f9676eaf7fd85cd78d19a511af4555147bb3a7bae0773c1d2d457cee496ca3f83f6f5de9ba296
+  checksum: 30bc11f38d5abdc2cd7162b473f803c6c6ce2ab379fdf7cbd37577ce17e407b0df3b59c96b4683b498749b378506766c48e8fee1c9a67a36fae30681860df38e
   languageName: node
   linkType: hard
 
@@ -2234,14 +2234,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.0.24":
-  version: 18.0.24
-  resolution: "@types/react@npm:18.0.24"
+"@types/react@npm:18.0.25":
+  version: 18.0.25
+  resolution: "@types/react@npm:18.0.25"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 7d06125bac61e1c6661e5dfbeeeb56d5b6d1d4c743292faebaa6b0f30f8414c7af3cadf674923fd86e4ca14e82566ff9156cd40c56786be024600c31b97d6c03
+  checksum: 231d658c45abdef044a716b4502774f1585d8336d73b2f5bd68f181acbfc874b7a457686ecd29b415b43ed0922c309bab7e2cf96832d188a3f4f1b02f2af760a
   languageName: node
   linkType: hard
 
@@ -7658,7 +7658,7 @@ __metadata:
   resolution: "otrainmap@workspace:."
   dependencies:
     "@mui/icons-material": 5.10.9
-    "@mui/material": 5.10.11
+    "@mui/material": 5.10.12
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.10.6"
     "@mui/styles": 5.10.10
     "@turf/bbox": 6.5.0
@@ -7668,8 +7668,8 @@ __metadata:
     "@turf/buffer": 6.5.0
     "@types/d3-ease": 3.0.0
     "@types/geojson": 7946.0.10
-    "@types/mapbox-gl": 2.7.6
-    "@types/react": 18.0.24
+    "@types/mapbox-gl": 2.7.7
+    "@types/react": 18.0.25
     "@types/react-custom-scroll": 4.3.2
     "@types/react-custom-scrollbars": 4.0.10
     "@types/react-dom": 18.0.8

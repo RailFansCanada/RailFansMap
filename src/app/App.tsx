@@ -16,6 +16,7 @@ import { LegendDrawer } from "../components/settings/LegendDrawer";
 import { ProvideMapTarget } from "../hooks/useMapTarget";
 import { ProvideAppState, useAppState } from "../hooks/useAppState";
 import { SearchBar } from "../components/SearchBar";
+import { ProvideGeolocation } from "../hooks/useGeolocation";
 
 export const App = () => {
   return (
@@ -63,7 +64,9 @@ const ThemedApp = () => {
         <ProvideData2>
           <ProvideWindow>
             <ProvideMapTarget>
-              <Content />
+              <ProvideGeolocation>
+                <Content />
+              </ProvideGeolocation>
             </ProvideMapTarget>
           </ProvideWindow>
         </ProvideData2>

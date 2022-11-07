@@ -41,6 +41,7 @@ const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  z-index: 10;
 
   @media (max-width: 600px) {
     width: 100%;
