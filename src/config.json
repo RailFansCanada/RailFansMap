@@ -67,7 +67,9 @@
       "id": "rem",
       "name": "REM",
       "bbox": [-73.9144974, 45.4305912, -73.425561, 45.67481794612502],
-      "data": ["montreal/rem.json"]
+      "data": ["montreal/rem.json",
+			"montreal/brossardmaintenance.json"
+			]
     },
     {
       "id": "ttc",
@@ -170,7 +172,9 @@
         "vancouver/canada.json",
         "vancouver/expo.json",
         "vancouver/millenium.json",
-	"vancouver/expomaintenance.json"
+	"vancouver/expomaintenance.json",
+	"vancouver/canadamaintenance.json",
+	"vancouver/milleniummaintenance.json"
       ]
     }
   ],
