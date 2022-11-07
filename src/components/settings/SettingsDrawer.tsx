@@ -45,6 +45,8 @@ export const SettingsDrawer = () => {
     setMapStyle,
     appTheme,
     setAppTheme,
+    showGeolocation,
+    setShowGeolocation,
   } = useAppState();
 
   const handleThemeChange = (index: number) => {
@@ -111,6 +113,11 @@ export const SettingsDrawer = () => {
           options={themeSettings}
           value={appThemeToIndex(appTheme)}
           onChange={handleThemeChange}
+        />
+        <SwitchOption
+          primary="Show Geolocation on Map"
+          checked={showGeolocation}
+          onToggle={(checked) => setShowGeolocation(checked)}
         />
       </List>
 
