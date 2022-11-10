@@ -1,15 +1,14 @@
 {
 "type": "FeatureCollection",
 "metadata": { 
-	"id": "senneterre", 
+	"id": "via/senneterre", 
 	"type": "rail-line", 
 	"color": "#FFCC00",
-	"offset": 0,
 	"icon": "viarail/viarail.svg",
 	"name": "Montréal - Senneterre", 
 	"description": "Passenger train between Senneterre, Montréal and various flag stops.", 
 	"sources": [ "VIA Rail Canada" ],
-	"filterKey": "senneterre"
+	"filterKey": "via/senneterre"
 	},
 	"bbox": 
 	[-77.244390000 , 45.447130000 , -72.463940000 , 48.392294000]
@@ -24,23 +23,23 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Rivière Oskélanéo", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.204927, 48.10816 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Greening", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -74.968387, 48.117385 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Fitzpatrick", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.773522, 47.484804 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Tite", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.564156953400001, 46.723116419900002 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Tite", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -72.564156953400001, 46.723116419900002 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Club Sisco", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -74.374236, 47.879104 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Hervey", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.4678583938, 46.853631553299998 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Hervey", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -72.4678583938, 46.853631553299998 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "La Tuque", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.782394, 47.439397 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Vandry", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.558316, 47.859472 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Cressman", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.917838, 47.620346 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Grand-Mère", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.686678, 46.605875 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Paulin", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.015965145, 46.401095452 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Grand-Mère", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -72.686678, 46.605875 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Paulin", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -73.015965145, 46.401095452 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Dessane", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.640014, 47.885659 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Da-Rou-Lac Lodge", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.998533, 48.229595 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Consolidated Bathurst", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.747552, 48.194328 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Clova", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.359707, 48.109629 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Club Bélanger", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.932947, 47.923895 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Langlade", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.987016, 48.230335 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Charette", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.921677, 46.442072 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Shawinigan", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.745263628299995, 46.549822090600003 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Joliette", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.444019126300006, 46.029470967100004 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Charette", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -72.921677, 46.442072 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Shawinigan", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -72.745263628299995, 46.549822090600003 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Joliette", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -73.444019126300006, 46.029470967100004 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "McTavish", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.32004, 47.761601 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Club Maniwawa", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -74.895755, 48.067995 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Coquar", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.478574, 48.11871 ] } },
@@ -48,7 +47,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Cann", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.881907, 47.902677 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Lac Darey", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.140477, 47.670897 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Signai", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -76.8296501815, 48.295900396 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Garneau", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.638243, 46.640001 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Garneau", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -72.638243, 46.640001 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Forsythe", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -76.428337, 48.235417 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Hibbard", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -74.043022, 47.86724 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Club Vermillon", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -72.983141, 47.661959 ] } },
@@ -56,7 +55,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Megiscane", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -77.084163, 48.332994 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Club Rita", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -74.848222, 48.006695 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Monet", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.643856, 48.169482 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Anjou", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.596801831799993, 45.617795995 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Anjou", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -73.596801831799993, 45.617795995 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Senneterre", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -77.244388, 48.392294 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Wigwam", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.468078, 47.853405 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Club Kapitachuan", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -75.808768, 48.19652 ] } },
@@ -74,6 +73,6 @@
 { "type": "Feature", "properties": { "type": "station-label", "name": "Gare Centrale", "lines": [ "via/jonquiere", "via/corridor", "via/senneterre", "via/ocean", "rem" ] }, "geometry": { "type": "Point", "coordinates": [ -73.566178542299994, 45.499919521499997 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Ferguson", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.41743, 47.812961 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "name": "Weymont", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.775387, 47.897887 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Justin", "lines": [ "via/senneterre" ] }, "geometry": { "type": "Point", "coordinates": [ -73.109585997500005, 46.273145456500004 ] } }
+{ "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Justin", "lines": [ "via/senneterre", "via/jonquiere" ] }, "geometry": { "type": "Point", "coordinates": [ -73.109585997500005, 46.273145456500004 ] } }
 ]
 }
