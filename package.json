@@ -34,7 +34,7 @@
     "@types/react-virtualized": "9.21.21",
     "@types/sql.js": "1.4.4",
     "@types/styled-components": "5.1.26",
-    "ajv": "8.11.0",
+    "ajv": "8.11.2",
     "ajv-formats": "2.1.1",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.1",
