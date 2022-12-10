@@ -34,14 +34,14 @@ const Container = styled.div`
 `;
 
 const Content = () => {
-  const { features, agencies, lines } = useData2();
+  const { agencies, lines } = useData2();
 
   return (
     <Container>
-      <OverviewMap lines={lines} features={features} />
+      <OverviewMap lines={lines} />
       <Controls />
       <SettingsDrawer />
-      <LegendDrawer lines={lines} allAgencies={agencies} />
+      <LegendDrawer allAgencies={agencies} />
       <Logo />
       <SearchBar />
     </Container>

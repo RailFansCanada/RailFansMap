@@ -22,3 +22,9 @@ local.env
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+assembled.geojson
+public/
+*.mbtiles
+tiles/
+build/
