@@ -46,7 +46,8 @@
 	"viarail/rupert.json",
 	"viarail/montrealmaintenance.json",
 	"viarail/torontomaintenance.json",
-	"viarail/vancouvermaintenance.json"
+	"viarail/vancouvermaintenance.json",
+	"viarail/winnipegmaintenace.json"
       ]
     },
     {
@@ -68,9 +69,10 @@
       "id": "rem",
       "name": "REM",
       "bbox": [-73.9144974, 45.4305912, -73.425561, 45.67481794612502],
-      "data": ["montreal/rem.json",
-			"montreal/brossardmaintenance.json"
-			]
+      "data": [
+	       "montreal/rem.json",
+	       "montreal/brossardmaintenance.json"
+	      ]
     },
     {
       "id": "ttc",
