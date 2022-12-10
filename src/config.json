@@ -47,7 +47,7 @@
 	"viarail/montrealmaintenance.json",
 	"viarail/torontomaintenance.json",
 	"viarail/vancouvermaintenance.json",
-	"viarail/winnipegmaintenace.json"
+  "viarail/winnipegmaintenance.json"
       ]
     },
     {
@@ -70,8 +70,8 @@
       "name": "REM",
       "bbox": [-73.9144974, 45.4305912, -73.425561, 45.67481794612502],
       "data": [
-	       "montreal/rem.json",
-	       "montreal/brossardmaintenance.json"
+	      "montreal/rem.json",
+	      "montreal/brossardmaintenance.json"
 	      ]
     },
     {
@@ -166,7 +166,7 @@
         45.43724924103122
       ],
       "data": ["gatineau/a.json", "gatineau/b.json"]
-    }, 
+    },
     {
       "id": "translink",
       "name": "TransLink",
@@ -229,14 +229,6 @@
       "agencies": ["viarail", "charlevoix"],
       "location": [-79.383849, 43.653482],
       "bbox": [-130.35971,42.29556,-63.26974,58.76772]
-    },
- {
-      "id": "vancouver",
-      "title": "Vancouver",
-      "agencies": ["translink"],
-      "location": [-123.01579, 49.23880],
-      "bbox": [-123.1793274,49.1675196,-122.7910283,49.2881462]
     }
-
   ]
 }
