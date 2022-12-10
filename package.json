@@ -37,7 +37,7 @@
     "ajv": "8.11.0",
     "ajv-formats": "2.1.1",
     "copy-webpack-plugin": "11.0.0",
-    "css-loader": "6.7.1",
+    "css-loader": "6.7.2",
     "dotenv": "16.0.3",
     "file-loader": "6.2.0",
     "fork-ts-checker-webpack-plugin": "7.2.13",
