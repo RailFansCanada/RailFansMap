@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "winnipegmaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Winnipeg Maintenance Centre", "description": "Maintenance facility for VIA Rail located in Winnipeg.", "sources": [ "VIA Rail Canada" ], "filterKey": "winnipegmaintenance" },
+"metadata": { "id": "winnipegmaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Winnipeg Maintenance Centre", "description": "Maintenance facility for VIA Rail located in Winnipeg.", "sources": [ "VIA Rail Canada" ], "filterKey": "via/canadian" },
 "bbox": [ -97.1521922,49.8546133,-97.1406864,49.8732137 ],                                                                      
 "features": [
 { "type": "Feature", "properties": { "type": "yard-label", "name": "VIA Rail Winnipeg Maintenance Centre" }, "geometry": { "type": "Point", "coordinates": [ -97.143316967561248, 49.867563437544334 ] } },

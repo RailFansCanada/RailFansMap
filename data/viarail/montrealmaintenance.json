@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "montrealmaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Montreal Maintenance Centre", "description": "Major maintenance facility for VIA Rail located in Montreal.", "sources": [ "VIA Rail Canada" ], "filterKey": "montrealmaintenance" },
+"metadata": { "id": "montrealmaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Montreal Maintenance Centre", "description": "Major maintenance facility for VIA Rail located in Montreal.", "sources": [ "VIA Rail Canada" ], "filterKey": "via/corridor" },
 "name": "montrealmaintenance",
 "bbox": [ -73.5760069, 45.4720746, -73.5411415, 45.4876333 ],                                                                      
 "features": [

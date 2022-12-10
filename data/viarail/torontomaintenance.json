@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "torontomaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Toronto Maintenance Centre", "description": "Major maintenance facility for VIA Rail located in Toronto.", "sources": [ "VIA Rail Canada" ], "filterKey": "torontomaintenance" },
+"metadata": { "id": "torontomaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Toronto Maintenance Centre", "description": "Major maintenance facility for VIA Rail located in Toronto.", "sources": [ "VIA Rail Canada" ], "filterKey": "via/corridor" },
 "name": "montrealmaintenance",
 "bbox": [ -79.5207157, 43.6041221, -79.4919435, 43.620068 ],                                                                       
 "features": [

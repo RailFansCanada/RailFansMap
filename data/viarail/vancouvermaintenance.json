@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "vancouvermaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Vancouver Maintenance Centre", "description": "Maintenance facility for VIA Rail located in Vancouver.", "sources": [ "VIA Rail Canada" ], "filterKey": "vancouvermaintenance" },
+"metadata": { "id": "vancouvermaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "viarail\/viarail.svg", "name": "VIA Rail Vancouver Maintenance Centre", "description": "Maintenance facility for VIA Rail located in Vancouver.", "sources": [ "VIA Rail Canada" ], "filterKey": "via/canadian" },
 "name": "vancouvermaintenance",
 "bbox": [ -123.0974703, 49.2723176, -123.0858018, 49.2739409 ],                                                                    
 "features": [
