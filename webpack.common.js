@@ -78,6 +78,7 @@ module.exports = {
         { from: "data", to: "data" },
         { from: "icons/**/*.svg" },
         { from: require.resolve("sql.js/dist/sql-wasm.wasm") },
+        { from: "shortcuts" },
       ],
     }),
     new ForkTsCheckerWebpackPlugin(),
