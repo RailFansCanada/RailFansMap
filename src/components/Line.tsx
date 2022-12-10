@@ -1,28 +1,58 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Source, Layer } from "react-map-gl";
-import { AnyLayout } from "mapbox-gl";
+import { AnyLayout, VectorSource, GeoJSONSourceRaw } from "mapbox-gl";
 import { LabelProviderContext } from "./Map";
-import { FeatureCollection } from "geojson";
 import { useIsDarkTheme } from "../app/utils";
 import { useAppState } from "../hooks/useAppState";
 
 type NewLineProps = {
-  data: FeatureCollection;
   showLineLabels?: boolean;
   filterList: string[];
 };
 
+const root = () => {
+  const url = `${location.protocol}//${location.host}${location.pathname}`;
+  if (url.endsWith("/")) {
+    return url.slice(0, url.length - 1);
+  } else {
+    return url;
+  }
+};
+
+// Conditionally add source-layer property
+const LAYER_PROPS = USE_TILES ? { "source-layer": "rail-map" } : {};
+
 export const Lines = React.memo(
-  ({ data, showLineLabels, filterList }: NewLineProps) => {
+  ({ showLineLabels, filterList }: NewLineProps) => {
     const { labelStyle } = useContext(LabelProviderContext);
     const { appTheme } = useAppState();
     const isDarkTheme = useIsDarkTheme(appTheme);
 
+    const [source, setSource] = useState<VectorSource | GeoJSONSourceRaw>(null);
+
+    useEffect(() => {
+      if (!USE_TILES) {
+        setSource({
+          type: "geojson",
+          data: { type: "FeatureCollection", features: [] },
+        });
+        fetch("assembled.json")
+          .then((result) => result.json())
+          .then((data) => setSource({ type: "geojson", data }));
+      } else {
+        setSource({
+          type: "vector",
+          tiles: [`${root()}/tiles/{z}/{x}/{y}.pbf`],
+        });
+      }
+    }, []);
+
     return (
-      <Source id={"raildata"} type="geojson" data={data}>
+      <Source id={"raildata"} {...source}>
         {/* Rail Yard layers */}
         <Layer
           id={`yard-tracks`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -56,6 +86,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-tunnel`}
+          {...LAYER_PROPS}
           type="fill"
           filter={[
             "all",
@@ -81,6 +112,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-platforms`}
+          {...LAYER_PROPS}
           type="fill"
           filter={[
             "all",
@@ -97,6 +129,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-platforms-future`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -114,6 +147,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-alignment`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -158,6 +192,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-tracks`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -178,6 +213,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`streetcar-tracks`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -198,6 +234,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-tracks-future`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -217,6 +254,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-overpass`}
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -246,6 +284,7 @@ export const Lines = React.memo(
         />
         <Layer
           id="rail-connector-labels-dash"
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -265,6 +304,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`streetcar-rail-station`}
+          {...LAYER_PROPS}
           type="circle"
           filter={[
             "all",
@@ -292,6 +332,7 @@ export const Lines = React.memo(
         />
         <Layer
           id={`rail-station`}
+          {...LAYER_PROPS}
           type="circle"
           filter={[
             "all",
@@ -318,6 +359,7 @@ export const Lines = React.memo(
         />
         <Layer
           id="rail-connector-labels-bg"
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -344,6 +386,7 @@ export const Lines = React.memo(
         />
         <Layer
           id="rail-connector-labels"
+          {...LAYER_PROPS}
           type="line"
           filter={[
             "all",
@@ -371,6 +414,7 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`yard-labels`}
+            {...LAYER_PROPS}
             type="symbol"
             filter={[
               "all",
@@ -398,6 +442,7 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`rail-labels`}
+            {...LAYER_PROPS}
             type="symbol"
             filter={[
               "all",
@@ -426,6 +471,7 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`streetcar-labels`}
+            {...LAYER_PROPS}
             type="symbol"
             filter={[
               "all",
@@ -454,6 +500,7 @@ export const Lines = React.memo(
         {showLineLabels && (
           <Layer
             id={`rail-labels-major`}
+            {...LAYER_PROPS}
             type="symbol"
             filter={[
               "all",

@@ -1,7 +1,5 @@
-import { BBox, Feature, FeatureCollection, Point } from "geojson";
+import { BBox } from "geojson";
 import initSqlJs, { Database } from "sql.js";
-import { Agency, Region } from "../config";
-import { LoadedMetadata } from "../hooks/useData";
 import ddl from "./database.sql";
 
 export type Station = {
@@ -39,73 +37,29 @@ export async function prepDatabase(): Promise<Database> {
   return db;
 }
 
-export async function processFeatures(
-  db: Database,
-  collection: FeatureCollection,
-  agencies: { [key: string]: Agency },
-  regions: { [key: string]: Region }
-) {
+export async function processFeatures(db: Database, entries: any[]) {
   db.exec("BEGIN TRANSACTION;");
 
   const stmt = db.prepare(
     "INSERT INTO stations_search VALUES($name, $description, $parent, $terms, $lines, $lng, $lat)"
   );
 
-  // Get all unique station entries using the station name + lines as a key
-  const set: { [key: string]: Feature } = {};
-  collection.features
-    .filter((feature) => feature.properties.type === "station-label")
-    .forEach((feature) => {
-      const key =
-        feature.properties.name + feature.properties.lines.sort().join();
-      set[key] = feature;
-    });
-
-  // Insert all stations to the database
-  Object.values(set).forEach((f) => {
-    const point = f.geometry as Point;
-    const station = {
-      $name: f.properties.name,
-      $description: `${agencies[f.properties.agency].name} — ${
-        regions[f.properties.region].title
-      }`,
-      $parent: f.properties.parent,
-      $terms: f.properties.searchTerms?.join() ?? "",
-      $lng: point.coordinates[0],
-      $lat: point.coordinates[1],
-      $lines: f.properties.lines.join(),
-    };
-    stmt.run(station);
+  entries.forEach((entry) => {
+    stmt.run(entry);
   });
 
   db.exec("COMMIT;");
 }
 
-export async function processBounds(
-  db: Database,
-  data: LoadedMetadata[],
-  agencies: { [key: string]: Agency },
-  regions: { [key: string]: Region }
-) {
+export async function processBounds(db: Database, entries: any[]) {
   db.exec("BEGIN TRANSACTION;");
 
   const stmt = db.prepare(
     "INSERT INTO bounds_search VALUES($name, $description, $terms, $id, $type, $bounds)"
   );
 
-  data.forEach((entry) => {
-    const bound = {
-      $name: entry.name,
-      $description: `${agencies[entry.agency].name} — ${
-        regions[entry.region].title
-      }`,
-      $terms: entry.searchTerms?.join() ?? "",
-      $id: entry.id,
-      $type: entry.type,
-      $bounds: JSON.stringify(entry.bbox),
-    };
-
-    stmt.run(bound);
+  entries.forEach((entry) => {
+    stmt.run(entry);
   });
 
   db.exec("COMMIT;");
