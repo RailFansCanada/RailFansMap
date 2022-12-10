@@ -6,8 +6,10 @@ const dotenv = require("dotenv").config({ path: __dirname + "/local.env" });
 const webpack = require("webpack");
 const package = require("./package.json");
 
+const USE_TILES = process.env.USE_TILES === "true" || (process.env.USE_TILES === undefined && dotenv.parsed.USE_TILES === "true");
+
 const copyAssembledData =
-  dotenv.parsed.USE_TILES !== "true" ? [{ from: "build/assembled.json" }] : [];
+  !USE_TILES ? [{ from: "build/assembled.json" }] : [];
 
 module.exports = {
   resolve: {
@@ -74,7 +76,7 @@ module.exports = {
       BASE_URL: `"${dotenv.parsed.BASE_URL}"`,
       VERSION: `"${package.version}"`,
       BUILD_DATE: `${Date.now()}`,
-      USE_TILES: `${dotenv.parsed.USE_TILES ?? false}`,
+      USE_TILES: `${USE_TILES}`,
     }),
     new CopyPlugin({
       patterns: [

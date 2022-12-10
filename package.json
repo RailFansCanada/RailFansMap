@@ -7,10 +7,11 @@
   "scripts": {
     "test": "jest",
     "build": "yarn node utils/assemble-data.js && webpack --config webpack.prod.js",
-    "dev": "webpack serve --config webpack.dev.js",
     "watch:data": "nodemon --watch data utils/assemble-data.js",
     "watch:tiles": "nodemon --watch data --exec /bin/bash utils/assemble-tiles.sh",
-    "start": "webpack serve --config webpack.dev.js",
+    "watch:webpack": "webpack serve --config webpack.dev.js",
+    "start": "USE_TILES=false concurrently \"yarn watch:data\" \"yarn watch:webpack\"",
+    "start:tiles": "USE_TILES=true concurrently \"yarn watch:tiles\" \"yarn watch:webpack\"",
     "analyze": "webpack --profile --json > stats.json",
     "clean": "rm -r dist"
   },
@@ -38,6 +39,7 @@
     "@types/styled-components": "5.1.26",
     "ajv": "8.11.2",
     "ajv-formats": "2.1.1",
+    "concurrently": "^7.6.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.2",
     "dotenv": "16.0.3",

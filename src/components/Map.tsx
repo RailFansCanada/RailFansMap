@@ -45,7 +45,7 @@ const provideLabelStyle = (
     .map((value) => value.id)
     .sort()
     .flatMap((id) => [
-      ["case", ["in", id, ["get", "lines"]], ["image", id], ""],
+      ["case", ["in", USE_TILES ? `\"${id}\"` : id, ["get", "lines"]], ["image", id], ""],
       {},
     ]),
 ];
