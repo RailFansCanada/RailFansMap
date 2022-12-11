@@ -7,8 +7,8 @@
   "scripts": {
     "test": "jest",
     "build": "yarn node utils/assemble-data.js && webpack --config webpack.prod.js",
-    "watch:data": "nodemon --watch data utils/assemble-data.js",
-    "watch:tiles": "nodemon --watch data --exec /bin/bash utils/assemble-tiles.sh",
+    "watch:data": "nodemon --watch data --watch src/config.json utils/assemble-data.js",
+    "watch:tiles": "nodemon --watch data --watch src/config.json --exec /bin/bash utils/assemble-tiles.sh",
     "watch:webpack": "webpack serve --config webpack.dev.js",
     "start": "USE_TILES=false concurrently \"yarn watch:data\" \"yarn watch:webpack\"",
     "start:tiles": "USE_TILES=true concurrently \"yarn watch:tiles\" \"yarn watch:webpack\"",
