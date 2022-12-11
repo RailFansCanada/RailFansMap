@@ -239,7 +239,8 @@
               ]
             },
             "lines": { "type": "array", "items": { "type": "string" } },
-            "searchTerms": { "type": "array", "items": { "type": "string" } }
+            "searchTerms": { "type": "array", "items": { "type": "string" } },
+            "scale": { "enum": ["regular", "large"] }
           },
           "required": ["type", "name", "lines"]
         },
