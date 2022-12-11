@@ -449,8 +449,9 @@ export const Lines = React.memo(
               ["==", ["get", "class"], "rail-line"],
               ["==", ["get", "type"], "station-label"],
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+              [">=", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
             ]}
-            minzoom={13}
+            // minzoom={13}
             layout={
               {
                 "text-field": labelStyle,
@@ -507,9 +508,11 @@ export const Lines = React.memo(
               ["==", ["get", "type"], "station-label"],
               ["==", ["get", "major"], true],
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+              ["<", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
+              [">=", ["zoom"], ["match", ["get", "scale"], "large", 4, 9]],
             ]}
-            maxzoom={13}
-            minzoom={9}
+            // maxzoom={13}
+            // minzoom={9}
             layout={
               {
                 "text-field": labelStyle,

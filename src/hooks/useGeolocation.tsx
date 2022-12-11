@@ -29,7 +29,7 @@ const useProvideGeolocation = (): GeolocationProps => {
         (error) => {
           reject(error);
         },
-        { timeout: 0, enableHighAccuracy: true }
+        { enableHighAccuracy: true }
       );
     });
   };
