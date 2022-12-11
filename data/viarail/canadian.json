@@ -52,7 +52,7 @@
 { "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Farlane", "lines": [ "via/canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -94.200478, 50.007073 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Rivers", "lines": [ "via/canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -100.240722, 50.029121 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Canyon", "lines": [ "via/canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -93.744402, 49.980072403100003 ] } },
-{ "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Jasper", "lines": [ "via/canadian", "via/rupert" ], "major": true }, "geometry": { "type": "Point", "coordinates": [ -118.079386435, 52.875728791100002 ] } },
+{ "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Jasper", "lines": [ "via/canadian" ], "major": true }, "geometry": { "type": "Point", "coordinates": [ -118.079386435, 52.875728791100002 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Elsas", "lines": [ "via/canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -82.9031, 48.521081 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Clearwater", "lines": [ "via/canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -120.033379, 51.63789 ] } },
 { "type": "Feature", "properties": { "type": "station-label", "scale": "large", "name": "Evansburg", "lines": [ "via/canadian" ] }, "geometry": { "type": "Point", "coordinates": [ -115.008595, 53.594514 ] } },
