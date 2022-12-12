@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "expomaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "vancouver\/expoline.svg", "name": "SkyTrain Operations and Maintenance Centre 1", "description": "Major maintenance facility for VIA Rail located in Montreal.", "sources": [ "Translink \/ Open Street Map" ], "filterKey": "expomaintenance" },
+"metadata": { "id": "expomaintenance", "type": "rail-yard", "color": "#FFCC00", "icon": "vancouver\/expoline.svg", "name": "SkyTrain Operations and Maintenance Centre 1", "description": "Major maintenance facility for VIA Rail located in Montreal.", "sources": [ "Translink \/ Open Street Map" ], "filterKey": "skytrain" },
 "name": "expomaintenance",
 "bbox": [ -122.9586776,49.2030197,-122.952931,49.209385 ],                                                                      
 "features": [
