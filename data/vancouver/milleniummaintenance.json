@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "translink\/milleniummaintenance", "type": "rail-yard", "color": "#fed20e", "icon": "vancouver\/milleniumline.svg", "name": "SkyTrain Operations and Maintenance Centre 3", "description": "The original maintenance facility for the SkyTrain.", "filterKey": "translink\/milleniummaintenance", "sources": [ "Translink \/ OpenStreetMap" ] },
+"metadata": { "id": "translink\/milleniummaintenance", "type": "rail-yard", "color": "#fed20e", "icon": "vancouver\/milleniumline.svg", "name": "SkyTrain Operations and Maintenance Centre 3", "description": "The original maintenance facility for the SkyTrain.", "filterKey": "skytrain", "sources": [ "Translink \/ OpenStreetMap" ] },
 "bbox": [ -122.8234315,49.2765941,-122.8130167,49.2769396 ],                                                                    
 "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.813395, 49.2765941 ], [ -122.814404, 49.2766813 ], [ -122.81467, 49.2766864 ] ] } },
