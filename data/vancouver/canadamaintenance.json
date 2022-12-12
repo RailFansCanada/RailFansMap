@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "translink\/canadamaintenance", "type": "rail-yard", "color": "#099ec9", "icon": "vancouver\/canadaline.svg", "name": "Canada Line Maintenance Centre", "description": "Maintenance and Storage Facility for the Canada Line", "filterKey": "translink\/canadamaintenance", "sources": [ "Translink \/ OpenStreetMap" ] },
+"metadata": { "id": "translink\/canadamaintenance", "type": "rail-yard", "color": "#099ec9", "icon": "vancouver\/canadaline.svg", "name": "Canada Line Maintenance Centre", "description": "Maintenance and Storage Facility for the Canada Line", "filterKey": "skytrain", "sources": [ "Translink \/ OpenStreetMap" ] },
 "name": "canadamaintenance",
 "bbox": [ -123.1244953, 49.1962427, -123.1192893, 49.1986636 ],                                                                    
 "features": [
