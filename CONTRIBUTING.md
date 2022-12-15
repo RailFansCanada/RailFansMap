@@ -25,7 +25,7 @@ BASE_URL=https://www.railfans.ca
 
 Build and run the app locally:
 ```bash
-$ yarn dev
+$ yarn start
 ```
 
 This will build the map app and start a web server to use the app. Typically the server is available at `http://localhost:8080` after building.
