@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "quebec\/tramway", "type": "rail-line", "color": "#00539f", "icon": "quebec\/qctramway.svg", "name": "Québec City Tramway", "description": "Proposed corridor for the Québec City Tramway", "sources": [ "Ville de Québec" ], "filterKey": "quebecTramway" },
+"metadata": { "id": "quebec\/tramway", "type": "rail-line", "color": "#00539f", "icon": "quebec\/qctramway.svg", "name": "Québec City Tramway", "description": "Proposed corridor for the Tramway", "sources": [ "Ville de Québec" ], "filterKey": "quebecTramway" },
 "name": "tramway",
 "bbox": [-71.35335323122668,46.760346957527126,-71.21156951181729,46.846435908264915],                                              
 "features": [
