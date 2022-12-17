@@ -31,8 +31,8 @@ jobs:
       - name: Set up map tools
         run: .github/workflows/setup-tools.sh
 
-      - name: Generate tiles
-        run: .github/workflows/gen-tiles.sh && cp -r tiles dist/tiles
+      # - name: Generate tiles
+      #   run: .github/workflows/gen-tiles.sh && cp -r tiles dist/tiles
         
       - name: Deploy 🚉
         if: success()
