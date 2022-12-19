@@ -76,7 +76,7 @@
     },
 	  {      
 	"id": "ctransit",
-      "name": "Calgary C-Train",
+      "name": "Calgary CTrain",
       "bbox": [
         -130.35971, 42.29556, -63.26974, 58.76772
       ],
