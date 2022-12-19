@@ -4,7 +4,7 @@
     "id": "calgary\/red", 
     "type": "rail-line", 
     "color": "#EE1B2C", 
-    "icon": "ottawa\/line1.svg", 
+    "icon": "calgary/redline.svg", 
     "name": "Red Line", 
     "offset": -0.5, 
     "description": "Tuscany - Somerset–Bridlewood", 

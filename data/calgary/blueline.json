@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "calgary\/blue", "type": "rail-line", "color": "#055A84", "icon": "ottawa\/line2.svg", "sources": [ "OSM \/ City of Calgary" ], "name": "Blue Line", "offset": 0.5, "description": "69th Street - Saddletowne" },
+"metadata": { "id": "calgary\/blue", "type": "rail-line", "color": "#055A84", "icon": "calgary/blueline.svg", "sources": [ "OSM \/ City of Calgary" ], "name": "Blue Line", "offset": 0.5, "description": "69th Street - Saddletowne" },
 "name": "blueline",
 "bbox": [ -114.1922107, 51.0365938, -113.9471116, 51.1284973 ],                                                                    
 "features": [
