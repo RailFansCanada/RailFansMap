@@ -74,6 +74,20 @@
 	      "montreal/brossardmaintenance.json"
 	      ]
     },
+	  {      
+	"id": "ctransit",
+      "name": "Calgary C-Train",
+      "bbox": [
+        -130.35971, 42.29556, -63.26974, 58.76772
+      ],
+      "data": [
+	"calgary/blueline.json",
+  "calgary/redline.json",
+	"calgary/bluemsf.json",
+	"calgary/redmsf.json",
+"calgary/redstorage.json"
+      ]
+    },
     {
       "id": "ttc",
       "name": "TTC",
@@ -222,6 +236,13 @@
       "agencies": ["rtc"],
       "location": [-71.235223, 46.82596],
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
+    },
+	  {
+      "id": "calgary",
+      "title": "Calgary",
+      "agencies": ["ctransit"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [-114.2393774,50.8963578,-113.9471116,51.136106]
     },
     {
       "id": "vancouver",
