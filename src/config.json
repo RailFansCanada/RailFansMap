@@ -224,6 +224,13 @@
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
     },
     {
+      "id": "vancouver",
+      "title": "Vancouver",
+      "agencies": ["translink"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [-130.35971,42.29556,-63.26974,58.76772]
+    },
+    {
       "id": "passengerrail",
       "title": "Passenger Rail",
       "agencies": ["viarail", "charlevoix"],
