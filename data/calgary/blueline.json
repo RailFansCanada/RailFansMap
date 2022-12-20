@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "calgary\/blue", "type": "rail-line", "color": "#055A84", "icon": "calgary/blueline.svg", "sources": [ "OSM \/ City of Calgary" ], "name": "Blue Line", "offset": 0.5, "description": "69th Street - Saddletowne" },
+"metadata": { "id": "calgary\/blue", "type": "rail-line", "color": "#055A84", "icon": "calgary\/blueline.svg", "sources": [ "OSM \/ City of Calgary" ], "name": "Blue Line", "offset": 0.5, "description": "69th Street - Saddletowne" },
 "name": "blueline",
 "bbox": [ -114.1922107, 51.0365938, -113.9471116, 51.1284973 ],                                                                    
 "features": [
@@ -124,7 +124,7 @@
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -113.9477959, 51.1261324 ], [ -113.9476342, 51.1263757 ], [ -113.9475627, 51.1265226 ], [ -113.9475333, 51.1265817 ], [ -113.9474807, 51.1266867 ], [ -113.9474, 51.1268494 ], [ -113.9473235, 51.1270105 ], [ -113.9472453, 51.1272406 ], [ -113.9471862, 51.1274928 ], [ -113.9471443, 51.1277428 ], [ -113.9471226, 51.127994 ], [ -113.9471116, 51.1284973 ] ] } },
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -114.1283409, 51.0416649 ], [ -114.1279673, 51.0416536 ], [ -114.1275873, 51.0416422 ] ] } },
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -114.1283409, 51.0416264 ], [ -114.1279673, 51.0416536 ], [ -114.1275912, 51.041681 ] ] } },
-{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -114.0379308, 51.0483184 ], [ -114.0381243, 51.0484161 ], [ -114.0383143, 51.048512 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -114.0383143, 51.048512 ], [ -114.0381243, 51.0484161 ], [ -114.0379308, 51.0483184 ] ] } },
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -113.9816835, 51.0604968 ], [ -113.9817311, 51.0608429 ] ] } },
 { "type": "Feature", "properties": { "type": "station-platforms", "name": "1" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -114.0244295, 51.0473518 ], [ -114.0247071, 51.0473341 ], [ -114.0249987, 51.0473185 ], [ -114.0252999, 51.0473071 ], [ -114.0255968, 51.0472998 ], [ -114.0255988, 51.0473389 ], [ -114.0256007, 51.0473773 ], [ -114.0253131, 51.047385 ], [ -114.0249985, 51.047401 ], [ -114.0247131, 51.0474186 ], [ -114.0244491, 51.0474396 ], [ -114.0241219, 51.0474668 ], [ -114.0241001, 51.047378 ], [ -114.0244295, 51.0473518 ] ] ] ] } },
 { "type": "Feature", "properties": { "type": "station-platforms", "name": "2" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -114.041804, 51.0491624 ], [ -114.0414878, 51.0491356 ], [ -114.0411544, 51.0491046 ], [ -114.0406984, 51.049054 ], [ -114.0402938, 51.0489962 ], [ -114.0402823, 51.0490262 ], [ -114.0402685, 51.049062 ], [ -114.0406622, 51.0491198 ], [ -114.0411277, 51.0491758 ], [ -114.0414695, 51.0492095 ], [ -114.041791, 51.0492348 ], [ -114.041804, 51.0491624 ] ] ] ] } },
