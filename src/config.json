@@ -28,7 +28,16 @@
       "data": [
         "charlevoix/charlevoix.json"
       ]
+    },{
+      "id": "edmonton",
+      "name": "Edmonton",
+      "bbox": [-113.52850316689057,53.457301322868176,-113.41085052756821,53.60212806244409],
+      "data": [
+        "edmonton/capitalline.json",
+"edmonton/metroline.json"
+      ]
     },
+
 	{      
 	"id": "viarail",
       "name": "VIA Rail Canada",
@@ -243,6 +252,13 @@
       "agencies": ["ctransit"],
       "location": [-79.383849, 43.653482],
       "bbox": [-114.2393774,50.8963578,-113.9471116,51.136106]
+    },
+{
+      "id": "edmonton",
+      "title": "Edmonton",
+      "agencies": ["edmonton"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [-113.52850316689057,53.457301322868176,-113.41085052756821,53.60212806244409]
     },
     {
       "id": "vancouver",
