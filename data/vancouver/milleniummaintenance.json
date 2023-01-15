@@ -1,0 +1,23 @@
+{
+"type": "FeatureCollection",
+"metadata": { "id": "translink\/milleniummaintenance", "type": "rail-yard", "color": "#fed20e", "icon": "vancouver\/milleniumline.svg", "name": "SkyTrain Operations and Maintenance Centre 3", "description": "The original maintenance facility for the SkyTrain.", "sources": [ "Translink \/ OpenStreetMap" ] },
+"bbox": [ -122.8234315,49.2765941,-122.8130167,49.2769396 ],                                                                    
+"features": [
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.813395, 49.2765941 ], [ -122.814404, 49.2766813 ], [ -122.81467, 49.2766864 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.818734, 49.2767608 ], [ -122.8191273, 49.2767656 ], [ -122.8215321, 49.2768229 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.8130167, 49.2766567 ], [ -122.814404, 49.2766813 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.81467, 49.2766864 ], [ -122.815557, 49.2766891 ], [ -122.8175965, 49.2767262 ], [ -122.818558, 49.2767581 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.818286, 49.2767871 ], [ -122.8181303, 49.2767964 ], [ -122.8172843, 49.2767636 ], [ -122.8158933, 49.2767407 ], [ -122.8150962, 49.2767419 ], [ -122.814944, 49.2767267 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.815388, 49.2768083 ], [ -122.815522, 49.276823 ], [ -122.8160562, 49.2768254 ], [ -122.817138, 49.2768419 ], [ -122.8176814, 49.2768628 ], [ -122.817835, 49.2768523 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.815161, 49.2767656 ], [ -122.8153228, 49.2767809 ], [ -122.8160559, 49.2767807 ], [ -122.8171186, 49.2767965 ], [ -122.8176936, 49.2768193 ], [ -122.8179203, 49.2768281 ], [ -122.818069, 49.2768184 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.815662, 49.2768603 ], [ -122.8158088, 49.2768746 ], [ -122.8162237, 49.2768832 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.8173343, 49.2769015 ], [ -122.8174422, 49.276903 ], [ -122.8175437, 49.2768963 ], [ -122.817835, 49.2768523 ], [ -122.818069, 49.2768184 ], [ -122.818286, 49.2767871 ], [ -122.8184303, 49.2767655 ], [ -122.818558, 49.2767581 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.81467, 49.2766864 ], [ -122.8147865, 49.2766985 ], [ -122.814944, 49.2767267 ], [ -122.815161, 49.2767656 ], [ -122.815388, 49.2768083 ], [ -122.815662, 49.2768603 ], [ -122.8159797, 49.2769192 ], [ -122.8160895, 49.2769288 ], [ -122.8168146, 49.2769396 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.8193942, 49.2768049 ], [ -122.8196068, 49.2768456 ], [ -122.8197085, 49.2768533 ], [ -122.8234301, 49.2769217 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.8193942, 49.2768049 ], [ -122.8195238, 49.2768193 ], [ -122.8234315, 49.2768908 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.818558, 49.2767581 ], [ -122.818734, 49.2767608 ], [ -122.819346, 49.2767367 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.8162237, 49.2768832 ], [ -122.8173343, 49.2769015 ] ] } },
+{ "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -122.8191273, 49.2767656 ], [ -122.8192426, 49.2767766 ], [ -122.8193942, 49.2768049 ] ] } },
+{ "type": "Feature", "properties": { "type": "yard-label", "name": "SkyTrain Operations and Maintenance Centre 3" }, "geometry": { "type": "Point", "coordinates": [ -122.816936436473128, 49.276810323351874 ] } }
+]
+}
