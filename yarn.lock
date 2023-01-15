@@ -5699,10 +5699,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:9.0.16":
-  version: 9.0.16
-  resolution: "immer@npm:9.0.16"
-  checksum: e9a5ca65c929b329da7a3b7beccf7984271cda7bdd47b2cab619eac3277dcd56598c211b55cc340786b6eff0c06652ac018808d9fd744443f06882364dece6bc
+"immer@npm:9.0.18":
+  version: 9.0.18
+  resolution: "immer@npm:9.0.18"
+  checksum: 85b3153dd01fce73c40591d0d6d7cd95878dab49f8ec4744c044adac05e0dab847b30c26259c478a5f87f974897be6df2780ff5bf86c8a0a27578fdeb300eb10
   languageName: node
   linkType: hard
 
@@ -7758,7 +7758,7 @@ __metadata:
     file-loader: 6.2.0
     fork-ts-checker-webpack-plugin: 7.2.14
     html-webpack-plugin: 5.5.0
-    immer: 9.0.16
+    immer: 9.0.18
     jest: 29.3.1
     mapbox-gl: 2.11.1
     mini-css-extract-plugin: 2.7.2
