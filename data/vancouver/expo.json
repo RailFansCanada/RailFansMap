@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "translink\/expoline", "offset": 0.5, "type": "rail-line", "color": "#0961ac", "icon": "vancouver\/expoline.svg", "name": "Expo Line", "description": "Waterfront - King George \/ Production Way", "sources": [ "Translink \/ OpenStreetMap" ] },
+"metadata": { "id": "translink\/expoline", "offset": -0.5, "type": "rail-line", "color": "#0961ac", "icon": "vancouver\/expoline.svg", "name": "Expo Line", "description": "Waterfront - King George \/ Production Way", "sources": [ "Translink \/ OpenStreetMap" ] },
 "name": "expo",
 "bbox": [ -123.1204248, 49.1810916, -122.8403627, 49.2881462 ],                                                                    
 "features": [
