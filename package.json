@@ -33,11 +33,11 @@
     "@types/react": "18.0.26",
     "@types/react-custom-scroll": "4.3.2",
     "@types/react-custom-scrollbars": "4.0.10",
-    "@types/react-dom": "18.0.9",
+    "@types/react-dom": "18.0.10",
     "@types/react-virtualized": "9.21.21",
     "@types/sql.js": "1.4.4",
     "@types/styled-components": "5.1.26",
-    "ajv": "8.11.2",
+    "ajv": "8.12.0",
     "ajv-formats": "2.1.1",
     "concurrently": "^7.6.0",
     "copy-webpack-plugin": "11.0.0",
@@ -63,9 +63,9 @@
   },
   "dependencies": {
     "@mui/icons-material": "5.11.0",
-    "@mui/material": "5.11.0",
+    "@mui/material": "5.11.4",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.11.0",
-    "@mui/styles": "5.11.0",
+    "@mui/styles": "5.11.2",
     "@turf/bbox": "6.5.0",
     "@turf/bbox-polygon": "6.5.0",
     "@turf/boolean-contains": "6.5.0",
@@ -73,7 +73,7 @@
     "@turf/buffer": "6.5.0",
     "bbox": "0.4.0",
     "clsx": "1.2.1",
-    "immer": "9.0.16",
+    "immer": "9.0.18",
     "mapbox-gl": "2.11.1",
     "react": "18.2.0",
     "react-custom-scroll": "4.4.0",
@@ -88,7 +88,7 @@
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@5.11.0"
   },
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@3.3.1",
   "workspaces": [
     "./sqljs"
   ]
