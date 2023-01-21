@@ -19,47 +19,46 @@
         "ottawa/stage3barrhaven.json",
         "ottawa/stage3kanata.json"
       ]
-    }, {
+    },
+    {
       "id": "charlevoix",
       "name": "Train de Charlevoix",
-      "bbox": [
-        -73.75176, 45.44653, -70.14169, 47.623821353
-      ],
-      "data": [
-        "charlevoix/charlevoix.json"
-      ]
-    },{
+      "bbox": [-73.75176, 45.44653, -70.14169, 47.623821353],
+      "data": ["charlevoix/charlevoix.json"]
+    },
+    {
       "id": "edmonton",
       "name": "Edmonton",
-      "bbox": [-113.6678223,53.457301322868176,-113.41141812575138,53.601767010462765],
+      "bbox": [
+        -113.6678223, 53.457301322868176, -113.41141812575138,
+        53.601767010462765
+      ],
       "data": [
-"edmonton/capitalline.json",
-"edmonton/metroline.json",
-"edmonton/valleyline.json",
-"edmonton/valleylinew.json",
-"edmonton/valleylinemsf.json"
+        "edmonton/capitalline.json",
+        "edmonton/metroline.json",
+        "edmonton/valleyline.json",
+        "edmonton/valleylinew.json",
+        "edmonton/valleylinemsf.json"
       ]
     },
 
-	{      
-	"id": "viarail",
+    {
+      "id": "viarail",
       "name": "VIA Rail Canada",
-      "bbox": [
-        -130.35971, 42.29556, -63.26974, 58.76772
-      ],
+      "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "data": [
-	"viarail/canadian.json",
-  "viarail/churchill.json",
-	"viarail/whiteriver.json",
-	"viarail/corridor.json",
-	"viarail/ocean.json",
-	"viarail/senneterre.json",
-	"viarail/jonquiere.json",
-	"viarail/rupert.json",
-	"viarail/montrealmaintenance.json",
-	"viarail/torontomaintenance.json",
-	"viarail/vancouvermaintenance.json",
-  "viarail/winnipegmaintenance.json"
+        "viarail/canadian.json",
+        "viarail/churchill.json",
+        "viarail/whiteriver.json",
+        "viarail/corridor.json",
+        "viarail/ocean.json",
+        "viarail/senneterre.json",
+        "viarail/jonquiere.json",
+        "viarail/rupert.json",
+        "viarail/montrealmaintenance.json",
+        "viarail/torontomaintenance.json",
+        "viarail/vancouvermaintenance.json",
+        "viarail/winnipegmaintenance.json"
       ]
     },
     {
@@ -81,23 +80,18 @@
       "id": "rem",
       "name": "REM",
       "bbox": [-73.9144974, 45.4305912, -73.425561, 45.67481794612502],
-      "data": [
-	      "montreal/rem.json",
-	      "montreal/brossardmaintenance.json"
-	      ]
+      "data": ["montreal/rem.json", "montreal/brossardmaintenance.json"]
     },
-	  {      
-	"id": "ctransit",
+    {
+      "id": "ctransit",
       "name": "Calgary CTrain",
-      "bbox": [
-        -130.35971, 42.29556, -63.26974, 58.76772
-      ],
+      "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "data": [
-	"calgary/blueline.json",
-  "calgary/redline.json",
-	"calgary/bluemsf.json",
-	"calgary/redmsf.json",
-"calgary/redstorage.json"
+        "calgary/blueline.json",
+        "calgary/redline.json",
+        "calgary/bluemsf.json",
+        "calgary/redmsf.json",
+        "calgary/redstorage.json"
       ]
     },
     {
@@ -196,14 +190,14 @@
     {
       "id": "translink",
       "name": "TransLink",
-      "bbox": [ -123.1793274,49.1675196,-122.7910283,49.2881462 ],
+      "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462],
       "data": [
         "vancouver/canada.json",
         "vancouver/expo.json",
         "vancouver/millenium.json",
-	"vancouver/expomaintenance.json",
-	"vancouver/canadamaintenance.json",
-	"vancouver/milleniummaintenance.json"
+        "vancouver/expomaintenance.json",
+        "vancouver/canadamaintenance.json",
+        "vancouver/milleniummaintenance.json"
       ]
     }
   ],
@@ -249,33 +243,36 @@
       "location": [-71.235223, 46.82596],
       "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
     },
-	  {
+    {
       "id": "calgary",
       "title": "Calgary",
       "agencies": ["ctransit"],
-      "location": [-79.383849, 43.653482],
-      "bbox": [-114.2393774,50.8963578,-113.9471116,51.136106]
+      "location": [-114.057014, 51.046215],
+      "bbox": [-114.2393774, 50.8963578, -113.9471116, 51.136106]
     },
-{
+    {
       "id": "edmonton",
       "title": "Edmonton",
       "agencies": ["edmonton"],
-      "location": [-79.383849, 43.653482],
-      "bbox": [-113.6678223,53.457301322868176,-113.41141812575138,53.601767010462765]
+      "location": [-113.4890606, 53.5435337],
+      "bbox": [
+        -113.6678223, 53.457301322868176, -113.41141812575138,
+        53.601767010462765
+      ]
     },
     {
       "id": "vancouver",
       "title": "Vancouver",
       "agencies": ["translink"],
-      "location": [-79.383849, 43.653482],
-      "bbox": [-123.1793274,49.1675196,-122.7910283,49.2881462]
+      "location": [-123.1164, 49.282191],
+      "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462]
     },
     {
       "id": "passengerrail",
       "title": "Passenger Rail",
       "agencies": ["viarail", "charlevoix"],
       "location": [-79.383849, 43.653482],
-      "bbox": [-130.35971,42.29556,-63.26974,58.76772]
+      "bbox": [-130.35971, 42.29556, -63.26974, 58.76772]
     }
   ]
 }
