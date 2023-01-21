@@ -1,6 +1,6 @@
 {
   "name": "otrainmap",
-  "version": "3.5.2",
+  "version": "3.5.3",
   "description": "",
   "private": true,
   "types": "src/index.d.ts",
