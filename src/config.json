@@ -28,7 +28,7 @@
     },
     {
       "id": "edmonton",
-      "name": "Edmonton",
+      "name": "Edmonton LRT",
       "bbox": [
         -113.6678223, 53.457301322868176, -113.41141812575138,
         53.601767010462765
@@ -47,14 +47,14 @@
       "name": "VIA Rail Canada",
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "data": [
+        "viarail/corridor.json",
         "viarail/canadian.json",
         "viarail/churchill.json",
-        "viarail/whiteriver.json",
-        "viarail/corridor.json",
-        "viarail/ocean.json",
-        "viarail/senneterre.json",
         "viarail/jonquiere.json",
+        "viarail/ocean.json",
         "viarail/rupert.json",
+        "viarail/senneterre.json",
+        "viarail/whiteriver.json",
         "viarail/montrealmaintenance.json",
         "viarail/torontomaintenance.json",
         "viarail/vancouvermaintenance.json",
@@ -84,7 +84,7 @@
     },
     {
       "id": "ctransit",
-      "name": "Calgary CTrain",
+      "name": "CTrain",
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "data": [
         "calgary/blueline.json",
@@ -96,7 +96,7 @@
     },
     {
       "id": "ttc",
-      "name": "TTC",
+      "name": "TTC - Subway",
       "bbox": [
         -79.60331150195182, 43.63443706290249, -79.2443698561092,
         43.857232769665806
@@ -192,12 +192,12 @@
       "name": "TransLink",
       "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462],
       "data": [
-        "vancouver/canada.json",
         "vancouver/expo.json",
         "vancouver/millenium.json",
+        "vancouver/canada.json",
         "vancouver/expomaintenance.json",
-        "vancouver/canadamaintenance.json",
-        "vancouver/milleniummaintenance.json"
+        "vancouver/milleniummaintenance.json",
+        "vancouver/canadamaintenance.json"
       ]
     }
   ],
@@ -221,29 +221,6 @@
       "bbox": [-73.9144974, 45.4305912, -73.425561, 45.59972319599818]
     },
     {
-      "id": "toronto",
-      "title": "Toronto",
-      "agencies": ["ttc", "ttcStreetcar"],
-      "location": [-79.383849, 43.653482],
-      "bbox": [
-        -79.60331150195182, 43.591514, -79.2443698561092, 43.857232769665806
-      ]
-    },
-    {
-      "id": "waterloo",
-      "title": "Kitchener-Waterloo",
-      "agencies": ["grt"],
-      "location": [-80.5, 43.466667],
-      "bbox": [-80.545261, 43.35583057283434, -80.30597750531045, 43.501633]
-    },
-    {
-      "id": "quebec",
-      "title": "Québec City",
-      "agencies": ["rtc"],
-      "location": [-71.235223, 46.82596],
-      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
-    },
-    {
       "id": "calgary",
       "title": "Calgary",
       "agencies": ["ctransit"],
@@ -261,11 +238,34 @@
       ]
     },
     {
+      "id": "quebec",
+      "title": "Québec City",
+      "agencies": ["rtc"],
+      "location": [-71.235223, 46.82596],
+      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826]
+    },
+    {
+      "id": "toronto",
+      "title": "Toronto",
+      "agencies": ["ttc", "ttcStreetcar"],
+      "location": [-79.383849, 43.653482],
+      "bbox": [
+        -79.60331150195182, 43.591514, -79.2443698561092, 43.857232769665806
+      ]
+    },
+    {
       "id": "vancouver",
       "title": "Vancouver",
       "agencies": ["translink"],
       "location": [-123.1164, 49.282191],
       "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462]
+    },
+    {
+      "id": "waterloo",
+      "title": "Kitchener-Waterloo",
+      "agencies": ["grt"],
+      "location": [-80.5, 43.466667],
+      "bbox": [-80.545261, 43.35583057283434, -80.30597750531045, 43.501633]
     },
     {
       "id": "passengerrail",
