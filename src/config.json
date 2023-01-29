@@ -197,7 +197,8 @@
         "vancouver/canada.json",
         "vancouver/expomaintenance.json",
         "vancouver/milleniummaintenance.json",
-        "vancouver/canadamaintenance.json"
+        "vancouver/canadamaintenance.json",
+        "vancouver/broadwayextension.json"
       ]
     }
   ],
