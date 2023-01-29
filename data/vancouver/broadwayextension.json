@@ -1,7 +1,14 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "translink\/broadwayextension", "type": "rail-line", "offset": -0.5, "color": "#fed20e", "icon": "vancouver\/milleniumline.svg", "name": "Broadway Extension", "description": "Arbutus - VCC-Clark", "sources": [ "Translink \/ OpenStreetMap" ] },
-"name": "broadwayextension",
+"metadata": { "id": "translink\/broadwayextension", 
+"type": "rail-line", 
+"offset": -0.5, 
+"color": "#fed20e", 
+"icon": "vancouver\/milleniumline.svg", 
+"name": "Broadway Subway Extension", 
+"filterKey": "broadway",
+"description": "Arbutus - VCC-Clark", 
+"sources": [ "Translink \/ OpenStreetMap" ] },
 "bbox": [ -123.1538944, 49.2628028, -123.0823686, 49.2682995626631 ],                                                              
 "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -123.089181, 49.2677672 ], [ -123.088512, 49.2676186 ], [ -123.08758, 49.2674583 ], [ -123.086808, 49.2672907 ] ] } },
