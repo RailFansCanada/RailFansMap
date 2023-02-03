@@ -238,6 +238,13 @@
       ]
     },
     {
+      "id": "waterloo",
+      "title": "Kitchener-Waterloo",
+      "agencies": ["grt"],
+      "location": [-80.5, 43.466667],
+      "bbox": [-80.545261, 43.35583057283434, -80.30597750531045, 43.501633]
+    },
+    {
       "id": "quebec",
       "title": "Québec City",
       "agencies": ["rtc"],
@@ -259,13 +266,6 @@
       "agencies": ["translink"],
       "location": [-123.1164, 49.282191],
       "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462]
-    },
-    {
-      "id": "waterloo",
-      "title": "Kitchener-Waterloo",
-      "agencies": ["grt"],
-      "location": [-80.5, 43.466667],
-      "bbox": [-80.545261, 43.35583057283434, -80.30597750531045, 43.501633]
     },
     {
       "id": "passengerrail",
