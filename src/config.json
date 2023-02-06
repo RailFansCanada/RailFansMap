@@ -26,6 +26,12 @@
       "bbox": [-73.75176, 45.44653, -70.14169, 47.623821353],
       "data": ["charlevoix/charlevoix.json"]
     },
+ {
+      "id": "krc",
+      "name": "Keewatin Railway Company",
+      "bbox": [-73.75176, 45.44653, -70.14169, 47.623821353],
+      "data": ["keewatin/keewatin.json"]
+    },
     {
       "id": "edmonton",
       "name": "Edmonton LRT",
@@ -270,7 +276,7 @@
     {
       "id": "passengerrail",
       "title": "Passenger Rail",
-      "agencies": ["viarail", "charlevoix"],
+      "agencies": ["viarail", "charlevoix", "krc"],
       "location": [-79.383849, 43.653482],
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772]
     }
