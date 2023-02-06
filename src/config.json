@@ -29,7 +29,7 @@
  {
       "id": "krc",
       "name": "Keewatin Railway Company",
-      "bbox": [-73.75176, 45.44653, -70.14169, 47.623821353],
+      "bbox": [-101.6805817,52.8293603,-100.6543472,55.7639468],
       "data": ["keewatin/keewatin.json"]
     },
     {
