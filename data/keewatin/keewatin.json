@@ -2,7 +2,7 @@
 "type": "FeatureCollection",
 "metadata": { "id": "Keewatin", "type": "rail-line", "color": "#b00c00", "icon": "viarail\/viarail.svg", "name": "Keewatin Railway", "description": "Passenger service between The Pas and Pukatawagan operated using VIA equipment.", "sources": [ "Government of Manitoba" ], "filterKey": "Keewatin" },
 "name": "canadian",
-"bbox": [ -101.6805817, 52.8293603, -100.6543472, 55.7639468 ],                                                                    
+"bbox": [ -101.6805817,52.8293603,-100.6543472,55.7639468 ],                                                                    
 "features": [
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -101.2507536, 53.8292713 ], [ -101.2501892, 53.8289277 ] ] } },
 { "type": "Feature", "properties": { "type": "tracks" }, "geometry": { "type": "LineString", "coordinates": [ [ -101.2433676, 53.8614647 ], [ -101.2428126, 53.8620891 ], [ -101.2426237, 53.8622999 ], [ -101.2426001, 53.8623306 ], [ -101.2425498, 53.862396 ], [ -101.2398687, 53.8654301 ], [ -101.2396651, 53.8656604 ], [ -101.236599, 53.8690892 ], [ -101.2314163, 53.875 ] ] } },
