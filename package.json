@@ -76,7 +76,7 @@
     "immer": "9.0.19",
     "mapbox-gl": "2.12.0",
     "react": "18.2.0",
-    "react-custom-scroll": "4.4.0",
+    "react-custom-scroll": "5.0.0",
     "react-custom-scrollbars": "4.2.1",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
