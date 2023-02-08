@@ -50,7 +50,7 @@
 
     {
       "id": "viarail",
-      "name": "VIA Rail Canada",
+      "name": "VIA Rail Canada (BETA)",
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "data": [
         "viarail/corridor.json",
@@ -192,6 +192,14 @@
         45.43724924103122
       ],
       "data": ["gatineau/a.json", "gatineau/b.json"]
+    }, 
+    {
+      "id": "northland",
+      "name": "Ontario Northland",
+      "bbox": [-81.6915299,49.0593736000001,-80.643751,51.2775731],
+      "data": [
+        "northland/polarbear.json"
+      ]
     },
     {
       "id": "translink",
@@ -276,7 +284,7 @@
     {
       "id": "passengerrail",
       "title": "Passenger Rail",
-      "agencies": ["viarail", "charlevoix", "krc"],
+      "agencies": ["viarail", "charlevoix", "krc", "northland"],
       "location": [-79.383849, 43.653482],
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772]
     }
