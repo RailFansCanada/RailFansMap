@@ -50,7 +50,7 @@
 
     {
       "id": "viarail",
-      "name": "VIA Rail Canada (BETA)",
+      "name": "VIA Rail Canada",
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "data": [
         "viarail/corridor.json",
