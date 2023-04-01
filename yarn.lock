@@ -7763,7 +7763,7 @@ __metadata:
     pnp-webpack-plugin: 1.7.0
     raw-loader: 4.0.2
     react: 18.2.0
-    react-custom-scroll: 4.4.0
+    react-custom-scroll: 5.0.0
     react-custom-scrollbars: 4.2.1
     react-dom: 18.2.0
     react-is: 18.2.0
@@ -8364,14 +8364,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-custom-scroll@npm:4.4.0":
-  version: 4.4.0
-  resolution: "react-custom-scroll@npm:4.4.0"
+"react-custom-scroll@npm:5.0.0":
+  version: 5.0.0
+  resolution: "react-custom-scroll@npm:5.0.0"
   peerDependencies:
     prop-types: "*"
     react: "*"
-    react-dom: "*"
-  checksum: 932360af2242dc9b7193715d5ca14f612b6cd1f30df8524f827c465ee3f8e6c4d959f7437e56d5f91fd8cce886a920a9e757798132d717f911eb8cd295f17612
+  checksum: 3e0224204cb8e3fda1605aec773cca9c8163840cdff0df58ab7e31d1f3984d9f44de647ed094e3181e3d9799ea4ada854d679e2cbf7aa0a40bcd932a79e9d310
   languageName: node
   linkType: hard
 
