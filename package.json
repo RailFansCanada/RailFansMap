@@ -82,7 +82,7 @@
     "react-is": "18.2.0",
     "react-map-gl": "7.0.21",
     "sql.js": "workspace:./sqljs",
-    "styled-components": "5.3.6",
+    "styled-components": "5.3.9",
     "tiny-warning": "1.0.3"
   },
   "resolutions": {
