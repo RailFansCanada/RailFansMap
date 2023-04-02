@@ -39,7 +39,7 @@
     "@types/styled-components": "5.1.26",
     "ajv": "8.12.0",
     "ajv-formats": "2.1.1",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.3",
     "dotenv": "16.0.3",
