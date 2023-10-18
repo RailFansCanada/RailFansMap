@@ -2,7 +2,7 @@
 "type": "FeatureCollection",
 "metadata": { "id": "quebec\/tramway", "type": "rail-line", "color": "#00539f", "icon": "quebec\/qctramway.svg", "name": "Québec City Tramway", "description": "Proposed corridor for the Tramway", "sources": [ "Ville de Québec" ], "filterKey": "quebecTramway" },
 "name": "tramway",
-"bbox": [-71.35335323122668,46.760346957527126,242133.8415000001,5180463.390000001],                                              
+"bbox": [-71.35335323122668,46.760346957527126,-71.21179418202422,46.846379434987306],                                              
 "features": [
     { "type": "Feature", "properties": { "type": "alignment"}, "geometry": { "type": "LineString", "coordinates": [ [ -71.290586996694003, 46.766311782877786 ], [ -71.29054538670988, 46.766303529952715 ], [ -71.290502995246698, 46.766297434368028 ] ] } },
     { "type": "Feature", "properties": { "type": "alignment"}, "geometry": { "type": "LineString", "coordinates": [ [ -71.290694452766104, 46.766346829417671 ], [ -71.290641978620002, 46.766327491454888 ], [ -71.290586996694003, 46.766311782877786 ] ] } },
@@ -244,7 +244,7 @@
     { "type": "Feature", "properties": { "type": "alignment"}, "geometry": { "type": "LineString", "coordinates": [ [ -71.292665392188596, 46.767762658381706 ], [ -71.292535936071658, 46.767665591399101 ], [ -71.292455560688538, 46.767607095993291 ], [ -71.292308161003575, 46.767499817842818 ], [ -71.291349201237168, 46.766801866561558 ], [ -71.290992436494875, 46.766542198012331 ], [ -71.290845042624184, 46.766434917922119 ], [ -71.290799621877369, 46.766401838651021 ], [ -71.290749226287431, 46.766372359039302 ], [ -71.290694452766104, 46.766346829417671 ] ] } },
     { "type": "Feature", "properties": { "type": "alignment"}, "geometry": { "type": "LineString", "coordinates": [ [ -71.292674685688851, 46.767769626559463 ], [ -71.292665392188596, 46.767762658381706 ] ] } },
     { "type": "Feature", "properties": { "type": "alignment"}, "geometry": { "type": "LineString", "coordinates": [ [ -71.292775547354083, 46.767839756290215 ], [ -71.292674685688851, 46.767769626559463 ] ] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Pie-XII", "lines": [ "quebec/tramway" ] }, "geometry": { "type": "Point", "coordinates": [ 242133.841500000096858, 5180463.390000000596046 ] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Pie-XII", "lines": [ "quebec/tramway" ] }, "geometry": { "type": "Point", "coordinates": [ -71.320374644893121, 46.760791863119621 ] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "McCartney", "lines": [ "quebec/tramway" ] }, "geometry": { "type": "Point", "coordinates": [ -71.330393852553826, 46.765765719345708 ] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "Pie-XII", "lines": [ "quebec/tramway" ] }, "geometry": { "type": "Point", "coordinates": [ -71.320374644893121, 46.760791863119621 ] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "Bégon", "lines": [ "quebec/tramway" ] }, "geometry": { "type": "Point", "coordinates": [ -71.315553885293454, 46.763817261311345 ] } },
