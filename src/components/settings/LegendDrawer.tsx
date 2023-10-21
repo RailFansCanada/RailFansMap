@@ -11,7 +11,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { MenuDrawer } from "./MenuDrawer";
 import { Agency } from "../../config";
 import { LoadedMetadata } from "../../hooks/useData";

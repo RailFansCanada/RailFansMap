@@ -1,13 +1,12 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import React from "react";
-import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
-import { createGlobalStyle } from "styled-components";
+import { css, Global } from "@emotion/react";
 
 import { App } from "./app/App";
 
-const GlobalStyle = createGlobalStyle`
+const globalCss = css`
   html,
   body {
     height: 100%;
@@ -44,7 +43,7 @@ const container = document.getElementById("content");
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
+    <Global styles={globalCss}/>
     <App />
   </React.StrictMode>
 );

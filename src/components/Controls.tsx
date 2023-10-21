@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Paper } from "@mui/material";
 
 export const ControlPaper = styled(Paper)`

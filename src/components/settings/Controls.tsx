@@ -16,7 +16,7 @@ import {
   Feedback,
 } from "@mui/icons-material";
 import { ShareSheet } from "./ShareSheet";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { config, Region } from "../../config";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
