@@ -2299,30 +2299,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-custom-scroll@npm:4.3.2":
-  version: 4.3.2
-  resolution: "@types/react-custom-scroll@npm:4.3.2"
+"@types/react-dom@npm:18.2.14":
+  version: 18.2.14
+  resolution: "@types/react-dom@npm:18.2.14"
   dependencies:
     "@types/react": "*"
-  checksum: 536190883491bba6e4c71d86705108d518ec65751c5f4a50dd6139fa0263fcec9e79db3c8ba5dae9f2df1eaf47c15c9b2df99b54b6a7151c37e36b8f6f38b61a
-  languageName: node
-  linkType: hard
-
-"@types/react-custom-scrollbars@npm:4.0.10":
-  version: 4.0.10
-  resolution: "@types/react-custom-scrollbars@npm:4.0.10"
-  dependencies:
-    "@types/react": "*"
-  checksum: 9b41b78c9f20e6d417f74d2b3847f140722bbb4b1b8fc567a17bab26f9084fc6be8cd423f0b05d57a126ea7cbdb4a1fb08bed60cd8a5d73a95ce6fc3157233cb
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:18.0.11":
-  version: 18.0.11
-  resolution: "@types/react-dom@npm:18.0.11"
-  dependencies:
-    "@types/react": "*"
-  checksum: 579691e4d5ec09688087568037c35edf8cfb1ab3e07f6c60029280733ee7b5c06d66df6fcc90786702c93ac8cb13bc7ff16c79ddfc75d082938fbaa36e1cdbf4
+  checksum: 890289c70d1966c168037637c09cacefe6205bdd27a33252144a6b432595a2943775ac1a1accac0beddaeb67f8fdf721e076acb1adc990b08e51c3d9fd4e780c
   languageName: node
   linkType: hard
 
@@ -2356,14 +2338,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.0.32":
-  version: 18.0.32
-  resolution: "@types/react@npm:18.0.32"
+"@types/react@npm:18.2.31":
+  version: 18.2.31
+  resolution: "@types/react@npm:18.2.31"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: c8dbce83c455e520e75f3649988f46100e3a3c0bf7241281ea5bd9067a0368290f0d7c6102e12e6ec9d649134b29a3ef4c421f376ec5aa06ed78cbdd8c144b4c
+  checksum: b11be8e39174d3303e308461400889e353e422d22b01d09795b2c35b7b99d5351716503d9ec5c58e4c2c871249603fa52840d45a34fb5901dd7a26e06129c716
   languageName: node
   linkType: hard
 
@@ -7988,10 +7970,8 @@ __metadata:
     "@turf/buffer": 6.5.0
     "@types/geojson": 7946.0.12
     "@types/mapbox-gl": 2.7.17
-    "@types/react": 18.0.32
-    "@types/react-custom-scroll": 4.3.2
-    "@types/react-custom-scrollbars": 4.0.10
-    "@types/react-dom": 18.0.11
+    "@types/react": 18.2.31
+    "@types/react-dom": 18.2.14
     "@types/react-virtualized": 9.21.26
     "@types/sql.js": 1.4.4
     ajv: 8.12.0
@@ -8013,7 +7993,6 @@ __metadata:
     pnp-webpack-plugin: 1.7.0
     raw-loader: 4.0.2
     react: 18.2.0
-    react-custom-scroll: 5.0.0
     react-custom-scrollbars: 4.2.1
     react-dom: 18.2.0
     react-is: 18.2.0
@@ -8624,16 +8603,6 @@ __metadata:
   dependencies:
     quickselect: ^2.0.0
   checksum: b7def5ba762ca01b6c7c032098ef61b86bd4fef4afb82e4a1d70a07a929b39e779290446c2d4730f577e8a1c8fd0dfd349605b5ea0229258d5f013debdffa65a
-  languageName: node
-  linkType: hard
-
-"react-custom-scroll@npm:5.0.0":
-  version: 5.0.0
-  resolution: "react-custom-scroll@npm:5.0.0"
-  peerDependencies:
-    prop-types: "*"
-    react: "*"
-  checksum: 3e0224204cb8e3fda1605aec773cca9c8163840cdff0df58ab7e31d1f3984d9f44de647ed094e3181e3d9799ea4ada854d679e2cbf7aa0a40bcd932a79e9d310
   languageName: node
   linkType: hard
 
