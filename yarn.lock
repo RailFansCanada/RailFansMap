@@ -2335,13 +2335,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-virtualized@npm:9.21.21":
-  version: 9.21.21
-  resolution: "@types/react-virtualized@npm:9.21.21"
+"@types/react-virtualized@npm:9.21.26":
+  version: 9.21.26
+  resolution: "@types/react-virtualized@npm:9.21.26"
   dependencies:
     "@types/prop-types": "*"
-    "@types/react": ^17
-  checksum: 7f360746ae926c93ba07d830a33940ab1598f6966263594896d0dc746d704f9c0e0d1692cf543e925bcca7b007d70d3cc53379a9b1810f60c2d43ee5cfdb591e
+    "@types/react": "*"
+  checksum: 68d636e53b142d9c07905cb1d5c6196846b99ac263455ef3db9642aa0a101c4614ca3f9df9620b4d1ce0eb022ebf9dc148a2a15a7a119bdb3e3195ec4368d65c
   languageName: node
   linkType: hard
 
@@ -2364,17 +2364,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: c8dbce83c455e520e75f3649988f46100e3a3c0bf7241281ea5bd9067a0368290f0d7c6102e12e6ec9d649134b29a3ef4c421f376ec5aa06ed78cbdd8c144b4c
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^17":
-  version: 17.0.47
-  resolution: "@types/react@npm:17.0.47"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 2e7fe0eb630cb77da03b6da308c58728c01b38e878118e9ff5cd8045181c8d4f32dc936e328f46a62cadb56e1fe4c5a911b5113584f93a99e1f35df7f059246b
   languageName: node
   linkType: hard
 
@@ -8003,7 +7992,7 @@ __metadata:
     "@types/react-custom-scroll": 4.3.2
     "@types/react-custom-scrollbars": 4.0.10
     "@types/react-dom": 18.0.11
-    "@types/react-virtualized": 9.21.21
+    "@types/react-virtualized": 9.21.26
     "@types/sql.js": 1.4.4
     ajv: 8.12.0
     ajv-formats: 2.1.1
