@@ -2308,12 +2308,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-custom-scrollbars@npm:4.0.10":
-  version: 4.0.10
-  resolution: "@types/react-custom-scrollbars@npm:4.0.10"
+"@types/react-custom-scrollbars@npm:4.0.11":
+  version: 4.0.11
+  resolution: "@types/react-custom-scrollbars@npm:4.0.11"
   dependencies:
     "@types/react": "*"
-  checksum: 9b41b78c9f20e6d417f74d2b3847f140722bbb4b1b8fc567a17bab26f9084fc6be8cd423f0b05d57a126ea7cbdb4a1fb08bed60cd8a5d73a95ce6fc3157233cb
+  checksum: dc984c3b60ad46df29e41b224f4b1e7dfb19e9e570c18a0debfd8d3ebdb83cc84441cc6127d34697fe19174149d9f6792c2f40b5878779156190f49b3a235e5b
   languageName: node
   linkType: hard
 
@@ -8001,7 +8001,7 @@ __metadata:
     "@types/mapbox-gl": 2.7.17
     "@types/react": 18.0.32
     "@types/react-custom-scroll": 4.3.2
-    "@types/react-custom-scrollbars": 4.0.10
+    "@types/react-custom-scrollbars": 4.0.11
     "@types/react-dom": 18.0.11
     "@types/react-virtualized": 9.21.21
     "@types/sql.js": 1.4.4
