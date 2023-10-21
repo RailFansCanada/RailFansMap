@@ -34,7 +34,7 @@
     "@types/react-custom-scrollbars": "4.0.10",
     "@types/react-dom": "18.0.11",
     "@types/react-virtualized": "9.21.26",
-    "@types/sql.js": "1.4.4",
+    "@types/sql.js": "1.4.7",
     "ajv": "8.12.0",
     "ajv-formats": "2.1.1",
     "concurrently": "^8.0.0",
