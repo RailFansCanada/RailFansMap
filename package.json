@@ -43,7 +43,7 @@
     "fork-ts-checker-webpack-plugin": "8.0.0",
     "html-webpack-plugin": "5.5.3",
     "jest": "29.5.0",
-    "mini-css-extract-plugin": "2.7.5",
+    "mini-css-extract-plugin": "2.7.6",
     "nodemon": "^2.0.20",
     "pnp-webpack-plugin": "1.7.0",
     "raw-loader": "4.0.2",
