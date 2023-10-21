@@ -1967,13 +1967,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-ease@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@types/d3-ease@npm:3.0.0"
-  checksum: 1be7c993643b5a08332e0ee146375a3845545d8deb423db5d152e0b061524385d2345ceccf968f75f605247b940dd3f9a144335fee2e7d935cddaf187afb7095
-  languageName: node
-  linkType: hard
-
 "@types/emscripten@npm:*":
   version: 1.39.6
   resolution: "@types/emscripten@npm:1.39.6"
@@ -7839,7 +7832,6 @@ __metadata:
     "@turf/boolean-contains": 6.5.0
     "@turf/boolean-overlap": 6.5.0
     "@turf/buffer": 6.5.0
-    "@types/d3-ease": 3.0.0
     "@types/geojson": 7946.0.10
     "@types/mapbox-gl": 2.7.17
     "@types/react": 18.0.32
