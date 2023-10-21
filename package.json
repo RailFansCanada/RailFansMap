@@ -81,7 +81,7 @@
     "sql.js": "workspace:./sqljs",
     "tiny-warning": "1.0.3"
   },
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@3.6.4",
   "workspaces": [
     "./sqljs"
   ]
