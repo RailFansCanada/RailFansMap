@@ -17,6 +17,7 @@ import { ProvideMapTarget } from "../hooks/useMapTarget";
 import { ProvideAppState, useAppState } from "../hooks/useAppState";
 import { SearchBar } from "../components/SearchBar";
 import { ProvideGeolocation } from "../hooks/useGeolocation";
+import { ProvideStrings } from "../hooks/useStrings";
 
 export const App = () => {
   return (
@@ -61,15 +62,17 @@ const ThemedApp = () => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <ProvideData2>
-          <ProvideWindow>
-            <ProvideMapTarget>
-              <ProvideGeolocation>
-                <Content />
-              </ProvideGeolocation>
-            </ProvideMapTarget>
-          </ProvideWindow>
-        </ProvideData2>
+        <ProvideStrings>
+          <ProvideData2>
+            <ProvideWindow>
+              <ProvideMapTarget>
+                <ProvideGeolocation>
+                  <Content />
+                </ProvideGeolocation>
+              </ProvideMapTarget>
+            </ProvideWindow>
+          </ProvideData2>
+        </ProvideStrings>
       </ThemeProvider>
     </StyledEngineProvider>
   );

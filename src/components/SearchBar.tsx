@@ -33,6 +33,7 @@ import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import { useAppState } from "../hooks/useAppState";
 import { isLineEnabled } from "../app/utils";
 import { useWindow } from "../hooks/useWindow";
+import { useStrings } from "../hooks/useStrings";
 
 const SearchContainer = styled.div`
   position: fixed;
@@ -140,6 +141,7 @@ type SearchProps = {
 
 const MobileSearch = (props: SearchProps) => {
   const { searchOpen, setSearchOpen } = useAppState();
+  const strings = useStrings();
 
   return (
     <SearchBarPaper $expanded={searchOpen}>
@@ -154,7 +156,7 @@ const MobileSearch = (props: SearchProps) => {
           props.onQueryUpdate(e.target.value);
         }}
         value={props.query}
-        placeholder="Search stations, lines, yards..."
+        placeholder={strings.search_placeholder}
       />
       {searchOpen && (
         <SearchButton
@@ -173,6 +175,8 @@ const MobileSearch = (props: SearchProps) => {
 
 const DesktopSearch = (props: SearchProps) => {
   const { searchOpen, setSearchOpen } = useAppState();
+  const strings = useStrings();
+
   return (
     <SearchBarPaper $expanded>
       <SearchButton aria-label="Search Button">
@@ -183,7 +187,7 @@ const DesktopSearch = (props: SearchProps) => {
           props.onQueryUpdate(e.target.value);
         }}
         value={props.query}
-        placeholder="Search stations, lines, yards..."
+        placeholder={strings.search_placeholder}
       />
       {searchOpen && (
         <SearchButton
