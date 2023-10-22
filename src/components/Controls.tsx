@@ -4,11 +4,11 @@ import { Paper } from "@mui/material";
 export const ControlPaper = styled(Paper)`
   margin: ${({ theme }) => theme.spacing(0.5)} 0;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 
-  &:last-child {
+  &:last-of-type {
     margin-bottom: 0;
   }
 `;

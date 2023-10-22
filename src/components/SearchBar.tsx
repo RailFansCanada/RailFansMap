@@ -49,9 +49,9 @@ const SearchContainer = styled.div`
   }
 `;
 
-const SearchBarPaper = styled(Paper)<{ $expanded: boolean }>`
-  padding: ${({ theme, $expanded }) => theme.spacing(0.25)};
-  width: ${(props) => (props.$expanded ? "100%" : "48px")};
+const SearchBarPaper = styled(Paper)<{ selected: boolean }>`
+  padding: ${({ theme }) => theme.spacing(0.25)};
+  width: ${(props) => (props.selected ? "100%" : "48px")};
   transition: ${({ theme }) => theme.transitions.create(["width", "padding"])};
   overflow: clip;
   display: flex;
@@ -144,7 +144,7 @@ const MobileSearch = (props: SearchProps) => {
   const strings = useStrings();
 
   return (
-    <SearchBarPaper $expanded={searchOpen}>
+    <SearchBarPaper selected={searchOpen}>
       <SearchButton
         aria-label="Search Button"
         onClick={() => setSearchOpen(!searchOpen)}
@@ -178,7 +178,7 @@ const DesktopSearch = (props: SearchProps) => {
   const strings = useStrings();
 
   return (
-    <SearchBarPaper $expanded>
+    <SearchBarPaper selected>
       <SearchButton aria-label="Search Button">
         <Search />
       </SearchButton>
