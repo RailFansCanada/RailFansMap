@@ -18,6 +18,7 @@ import { ProvideAppState, useAppState } from "../hooks/useAppState";
 import { SearchBar } from "../components/SearchBar";
 import { ProvideGeolocation } from "../hooks/useGeolocation";
 import { ProvideStrings } from "../hooks/useStrings";
+import { BottomSheet } from "../components/BottomSheet";
 
 export const App = () => {
   return (
@@ -45,6 +46,7 @@ const Content = () => {
       <LegendDrawer allAgencies={agencies} />
       <Logo />
       <SearchBar />
+      {/* <BottomSheet /> */}
     </Container>
   );
 };

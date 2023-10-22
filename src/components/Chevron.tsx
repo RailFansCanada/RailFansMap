@@ -16,6 +16,7 @@ export const Chevron = styled.div<{ down: boolean; color?: string }>`
     transform: ${(props) =>
       props.down ? "rotate(-135deg)" : "rotate(-45deg)"};
     content: "";
+    margin-left: 7px;
   }
   &:after {
     width: 3px;
