@@ -77,6 +77,7 @@ module.exports = {
       VERSION: `"${package.version}"`,
       BUILD_DATE: `${Date.now()}`,
       USE_TILES: `${USE_TILES}`,
+      DEBUG: `${process.env.NODE_ENV === "development"}`
     }),
     new CopyPlugin({
       patterns: [

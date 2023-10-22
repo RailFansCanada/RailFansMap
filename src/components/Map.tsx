@@ -28,6 +28,7 @@ import { useTheme } from "@mui/styles";
 import { config, Metadata } from "../config";
 import { MapControls } from "./MapControls";
 import { useGeolocation } from "../hooks/useGeolocation";
+import bboxPolygon from "@turf/bbox-polygon";
 
 const provideLabelStyle = (
   lines: { [key: string]: Metadata },
@@ -45,7 +46,12 @@ const provideLabelStyle = (
     .map((value) => value.id)
     .sort()
     .flatMap((id) => [
-      ["case", ["in", USE_TILES ? `\"${id}\"` : id, ["get", "lines"]], ["image", id], ""],
+      [
+        "case",
+        ["in", USE_TILES ? `\"${id}\"` : id, ["get", "lines"]],
+        ["image", id],
+        "",
+      ],
       {},
     ]),
 ];
@@ -87,20 +93,30 @@ export type OverviewMapProps = {
   lines: { [key: string]: Metadata };
 };
 
-const regionFeatures = config.regions.map((region) => ({
-  type: "Feature",
-  bbox: region.bbox,
-  geometry: {
-    type: "Point",
-    coordinates: region.location,
+const regionFeatures = config.regions.flatMap((region) => [
+  {
+    type: "Feature",
+    bbox: region.bbox,
+    geometry: {
+      type: "Point",
+      coordinates: region.location,
+    },
+    properties: {
+      type: "region-label",
+      id: region.id,
+      name: region.title,
+      target: region.bbox,
+    },
   },
-  properties: {
-    type: "region-label",
-    id: region.id,
-    name: region.title,
-    target: region.bbox,
-  },
-}));
+  bboxPolygon(region.bbox, {
+    properties: {
+      type: "region-bounds",
+      id: region.id,
+      name: region.title,
+      target: region.bbox,
+    },
+  }),
+]);
 const regionData = { type: "FeatureCollection", features: regionFeatures };
 
 // Used to restore last location if no location hash is provided
@@ -135,6 +151,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
     lineFilterState,
     setLastLocation,
     showGeolocation,
+    debugShowRegionBounds,
   } = useAppState();
 
   const mapRef = useRef<MapRef>();
@@ -355,6 +372,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
         <Layer
           id="regions-labels"
           type="symbol"
+          filter={["==", ["get", "type"], "region-label"]}
           layout={{
             "text-field": ["get", "name"],
             "text-size": 20,
@@ -366,6 +384,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
           }}
           maxzoom={9}
         />
+        {DEBUG && debugShowRegionBounds && (
+          <Layer
+            id="regions-bounds"
+            type="line"
+            filter={["==", ["get", "type"], "region-bounds"]}
+            paint={{
+              "line-color": "#00FFFF",
+            }}
+          />
+        )}
       </Source>
       {popupTarget && (
         <Popup

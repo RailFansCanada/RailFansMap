@@ -41,6 +41,8 @@ type AppState = {
 
   lastLocation: ViewportSettings | null;
   showGeolocation: boolean;
+
+  debugShowRegionBounds: boolean;
 };
 
 type AppStateActions = {
@@ -59,6 +61,8 @@ type AppStateActions = {
 
   setLastLocation: (location: ViewportSettings) => void;
   setShowGeolocation: (show: boolean) => void;
+
+  setDebugShowRegionBounds: (show: boolean) => void;
 };
 
 type UseAppState = AppState & AppStateActions;
@@ -161,6 +165,8 @@ const useProvideAppContext = (): UseAppState => {
     merged.showGeolocation ?? true
   );
 
+  const [debugShowRegionBounds, setDebugShowRegionBounds] = useState(merged.debugShowRegionBounds ?? false);
+
   const state = {
     settingsDrawerOpen,
     setSettingsDrawerOpen,
@@ -197,6 +203,9 @@ const useProvideAppContext = (): UseAppState => {
 
     showGeolocation,
     setShowGeolocation,
+
+    debugShowRegionBounds,
+    setDebugShowRegionBounds,
   };
 
   // Write settings to localstorage on every update

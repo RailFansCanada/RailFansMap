@@ -47,6 +47,8 @@ export const SettingsDrawer = () => {
     setAppTheme,
     showGeolocation,
     setShowGeolocation,
+    debugShowRegionBounds,
+    setDebugShowRegionBounds,
   } = useAppState();
 
   const handleThemeChange = (index: number) => {
@@ -120,6 +122,20 @@ export const SettingsDrawer = () => {
           onToggle={(checked) => setShowGeolocation(checked)}
         />
       </List>
+
+      {DEBUG && (
+        <>
+          <Divider />
+          <SectionHeader variant="overline">Debug Settings</SectionHeader>
+          <List>
+            <SwitchOption
+              primary="Show Region Bounds"
+              checked={debugShowRegionBounds}
+              onToggle={(checked) => setDebugShowRegionBounds(checked)}
+            />
+          </List>
+        </>
+      )}
 
       <Divider />
       <SectionHeader variant="overline">About</SectionHeader>
