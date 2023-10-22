@@ -1,4 +1,5 @@
 import { produce } from "immer";
+import { LngLatBounds } from "mapbox-gl";
 import React, {
   createContext,
   ReactNode,
@@ -41,6 +42,7 @@ type AppState = {
 
   lastLocation: ViewportSettings | null;
   showGeolocation: boolean;
+  mapBounds: LngLatBounds;
 
   debugShowRegionBounds: boolean;
 };
@@ -61,6 +63,7 @@ type AppStateActions = {
 
   setLastLocation: (location: ViewportSettings) => void;
   setShowGeolocation: (show: boolean) => void;
+  setMapBounds: (bounds: LngLatBounds) => void;
 
   setDebugShowRegionBounds: (show: boolean) => void;
 };
@@ -165,7 +168,11 @@ const useProvideAppContext = (): UseAppState => {
     merged.showGeolocation ?? true
   );
 
-  const [debugShowRegionBounds, setDebugShowRegionBounds] = useState(merged.debugShowRegionBounds ?? false);
+  const [debugShowRegionBounds, setDebugShowRegionBounds] = useState(
+    merged.debugShowRegionBounds ?? false
+  );
+
+  const [mapBounds, setMapBounds] = useState(new LngLatBounds([0, 0, 0, 0]));
 
   const state = {
     settingsDrawerOpen,
@@ -206,6 +213,9 @@ const useProvideAppContext = (): UseAppState => {
 
     debugShowRegionBounds,
     setDebugShowRegionBounds,
+
+    mapBounds,
+    setMapBounds,
   };
 
   // Write settings to localstorage on every update
