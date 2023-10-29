@@ -47,6 +47,7 @@ export type Region = {
   location: Position;
   bbox: BBox;
   agencies: string[];
+  tier: number;
 };
 
 export interface Config {

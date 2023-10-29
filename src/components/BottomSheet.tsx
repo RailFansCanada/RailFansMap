@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonBase, Paper, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { Chevron } from "./Chevron";
-import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
+import { useAppState } from "../hooks/useAppState";
 
 const BottomSheetSurface = styled(Paper)`
   position: absolute;
@@ -26,19 +26,47 @@ const HeaderContainer = styled(ButtonBase)`
   align-items: center;
 `;
 
-const BottomSheetHeader = () => {
+type BottomSheetHeaderProps = {
+  regionName?: string | null;
+};
+
+const BottomSheetHeader = (props: BottomSheetHeaderProps) => {
   return (
     <HeaderContainer>
-      <Typography>On the Map</Typography>
+      <Typography>
+        On the Map{props.regionName && ` • ${props.regionName}`}
+      </Typography>
       <Chevron down={true} />
     </HeaderContainer>
   );
 };
 
 export const BottomSheet = () => {
+  const { visibleRegions } = useAppState();
+  const [targetRegion, setTargetRegion] = useState<string | null>(null);
+
+  useEffect(() => {
+    const tier1 = [];
+    const tier2 = [];
+
+    for (const region of visibleRegions) {
+      if (region.tier === 1) {
+        tier1.push(region);
+      } else if (region.tier === 2) {
+        tier2.push(region);
+      }
+    }
+
+    if (tier2.length === 1) {
+      setTargetRegion(tier2[0].title);
+    } else {
+      setTargetRegion(tier1[0]?.title);
+    }
+  }, [visibleRegions]);
+
   return (
     <BottomSheetSurface>
-      <BottomSheetHeader />
+      <BottomSheetHeader regionName={targetRegion} />
     </BottomSheetSurface>
   );
 };

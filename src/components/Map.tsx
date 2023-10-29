@@ -172,6 +172,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
     setMapTarget(undefined);
     const { longitude, latitude, zoom, bearing } = e.viewState;
     setLastLocation([longitude, latitude, zoom, bearing ?? 0]);
+    setMapBounds(e.target.getBounds());
   };
 
   useEffect(() => {
@@ -238,10 +239,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
     setPopupTarget(null);
   };
 
-  const handleZoomEnd = (e: ViewStateChangeEvent) => {
-    setMapBounds(e.target.getBounds());
-  };
-
   useEffect(() => {
     if (mapStyle === "satellite") {
       setStyle("mapbox://styles/mapbox/satellite-streets-v11");
@@ -285,7 +282,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onZoomEnd={handleZoomEnd}
       ref={mapRef}
       initialViewState={initialLocation}
       attributionControl={false}

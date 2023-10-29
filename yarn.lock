@@ -1796,6 +1796,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@turf/boolean-disjoint@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@turf/boolean-disjoint@npm:6.5.0"
+  dependencies:
+    "@turf/boolean-point-in-polygon": ^6.5.0
+    "@turf/helpers": ^6.5.0
+    "@turf/line-intersect": ^6.5.0
+    "@turf/meta": ^6.5.0
+    "@turf/polygon-to-line": ^6.5.0
+  checksum: f1785bf45fda0e56cbce0f7ff147a204a7fbfa8385b1fa50f022f57b9a0341c44f798ab89a49b60e8e95e35aa57e66b585ec39485fbfb174635176763b3631c9
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-intersects@npm:6.5.0":
+  version: 6.5.0
+  resolution: "@turf/boolean-intersects@npm:6.5.0"
+  dependencies:
+    "@turf/boolean-disjoint": ^6.5.0
+    "@turf/helpers": ^6.5.0
+    "@turf/meta": ^6.5.0
+  checksum: 4a077ddd03d28b7516a4dbe90a4cc98a5c2a8646fc74443fcb09f51c62f4b4090365eb10beec084fc1f77a911faf7cbc4e7dd4966119e529013050cbe9773d40
+  languageName: node
+  linkType: hard
+
 "@turf/boolean-overlap@npm:6.5.0":
   version: 6.5.0
   resolution: "@turf/boolean-overlap@npm:6.5.0"
@@ -1961,6 +1985,16 @@ __metadata:
     "@turf/line-intersect": ^6.5.0
     "@turf/meta": ^6.5.0
   checksum: 5d059e43e6b624b23a204c2ac7d4ddec0b5105eb02ecd12b38c221cfe083279a4059c4e2788b9821cb93d4ca4ccb4eb7f48fcae2e59c857073a5bdb2a49ae8ce
+  languageName: node
+  linkType: hard
+
+"@turf/polygon-to-line@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@turf/polygon-to-line@npm:6.5.0"
+  dependencies:
+    "@turf/helpers": ^6.5.0
+    "@turf/invariant": ^6.5.0
+  checksum: ba189ff22a9a7a281da1dfb707909ce114339b14f8f61fd237f72a9ff056fcf5eeb7019fd2d2a8b3bfc953169eb2caa818ecc9d8801cdb5615c3d274af2465d5
   languageName: node
   linkType: hard
 
@@ -8042,6 +8076,7 @@ __metadata:
     "@turf/bbox": 6.5.0
     "@turf/bbox-polygon": 6.5.0
     "@turf/boolean-contains": 6.5.0
+    "@turf/boolean-intersects": 6.5.0
     "@turf/boolean-overlap": 6.5.0
     "@turf/buffer": 6.5.0
     "@types/geojson": 7946.0.12

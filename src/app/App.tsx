@@ -22,9 +22,11 @@ import { BottomSheet } from "../components/BottomSheet";
 
 export const App = () => {
   return (
-    <ProvideAppState>
-      <ThemedApp />
-    </ProvideAppState>
+    <ProvideData2>
+      <ProvideAppState>
+        <ThemedApp />
+      </ProvideAppState>
+    </ProvideData2>
   );
 };
 
@@ -46,7 +48,7 @@ const Content = () => {
       <LegendDrawer allAgencies={agencies} />
       <Logo />
       <SearchBar />
-      {/* <BottomSheet /> */}
+      <BottomSheet />
     </Container>
   );
 };
@@ -65,15 +67,13 @@ const ThemedApp = () => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <ProvideStrings>
-          <ProvideData2>
-            <ProvideWindow>
-              <ProvideMapTarget>
-                <ProvideGeolocation>
-                  <Content />
-                </ProvideGeolocation>
-              </ProvideMapTarget>
-            </ProvideWindow>
-          </ProvideData2>
+          <ProvideWindow>
+            <ProvideMapTarget>
+              <ProvideGeolocation>
+                <Content />
+              </ProvideGeolocation>
+            </ProvideMapTarget>
+          </ProvideWindow>
         </ProvideStrings>
       </ThemeProvider>
     </StyledEngineProvider>

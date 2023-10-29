@@ -1,5 +1,5 @@
 import { produce } from "immer";
-import { LngLatBounds } from "mapbox-gl";
+import { LngLatBounds, LngLatBoundsLike } from "mapbox-gl";
 import React, {
   createContext,
   ReactNode,
@@ -7,6 +7,13 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import { useData2 } from "./useData";
+import booleanOverlap from "@turf/boolean-overlap";
+import bboxPolygon from "@turf/bbox-polygon";
+import { BBox } from "geojson";
+import booleanContains from "@turf/boolean-contains";
+import booleanIntersects from "@turf/boolean-intersects";
+import { Region } from "../config";
 
 export type AppTheme = "system" | "light" | "dark";
 export type MapStyle = "vector" | "satellite";
@@ -43,6 +50,8 @@ type AppState = {
   lastLocation: ViewportSettings | null;
   showGeolocation: boolean;
   mapBounds: LngLatBounds;
+
+  visibleRegions: Region[];
 
   debugShowRegionBounds: boolean;
 };
@@ -173,6 +182,16 @@ const useProvideAppContext = (): UseAppState => {
   );
 
   const [mapBounds, setMapBounds] = useState(new LngLatBounds([0, 0, 0, 0]));
+  const [visibleRegions, setVisibleRegions] = useState<Region[]>([]);
+
+  const { regions } = useData2();
+  useEffect(() => {
+    const bbox = bboxPolygon(mapBounds.toArray().flat() as BBox);
+    const results = Object.values(regions).filter((r) =>
+      booleanIntersects(bbox, bboxPolygon(r.bbox))
+    );
+    setVisibleRegions(results);
+  }, [regions, mapBounds]);
 
   const state = {
     settingsDrawerOpen,
@@ -216,6 +235,8 @@ const useProvideAppContext = (): UseAppState => {
 
     mapBounds,
     setMapBounds,
+
+    visibleRegions,
   };
 
   // Write settings to localstorage on every update

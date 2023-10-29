@@ -181,7 +181,7 @@ const LegendGroup = (props: LegendGroupProps) => {
   );
 };
 
-export const LegendDrawer = (props: LegendDrawerProps) => {
+export const LegendDrawer = React.memo((props: LegendDrawerProps) => {
   const { legendDrawerOpen, setLegendDrawerOpen } = useAppState();
 
   const agencyMap: { [key: string]: LoadedMetadata[] } = {};
@@ -230,4 +230,4 @@ export const LegendDrawer = (props: LegendDrawerProps) => {
       </List>
     </MenuDrawer>
   );
-};
+});
