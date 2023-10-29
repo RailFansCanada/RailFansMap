@@ -29,6 +29,7 @@ import { config, Metadata } from "../config";
 import { MapControls } from "./MapControls";
 import { useGeolocation } from "../hooks/useGeolocation";
 import bboxPolygon from "@turf/bbox-polygon";
+import { postNewBounds } from "../contexts/MapBoundsContext";
 
 const provideLabelStyle = (
   lines: { [key: string]: Metadata },
@@ -175,8 +176,12 @@ export const OverviewMap = (props: OverviewMapProps) => {
     setMapTarget(undefined);
     const { longitude, latitude, zoom, bearing } = e.viewState;
     persistLastLocation([longitude, latitude, zoom, bearing ?? 0]);
-    // setMapBounds(e.target.getBounds());
+    postNewBounds(e.target.getBounds());
   };
+
+  const handleMapMove = (e: ViewStateChangeEvent) => {
+    postNewBounds(e.target.getBounds());
+  }
 
   useEffect(() => {
     const open = settingsDrawerOpen || legendDrawerOpen;
@@ -285,6 +290,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onMove={handleMapMove}
       ref={mapRef}
       initialViewState={initialLocation}
       attributionControl={false}

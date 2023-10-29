@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ButtonBase, Paper, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { Chevron } from "./Chevron";
-import { useAppState } from "../hooks/useAppState";
+import { MapBoundsContext } from "../contexts/MapBoundsContext";
 
 const BottomSheetSurface = styled(Paper)`
   position: absolute;
@@ -42,7 +42,7 @@ const BottomSheetHeader = (props: BottomSheetHeaderProps) => {
 };
 
 export const BottomSheet = () => {
-  const { visibleRegions } = useAppState();
+  const visibleRegions = useContext(MapBoundsContext);
   const [targetRegion, setTargetRegion] = useState<string | null>(null);
 
   useEffect(() => {

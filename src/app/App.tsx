@@ -19,6 +19,7 @@ import { SearchBar } from "../components/SearchBar";
 import { ProvideGeolocation } from "../hooks/useGeolocation";
 import { ProvideStrings } from "../hooks/useStrings";
 import { BottomSheet } from "../components/BottomSheet";
+import { MapBoundsProvider } from "../contexts/MapBoundsContext";
 
 export const App = () => {
   return (
@@ -48,7 +49,7 @@ const Content = () => {
       <LegendDrawer allAgencies={agencies} />
       <Logo />
       <SearchBar />
-      <BottomSheet />
+      {DEBUG && <BottomSheet />}
     </Container>
   );
 };
@@ -69,9 +70,11 @@ const ThemedApp = () => {
         <ProvideStrings>
           <ProvideWindow>
             <ProvideMapTarget>
-              <ProvideGeolocation>
-                <Content />
-              </ProvideGeolocation>
+              <MapBoundsProvider>
+                <ProvideGeolocation>
+                  <Content />
+                </ProvideGeolocation>
+              </MapBoundsProvider>
             </ProvideMapTarget>
           </ProvideWindow>
         </ProvideStrings>
