@@ -13,6 +13,12 @@ const BottomSheetSurface = styled(Paper)`
   z-index: 50;
   border-radius: 16px 16px 0 0;
   overflow: hidden;
+
+  @media (max-width: 600px) {
+    min-width: 0;
+    width: 100%;
+    left: 0;
+  }
 `;
 
 const HeaderContainer = styled(ButtonBase)`
@@ -28,15 +34,17 @@ const HeaderContainer = styled(ButtonBase)`
 
 type BottomSheetHeaderProps = {
   regionName?: string | null;
+  expanded: boolean;
+  onClick: () => void;
 };
 
 const BottomSheetHeader = (props: BottomSheetHeaderProps) => {
   return (
-    <HeaderContainer>
+    <HeaderContainer onClick={props.onClick}>
       <Typography>
         On the Map{props.regionName && ` • ${props.regionName}`}
       </Typography>
-      <Chevron down={true} />
+      <Chevron down={!props.expanded} />
     </HeaderContainer>
   );
 };
@@ -44,18 +52,10 @@ const BottomSheetHeader = (props: BottomSheetHeaderProps) => {
 export const BottomSheet = () => {
   const visibleRegions = useContext(MapBoundsContext);
   const [targetRegion, setTargetRegion] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   useEffect(() => {
-    const tier1 = [];
-    const tier2 = [];
-
-    for (const region of visibleRegions) {
-      if (region.tier === 1) {
-        tier1.push(region);
-      } else if (region.tier === 2) {
-        tier2.push(region);
-      }
-    }
+    const { tier1, tier2 } = visibleRegions;
 
     if (tier2.length === 1) {
       setTargetRegion(tier2[0].title);
@@ -66,7 +66,11 @@ export const BottomSheet = () => {
 
   return (
     <BottomSheetSurface>
-      <BottomSheetHeader regionName={targetRegion} />
+      <BottomSheetHeader
+        expanded={expanded}
+        onClick={() => setExpanded((value) => !value)}
+        regionName={targetRegion}
+      />
     </BottomSheetSurface>
   );
 };
