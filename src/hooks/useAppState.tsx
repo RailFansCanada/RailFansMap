@@ -47,7 +47,6 @@ type AppState = {
   lineFilterState: LineFilterState;
   legendGroupState: LegendGroupState;
 
-  lastLocation: ViewportSettings | null;
   showGeolocation: boolean;
   mapBounds: LngLatBounds;
 
@@ -70,7 +69,6 @@ type AppStateActions = {
   setLineFiltered: (filterKey: string, show: boolean) => void;
   setLegendGroupOpen: (key: string, open: boolean) => void;
 
-  setLastLocation: (location: ViewportSettings) => void;
   setShowGeolocation: (show: boolean) => void;
   setMapBounds: (bounds: LngLatBounds) => void;
 
@@ -154,9 +152,6 @@ const useProvideAppContext = (): UseAppState => {
   const [mapStyle, setMapStyle] = useState<MapStyle>(
     merged.mapStyle ?? "vector"
   );
-  const [lastLocation, setLastLocation] = useState<ViewportSettings>(
-    merged.lastLocation
-  );
 
   const [lineFilterState, setLineFilterState] = useState<LineFilterState>(
     merged.lineFilterState ?? {}
@@ -223,9 +218,6 @@ const useProvideAppContext = (): UseAppState => {
 
     legendGroupState,
     setLegendGroupOpen,
-
-    lastLocation,
-    setLastLocation,
 
     showGeolocation,
     setShowGeolocation,

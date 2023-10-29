@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { Tooltip, IconButton, Divider } from "@mui/material";
 import {
@@ -55,9 +55,9 @@ export const MapControls = () => {
       }
     });
     map?.on("moveend", () => {});
-  });
+  }, []);
 
-  const handleJumpToCurrentLocation = () => {
+  const handleJumpToCurrentLocation = useCallback(() => {
     requestGeolocation().then((geolocation) => {
       const buffered = buffer(
         {
@@ -72,7 +72,7 @@ export const MapControls = () => {
       setWillBeFyling(true);
       requestGeolocationWatch();
     });
-  };
+  }, []);
 
   return (
     <MapControlContainer

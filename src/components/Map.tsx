@@ -121,8 +121,8 @@ const regionData = { type: "FeatureCollection", features: regionFeatures };
 
 // Used to restore last location if no location hash is provided
 const lastLocation: ViewportSettings =
-  localStorage["settings"] != null
-    ? JSON.parse(localStorage["settings"]).lastLocation
+  localStorage["viewport"] != null
+    ? JSON.parse(localStorage["viewport"])
     : null;
 
 const initialLocation: Partial<ViewState> = lastLocation
@@ -138,6 +138,10 @@ const initialLocation: Partial<ViewState> = lastLocation
       zoom: 11.35,
     };
 
+function persistLastLocation(viewport: ViewportSettings) {
+  localStorage["viewport"] = JSON.stringify(viewport);
+}
+
 export const OverviewMap = (props: OverviewMapProps) => {
   const theme = useTheme();
   const windowSize = useWindow();
@@ -149,7 +153,6 @@ export const OverviewMap = (props: OverviewMapProps) => {
     show3DBuildings,
     showLabels,
     lineFilterState,
-    setLastLocation,
     showGeolocation,
     debugShowRegionBounds,
     setMapBounds,
@@ -171,8 +174,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
   const handleViewportChange = (e: ViewStateChangeEvent) => {
     setMapTarget(undefined);
     const { longitude, latitude, zoom, bearing } = e.viewState;
-    setLastLocation([longitude, latitude, zoom, bearing ?? 0]);
-    setMapBounds(e.target.getBounds());
+    persistLastLocation([longitude, latitude, zoom, bearing ?? 0]);
+    // setMapBounds(e.target.getBounds());
   };
 
   useEffect(() => {
