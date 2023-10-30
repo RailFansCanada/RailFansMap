@@ -7,6 +7,7 @@ import Map, {
   Source,
   AttributionControl,
   Popup,
+  MapEvent,
 } from "react-map-gl";
 import { PaddingOptions } from "mapbox-gl";
 
@@ -181,7 +182,11 @@ export const OverviewMap = (props: OverviewMapProps) => {
 
   const handleMapMove = (e: ViewStateChangeEvent) => {
     postNewBounds(e.target.getBounds());
-  }
+  };
+
+  const handleMapIdle = (e: MapEvent) => {
+    postNewBounds(e.target.getBounds());
+  };
 
   useEffect(() => {
     const open = settingsDrawerOpen || legendDrawerOpen;
@@ -291,6 +296,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMove={handleMapMove}
+      onIdle={handleMapIdle}
       ref={mapRef}
       initialViewState={initialLocation}
       attributionControl={false}

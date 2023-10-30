@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import {
   Checkbox,
   Collapse,
@@ -184,17 +184,21 @@ const LegendGroup = (props: LegendGroupProps) => {
 export const LegendDrawer = React.memo((props: LegendDrawerProps) => {
   const { legendDrawerOpen, setLegendDrawerOpen } = useAppState();
 
-  const agencyMap: { [key: string]: LoadedMetadata[] } = {};
-  Object.values(
-    metadata as unknown as { [key: string]: LoadedMetadata }
-  ).forEach((line) => {
-    const agency = line.agency;
-    if (agencyMap[agency] == null) {
-      agencyMap[agency] = [];
-    }
+  const agencyMap: { [key: string]: LoadedMetadata[] } = useMemo(() => {
+    const map: { [key: string]: LoadedMetadata[] } = {};
+    Object.values(
+      metadata as unknown as { [key: string]: LoadedMetadata }
+    ).forEach((line) => {
+      const agency = line.agency;
+      if (map[agency] == null) {
+        map[agency] = [];
+      }
 
-    agencyMap[agency].push(line);
-  });
+      map[agency].push(line);
+    });
+
+    return map;
+  }, []);
 
   return (
     <MenuDrawer
