@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23",
         "icon": "toronto/route510.svg", 
-        "name": "Route 510", 
-        "description": "Spadina", 
+        "name": "510 Spadina", 
+        "description": "Union Station — Spadina Station", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.40489743869576, 43.63752138853664, -79.376855, 43.66928234482628],

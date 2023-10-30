@@ -6,8 +6,8 @@
         "color": "#EE1D23",
         "offset": -0.25,
         "icon": "toronto/route511.svg", 
-        "name": "Route 511", 
-        "description": "Bathurst", 
+        "name": "511 Bathurst", 
+        "description": "Bathurst Station — Exhibition", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [ -79.42014901345095, 43.635635, -79.399787, 43.666848 ],

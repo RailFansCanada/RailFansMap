@@ -6,8 +6,8 @@
         "color": "#EE1D23",
         "offset": 0.25,
         "icon": "toronto/route509.svg", 
-        "name": "Route 509", 
-        "description": "Habourfront", 
+        "name": "509 Harbourfront", 
+        "description": "Union Station — Exhibition", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.418427,43.635635,-79.37685521501379,43.64568278020266],

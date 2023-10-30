@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Agency } from "../config";
 import { LoadedMetadata } from "../hooks/useData";
-import React from "react";
+import React, { useMemo } from "react";
 import Scrollbars from "react-custom-scrollbars";
 import styled from "@emotion/styled";
 
@@ -43,15 +43,23 @@ const LineCard = (props: LoadedMetadata) => {
   );
 };
 
+const LineColorBar = styled.div<{ tint: string }>`
+  width: 5px;
+  background-color: ${(props) => props.tint};
+  display: flex;
+  align-self: stretch;
+  margin: ${({ theme }) => theme.spacing(1)};
+`;
+
 const LineRow = (props: LoadedMetadata) => {
   return (
-    <ListItemButton key={props.id}>
+    <ListItemButton dense key={props.id}>
       {props.icon && (
         <ListItemAvatar>
           <img src={`icons/${props.icon}`} />
         </ListItemAvatar>
       )}
-      {/* <LegendEntryColorBar tint={meta.color} /> */}
+      <LineColorBar tint={props.color} />
       <ListItemText primary={props.name} secondary={props.description} />
     </ListItemButton>
   );
@@ -59,13 +67,32 @@ const LineRow = (props: LoadedMetadata) => {
 
 export const AgencySection = (props: AgencySectionProps) => {
   const theme = useTheme();
+
+  const planned = useMemo(
+    () => props.metadata.filter((meta) => meta.filterKey != null),
+    [props.metadata]
+  );
+
   return (
     <div>
       <Typography variant="h6" style={{ padding: theme.spacing(0, 2) }}>
         {props.agency.name}
       </Typography>
       <List>
-        {props.metadata.map((meta) => (
+        {props.metadata
+          .filter((meta) => meta.filterKey == null)
+          .map((meta) => (
+            //   <LineCard {...meta} />
+            <LineRow {...meta} />
+          ))}
+
+        {/* Planned lines and extensions */}
+        {planned.length > 0 && (
+          <Typography variant="body2" style={{ padding: theme.spacing(1, 2) }}>
+            Planned
+          </Typography>
+        )}
+        {planned.map((meta) => (
           //   <LineCard {...meta} />
           <LineRow {...meta} />
         ))}

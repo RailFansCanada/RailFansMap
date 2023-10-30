@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route505.svg", 
-        "name": "Route 505", 
-        "description": "Dundas", 
+        "name": "505 Dundas", 
+        "description": "Broadview Station — Dundas West Station", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.453874, 43.649316528417515, -79.35134891420603, 43.67755430634579],

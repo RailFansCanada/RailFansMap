@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route512.svg", 
-        "name": "Route 512", 
-        "description": "St. Clair", 
+        "name": "512 St. Clair", 
+        "description": "St. Clair Station — Keele", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [ -79.47186, 43.671641, -79.391426, 43.688596 ],
