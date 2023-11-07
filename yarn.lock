@@ -2418,13 +2418,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sql.js@npm:1.4.7":
-  version: 1.4.7
-  resolution: "@types/sql.js@npm:1.4.7"
+"@types/sql.js@npm:1.4.9":
+  version: 1.4.9
+  resolution: "@types/sql.js@npm:1.4.9"
   dependencies:
     "@types/emscripten": "*"
     "@types/node": "*"
-  checksum: d6ab2aa7ec505bd5f0d1a467f8044bf3b8c809145734d1950f73afa0dcf9cf6a1f0a02fa81f5a0f3f045889c5061974377adc596acbb553363ac72f925cae1a7
+  checksum: a233c787e11ae96c2447ccbf8c64cde9c2217806b82a8b36bb409b3240fe8b4dcf89007f12e9465340fd9d9d2ae8e3720ac9dcb46f67ce0f8f40a33fd4a0397e
   languageName: node
   linkType: hard
 
@@ -8084,7 +8084,7 @@ __metadata:
     "@types/react": 18.2.31
     "@types/react-dom": 18.2.14
     "@types/react-virtualized": 9.21.26
-    "@types/sql.js": 1.4.7
+    "@types/sql.js": 1.4.9
     ajv: 8.12.0
     ajv-formats: 2.1.1
     bbox: 0.4.0
