@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: InterV-Black, 'Inter V';
+        font-size: 56.69px;
+        font-variation-settings: 'wght' 900, 'slnt' 0;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        fill: #f0f;
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        opacity: .75;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <circle class="cls-2" cx="40" cy="40" r="40"/>
+    <g class="cls-3">
+      <text class="cls-1" transform="translate(21.04 60.62)"><tspan x="0" y="0">5</tspan></text>
+    </g>
+  </g>
+</svg>

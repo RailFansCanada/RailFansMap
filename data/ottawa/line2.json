@@ -4,13 +4,13 @@
   "metadata": {
     "id": "ottawa/2",
     "type": "rail-line",
-    "color": "#76BE43",
+    "color": "#00CC00",
     "offset": 0.5,
-    "icon": "ottawa/line2.svg",
+    "icon": "ottawa/2.svg",
     "source": [
       "City of Ottawa"
     ],
-    "name": "Line 2",
+    "name": "Line 2: Trillium",
     "description": "Bayview - Limebank",
     "sources": [
       "City of Ottawa"
@@ -259,8 +259,8 @@
     { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Limebank", "url": "https://otrain.railfans.ca/station/limebank", "major": true }, "geometry": { "type": "Point", "coordinates": [-75.66631900107473, 45.277599545545215] } },
     { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Bowesville", "url": "https://otrain.railfans.ca/station/bowesville", "major": false }, "geometry": { "type": "Point", "coordinates": [-75.63261409065672, 45.29339682382392] } },
     { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Leitrim", "url": "https://otrain.railfans.ca/station/leitrim", "major": false }, "geometry": { "type": "Point", "coordinates": [-75.63188666039623, 45.313807459724416] } },
-    { "type": "Feature", "properties": { "lines": ["ottawa/2", "ottawa/4"], "type": "station-label", "name": "South Keys", "url": "https://otrain.railfans.ca/station/south-keys", "major": true }, "geometry": { "type": "Point", "coordinates": [-75.6554397761309, 45.35336630421112] } },
-    { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Greenboro", "url": "https://otrain.railfans.ca/station/greenboro", "major": false }, "geometry": { "type": "Point", "coordinates": [-75.65910372303858, 45.35954465252054] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/2", "ottawa/4", "ottawa/8"], "type": "station-label", "name": "South Keys", "url": "https://otrain.railfans.ca/station/south-keys", "major": true }, "geometry": { "type": "Point", "coordinates": [-75.6554397761309, 45.35336630421112] } },
+    { "type": "Feature", "properties": { "lines": ["ottawa/2", "ottawa/8"], "type": "station-label", "name": "Greenboro", "url": "https://otrain.railfans.ca/station/greenboro", "major": false }, "geometry": { "type": "Point", "coordinates": [-75.65910372303858, 45.35954465252054] } },
     { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Walkley", "url": "https://otrain.railfans.ca/station/walkley", "major": false }, "geometry": { "type": "Point", "coordinates": [-75.66529623261202, 45.36830689846298] } },
     { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Mooney's Bay", "url": "https://otrain.railfans.ca/station/mooneys-bay", "major": false }, "geometry": { "type": "Point", "coordinates": [-75.68468482709287, 45.37677794469331] } },
     { "type": "Feature", "properties": { "lines": ["ottawa/2"], "type": "station-label", "name": "Carleton", "url": "https://otrain.railfans.ca/station/carleton", "major": true }, "geometry": { "type": "Point", "coordinates": [-75.69589823736929, 45.38575721357704] } },

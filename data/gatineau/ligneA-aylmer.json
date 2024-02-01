@@ -5,8 +5,8 @@
     "type": "rail-line",
     "color": "#33A948",
     "offset": 0.5,
-    "icon": "gatineau/lineA.svg",
-    "name": "Gatineau Tramway to Aylmer",
+    "icon": "ottawa/line/a.svg",
+    "name": "Ligne A: Aylmer",
     "description": "Proposed corridor for the Tramway",
     "sources": [
       "STO"
@@ -42,17 +42,17 @@
     { "type": "Feature", "properties": { "type": "station-label", "name": "Vanier", "lines": ["gatineau/A"] }, "geometry": { "type": "Point", "coordinates": [-75.80640601218708, 45.40023855557459] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "Rivermead", "lines": ["gatineau/A"] }, "geometry": { "type": "Point", "coordinates": [-75.7934860959333, 45.40483093851894] } },
     { "type": "Feature", "properties": { "type": "station-label", "name": "Chaudière O", "lines": ["gatineau/A"] }, "geometry": { "type": "Point", "coordinates": [-75.7775483716056, 45.41050239987821] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Alexandre-Taché / Saint-Raymond", "lines": ["gatineau/A", "gatineau/B"], "major": true }, "geometry": { "type": "Point", "coordinates": [-75.76048304661363, 45.417436673202765] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Dominique", "lines": ["gatineau/A", "gatineau/B"] }, "geometry": { "type": "Point", "coordinates": [-75.75346807305519, 45.419999974825444] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Bégin", "lines": ["gatineau/A", "gatineau/B"] }, "geometry": { "type": "Point", "coordinates": [-75.74527088588931, 45.420524708703304] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "UQO", "lines": ["gatineau/A", "gatineau/B"] }, "geometry": { "type": "Point", "coordinates": [-75.73821401343227, 45.42092567055374] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Taché-UQO", "lines": ["gatineau/A", "gatineau/B"] }, "geometry": { "type": "Point", "coordinates": [-75.73159019106767, 45.42158230905244] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Terrasses de la Chaudière", "lines": ["gatineau/A", "gatineau/B"], "major": true }, "geometry": { "type": "Point", "coordinates": [-75.72052995956466, 45.42474305554682] } },
-    { "type": "Feature", "properties": { "type": "station-label", "name": "Place du Portage", "lines": ["gatineau/A", "gatineau/B"] }, "geometry": { "type": "Point", "coordinates": [-75.71486125813615, 45.42470795257141] } },
-    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["2"], "name": "Lyon", "lines": ["gatineau/A", "gatineau/B", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.70588849911893, 45.420076935856066] } },
-    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["2"], "name": "Parlement", "lines": ["gatineau/A", "gatineau/B", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.69948219592285, 45.4228315549691] } },
-    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["2"], "name": "Elgin", "lines": ["gatineau/A", "gatineau/B"] }, "geometry": { "type": "Point", "coordinates": [-75.69612484833225, 45.423719768413854] } },
-    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["1"], "name": "Parlement", "lines": ["gatineau/A", "gatineau/B", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.69935983880109, 45.42202777360816] } },
-    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["1"], "name": "Lyon", "lines": ["gatineau/A", "gatineau/B", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.70548187118564, 45.419400920084385] } }
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Alexandre-Taché / Saint-Raymond", "lines": ["gatineau/A", "gatineau/D"], "major": true }, "geometry": { "type": "Point", "coordinates": [-75.76048304661363, 45.417436673202765] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Saint-Dominique", "lines": ["gatineau/A", "gatineau/D"] }, "geometry": { "type": "Point", "coordinates": [-75.75346807305519, 45.419999974825444] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Bégin", "lines": ["gatineau/A", "gatineau/D"] }, "geometry": { "type": "Point", "coordinates": [-75.74527088588931, 45.420524708703304] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "UQO", "lines": ["gatineau/A", "gatineau/D"] }, "geometry": { "type": "Point", "coordinates": [-75.73821401343227, 45.42092567055374] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Taché-UQO", "lines": ["gatineau/A", "gatineau/D"] }, "geometry": { "type": "Point", "coordinates": [-75.73159019106767, 45.42158230905244] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Terrasses de la Chaudière", "lines": ["gatineau/A", "gatineau/D"], "major": true }, "geometry": { "type": "Point", "coordinates": [-75.72052995956466, 45.42474305554682] } },
+    { "type": "Feature", "properties": { "type": "station-label", "name": "Place du Portage", "lines": ["gatineau/A", "gatineau/D"] }, "geometry": { "type": "Point", "coordinates": [-75.71486125813615, 45.42470795257141] } },
+    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["2"], "name": "Lyon", "lines": ["gatineau/A", "gatineau/D", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.70588849911893, 45.420076935856066] } },
+    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["2"], "name": "Parlement", "lines": ["gatineau/A", "gatineau/D", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.69948219592285, 45.4228315549691] } },
+    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["2"], "name": "Elgin", "lines": ["gatineau/A", "gatineau/D"] }, "geometry": { "type": "Point", "coordinates": [-75.69612484833225, 45.423719768413854] } },
+    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["1"], "name": "Parlement", "lines": ["gatineau/A", "gatineau/D", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.69935983880109, 45.42202777360816] } },
+    { "type": "Feature", "properties": { "type": "station-label", "alternatives": ["1"], "name": "Lyon", "lines": ["gatineau/A", "gatineau/D", "ottawa/1", "ottawa/3"] }, "geometry": { "type": "Point", "coordinates": [-75.70548187118564, 45.419400920084385] } }
   ]
 }

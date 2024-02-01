@@ -204,8 +204,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
     mapStyle === "satellite"
       ? "mapbox://styles/mapbox/satellite-streets-v11"
       : isDarkTheme
-      ? "mapbox://styles/mapbox/dark-v10"
-      : "mapbox://styles/mapbox/light-v10"
+      ? "mapbox://styles/mapbox/dark-v11"
+      : "mapbox://styles/mapbox/streets-v12"
   );
 
   const [labelStyle, setLabelStyle] = useState<{}[]>([]);
@@ -258,8 +258,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
     } else {
       setStyle(
         isDarkTheme
-          ? "mapbox://styles/mapbox/dark-v10"
-          : "mapbox://styles/mapbox/light-v10"
+          ? "mapbox://styles/mapbox/dark-v11"
+          : "mapbox://styles/mapbox/streets-v12"
       );
     }
   }, [isDarkTheme, appTheme, mapStyle]);
