@@ -16,12 +16,7 @@
             "Britannia Line"
         ]
     },
-    "bbox": [
-        -75.73751010725198,
-        45.32518543207788,
-        -75.6234498795947,
-        45.412216832076815
-    ],
+    "bbox": [-75.81076853391781, 45.33199458493996, -75.6543831923009, 45.368143505359754],
     "features": [
         {"type": "Feature","properties": {"lines": ["ottawa/8"],"type": "station-label","name": "Leslie Park","major": false},
         "geometry": {"type": "Point","coordinates": [-75.78465003799668,
