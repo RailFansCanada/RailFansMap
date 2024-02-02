@@ -1,5 +1,5 @@
 {
-  "name": "ot67",
+  "name": "otrainmap",
   "version": "3.5.4",
   "description": "",
   "private": true,
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dunxrae/OT67.git"
+    "url": "git+https://github.com/OTrainFans/OTrainMap.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dunxrae/OT67/issues"
+    "url": "https://github.com/OTrainFans/OTrainMap/issues"
   },
-  "homepage": "https://github.com/dunxrae/OT67#readme",
+  "homepage": "https://github.com/OTrainFans/OTrainMap#readme",
   "devDependencies": {
     "@types/geojson": "7946.0.12",
     "@types/mapbox-gl": "2.7.17",
@@ -73,15 +73,12 @@
     "bbox": "0.4.0",
     "clsx": "2.0.0",
     "immer": "10.0.3",
-    "jsdoc": "4.0.2",
-    "mapbox-gl": "^2.15.0",
-    "puppeteer": "21.9.0",
+    "mapbox-gl": "2.15.0",
     "react": "18.2.0",
     "react-custom-scrollbars": "4.2.1",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
     "react-map-gl": "7.1.6",
-    "react-scripts": "^3.0.1",
     "sql.js": "workspace:./sqljs",
     "tiny-warning": "1.0.3"
   },
