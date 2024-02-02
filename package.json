@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/dunxrae/ot67/issues"
   },
-  "homepage": "https://github.com/dunxrae/ot67#readme",
+  "homepage": "https://dunxrae.github.io/ot67",
   "devDependencies": {
     "@types/geojson": "7946.0.12",
     "@types/mapbox-gl": "2.7.17",
