@@ -1894,7 +1894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.11.1":
+"@emotion/react@npm:^11.11.3":
   version: 11.11.3
   resolution: "@emotion/react@npm:11.11.3"
   dependencies:
@@ -6039,7 +6039,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^8.0.0":
+"concurrently@npm:^8.2.2":
   version: 8.2.2
   resolution: "concurrently@npm:8.2.2"
   dependencies:
@@ -12053,7 +12053,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^3.0.0":
+"nodemon@npm:^3.0.3":
   version: 3.0.3
   resolution: "nodemon@npm:3.0.3"
   dependencies:
@@ -12361,7 +12361,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ot67@workspace:."
   dependencies:
-    "@emotion/react": ^11.11.1
+    "@emotion/react": ^11.11.3
     "@emotion/styled": ^11.11.0
     "@mui/icons-material": 5.14.14
     "@mui/material": 5.14.14
@@ -12383,7 +12383,7 @@ __metadata:
     ajv-formats: 2.1.1
     bbox: 0.4.0
     clsx: 2.0.0
-    concurrently: ^8.0.0
+    concurrently: ^8.2.2
     copy-webpack-plugin: 11.0.0
     css-loader: 6.8.1
     dotenv: 16.3.1
@@ -12394,7 +12394,7 @@ __metadata:
     jest: 29.7.0
     mapbox-gl: 2.15.0
     mini-css-extract-plugin: 2.7.6
-    nodemon: ^3.0.0
+    nodemon: ^3.0.3
     pnp-webpack-plugin: 1.7.0
     raw-loader: 4.0.2
     react: 18.2.0
