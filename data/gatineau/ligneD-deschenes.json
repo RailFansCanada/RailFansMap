@@ -6,7 +6,7 @@
         "type": "rail-line",
         "color": "#007E88",
         "offset": -0.5,
-        "icon": "ottawa/line/d.svg",
+        "icon": "ottawa/d.svg",
         "name": "Line D: Deschenes",
         "description": "Murray - Lincoln Fields",
         "sources": [

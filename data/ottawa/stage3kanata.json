@@ -6,7 +6,7 @@
     "type": "rail-line",
     "color": "#AF882D",
     "filterKey": "kanataExtension",
-    "icon": "ottawa/line/3.svg",
+    "icon": "ottawa/3.svg",
     "offset": -0.5,
     "name": "Line 3 - Kanata Extension",
     "description": "Proposed extension to Kanata",

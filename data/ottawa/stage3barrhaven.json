@@ -6,7 +6,7 @@
     "type": "rail-line",
     "color": "#FF0000",
     "filterKey": "barrhavenExtension",
-    "icon": "ottawa/line/1.svg",
+    "icon": "ottawa/1.svg",
     "offset": 0.5,
     "name": "Line 1 - Barrhaven Extension",
     "description": "Proposed extension to Barrhaven",

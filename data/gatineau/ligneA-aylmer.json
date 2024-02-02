@@ -5,7 +5,7 @@
     "type": "rail-line",
     "color": "#33A948",
     "offset": 0.5,
-    "icon": "ottawa/line/a.svg",
+    "icon": "ottawa/a.svg",
     "name": "Ligne A: Aylmer",
     "description": "Proposed corridor for the Tramway",
     "sources": [
