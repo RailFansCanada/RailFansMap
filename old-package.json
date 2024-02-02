@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dunxrae/ot67.git"
+    "url": "git+https://github.com/dunxrae/OT67.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dunxrae/ot67/issues"
+    "url": "https://github.com/dunxrae/OT67/issues"
   },
-  "homepage": "https://github.com/dunxrae/ot67",
+  "homepage": "https://github.com/dunxrae/OT67",
   "devDependencies": {
     "@types/geojson": "7946.0.12",
     "@types/mapbox-gl": "2.7.17",
@@ -35,7 +35,7 @@
     "@types/sql.js": "1.4.7",
     "ajv": "8.12.0",
     "ajv-formats": "2.1.1",
-    "concurrently": "^8.2.2",
+    "concurrently": "^8.0.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.8.1",
     "dotenv": "16.3.1",
@@ -44,7 +44,7 @@
     "html-webpack-plugin": "5.5.3",
     "jest": "29.7.0",
     "mini-css-extract-plugin": "2.7.6",
-    "nodemon": "^3.0.3",
+    "nodemon": "^3.0.0",
     "pnp-webpack-plugin": "1.7.0",
     "raw-loader": "4.0.2",
     "source-map-loader": "4.0.1",
