@@ -1,5 +1,5 @@
 {
-  "name": "otrainmap",
+  "name": "ot67",
   "version": "3.5.4",
   "description": "",
   "private": true,
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OTrainFans/OTrainMap.git"
+    "url": "git+https://github.com/dunxrae/OT67.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/OTrainFans/OTrainMap/issues"
+    "url": "https://github.com/dunxrae/OT67/issues"
   },
-  "homepage": "https://github.com/OTrainFans/OTrainMap#readme",
+  "homepage": "https://github.com/dunxrae/OT67#readme",
   "devDependencies": {
     "@types/geojson": "7946.0.12",
     "@types/mapbox-gl": "2.7.17",
