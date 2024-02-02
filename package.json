@@ -2,7 +2,7 @@
   "name": "ot67",
   "version": "1.0.0",
   "description": "",
-  "private": true,
+  "private": false,
   "types": "src/index.d.ts",
   "scripts": {
     "test": "jest",

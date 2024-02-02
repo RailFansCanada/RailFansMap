@@ -28,7 +28,7 @@ const globalCss = css`
     border-radius: 4px !important;
     background: #212121 !important;
     color: #ffffff;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     padding: 8px !important;
     font-size: 16px;
     margin-top: 12px;
