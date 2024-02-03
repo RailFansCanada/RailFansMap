@@ -841,11 +841,11 @@
         "geometry": {"type": "Point","coordinates": [-75.73212804162094,
         45.386645029751236]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/7"],"type": "station-label","name": "Dyson","major": false},
+        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/7", "ottawa/c"],"type": "station-label","name": "Dyson","major": false},
         "geometry": {"type": "Point","coordinates": [-75.69950210198176,
         45.40116007302029]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/7"],"type": "station-label","name": "Glebe","major": true},
+        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/7", "ottawa/b"],"type": "station-label","name": "Glebe","major": true},
         "geometry": {"type": "Point","coordinates": [-75.68986256315861,
         45.40516322134897]}
         },
@@ -853,9 +853,9 @@
         "geometry": {"type": "Point","coordinates": [-75.68754691512896,
         45.414696763031486]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/5"],"type": "station-label","name": "Elgin","major": false},
-        "geometry": {"type": "Point","coordinates": [-75.692317778407,
-        45.42033411206938]}
+        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/c"],"type": "station-label","name": "Elgin","major": false},
+        "geometry": {"type": "Point","coordinates": [-75.69294622940662,
+        45.42107423607749]}
         },
         {"type": "Feature","properties": {"lines": ["ottawa/5"],"type": "station-label","name": "Rideau","major": true},
         "geometry": {"type": "Point","coordinates": [-75.69155746932226,

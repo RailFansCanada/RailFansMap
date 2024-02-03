@@ -36955,7 +36955,7 @@
           "geometry": {"type": "Point","coordinates": [-75.67744424134165,
           45.43220189027983]}
           },
-          {"type": "Feature","properties": {"lines": ["ottawa/3"],"type": "station-label","name": "King Edward","major": true},
+          {"type": "Feature","properties": {"lines": ["ottawa/3", "ottawa/5"],"type": "station-label","name": "King Edward","major": true},
           "geometry": {"type": "Point","coordinates": [-75.68579466742443,
           45.42875565142617]}
           }

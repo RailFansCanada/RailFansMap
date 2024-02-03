@@ -1693,9 +1693,9 @@
         "geometry": {"type": "Point","coordinates": [-75.69148123797503, 
         45.42630585097184]}
         },
-        {"type": "Feature","properties": {"lines": ["gatineau/D"],"type": "station-label","name": "King Edward","major": false},
-        "geometry": {"type": "Point","coordinates": [-75.68670384271402,
-        45.428343707023714]}
+        {"type": "Feature","properties": {"lines": ["gatineau/D", "ottawa/b", "ottawa/c"],"type": "station-label","name": "King Edward","major": false},
+        "geometry": {"type": "Point","coordinates": [-75.68612230248017,
+        45.42916737956344]}
         },
         {"type": "Feature","properties": {"lines": ["gatineau/D"],"type": "station-label","name": "Murray","major": true},
         "geometry": {"type": "Point","coordinates": [-75.68861483599902,
