@@ -135,9 +135,9 @@ const initialLocation: Partial<ViewState> = lastLocation
       bearing: lastLocation[3],
     }
   : {
-      longitude: -73.5713,
-      latitude: 45.5163,
-      zoom: 11.35,
+      longitude: -75.700,
+      latitude: 45.350,
+      zoom: 10.50,
     };
 
 function persistLastLocation(viewport: ViewportSettings) {

@@ -750,7 +750,7 @@
         "geometry": {"type": "Point","coordinates": [-75.79362647957475,
         45.35920315110448]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/8"],"type": "station-label","name": "Licoln Fields","major": true},
+        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/8"],"type": "station-label","name": "Lincoln Fields","major": true},
         "geometry": {"type": "Point","coordinates": [-75.7815013333822,
         45.36548327104131]}
         },
