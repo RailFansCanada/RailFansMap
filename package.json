@@ -1,6 +1,6 @@
 {
   "name": "ot67",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "private": false,
   "types": "src/index.d.ts",
