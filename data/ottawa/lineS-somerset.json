@@ -4,7 +4,7 @@
     "metadata": {
         "id": "ottawa/s",
         "type": "rail-line",
-        "color": "#FE66FF",
+        "color": "#FF99E9",
         "offset": 1.0,
         "icon": "ottawa/s.svg",
         "name": "Line S: Somerset",
@@ -16,7 +16,7 @@
             "Somerset Tram"
         ]
     },
-    "bbox": [-75.70180948686435, 45.38638076558621, -75.67552058603799, 45.432230881608945],
+    "bbox": [-75.73477644755037, 45.39978984088691, -75.68300689539755, 45.432230881608945],
 "features": [
     {
       "type": "Feature",

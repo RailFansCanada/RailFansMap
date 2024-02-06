@@ -253,11 +253,15 @@
     "geometry": {"type": "Point","coordinates": [-75.69148123797503, 
     45.42630585097184]}
     },
-    {"type": "Feature","properties": {"lines": ["ottawa/3", "ottawa/5", "ottawa/b", "ottawa/c", "ottawa/y", "gatineau/D"],"type": "station-label","name": "King Edward","major": false},
+    {"type": "Feature","properties": {"lines": ["ottawa/3", "ottawa/5", "ottawa/b", "ottawa/c", "ottawa/s", "ottawa/y", "gatineau/D"],"type": "station-label","name": "King Edward","major": false},
     "geometry": {"type": "Point","coordinates": [-75.68612230248017,
     45.42916737956344]}
     },
-    {"type": "Feature","properties": {"lines": ["ottawa/b", "ottawa/c", "ottawa/y", "gatineau/D"],"type": "station-label","name": "Murray","major": true},
+    {"type": "Feature","properties": {"lines": ["ottawa/b", "ottawa/c", "ottawa/y", "ottawa/s", "gatineau/D"],"type": "station-label","name": "York","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.6872897750689,
+    45.43054620431178]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/b", "ottawa/c", "ottawa/y", "ottawa/s", "gatineau/D"],"type": "station-label","name": "Murray","major": true},
     "geometry": {"type": "Point","coordinates": [-75.68861483599902,
     45.43210996715277]}
     }

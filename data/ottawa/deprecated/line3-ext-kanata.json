@@ -10,9 +10,6 @@
     "offset": -0.5,
     "name": "Line 3 - Kanata Extension",
     "description": "Proposed extension to Kanata",
-    "sources": [
-      "City of Ottawa"
-    ],
     "searchTerms": [
       "Confederation Line",
       "Kanata"
@@ -70,63 +67,6 @@
           [
             -75.8483422161999,
             45.33605235263728
-          ]
-        ],
-        "type": "LineString"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "type": "overpass"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            -75.84847830587742,
-            45.33595362713708
-          ],
-          [
-            -75.8483150769384,
-            45.336020829921196
-          ]
-        ],
-        "type": "LineString"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "type": "overpass"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            -75.85705292290986,
-            45.33252162284444
-          ],
-          [
-            -75.85624527463295,
-            45.33284273221454
-          ]
-        ],
-        "type": "LineString"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "type": "overpass"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            -75.85703145490285,
-            45.33249063027974
-          ],
-          [
-            -75.85621872472386,
-            45.33281198060577
           ]
         ],
         "type": "LineString"
