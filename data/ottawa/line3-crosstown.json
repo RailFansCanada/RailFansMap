@@ -8,7 +8,7 @@
       "offset": -0.5,
       "icon": "ottawa/3.svg",
       "name": "Line 3: Crosstown",
-      "description": "Trim - Moodie",
+      "description": "Trim - Terry Fox",
       "sources": [
       ],
       "searchTerms": [
@@ -37095,7 +37095,7 @@
           "geometry": {"type": "Point","coordinates": [-75.6650656784428,
           45.43471896459374]}
           },
-          {"type": "Feature","properties": {"lines": ["ottawa/3"],"type": "station-label","name": "Cobourg","major": false},
+          {"type": "Feature","properties": {"lines": ["ottawa/3", "ottawa/5"],"type": "station-label","name": "Cobourg","major": false},
           "geometry": {"type": "Point","coordinates": [-75.67744424134165,
           45.43220189027983]}
           },

@@ -11,13 +11,11 @@
       "City of Ottawa"
     ],
     "name": "Line 2: Trillium",
-    "description": "Bayview - Limebank",
-    "sources": [
-      "City of Ottawa"
-    ],
+    "description": "Labrosse - Limebank",
     "searchTerms": [
       "Trillium Line"
-    ]
+    ],
+    "sources": ["N/A"]
   },
   "bbox": [-75.73197354265119, 45.27727293166024, -75.62778405925572, 45.491047106668475],
   "features": [
@@ -21744,23 +21742,53 @@
     {
       "type": "Feature",
       "properties": {
-        "lines": [
-          "ottawa/1",
-          "ottawa/2",
-          "ottawa/3"
-        ],
-        "name": "Bayview",
-        "type": "station-label",
-        "url": "https://otrain.railfans.ca/station/bayview-station",
-        "major": true
+        "lines": ["ottawa/1", "ottawa/2", "ottawa/3", "ottawa/6"],
+        "type": "station-connector-label",
+        "name": "Bayview"
       },
       "geometry": {
-        "type": "Point",
+        "type": "LineString",
         "coordinates": [
-          -75.72209986,
-          45.40937023
+          [-75.72240594061465, 45.4096315876908],
+          [-75.72209986, 45.40937023]
         ]
       }
+    },
+    {"type": "Feature","properties": {"lines": ["gatineau/A", "gatineau/D", "ottawa/2", "ottawa/10"],"type": "station-label","name": "Taché-UQO","major": true},
+    "geometry": {"type": "Point","coordinates": [-75.73159019106767,
+    45.42158230905244]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2", "ottawa/10"],"type": "station-label","name": "Montcalm","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.7294484452186,
+    45.43072850686312]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2", "ottawa/10"],"type": "station-label","name": "Montclair","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.72810629216808,
+    45.44023772719615]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2", "ottawa/6", "ottawa/10"],"type": "station-label","name": "Lac-Leamy","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.72757899556069,
+    45.44588695162673]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2"],"type": "station-label","name": "La Gappe","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.72005965867073,
+    45.46656133140257]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2"],"type": "station-label","name": "Les Promenades","major": true},
+    "geometry": {"type": "Point","coordinates": [-75.69793777270773,
+    45.47770559280198]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2"],"type": "station-label","name": "La Cité","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.68363892217914,
+    45.48098843749662]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2"],"type": "station-label","name": "Gouin","major": false},
+    "geometry": {"type": "Point","coordinates": [-75.66153319001033,
+    45.48606328238256]}
+    },
+    {"type": "Feature","properties": {"lines": ["ottawa/2"],"type": "station-label","name": "Labrosse","major": true},
+    "geometry": {"type": "Point","coordinates": [-75.64299171094568,
+    45.490319971364045]}
     }
   ]
 }

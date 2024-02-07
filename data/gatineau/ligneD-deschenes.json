@@ -1367,7 +1367,8 @@
                 "name": "Taché-UQO",
                 "lines": [
                     "gatineau/A",
-                    "gatineau/D"
+                    "gatineau/D",
+                    "ottawa/2"
                 ]
             },
             "geometry": {
@@ -1445,7 +1446,7 @@
                 "alternatives": [
                     "2"
                 ],
-                "name": "Parlement",
+                "name": "Parliament",
                 "lines": [
                     "gatineau/A",
                     "gatineau/D",

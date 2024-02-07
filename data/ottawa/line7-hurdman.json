@@ -18,13 +18,13 @@
     },
     "bbox": [-75.73751010725198, 45.32518543207788, -75.6234498795947, 45.412216832076815],
     "features": [
-        {"type": "Feature","properties": {"lines": ["ottawa/7"],"type": "station-label","name": "Elmvale Acres","major": true},
+        {"type": "Feature","properties": {"lines": ["ottawa/5", "ottawa/7"],"type": "station-label","name": "Elmvale Acres","major": true},
         "geometry": {"type": "Point","coordinates": [-75.62381472825021,
         45.40003513113177]}
         },
         {"type": "Feature","properties": {"lines": ["ottawa/7"],"type": "station-label","name": "Industrial","major": false},
-        "geometry": {"type": "Point","coordinates": [-75.62911289124469,
-        45.40729792048364]}
+        "geometry": {"type": "Point","coordinates": [-75.6338401501764,
+        45.40897322958085]}
         },
         {"type": "Feature","properties": {"lines": ["ottawa/7"],"type": "station-label","name": "Trainyards","major": false},
         "geometry": {"type": "Point","coordinates": [-75.65043224465182,

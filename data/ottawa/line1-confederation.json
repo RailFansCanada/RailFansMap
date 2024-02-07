@@ -51110,7 +51110,7 @@
       "type": "Feature",
       "properties": {
         "lines": [
-          "ottawa/1"
+          "ottawa/1", "ottawa/5"
         ],
         "name": "St-Laurent",
         "type": "station-label",
@@ -51130,8 +51130,7 @@
         "lines": [
           "ottawa/1",
           "ottawa/3",
-          "ottawa/5",
-          "gatineau/D"
+          "ottawa/5"
         ],
         "name": "Rideau",
         "type": "station-label",
@@ -51205,21 +51204,15 @@
     {
       "type": "Feature",
       "properties": {
-        "lines": [
-          "ottawa/1",
-          "ottawa/2",
-          "ottawa/3"
-        ],
-        "name": "Bayview",
-        "type": "station-label",
-        "url": "https://otrain.railfans.ca/station/bayview-station",
-        "major": true
+        "lines": ["ottawa/1", "ottawa/2", "ottawa/3", "ottawa/6"],
+        "type": "station-connector-label",
+        "name": "Bayview"
       },
       "geometry": {
-        "type": "Point",
+        "type": "LineString",
         "coordinates": [
-          -75.72209986,
-          45.40937023
+          [-75.72240594061465, 45.4096315876908],
+          [-75.72209986, 45.40937023]
         ]
       }
     },

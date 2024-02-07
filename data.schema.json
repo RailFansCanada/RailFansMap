@@ -21,6 +21,8 @@
       "items": {
         "oneOf": [
           { "$ref": "#/definitions/alignment" },
+          { "$ref": "#/definitions/tram" },
+          { "$ref": "#/definitions/tramstrike" },
           { "$ref": "#/definitions/tracks" },
           { "$ref": "#/definitions/tracks-future" },
           { "$ref": "#/definitions/overpass" },
@@ -124,6 +126,45 @@
       },
       "required": ["type", "properties", "geometry"]
     },
+
+    "tram": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "Feature" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "type": { "const": "tram" },
+            "layer": { "type": "number" }
+          },
+          "required": ["type"]
+        },
+        "geometry": {
+          "$ref": "#/definitions/LineString"
+        }
+      },
+      "required": ["type", "properties", "geometry"]
+    },
+
+    "tramstrike": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "Feature" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "type": { "const": "tramstrike" },
+            "layer": { "type": "number" }
+          },
+          "required": ["type"]
+        },
+        "geometry": {
+          "$ref": "#/definitions/LineString"
+        }
+      },
+      "required": ["type", "properties", "geometry"]
+    },
+
     "tracks": {
       "type": "object",
       "properties": {

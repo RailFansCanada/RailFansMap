@@ -3,12 +3,7 @@
     {
       "id": "oc-transpo",
       "name": "OC Transpo",
-      "bbox": [
-        -77.28024844996973,
-        45.0199415655203,
-        -74.7540435034595,
-        45.89588967450436
-      ],
+      "bbox": [-77.28024844996973, 45.01174614467169, -74.72785741593778, 45.89588967450436],
       "data": [
         "ottawa/belfastYard.json",
         "ottawa/greenbankYard.json",
@@ -29,9 +24,12 @@
         "ottawa/line7-hurdman.json",
         "ottawa/line8-britannia.json",
         "ottawa/line9-beachburg.json",
+        "ottawa/line10-oldchelsea.json",
         "ottawa/stage3barrhaven.json",
-        "ottawa/go-cornwall.json",
-        "ottawa/go-almonte.json"
+        "ottawa/go-northwestern.json",
+        "ottawa/go-almonte.json",
+        "ottawa/go-union.json",
+        "ottawa/via-union.json"
       ]
     },
     {
@@ -288,12 +286,7 @@
         -75.691042,
         45.420472
       ],
-      "bbox": [
-        -77.28024844996973,
-        45.0199415655203,
-        -74.7540435034595,
-        45.89588967450436
-      ],
+      "bbox": [-77.28024844996973, 45.01174614467169, -74.72785741593778, 45.89588967450436],
       "tier": 2
     },
     {

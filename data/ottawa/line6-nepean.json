@@ -31,7 +31,37 @@
             "coordinates": [-75.73621533115879, 45.35916270512101]
         }
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/6", "ottawa/2"],"type": "station-label","name": "Lac-Leamy","major": true},
+        {
+            "type": "Feature",
+            "properties": {
+              "lines": ["ottawa/2", "ottawa/5", "ottawa/6", "ottawa/7"],
+              "type": "station-connector-label",
+              "name": "Dow's Lake"
+            },
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [-75.70961441922, 45.3975496504905],
+                [-75.70945190503875, 45.395967308681975]
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "lines": ["ottawa/2", "ottawa/6"],
+              "type": "station-connector-label",
+              "name": "Corso Italia"
+            },
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [-75.71532185952424, 45.40479469608454],
+                [-75.71470587412199, 45.4042813114252]
+              ]
+            }
+          },            
+        {"type": "Feature","properties": {"lines": ["ottawa/6", "ottawa/2", "ottawa/10"],"type": "station-label","name": "Lac-Leamy","major": true},
         "geometry": {"type": "Point","coordinates": [-75.72580664376495,
         45.44662972375542]}
         },
@@ -41,15 +71,27 @@
         {"type": "Feature","properties": {"lines": ["ottawa/6", "gatineau/A", "gatineau/D"],"type": "station-label","name": "Place du Portage","major": true},
         "geometry": {"type": "Point","coordinates": [-75.71392203145422, 45.4259768573894]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/6"],"type": "station-label","name": "Asinabka","major": false},
+        {"type": "Feature","properties": {"lines": ["ottawa/6", "gatineau/A", "gatineau/D"],"type": "station-label","name": "Asinabka","major": false},
         "geometry": {"type": "Point","coordinates": [-75.71272471967661, 45.42076232360699]}
         },
         {"type": "Feature","properties": {"lines": ["ottawa/6"],"type": "station-label","name": "Pindigen","major": false},
         "geometry": {"type": "Point","coordinates": [-75.71564468983237, 45.41583980875973]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/6", "ottawa/1", "ottawa/2", "ottawa/3"],"type": "station-label","name": "Bayview","major": true},
-        "geometry": {"type": "Point","coordinates": [-75.72240594061465, 45.4096315876908]}
-        },
+        {
+            "type": "Feature",
+            "properties": {
+              "lines": ["ottawa/1", "ottawa/2", "ottawa/3", "ottawa/6"],
+              "type": "station-connector-label",
+              "name": "Bayview"
+            },
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [
+                [-75.72240594061465, 45.4096315876908],
+                [-75.72209986, 45.40937023]
+              ]
+            }
+          },
         {"type": "Feature","properties": {"lines": ["ottawa/6", "ottawa/2"],"type": "station-label","name": "Corso Italia","major": false},
         "geometry": {"type": "Point","coordinates": [-75.71532185952424, 45.40479469608454]}
         },

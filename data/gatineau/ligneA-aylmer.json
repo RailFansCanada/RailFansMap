@@ -22,6 +22,36 @@
     {
       "type": "Feature",
       "properties": {
+        "lines": ["ottawa/1", "ottawa/3", "gatineau/A", "gatineau/D"],
+        "type": "station-connector-label",
+        "name": "Lyon"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-75.70588849911893, 45.420076935856066],
+          [-75.70473651689774, 45.418854102903005]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lines": ["ottawa/1", "ottawa/3", "gatineau/A", "gatineau/D"],
+        "type": "station-connector-label",
+        "name": "Parliament"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-75.69948219592285, 45.4228315549691],
+          [-75.69903950287548, 45.42130842435681]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "type": "alignment"
       },
       "geometry": {
@@ -1267,7 +1297,8 @@
         "name": "Taché-UQO",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "gatineau/D",
+          "ottawa/2"
         ]
       },
       "geometry": {
@@ -1325,9 +1356,7 @@
         "name": "Lyon",
         "lines": [
           "gatineau/A",
-          "gatineau/D",
-          "ottawa/1",
-          "ottawa/3"
+          "gatineau/D"
         ]
       },
       "geometry": {
@@ -1345,7 +1374,7 @@
         "alternatives": [
           "2"
         ],
-        "name": "Parlement",
+        "name": "Parliament",
         "lines": [
           "gatineau/A",
           "gatineau/D",
@@ -1361,7 +1390,7 @@
         ]
       }
     },
-    {"type": "Feature","properties": {"lines": ["gatineau/A", "gatineau/D", "ottawa/b", "ottawa/r"],"type": "station-label","name": "Rideau","major": false},
+    {"type": "Feature","properties": {"lines": ["gatineau/A", "gatineau/D", "ottawa/b"],"type": "station-label","name": "Rideau","major": false},
     "geometry": {"type": "Point","coordinates": [-75.69448992031094,
     45.42500022602934]}
     },

@@ -191,6 +191,96 @@ export const Lines = React.memo(
           }}
         />
         <Layer
+          id={`tram`}
+          {...LAYER_PROPS}
+          type="line"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "tram"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          layout={{
+            "line-join": "round",
+            "line-cap": "round",
+            "line-sort-key": ["get", "layer"],
+          }}
+          paint={{
+            "line-color": ["get", "color"],
+            "line-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              14,
+              1,
+              20,
+              0.5,
+            ],
+            "line-width": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              14,
+              6,
+              20,
+              300,
+            ],
+            "line-offset": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              14,
+              ["*", ["get", "offset"], 6],
+              20,
+              ["*", ["get", "offset"], 300],
+            ],
+          }}
+        />
+                <Layer
+          id={`tramstrike`}
+          {...LAYER_PROPS}
+          type="line"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "tramstrike"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          layout={{
+            "line-join": "round",
+            "line-cap": "round",
+            "line-sort-key": ["get", "layer"],
+          }}
+          paint={{
+            "line-color": "#FFFFFF",
+            "line-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              14,
+              1,
+              20,
+              0.3,
+            ],
+            "line-width": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              14,
+              1,
+              20,
+              50,
+            ],
+            "line-offset": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              14,
+              ["*", ["get", "offset"], 1],
+              20,
+              ["*", ["get", "offset"], 50],
+            ],
+          }}
+        />
+        <Layer
           id={`rail-tracks`}
           {...LAYER_PROPS}
           type="line"
