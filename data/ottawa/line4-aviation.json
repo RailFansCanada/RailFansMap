@@ -7,12 +7,12 @@
     "color": "#3CCFFF",
     "offset": -0.5,
     "icon": "ottawa/4.svg",
-    "name": "Line 4: Airport",
-    "description": "Airport - Rideau",
+    "name": "Line 4: Aviation",
+    "description": "Rideau - Airport",
     "sources": [
       "City of Ottawa"
     ],
-    "searchTerms": ["Trillium Line", "Airport Branch"]
+    "searchTerms": ["Aviation Line", "Airport Branch"]
   },
   "bbox": [-75.6941002687288, 45.323425021635636, -75.64890530804793, 45.42456557057116],
   "features": [
