@@ -1346,7 +1346,8 @@
             "properties": {
                 "lines": [
                     "ottawa/h",
-                    "ottawa/g"
+                    "ottawa/g",
+                    "ottawa/bl"
                 ],
                 "type": "station-label",
                 "name": "Hurdman",

@@ -280,6 +280,52 @@ export const Lines = React.memo(
             ],
           }}
         />
+                        <Layer
+          id={`brtpunch`}
+          {...LAYER_PROPS}
+          type="line"
+          filter={[
+            "all",
+            ["==", ["get", "type"], "brtpunch"],
+            ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+          ]}
+          layout={{
+            "line-join": "round",
+            "line-cap": "round",
+            "line-sort-key": ["get", "layer"],
+          }}
+          paint={{
+            "line-color": "#000000",
+            "line-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              14,
+              1,
+              20,
+              0.3,
+            ],
+            "line-width": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              14,
+              3,
+              20,
+              150,
+            ],
+            "line-offset": [
+              "interpolate",
+              ["exponential", 2],
+              ["zoom"],
+              14,
+              ["*", ["get", "offset"], 1],
+              20,
+              ["*", ["get", "offset"], 50],
+            ],
+            "line-dasharray": [2, 4]
+          }}
+        />
         <Layer
           id={`rail-tracks`}
           {...LAYER_PROPS}

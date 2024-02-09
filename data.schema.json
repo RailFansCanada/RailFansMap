@@ -23,6 +23,7 @@
           { "$ref": "#/definitions/alignment" },
           { "$ref": "#/definitions/tram" },
           { "$ref": "#/definitions/tramstrike" },
+          { "$ref": "#/definitions/brtpunch" },
           { "$ref": "#/definitions/tracks" },
           { "$ref": "#/definitions/tracks-future" },
           { "$ref": "#/definitions/overpass" },
@@ -154,6 +155,25 @@
           "type": "object",
           "properties": {
             "type": { "const": "tramstrike" },
+            "layer": { "type": "number" }
+          },
+          "required": ["type"]
+        },
+        "geometry": {
+          "$ref": "#/definitions/LineString"
+        }
+      },
+      "required": ["type", "properties", "geometry"]
+    },
+
+    "brtpunch": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "Feature" },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "type": { "const": "brtpunch" },
             "layer": { "type": "number" }
           },
           "required": ["type"]

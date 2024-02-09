@@ -1,6 +1,6 @@
 {
     "type": "FeatureCollection",
-    "name": "Line L: Laurentian",
+    "name": "Line D: Deschenes",
     "metadata": {
         "id": "ottawa/d",
         "type": "streetcar-line",
@@ -8,15 +8,15 @@
         "offset": 0,
         "icon": "ottawa/d.svg",
         "name": "Line D: Deschenes",
-        "description": "Line D Deschenes - Hunt Club Extension",
+        "description": "Hunt Club - L'Imaginaire",
         "sources": [
             "N/A"
         ],
         "searchTerms": [
-            "Laurentian Tram"
+            "Deschenes Tram"
         ]
     },
-    "bbox": [-75.70180948686435, 45.38638076558621, -75.67552058603799, 45.432230881608945],
+    "bbox": [-75.8563071911682, 45.336289586228986, -75.72499648241134, 45.40015219316239],
 "features": [
     {
       "type": "Feature",
@@ -792,11 +792,11 @@
         "geometry": {"type": "Point","coordinates": [-75.84395810971435,
         45.39496031611665]}
         },
-      {"type": "Feature","properties": {"lines": ["ottawa/d"],"type": "station-label","name": "Mud Lake","major": false},
+      {"type": "Feature","properties": {"lines": ["ottawa/d", "ottawa/p"],"type": "station-label","name": "Mud Lake","major": false},
       "geometry": {"type": "Point","coordinates": [-75.79578974867488,
       45.37364676258187]}
       },
-      {"type": "Feature","properties": {"lines": ["ottawa/d"],"type": "station-label","name": "McEwen","major": false},
+      {"type": "Feature","properties": {"lines": ["ottawa/d", "ottawa/p"],"type": "station-label","name": "McEwen","major": false},
       "geometry": {"type": "Point","coordinates": [-75.78381480673487,
       45.37076597722958]}
       },

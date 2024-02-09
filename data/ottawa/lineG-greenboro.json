@@ -1268,7 +1268,7 @@
     "type": "LineString"
   }
 },
-{"type": "Feature","properties": {"lines": ["ottawa/g", "ottawa/h"],"type": "station-label","name": "Hurdman","major": true},
+{"type": "Feature","properties": {"lines": ["ottawa/g", "ottawa/h", "ottawa/bl"],"type": "station-label","name": "Hurdman","major": true},
 "geometry": {"type": "Point","coordinates": [-75.66415317016603,
 45.411917939457425]}
 },
