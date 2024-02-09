@@ -14,15 +14,14 @@
     "alternatives": [
       "1",
       "2"
-    ],
-    "filterKey": "gatineauLrt"
+    ]
   },
   "bbox": [-75.86578535776559, 45.39536917415158, -75.69408948844246, 45.43184512996863],
   "features": [
     {
       "type": "Feature",
       "properties": {
-        "lines": ["ottawa/1", "ottawa/3", "gatineau/A", "gatineau/D"],
+        "lines": ["ottawa/1", "ottawa/3", "gatineau/A", "ottawa/p"],
         "type": "station-connector-label",
         "name": "Lyon"
       },
@@ -37,7 +36,7 @@
     {
       "type": "Feature",
       "properties": {
-        "lines": ["ottawa/1", "ottawa/3", "gatineau/A", "gatineau/D"],
+        "lines": ["ottawa/1", "ottawa/3", "gatineau/A", "ottawa/p"],
         "type": "station-connector-label",
         "name": "Parliament"
       },
@@ -1017,7 +1016,7 @@
       "type": "Feature",
       "properties": {
         "type": "station-label",
-        "name": "Klock / Broad",
+        "name": "Klock",
         "lines": [
           "gatineau/A"
         ]
@@ -1034,7 +1033,7 @@
       "type": "Feature",
       "properties": {
         "type": "station-label",
-        "name": "des Allumettières / Willfrid-Lavigne",
+        "name": "Wilfrid-Lavigne",
         "lines": [
           "gatineau/A"
         ]
@@ -1051,7 +1050,7 @@
       "type": "Feature",
       "properties": {
         "type": "station-label",
-        "name": "des Rédemptoristes",
+        "name": "du Caveau",
         "lines": [
           "gatineau/A"
         ]
@@ -1059,8 +1058,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -75.8383912233373,
-          45.40636922532978
+          -75.83832063996863,
+          45.4058587171304
         ]
       }
     },
@@ -1068,7 +1067,7 @@
       "type": "Feature",
       "properties": {
         "type": "station-label",
-        "name": "North / John-Egan",
+        "name": "John-Egan",
         "lines": [
           "gatineau/A"
         ]
@@ -1104,7 +1103,7 @@
         "type": "station-label",
         "name": "Bordeaux",
         "lines": [
-          "gatineau/A"
+          "gatineau/A", "ottawa/p"
         ]
       },
       "geometry": {
@@ -1121,7 +1120,7 @@
         "type": "station-label",
         "name": "Belmont",
         "lines": [
-          "gatineau/A"
+          "gatineau/A", "ottawa/p"
         ]
       },
       "geometry": {
@@ -1138,7 +1137,7 @@
         "type": "station-label",
         "name": "Fraser",
         "lines": [
-          "gatineau/A"
+          "gatineau/A", "ottawa/p"
         ]
       },
       "geometry": {
@@ -1153,9 +1152,9 @@
       "type": "Feature",
       "properties": {
         "type": "station-label",
-        "name": "Grimes / Victor-Beaudry",
+        "name": "Grimes",
         "lines": [
-          "gatineau/A"
+          "gatineau/A", "ottawa/p"
         ]
       },
       "geometry": {
@@ -1172,7 +1171,7 @@
         "type": "station-label",
         "name": "Vanier",
         "lines": [
-          "gatineau/A"
+          "gatineau/A", "ottawa/p"
         ]
       },
       "geometry": {
@@ -1221,10 +1220,10 @@
       "type": "Feature",
       "properties": {
         "type": "station-label",
-        "name": "Alexandre-Taché / Saint-Raymond",
+        "name": "Saint-Raymond",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ],
         "major": true
       },
@@ -1243,7 +1242,7 @@
         "name": "Saint-Dominique",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ]
       },
       "geometry": {
@@ -1261,7 +1260,7 @@
         "name": "Bégin",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ]
       },
       "geometry": {
@@ -1279,7 +1278,7 @@
         "name": "UQO",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ]
       },
       "geometry": {
@@ -1297,7 +1296,7 @@
         "name": "Taché-UQO",
         "lines": [
           "gatineau/A",
-          "gatineau/D",
+          "ottawa/p",
           "ottawa/2"
         ]
       },
@@ -1316,7 +1315,7 @@
         "name": "Terrasses de la Chaudière",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ],
         "major": true
       },
@@ -1335,7 +1334,7 @@
         "name": "Place du Portage",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ]
       },
       "geometry": {
@@ -1356,7 +1355,7 @@
         "name": "Lyon",
         "lines": [
           "gatineau/A",
-          "gatineau/D"
+          "ottawa/p"
         ]
       },
       "geometry": {
@@ -1377,7 +1376,7 @@
         "name": "Parliament",
         "lines": [
           "gatineau/A",
-          "gatineau/D",
+          "ottawa/p",
           "ottawa/1",
           "ottawa/3"
         ]
@@ -1390,7 +1389,7 @@
         ]
       }
     },
-    {"type": "Feature","properties": {"lines": ["gatineau/A", "gatineau/D", "ottawa/b"],"type": "station-label","name": "Rideau","major": false},
+    {"type": "Feature","properties": {"lines": ["gatineau/A", "ottawa/p", "ottawa/b"],"type": "station-label","name": "Rideau","major": false},
     "geometry": {"type": "Point","coordinates": [-75.69448992031094,
     45.42500022602934]}
     },

@@ -641,7 +641,7 @@
     "geometry": {"type": "Point","coordinates": [-75.72757899556069,
     45.44588695162673]}
     },
-    {"type": "Feature","properties": {"lines": ["gatineau/A", "gatineau/D", "ottawa/2", "ottawa/10"],"type": "station-label","name": "Taché-UQO","major": true},
+    {"type": "Feature","properties": {"lines": ["gatineau/A", "ottawa/p", "ottawa/2", "ottawa/10"],"type": "station-label","name": "Taché-UQO","major": true},
     "geometry": {"type": "Point","coordinates": [-75.73159019106767,
     45.42158230905244]}
     },

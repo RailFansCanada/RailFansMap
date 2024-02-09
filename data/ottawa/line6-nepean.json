@@ -68,10 +68,10 @@
         {"type": "Feature","properties": {"lines": ["ottawa/6"],"type": "station-label","name": "Verdun","major": false},
         "geometry": {"type": "Point","coordinates": [-75.71242991210418, 45.43486761343823]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/6", "gatineau/A", "gatineau/D"],"type": "station-label","name": "Place du Portage","major": true},
+        {"type": "Feature","properties": {"lines": ["ottawa/6", "gatineau/A", "ottawa/p"],"type": "station-label","name": "Place du Portage","major": true},
         "geometry": {"type": "Point","coordinates": [-75.71392203145422, 45.4259768573894]}
         },
-        {"type": "Feature","properties": {"lines": ["ottawa/6", "gatineau/A", "gatineau/D"],"type": "station-label","name": "Asinabka","major": false},
+        {"type": "Feature","properties": {"lines": ["ottawa/6", "gatineau/A", "ottawa/p"],"type": "station-label","name": "Asinabka","major": false},
         "geometry": {"type": "Point","coordinates": [-75.71272471967661, 45.42076232360699]}
         },
         {"type": "Feature","properties": {"lines": ["ottawa/6"],"type": "station-label","name": "Pindigen","major": false},

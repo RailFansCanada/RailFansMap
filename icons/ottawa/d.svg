@@ -17,21 +17,13 @@
       .cls-3 {
         fill: #f2f2f2;
       }
-
-      .cls-4 {
-        fill: #fff;
-        font-family: InterV-Black, 'Inter V';
-        font-size: 56.69px;
-        font-variation-settings: 'wght' 900, 'slnt' 0;
-        font-weight: 800;
-      }
     </style>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
     <g>
       <circle class="cls-3" cx="45" cy="45" r="40"/>
       <circle class="cls-1" cx="45" cy="45" r="35"/>
-      <text class="cls-4" transform="translate(26.5 65.62)"><tspan x="0" y="0">D</tspan></text>
+      <path class="cls-3" d="m45.02,65.62h-15.86V24.38h15.7c4.24,0,7.91.82,11,2.47,3.09,1.64,5.48,4.01,7.17,7.09,1.68,3.08,2.53,6.77,2.53,11.06s-.84,7.98-2.52,11.06-4.05,5.44-7.13,7.09c-3.07,1.64-6.7,2.47-10.89,2.47Zm-4.67-9.5h4.27c2.04,0,3.78-.33,5.22-.99,1.44-.66,2.54-1.79,3.3-3.4.76-1.61,1.14-3.85,1.14-6.72s-.39-5.11-1.16-6.72c-.77-1.61-1.9-2.74-3.38-3.4-1.48-.66-3.3-.99-5.45-.99h-3.95v22.23Z"/>
       <rect class="cls-2" width="90" height="90"/>
     </g>
   </g>

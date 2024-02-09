@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1261.1 698.71">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-3 {
+        fill: red;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-6 {
+        font-family: Inter-Black, Inter;
+        font-size: 85.04px;
+        font-weight: 800;
+      }
+
+      .cls-6, .cls-4 {
+        fill: #5e0000;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <polygon class="cls-4" points="950.15 0 892.58 150 1042.85 150 908.49 500 1069.17 500 1261.1 0 950.15 0"/>
+      <polygon class="cls-4" points="250 0 250 150 462.4 150 462.4 500 612.4 500 612.4 150 697.89 150 755.47 0 250 0"/>
+      <path class="cls-3" d="m755.47,0l-97.95,255.16-4.29,11.17c-6.54,18.36-10.29,38.06-10.29,58.67,0,65.7,36.25,122.86,89.79,152.79,25.23,14.1,54.25,22.21,85.21,22.21,96.65,0,175-78.35,175-175,0-83.26-58.2-152.8-136.1-170.51L916.14,0h-160.67Z"/>
+      <path class="cls-3" d="m250,150c26.71,0,51.82,10.4,70.71,29.29,18.89,18.89,29.29,44,29.29,70.71s-10.4,51.82-29.29,70.71c-18.89,18.89-44,29.29-70.71,29.29s-51.82-10.4-70.71-29.29c-18.89-18.89-29.29-44-29.29-70.71s10.4-51.82,29.29-70.71c18.89-18.89,44-29.29,70.71-29.29M250,0C111.93,0,0,111.93,0,250s111.93,250,250,250,250-111.93,250-250S388.07,0,250,0h0Z"/>
+    </g>
+    <text class="cls-6" transform="translate(126.74 670.68)"><tspan class="cls-5" x="0" y="0">O</tspan><tspan x="64.74" y="0">T</tspan><tspan class="cls-2" x="123.08" y="0">T</tspan><tspan class="cls-1" x="173.58" y="0">AW</tspan><tspan x="319.73" y="0">A TRANSIT 2067</tspan></text>
+  </g>
+</svg>

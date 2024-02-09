@@ -55400,7 +55400,7 @@
       "type": "Feature",
       "properties": {
         "lines": [
-          "ottawa/1"
+          "ottawa/1", "ottawa/d"
         ],
         "name": "Iris",
         "type": "station-label",

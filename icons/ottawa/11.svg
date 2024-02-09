@@ -6,7 +6,7 @@
         fill: red;
       }
 
-      .cls-1, .cls-2, .cls-3 {
+      .cls-1, .cls-2, .cls-3, .cls-4 {
         stroke-width: 0px;
       }
 
@@ -14,15 +14,11 @@
         fill: none;
       }
 
-      .cls-4 {
+      .cls-3 {
         fill: #f2f2f2;
-        font-family: InterV-Black, 'Inter V';
-        font-size: 42.52px;
-        font-variation-settings: 'wght' 900, 'slnt' 0;
-        font-weight: 800;
       }
 
-      .cls-3 {
+      .cls-4 {
         opacity: .85;
       }
     </style>
@@ -30,9 +26,12 @@
   <g id="Layer_1-2" data-name="Layer 1">
     <g>
       <circle class="cls-1" cx="45" cy="45" r="40"/>
-      <circle class="cls-3" cx="45" cy="45" r="35"/>
+      <circle class="cls-4" cx="45" cy="45" r="35"/>
       <rect class="cls-2" width="90" height="90"/>
-      <text class="cls-4" transform="translate(23.92 60.46)"><tspan x="0" y="0">11</tspan></text>
+      <g>
+        <path class="cls-3" d="m40.71,29.54v30.92h-8.39v-21.2h-.3c-.28.37-.69.73-1.23,1.09-.54.35-1.21.64-2.03.87s-1.78.34-2.9.34v-6.58c.87,0,1.68-.14,2.45-.43.77-.29,1.45-.68,2.05-1.19.59-.5,1.06-1.08,1.4-1.74.34-.65.51-1.35.51-2.08h8.46Z"/>
+        <path class="cls-3" d="m61.79,29.54v30.92h-8.39v-21.2h-.3c-.28.37-.69.73-1.23,1.09-.54.35-1.21.64-2.03.87s-1.78.34-2.9.34v-6.58c.87,0,1.68-.14,2.45-.43.77-.29,1.45-.68,2.05-1.19.59-.5,1.06-1.08,1.4-1.74.34-.65.51-1.35.51-2.08h8.46Z"/>
+      </g>
     </g>
   </g>
 </svg>

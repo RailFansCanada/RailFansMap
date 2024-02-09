@@ -31335,9 +31335,8 @@
                 "lines": [
                     "ottawa/1",
                     "ottawa/3",
-                    "ottawa/5",
-                    "ottawa/8",
-                    "gatineau/D"
+                    "ottawa/d",
+                    "ottawa/p"
                 ],
                 "name": "Lincoln Fields",
                 "type": "station-label",

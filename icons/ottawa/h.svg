@@ -6,7 +6,7 @@
         fill: #ff6c6c;
       }
 
-      .cls-1, .cls-2, .cls-3 {
+      .cls-1, .cls-2, .cls-3, .cls-4 {
         stroke-width: 0px;
       }
 
@@ -15,23 +15,19 @@
       }
 
       .cls-3 {
-        fill: #f2f2f2;
+        fill: #fff;
       }
 
       .cls-4 {
-        fill: #fff;
-        font-family: InterV-Black, 'Inter V';
-        font-size: 56.69px;
-        font-variation-settings: 'wght' 900, 'slnt' 0;
-        font-weight: 800;
+        fill: #f2f2f2;
       }
     </style>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
     <g>
-      <circle class="cls-3" cx="45" cy="45" r="40"/>
+      <circle class="cls-4" cx="45" cy="45" r="40"/>
       <circle class="cls-1" cx="45" cy="45" r="35"/>
-      <text class="cls-4" transform="translate(23.74 65.62)"><tspan x="0" y="0">H</tspan></text>
+      <path class="cls-3" d="m26.4,65.62V24.38h11.19v16.11h14.82v-16.11h11.19v41.23h-11.19v-16.11h-14.82v16.11h-11.19Z"/>
       <rect class="cls-2" width="90" height="90"/>
     </g>
   </g>

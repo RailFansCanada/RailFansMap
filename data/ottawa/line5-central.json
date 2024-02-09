@@ -940,7 +940,7 @@
         {
             "type": "Feature",
             "properties": {
-              "lines": ["ottawa/1", "ottawa/3", "ottawa/5", "ottawa/B", "ottawa/C", "ottawa/S", "ottawa/Y", "gatineau/D"],
+              "lines": ["ottawa/1", "ottawa/3", "ottawa/5", "ottawa/B", "ottawa/C", "ottawa/S", "ottawa/Y", "ottawa/p"],
               "type": "station-connector-label",
               "name": "King Edward"
             },
@@ -955,7 +955,7 @@
           {
               "type": "Feature",
               "properties": {
-                "lines": ["ottawa/1", "ottawa/3", "ottawa/4", "ottawa/5", "ottawa/B", "ottawa/S", "ottawa/Y", "gatineau/A", "gatineau/D"],
+                "lines": ["ottawa/1", "ottawa/3", "ottawa/4", "ottawa/5", "ottawa/B", "ottawa/S", "ottawa/Y", "gatineau/A", "ottawa/p"],
                 "type": "station-connector-label",
                 "name": "Rideau"
               },
@@ -987,14 +987,13 @@
               {
                   "type": "Feature",
                   "properties": {
-                    "lines": ["ottawa/1", "ottawa/3", "ottawa/5", "gatineau/D"],
+                    "lines": ["ottawa/1", "ottawa/3", "ottawa/5", "ottawa/8", "ottawa/p", "ottawa/d"],
                     "type": "station-connector-label",
                     "name": "Lincoln Fields"
                   },
                   "geometry": {
                     "type": "LineString",
                     "coordinates": [
-                      [-75.7830634964115, 45.36540044960441],
                       [-75.78211970855726, 45.36616310514915],
                       [-75.7815013333822, 45.36548327104131]
                     ]
