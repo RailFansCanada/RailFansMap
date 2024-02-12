@@ -8144,7 +8144,7 @@ __metadata:
     react-custom-scrollbars: 4.2.1
     react-dom: 18.2.0
     react-is: 18.2.0
-    react-map-gl: 7.1.6
+    react-map-gl: 7.1.7
     source-map-loader: 4.0.1
     sql.js: "workspace:./sqljs"
     tiny-warning: 1.0.3
@@ -8794,9 +8794,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-map-gl@npm:7.1.6":
-  version: 7.1.6
-  resolution: "react-map-gl@npm:7.1.6"
+"react-map-gl@npm:7.1.7":
+  version: 7.1.7
+  resolution: "react-map-gl@npm:7.1.7"
   dependencies:
     "@maplibre/maplibre-gl-style-spec": ^19.2.1
     "@types/mapbox-gl": ">=1.0.0"
@@ -8810,7 +8810,7 @@ __metadata:
       optional: true
     maplibre-gl:
       optional: true
-  checksum: 6c85996198fd781c6c08c6e3c191b133dc99f4bc35849a4e1cc35dd52e7d798183a8f6d976fed331728164e99e039478ba19cb39a33d3f3d9fc53747ae03e681
+  checksum: fa53bdcdf2d168a9735a7a9db80257acc206a7893a879e022cfa02ce0cd5cc662a470824968cb5a421a46e5db0f24b339a7fc50ecf98f70e39e787bdbaaed9b0
   languageName: node
   linkType: hard
 
