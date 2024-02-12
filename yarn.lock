@@ -2260,7 +2260,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:2.7.17, @types/mapbox-gl@npm:>=1.0.0":
+"@types/mapbox-gl@npm:2.7.20":
+  version: 2.7.20
+  resolution: "@types/mapbox-gl@npm:2.7.20"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 928daebfb773e087083001ad658f34866291bcc3f8308cadfd5e03d95cce7f23ce6313c426cd943824c3cf6ab28a9c6facc45be0fe02785f13310892a852f134
+  languageName: node
+  linkType: hard
+
+"@types/mapbox-gl@npm:>=1.0.0":
   version: 2.7.17
   resolution: "@types/mapbox-gl@npm:2.7.17"
   dependencies:
@@ -8083,7 +8092,7 @@ __metadata:
     "@turf/boolean-overlap": 6.5.0
     "@turf/buffer": 6.5.0
     "@types/geojson": 7946.0.14
-    "@types/mapbox-gl": 2.7.17
+    "@types/mapbox-gl": 2.7.20
     "@types/react": 18.2.55
     "@types/react-dom": 18.2.19
     "@types/react-virtualized": 9.21.29

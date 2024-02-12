@@ -28,7 +28,7 @@
   "homepage": "https://github.com/OTrainFans/OTrainMap#readme",
   "devDependencies": {
     "@types/geojson": "7946.0.14",
-    "@types/mapbox-gl": "2.7.17",
+    "@types/mapbox-gl": "2.7.20",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
     "@types/react-virtualized": "9.21.29",
