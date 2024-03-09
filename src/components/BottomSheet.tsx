@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ButtonBase,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemText,
   Paper,
   Typography,
+  useTheme,
 } from "@mui/material";
 import styled from "@emotion/styled";
 import { Chevron } from "./Chevron";
 import { MapBoundsContext } from "../contexts/MapBoundsContext";
-import { config, Agency } from "../config";
+import { config, Agency } from "../config.ts";
 import metadata from "../../build/metadata.json";
 import { LoadedMetadata } from "../hooks/useData";
 import { Scrollbars } from "react-custom-scrollbars-2";
@@ -80,12 +78,13 @@ type BottomSheetHeaderProps = {
 };
 
 const BottomSheetHeader = (props: BottomSheetHeaderProps) => {
+  const theme = useTheme();
   return (
     <HeaderContainer onClick={props.onClick}>
       <Typography>
         On the Map{props.regionName && ` • ${props.regionName}`}
       </Typography>
-      <Chevron down={!props.expanded} />
+      <Chevron down={!props.expanded} color={theme.palette.text.primary} />
     </HeaderContainer>
   );
 };
@@ -110,7 +109,7 @@ export const BottomSheet = () => {
   }, [visibleRegions]);
 
   return (
-    <BottomSheetSurface elevation={open ? 2 : 0} open={expanded}>
+    <BottomSheetSurface elevation={expanded ? 2 : 0} open={expanded}>
       <BottomSheetHeader
         expanded={expanded}
         onClick={() => setExpanded((value) => !value)}

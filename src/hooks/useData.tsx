@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Agency, config, Metadata, Region } from "../config";
+import { Agency, config, Metadata, Region } from "../config.ts";
 import { BBox, FeatureCollection, Geometry } from "geojson";
 import { prepDatabase, processBounds, processFeatures } from "../app/search";
 import { Database } from "sql.js";

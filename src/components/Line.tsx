@@ -20,7 +20,7 @@ const root = () => {
 };
 
 // Conditionally add source-layer property
-const LAYER_PROPS = USE_TILES ? { "source-layer": "rail-map" } : {};
+const LAYER_PROPS = (import.meta.env.VITE_USE_TILES === "true") ? { "source-layer": "rail-map" } : {};
 
 export const Lines = React.memo(
   ({ showLineLabels, filterList }: NewLineProps) => {
@@ -28,10 +28,10 @@ export const Lines = React.memo(
     const { appTheme } = useAppState();
     const isDarkTheme = useIsDarkTheme(appTheme);
 
-    const [source, setSource] = useState<VectorSource | GeoJSONSourceRaw>(null);
+    const [source, setSource] = useState<VectorSource | GeoJSONSourceRaw | null>(null);
 
     useEffect(() => {
-      if (!USE_TILES) {
+      if (import.meta.env.VITE_USE_TILES !== "true") {
         setSource({
           type: "geojson",
           data: { type: "FeatureCollection", features: [] },

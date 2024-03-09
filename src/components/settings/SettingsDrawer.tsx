@@ -123,7 +123,7 @@ export const SettingsDrawer = () => {
         />
       </List>
 
-      {DEBUG && (
+      {import.meta.env.DEV && (
         <>
           <Divider />
           <SectionHeader variant="overline">Debug Settings</SectionHeader>
@@ -144,12 +144,12 @@ export const SettingsDrawer = () => {
           <ListItemText primary="Privacy policy" />
         </ListItemButton>
         <ListItem dense>
-          <ListItemText primary="Version" secondary={VERSION} />
+          <ListItemText primary="Version" secondary={__APP_VERSION__} />
         </ListItem>
         <ListItem dense>
           <ListItemText
             primary="Build date"
-            secondary={new Date(BUILD_DATE).toLocaleString()}
+            secondary={new Date(__BUILD_DATE__).toLocaleString()}
           />
         </ListItem>
       </List>

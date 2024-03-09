@@ -1,8 +1,8 @@
-const fs = require("fs");
-const bbox = require("@turf/bbox").default;
-const bboxPolygon = require("@turf/bbox-polygon").default;
+import { readFileSync } from "fs";
+import bbox from "@turf/bbox";
+import bboxPolygon from "@turf/bbox-polygon";
 
-const config = require("../src/config.json");
+import config from "../src/config.json" assert { type: "json" };
 
 function formatBBox(bbox) {
   return JSON.stringify(bbox).replaceAll(/,/g, ", ");
@@ -21,7 +21,7 @@ if (filePath === "config.json" || filePath === "config") {
   config.agencies.forEach((agency) => {
     const allFeatures = [];
     agency.data.forEach((file) => {
-      const content = fs.readFileSync(`./data/${file}`, { encoding: "utf-8" });
+      const content = readFileSync(`./data/${file}`, { encoding: "utf-8" });
       /** @type {import('geojson').FeatureCollection} */
       const feature = JSON.parse(content);
 
@@ -51,7 +51,7 @@ if (filePath === "config.json" || filePath === "config") {
     console.log(`    ${region.id}: ${formatBBox(featureBBox)}`);
   });
 } else {
-  const content = fs.readFileSync(`./data/${filePath}`, { encoding: "utf-8" });
+  const content = readFileSync(`./data/${filePath}`, { encoding: "utf-8" });
   /** @type {import('geojson').FeatureCollection} */
   const feature = JSON.parse(content);
 

@@ -1,5 +1,5 @@
 import { LngLatBounds } from "mapbox-gl";
-import { config, Region } from "../config";
+import { config, Region } from "../config.ts";
 import bboxPolygon from "@turf/bbox-polygon";
 import { BBox } from "geojson";
 import booleanIntersects from "@turf/boolean-intersects";
