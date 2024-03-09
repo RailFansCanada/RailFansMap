@@ -11,7 +11,6 @@ import {
 import { Agency } from "../config";
 import { LoadedMetadata } from "../hooks/useData";
 import React, { useMemo } from "react";
-import Scrollbars from "react-custom-scrollbars";
 import styled from "@emotion/styled";
 
 export type AgencySectionProps = {
@@ -83,7 +82,7 @@ export const AgencySection = (props: AgencySectionProps) => {
           .filter((meta) => meta.filterKey == null)
           .map((meta) => (
             //   <LineCard {...meta} />
-            <LineRow {...meta} />
+            <LineRow key={meta.id} {...meta} />
           ))}
 
         {/* Planned lines and extensions */}
@@ -94,7 +93,7 @@ export const AgencySection = (props: AgencySectionProps) => {
         )}
         {planned.map((meta) => (
           //   <LineCard {...meta} />
-          <LineRow {...meta} />
+          <LineRow key={meta.id} {...meta} />
         ))}
       </List>
     </div>

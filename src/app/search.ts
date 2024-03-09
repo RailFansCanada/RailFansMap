@@ -1,6 +1,7 @@
 import { BBox } from "geojson";
 import initSqlJs, { Database } from "sql.js";
-import ddl from "./database.sql";
+import ddl from "./database.sql?raw";
+import sqlWasm from "sql.js/dist/sql-wasm.wasm?url";
 
 export type Station = {
   name: string;
@@ -30,7 +31,9 @@ function escapeQuery(query: string): string {
 }
 
 export async function prepDatabase(): Promise<Database> {
-  const SQL = await initSqlJs();
+  const SQL = await initSqlJs({
+    locateFile: (_) => sqlWasm,
+  });
   const db = new SQL.Database();
 
   db.run(ddl);

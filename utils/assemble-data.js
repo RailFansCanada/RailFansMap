@@ -1,5 +1,5 @@
-const config = require("../src/config.json");
-const { readFileSync, writeFileSync, mkdirSync, existsSync } = require("fs");
+import config from "../src/config.json" assert { type: "json" };
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 
 if (!existsSync("build")) {
   mkdirSync("build");

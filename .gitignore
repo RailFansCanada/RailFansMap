@@ -13,6 +13,7 @@ dist/
 .vscode/
 
 local.env
+.env.local
 
 # Zero-installs is not enabled
 .pnp.*

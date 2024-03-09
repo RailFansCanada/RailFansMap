@@ -1,13 +1,13 @@
-const fs = require("fs");
-const Ajv = require("ajv");
+import { readFileSync } from "fs";
+import { exit } from "process";
+import Ajv from "ajv";
+import addFormats from "ajv-formats";
+
+import config from "../src/config.json" assert { type: "json" };
+import dataSchema from "../data.schema.json" assert { type: "json" };
+
 const ajv = new Ajv();
-const config = require("../src/config.json");
-
-const addFormats = require("ajv-formats");
 addFormats(ajv);
-
-const dataSchema = require("../data.schema.json");
-const { exit } = require("process");
 
 if (process.argv.length < 3) {
   console.error(
@@ -21,7 +21,7 @@ const doWrite = process.argv.find((it) => it == "-o");
 const formatAll = process.argv.find((it) => it == "-a");
 
 function format(path, write = false) {
-  const fileData = fs.readFileSync(path, { encoding: "utf-8" });
+  const fileData = readFileSync(path, { encoding: "utf-8" });
   /** @type {import('geojson').FeatureCollection} */
   const json = JSON.parse(fileData);
 
@@ -60,7 +60,7 @@ function format(path, write = false) {
   );
 
   if (write) {
-    fs.writeFileSync(path, result);
+    writeFileSync(path, result);
   } else {
     console.log(result);
   }

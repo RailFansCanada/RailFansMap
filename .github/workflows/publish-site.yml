@@ -18,7 +18,7 @@ jobs:
         env:
           MAPBOX_KEY: ${{ secrets.MAPBOX_KEY }}
           BASE_URL: ${{ secrets.BASE_URL }}
-        run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL" > local.env
+        run: echo -e "VITE_MAPBOX_KEY=$MAPBOX_KEY\nVITE_BASE_URL=$BASE_URL" > .env.local
           
       - name: Build dist
         env:

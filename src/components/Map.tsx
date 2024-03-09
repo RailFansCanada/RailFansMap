@@ -26,7 +26,7 @@ import {
   ViewportSettings,
 } from "../hooks/useAppState";
 import { useTheme } from "@mui/material";
-import { config, Metadata } from "../config";
+import { config, Metadata } from "../config.ts";
 import { MapControls } from "./MapControls";
 import { useGeolocation } from "../hooks/useGeolocation";
 import bboxPolygon from "@turf/bbox-polygon";
@@ -50,7 +50,7 @@ const provideLabelStyle = (
     .flatMap((id) => [
       [
         "case",
-        ["in", USE_TILES ? `\"${id}\"` : id, ["get", "lines"]],
+        ["in", (import.meta.env.VITE_USE_TILES === "true") ? `\"${id}\"` : id, ["get", "lines"]],
         ["image", id],
         "",
       ],
@@ -289,7 +289,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
     <Map
       style={{ width: windowSize[0], height: windowSize[1] }}
       mapStyle={style}
-      mapboxAccessToken={MAPBOX_KEY}
+      mapboxAccessToken={import.meta.env.VITE_MAPBOX_KEY}
       hash={true}
       onMoveEnd={handleViewportChange}
       onClick={handleClick}
@@ -306,9 +306,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       <AttributionControl
         compact={windowSize[0] <= 600}
         position="bottom-right"
-        customAttribution={`Updated on ${new Date(
-          BUILD_DATE
-        ).toLocaleDateString()}`}
+        customAttribution={`Updated on ${new Date(__BUILD_DATE__).toLocaleDateString()}`}
       />
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(props.lines)
@@ -401,7 +399,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
           }}
           maxzoom={9}
         />
-        {DEBUG && debugShowRegionBounds && (
+        {import.meta.env.DEV && debugShowRegionBounds && (
           <Layer
             id="regions-bounds"
             type="line"

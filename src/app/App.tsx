@@ -49,7 +49,7 @@ const Content = () => {
       <LegendDrawer allAgencies={agencies} />
       <Logo />
       <SearchBar />
-      {DEBUG && <BottomSheet />}
+      {import.meta.env.DEV && <BottomSheet />}
     </Container>
   );
 };
