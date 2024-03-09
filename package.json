@@ -27,8 +27,8 @@
   "devDependencies": {
     "@types/geojson": "7946.0.14",
     "@types/mapbox-gl": "2.7.21",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19",
+    "@types/react": "18.2.64",
+    "@types/react-dom": "18.2.21",
     "@types/react-virtualized": "9.21.29",
     "@types/sql.js": "1.4.9",
     "@vitejs/plugin-react": "^4.2.1",
