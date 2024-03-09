@@ -13,7 +13,7 @@ import { MapBoundsContext } from "../contexts/MapBoundsContext";
 import { config, Agency } from "../config";
 import metadata from "../../build/metadata.json";
 import { LoadedMetadata } from "../hooks/useData";
-import Scrollbars from "react-custom-scrollbars";
+import { Scrollbars } from "react-custom-scrollbars-2";
 import { AgencySection } from "./AgencySection";
 
 const agencyMap: { [key: string]: Agency } = {};

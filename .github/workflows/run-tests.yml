@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
       
       - name: Set up local secrets
         env:
@@ -22,4 +22,4 @@ jobs:
         run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL" > local.env
           
       - name: Run Tests
-        run: yarn && yarn test --verbose
+        run: npm && npm run test --verbose

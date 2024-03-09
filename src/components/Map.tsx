@@ -25,7 +25,7 @@ import {
   useAppState,
   ViewportSettings,
 } from "../hooks/useAppState";
-import { useTheme } from "@mui/styles";
+import { useTheme } from "@mui/material";
 import { config, Metadata } from "../config";
 import { MapControls } from "./MapControls";
 import { useGeolocation } from "../hooks/useGeolocation";

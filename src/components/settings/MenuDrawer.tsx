@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { AppBar, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { Close } from "@mui/icons-material";
-import Scrollbars from "react-custom-scrollbars";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 const StyledDrawer = styled(Drawer)`
   & .MuiDrawer-paper {
