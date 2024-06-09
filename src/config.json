@@ -26,6 +26,12 @@
       "bbox": [-73.75176, 45.44653, -70.14169, 47.623821353],
       "data": ["charlevoix/charlevoix.json"]
     },
+ {
+      "id": "krc",
+      "name": "Keewatin Railway Company",
+      "bbox": [-101.6805817,52.8293603,-100.6543472,55.7639468],
+      "data": ["keewatin/keewatin.json"]
+    },
     {
       "id": "edmonton",
       "name": "Edmonton LRT",
@@ -174,7 +180,7 @@
     {
       "id": "rtc",
       "name": "RTC",
-      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
+      "bbox": [-71.35335323122668,46.760346957527126,-71.21179418202422,46.846379434987306],
       "data": ["quebec/tramway.json"]
     },
     {
@@ -185,6 +191,14 @@
         45.43724924103122
       ],
       "data": ["gatineau/a.json", "gatineau/b.json"]
+    }, 
+    {
+      "id": "northland",
+      "name": "Ontario Northland",
+      "bbox": [-81.6915299,49.0593736000001,-80.643751,51.2775731],
+      "data": [
+        "northland/polarbear.json"
+      ]
     },
     {
       "id": "translink",
@@ -196,7 +210,8 @@
         "vancouver/canada.json",
         "vancouver/expomaintenance.json",
         "vancouver/milleniummaintenance.json",
-        "vancouver/canadamaintenance.json"
+        "vancouver/canadamaintenance.json",
+        "vancouver/broadwayextension.json"
       ]
     }
   ],
@@ -253,7 +268,7 @@
       "title": "Québec City",
       "agencies": ["rtc"],
       "location": [-71.235223, 46.82596],
-      "bbox": [-71.353707, 46.760213, -71.211037, 46.846826],
+      "bbox": [-71.35335323122668,46.760346957527126,-71.21179418202422,46.846379434987306],
       "tier": 2
     },
     {
@@ -277,7 +292,7 @@
     {
       "id": "passengerrail",
       "title": "Passenger Rail",
-      "agencies": ["viarail", "charlevoix"],
+      "agencies": ["viarail", "charlevoix", "krc", "northland"],
       "location": [-79.383849, 43.653482],
       "bbox": [-130.35971, 42.29556, -63.26974, 58.76772],
       "tier": 1
