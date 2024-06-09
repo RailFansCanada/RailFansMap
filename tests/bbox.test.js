@@ -1,13 +1,13 @@
-const fs = require("fs");
-const config = require("../src/config.json");
+import { readFileSync } from "fs";
+import config from "../src/config.json" assert { type: "json" };
 
-const booleanContains = require("@turf/boolean-contains").default;
-const bboxPolygon = require("@turf/bbox-polygon").default;
-const bbox = require("@turf/bbox").default;
+import booleanContains from "@turf/boolean-contains";
+import bboxPolygon from "@turf/bbox-polygon";
+import bbox from "@turf/bbox";
 
 function getAgencyBboxCollection(agency) {
   const bboxes = agency.data.map((file) => {
-    const content = fs.readFileSync(`./data/${file}`, { encoding: "utf-8" });
+    const content = readFileSync(`./data/${file}`, { encoding: "utf-8" });
 
     /** @type {import('geojson').FeatureCollection} */
     const feature = JSON.parse(content);
@@ -60,7 +60,7 @@ test.each(config.agencies)(
 test.each(config.agencies.flatMap((it) => it.data))(
   "validate individual bbox for %s",
   (value) => {
-    const content = fs.readFileSync(`./data/${value}`, { encoding: "utf-8" });
+    const content = readFileSync(`./data/${value}`, { encoding: "utf-8" });
     /** @type {import('geojson').FeatureCollection} */
     const feature = JSON.parse(content);
 

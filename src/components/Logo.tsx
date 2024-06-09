@@ -3,7 +3,7 @@ import { useIsDarkTheme } from "../app/utils";
 import logoLight from "../images/logoLight.svg";
 import logoDark from "../images/logoDark.svg";
 import { useAppState } from "../hooks/useAppState";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const LogoImg = styled.img`
   position: fixed;

@@ -17,25 +17,25 @@ Compiling the map requires Node.js installed. Dependencies are managed with yarn
 
 The map is built with mapbox-gl-js, which requires an access token to use.
 You can obtain one for free from [Mapbox](mapbox.com).
-Once you have your access token, create a `local.env` file with the following content:
+Once you have your access token, create a `.env.local` file with the following content:
 ```env
-MAPBOX_KEY={your access token here}
-BASE_URL=https://www.railfans.ca
+VITE_MAPBOX_KEY={your access token here}
+VITE_BASE_URL=https://www.railfans.ca
 ```
 
 Build and run the app locally:
 ```bash
-$ yarn start
+$ npm run start
 ```
 
-This will build the map app and start a web server to use the app. Typically the server is available at `http://localhost:8080` after building.
+This will build the map app and start a web server to use the app. Typically the server is available at `http://localhost:5173` after building.
 
 ## Running Tests
 
 Tests are used to validate data to ensure that all properties are specified correctly. To run the tests:
 
 ```bash
-$ yarn test
+$ npm test
 ```
 
 ## FAQ

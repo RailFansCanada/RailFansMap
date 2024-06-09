@@ -7,6 +7,7 @@ import Map, {
   Source,
   AttributionControl,
   Popup,
+  MapEvent,
 } from "react-map-gl";
 import { PaddingOptions } from "mapbox-gl";
 
@@ -24,10 +25,12 @@ import {
   useAppState,
   ViewportSettings,
 } from "../hooks/useAppState";
-import { useTheme } from "@mui/styles";
-import { config, Metadata } from "../config";
+import { useTheme } from "@mui/material";
+import { config, Metadata } from "../config.ts";
 import { MapControls } from "./MapControls";
 import { useGeolocation } from "../hooks/useGeolocation";
+import bboxPolygon from "@turf/bbox-polygon";
+import { postNewBounds } from "../contexts/MapBoundsContext";
 
 const provideLabelStyle = (
   lines: { [key: string]: Metadata },
@@ -45,7 +48,12 @@ const provideLabelStyle = (
     .map((value) => value.id)
     .sort()
     .flatMap((id) => [
-      ["case", ["in", USE_TILES ? `\"${id}\"` : id, ["get", "lines"]], ["image", id], ""],
+      [
+        "case",
+        ["in", (import.meta.env.VITE_USE_TILES === "true") ? `\"${id}\"` : id, ["get", "lines"]],
+        ["image", id],
+        "",
+      ],
       {},
     ]),
 ];
@@ -87,26 +95,36 @@ export type OverviewMapProps = {
   lines: { [key: string]: Metadata };
 };
 
-const regionFeatures = config.regions.map((region) => ({
-  type: "Feature",
-  bbox: region.bbox,
-  geometry: {
-    type: "Point",
-    coordinates: region.location,
+const regionFeatures = config.regions.flatMap((region) => [
+  {
+    type: "Feature",
+    bbox: region.bbox,
+    geometry: {
+      type: "Point",
+      coordinates: region.location,
+    },
+    properties: {
+      type: "region-label",
+      id: region.id,
+      name: region.title,
+      target: region.bbox,
+    },
   },
-  properties: {
-    type: "region-label",
-    id: region.id,
-    name: region.title,
-    target: region.bbox,
-  },
-}));
+  bboxPolygon(region.bbox, {
+    properties: {
+      type: "region-bounds",
+      id: region.id,
+      name: region.title,
+      target: region.bbox,
+    },
+  }),
+]);
 const regionData = { type: "FeatureCollection", features: regionFeatures };
 
 // Used to restore last location if no location hash is provided
 const lastLocation: ViewportSettings =
-  localStorage["settings"] != null
-    ? JSON.parse(localStorage["settings"]).lastLocation
+  localStorage["viewport"] != null
+    ? JSON.parse(localStorage["viewport"])
     : null;
 
 const initialLocation: Partial<ViewState> = lastLocation
@@ -122,6 +140,10 @@ const initialLocation: Partial<ViewState> = lastLocation
       zoom: 11.35,
     };
 
+function persistLastLocation(viewport: ViewportSettings) {
+  localStorage["viewport"] = JSON.stringify(viewport);
+}
+
 export const OverviewMap = (props: OverviewMapProps) => {
   const theme = useTheme();
   const windowSize = useWindow();
@@ -133,8 +155,9 @@ export const OverviewMap = (props: OverviewMapProps) => {
     show3DBuildings,
     showLabels,
     lineFilterState,
-    setLastLocation,
     showGeolocation,
+    debugShowRegionBounds,
+    setMapBounds,
   } = useAppState();
 
   const mapRef = useRef<MapRef>();
@@ -153,7 +176,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
   const handleViewportChange = (e: ViewStateChangeEvent) => {
     setMapTarget(undefined);
     const { longitude, latitude, zoom, bearing } = e.viewState;
-    setLastLocation([longitude, latitude, zoom, bearing ?? 0]);
+    persistLastLocation([longitude, latitude, zoom, bearing ?? 0]);
+    postNewBounds(e.target.getBounds());
+  };
+
+  const handleMapMove = (e: ViewStateChangeEvent) => {
+    postNewBounds(e.target.getBounds());
+  };
+
+  const handleMapIdle = (e: MapEvent) => {
+    postNewBounds(e.target.getBounds());
   };
 
   useEffect(() => {
@@ -257,12 +289,14 @@ export const OverviewMap = (props: OverviewMapProps) => {
     <Map
       style={{ width: windowSize[0], height: windowSize[1] }}
       mapStyle={style}
-      mapboxAccessToken={MAPBOX_KEY}
+      mapboxAccessToken={import.meta.env.VITE_MAPBOX_KEY}
       hash={true}
       onMoveEnd={handleViewportChange}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onMove={handleMapMove}
+      onIdle={handleMapIdle}
       ref={mapRef}
       initialViewState={initialLocation}
       attributionControl={false}
@@ -272,9 +306,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       <AttributionControl
         compact={windowSize[0] <= 600}
         position="bottom-right"
-        customAttribution={`Updated on ${new Date(
-          BUILD_DATE
-        ).toLocaleDateString()}`}
+        customAttribution={`Updated on ${new Date(__BUILD_DATE__).toLocaleDateString()}`}
       />
       <LabelProviderContext.Provider value={{ labelStyle }}>
         {Object.values(props.lines)
@@ -355,6 +387,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
         <Layer
           id="regions-labels"
           type="symbol"
+          filter={["==", ["get", "type"], "region-label"]}
           layout={{
             "text-field": ["get", "name"],
             "text-size": 20,
@@ -366,6 +399,16 @@ export const OverviewMap = (props: OverviewMapProps) => {
           }}
           maxzoom={9}
         />
+        {import.meta.env.DEV && debugShowRegionBounds && (
+          <Layer
+            id="regions-bounds"
+            type="line"
+            filter={["==", ["get", "type"], "region-bounds"]}
+            paint={{
+              "line-color": "#00FFFF",
+            }}
+          />
+        )}
       </Source>
       {popupTarget && (
         <Popup

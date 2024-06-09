@@ -161,8 +161,8 @@ A bounding box is defined as `[west, south, east, north]` where each value is a 
 To calculate a bounding box for a data file in this project, run the following command:
 
 ```bash
-yarn node utils/bbox.js {your data file}
-# e.g. yarn node utils/bbox.js toronto/line1.json
+node utils/bbox.js {your data file}
+# e.g. node utils/bbox.js toronto/line1.json
 
 # Output:
 bbox for toronto/line1.json: [-79.52793127830097, 43.6452559, -79.3770742, 43.795826398803186]
@@ -173,7 +173,7 @@ This value can be copied into your data file as the `bbox` property.
 To calculate the bounding box for an agency or region defined in the config file, run the following:
 
 ```bash
-yarn node utils/bbox.js config
+node utils/bbox.js config
 
 # Output:
 Agencies:

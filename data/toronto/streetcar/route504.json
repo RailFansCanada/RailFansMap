@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route504.svg", 
-        "name": "Route 504", 
-        "description": "King", 
+        "name": "504 King", 
+        "description": "Dundas West Station — Distillery / Roncesvalles — Broadview Station", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.45387456837626, 43.63429611064344, -79.34983480721712, 43.67755430634579],

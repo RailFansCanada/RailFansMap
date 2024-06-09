@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   IconButton,
-  Paper,
   Tooltip,
   Menu,
   MenuItem,
@@ -13,11 +12,10 @@ import {
   GitHub,
   Settings,
   NearMe,
-  Feedback,
 } from "@mui/icons-material";
 import { ShareSheet } from "./ShareSheet";
-import styled from "styled-components";
-import { config, Region } from "../../config";
+import styled from "@emotion/styled";
+import { config, Region } from "../../config.ts";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
 import TouchRipple from "@mui/material/ButtonBase/TouchRipple";

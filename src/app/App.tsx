@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   useMediaQuery,
   ThemeProvider,
@@ -17,12 +17,17 @@ import { ProvideMapTarget } from "../hooks/useMapTarget";
 import { ProvideAppState, useAppState } from "../hooks/useAppState";
 import { SearchBar } from "../components/SearchBar";
 import { ProvideGeolocation } from "../hooks/useGeolocation";
+import { ProvideStrings } from "../hooks/useStrings";
+import { BottomSheet } from "../components/BottomSheet";
+import { MapBoundsProvider } from "../contexts/MapBoundsContext";
 
 export const App = () => {
   return (
-    <ProvideAppState>
-      <ThemedApp />
-    </ProvideAppState>
+    <ProvideData2>
+      <ProvideAppState>
+        <ThemedApp />
+      </ProvideAppState>
+    </ProvideData2>
   );
 };
 
@@ -44,6 +49,7 @@ const Content = () => {
       <LegendDrawer allAgencies={agencies} />
       <Logo />
       <SearchBar />
+      {import.meta.env.DEV && <BottomSheet />}
     </Container>
   );
 };
@@ -61,15 +67,17 @@ const ThemedApp = () => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <ProvideData2>
+        <ProvideStrings>
           <ProvideWindow>
             <ProvideMapTarget>
-              <ProvideGeolocation>
-                <Content />
-              </ProvideGeolocation>
+              <MapBoundsProvider>
+                <ProvideGeolocation>
+                  <Content />
+                </ProvideGeolocation>
+              </MapBoundsProvider>
             </ProvideMapTarget>
           </ProvideWindow>
-        </ProvideData2>
+        </ProvideStrings>
       </ThemeProvider>
     </StyledEngineProvider>
   );

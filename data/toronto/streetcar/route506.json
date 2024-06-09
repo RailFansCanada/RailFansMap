@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route506.svg", 
-        "name": "Route 506", 
-        "description": "Carlton", 
+        "name": "506 Carlton", 
+        "description": "High Park — Main Street Station", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.45825907035724, 43.64777204374054, -79.30008083311591, 43.689348391718475],

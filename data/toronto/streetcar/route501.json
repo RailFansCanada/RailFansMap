@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route501.svg", 
-        "name": "Route 501", 
-        "description": "Queen", 
+        "name": "501 Queen", 
+        "description": "Neville Park — Long Branch", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.544722, 43.591514, -79.281164, 43.673949],

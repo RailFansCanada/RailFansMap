@@ -4,60 +4,54 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Grow,
   IconButton,
   ListItem,
-  ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
-  Paper,
   Snackbar,
-  TextField,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import styled from "@emotion/styled";
 import { Close, ContentCopy } from "@mui/icons-material";
 import React from "react";
 import { useAppState } from "../../hooks/useAppState";
 
-const useStyles = makeStyles((theme) => ({
-  closeButton: {
-    position: "absolute",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
-  shareButton: {
-    textTransform: "none",
-    fontSize: theme.typography.body1.fontSize,
-    background: theme.palette.background.default,
+const ShareCheckbox = styled(Checkbox)`
+  color: ${({ theme }) => theme.palette.text.primary};
+`;
 
-    "&:hover": {
-      background: theme.palette.background.default,
-    },
-    margin: theme.spacing(0, 3, 2, 3),
-    maxWidth: "100%",
-  },
-  dialogContent: {
-    listStyle: "none",
-    display: "flex",
-    flexDirection: "column",
-    padding: theme.spacing(1, 0),
-  },
-  buttonText: {
-    width: "100%",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-  },
-}));
+const CloseButton = styled(IconButton)`
+  position: absolute;
+  right: ${({ theme }) => theme.spacing(1)};
+  top: ${({ theme }) => theme.spacing(1)};
+  color: ${({ theme }) => theme.palette.grey[500]};
+`;
 
-const useCheckboxStyles = makeStyles((theme) => ({
-  root: {
-    color: theme.palette.text.primary,
-  },
-}));
+const ShareDialogContent = styled(DialogContent)`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.spacing(1, 0)};
+`;
+
+const ShareButton = styled(Button)`
+  text-transform: none;
+  font-size: ${({ theme }) => theme.typography.body1.fontSize};
+  background: ${({ theme }) => theme.palette.background.default};
+  margin: ${({ theme }) => theme.spacing(0, 3, 2, 3)};
+  max-width: 100%;
+
+  &:hover {
+    background: ${({ theme }) => theme.palette.background.default};
+  }
+`;
+
+const ShareButtonText = styled.span`
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
 const ShareOption = (props: {
   primary: string;
@@ -65,7 +59,6 @@ const ShareOption = (props: {
   checked: boolean;
   onCheck: (checked: boolean) => void;
 }) => {
-  const classes = useCheckboxStyles();
   const handleChange = () => {
     props.onCheck(!props.checked);
   };
@@ -73,9 +66,8 @@ const ShareOption = (props: {
     <ListItem button onClick={handleChange} dense>
       <ListItemText primary={props.primary} secondary={props.secondary} />
       <ListItemSecondaryAction>
-        <Checkbox
+        <ShareCheckbox
           color="primary"
-          className={classes.root}
           checked={props.checked}
           edge="start"
           onChange={handleChange}
@@ -90,11 +82,7 @@ export const ShareSheet = () => {
     shareSheetOpen,
     setShareSheetOpen,
     lineFilterState,
-    appTheme,
-    mapStyle,
   } = useAppState();
-
-  const classes = useStyles();
 
   const [snackbarMessage, setSnackbarMessage] = React.useState<string | null>(
     null
@@ -164,22 +152,14 @@ export const ShareSheet = () => {
       >
         <DialogTitle>
           <Typography variant="h6">Share This Map</Typography>
-          <IconButton
-            className={classes.closeButton}
-            onClick={handleClose}
-            size="large"
-          >
+          <CloseButton onClick={handleClose} size="large">
             <Close />
-          </IconButton>
+          </CloseButton>
         </DialogTitle>
-        <DialogContent className={classes.dialogContent}>
-          <Button
-            className={classes.shareButton}
-            onClick={handleShare}
-            endIcon={<ContentCopy />}
-          >
-            <span className={classes.buttonText}>{getShareUrl()}</span>
-          </Button>
+        <ShareDialogContent>
+          <ShareButton onClick={handleShare} endIcon={<ContentCopy />}>
+            <ShareButtonText>{getShareUrl()}</ShareButtonText>
+          </ShareButton>
           <ShareOption
             primary="Current Location"
             secondary="Share the map with the current location visible"
@@ -198,7 +178,7 @@ export const ShareSheet = () => {
             checked={withToggledLines}
             onCheck={(checked) => setWithToggledLines(checked)}
           />
-        </DialogContent>
+        </ShareDialogContent>
       </Dialog>
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}

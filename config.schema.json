@@ -47,7 +47,8 @@
             "minItems": 4,
             "maxItems": 4,
             "items": { "type": "number" }
-          }
+          },
+          "tier": { "type": "number" }
         },
         "required": ["id", "agencies", "location", "title", "bbox"],
         "additionalProperties": false

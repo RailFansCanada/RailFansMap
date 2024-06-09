@@ -220,7 +220,7 @@ A `"station-platforms"` feature defines the outline of one or more platforms for
 {
   "type": "Feature",
   "properties": {
-    "name": "Kìchì Sìbì",
+    "name": "Kichi Zìbì",
     "type": "station-platforms"
   },
   "geometry": {
@@ -254,7 +254,7 @@ A `"station-platforms-future"` feature defines the outline of one or more platfo
 {
   "type": "Feature",
   "properties": {
-    "name": "Kìchì Sìbì",
+    "name": "Kichi Zìbì",
     "type": "station-platforms-future"
   },
   "geometry": {

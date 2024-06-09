@@ -5,8 +5,8 @@
         "type": "streetcar-line", 
         "color": "#EE1D23", 
         "icon": "toronto/route503.svg", 
-        "name": "Route 503", 
-        "description": "Kingston Road", 
+        "name": "503 Kingston Road", 
+        "description": "Victoria Park — Spadina via King", 
         "sources": [ "OpenStreetMap" ]
     },
     "bbox": [-79.39600878789099,43.64531312812331,-79.28412095069501,43.68159643817149],

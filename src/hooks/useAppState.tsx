@@ -1,4 +1,5 @@
-import produce from "immer";
+import { produce } from "immer";
+import { LngLatBounds, LngLatBoundsLike } from "mapbox-gl";
 import React, {
   createContext,
   ReactNode,
@@ -6,6 +7,13 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import { useData2 } from "./useData";
+import booleanOverlap from "@turf/boolean-overlap";
+import bboxPolygon from "@turf/bbox-polygon";
+import { BBox } from "geojson";
+import booleanContains from "@turf/boolean-contains";
+import booleanIntersects from "@turf/boolean-intersects";
+import { Region } from "../config";
 
 export type AppTheme = "system" | "light" | "dark";
 export type MapStyle = "vector" | "satellite";
@@ -39,8 +47,12 @@ type AppState = {
   lineFilterState: LineFilterState;
   legendGroupState: LegendGroupState;
 
-  lastLocation: ViewportSettings | null;
   showGeolocation: boolean;
+  mapBounds: LngLatBounds;
+
+  visibleRegions: Region[];
+
+  debugShowRegionBounds: boolean;
 };
 
 type AppStateActions = {
@@ -57,8 +69,10 @@ type AppStateActions = {
   setLineFiltered: (filterKey: string, show: boolean) => void;
   setLegendGroupOpen: (key: string, open: boolean) => void;
 
-  setLastLocation: (location: ViewportSettings) => void;
   setShowGeolocation: (show: boolean) => void;
+  setMapBounds: (bounds: LngLatBounds) => void;
+
+  setDebugShowRegionBounds: (show: boolean) => void;
 };
 
 type UseAppState = AppState & AppStateActions;
@@ -138,9 +152,6 @@ const useProvideAppContext = (): UseAppState => {
   const [mapStyle, setMapStyle] = useState<MapStyle>(
     merged.mapStyle ?? "vector"
   );
-  const [lastLocation, setLastLocation] = useState<ViewportSettings>(
-    merged.lastLocation
-  );
 
   const [lineFilterState, setLineFilterState] = useState<LineFilterState>(
     merged.lineFilterState ?? {}
@@ -160,6 +171,22 @@ const useProvideAppContext = (): UseAppState => {
   const [showGeolocation, setShowGeolocation] = useState(
     merged.showGeolocation ?? true
   );
+
+  const [debugShowRegionBounds, setDebugShowRegionBounds] = useState(
+    merged.debugShowRegionBounds ?? false
+  );
+
+  const [mapBounds, setMapBounds] = useState(new LngLatBounds([0, 0, 0, 0]));
+  const [visibleRegions, setVisibleRegions] = useState<Region[]>([]);
+
+  const { regions } = useData2();
+  useEffect(() => {
+    const bbox = bboxPolygon(mapBounds.toArray().flat() as BBox);
+    const results = Object.values(regions).filter((r) =>
+      booleanIntersects(bbox, bboxPolygon(r.bbox))
+    );
+    setVisibleRegions(results);
+  }, [regions, mapBounds]);
 
   const state = {
     settingsDrawerOpen,
@@ -192,11 +219,16 @@ const useProvideAppContext = (): UseAppState => {
     legendGroupState,
     setLegendGroupOpen,
 
-    lastLocation,
-    setLastLocation,
-
     showGeolocation,
     setShowGeolocation,
+
+    debugShowRegionBounds,
+    setDebugShowRegionBounds,
+
+    mapBounds,
+    setMapBounds,
+
+    visibleRegions,
   };
 
   // Write settings to localstorage on every update

@@ -11,7 +11,7 @@ import { LayerOption } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
 import { MenuDrawer } from "./MenuDrawer";
 import { useAppState, AppTheme } from "../../hooks/useAppState";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const themeSettings = ["Follow System Settings", "Light", "Dark"];
 
@@ -47,6 +47,8 @@ export const SettingsDrawer = () => {
     setAppTheme,
     showGeolocation,
     setShowGeolocation,
+    debugShowRegionBounds,
+    setDebugShowRegionBounds,
   } = useAppState();
 
   const handleThemeChange = (index: number) => {
@@ -121,6 +123,20 @@ export const SettingsDrawer = () => {
         />
       </List>
 
+      {import.meta.env.DEV && (
+        <>
+          <Divider />
+          <SectionHeader variant="overline">Debug Settings</SectionHeader>
+          <List>
+            <SwitchOption
+              primary="Show Region Bounds"
+              checked={debugShowRegionBounds}
+              onToggle={(checked) => setDebugShowRegionBounds(checked)}
+            />
+          </List>
+        </>
+      )}
+
       <Divider />
       <SectionHeader variant="overline">About</SectionHeader>
       <List>
@@ -128,12 +144,12 @@ export const SettingsDrawer = () => {
           <ListItemText primary="Privacy policy" />
         </ListItemButton>
         <ListItem dense>
-          <ListItemText primary="Version" secondary={VERSION} />
+          <ListItemText primary="Version" secondary={__APP_VERSION__} />
         </ListItem>
         <ListItem dense>
           <ListItemText
             primary="Build date"
-            secondary={new Date(BUILD_DATE).toLocaleString()}
+            secondary={new Date(__BUILD_DATE__).toLocaleString()}
           />
         </ListItem>
       </List>

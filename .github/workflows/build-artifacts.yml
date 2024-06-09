@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Set up local secrets
         env:
@@ -22,11 +22,11 @@ jobs:
         run: echo -e "MAPBOX_KEY=$MAPBOX_KEY\nBASE_URL=$BASE_URL" > local.env
 
       - name: Build dist
-        run: yarn && yarn run build
+        run: npm install && npm run build
 
       - name: Upload Artifacts
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: map-build
           path: dist

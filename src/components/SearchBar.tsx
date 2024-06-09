@@ -18,7 +18,7 @@ import {
   Paper,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   BoundsResult,
   search,
@@ -33,6 +33,7 @@ import { SimpleBBox, useMapTarget } from "../hooks/useMapTarget";
 import { useAppState } from "../hooks/useAppState";
 import { isLineEnabled } from "../app/utils";
 import { useWindow } from "../hooks/useWindow";
+import { useStrings } from "../hooks/useStrings";
 
 const SearchContainer = styled.div`
   position: fixed;
@@ -48,9 +49,9 @@ const SearchContainer = styled.div`
   }
 `;
 
-const SearchBarPaper = styled(Paper)<{ $expanded: boolean }>`
-  padding: ${({ theme, $expanded }) => theme.spacing(0.25)};
-  width: ${(props) => (props.$expanded ? "100%" : "48px")};
+const SearchBarPaper = styled(Paper)<{ selected: boolean }>`
+  padding: ${({ theme }) => theme.spacing(0.25)};
+  width: ${(props) => (props.selected ? "100%" : "48px")};
   transition: ${({ theme }) => theme.transitions.create(["width", "padding"])};
   overflow: clip;
   display: flex;
@@ -140,9 +141,10 @@ type SearchProps = {
 
 const MobileSearch = (props: SearchProps) => {
   const { searchOpen, setSearchOpen } = useAppState();
+  const strings = useStrings();
 
   return (
-    <SearchBarPaper $expanded={searchOpen}>
+    <SearchBarPaper selected={searchOpen}>
       <SearchButton
         aria-label="Search Button"
         onClick={() => setSearchOpen(!searchOpen)}
@@ -154,7 +156,7 @@ const MobileSearch = (props: SearchProps) => {
           props.onQueryUpdate(e.target.value);
         }}
         value={props.query}
-        placeholder="Search stations, lines, yards..."
+        placeholder={strings.search_placeholder}
       />
       {searchOpen && (
         <SearchButton
@@ -173,8 +175,10 @@ const MobileSearch = (props: SearchProps) => {
 
 const DesktopSearch = (props: SearchProps) => {
   const { searchOpen, setSearchOpen } = useAppState();
+  const strings = useStrings();
+
   return (
-    <SearchBarPaper $expanded>
+    <SearchBarPaper selected>
       <SearchButton aria-label="Search Button">
         <Search />
       </SearchButton>
@@ -183,7 +187,7 @@ const DesktopSearch = (props: SearchProps) => {
           props.onQueryUpdate(e.target.value);
         }}
         value={props.query}
-        placeholder="Search stations, lines, yards..."
+        placeholder={strings.search_placeholder}
       />
       {searchOpen && (
         <SearchButton
