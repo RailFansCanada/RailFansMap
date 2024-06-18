@@ -1,11 +1,11 @@
 {
   "type": "FeatureCollection",
-  "name": "walkleyYard",
+  "name": "albionYard",
   "metadata": {
     "type": "rail-yard",
     "offset": 0,
-    "id": "ottawa/walkley",
-    "name": "Walkley Yard",
+    "id": "ottawa/albion",
+    "name": "Albion Yard",
     "description": "Maintenance and Storage Facility for Lines 2 and 4",
     "sources": [
       "City of Ottawa"
