@@ -55,7 +55,7 @@
     "@turf/boolean-overlap": "6.5.0",
     "@turf/buffer": "6.5.0",
     "bbox": "0.4.0",
-    "clsx": "2.1.0",
+    "clsx": "2.1.1",
     "immer": "10.0.4",
     "mapbox-gl": "2.15.0",
     "react": "18.2.0",
