@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666669"
+   version="1.1"
+   id="svg3963"
+   inkscape:export-filename="\\wsl$\Ubuntu\home\derek\projects\OTrainMap\src\images\line2.png"
+   inkscape:export-xdpi="48.000004"
+   inkscape:export-ydpi="48.000004"
+   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   sodipodi:docname="qctramway.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs3957">
+    <style
+       id="style4610">.cls-1{fill:#00539e;}.cls-2{fill:#f26f21;}.cls-3{fill:#54a33d;}.cls-4{fill:#0094d9;}.cls-5{fill:#ffc10e;}.cls-6{fill:#b2d235;}</style>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.3542821"
+     inkscape:cx="-24.717863"
+     inkscape:cy="-9.516078"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     lock-margins="true"
+     fit-margin-top="2"
+     fit-margin-left="2"
+     fit-margin-right="2"
+     fit-margin-bottom="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="981"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true" />
+  <metadata
+     id="metadata3960">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <rect
+       style="fill:#00539f;fill-opacity:1;stroke:none;stroke-width:0.29864;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect851"
+       width="7.115819"
+       height="7.115819"
+       x="0.67525864"
+       y="0.67542362"
+       ry="0.90155786"
+       rx="0.90155786" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-25.24881,-32.808334)"
+     style="display:inline">
+    <g
+       id="Layer_2"
+       data-name="Layer 2"
+       transform="matrix(0.0721412,0,0,0.0721412,26.599774,35.771982)"
+       style="stroke:#ffffff;stroke-opacity:1">
+      <g
+         id="Layer_1-2"
+         data-name="Layer 1"
+         style="stroke:#ffffff;stroke-opacity:1">
+        <polygon
+           class="cls-1"
+           points="61.9,17.6 79.9,17.6 66.9,0 49,0 "
+           id="polygon15009"
+           style="stroke:#ffffff;stroke-opacity:1" />
+        <polygon
+           class="cls-2"
+           points="55.4,17.6 42.4,0 24.5,0 37.4,17.6 "
+           id="polygon15011"
+           style="stroke:#ffffff;stroke-opacity:1" />
+        <polygon
+           class="cls-3"
+           points="30.9,17.6 17.9,0 0,0 12.9,17.6 "
+           id="polygon15013"
+           style="stroke:#ffffff;stroke-opacity:1" />
+        <polygon
+           class="cls-4"
+           points="49,35.2 66.9,35.2 79.9,17.6 61.9,17.6 "
+           id="polygon15015"
+           style="stroke:#ffffff;stroke-opacity:1" />
+        <polygon
+           class="cls-5"
+           points="42.4,35.2 55.4,17.6 37.4,17.6 24.5,35.2 "
+           id="polygon15017"
+           style="stroke:#ffffff;stroke-opacity:1" />
+        <polygon
+           class="cls-6"
+           points="17.9,35.2 30.9,17.6 12.9,17.6 0,35.2 "
+           id="polygon15019"
+           style="stroke:#ffffff;stroke-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>
