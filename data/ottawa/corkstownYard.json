@@ -1,11 +1,11 @@
 {
   "type": "FeatureCollection",
-  "name": "moodieYard",
+  "name": "corkstownYard",
   "metadata": {
     "type": "rail-yard",
-    "id": "ottawa/moodie",
-    "name": "Moodie Yard",
-    "description": "Maintenance and Storage Facility for Lines 1 and 3",
+    "id": "ottawa/corkstown",
+    "name": "Corkstown Yard",
+    "description": "Light Maintenance and Storage Facility for Lines 1 and 3",
     "sources": [
       "City of Ottawa"
     ],
