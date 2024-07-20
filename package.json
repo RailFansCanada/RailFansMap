@@ -32,7 +32,7 @@
     "@types/react-virtualized": "9.21.30",
     "@types/sql.js": "1.4.9",
     "@vitejs/plugin-react": "^4.2.1",
-    "ajv": "8.16.0",
+    "ajv": "8.17.1",
     "ajv-formats": "3.0.1",
     "concurrently": "^8.0.0",
     "dotenv": "16.4.5",
