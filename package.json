@@ -29,7 +29,7 @@
     "@types/mapbox-gl": "3.4.1",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.5",
-    "@types/react-virtualized": "9.21.30",
+    "@types/react-virtualized": "9.22.2",
     "@types/sql.js": "1.4.9",
     "@vitejs/plugin-react": "^4.2.1",
     "ajv": "8.17.1",
