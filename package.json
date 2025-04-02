@@ -39,7 +39,7 @@
     "jest": "29.7.0",
     "nodemon": "^3.0.0",
     "typescript": "5.8.2",
-    "vite": "^5.1.5",
+    "vite": "^6.0.0",
     "vite-plugin-static-copy": "^1.0.1"
   },
   "dependencies": {
