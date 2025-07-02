@@ -113,6 +113,6 @@
 { "type": "Feature", "properties": { "name": "Olympic Village", "lines": [ "translink/canadaline" ], "type": "station-label" }, "geometry": { "type": "Point", "coordinates": [ -123.115499101842957, 49.266785346733506 ] } },
 { "type": "Feature", "properties": { "name": "Yaletown-Roundhouse", "lines": [ "translink/canadaline" ], "type": "station-label" }, "geometry": { "type": "Point", "coordinates": [ -123.121950773107656, 49.27439646252742 ] } },
 { "type": "Feature", "properties": { "name": "Vancouver City Centre", "lines": [ "translink/canadaline" ], "type": "station-label" }, "geometry": { "type": "Point", "coordinates": [ -123.118987705093289, 49.282040858948513 ] } },
-{ "type": "Feature", "properties": { "name": "Capstan (Future)", "lines": [ "translink/canadaline" ], "type": "station-label" }, "geometry": { "type": "Point", "coordinates": [ -123.131465535738727, 49.189531092321388 ] } }
+{ "type": "Feature", "properties": { "name": "Capstan", "lines": [ "translink/canadaline" ], "type": "station-label" }, "geometry": { "type": "Point", "coordinates": [ -123.131465535738727, 49.189531092321388 ] } }
 ]
 }
