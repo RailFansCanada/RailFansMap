@@ -57,7 +57,7 @@
     "bbox": "0.4.0",
     "clsx": "2.1.1",
     "immer": "10.1.1",
-    "mapbox-gl": "3.10.0",
+    "mapbox-gl": "3.14.0",
     "react": "18.3.1",
     "react-custom-scrollbars-2": "4.5.0",
     "react-dom": "18.3.1",
