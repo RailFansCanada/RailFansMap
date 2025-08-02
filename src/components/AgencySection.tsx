@@ -11,14 +11,14 @@ import {
 import { Agency } from "../config";
 import { LoadedMetadata } from "../hooks/useData";
 import React, { useMemo } from "react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 
 export type AgencySectionProps = {
   agency: Agency;
   metadata: LoadedMetadata[];
 };
 
-const HorizontalScrollbars = styled.div`
+const HorizontalScrollbars = styled('div')`
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -42,7 +42,7 @@ const LineCard = (props: LoadedMetadata) => {
   );
 };
 
-const LineColorBar = styled.div<{ tint: string }>`
+const LineColorBar = styled('div')<{ tint: string }>`
   width: 5px;
   background-color: ${(props) => props.tint};
   display: flex;

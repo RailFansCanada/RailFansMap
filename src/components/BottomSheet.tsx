@@ -5,7 +5,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { Chevron } from "./Chevron";
 import { MapBoundsContext } from "../contexts/MapBoundsContext";
 import { config, Agency } from "../config.ts";
@@ -63,7 +63,7 @@ const HeaderContainer = styled(ButtonBase)`
   align-items: center;
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled('div')`
   height: 50vh;
   width: 100%;
   padding: ${({ theme }) => theme.spacing(0)};

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { AppBar, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { Close } from "@mui/icons-material";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
@@ -29,7 +29,7 @@ const DrawerTitle = styled(Typography)`
   color: ${({ theme }) => theme.palette.text.primary};
 `;
 
-const DrawerContentContainer = styled.div`
+const DrawerContentContainer = styled('div')`
   display: flex;
   flex-grow: 1;
   height: 100%;

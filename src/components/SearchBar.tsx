@@ -18,7 +18,7 @@ import {
   Paper,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import {
   BoundsResult,
   search,
@@ -35,7 +35,7 @@ import { isLineEnabled } from "../app/utils";
 import { useWindow } from "../hooks/useWindow";
 import { useStrings } from "../hooks/useStrings";
 
-const SearchContainer = styled.div`
+const SearchContainer = styled('div')`
   position: fixed;
   padding: ${({ theme }) => theme.spacing(1)};
   width: 400px;
@@ -75,7 +75,7 @@ const ResultsPaper = styled(Paper)`
   margin-top: ${({ theme }) => theme.spacing(1)};
 `;
 
-const ResultLineIcon = styled.img`
+const ResultLineIcon = styled('img')`
   height: 24px;
   width: 24px;
 `;

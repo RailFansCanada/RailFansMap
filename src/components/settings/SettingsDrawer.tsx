@@ -11,7 +11,8 @@ import { LayerOption } from "./LayerOption";
 import { SwitchOption, MenuOption } from "./ListOptions";
 import { MenuDrawer } from "./MenuDrawer";
 import { useAppState, AppTheme } from "../../hooks/useAppState";
-import styled from "@emotion/styled";
+// import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 const themeSettings = ["Follow System Settings", "Light", "Dark"];
 

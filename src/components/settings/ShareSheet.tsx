@@ -11,7 +11,7 @@ import {
   Snackbar,
   Typography,
 } from "@mui/material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { Close, ContentCopy } from "@mui/icons-material";
 import React from "react";
 import { useAppState } from "../../hooks/useAppState";
@@ -46,7 +46,7 @@ const ShareButton = styled(Button)`
   }
 `;
 
-const ShareButtonText = styled.span`
+const ShareButtonText = styled('span')`
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

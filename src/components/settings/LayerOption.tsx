@@ -3,15 +3,11 @@ import {
   Card,
   CardContent,
   Typography,
-  Theme,
   CardActionArea,
   alpha,
   useTheme,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
 } from "@mui/material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 
 export type LayerOptionProps = {
   primary: string;
@@ -46,7 +42,7 @@ const OptionActionArea = styled(CardActionArea)`
   justify-content: start;
 `;
 
-const Imagery = styled.div<{ selected: boolean }>`
+const Imagery = styled('div')<{ selected: boolean }>`
   display: flex;
   flex-grow: 0;
   flex-shrink: 0;

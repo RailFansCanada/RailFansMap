@@ -14,7 +14,8 @@ import {
   NearMe,
 } from "@mui/icons-material";
 import { ShareSheet } from "./ShareSheet";
-import styled from "@emotion/styled";
+// import { styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { config, Region } from "../../config.ts";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
@@ -22,7 +23,7 @@ import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
 import { useWindow } from "../../hooks/useWindow";
 import { ControlPaper } from "../Controls";
 
-const ControlsContainer = styled.div<{ hidden: boolean }>`
+const ControlsContainer = styled('div')<{ hidden: boolean }>`
   position: fixed;
   right: ${({ theme, hidden }) =>
     hidden ? theme.spacing(-8) : theme.spacing(1)};

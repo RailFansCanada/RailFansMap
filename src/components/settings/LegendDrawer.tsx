@@ -11,7 +11,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import { MenuDrawer } from "./MenuDrawer";
 import { Agency } from "../../config";
 import { LoadedMetadata } from "../../hooks/useData";
@@ -47,7 +47,7 @@ type LegendEntryProps = Omit<EntryData, "id"> & {
   enabled?: boolean;
 };
 
-const LegendEntryColorBar = styled.div<{ tint: string }>`
+const LegendEntryColorBar = styled('div')<{ tint: string }>`
   width: 5px;
   background-color: ${(props) => props.tint};
   display: flex;
@@ -112,7 +112,7 @@ const LegendEntry = (props: LegendEntryProps) => {
   );
 };
 
-const LegendGroupContainer = styled.div`
+const LegendGroupContainer = styled('div')`
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;

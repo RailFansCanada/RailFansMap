@@ -1,10 +1,7 @@
 import React from "react";
-import styled from "@emotion/styled";
-import {
-  useMediaQuery,
-  ThemeProvider,
-  StyledEngineProvider,
-} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import { OverviewMap } from "../components/Map";
 import { themeFactory } from "./theme";
 import { Controls } from "../components/settings/Controls";
@@ -31,7 +28,7 @@ export const App = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled("div")`
   display: flex;
   width: 100%;
   height: 100%;
@@ -65,20 +62,18 @@ const ThemedApp = () => {
   }, [prefersDarkScheme, appTheme]);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <ProvideStrings>
-          <ProvideWindow>
-            <ProvideMapTarget>
-              <MapBoundsProvider>
-                <ProvideGeolocation>
-                  <Content />
-                </ProvideGeolocation>
-              </MapBoundsProvider>
-            </ProvideMapTarget>
-          </ProvideWindow>
-        </ProvideStrings>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <ThemeProvider theme={theme}>
+      <ProvideStrings>
+        <ProvideWindow>
+          <ProvideMapTarget>
+            <MapBoundsProvider>
+              <ProvideGeolocation>
+                <Content />
+              </ProvideGeolocation>
+            </MapBoundsProvider>
+          </ProvideMapTarget>
+        </ProvideWindow>
+      </ProvideStrings>
+    </ThemeProvider>
   );
 };

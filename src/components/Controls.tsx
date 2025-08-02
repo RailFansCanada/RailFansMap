@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 
 export const ControlPaper = styled(Paper)`

@@ -22,11 +22,8 @@ export const SwitchOption = (props: SwitchOptionProps) => {
   };
 
   return (
-    <ListItem disabled={props.disabled} onClick={handleToggle} button>
+    <ListItem onClick={handleToggle} component="div" secondaryAction={<Switch disabled={props.disabled} onChange={handleToggle} checked={props.checked} edge="end" />}>
       <ListItemText primary={props.primary} secondary={props.secondary} />
-      <ListItemSecondaryAction>
-        <Switch disabled={props.disabled} onChange={handleToggle} checked={props.checked} edge="end" />
-      </ListItemSecondaryAction>
     </ListItem>
   );
 };
@@ -52,7 +49,7 @@ export const MenuOption = (props: MenuOptionProps) => {
 
   return (
     <>
-      <ListItem onClick={handleClick} button>
+      <ListItem onClick={handleClick}>
         <ListItemText
           primary={props.primary}
           secondary={props.options[props.value]}

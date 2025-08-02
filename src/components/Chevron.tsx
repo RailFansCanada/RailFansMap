@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 
-export const Chevron = styled.div<{ down: boolean; color?: string }>`
+export const Chevron = styled('div')<{ down: boolean; color?: string }>`
   display: inline-block;
   margin-top: 4px;
   width: 24px;

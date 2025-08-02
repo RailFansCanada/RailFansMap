@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { PaletteOptions } from '@mui/material/styles';
 
 export const themeFactory = (darkMode: boolean = false) =>

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { Tooltip, IconButton, Divider } from "@mui/material";
 import {
   Add,
@@ -17,7 +17,7 @@ import { useGeolocation } from "../hooks/useGeolocation";
 import { useWindow } from "../hooks/useWindow";
 import { useAppState } from "../hooks/useAppState";
 
-const MapControlContainer = styled.div<{
+const MapControlContainer = styled('div')<{
   hidden: boolean;
   smallPadding: boolean;
 }>`
