@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"metadata": { "id": "quebec\/tramway", "type": "rail-line", "color": "#00539f", "icon": "quebec\/qctramway.svg", "name": "TramCité", "description": "Proposed corridor for the first phase of TramCité", "sources": [ "CDPQ Infra / Ville de Québec" ], "filterKey": "quebecTramway" },
+"metadata": { "id": "quebec\/tramway", "type": "rail-line", "color": "#7d256e", "icon": "quebec\/tramcite.svg", "name": "TramCité", "description": "Proposed corridor for the first phase of TramCité", "sources": [ "CDPQ Infra / Ville de Québec" ], "filterKey": "quebecTramway" },
 "name": "tramway",
 "bbox": [-71.35335323122668,46.760346957527126,-71.21179418202422,46.846379434987306],                                              
 "features": [
