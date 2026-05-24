@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useMap } from "react-map-gl";
 
-export type MapIconProps = {
+export type MapIconProps = Partial<Stretch> & {
   id: string;
   url: string;
   width: number;
@@ -22,7 +22,12 @@ export const MapIcon = ({ width, height, ...props }: MapIconProps) => {
 
   const addToMap = () => {
     if (!map.hasImage(props.id)) {
-      map.addImage(props.id, imageRef.current, { pixelRatio: scale });
+      map.addImage(props.id, imageRef.current, {
+        pixelRatio: scale,
+        stretchX: props.stretchX,
+        stretchY: props.stretchY,
+        content: props.content,
+      });
     }
   };
 
