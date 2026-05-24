@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Source, Layer } from "react-map-gl";
-import { AnyLayout, VectorSource, GeoJSONSourceRaw } from "mapbox-gl";
+import { GeoJSONSourceSpecification, VectorSourceSpecification } from "mapbox-gl";
 import { LabelProviderContext } from "./Map";
 import { useIsDarkTheme } from "../app/utils";
 import { useAppState } from "../hooks/useAppState";
@@ -28,7 +28,7 @@ export const Lines = React.memo(
     const { appTheme } = useAppState();
     const isDarkTheme = useIsDarkTheme(appTheme);
 
-    const [source, setSource] = useState<VectorSource | GeoJSONSourceRaw | null>(null);
+    const [source, setSource] = useState<VectorSourceSpecification | GeoJSONSourceSpecification | null>(null);
 
     useEffect(() => {
       if (import.meta.env.VITE_USE_TILES !== "true") {
@@ -431,8 +431,8 @@ export const Lines = React.memo(
                 "text-size": 16,
                 "icon-image": "label-background",
                 "icon-text-fit": "both",
-                "icon-text-fit-padding": [1, 4, 0, 4],
-              } as AnyLayout
+                "icon-text-fit-padding": LABEL_TEXT_FIT,
+              }
             }
             paint={{
               "text-color": "#FFFFFF",
@@ -456,13 +456,13 @@ export const Lines = React.memo(
               {
                 "text-field": labelStyle,
                 "text-anchor": "left",
-                "text-offset": [0.75, 0],
+                "text-offset": [1, 0],
                 "text-font": ["Raleway Bold"],
                 "text-size": 16,
                 "icon-image": "label-background",
                 "icon-text-fit": "both",
-                "icon-text-fit-padding": [1, 4, 0, 4],
-              } as AnyLayout
+                "icon-text-fit-padding": LABEL_TEXT_FIT,
+              }
             }
             paint={{
               "text-color": "#FFFFFF",
@@ -485,13 +485,13 @@ export const Lines = React.memo(
               {
                 "text-field": labelStyle,
                 "text-anchor": "left",
-                "text-offset": [0.75, 0],
+                "text-offset": [1, 0],
                 "text-font": ["Raleway Bold"],
                 "text-size": 16,
                 "icon-image": "label-background",
                 "icon-text-fit": "both",
-                "icon-text-fit-padding": [1, 4, 0, 4],
-              } as AnyLayout
+                "icon-text-fit-padding": LABEL_TEXT_FIT,
+              }
             }
             paint={{
               "text-color": "#FFFFFF",
@@ -517,13 +517,13 @@ export const Lines = React.memo(
               {
                 "text-field": labelStyle,
                 "text-anchor": "left",
-                "text-offset": [0.75, 0],
+                "text-offset": [1, 0],
                 "text-font": ["Raleway Bold"],
                 "text-size": 16,
                 "icon-image": "label-background",
                 "icon-text-fit": "both",
-                "icon-text-fit-padding": [1, 4, 0, 4],
-              } as AnyLayout
+                "icon-text-fit-padding": LABEL_TEXT_FIT,
+              }
             }
             paint={{
               "text-color": "#FFFFFF",
@@ -534,3 +534,5 @@ export const Lines = React.memo(
     );
   }
 );
+
+const LABEL_TEXT_FIT = [1, 6, 1, 6];

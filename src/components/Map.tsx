@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Map, {
   ViewState,
   MapRef,
@@ -9,7 +9,7 @@ import Map, {
   Popup,
   MapEvent,
 } from "react-map-gl";
-import { PaddingOptions } from "mapbox-gl";
+import { DataDrivenPropertyValueSpecification, PaddingOptions } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Lines } from "./Line";
@@ -84,11 +84,11 @@ const provideFilterList = (
 };
 
 type LabelProvider = {
-  labelStyle: {}[];
+  labelStyle: DataDrivenPropertyValueSpecification<string> | undefined;
 };
 
 export const LabelProviderContext = React.createContext<LabelProvider>({
-  labelStyle: [],
+  labelStyle: undefined,
 });
 
 export type OverviewMapProps = {
@@ -327,6 +327,9 @@ export const OverviewMap = (props: OverviewMapProps) => {
           height={24}
           id="label-background"
           url={labelBackground}
+          content={[0, 0, 24, 24]}
+          stretchX={[[1, 23]]}
+          stretchY={[[1, 23]]}
         />
         <Layer
           id="sky"
