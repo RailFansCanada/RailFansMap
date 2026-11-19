@@ -30,7 +30,7 @@
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.5",
     "@types/react-virtualized": "9.21.30",
-    "@types/sql.js": "1.4.9",
+    "@types/sql.js": "1.16.0",
     "@vitejs/plugin-react": "^4.2.1",
     "ajv": "8.17.1",
     "ajv-formats": "3.0.1",
