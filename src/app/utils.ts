@@ -20,3 +20,27 @@ export const isLineEnabled = (filterKey: string | undefined, state: LineFilterSt
     return state[filterKey] ?? false;
   }
 }
+
+// Planned and under-construction route IDs, based on the line data currently
+// included in the map. Keep these separate from filterKey: some operating
+// services also use filter keys so riders can hide them.
+const UNBUILT_LINE_IDS = new Set([
+  "ottawa/barrhaven",
+  "ottawa/kanata",
+  "edmonton/valleylinew",
+  "montreal/blue-extension",
+  "toronto/ynse",
+  "toronto/sse",
+  "toronto/3ontario",
+  "toronto/5-west",
+  "waterloo/ion-stage2",
+  "quebec/tramway",
+  "gatineau/A",
+  "gatineau/B",
+  "hamilton/lrt",
+  "northland/northlander",
+  "translink/broadwayextension",
+]);
+
+export const isLineUnbuilt = (lineId: string): boolean =>
+  UNBUILT_LINE_IDS.has(lineId);

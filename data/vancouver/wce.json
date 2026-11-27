@@ -7,6 +7,7 @@
     "offset": 0,
     "icon": "vancouver/wce.svg",
     "name": "West Coast Express",
+    "filterKey": "westCoastExpress",
     "description": "Waterfront - Mission City",
     "notes": "Weekday commuter service; trains run westbound to Waterfront in the morning and eastbound to Mission City in the afternoon and evening.",
     "sources": [

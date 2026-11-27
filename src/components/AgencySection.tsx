@@ -12,6 +12,7 @@ import { Agency } from "../config";
 import { LoadedMetadata } from "../hooks/useData";
 import React, { useMemo } from "react";
 import { styled } from "@mui/material/styles";
+import { isLineUnbuilt } from "../app/utils";
 
 export type AgencySectionProps = {
   agency: Agency;
@@ -68,7 +69,7 @@ export const AgencySection = (props: AgencySectionProps) => {
   const theme = useTheme();
 
   const planned = useMemo(
-    () => props.metadata.filter((meta) => meta.filterKey != null),
+    () => props.metadata.filter((meta) => isLineUnbuilt(meta.id)),
     [props.metadata]
   );
 
@@ -79,7 +80,7 @@ export const AgencySection = (props: AgencySectionProps) => {
       </Typography>
       <List>
         {props.metadata
-          .filter((meta) => meta.filterKey == null)
+          .filter((meta) => !isLineUnbuilt(meta.id))
           .map((meta) => (
             //   <LineCard {...meta} />
             <LineRow key={meta.id} {...meta} />

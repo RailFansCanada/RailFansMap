@@ -284,6 +284,22 @@ export const OverviewMap = (props: OverviewMapProps) => {
   }, [showLabels]);
 
   const { geolocation: userPosition } = useGeolocation();
+  const enabledFilterKeys = [
+    ...new Set(
+      Object.values(props.lines).flatMap((line) =>
+        line.filterKey != null && isLineEnabled(line.filterKey, lineFilterState)
+          ? [line.filterKey]
+          : []
+      )
+    ),
+  ];
+  const hiddenLineIds = Object.values(props.lines)
+    .filter(
+      (line) =>
+        line.filterKey != null &&
+        !isLineEnabled(line.filterKey, lineFilterState)
+    )
+    .map((line) => line.id);
 
   return (
     <Map
@@ -380,6 +396,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
             lineFilterState,
             Object.values(props.lines)
           )}
+          enabledFilterKeys={enabledFilterKeys}
+          hiddenLineIds={hiddenLineIds}
         />
       </LabelProviderContext.Provider>
       <Source

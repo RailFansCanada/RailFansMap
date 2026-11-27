@@ -20,7 +20,7 @@ import { BBox } from "geojson";
 import { SimpleBBox, useMapTarget } from "../../hooks/useMapTarget";
 import { useAppState } from "../../hooks/useAppState";
 import { useWindow } from "../../hooks/useWindow";
-import { isLineEnabled } from "../../app/utils";
+import { isLineEnabled, isLineUnbuilt } from "../../app/utils";
 import metadata from "../../../build/metadata.json";
 
 type EntryData = {
@@ -64,6 +64,13 @@ const LegendEntryItem = styled(ListItem)<{ checked: boolean }>`
   }
 `;
 
+const LegendEntryIcon = styled("img")`
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+`;
+
 const LegendEntry = (props: LegendEntryProps) => {
   const { setTarget } = useMapTarget();
 
@@ -102,7 +109,7 @@ const LegendEntry = (props: LegendEntryProps) => {
       <ListItemButton disabled={!props.enabled} onClick={handleClick}>
         {props.icon && (
           <ListItemAvatar>
-            <img src={props.icon} />
+            <LegendEntryIcon src={props.icon} alt="" />
           </ListItemAvatar>
         )}
         <LegendEntryColorBar tint={props.tint} />
@@ -222,7 +229,11 @@ export const LegendDrawer = React.memo((props: LegendDrawerProps) => {
               bbox: metadata.bbox,
               icon: `icons/${metadata.icon}`,
               filterKey: metadata.filterKey,
-            }));
+            }))
+            .sort(
+              (a, b) =>
+                Number(isLineUnbuilt(a.id)) - Number(isLineUnbuilt(b.id))
+            );
           return (
             <LegendGroup
               agency={props.allAgencies[key]}

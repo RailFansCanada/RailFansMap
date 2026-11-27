@@ -8,6 +8,8 @@ import { useAppState } from "../hooks/useAppState";
 type NewLineProps = {
   showLineLabels?: boolean;
   filterList: string[];
+  enabledFilterKeys: string[];
+  hiddenLineIds: string[];
 };
 
 const root = () => {
@@ -23,10 +25,56 @@ const root = () => {
 const LAYER_PROPS = (import.meta.env.VITE_USE_TILES === "true") ? { "source-layer": "rail-map" } : {};
 
 export const Lines = React.memo(
-  ({ showLineLabels, filterList }: NewLineProps) => {
+  ({
+    showLineLabels,
+    filterList,
+    enabledFilterKeys,
+    hiddenLineIds,
+  }: NewLineProps) => {
     const { labelStyle } = useContext(LabelProviderContext);
     const { appTheme } = useAppState();
     const isDarkTheme = useIsDarkTheme(appTheme);
+    const featureArrayValue = (id: string) =>
+      import.meta.env.VITE_USE_TILES === "true" ? `\"${id}\"` : id;
+    const endpointIsVisible = (endpoint: "start" | "end") => [
+      "any",
+      ["==", ["get", `${endpoint}AlwaysVisible`], true],
+      ...enabledFilterKeys.map((filterKey) => [
+        "in",
+        featureArrayValue(filterKey),
+        ["get", `${endpoint}FilterKeys`],
+      ]),
+    ];
+    const stationVisibilityFilter = [
+      "any",
+      ["!", ["has", "stationFilterKeys"]],
+      [
+        "any",
+        ["==", ["get", "stationAlwaysVisible"], true],
+        ...enabledFilterKeys.map((filterKey) => [
+          "in",
+          featureArrayValue(filterKey),
+          ["get", "stationFilterKeys"],
+        ]),
+      ],
+    ];
+    const connectorVisibilityFilter = [
+      "any",
+      [
+        "all",
+        ["==", ["get", "filterByEndpoints"], true],
+        endpointIsVisible("start"),
+        endpointIsVisible("end"),
+      ],
+      [
+        "all",
+        ["!", ["has", "filterByEndpoints"]],
+        ...hiddenLineIds.map((id) => [
+          "!",
+          ["in", featureArrayValue(id), ["get", "lines"]],
+        ]),
+      ],
+    ];
 
     const [source, setSource] = useState<VectorSourceSpecification | GeoJSONSourceSpecification | null>(null);
 
@@ -289,6 +337,7 @@ export const Lines = React.memo(
           filter={[
             "all",
             ["==", ["get", "type"], "station-connector-label"],
+            connectorVisibilityFilter,
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           minzoom={15}
@@ -311,6 +360,7 @@ export const Lines = React.memo(
             "all",
             ["==", ["get", "type"], "station-label"],
             ["==", ["get", "class"], "streetcar-line"],
+            stationVisibilityFilter,
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           minzoom={11}
@@ -339,6 +389,7 @@ export const Lines = React.memo(
             "all",
             ["==", ["get", "type"], "station-label"],
             ["==", ["get", "class"], "rail-line"],
+            stationVisibilityFilter,
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           layout={{}}
@@ -365,6 +416,7 @@ export const Lines = React.memo(
           filter={[
             "all",
             ["==", ["get", "type"], "station-connector-label"],
+            connectorVisibilityFilter,
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           maxzoom={16}
@@ -393,6 +445,7 @@ export const Lines = React.memo(
           filter={[
             "all",
             ["==", ["get", "type"], "station-connector-label"],
+            connectorVisibilityFilter,
             ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
           ]}
           maxzoom={16}
@@ -451,6 +504,7 @@ export const Lines = React.memo(
               "all",
               ["==", ["get", "class"], "rail-line"],
               ["==", ["get", "type"], "station-label"],
+              stationVisibilityFilter,
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
               [">=", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
             ]}
@@ -499,6 +553,7 @@ export const Lines = React.memo(
               "all",
               ["==", ["get", "class"], "streetcar-line"],
               ["==", ["get", "type"], "station-label"],
+              stationVisibilityFilter,
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
             ]}
             minzoom={15}
@@ -546,7 +601,13 @@ export const Lines = React.memo(
               "all",
               ["==", ["get", "type"], "station-label"],
               ["==", ["get", "major"], true],
+              stationVisibilityFilter,
               ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+              [
+                "any",
+                ["!", ["has", "labelAnchor"]],
+                ["==", ["get", "labelAnchor"], "right"],
+              ],
               ["<", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
               [">=", ["zoom"], ["match", ["get", "scale"], "large", 4, 9]],
             ]}

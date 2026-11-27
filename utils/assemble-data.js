@@ -160,8 +160,29 @@ const mergeNearbyStationLabels = (features) => {
         ])
       ),
     ];
-    const hasUnfilteredSource = group.features.some(
-      (feature) => feature.properties.filterKey == null
+    const platformFiltersFor = (coordinate) => {
+      const platformFeatures = group.features.filter(
+        (feature) =>
+          distanceInMeters(feature.geometry.coordinates, coordinate) <= 5
+      );
+      return {
+        filterKeys: [
+          ...new Set(
+            platformFeatures
+              .map((feature) => feature.properties.filterKey)
+              .filter((filterKey) => filterKey != null)
+          ),
+        ],
+        alwaysVisible: platformFeatures.some(
+          (feature) => feature.properties.filterKey == null
+        ),
+      };
+    };
+    const platformFilterInfoByCoordinate = new Map(
+      group.coordinates.map((coordinate) => [
+        coordinate,
+        platformFiltersFor(coordinate),
+      ])
     );
 
     group.representatives.forEach((representative) => {
@@ -174,7 +195,12 @@ const mergeNearbyStationLabels = (features) => {
       if (group.features.some((feature) => feature.properties.major)) {
         properties.major = true;
       }
-      if (hasUnfilteredSource) delete properties.filterKey;
+      const platformFilters = platformFilterInfoByCoordinate.get(
+        representative.geometry.coordinates
+      );
+      properties.stationFilterKeys = platformFilters.filterKeys;
+      properties.stationAlwaysVisible = platformFilters.alwaysVisible;
+      delete properties.filterKey;
     });
 
     let farthestPair = null;
@@ -255,17 +281,16 @@ const mergeNearbyStationLabels = (features) => {
       });
 
     const connector = matchingConnectors[0];
+    let connectorProperties;
     if (connector != null) {
       matchingConnectors.slice(1).forEach((duplicate) => removed.add(duplicate));
-      const connectorProperties = connector.properties;
+      connectorProperties = connector.properties;
       connectorProperties.name = group.identity.name;
       connectorProperties.lines = lines;
-      if (hasUnfilteredSource) delete connectorProperties.filterKey;
       for (const key of [
         "region",
         "agency",
         "parent",
-        "filterKey",
         "class",
         "color",
         "offset",
@@ -273,17 +298,36 @@ const mergeNearbyStationLabels = (features) => {
         if (properties[key] == null) delete connectorProperties[key];
         else connectorProperties[key] = properties[key];
       }
-      connector.geometry.coordinates = connectorCoordinates;
+      removed.add(connector);
     } else {
+      connectorProperties = {
+        ...properties,
+        type: "station-connector-label",
+        name: group.identity.name,
+        lines,
+      };
+    }
+
+    delete connectorProperties.filterKey;
+    const platformFilterInfo = connectorCoordinates.map((coordinate) =>
+      platformFilterInfoByCoordinate.get(coordinate)
+    );
+
+    for (let i = 0; i < connectorCoordinates.length - 1; i++) {
       connectorsToAdd.push({
         type: "Feature",
         properties: {
-          ...properties,
-          type: "station-connector-label",
-          name: group.identity.name,
-          lines,
+          ...connectorProperties,
+          filterByEndpoints: true,
+          startFilterKeys: platformFilterInfo[i].filterKeys,
+          startAlwaysVisible: platformFilterInfo[i].alwaysVisible,
+          endFilterKeys: platformFilterInfo[i + 1].filterKeys,
+          endAlwaysVisible: platformFilterInfo[i + 1].alwaysVisible,
         },
-        geometry: { type: "LineString", coordinates: connectorCoordinates },
+        geometry: {
+          type: "LineString",
+          coordinates: [connectorCoordinates[i], connectorCoordinates[i + 1]],
+        },
       });
     }
   });
