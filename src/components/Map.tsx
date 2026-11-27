@@ -35,28 +35,48 @@ import { postNewBounds } from "../contexts/MapBoundsContext";
 const provideLabelStyle = (
   lines: { [key: string]: Metadata },
   state: LineFilterState
-) => [
-  "format",
-  ["get", "name"],
-  {},
-  " ",
-  {},
-  ...Object.values(lines)
-    .filter(
-      (value) => value.icon != null && isLineEnabled(value.filterKey, state)
-    )
-    .map((value) => value.id)
-    .sort()
-    .flatMap((id) => [
-      [
-        "case",
-        ["in", (import.meta.env.VITE_USE_TILES === "true") ? `\"${id}\"` : id, ["get", "lines"]],
-        ["image", id],
-        "",
-      ],
-      {},
-    ]),
-];
+) => {
+  // Group enabled lines by their icon file so that lines sharing the same
+  // icon (e.g. two VIA Rail routes both using viarail/viarail.svg) produce
+  // only a single icon in the label instead of duplicates.
+  const enabledLines = Object.values(lines).filter(
+    (value) => value.icon != null && isLineEnabled(value.filterKey, state)
+  );
+
+  const iconGroups: { [icon: string]: string[] } = {};
+  for (const line of enabledLines) {
+    const icon = line.icon!;
+    if (iconGroups[icon]) {
+      iconGroups[icon].push(line.id);
+    } else {
+      iconGroups[icon] = [line.id];
+    }
+  }
+
+  // For each unique icon, emit a single ["case", condition, ["image", firstId], ""]
+  // where `condition` is true when *any* of the grouped line IDs appear in
+  // the feature's "lines" property.
+  const useTiles = import.meta.env.VITE_USE_TILES === "true";
+  const iconEntries = Object.entries(iconGroups)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .flatMap(([_icon, ids]) => {
+      const firstId = ids.sort()[0]; // use the first alphabetical ID for the image
+      const condition =
+        ids.length === 1
+          ? ["in", useTiles ? `\"${ids[0]}\"` : ids[0], ["get", "lines"]]
+          : [
+              "any",
+              ...ids.map((id) => [
+                "in",
+                useTiles ? `\"${id}\"` : id,
+                ["get", "lines"],
+              ]),
+            ];
+      return [["case", condition, ["image", firstId], ""], {}];
+    });
+
+  return ["format", ["get", "name"], {}, " ", {}, ...iconEntries];
+};
 
 // Provides a list of all state keys that are false, i.e. the features to hide
 const provideFilterList = (
