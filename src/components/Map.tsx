@@ -328,8 +328,8 @@ export const OverviewMap = (props: OverviewMapProps) => {
           id="label-background"
           url={labelBackground}
           content={[0, 0, 24, 24]}
-          stretchX={[[1, 23]]}
-          stretchY={[[1, 23]]}
+          stretchX={[[11, 13]]}
+          stretchY={[[11, 13]]}
         />
         <Layer
           id="sky"

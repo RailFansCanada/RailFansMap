@@ -293,6 +293,7 @@ export const Lines = React.memo(
           ]}
           minzoom={15}
           layout={{
+            "line-join": "round",
             "line-cap": "round",
           }}
           paint={{
@@ -368,6 +369,7 @@ export const Lines = React.memo(
           ]}
           maxzoom={16}
           layout={{
+            "line-join": "round",
             "line-cap": "round",
           }}
           paint={{
@@ -395,6 +397,7 @@ export const Lines = React.memo(
           ]}
           maxzoom={16}
           layout={{
+            "line-join": "round",
             "line-cap": "round",
           }}
           paint={{
@@ -455,8 +458,26 @@ export const Lines = React.memo(
             layout={
               {
                 "text-field": labelStyle,
-                "text-anchor": "left",
-                "text-offset": [1, 0],
+                "text-anchor": [
+                  "match",
+                  ["get", "labelAnchor"],
+                  "left",
+                  "left",
+                  "right",
+                  "right",
+                  "top",
+                  "top",
+                  "left",
+                ],
+                "text-offset": [
+                  "match",
+                  ["get", "labelAnchor"],
+                  "right",
+                  ["literal", [-1, 0]],
+                  "top",
+                  ["literal", [0, -1]],
+                  ["literal", [1, 0]],
+                ],
                 "text-font": ["Raleway Bold"],
                 "text-size": 16,
                 "icon-image": "label-background",
@@ -484,8 +505,26 @@ export const Lines = React.memo(
             layout={
               {
                 "text-field": labelStyle,
-                "text-anchor": "left",
-                "text-offset": [1, 0],
+                "text-anchor": [
+                  "match",
+                  ["get", "labelAnchor"],
+                  "left",
+                  "left",
+                  "right",
+                  "right",
+                  "top",
+                  "top",
+                  "left",
+                ],
+                "text-offset": [
+                  "match",
+                  ["get", "labelAnchor"],
+                  "right",
+                  ["literal", [-1, 0]],
+                  "top",
+                  ["literal", [0, -1]],
+                  ["literal", [1, 0]],
+                ],
                 "text-font": ["Raleway Bold"],
                 "text-size": 16,
                 "icon-image": "label-background",
@@ -516,8 +555,26 @@ export const Lines = React.memo(
             layout={
               {
                 "text-field": labelStyle,
-                "text-anchor": "left",
-                "text-offset": [1, 0],
+                "text-anchor": [
+                  "match",
+                  ["get", "labelAnchor"],
+                  "left",
+                  "left",
+                  "right",
+                  "right",
+                  "top",
+                  "top",
+                  "left",
+                ],
+                "text-offset": [
+                  "match",
+                  ["get", "labelAnchor"],
+                  "right",
+                  ["literal", [-1, 0]],
+                  "top",
+                  ["literal", [0, -1]],
+                  ["literal", [1, 0]],
+                ],
                 "text-font": ["Raleway Bold"],
                 "text-size": 16,
                 "icon-image": "label-background",

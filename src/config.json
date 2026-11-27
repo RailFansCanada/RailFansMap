@@ -155,7 +155,7 @@
     {
       "id": "go",
       "name": "GO",
-      "bbox": [-81.2493479999999, 42.98024840000009, -78.885068, 44.3737523],
+      "bbox": [-80.9773456999999, 43.1089166, -78.885068, 44.3737523],
       "data": [
         "go/br.json",
         "go/ki.json",
@@ -165,6 +165,14 @@
         "go/rh.json",
         "go/st.json",
         "go/up.json"
+      ]
+    },
+    {
+      "id": "hamiltonlrt",
+      "name": "Hamilton LRT",
+      "bbox": [-79.94,43.22,-79.75,43.27],
+      "data": [
+        "hamilton/lrt.json"
       ]
     },
     {
@@ -195,15 +203,16 @@
     {
       "id": "northland",
       "name": "Ontario Northland",
-      "bbox": [-81.6915299,49.0593736000001,-80.643751,51.2775731],
+      "bbox": [-81.6915299,43.6448976,-79.1542978,51.2775731],
       "data": [
-        "northland/polarbear.json"
+        "northland/polarbear.json",
+        "northland/northlander.json"
       ]
     },
     {
       "id": "translink",
       "name": "TransLink",
-      "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462],
+      "bbox": [-123.1793274, 49.130231, -122.2967306, 49.2949578],
       "data": [
         "vancouver/expo.json",
         "vancouver/millenium.json",
@@ -211,7 +220,8 @@
         "vancouver/expomaintenance.json",
         "vancouver/milleniummaintenance.json",
         "vancouver/canadamaintenance.json",
-        "vancouver/broadwayextension.json"
+        "vancouver/broadwayextension.json",
+        "vancouver/wce.json"
       ]
     }
   ],
@@ -274,11 +284,19 @@
     {
       "id": "toronto",
       "title": "Toronto",
-      "agencies": ["ttc", "ttcStreetcar"],
+      "agencies": ["ttc", "ttcStreetcar", "go"],
       "location": [-79.383849, 43.653482],
       "bbox": [
-        -79.60331150195182, 43.591514, -79.2443698561092, 43.857232769665806
+        -80.9773456999999, 43.1089166, -78.885068, 44.3737523
       ],
+      "tier": 2
+    },
+    {
+      "id": "hamilton",
+      "title": "Hamilton",
+      "agencies": ["hamiltonlrt"],
+      "location": [-79.84, 43.25],
+      "bbox": [-79.94, 43.22, -79.75, 43.27],
       "tier": 2
     },
     {
@@ -286,7 +304,7 @@
       "title": "Vancouver",
       "agencies": ["translink"],
       "location": [-123.1164, 49.282191],
-      "bbox": [-123.1793274, 49.1675196, -122.7910283, 49.2881462],
+      "bbox": [-123.1793274, 49.130231, -122.2967306, 49.2949578],
       "tier": 2
     },
     {
