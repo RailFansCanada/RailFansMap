@@ -36,27 +36,35 @@ export const Lines = React.memo(
     const isDarkTheme = useIsDarkTheme(appTheme);
     const featureArrayValue = (id: string) =>
       import.meta.env.VITE_USE_TILES === "true" ? `\"${id}\"` : id;
-    const endpointIsVisible = (endpoint: "start" | "end") => [
+    const matchesFilterCondition = (
+      alwaysVisibleProp: string,
+      filterKeysProp: string
+    ) => [
       "any",
-      ["==", ["get", `${endpoint}AlwaysVisible`], true],
+      ["==", ["get", alwaysVisibleProp], true],
       ...enabledFilterKeys.map((filterKey) => [
         "in",
         featureArrayValue(filterKey),
-        ["get", `${endpoint}FilterKeys`],
+        ["get", filterKeysProp],
       ]),
+    ];
+    const endpointIsVisible = (endpoint: "start" | "end") =>
+      matchesFilterCondition(`${endpoint}AlwaysVisible`, `${endpoint}FilterKeys`);
+    const noSkippedPlatformVisible = [
+      "any",
+      ["!", ["has", "skipFilterKeys"]],
+      [
+        "all",
+        ...enabledFilterKeys.map((filterKey) => [
+          "!",
+          ["in", featureArrayValue(filterKey), ["get", "skipFilterKeys"]],
+        ]),
+      ],
     ];
     const stationVisibilityFilter = [
       "any",
       ["!", ["has", "stationFilterKeys"]],
-      [
-        "any",
-        ["==", ["get", "stationAlwaysVisible"], true],
-        ...enabledFilterKeys.map((filterKey) => [
-          "in",
-          featureArrayValue(filterKey),
-          ["get", "stationFilterKeys"],
-        ]),
-      ],
+      matchesFilterCondition("stationAlwaysVisible", "stationFilterKeys"),
     ];
     const connectorVisibilityFilter = [
       "any",
@@ -65,6 +73,7 @@ export const Lines = React.memo(
         ["==", ["get", "filterByEndpoints"], true],
         endpointIsVisible("start"),
         endpointIsVisible("end"),
+        noSkippedPlatformVisible,
       ],
       [
         "all",
@@ -501,12 +510,31 @@ export const Lines = React.memo(
             {...LAYER_PROPS}
             type="symbol"
             filter={[
-              "all",
-              ["==", ["get", "class"], "rail-line"],
-              ["==", ["get", "type"], "station-label"],
-              stationVisibilityFilter,
-              ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
-              [">=", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
+              "any",
+              [
+                "all",
+                ["==", ["get", "class"], "rail-line"],
+                ["==", ["get", "type"], "station-label"],
+                ["!", ["has", "isMergedPlatform"]],
+                stationVisibilityFilter,
+                ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+                [">=", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
+              ],
+              [
+                "all",
+                ["==", ["get", "class"], "rail-line"],
+                ["==", ["get", "type"], "station-label"],
+                ["==", ["get", "isMergedPlatform"], true],
+                stationVisibilityFilter,
+                [">=", ["zoom"], 13],
+              ],
+              [
+                "all",
+                ["==", ["get", "type"], "station-overview-label"],
+                [">=", ["zoom"], 7],
+                ["<", ["zoom"], 13],
+                matchesFilterCondition("largeAlwaysVisible", "largeFilterKeys"),
+              ],
             ]}
             // minzoom={13}
             layout={
@@ -598,18 +626,54 @@ export const Lines = React.memo(
             {...LAYER_PROPS}
             type="symbol"
             filter={[
-              "all",
-              ["==", ["get", "type"], "station-label"],
-              ["==", ["get", "major"], true],
-              stationVisibilityFilter,
-              ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+              "any",
               [
-                "any",
-                ["!", ["has", "labelAnchor"]],
-                ["==", ["get", "labelAnchor"], "right"],
+                "all",
+                ["==", ["get", "type"], "station-label"],
+                ["!", ["has", "isMergedPlatform"]],
+                ["==", ["get", "major"], true],
+                stationVisibilityFilter,
+                ["!", ["in", ["get", "filterKey"], ["literal", filterList]]],
+                [
+                  "any",
+                  ["!", ["has", "labelAnchor"]],
+                  ["==", ["get", "labelAnchor"], "right"],
+                ],
+                ["<", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
+                [">=", ["zoom"], ["match", ["get", "scale"], "large", 4, 9]],
               ],
-              ["<", ["zoom"], ["match", ["get", "scale"], "large", 7, 13]],
-              [">=", ["zoom"], ["match", ["get", "scale"], "large", 4, 9]],
+              [
+                "all",
+                ["==", ["get", "type"], "station-overview-label"],
+                [
+                  "any",
+                  [
+                    "all",
+                    [">=", ["zoom"], 4],
+                    ["<", ["zoom"], 7],
+                    matchesFilterCondition(
+                      "largeMajorAlwaysVisible",
+                      "largeMajorFilterKeys"
+                    ),
+                  ],
+                  [
+                    "all",
+                    [">=", ["zoom"], 9],
+                    ["<", ["zoom"], 13],
+                    [
+                      "!",
+                      matchesFilterCondition(
+                        "largeAlwaysVisible",
+                        "largeFilterKeys"
+                      ),
+                    ],
+                    matchesFilterCondition(
+                      "regularMajorAlwaysVisible",
+                      "regularMajorFilterKeys"
+                    ),
+                  ],
+                ],
+              ],
             ]}
             // maxzoom={13}
             // minzoom={9}

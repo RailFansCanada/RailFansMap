@@ -55,16 +55,27 @@ const allCollections = config.regions.flatMap((region) => {
   });
 });
 
-// Merge repeated Toronto GO/TTC and Vancouver TransLink station labels into
-// shared interchange labels. Keep distinct platform points so the map can show
-// the full station footprint and join them with a single connector pill.
+// Merge repeated nearby station labels across lines and agencies into shared
+// interchange complexes. Keep distinct platform points (>10m apart) so the map
+// can show the full station footprint joined by conditional connector pills,
+// and emit one overview label for lower zoom levels.
 const stationIdentity = (name) => {
   const normalized = name.trim().toLocaleLowerCase();
+  // Handle known variations and synonyms for major stations that appear across multiple agencies/lines.
   if (normalized === "downsview") {
     return { key: "downsview park", name: "Downsview Park" };
   }
+  if (normalized === "st. catherines") {
+    return { key: "st. catharines", name: "St. Catharines" };
+  }
+  // Union Station appears under various agencies (GO, UP, TTC, VIA, Northlander). Treat them as the same.
+  if (normalized === "union station" || normalized === "union" || normalized === "union st") {
+    return { key: "union station", name: "Union Station" };
+  }
+  // Add more custom aliases here as needed.
   return { key: normalized, name };
 };
+
 
 const distanceInMeters = (a, b) => {
   const radians = (degrees) => (degrees * Math.PI) / 180;
@@ -78,22 +89,30 @@ const distanceInMeters = (a, b) => {
   return 6371000 * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
 };
 
+const filterConditionFor = (matchingFeatures) => ({
+  filterKeys: [
+    ...new Set(
+      matchingFeatures
+        .map((feature) => feature.properties.filterKey)
+        .filter((filterKey) => filterKey != null)
+    ),
+  ],
+  alwaysVisible: matchingFeatures.some(
+    (feature) => feature.properties.filterKey == null
+  ),
+});
+
 const mergeNearbyStationLabels = (features) => {
   const mergedGroups = [];
   const removed = new Set();
   const connectorsToAdd = [];
+  const overviewLabelsToAdd = [];
 
   features.forEach((feature) => {
     const properties = feature.properties;
-    const isTorontoRailInterchange =
-      properties.region === "toronto" &&
-      ["go", "ttc", "ttcStreetcar"].includes(properties.agency);
-    const isVancouverTransLinkStation =
-      properties.region === "vancouver" && properties.agency === "translink";
     if (
       feature.geometry.type !== "Point" ||
-      properties.type !== "station-label" ||
-      (!isTorontoRailInterchange && !isVancouverTransLinkStation)
+      properties.type !== "station-label"
     ) {
       return;
     }
@@ -120,7 +139,7 @@ const mergeNearbyStationLabels = (features) => {
     group.features.push(feature);
     if (
       !group.coordinates.some(
-        (existing) => distanceInMeters(existing, coordinates) <= 5
+        (existing) => distanceInMeters(existing, coordinates) <= 10
       )
     ) {
       group.coordinates.push(coordinates);
@@ -131,6 +150,8 @@ const mergeNearbyStationLabels = (features) => {
   });
 
   mergedGroups.forEach((group) => {
+    if (group.features.length === 1) return;
+
     const lines = [
       ...new Set(
         group.features.flatMap((feature) => feature.properties.lines ?? [])
@@ -160,24 +181,13 @@ const mergeNearbyStationLabels = (features) => {
         ])
       ),
     ];
-    const platformFiltersFor = (coordinate) => {
-      const platformFeatures = group.features.filter(
-        (feature) =>
-          distanceInMeters(feature.geometry.coordinates, coordinate) <= 5
+    const platformFiltersFor = (coordinate) =>
+      filterConditionFor(
+        group.features.filter(
+          (feature) =>
+            distanceInMeters(feature.geometry.coordinates, coordinate) <= 10
+        )
       );
-      return {
-        filterKeys: [
-          ...new Set(
-            platformFeatures
-              .map((feature) => feature.properties.filterKey)
-              .filter((filterKey) => filterKey != null)
-          ),
-        ],
-        alwaysVisible: platformFeatures.some(
-          (feature) => feature.properties.filterKey == null
-        ),
-      };
-    };
     const platformFilterInfoByCoordinate = new Map(
       group.coordinates.map((coordinate) => [
         coordinate,
@@ -192,6 +202,7 @@ const mergeNearbyStationLabels = (features) => {
       properties.agencies = agencies;
       properties.parents = parents;
       properties.searchTerms = searchTerms;
+      properties.isMergedPlatform = true;
       if (group.features.some((feature) => feature.properties.major)) {
         properties.major = true;
       }
@@ -202,6 +213,58 @@ const mergeNearbyStationLabels = (features) => {
       properties.stationAlwaysVisible = platformFilters.alwaysVisible;
       delete properties.filterKey;
     });
+
+    const largeMajorCondition = filterConditionFor(
+      group.features.filter(
+        (feature) =>
+          feature.properties.scale === "large" && feature.properties.major
+      )
+    );
+    const largeCondition = filterConditionFor(
+      group.features.filter((feature) => feature.properties.scale === "large")
+    );
+    const regularMajorCondition = filterConditionFor(
+      group.features.filter(
+        (feature) =>
+          feature.properties.scale !== "large" && feature.properties.major
+      )
+    );
+    const hasOverviewVisibility =
+      largeCondition.alwaysVisible ||
+      largeCondition.filterKeys.length > 0 ||
+      regularMajorCondition.alwaysVisible ||
+      regularMajorCondition.filterKeys.length > 0;
+    if (hasOverviewVisibility) {
+      const overviewUrl = group.features
+        .map((feature) => feature.properties.url)
+        .find((url) => url != null && url !== "null");
+      const meanCoordinate = [
+        group.coordinates.reduce((sum, point) => sum + point[0], 0) /
+          group.coordinates.length,
+        group.coordinates.reduce((sum, point) => sum + point[1], 0) /
+          group.coordinates.length,
+      ];
+      overviewLabelsToAdd.push({
+        type: "Feature",
+        properties: {
+          type: "station-overview-label",
+          name: group.identity.name,
+          lines,
+          class: "rail-line",
+          ...(overviewUrl != null ? { url: overviewUrl } : {}),
+          largeMajorFilterKeys: largeMajorCondition.filterKeys,
+          largeMajorAlwaysVisible: largeMajorCondition.alwaysVisible,
+          largeFilterKeys: largeCondition.filterKeys,
+          largeAlwaysVisible: largeCondition.alwaysVisible,
+          regularMajorFilterKeys: regularMajorCondition.filterKeys,
+          regularMajorAlwaysVisible: regularMajorCondition.alwaysVisible,
+        },
+        geometry: {
+          type: "Point",
+          coordinates: meanCoordinate,
+        },
+      });
+    }
 
     let farthestPair = null;
     let farthestDistance = 0;
@@ -264,7 +327,6 @@ const mergeNearbyStationLabels = (features) => {
         (feature) =>
           feature.geometry.type === "LineString" &&
           feature.properties.type === "station-connector-label" &&
-          feature.properties.region === properties.region &&
           stationIdentity(feature.properties.name).key === group.identity.key &&
           feature.geometry.coordinates.some(
             (coordinate) => distanceInMeters(group.anchor, coordinate) <= 300
@@ -309,32 +371,48 @@ const mergeNearbyStationLabels = (features) => {
     }
 
     delete connectorProperties.filterKey;
+    delete connectorProperties.isMergedPlatform;
+    delete connectorProperties.labelAnchor;
+    delete connectorProperties.stationFilterKeys;
+    delete connectorProperties.stationAlwaysVisible;
+
     const platformFilterInfo = connectorCoordinates.map((coordinate) =>
       platformFilterInfoByCoordinate.get(coordinate)
     );
 
+    // Emit bridge segments between every pair of platforms that can become
+    // consecutive when intermediate filtered platforms are turned off.
     for (let i = 0; i < connectorCoordinates.length - 1; i++) {
-      connectorsToAdd.push({
-        type: "Feature",
-        properties: {
-          ...connectorProperties,
-          filterByEndpoints: true,
-          startFilterKeys: platformFilterInfo[i].filterKeys,
-          startAlwaysVisible: platformFilterInfo[i].alwaysVisible,
-          endFilterKeys: platformFilterInfo[i + 1].filterKeys,
-          endAlwaysVisible: platformFilterInfo[i + 1].alwaysVisible,
-        },
-        geometry: {
-          type: "LineString",
-          coordinates: [connectorCoordinates[i], connectorCoordinates[i + 1]],
-        },
-      });
+      for (let j = i + 1; j < connectorCoordinates.length; j++) {
+        const intermediate = platformFilterInfo.slice(i + 1, j);
+        if (intermediate.some((info) => info.alwaysVisible)) break;
+        const skipFilterKeys = [
+          ...new Set(intermediate.flatMap((info) => info.filterKeys)),
+        ];
+        connectorsToAdd.push({
+          type: "Feature",
+          properties: {
+            ...connectorProperties,
+            filterByEndpoints: true,
+            startFilterKeys: platformFilterInfo[i].filterKeys,
+            startAlwaysVisible: platformFilterInfo[i].alwaysVisible,
+            endFilterKeys: platformFilterInfo[j].filterKeys,
+            endAlwaysVisible: platformFilterInfo[j].alwaysVisible,
+            skipFilterKeys,
+          },
+          geometry: {
+            type: "LineString",
+            coordinates: [connectorCoordinates[i], connectorCoordinates[j]],
+          },
+        });
+      }
     }
   });
 
   return features
     .filter((feature) => !removed.has(feature))
-    .concat(connectorsToAdd);
+    .concat(connectorsToAdd)
+    .concat(overviewLabelsToAdd);
 };
 
 const assembledFeatures = mergeNearbyStationLabels(

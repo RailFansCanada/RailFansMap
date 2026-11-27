@@ -216,7 +216,10 @@ export const OverviewMap = (props: OverviewMapProps) => {
     if (event.features == null) return;
 
     for (let feature of event.features) {
-      if (feature.properties.type === "station-label") {
+      if (
+        feature.properties.type === "station-label" ||
+        feature.properties.type === "station-overview-label"
+      ) {
         if (
           feature.properties.url != null &&
           feature.properties.url !== "null"
@@ -275,6 +278,7 @@ export const OverviewMap = (props: OverviewMapProps) => {
       setClickableLayers([
         "rail-station",
         "rail-labels",
+        "rail-labels-major",
         "yard-labels",
         "regions-labels",
       ]);
